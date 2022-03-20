@@ -54,6 +54,9 @@
 </template>
 <script >
  import SubMenu from './SubMenu.vue';
+
+ import { errorResponse , showSwalLoading } from '../helpers/check.js';
+
  export default {
   components : {
    SubMenu
@@ -61,7 +64,7 @@
  data(){
    return {
      admin : {},
-    dataRoutes : {
+     dataRoutes : {
       'admin' : "Admin",
       'item' : "Item" ,
       'category' : "Category" ,
@@ -85,16 +88,20 @@ methods : {
     window.axios.post('logout').then( (response) => {
       window.location.href="dashboard";
     } ).catch( (error) => {
-
+      errorResponse(error,this);
     } )
-  },getAdmin(){
-
+  },
+  getAdmin(){
    window.axios.get("admin").then(( response ) =>  {
+    if(response.data.message=='Loading'){
+      showSwalLoading(this);
+    }else{
      this.admin=response.data.admin
-   } ).catch( (error) => {
-
-   } )
- }
+   }
+ } ).catch( (error) => {
+  errorResponse(error,this);
+} )
+}
 },
 created(){
  this.getAdmin();

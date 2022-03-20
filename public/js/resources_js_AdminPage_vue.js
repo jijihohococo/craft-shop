@@ -48,6 +48,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _SubMenu_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SubMenu.vue */ "./resources/js/admin/components/SubMenu.vue");
+/* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -77,16 +79,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     logout: function logout() {
-      window.axios.post('logout').then(function (response) {
-        window.location.href = "dashboard";
-      })["catch"](function (error) {});
-    },
-    getAdmin: function getAdmin() {
       var _this = this;
 
+      window.axios.post('logout').then(function (response) {
+        window.location.href = "dashboard";
+      })["catch"](function (error) {
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.errorResponse)(error, _this);
+      });
+    },
+    getAdmin: function getAdmin() {
+      var _this2 = this;
+
       window.axios.get("admin").then(function (response) {
-        _this.admin = response.data.admin;
-      })["catch"](function (error) {});
+        if (response.data.message == 'Loading') {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this2);
+        } else {
+          _this2.admin = response.data.admin;
+        }
+      })["catch"](function (error) {
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.errorResponse)(error, _this2);
+      });
     }
   },
   created: function created() {
@@ -551,6 +563,97 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   )], 2
   /* CLASS */
   );
+}
+
+/***/ }),
+
+/***/ "./resources/js/admin/helpers/check.js":
+/*!*********************************************!*\
+  !*** ./resources/js/admin/helpers/check.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "checkContentPermission": () => (/* binding */ checkContentPermission),
+/* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
+/* harmony export */   "checkAuthorize": () => (/* binding */ checkAuthorize),
+/* harmony export */   "checkCreateEditPermission": () => (/* binding */ checkCreateEditPermission),
+/* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading)
+/* harmony export */ });
+function checkContentPermission(content, permission, object) {
+  window.axios.get('check_permission/' + content + '/' + permission).then(function (response) {
+    if (response.data.message == 'Loading') {
+      showSwalLoading(object);
+    } else {
+      object.actions[permission] = true;
+    }
+  })["catch"](function (error) {
+    errorResponse(error, object);
+  });
+}
+function errorResponse(error, object) {
+  var action = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+  if (error.response) {
+    switch (error.response.status) {
+      case 401:
+        object.$swal('Unauthenticated', "You are not login", 'error');
+        setTimeout(function () {
+          window.location.href = "/admin/login";
+        }, 2000);
+        break;
+
+      case 403:
+        object.actions[action] = false;
+
+        if (object.errors) {
+          object.errors.error_status = 403;
+          object.errors.error_title = "Permission Denied";
+          object.errors.error_description = "You are not allowed to " + action + " " + object.current;
+        }
+
+        break;
+
+      case 404:
+        object.actions[action] = false;
+        object.errors.error_status = 404;
+        object.errors.error_title = "Page Not Found";
+        object.errors.error_description = "You are in the wrong page";
+        break;
+    }
+  }
+}
+function checkAuthorize(object, method) {
+  if (object.actions[object.current] == true && object.count == 0) {
+    object.count = 1;
+
+    if (!isNaN(object.$route.params.id)) {
+      object[method](object.$route.params.id);
+    }
+  }
+}
+function checkCreateEditPermission(object) {
+  var checkStage = isNaN(object.$route.params.id) ? 'create' : 'update';
+  checkContentPermission(object.content, checkStage, object);
+  object.current = checkStage;
+}
+function showSwalLoading(object) {
+  object.$swal({
+    title: 'Now loading',
+    html: '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>',
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    timer: 2000,
+    onOpen: function onOpen() {
+      swal.showLoading();
+    }
+  }).then(function () {}, function (dismiss) {
+    if (dismiss === 'timer') {
+      object.$swal.close;
+    }
+  });
+  location.reload();
 }
 
 /***/ }),

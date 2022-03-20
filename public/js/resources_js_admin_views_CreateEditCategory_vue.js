@@ -530,7 +530,9 @@ function checkContentPermission(content, permission, object) {
     errorResponse(error, object);
   });
 }
-function errorResponse(error, object, action) {
+function errorResponse(error, object) {
+  var action = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
   if (error.response) {
     switch (error.response.status) {
       case 401:

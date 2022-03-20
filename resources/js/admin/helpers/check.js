@@ -10,7 +10,7 @@ export function checkContentPermission(content,permission,object){
 	} )
 }
 
-export function errorResponse(error,object,action){
+export function errorResponse(error,object,action=null){
 	if(error.response){
         switch(error.response.status){
             case 401:
