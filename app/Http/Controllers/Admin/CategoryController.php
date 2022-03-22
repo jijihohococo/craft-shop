@@ -24,7 +24,7 @@ class CategoryController extends Controller
     {
         //
         return response()->json([
-            'categories' => Category::withTrashed()->latest('id')->paginate(2)
+            'categories' => Category::withTrashed()->latest('id')->paginate(10)
         ]);
     }
 
@@ -134,7 +134,7 @@ class CategoryController extends Controller
 
 public function search(Request $request){
     return response()->json([
-        'categories' => Category::withTrashed()->where('name','like','%'.$request->search.'%')->latest('id')->paginate(2)
+        'categories' => Category::withTrashed()->where('name','like','%'.$request->search.'%')->latest('id')->paginate(10)
     ]);
 }
 
