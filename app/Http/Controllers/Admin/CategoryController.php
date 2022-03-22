@@ -13,7 +13,7 @@ class CategoryController extends Controller
         $this->middleware('rolePermission:'.Category::$content.',read')->only(['index','search']);
         $this->middleware('rolePermission:'.Category::$content.',create')->only(['create','store']);
         $this->middleware('rolePermission:'.Category::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Category::$content.',delete')->only('destroy');
+        $this->middleware('rolePermission:'.Category::$content.',delete')->only(['destroy','restore']);
     }
     /**
      * Display a listing of the resource.

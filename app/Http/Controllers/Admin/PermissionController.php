@@ -16,7 +16,7 @@ class PermissionController extends Controller
         $this->middleware('rolePermission:'.Permission::$content.',read')->only(['index','search']);
         $this->middleware('rolePermission:'.Permission::$content.',create')->only(['create','store']);
         $this->middleware('rolePermission:'.Permission::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Permission::$content.',delete')->only('destroy');
+        $this->middleware('rolePermission:'.Permission::$content.',delete')->only(['destroy','restore']);
     }
 
     /**

@@ -15,7 +15,7 @@ class AdminController extends Controller
         $this->middleware('rolePermission:'.Admin::$content.',read')->only(['index','search']);
         $this->middleware('rolePermission:'.Admin::$content.',create')->only(['create','store']);
         $this->middleware('rolePermission:'.Admin::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Admin::$content.',delete')->only('destroy');
+        $this->middleware('rolePermission:'.Admin::$content.',delete')->only(['destroy','restore']);
     }
 
     /**

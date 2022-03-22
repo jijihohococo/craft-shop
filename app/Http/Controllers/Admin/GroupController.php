@@ -12,7 +12,7 @@ class GroupController extends Controller
         $this->middleware('rolePermission:'.Group::$content.',read')->only(['index','search']);
         $this->middleware('rolePermission:'.Group::$content.',create')->only(['create','store']);
         $this->middleware('rolePermission:'.Group::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Group::$content.',delete')->only('destroy');
+        $this->middleware('rolePermission:'.Group::$content.',delete')->only(['destroy','restore']);
     }
     /**
      * Display a listing of the resource.

@@ -13,7 +13,7 @@ class BannerController extends Controller
         $this->middleware('rolePermission:'.Banner::$content.',read')->only(['index','search']);
         $this->middleware('rolePermission:'.Banner::$content.',create')->only(['create','store']);
         $this->middleware('rolePermission:'.Banner::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Banner::$content.',delete')->only('destroy');
+        $this->middleware('rolePermission:'.Banner::$content.',delete')->only(['destroy','restore']);
     }
     /**
      * Display a listing of the resource.

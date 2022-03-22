@@ -12,7 +12,7 @@ class CurrencyController extends Controller
         $this->middleware('rolePermission:'.Currency::$content.',read')->only(['index','search']);
         $this->middleware('rolePermission:'.Currency::$content.',create')->only(['create','store']);
         $this->middleware('rolePermission:'.Currency::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Currency::$content.',delete')->only('destroy');
+        $this->middleware('rolePermission:'.Currency::$content.',delete')->only(['destroy','restore']);
     }
 
     /**

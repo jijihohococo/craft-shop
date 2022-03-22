@@ -11,7 +11,7 @@ class TargetController extends Controller
         $this->middleware('rolePermission:'.Target::$content.',read')->only(['index','search']);
         $this->middleware('rolePermission:'.Target::$content.',create')->only(['create','store']);
         $this->middleware('rolePermission:'.Target::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Target::$content.',delete')->only('destroy');
+        $this->middleware('rolePermission:'.Target::$content.',delete')->only(['destroy','restore']);
     }
     /**
      * Display a listing of the resource.
