@@ -6,6 +6,8 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Events\{CreatedTransaction,UpdatedTransaction,DeletedTransaction,RestoredTransaction};
+use App\Listeners\TransactionListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +20,18 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        CreatedTransaction::class => [
+            TransactionListener::class
+        ],
+        UpdatedTransaction::class => [
+            TransactionListener::class
+        ],
+        DeletedTransaction::class => [
+            TransactionListener::class
+        ],
+        RestoredTransaction::class => [
+            TransactionListener::class
+        ]
     ];
 
     /**

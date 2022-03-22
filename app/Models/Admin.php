@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Traits\HasApi;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Events\{CreatedTransaction,UpdatedTransaction,DeletedTransaction,RestoredTransaction};
 class Admin extends Authenticatable
 {
     use HasApi, HasFactory, Notifiable , SoftDeletes;
@@ -53,6 +54,13 @@ class Admin extends Authenticatable
     //----- Need to assign clientId and tokenName class's variables to access customized Passport function -----//
 
     public static $content="Admin";
+
+    protected $dispatchesEvents=[
+        'created' => CreatedTransaction::class,
+        'updated' => UpdatedTransaction::class,
+        'deleted' => DeletedTransaction::class,
+        'restored' => RestoredTransaction::class
+    ];
 
     public function roles(){
         return $this->hasMany('App\Models\AdminRole');

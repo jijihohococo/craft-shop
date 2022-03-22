@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use App\Traits\RolePermission;
+use App\Models\UserData;
 class RolePermissionMiddleware
 {
     use RolePermission;
@@ -20,11 +21,18 @@ class RolePermissionMiddleware
         $admin=auth('admin_api')->user();
         if($admin==NULL){
             return response()->json([
-                'message' => 'Unauthenticated ROLE'
+                'message' => 'Unauthenticated'
             ],401);
         }
-        return $this->checkRoleAndPermission($admin->id,$model,$permission) ? $next($request) : response()->json([
-            'message' => 'Unauthorized'
-        ],403);
+        
+        if($this->checkRoleAndPermission($admin->id,$model,$permission)){
+            UserData::setGuard('admin_api');
+            UserData::setId($admin->id);
+            return $next($request);
+        }else{
+            response()->json([
+                'message' => 'Unauthorized'
+            ],403);
+        }
     }
 }
