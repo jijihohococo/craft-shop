@@ -39,6 +39,7 @@
                   <td>{{ category.name }}</td>
                   <td>{{ category.deleted_at }}</td>
                   <td class="text-left">
+                    <ViewButton :data_name="category.name" data_model="Category" :data_id="category.id" />
                     <EditButton v-if="actions.update && category.deleted_at==null" :content="content" :link="'category.edit'" :dataId="category.id" />
                     <Delete v-if="actions.delete" :content="content" :deleteAt="category.deleted_at" :deleteLink="'categories/'+category.id" :restoreLink="'category_restore/'+category.id"
                     :id="category.id" :objectData="category" @update="updateData" />
@@ -75,6 +76,8 @@
 
     import EditButton from '../components/EditButton';
 
+    import ViewButton from '../components/ViewButton';
+
     import Error from '../components/Error';
 
     import Loading from '../components/Loading';
@@ -88,6 +91,7 @@
             Delete,
             CreateButton,
             EditButton,
+            ViewButton,
             Error,
             Loading
         },

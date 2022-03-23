@@ -54,6 +54,9 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('check_permission/{model}/{action}','Admin\PermissionController@checkPermission');
 	Route::get('get_permissions','Admin\PermissionController@get');
 
+	Route::get('transactions/{model}/{model_id}','Admin\TransactionController@get');
+	Route::get('transaction_search/{model}/{model_id}','Admin\TransactionController@search');
+
 	Route::post('logout','Admin\Auth\LoginController@logOut');
 
 });

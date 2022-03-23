@@ -540,7 +540,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
 /* harmony export */   "checkAuthorize": () => (/* binding */ checkAuthorize),
 /* harmony export */   "checkCreateEditPermission": () => (/* binding */ checkCreateEditPermission),
-/* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading)
+/* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
+/* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
 function checkContentPermission(content, permission, object) {
   window.axios.get('check_permission/' + content + '/' + permission).then(function (response) {
@@ -615,6 +616,9 @@ function showSwalLoading(object) {
     }
   });
   location.reload();
+}
+function getModel(model) {
+  return model[0].toLowerCase() + model.substring(1);
 }
 
 /***/ }),

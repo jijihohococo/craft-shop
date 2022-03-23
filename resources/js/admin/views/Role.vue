@@ -39,6 +39,7 @@
                   <td>{{ role.name }}</td>
                   <td>{{ role.deleted_at }}</td>
                   <td class="text-left">
+                    <ViewButton :data_name="role.name" data_model="Role" :data_id="role.id" />
                     <EditButton v-if="actions.update && role.deleted_at==null" :content="content" :link="'role.edit'" :dataId="role.id" />
                     <Delete v-if="actions.delete" :content="content" :deleteAt="role.deleted_at" :deleteLink="'roles/'+role.id" :restoreLink="'role_restore/'+role.id" :id="role.id" :objectData="role" @update="updateData"  />
                 </td>
@@ -74,6 +75,8 @@
 
     import EditButton from '../components/EditButton';
 
+    import ViewButton from '../components/ViewButton';
+
     import Error from '../components/Error';
 
     import Loading from '../components/Loading';
@@ -87,6 +90,7 @@
             Delete,
             CreateButton,
             EditButton,
+            ViewButton,
             Error,
             Loading
         },

@@ -162,8 +162,10 @@ class RoleController extends Controller
 }
 
 public function search(Request $request){
+    $searchData='%'.$request->search.'%';
     return response()->json([
-        'roles' => Role::withTrashed()->where('name','like','%'.$request->search.'%')->latest('id')->paginate(10)
+        'roles' => Role::withTrashed()->where('name','like',$searchData)
+        ->latest('id')->paginate(10)
     ]);
 }
 

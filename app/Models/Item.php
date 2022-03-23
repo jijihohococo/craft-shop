@@ -32,4 +32,13 @@ class Item extends Model
     public function pics(){
         return $this->hasMany('App\Models\ItemImage');
     }
+
+    public function scopeSelectCategoryName($query){
+        return $query->addSelect(['category_name' => function($query) {
+            $query->select('name')
+            ->from('categories')
+            ->whereColumn('category_id','categories.id')
+            ->limit(1);
+        } ]);
+    }
 }

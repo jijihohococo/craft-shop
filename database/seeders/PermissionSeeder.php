@@ -15,7 +15,7 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         //
-        foreach(Permission::getModels() as $model){
+        foreach(Permission::getModels() as $key => $model){
             DB::table('permissions')
             ->insert([
                 'name' => "Grant All Permissions of ".$model,
@@ -25,6 +25,14 @@ class PermissionSeeder extends Seeder
                 'update' => TRUE ,
                 'delete' => TRUE
             ]);
+                DB::table('transactions')
+                ->insert([
+                    'guard' => 'admin_api',
+                    'user_id' => 1,
+                    'model' => 'Permission',
+                    'model_id' => $key + 1 ,
+                    'action' => 'create'
+                ]);
         }
     }
 }

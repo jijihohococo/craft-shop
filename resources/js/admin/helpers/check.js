@@ -79,3 +79,7 @@ export function showSwalLoading(object) {
 } )
   location.reload();
 }
+
+export function getModel(model){
+    return model[0].toLowerCase()+model.substring(1)
+}

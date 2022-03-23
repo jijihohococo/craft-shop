@@ -18,5 +18,13 @@ class RoleSeeder extends Seeder
         ->insert([
             'name' => 'Super Admin'
         ]);
+        DB::table('transactions')
+        ->insert([
+            'guard' => 'admin_api',
+            'user_id' => 1,
+            'model' => 'Role',
+            'model_id' => 1 ,
+            'action' => 'create'
+        ]);
     }
 }

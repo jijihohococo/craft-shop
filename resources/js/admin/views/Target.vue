@@ -41,6 +41,7 @@
                   <td>{{ target.duration }}</td>
                   <td>{{ target.deleted_at }}</td>
                   <td class="text-left">
+                    <ViewButton :data_name="target.name" data_model="Target" :data_id="target.id" />
                     <EditButton v-if="actions.update && target.deleted_at==null" :content="content" :link="'target.edit'" :dataId="target.id" />
                     <Delete v-if="actions.delete" :content="content" :deleteAt="target.deleted_at" :deleteLink="'targets/'+target.id" :restoreLink="'target_restore/'+target.id"  :id="target.id" :objectData="target" @update="updateData"  />
                 </td>
@@ -76,6 +77,8 @@
 
     import EditButton from '../components/EditButton';
 
+    import ViewButton from '../components/ViewButton';
+
     import Error from '../components/Error';
 
     import Loading from '../components/Loading';
@@ -89,6 +92,7 @@
             Delete,
             CreateButton,
             EditButton,
+            ViewButton,
             Error,
             Loading
         },

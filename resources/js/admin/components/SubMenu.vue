@@ -1,24 +1,27 @@
 <template>
-	<li :class="[ (currentRoute in dataRoutes)  || (currentRoute.replace('.edit', '') in dataRoutes) || (currentRoute.replace('.create','') in dataRoutes ) ? 'nav-item menu-open' : 
-	'nav-item']">
-	<a href="#" :class="[ (currentRoute in dataRoutes) || (currentRoute.replace('.edit','') in dataRoutes ) || (currentRoute.replace('.create','') in dataRoutes ) ? 'nav-link active' : 'nav-link' ]">
+	<li :class="[ checkMenus() ? 'nav-item menu-open' : 
+		'nav-item']">
+		<a href="#" :class="[ checkMenus() ? 'nav-link active' : 'nav-link' ]">
 		<i class="nav-icon fas fa-table"></i>
 		<p>
 			{{ title }}
 			<i class="right fas fa-angle-left"></i>
 		</p>
 	</a>
-	<ul class="nav nav-treeview" :style="[ (currentRoute in dataRoutes)  || (currentRoute.replace('.edit', '') in dataRoutes) || (currentRoute.replace('.create','') in dataRoutes ) ? 'display : block' : 'display : none']" >
-		<li class="nav-item" v-for="(dataRoute, route) in dataRoutes">
-			<router-link :to="'/admin/'+route" :class="[ (currentRoute == route) || 
-			(route+'.edit'==currentRoute) || (route+'.create'==currentRoute)  ? 'nav-link active' : 'nav-link' ]" >
-				<p>{{ dataRoute }}</p>
-			</router-link>
-		</li>
-	</ul>
+	<ul class="nav nav-treeview" :style="[ checkMenus() ? 'display : block' : 'display : none']" >
+	<li class="nav-item" v-for="(dataRoute, route) in dataRoutes">
+		<router-link :to="'/admin/'+route" :class="[ (currentRoute == route) || 
+		(route+'.edit'==currentRoute) || (route+'.create'==currentRoute) || (this.$route.params.model!==null && this.$route.params.model==dataRoute)  ? 'nav-link active' : 'nav-link' ]" >
+		<p>{{ dataRoute }}</p>
+	</router-link>
+</li>
+</ul>
 </li>
 </template>
 <script >
+
+	import { getModel } from '../helpers/check.js';
+
 	export default {
 		props : {
 			dataRoutes : {
@@ -29,6 +32,12 @@
 			},
 			title : {
 				type : String
+			}
+		},
+		methods : {
+			checkMenus(){
+				return	(this.$props.currentRoute in this.$props.dataRoutes)  || (this.$props.currentRoute.replace('.edit', '') in this.$props.dataRoutes) || (this.$props.currentRoute.replace('.create','') in this.$props.dataRoutes ) || (this.$props.currentRoute=='transaction' && this.$route.params.model!==null && 
+					(getModel(this.$route.params.model) in this.$props.dataRoutes)  );
 			}
 		}
 	}

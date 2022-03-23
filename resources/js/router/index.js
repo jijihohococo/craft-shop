@@ -15,6 +15,7 @@ import orderRoutes from './admin/order';
 import targetRoutes from './admin/target';
 import currencyRoutes from './admin/currency';
 import itemStockRoutes from './admin/item_stock';
+import transactionRoutes from './admin/transaction';
 //------ADMIN ROUTES------//
 
 
@@ -56,7 +57,8 @@ const router = createRouter({
     ...orderRoutes,
     ...targetRoutes,
     ...currencyRoutes,
-    ...itemStockRoutes
+    ...itemStockRoutes,
+    ...transactionRoutes
     ]
   }
   ]

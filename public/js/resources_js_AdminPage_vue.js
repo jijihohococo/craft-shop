@@ -167,6 +167,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     dataRoutes: {
@@ -177,6 +179,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     title: {
       type: String
+    }
+  },
+  methods: {
+    checkMenus: function checkMenus() {
+      return this.$props.currentRoute in this.$props.dataRoutes || this.$props.currentRoute.replace('.edit', '') in this.$props.dataRoutes || this.$props.currentRoute.replace('.create', '') in this.$props.dataRoutes || this.$props.currentRoute == 'transaction' && this.$route.params.model !== null && (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.getModel)(this.$route.params.model) in this.$props.dataRoutes;
     }
   }
 });
@@ -526,24 +533,26 @@ var _hoisted_3 = {
   "class": "nav-item"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
+
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$props.currentRoute in $props.dataRoutes || $props.currentRoute.replace('.edit', '') in $props.dataRoutes || $props.currentRoute.replace('.create', '') in $props.dataRoutes ? 'nav-item menu-open' : 'nav-item'])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$options.checkMenus() ? 'nav-item menu-open' : 'nav-item'])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$props.currentRoute in $props.dataRoutes || $props.currentRoute.replace('.edit', '') in $props.dataRoutes || $props.currentRoute.replace('.create', '') in $props.dataRoutes ? 'nav-link active' : 'nav-link'])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$options.checkMenus() ? 'nav-link active' : 'nav-link'])
   }, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.title) + " ", 1
   /* TEXT */
   ), _hoisted_2])], 2
   /* CLASS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
     "class": "nav nav-treeview",
-    style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)([$props.currentRoute in $props.dataRoutes || $props.currentRoute.replace('.edit', '') in $props.dataRoutes || $props.currentRoute.replace('.create', '') in $props.dataRoutes ? 'display : block' : 'display : none'])
+    style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)([$options.checkMenus() ? 'display : block' : 'display : none'])
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.dataRoutes, function (dataRoute, route) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: '/admin/' + route,
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$props.currentRoute == route || route + '.edit' == $props.currentRoute || route + '.create' == $props.currentRoute ? 'nav-link active' : 'nav-link'])
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$props.currentRoute == route || route + '.edit' == $props.currentRoute || route + '.create' == $props.currentRoute || _this.$route.params.model !== null && _this.$route.params.model == dataRoute ? 'nav-link active' : 'nav-link'])
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(dataRoute), 1
@@ -579,7 +588,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
 /* harmony export */   "checkAuthorize": () => (/* binding */ checkAuthorize),
 /* harmony export */   "checkCreateEditPermission": () => (/* binding */ checkCreateEditPermission),
-/* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading)
+/* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
+/* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
 function checkContentPermission(content, permission, object) {
   window.axios.get('check_permission/' + content + '/' + permission).then(function (response) {
@@ -654,6 +664,9 @@ function showSwalLoading(object) {
     }
   });
   location.reload();
+}
+function getModel(model) {
+  return model[0].toLowerCase() + model.substring(1);
 }
 
 /***/ }),

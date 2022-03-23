@@ -25,12 +25,7 @@ class ItemController extends Controller
         //
         return response()->json([
             'items' => Item::withTrashed()
-            ->addSelect(['category_name' => function($query) {
-                $query->select('name')
-                ->from('categories')
-                ->whereColumn('category_id','categories.id')
-                ->limit(1);
-            } ])
+            ->selectCategoryName()
             ->latest('id')->paginate(10)
         ]);
     }
@@ -160,12 +155,7 @@ public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
         'items' => Item::withTrashed()
-        ->addSelect(['category_name' => function($query) {
-            $query->select('name')
-            ->from('categories')
-            ->whereColumn('category_id','categories.id')
-            ->limit(1);
-        } ])
+        ->selectCategoryName()
         ->where('name','like',$searchData )
         ->orWherein('category_id',
             function($query) use($searchData) {

@@ -18,5 +18,13 @@ class CurrencySeeder extends Seeder
             'name' => 'USD',
             'price' => 2050
         ]);
+        DB::table('transactions')
+        ->insert([
+            'guard' => 'admin_api',
+            'user_id' => 1,
+            'model' => 'Currency',
+            'model_id' => 1 ,
+            'action' => 'create'
+        ]);
     }
 }
