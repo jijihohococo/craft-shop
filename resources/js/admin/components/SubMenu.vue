@@ -49,8 +49,11 @@
 		},
 		methods : {
 			checkMenus(route=null){
-				return	(route in this.$props.dataRoutes)  || (route.replace('.edit', '') in this.$props.dataRoutes) || (route.replace('.create','') in this.$props.dataRoutes ) || (route=='transaction' && this.$route.params.model!==null && 
-					(getModel(this.$route.params.model) in this.$props.dataRoutes)  );
+				return	(route in this.$props.dataRoutes)  || 
+				(route.replace('.edit', '') in this.$props.dataRoutes) || 
+				(route.replace('.create','') in this.$props.dataRoutes ) || 
+				(route=='transaction' && this.$route.params.model!==null && 
+				(getModel(this.$route.params.model) in this.$props.dataRoutes) );
 			}
 		}
 	}
