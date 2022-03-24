@@ -5,7 +5,7 @@
 		<i class="nav-icon fas fa-table"></i>
 		<p>
 			{{ title }}
-			<i class="right fas fa-angle-left"></i>
+			 <i class="right far fa-circle text-info"></i>
 		</p>
 	</a>
 	<ul class="nav nav-treeview" :style="[ checkMenus() ? 'display : block' : 'display : none']" >
