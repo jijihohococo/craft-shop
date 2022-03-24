@@ -181,9 +181,23 @@ __webpack_require__.r(__webpack_exports__);
       type: String
     }
   },
+  data: function data() {
+    return {
+      menu: ''
+    };
+  },
+  watch: {
+    currentRoute: function currentRoute(newRoute, oldRoute) {
+      this.menu = this.checkMenus(newRoute);
+    }
+  },
+  created: function created() {
+    this.menu = this.checkMenus(this.$props.currentRoute);
+  },
   methods: {
     checkMenus: function checkMenus() {
-      return this.$props.currentRoute in this.$props.dataRoutes || this.$props.currentRoute.replace('.edit', '') in this.$props.dataRoutes || this.$props.currentRoute.replace('.create', '') in this.$props.dataRoutes || this.$props.currentRoute == 'transaction' && this.$route.params.model !== null && (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.getModel)(this.$route.params.model) in this.$props.dataRoutes;
+      var route = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      return route in this.$props.dataRoutes || route.replace('.edit', '') in this.$props.dataRoutes || route.replace('.create', '') in this.$props.dataRoutes || route == 'transaction' && this.$route.params.model !== null && (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.getModel)(this.$route.params.model) in this.$props.dataRoutes;
     }
   }
 });
@@ -538,17 +552,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$options.checkMenus() ? 'nav-item menu-open' : 'nav-item'])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.menu == true ? 'nav-item menu-open' : 'nav-item'])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$options.checkMenus() ? 'nav-link active' : 'nav-link'])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.menu == true ? 'nav-link active' : 'nav-link'])
   }, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.title) + " ", 1
   /* TEXT */
   ), _hoisted_2])], 2
   /* CLASS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
     "class": "nav nav-treeview",
-    style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)([$options.checkMenus() ? 'display : block' : 'display : none'])
+    style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)([$data.menu == true ? 'display : block' : 'display : none'])
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.dataRoutes, function (dataRoute, route) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: '/admin/' + route,
