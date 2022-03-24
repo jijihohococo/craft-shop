@@ -246,7 +246,8 @@
 						<!-- /.card-header -->
 						<div class="card-body pt-0">
 							<!--The calendar -->
-							<div id="calendar" style="width: 100%"></div>
+							<!-- <div id="calendar" style="width: 100%"></div> -->
+							<Calendar />
 						</div>
 						<!-- /.card-body -->
 					</div>
@@ -260,6 +261,8 @@
 <script >
 	import ContentHeader from '../components/ContentHeader';
 
+	import Calendar from '../components/Calendar';
+
 	import { errorResponse , showSwalLoading } from '../helpers/check.js';
 	
 	export default {
@@ -270,7 +273,8 @@
 			}
 		},
 		components: {
-			ContentHeader
+			ContentHeader,
+			Calendar
 		},
 		methods : {
 			getTotalUsers(){
