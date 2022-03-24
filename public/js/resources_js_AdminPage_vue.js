@@ -82,7 +82,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       window.axios.post('logout').then(function (response) {
-        window.location.href = "dashboard";
+        if (response.data.message == 'Loading') {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this);
+        } else {
+          window.location.href = "dashboard";
+        }
       })["catch"](function (error) {
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.errorResponse)(error, _this);
       });

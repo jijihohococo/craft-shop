@@ -86,7 +86,11 @@
 methods : {
   logout(){
     window.axios.post('logout').then( (response) => {
-      window.location.href="dashboard";
+      if(response.data.message=='Loading'){
+        showSwalLoading(this);
+      }else{
+        window.location.href="dashboard";
+      }
     } ).catch( (error) => {
       errorResponse(error,this);
     } )
