@@ -249,7 +249,7 @@ __webpack_require__.r(__webpack_exports__);
 
     setTimeout(function () {
       _this.isloaded = true;
-    }, 3500);
+    }, 1500);
   }
 });
 
