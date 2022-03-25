@@ -3,7 +3,7 @@ const Dashboard = () => import('Admin/Views/Dashboard');
 
 export default [
 	{
-		path : 'dashboard',
+		path : '',
 		component : Dashboard,
 		name : 'dashboard'
 	}

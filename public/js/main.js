@@ -19679,7 +19679,7 @@ var Dashboard = function Dashboard() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
-  path: 'dashboard',
+  path: '',
   component: Dashboard,
   name: 'dashboard'
 }]);
