@@ -31,7 +31,7 @@ class CheckAdminCookieMiddleware
         
         if($currentURL==$adminLogin && isset($_COOKIE['admin_access_token'] ))
         {
-            $tokenRefresh->setRedirectURL('admin/');
+            $tokenRefresh->setRedirectURL('admin/dashboard');
             $tokenRefresh->makeLoginRequest();
             return $tokenRefresh->make();
         }elseif($currentURL!==$adminLogin && explode('/',$currentURL)[1]=='admin' ){
