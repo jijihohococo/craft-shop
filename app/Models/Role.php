@@ -3,10 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\{Model,SoftDeletes};
-use App\Events\{CreatedTransaction,UpdatedTransaction,DeletedTransaction,RestoredTransaction};
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Role extends Model
+class Role extends TransactionModel
 {
     use HasFactory,SoftDeletes;
 
@@ -16,13 +15,6 @@ class Role extends Model
     protected $dates = ['deleted_at'];
 
     public static $content="Role";
-
-    protected $dispatchesEvents=[
-        'created' => CreatedTransaction::class,
-        'updated' => UpdatedTransaction::class,
-        'deleted' => DeletedTransaction::class,
-        'restored' => RestoredTransaction::class
-    ];
 
     public function permissions(){
         return $this->hasMany('App\Models\RolePermission');

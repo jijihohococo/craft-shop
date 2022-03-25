@@ -16,7 +16,10 @@ export default [
 {
 	path : 'privacy_policy',
 	component : PrivacyPolicy ,
-	name : 'privacy_policy'
+	name : 'privacy_policy',
+	meta: {
+          title: 'Nested - About Page - Example App'
+        }
 },
 {
 	path : 'contact_us',

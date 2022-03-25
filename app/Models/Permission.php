@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\{Model,SoftDeletes};
-use App\Events\{CreatedTransaction,UpdatedTransaction,DeletedTransaction,RestoredTransaction};
-class Permission extends Model
+use Illuminate\Database\Eloquent\SoftDeletes;
+class Permission extends TransactionModel
 {
     use HasFactory,SoftDeletes;
 
@@ -28,7 +27,8 @@ class Permission extends Model
             Role::$content,
             Target::$content,
             User::$content,
-            Currency::$content
+            Currency::$content,
+            Tax::$content
         ];
     }
 
@@ -42,11 +42,4 @@ class Permission extends Model
     }
 
     public static $content="Permission";
-
-    protected $dispatchesEvents=[
-        'created' => CreatedTransaction::class,
-        'updated' => UpdatedTransaction::class,
-        'deleted' => DeletedTransaction::class,
-        'restored' => RestoredTransaction::class
-    ];
 }
