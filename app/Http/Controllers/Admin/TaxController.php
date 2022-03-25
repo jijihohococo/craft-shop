@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Tax;
 class TaxController extends Controller
 {
+    public function __construct(){
+        $this->middleware('rolePermission:'.Tax::$content.',read')->only(['index','search']);
+        $this->middleware('rolePermission:'.Tax::$content.',create')->only(['create','store']);
+        $this->middleware('rolePermission:'.Tax::$content.',update')->only(['edit','update']);
+        $this->middleware('rolePermission:'.Tax::$content.',delete')->only(['destroy','restore']);
+    }
     /**
      * Display a listing of the resource.
      *
