@@ -5,10 +5,10 @@
 		<div class="container-fluid">
 			<div class="card card-default">
 				<div class="card-header">
-					<h3 class="card-title">{{ isNaN(this.$route.params.id) ? "Create Currency" : "Update Currency" }}</h3>
+					<h3 class="card-title">{{ isNaN(this.$route.params.id) ? "Create Tax" : "Update Tax" }}</h3>
 				</div>
 				<Error v-if="actions[current]==false" :httpStatus="errors.error_status" :title="errors.error_title" :description="errors.error_description" />
-				<form v-else-if="actions[current]" @submit.prevent=" !isNaN(this.$route.params.id) ? updateCurrency() : createCurrency()">
+				<form v-else-if="actions[current]" @submit.prevent=" !isNaN(this.$route.params.id) ? updateTax() : createTax()">
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-12">
@@ -19,8 +19,8 @@
 								</div>
 								<div class="form-group">
 									<label>Rate</label>
-									<input type="name" :class="[errors && errors.price ? 'form-control is-invalid' : 'form-control']" placeholder="Rate" v-model="fields.price">
-									<strong v-if="errors && errors.price" class="invalid-feedback">{{ errors.price[0] }}</strong>
+									<input type="name" :class="[errors && errors.rate ? 'form-control is-invalid' : 'form-control']" placeholder="Rate" v-model="fields.rate">
+									<strong v-if="errors && errors.rate" class="invalid-feedback">{{ errors.rate[0] }}</strong>
 								</div>
 							</div>
 						</div>
@@ -51,10 +51,10 @@
 		},
 		data(){
 			return {
-				content : 'Currency',
+				content : 'Tax',
 				fields : {
 					name : '',
-					price : ''
+					rate : ''
 				},
 				errors : {
 					error_status : 0 ,
@@ -72,12 +72,12 @@
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
 			if(this.current=='update'){
-			await this.getCurrencyData(this.$route.params.id);
+			await this.getTaxData(this.$route.params.id);
 			}
 		},
 		methods : {
-			createCurrency(){
-				window.axios.post("currencies",this.fields).then( (response) => {
+			createTax(){
+				window.axios.post("taxes",this.fields).then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -85,7 +85,7 @@
 						this.$swal( 'Success' ,
 							response.data.message ,
 							'success'  );
-						this.$router.push({path: '/admin/currency' })
+						this.$router.push({path: '/admin/tax' })
 					}
 				} ).catch( (error) => {
 					if(error.response.status==422){
@@ -95,8 +95,8 @@
 					}
 				} )
 			},
-			updateCurrency(){
-				window.axios.put(`currencies/${this.$route.params.id}`,this.fields).then( (response) => {
+			updateTax(){
+				window.axios.put(`taxes/${this.$route.params.id}`,this.fields).then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -104,7 +104,7 @@
 						this.$swal('Success',
 							response.data.message,
 							'success');
-						this.$router.push({path:'/admin/currency'})
+						this.$router.push({path:'/admin/tax'})
 					}
 				} ).catch( (error) => {
 					if(error.response.status==422){
@@ -114,13 +114,13 @@
 					}
 				} )
 			},
-			async getCurrencyData( currencyId ){
-				window.axios.get('currencies/'+currencyId + '/edit' ).then((response) => {
+			async getTaxData( taxId ){
+				window.axios.get('taxes/'+taxId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
 					}else{
-						this.fields=response.data.currency;
+						this.fields=response.data.tax;
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'update')

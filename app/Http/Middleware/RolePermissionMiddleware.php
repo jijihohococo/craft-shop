@@ -30,7 +30,7 @@ class RolePermissionMiddleware
             UserData::setId($admin->id);
             return $next($request);
         }else{
-            response()->json([
+            return response()->json([
                 'message' => 'Unauthorized'
             ],403);
         }

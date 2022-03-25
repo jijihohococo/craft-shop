@@ -66,6 +66,7 @@
      admin : {},
      dataRoutes : {
       'admin' : "Admin",
+      'tax' : "Tax",
       'item' : "Item" ,
       'category' : "Category" ,
       'group' : "Group",
