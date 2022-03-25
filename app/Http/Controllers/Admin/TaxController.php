@@ -42,7 +42,7 @@ class TaxController extends Controller
         $request->validate($this->validateData());
         Tax::create($request->all());
         return response()->json([
-            'message' => ' Tax is created successfully'
+            'message' => $request->name .' Tax is created successfully'
         ]);
     }
 
@@ -84,7 +84,7 @@ class TaxController extends Controller
         $request->validate($this->validateData($id));
         Tax::findOrFail($id)->update($request->all());
         return response()->json([
-            'message' => ' Tax is updated successfully'
+            'message' => $request->name .' Tax is updated successfully'
         ]);
     }
 
@@ -100,7 +100,7 @@ class TaxController extends Controller
         $tax=Tax::withTrashed()->findOrFail($id);
         $tax->delete();
         return response()->json([
-          'message' => ' Tax is deleted successfully',
+          'message' => $tax->name .' Tax is deleted successfully',
           'deleted_at' => $tax->deleted_at
       ]);
     }
@@ -109,14 +109,32 @@ class TaxController extends Controller
         $tax=Tax::withTrashed()->findOrFail($id);
         $tax->restore();
         return response()->json([
-          'message' => ' Tax is restored successfully',
+          'message' => $tax->name .' Tax is restored successfully',
           'deleted_at' => $tax->deleted_at
       ]);
     }
 
+    public function search(Request $request){
+        $searchData='%'.$request->search.'%';
+        return response()->json([
+            'taxes' => Tax::withTrashed()
+            ->where('name','like',$searchData)
+            ->orWhere('rate','like',$searchData)
+            ->latest('id')
+            ->paginate(10)
+        ]);
+    }
+
+    public function get(Request $request){
+        return response()->json([
+            'taxes' => Tax::orderBy('name')->get()
+        ]);
+    }
+
     private function validateData($id=NULL){
         return [
-
+            'name' => ['required', 'string', 'max:100', $id==null ? 'unique:taxes' : 'unique:taxes,name,'.$id ] ,
+            'rate' => 'required|numeric|between:0.000,999999999.9999'
         ];
     }
 }

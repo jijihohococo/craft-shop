@@ -57,6 +57,12 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('transactions/{model}/{model_id}','Admin\TransactionController@get');
 	Route::get('transaction_search/{model}/{model_id}','Admin\TransactionController@search');
 
+
+	Route::resource('taxes','Admin\TaxController');
+	Route::get('tax_search','Admin\TaxController@search');
+	Route::delete('tax_restore/{id}','Admin\TaxController@restore');
+	Route::get('get_taxes','Admin\TaxController@get');
+
 	Route::post('logout','Admin\Auth\LoginController@logOut');
 
 });
