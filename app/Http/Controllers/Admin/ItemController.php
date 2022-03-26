@@ -136,15 +136,15 @@ class ItemController extends Controller
     }
 
     public function restore($id){
-     $item=Item::withTrashed()->findOrFail($id);
-     $item->restore();
-     return response()->json([
-      'message' => $item->name . ' Item is restored successfully',
-      'deleted_at' => $item->deleted_at
-  ]);   
- }
+       $item=Item::withTrashed()->findOrFail($id);
+       $item->restore();
+       return response()->json([
+          'message' => $item->name . ' Item is restored successfully',
+          'deleted_at' => $item->deleted_at
+      ]);   
+   }
 
- private function validateData($id=NULL){
+   private function validateData($id=NULL){
     return [
         'name' => ['required', 'string', 'max:100', $id==null ? 'unique:items' : 'unique:items,name,'.$id ] ,
         'category_id' => ['required','integer']
@@ -185,6 +185,12 @@ public function imageDelete(Request $request,$id){
     $image->delete();
     return response()->json([
         'message' => 'Image is deleted successfully'
+    ]);
+}
+
+public function getTotal(){
+    return response()->json([
+        'total_items' => Item::count()
     ]);
 }
 }

@@ -21,6 +21,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::delete('item_restore/{id}','Admin\ItemController@restore');
 	Route::delete('delete_item_images/{id}','Admin\ItemController@deleteItemImages');
 	Route::post('item_image_delete/{id}','Admin\ItemController@imageDelete');
+	Route::get('total_items','Admin\ItemController@getTotal');
 
 	Route::resource('groups','Admin\GroupController');
 	Route::get('group_search','Admin\GroupController@search');

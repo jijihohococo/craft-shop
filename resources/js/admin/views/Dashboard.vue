@@ -36,6 +36,23 @@
 					</div>
 				</div>
 				<!-- ./col -->
+				<!-- ./col -->
+				<div class="col-lg-3 col-6">
+					<!-- small box -->
+					<div class="small-box bg-success">
+						<div class="inner">
+							<h3>{{ totalItems }}</h3>
+
+							<p>Available Items</p>
+						</div>
+						<div class="icon">
+							<i class="ion ion-briefcase"></i>
+						</div>
+						<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+					</div>
+				</div>
+				<!-- ./col -->
+
 			</div>
 			<div class="row">
 				<!-- Left col -->
@@ -269,7 +286,8 @@
 		data(){
 			return {
 				content : 'Dashboard',
-				totalUsers : 0
+				totalUsers : 0 ,
+				totalItems : 0
 			}
 		},
 		components: {
@@ -288,10 +306,23 @@
 				} ).catch( (error) => {
 					errorResponse(error,this,'read')				
 				} )
+			},
+			getTotalItems(){
+				window.axios.get("total_items").then(( response ) =>  {
+					if(response.data.message=='Loading'){
+
+						showSwalLoading(this);
+					}else{
+						this.totalItems=response.data.total_items
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')				
+				} )
 			}
 		},
 		created(){
 			this.getTotalUsers();
+			this.getTotalItems();
 		}
 	}
 </script>

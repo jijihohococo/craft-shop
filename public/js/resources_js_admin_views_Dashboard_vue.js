@@ -71,7 +71,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       content: 'Dashboard',
-      totalUsers: 0
+      totalUsers: 0,
+      totalItems: 0
     };
   },
   components: {
@@ -91,10 +92,24 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this, 'read');
       });
+    },
+    getTotalItems: function getTotalItems() {
+      var _this2 = this;
+
+      window.axios.get("total_items").then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this2);
+        } else {
+          _this2.totalItems = response.data.total_items;
+        }
+      })["catch"](function (error) {
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this2, 'read');
+      });
     }
   },
   created: function created() {
     this.getTotalUsers();
+    this.getTotalItems();
   }
 });
 
@@ -263,24 +278,55 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_11 = {
+  "class": "col-lg-3 col-6"
+};
+var _hoisted_12 = {
+  "class": "small-box bg-success"
+};
+var _hoisted_13 = {
+  "class": "inner"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Available Items", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "icon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "ion ion-briefcase"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "#",
+  "class": "small-box-footer"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("More info "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fas fa-arrow-circle-right"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_17 = {
   "class": "row"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"col-lg-7 connectedSortable\"><!-- TO DO List --><div class=\"card\"><div class=\"card-header\"><h3 class=\"card-title\"><i class=\"ion ion-clipboard mr-1\"></i> Target </h3><div class=\"card-tools\"><ul class=\"pagination pagination-sm\"><li class=\"page-item\"><a href=\"#\" class=\"page-link\">«</a></li><li class=\"page-item\"><a href=\"#\" class=\"page-link\">1</a></li><li class=\"page-item\"><a href=\"#\" class=\"page-link\">2</a></li><li class=\"page-item\"><a href=\"#\" class=\"page-link\">3</a></li><li class=\"page-item\"><a href=\"#\" class=\"page-link\">»</a></li></ul></div></div><!-- /.card-header --><div class=\"card-body\"><ul class=\"todo-list\" data-widget=\"todo-list\"><li><!-- drag handle --><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><!-- checkbox --><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo1\" id=\"todoCheck1\"><label for=\"todoCheck1\"></label></div><!-- todo text --><span class=\"text\">Design a nice theme</span><!-- Emphasis label --><small class=\"badge badge-danger\"><i class=\"far fa-clock\"></i> 2 mins</small><!-- General tools such as edit or delete--><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li><li><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo2\" id=\"todoCheck2\" checked><label for=\"todoCheck2\"></label></div><span class=\"text\">Make the theme responsive</span><small class=\"badge badge-info\"><i class=\"far fa-clock\"></i> 4 hours</small><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li><li><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo3\" id=\"todoCheck3\"><label for=\"todoCheck3\"></label></div><span class=\"text\">Let theme shine like a star</span><small class=\"badge badge-warning\"><i class=\"far fa-clock\"></i> 1 day</small><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li><li><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo4\" id=\"todoCheck4\"><label for=\"todoCheck4\"></label></div><span class=\"text\">Let theme shine like a star</span><small class=\"badge badge-success\"><i class=\"far fa-clock\"></i> 3 days</small><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li><li><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo5\" id=\"todoCheck5\"><label for=\"todoCheck5\"></label></div><span class=\"text\">Check your messages and notifications</span><small class=\"badge badge-primary\"><i class=\"far fa-clock\"></i> 1 week</small><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li><li><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo6\" id=\"todoCheck6\"><label for=\"todoCheck6\"></label></div><span class=\"text\">Let theme shine like a star</span><small class=\"badge badge-secondary\"><i class=\"far fa-clock\"></i> 1 month</small><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li></ul></div><!-- /.card-body --><div class=\"card-footer clearfix\"><button type=\"button\" class=\"btn btn-primary float-right\"><i class=\"fas fa-plus\"></i> Add item</button></div></div><!-- /.card --></section>", 1);
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"col-lg-7 connectedSortable\"><!-- TO DO List --><div class=\"card\"><div class=\"card-header\"><h3 class=\"card-title\"><i class=\"ion ion-clipboard mr-1\"></i> Target </h3><div class=\"card-tools\"><ul class=\"pagination pagination-sm\"><li class=\"page-item\"><a href=\"#\" class=\"page-link\">«</a></li><li class=\"page-item\"><a href=\"#\" class=\"page-link\">1</a></li><li class=\"page-item\"><a href=\"#\" class=\"page-link\">2</a></li><li class=\"page-item\"><a href=\"#\" class=\"page-link\">3</a></li><li class=\"page-item\"><a href=\"#\" class=\"page-link\">»</a></li></ul></div></div><!-- /.card-header --><div class=\"card-body\"><ul class=\"todo-list\" data-widget=\"todo-list\"><li><!-- drag handle --><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><!-- checkbox --><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo1\" id=\"todoCheck1\"><label for=\"todoCheck1\"></label></div><!-- todo text --><span class=\"text\">Design a nice theme</span><!-- Emphasis label --><small class=\"badge badge-danger\"><i class=\"far fa-clock\"></i> 2 mins</small><!-- General tools such as edit or delete--><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li><li><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo2\" id=\"todoCheck2\" checked><label for=\"todoCheck2\"></label></div><span class=\"text\">Make the theme responsive</span><small class=\"badge badge-info\"><i class=\"far fa-clock\"></i> 4 hours</small><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li><li><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo3\" id=\"todoCheck3\"><label for=\"todoCheck3\"></label></div><span class=\"text\">Let theme shine like a star</span><small class=\"badge badge-warning\"><i class=\"far fa-clock\"></i> 1 day</small><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li><li><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo4\" id=\"todoCheck4\"><label for=\"todoCheck4\"></label></div><span class=\"text\">Let theme shine like a star</span><small class=\"badge badge-success\"><i class=\"far fa-clock\"></i> 3 days</small><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li><li><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo5\" id=\"todoCheck5\"><label for=\"todoCheck5\"></label></div><span class=\"text\">Check your messages and notifications</span><small class=\"badge badge-primary\"><i class=\"far fa-clock\"></i> 1 week</small><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li><li><span class=\"handle\"><i class=\"fas fa-ellipsis-v\"></i><i class=\"fas fa-ellipsis-v\"></i></span><div class=\"icheck-primary d-inline ml-2\"><input type=\"checkbox\" value=\"\" name=\"todo6\" id=\"todoCheck6\"><label for=\"todoCheck6\"></label></div><span class=\"text\">Let theme shine like a star</span><small class=\"badge badge-secondary\"><i class=\"far fa-clock\"></i> 1 month</small><div class=\"tools\"><i class=\"fas fa-edit\"></i><i class=\"fas fa-trash-o\"></i></div></li></ul></div><!-- /.card-body --><div class=\"card-footer clearfix\"><button type=\"button\" class=\"btn btn-primary float-right\"><i class=\"fas fa-plus\"></i> Add item</button></div></div><!-- /.card --></section>", 1);
 
-var _hoisted_13 = {
+var _hoisted_19 = {
   "class": "col-lg-5 connectedSortable"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card bg-gradient-primary\" style=\"display:none;\"><div class=\"card-header border-0\"><h3 class=\"card-title\"><i class=\"fas fa-map-marker-alt mr-1\"></i> Visitors </h3><!-- card tools --><div class=\"card-tools\"><button type=\"button\" class=\"btn btn-primary btn-sm daterange\" title=\"Date range\"><i class=\"far fa-calendar-alt\"></i></button><button type=\"button\" class=\"btn btn-primary btn-sm\" data-card-widget=\"collapse\" title=\"Collapse\"><i class=\"fas fa-minus\"></i></button></div><!-- /.card-tools --></div><div class=\"card-body\"><div id=\"world-map\" style=\"height:250px;width:100%;\"></div></div><!-- /.card-body--><div class=\"card-footer bg-transparent\"><div class=\"row\"><div class=\"col-4 text-center\"><div id=\"sparkline-1\"></div><div class=\"text-white\">Visitors</div></div><!-- ./col --><div class=\"col-4 text-center\"><div id=\"sparkline-2\"></div><div class=\"text-white\">Online</div></div><!-- ./col --><div class=\"col-4 text-center\"><div id=\"sparkline-3\"></div><div class=\"text-white\">Sales</div></div><!-- ./col --></div><!-- /.row --></div></div>", 1);
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card bg-gradient-primary\" style=\"display:none;\"><div class=\"card-header border-0\"><h3 class=\"card-title\"><i class=\"fas fa-map-marker-alt mr-1\"></i> Visitors </h3><!-- card tools --><div class=\"card-tools\"><button type=\"button\" class=\"btn btn-primary btn-sm daterange\" title=\"Date range\"><i class=\"far fa-calendar-alt\"></i></button><button type=\"button\" class=\"btn btn-primary btn-sm\" data-card-widget=\"collapse\" title=\"Collapse\"><i class=\"fas fa-minus\"></i></button></div><!-- /.card-tools --></div><div class=\"card-body\"><div id=\"world-map\" style=\"height:250px;width:100%;\"></div></div><!-- /.card-body--><div class=\"card-footer bg-transparent\"><div class=\"row\"><div class=\"col-4 text-center\"><div id=\"sparkline-1\"></div><div class=\"text-white\">Visitors</div></div><!-- ./col --><div class=\"col-4 text-center\"><div id=\"sparkline-2\"></div><div class=\"text-white\">Online</div></div><!-- ./col --><div class=\"col-4 text-center\"><div id=\"sparkline-3\"></div><div class=\"text-white\">Sales</div></div><!-- ./col --></div><!-- /.row --></div></div>", 1);
 
-var _hoisted_15 = {
+var _hoisted_21 = {
   "class": "card bg-gradient-success"
 };
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card-header border-0\"><h3 class=\"card-title\"><i class=\"far fa-calendar-alt\"></i> Calendar </h3><!-- tools card --><div class=\"card-tools\"><!-- button with a dropdown --><button type=\"button\" class=\"btn btn-success btn-sm\" data-card-widget=\"collapse\"><i class=\"fas fa-minus\"></i></button><button type=\"button\" class=\"btn btn-success btn-sm\" data-card-widget=\"remove\"><i class=\"fas fa-times\"></i></button></div><!-- /. tools --></div>", 1);
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card-header border-0\"><h3 class=\"card-title\"><i class=\"far fa-calendar-alt\"></i> Calendar </h3><!-- tools card --><div class=\"card-tools\"><!-- button with a dropdown --><button type=\"button\" class=\"btn btn-success btn-sm\" data-card-widget=\"collapse\"><i class=\"fas fa-minus\"></i></button><button type=\"button\" class=\"btn btn-success btn-sm\" data-card-widget=\"remove\"><i class=\"fas fa-times\"></i></button></div><!-- /. tools --></div>", 1);
 
-var _hoisted_17 = {
+var _hoisted_23 = {
   "class": "card-body pt-0"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -292,7 +338,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     header: 'Dashboard'
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Main content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Small boxes (Stat box) "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ./col "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ./col "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" small box "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.totalUsers), 1
   /* TEXT */
-  ), _hoisted_8]), _hoisted_9, _hoisted_10])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ./col ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Left col "), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.Left col "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" right col (We are only adding the ID to make the widgets sortable)"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Map card "), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Calendar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("The calendar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div id=\"calendar\" style=\"width: 100%\"></div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Calendar)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" right col ")])])])], 64
+  ), _hoisted_8]), _hoisted_9, _hoisted_10])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ./col "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ./col "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" small box "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.totalItems), 1
+  /* TEXT */
+  ), _hoisted_14]), _hoisted_15, _hoisted_16])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ./col ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Left col "), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.Left col "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" right col (We are only adding the ID to make the widgets sortable)"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Map card "), _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Calendar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("The calendar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div id=\"calendar\" style=\"width: 100%\"></div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Calendar)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" right col ")])])])], 64
   /* STABLE_FRAGMENT */
   );
 }
