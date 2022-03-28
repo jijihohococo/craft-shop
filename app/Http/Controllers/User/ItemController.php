@@ -14,7 +14,7 @@ class ItemController extends Controller
         return response()->json([
             'item' => Item::findOrFail($id) ,
             'images' => ItemImage::where('item_id',$id)->get() ,
-            'reviews' => $this->calculateReview('App\ItemReview','item_id',$id)
+            'reviews' => $this->calculateReview('App\Models\ItemReview','item_id',$id)
         ]);
     }
 }
