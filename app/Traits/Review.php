@@ -13,6 +13,24 @@ trait Review
 
 		$countItemRate=$this->itemRateQuery()->count();
 
+		if($countItemRate==0){
+			return [
+				'averageStarPercent' => 0 ,
+				'averageStarData' => 0,
+				'oneStarPercent' =>  0, 
+				'twoStarPercent' =>  0,
+				'threeStarPercent' =>  0,
+				'fourStarPercent'  =>  0,
+				'fiveStarPercent' =>  0, 
+				'oneStarCount' =>   0,  
+				'twoStarCount' =>  0, 
+				'threeStarCount' =>  0, 
+				'fourStarCount' =>   0 , 
+				'fiveStarCount' =>  0, 
+				'countItemRate' => 0
+			];
+		}
+
 		$oneStarCount=$this->countStarRate(1);
 		$twoStarCount=$this->countStarRate(2);
 		$threeStarCount=$this->countStarRate(3);
