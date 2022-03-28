@@ -1,5 +1,9 @@
 <?php
 
+function starPercentage($starData){
+	return ($starData/5)*100;
+}
+
 function saveCookie(string $key,$value,$time){
 	setcookie($key, $value, [
 		'expires' =>  time() + (86400 * $time),

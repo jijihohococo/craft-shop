@@ -22,3 +22,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('items',function(){
 	dd("items");
 });
+
+Route::get('items/{id}','User\ItemController@show');
