@@ -1,7 +1,25 @@
 <?php
 
+function cosineSimilarity($x,$y){
+	$result=[];
+	$xPow=[];
+	$yPow=[];
+	foreach($x as $key => $d1){
+		$result[]= $d1*$y[$key];
+		$xPow[]=pow($d1, 2);
+		$yPow[]=pow($y[$key],2);
+	}
+	$divisor=sqrt(array_sum($xPow))*sqrt(array_sum($yPow));
+	$total=array_sum($result);
+	return $divisor==0 ? $total : $total/$divisor;
+}
+
 function starPercentage($starData){
 	return ($starData/5)*100;
+}
+
+function mean(array $array){
+	return array_sum($array) / count($array);
 }
 
 function saveCookie(string $key,$value,$time){
