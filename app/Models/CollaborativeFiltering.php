@@ -6,7 +6,7 @@ use DB;
 class CollaborativeFiltering{
 
 	
-	public function filter($arrayData){
+	public function filter(){
 		$arrayData=DB::table('item_reviews')
 		->select(DB::raw('user_id ,
 			GROUP_CONCAT(rate) AS rates,
