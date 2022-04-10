@@ -41,7 +41,7 @@
                   <td>{{ admin.email }}</td>
                   <td>{{ admin.deleted_at }}</td>
                   <td class="text-left">
-                    <ViewButton :data_name="admin.name" data_model="Admin" :data_id="admin.id" />
+                    <ViewButton :data_name="admin.name" :data_model="content" :data_id="admin.id" />
                     <EditButton v-if="actions.update && admin.deleted_at==null" :content="content" :link="'admin.edit'" :dataId="admin.id" />
                     <Delete v-if="actions.delete" :content="content" :deleteAt="admin.deleted_at" :deleteLink="'admins/'+admin.id" :restoreLink="'admin_restore/'+admin.id"
                     :id="admin.id" :objectData="admin" @update="updateData" />

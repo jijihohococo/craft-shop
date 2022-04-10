@@ -41,7 +41,7 @@
                   <td>{{ tax.rate }}</td>
                   <td>{{ tax.deleted_at }}</td>
                   <td class="text-left">
-                    <ViewButton :data_name="tax.name" data_model="tax" :data_id="tax.id" />
+                    <ViewButton :data_name="tax.name" :data_model="content" :data_id="tax.id" />
                     <EditButton v-if="actions.update && tax.deleted_at==null" :content="content" :link="'tax.edit'" :dataId="tax.id" />
                     <Delete v-if="actions.delete" :content="content" :deleteAt="tax.deleted_at" :deleteLink="'taxes/'+tax.id" :restoreLink="'tax_restore/'+tax.id" :id="tax.id" :objectData="tax" @update="updateData" />
                 </td>

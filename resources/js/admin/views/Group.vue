@@ -41,7 +41,7 @@
                   <td><input type="color" :value="group.color_code" disabled></td>
                   <td>{{ group.deleted_at }}</td>
                   <td class="text-left">
-                    <ViewButton :data_name="group.name" data_model="Group" :data_id="group.id" />
+                    <ViewButton :data_name="group.name" :data_model="content" :data_id="group.id" />
                     <EditButton v-if="actions.update && actions.deleted_at==null" :content="content" :link="'group.edit'" :dataId="group.id" />
                     <Delete v-if="actions.delete" :content="content" :deleteAt="group.deleted_at" :deleteLink="'groups/'+group.id" :restoreLink="'group_restore/'+group.id" :id="group.id" :objectData="group" @update="updateData" />
                 </td>

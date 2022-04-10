@@ -41,7 +41,7 @@
                   <td>{{ item.category_name }}</td>
                   <td>{{ item.deleted_at }}</td>
                   <td class="text-left">
-                    <ViewButton :data_name="item.name" data_model="Item" :data_id="item.id" />
+                    <ViewButton :data_name="item.name" :data_model="content" :data_id="item.id" />
                     <EditButton v-if="actions.update && item.deleted_at==null" :content="content" :link="'item.edit'" :dataId="item.id" />
                     <Delete v-if="actions.delete" :content="content" :deleteAt="item.deleted_at" :deleteLink="'items/'+item.id" :restoreLink="'item_restore/'+item.id"
                     :id="item.id" :objectData="item" @update="updateData" />

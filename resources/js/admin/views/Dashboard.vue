@@ -1,5 +1,5 @@
 <template>
-	<ContentHeader :header="'Dashboard'" />
+	<ContentHeader :header="content" />
 	<!-- Main content -->
 	<section class="content">
 		<div class="container-fluid">
