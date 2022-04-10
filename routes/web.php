@@ -23,7 +23,7 @@ Route::view('/admin/{any}','admin.index')->where('any','.*')->middleware('checkA
 
 // USER ROUTES //
 $userRoutes=[
-	//null,
+	null,
 	'privacy_policy',
 	'contact_us',
 	'about_us',
