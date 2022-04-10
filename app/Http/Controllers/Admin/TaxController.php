@@ -9,6 +9,7 @@ use App\Traits\AdminRolePermission;
 class TaxController extends Controller
 {
     use AdminRolePermission;
+    
     public function __construct(){
         $this->authorized(Tax::$content);
     }
