@@ -5,14 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Group;
-
+use App\Traits\AdminRolePermission;
 class GroupController extends Controller
 {
+    use AdminRolePermission;
+
     public function __construct(){
-        $this->middleware('rolePermission:'.Group::$content.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.Group::$content.',create')->only(['create','store']);
-        $this->middleware('rolePermission:'.Group::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Group::$content.',delete')->only(['destroy','restore']);
+       $this->authorized(Group::$content);
     }
     /**
      * Display a listing of the resource.

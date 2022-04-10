@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tax;
+use App\Traits\AdminRolePermission;
 class TaxController extends Controller
 {
+    use AdminRolePermission;
     public function __construct(){
-        $this->middleware('rolePermission:'.Tax::$content.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.Tax::$content.',create')->only(['create','store']);
-        $this->middleware('rolePermission:'.Tax::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Tax::$content.',delete')->only(['destroy','restore']);
+        $this->authorized(Tax::$content);
     }
     /**
      * Display a listing of the resource.

@@ -5,15 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Role,RolePermission};
+use App\Traits\AdminRolePermission;
 use DB;
 class RoleController extends Controller
 {
 
+    use AdminRolePermission;
+
     public function __construct(){
-        $this->middleware('rolePermission:'.Role::$content.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.Role::$content.',create')->only(['create','store']);
-        $this->middleware('rolePermission:'.Role::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Role::$content.',delete')->only(['destroy','restore']);
+        $this->authorized(Role::$content);
     }
     /**
      * Display a listing of the resource.

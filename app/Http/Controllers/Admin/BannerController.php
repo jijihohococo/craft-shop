@@ -5,15 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
-
+use App\Traits\AdminRolePermission;
 class BannerController extends Controller
 {
+    use AdminRolePermission;
 
     public function __construct(){
-        $this->middleware('rolePermission:'.Banner::$content.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.Banner::$content.',create')->only(['create','store']);
-        $this->middleware('rolePermission:'.Banner::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Banner::$content.',delete')->only(['destroy','restore']);
+        $this->authorized(Banner::$content);
     }
     /**
      * Display a listing of the resource.

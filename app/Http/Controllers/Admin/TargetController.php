@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Target;
+use App\Traits\AdminRolePermission;
 class TargetController extends Controller
 {
+    use AdminRolePermission;
+
     public function __construct(){
-        $this->middleware('rolePermission:'.Target::$content.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.Target::$content.',create')->only(['create','store']);
-        $this->middleware('rolePermission:'.Target::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Target::$content.',delete')->only(['destroy','restore']);
+        $this->authorized(Target::$content);
     }
     /**
      * Display a listing of the resource.

@@ -5,14 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Currency;
+use App\Traits\AdminRolePermission;
 class CurrencyController extends Controller
 {
+    use AdminRolePermission;
 
     public function __construct(){
-        $this->middleware('rolePermission:'.Currency::$content.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.Currency::$content.',create')->only(['create','store']);
-        $this->middleware('rolePermission:'.Currency::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Currency::$content.',delete')->only(['destroy','restore']);
+        $this->authorized(Currency::$content);
     }
 
     /**

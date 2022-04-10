@@ -5,17 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Admin,AdminRole};
-use App\Traits\ApiTokenRefresh;
+use App\Traits\{ApiTokenRefresh,AdminRolePermission};
 use DB;
 class AdminController extends Controller
 {
-    use ApiTokenRefresh;
+    use ApiTokenRefresh,AdminRolePermission;
 
     public function __construct(){
-        $this->middleware('rolePermission:'.Admin::$content.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.Admin::$content.',create')->only(['create','store']);
-        $this->middleware('rolePermission:'.Admin::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Admin::$content.',delete')->only(['destroy','restore']);
+        $this->authorized(Admin::$content);
     }
 
     /**

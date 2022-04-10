@@ -5,15 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
-
+use App\Traits\AdminRolePermission;
 class CategoryController extends Controller
 {
+    use AdminRolePermission;
 
     public function __construct(){
-        $this->middleware('rolePermission:'.Category::$content.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.Category::$content.',create')->only(['create','store']);
-        $this->middleware('rolePermission:'.Category::$content.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.Category::$content.',delete')->only(['destroy','restore']);
+        $this->authorized(Category::$content);
     }
     /**
      * Display a listing of the resource.
