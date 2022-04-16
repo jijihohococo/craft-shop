@@ -23,10 +23,6 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::post('item_image_delete/{id}','Admin\ItemController@imageDelete');
 	Route::get('total_items','Admin\ItemController@getTotal');
 
-	Route::resource('groups','Admin\GroupController');
-	Route::get('group_search','Admin\GroupController@search');
-	Route::delete('group_restore/{id}','Admin\GroupController@restore');
-
 	Route::resource('admins','Admin\AdminController');
 	Route::get('admin','Admin\AdminController@get');
 	Route::get('admin_search','Admin\AdminController@search');

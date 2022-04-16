@@ -21,7 +21,6 @@ class Permission extends TransactionModel
             Admin::$content,
             Banner::$content,
             Category::$content,
-            Group::$content,
             Item::$content,
             self::$content,
             Role::$content,

@@ -5,7 +5,6 @@ import adminRoutes from './admin/admin';
 import bannerRoutes from './admin/banner';
 import dashboardRoutes from './admin/dashboard';
 import itemRoutes from './admin/item';
-import groupRoutes from './admin/group';
 import categoryRoutes from './admin/category';
 import loginRoutes from './admin/login';
 import notfoundRoutes from './admin/notfound';
@@ -50,7 +49,6 @@ const router = createRouter({
     ...dashboardRoutes,
     ...bannerRoutes,
     ...categoryRoutes,
-    ...groupRoutes,
     ...itemRoutes,
     ...notfoundRoutes,
     ...roleRoutes,
