@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class ,
             AdminRoleSeeder::class,
             RolePermissionSeeder::class,
-            CurrencySeeder::class
+            CurrencySeeder::class ,
+            ColorSeeder::class
         ]);
         DB::commit();
         // \App\Models\User::factory(10)->create();
