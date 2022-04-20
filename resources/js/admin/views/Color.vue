@@ -38,7 +38,9 @@
               <tbody>
                 <tr v-for="color in colors.data" :key="color.id">
                   <td>{{ color.name }}</td>
-                  <td>{{ color.color_code }}</td>
+                  <td>
+                    <input type="color" :value="color.color_code" disabled>
+                  {{ color.color_code }}</td>
                   <td>{{ color.deleted_at }}</td>
                   <td class="text-left">
                     <ViewButton :data_name="color.name" :data_model="content" :data_id="color.id" />
