@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             AdminRoleSeeder::class,
             RolePermissionSeeder::class,
             CurrencySeeder::class ,
-            ColorSeeder::class
+            ColorSeeder::class ,
+            TaxSeeder::class
         ]);
         DB::commit();
         // \App\Models\User::factory(10)->create();
