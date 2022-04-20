@@ -29,7 +29,7 @@ class Permission extends TransactionModel
             Currency::$content,
             Tax::$content,
             ShopSetting::$content,
-            Attribute::$content.
+            Attribute::$content,
             Color::$content
         ];
     }
