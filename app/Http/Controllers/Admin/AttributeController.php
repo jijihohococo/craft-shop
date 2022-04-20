@@ -5,8 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Attribute;
+use App\Traits\AdminRolePermission;
 class AttributeController extends Controller
 {
+
+    use AdminRolePermission;
+
+    public function __construct(){
+        $this->authorized(Attribute::$content);
+    }
+
     /**
      * Display a listing of the resource.
      *
