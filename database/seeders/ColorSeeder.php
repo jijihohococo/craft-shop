@@ -610,8 +610,16 @@ class ColorSeeder extends Seeder
             ['color_code' => '#FFFAFA' , 'name' =>  'Snow'],
             ['color_code' => '#FEFCFF' , 'name' =>  'Milk White'],
             ['color_code' => '#FFFFFF' , 'name' =>  'White']
-        ] as $color){
+        ] as $key => $color){
     DB::table('colors')->insert($color);
+    DB::table('transactions')
+        ->insert([
+            'guard' => 'admin_api',
+            'user_id' => 1,
+            'model' => 'Color',
+            'model_id' => $key + 1 ,
+            'action' => 'create'
+        ]);
 }
 }
 }
