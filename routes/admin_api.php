@@ -60,6 +60,16 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::delete('tax_restore/{id}','Admin\TaxController@restore');
 	Route::get('get_taxes','Admin\TaxController@get');
 
+
+	Route::resource('attributes','Admin\AttributeController');
+	Route::get('attribute_search','Admin\AttributeController@search');
+	Route::delete('attribute_restore/{id}','Admin\AttributeController@restore');
+
+
+	Route::resource('colors','Admin\ColorController');
+	Route::get('color_search','Admin\ColorController@search');
+	Route::delete('color_restore/{id}','Admin\ColorController@restore');
+
 	Route::post('logout','Admin\Auth\LoginController@logOut');
 
 });

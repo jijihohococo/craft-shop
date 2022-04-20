@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ShopSetting extends TransactionModel
+class Color extends TransactionModel
 {
     use HasFactory,SoftDeletes;
 
     protected $fillable=[
-        'app_name',
-        'app_pic',
-        'theme_color'
+        'name',
+        'color_code'
     ];
 
-    public static $content="Setting";
+    public static $content='Color';
 }
