@@ -63,7 +63,7 @@ __webpack_require__.r(__webpack_exports__);
         'tax': "Tax",
         'item': "Item",
         'category': "Category",
-        'group': "Group",
+        'color': "Color",
         'banner': "Banner",
         'target': "Target",
         'currency': "Currency"

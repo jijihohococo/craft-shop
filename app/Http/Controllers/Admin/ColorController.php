@@ -111,7 +111,7 @@ class ColorController extends Controller
       ]);
     }
 
-    public function destroy($id)
+    public function restore($id)
     {
         //
         $color=Color::withTrashed()->findOrFail($id);
