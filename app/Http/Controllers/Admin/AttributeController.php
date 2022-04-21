@@ -154,4 +154,16 @@ class AttributeController extends Controller
             'update'=> $update
         ]);
     }
+
+    public function get(){
+        return response()->json([
+            'attributes' => Attribute::latest('id')->get()
+        ]);
+    }
+
+    public function getAtrributeSets($attributeId){
+        return response()->json([
+            'sets' => AttributeSet::where('attribute_id',$attributeId)->get()
+        ]);
+    }
 }
