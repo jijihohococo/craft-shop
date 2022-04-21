@@ -17,10 +17,6 @@
 									<input type="name" :class="[errors && errors.name ? 'form-control is-invalid' : 'form-control']" placeholder="Name" v-model="fields.name">
 									<strong v-if="errors && errors.name" class="invalid-feedback">{{ errors.name[0] }}</strong>
 								</div>
-								<div class="form-group">
-									<label>Highlights</label>
-									<AddRemoveInput :inputData="fields.highlights" ref="addRemoveInput" />
-								</div>
 							</div>
 						</div>
 					</div>
@@ -41,28 +37,18 @@
 	import Error from '../components/Error'
 
 	import Loading from '../components/Loading'
-
-	import AddRemoveInput from '../components/AddRemoveInput'
 	
 	export default {
 		components: {
 			CreateEditHeader,
 			Error,
-			Loading,
-			AddRemoveInput
+			Loading
 		},
 		data(){
 			return {
 				content : 'Category',
 				fields : {
-					name : '',
-					highlights : [{
-						'attribute' : 'OS' ,
-						'attribute_set' : 'Window'
-					},{
-						'attribute' : 'Screen' ,
-						'attribute_set' : '5 inch'
-					}]
+					name : ''
 				},
 				errors : {
 					error_status : 0 ,
@@ -85,7 +71,6 @@
 		},
 		methods : {
 			createCategory(){
-				var attributes = this.$refs.addRemoveInput.input
 
 				window.axios.post("categories",this.fields).then( (response) => {
 					if(response.data.message=='Loading'){
