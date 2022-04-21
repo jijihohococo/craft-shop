@@ -5,10 +5,10 @@
 		<div class="container-fluid">
 			<div class="card card-default">
 				<div class="card-header">
-					<h3 class="card-title">{{ isNaN(this.$route.params.id) ? "Create Category" : "Update Category" }}</h3>
+					<h3 class="card-title">{{ isNaN(this.$route.params.id) ? "Create Attribute" : "Update Attribute" }}</h3>
 				</div>
 				<Error v-if="actions[current]==false" :httpStatus="errors.error_status" :title="errors.error_title" :description="errors.error_description" />
-				<form v-else-if="actions[current]" @submit.prevent=" !isNaN(this.$route.params.id) ? updateCategory() : createCategory()">
+				<form v-else-if="actions[current]"  @submit.prevent=" !isNaN(this.$route.params.id) ? updateAttribute() : createAttribute()">
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-12">
@@ -19,7 +19,7 @@
 								</div>
 								<div class="form-group">
 									<label>Highlights</label>
-									<AddRemoveInput :inputData="fields.highlights" ref="addRemoveInput" />
+									<AttributeSet :inputData="fields.sets" ref="attributeSet" />
 								</div>
 							</div>
 						</div>
@@ -42,28 +42,23 @@
 
 	import Loading from '../components/Loading'
 
-	import AddRemoveInput from '../components/AddRemoveInput'
+	import AttributeSet from '../components/AttributeSet'
 	
 	export default {
 		components: {
 			CreateEditHeader,
 			Error,
 			Loading,
-			AddRemoveInput
+			AttributeSet
 		},
 		data(){
 			return {
-				content : 'Category',
+				content : 'Attribute',
 				fields : {
 					name : '',
-					highlights : [{
-						'attribute' : 'OS' ,
-						'attribute_set' : 'Window'
-					},{
-						'attribute' : 'Screen' ,
-						'attribute_set' : '5 inch'
-					}]
+					sets : []
 				},
+				formData : new FormData ,
 				errors : {
 					error_status : 0 ,
 					error_title : '',
@@ -79,15 +74,18 @@
 		async created(){
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
+
 			if(this.current=='update'){
-				await this.getCategoryData(this.$route.params.id);
+				await this.getAttributeData(this.$route.params.id);
 			}
 		},
 		methods : {
-			createCategory(){
-				var attributes = this.$refs.addRemoveInput.input
-
-				window.axios.post("categories",this.fields).then( (response) => {
+			getAttributeSets(){
+				this.fields.sets=this.$refs.attributeSet.input;
+			},
+			createAttribute(){
+				this.getAttributeSets();
+				window.axios.post("attributes",this.fields ).then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -95,7 +93,7 @@
 						this.$swal( 'Success' ,
 							response.data.message ,
 							'success'  );
-						this.$router.push({path: '/admin/category' })
+						this.$router.push({path: '/admin/attribute' })
 					}
 				} ).catch( (error) => {
 					if(error.response.status==422){
@@ -105,8 +103,9 @@
 					}
 				} )
 			},
-			updateCategory(){
-				window.axios.put(`categories/${this.$route.params.id}`,this.fields).then( (response) => {
+			updateAttribute(){
+				this.getAttributeSets();
+				window.axios.put(`attributes/${this.$route.params.id}`,this.fields ).then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -114,7 +113,7 @@
 						this.$swal('Success',
 							response.data.message,
 							'success');
-						this.$router.push({path:'/admin/category'})
+						this.$router.push({path:'/admin/attribute'})
 					}
 				} ).catch( (error) => {
 					if(error.response.status==422){
@@ -124,13 +123,14 @@
 					}
 				} )
 			},
-			async getCategoryData( categoryId ){
-				window.axios.get('categories/'+categoryId + '/edit' ).then((response) => {
+			async getAttributeData( attributeId ){
+				window.axios.get('attributes/'+attributeId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
 					}else{
-						this.fields=response.data.category;
+						this.fields=response.data.attribute;
+						this.fields.sets=response.data.sets;
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'update')

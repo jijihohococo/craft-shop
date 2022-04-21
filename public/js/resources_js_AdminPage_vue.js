@@ -60,6 +60,7 @@ __webpack_require__.r(__webpack_exports__);
       admin: {},
       dataRoutes: {
         'admin': "Admin",
+        'attribute': "Attribute",
         'tax': "Tax",
         'item': "Item",
         'category': "Category",

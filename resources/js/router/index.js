@@ -4,6 +4,7 @@ import { createRouter , createWebHistory } from 'vue-router'
 import adminRoutes from './admin/admin';
 import bannerRoutes from './admin/banner';
 import dashboardRoutes from './admin/dashboard';
+import attributeRoutes from './admin/attribute';
 import itemRoutes from './admin/item';
 import categoryRoutes from './admin/category';
 import loginRoutes from './admin/login';
@@ -51,6 +52,7 @@ const router = createRouter({
     ...bannerRoutes,
     ...categoryRoutes,
     ...itemRoutes,
+    ...attributeRoutes,
     ...notfoundRoutes,
     ...roleRoutes,
     ...permissionRoutes,

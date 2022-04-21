@@ -9,7 +9,7 @@
                 <div class="card">
                   <div class="card-header row">
                     <div v-if="actions.read" class="card-tools col-8 mt-1">
-                        <form v-on:submit.prevent="searchColors(1)">
+                        <form v-on:submit.prevent="searchAttributes(1)">
                           <div class="input-group" >
                             <input type="text" name="table_search" v-model="search" class="form-control float-right" placeholder="Search">
 
@@ -21,7 +21,7 @@
                     </div>
                 </form>
             </div>
-            <CreateButton v-if="actions.create" :content="content" :link="'/admin/color/create'" />
+            <CreateButton v-if="actions.create" :content="content" :link="'/admin/attribute/create'" />
         </div>
         <!-- /.card-header -->
         <template v-if="actions.read">
@@ -30,23 +30,19 @@
                   <thead>
                     <tr>
                       <th>Name</th>
-                      <th>Color Code</th>
                       <th>Deleted At</th>
                       <th>Operation</th>
                   </tr>
               </thead>
               <tbody>
-                <tr v-for="color in colors.data" :key="color.id">
-                  <td>{{ color.name }}</td>
-                  <td>
-                    <input type="color" :value="color.color_code" disabled>
-                  {{ color.color_code }}</td>
-                  <td>{{ color.deleted_at }}</td>
+                <tr v-for="attribute in attributes.data" :key="attribute.id">
+                  <td>{{ attribute.name }}</td>
+                  <td>{{ attribute.deleted_at }}</td>
                   <td class="text-left">
-                    <ViewButton :data_name="color.name" :data_model="content" :data_id="color.id" />
-                    <EditButton v-if="actions.update && color.deleted_at==null" :content="content" :link="'color.edit'" :dataId="color.id" />
-                    <Delete v-if="actions.delete" :content="content" :deleteAt="color.deleted_at" :deleteLink="'colors/'+color.id" :restoreLink="'color_restore/'+color.id"
-                    :id="color.id" :objectData="color" @update="updateData" />
+                    <ViewButton :data_name="attribute.name" :data_model="content" :data_id="attribute.id" />
+                    <EditButton v-if="actions.update && attribute.deleted_at==null" :content="content" :link="'attribute.edit'" :dataId="attribute.id" />
+                    <Delete v-if="actions.delete" :content="content" :deleteAt="attribute.deleted_at" :deleteLink="'attributes/'+attribute.id" :restoreLink="'attribute_restore/'+attribute.id"
+                    :id="attribute.id" :objectData="attribute" @update="updateData" />
                 </td>
             </tr>
         </tbody>
@@ -54,7 +50,7 @@
 </div>
 <!-- /.card-body -->
 <div class="card-footer clearfix">
-    <Pagination :page="currentPage" :lastPage="colors.last_page" @getData="getColors" @searchData="searchColors" :search="search" :from="colors.from" :to="colors.to" :total="colors.total" />
+    <Pagination :page="currentPage" :lastPage="attributes.last_page" @getData="getAttributes" @searchData="searchAttributes" :search="search" :from="attributes.from" :to="attributes.to" :total="attributes.total" />
 </div>
 </template>
 </div>
@@ -63,7 +59,7 @@
 </div>
 <!-- /.row -->
 <div v-else-if="actions.create==false && actions.read==false && actions.update==false && actions.delete==false" class="card card-default">
- <Error :httpStatus="403" :title="'Permission Denied'" :description="'You are not allowed to do any permissions for Color'" />
+ <Error :httpStatus="403" :title="'Permission Denied'" :description="'You are not allowed to do any permissions for Attribute'" />
 </div>
 </div>
 </section>
@@ -101,8 +97,8 @@
         },
         data () {
            return {
-            content : 'Color',
-            colors : {},
+            content : 'Attribute',
+            attributes : {},
             search : null ,
             currentPage : 1 ,
             actions : {
@@ -117,28 +113,28 @@
         updateData(object,deletedTime){
             object.deleted_at=deletedTime;
         },
-        getColors(page){
+        getAttributes(page){
             this.currentPage=page;
-            window.axios.get("colors?page=" + page ).then(( response ) =>  {
+            window.axios.get("attributes?page=" + page ).then(( response ) =>  {
                 if(response.data.message=='Loading'){
 
                     showSwalLoading(this);
                 }else{
-                 this.colors=response.data.colors
+                 this.attributes=response.data.attributes
                  this.actions.read=true;
              }
          } ).catch( (error) => {
             errorResponse(error,this,'read')
         } );
      },
-     searchColors(page){
+     searchAttributes(page){
         this.currentPage=page;
-        window.axios.get('color_search?search=' + this.search + '&page=' + page ).then( (response) => {
+        window.axios.get('attribute_search?search=' + this.search + '&page=' + page ).then( (response) => {
          if(response.data.message=='Loading'){
 
             showSwalLoading(this);
         }else{
-         this.colors=response.data.colors
+         this.attributes=response.data.attributes
          this.actions.read=true;
      }
  } ).catch( (error) => {
@@ -147,7 +143,7 @@
 }
 },
 created(){
-   this.getColors(1);
+   this.getAttributes(1);
    checkContentPermission(this.content,'create',this);
    checkContentPermission(this.content,'update',this);
    checkContentPermission(this.content,'delete',this);

@@ -1,5 +1,24 @@
 <?php
 
+function add_high_light(array $array){
+	if(isset($array['col'])){
+		if($array['update']=="yes"){
+			$array['obj']::where($array['parent_id'],$array['parent_data'])->delete();
+		}
+		$objArray=[];
+		foreach(array_filter($array['col']) as $data){
+			array_push($objArray , [
+				$array['parent_id']=>$array['parent_data'],
+				$array['child_col']=>$data
+			]);
+		}
+		if(!empty($objArray)){
+			$array['obj']::insert($objArray);
+		}
+	}
+
+}
+
 function cosineSimilarity($x,$y){
 	$result=[];
 	$xPow=[];

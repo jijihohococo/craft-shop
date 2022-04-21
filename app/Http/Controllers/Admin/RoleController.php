@@ -41,15 +41,16 @@ class RoleController extends Controller
         ]);
     }
 
-    private function insertRolePermissions($permissions,$roleId){
-        $rolePermissions=[];
-        foreach($permissions as $permission){
-            array_push($rolePermissions, [
-                'role_id' => $roleId ,
-                'permission_id' => $permission
-            ]);
-        }
-        RolePermission::insert($rolePermissions);
+    private function insertRolePermissions($permissions,$roleId,$update=NULL){
+        
+        add_high_light([
+            'col'=>$permissions,
+            'obj' => 'App\Models\RolePermission',
+            'parent_id'=>'role_id',
+            'parent_data'=>$roleId,
+            'child_col'=>'permission_id',
+            'update'=> $update
+        ]);
     }
 
     /**
@@ -117,11 +118,7 @@ class RoleController extends Controller
         DB::beginTransaction();
         $role=Role::findOrFail($id);
         $role->update($request->all());
-        $permissions=$role->permissions->pluck('permission_id')->toArray();
-        if( $permissions+$request->permissions!==$permissions ){
-            RolePermission::where('role_id',$role->id )->delete();
-            $this->insertRolePermissions($request->permissions,$role->id);
-        }
+        $this->insertRolePermissions($request->permissions,$role->id,'yes');
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Role is updated successfully' 
@@ -146,15 +143,15 @@ class RoleController extends Controller
     }
 
     public function restore($id){
-       $role=Role::withTrashed()->findOrFail($id);
-       $role->restore();
-       return response()->json([
-          'message' => $role->name . ' Role is restored successfully',
-          'deleted_at' => $role->deleted_at
-      ]);   
-   }
+     $role=Role::withTrashed()->findOrFail($id);
+     $role->restore();
+     return response()->json([
+      'message' => $role->name . ' Role is restored successfully',
+      'deleted_at' => $role->deleted_at
+  ]);   
+ }
 
-   private function validateData($id=NULL){
+ private function validateData($id=NULL){
     return [
         'name' => ['required', 'string', 'max:100', $id==null ? 'unique:roles' : 'unique:roles,name,'.$id ],
         'permissions' => ['required','array']

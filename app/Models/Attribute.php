@@ -14,4 +14,8 @@ class Attribute extends TransactionModel
     ];
 
     public static $content='Attribute';
+
+    public function sets(){
+        return $this->hasMany('App\Models\AttributeSet');
+    }
 }

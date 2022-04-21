@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Attribute;
+use App\Models\{Attribute,AttributeSet};
 use App\Traits\AdminRolePermission;
 class AttributeController extends Controller
 {
@@ -48,7 +48,8 @@ class AttributeController extends Controller
     {
         //
         $request->validate($this->validateData());
-        Attribute::create($request->all());
+        $attribute=Attribute::create($request->all());
+        $this->addAttributeSets($request->sets , $attribute->id);
         return response()->json([
             'message' => $request->name . ' Attribute is created successfully'
         ]);
@@ -75,7 +76,8 @@ class AttributeController extends Controller
     {
         //
         return response()->json([
-            'attribute' => Attribute::findOrFail($id)
+            'attribute' => Attribute::findOrFail($id) ,
+            'sets' => AttributeSet::select('set')->where('attribute_id',$id)->get()->pluck('set')
         ]);
     }
 
@@ -91,6 +93,7 @@ class AttributeController extends Controller
         //
         $request->validate($this->validateData($id));
         Attribute::findOrFail($id)->update($request->all());
+        $this->addAttributeSets($request->sets , $id,'yes');
         return response()->json([
             'message' => $request->name . ' Attribute is updated successfully'
         ]);
@@ -127,6 +130,7 @@ class AttributeController extends Controller
     private function validateData($id=NULL){
         return [
             'name' => ['required', 'string', 'max:100', $id==null ? 'unique:attributes' : 'unique:attributes,name,'.$id ] ,
+            'set' => ['array']
         ];
     }
 
@@ -137,6 +141,17 @@ class AttributeController extends Controller
             ->where('name','like',$searchData)
             ->latest('id')
             ->paginate(10)
+        ]);
+    }
+
+    private function addAttributeSets($sets,$id,$update=null){
+        add_high_light([
+            'col'=>$sets,
+            'obj' => 'App\Models\AttributeSet',
+            'parent_id'=>'attribute_id',
+            'parent_data'=>$id,
+            'child_col'=>'set',
+            'update'=> $update
         ]);
     }
 }
