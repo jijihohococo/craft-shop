@@ -64,6 +64,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::resource('attributes','Admin\AttributeController');
 	Route::get('attribute_search','Admin\AttributeController@search');
 	Route::delete('attribute_restore/{id}','Admin\AttributeController@restore');
+	Route::get('get_attributes','Admin\AttributeController@get');
 
 
 	Route::resource('colors','Admin\ColorController');
