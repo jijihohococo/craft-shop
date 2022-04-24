@@ -112,7 +112,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['options', 'value'],
+  props: ['options', 'value', 'index'],
   mounted: function mounted() {
     var self = this;
     $(this.$el).select2({
@@ -120,7 +120,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       data: this.options
     }).val(this.value).trigger('change').on('change', function () {
       //self.$emit('input', this.value) //single select worked good
-      self.$emit('input', $(this).val()); // multiple select
+      //self.$emit('input',  $(this).val()) // multiple select
+      self.$emit('input', self.$props.index !== null ? {
+        index: self.$props.index,
+        value: $(this).val()
+      } : $(this).val());
     });
   },
   watch: {

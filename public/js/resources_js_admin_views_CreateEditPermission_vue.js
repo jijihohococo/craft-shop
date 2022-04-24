@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["options", "value"],
+  props: ["options", "value", "index"],
   mounted: function mounted() {
     var vm = this;
     $(this.$el) // init select2
@@ -109,7 +109,10 @@ __webpack_require__.r(__webpack_exports__);
       val: this.$props.value
     }).val(this.value).trigger("change") // emit event on change.
     .on("change", function () {
-      vm.$emit("input", this.value);
+      vm.$emit('input', vm.$props.index !== null ? {
+        index: vm.$props.index,
+        value: this.value
+      } : this.value); //vm.$emit("input", this.value);
     });
   },
   watch: {

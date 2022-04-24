@@ -31,6 +31,12 @@
 									<strong v-if="errors && errors.category_id" class="invalid-feedback" style="display:block!important;">{{ errors.category_id[0] }}</strong>
 								</div>
 								<div class="form-group">
+									<label>Attributes</label>
+									<AddRemoveDependentSelect 
+									:mainData="fields.attributes"
+									:selectData="attributes" />
+								</div>
+								<div class="form-group">
 									<label>File</label>
 									<File @change="setPic" :pics="fields.pics" @removed="removePics" :multiple="true"
 									storage_path='storage/item_images/'
@@ -69,23 +75,28 @@
 
 	import Select from '../components/Select'
 
+	import AddRemoveDependentSelect from '../components/AddRemoveDependentSelect';
+
 	export default {
 		components: {
 			CreateEditHeader,
 			Error,
 			File,
 			Select,
-			Loading
+			Loading,
+			AddRemoveDependentSelect
 		},
 		data(){
 			return {
 				content : 'Item',
 				categories : {},
+				attributes : {},
 				fields : {
 					name : '',
 					category_id : '',
 					pics : [],
-					description : ''
+					description : '' ,
+					attributes : []
 				},
 				formData : new FormData ,
 				errors : {
@@ -104,11 +115,24 @@
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
 			await this.getCategories()
+			await this.getAttributes()
 			if(this.current=='update'){
 				await this.getItemData(this.$route.params.id);
 			}
 		},
 		methods : {
+			async getAttributes(){
+				window.axios.get('get_attributes').then( (response) => {
+					if(response.data.message=='Loading'){
+
+						showSwalLoading(this);
+					}else{
+						this.attributes=response.data.attributes
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')
+				} )
+			},
 			async getCategories(){
 				 window.axios.get('get_categories').then( (response) => {
 					if(response.data.message=='Loading'){
@@ -188,6 +212,7 @@
 						showSwalLoading(this);
 					}else{
 						this.fields=response.data.item;
+						this.fields.attributes=response.data.attributes;
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'update')

@@ -5,7 +5,7 @@
 </template>
 <script >
 	export default {
-		props: ["options", "value"],
+		props: ["options", "value" , "index"],
 		mounted: function() {
 			var vm = this;
 			$(this.$el)
@@ -15,7 +15,11 @@
             .trigger("change")
             // emit event on change.
             .on("change", function() {
-            	vm.$emit("input", this.value);
+                    vm.$emit('input', vm.$props.index!==null ? {
+                        index : vm.$props.index ,
+                        value : this.value
+                    } : this.value )
+            	//vm.$emit("input", this.value);
             });
         },
         watch: {

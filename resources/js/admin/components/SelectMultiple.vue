@@ -5,7 +5,7 @@
 </template>
 <script >
 	export default{
-		props: ['options', 'value'],
+		props: ['options', 'value' , 'index'],
 		mounted(){
 			var self = this;
 			$(this.$el)
@@ -14,7 +14,11 @@
 			.trigger('change')
 			.on('change', function () {
                     //self.$emit('input', this.value) //single select worked good
-                    self.$emit('input',  $(this).val()) // multiple select
+                    //self.$emit('input',  $(this).val()) // multiple select
+                    self.$emit('input', self.$props.index!==null ? {
+                        index : self.$props.index ,
+                        value : $(this).val()
+                    } : $(this).val() )
                 })
 		},
 		watch: {

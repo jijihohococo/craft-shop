@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Item,ItemImage};
+use App\Models\{Item,ItemImage,ItemAttribute};
 use DB,File;
 class ItemController extends Controller
 {
@@ -83,7 +83,8 @@ class ItemController extends Controller
     {
         //
         return response()->json([
-            'item' => Item::with('pics')->findOrFail($id)
+            'item' => Item::with('pics')->findOrFail($id) ,
+            'attributes' => ItemAttribute::where('item_id',$id)->get()
         ]);
     }
 

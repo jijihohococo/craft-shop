@@ -18,7 +18,7 @@
 									<strong v-if="errors && errors.name" class="invalid-feedback">{{ errors.name[0] }}</strong>
 								</div>
 								<div class="form-group">
-									<label>Highlights</label>
+									<label>Sets</label>
 									<AttributeSet :inputData="fields.sets" ref="attributeSet" />
 								</div>
 							</div>
