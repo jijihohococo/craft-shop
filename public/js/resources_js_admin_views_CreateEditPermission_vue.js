@@ -109,10 +109,14 @@ __webpack_require__.r(__webpack_exports__);
       val: this.$props.value
     }).val(this.value).trigger("change") // emit event on change.
     .on("change", function () {
-      vm.$emit('input', vm.$props.index !== null ? {
-        index: vm.$props.index,
-        value: this.value
-      } : this.value); //vm.$emit("input", this.value);
+      if (vm.$props.index !== undefined) {
+        vm.$emit('input', {
+          index: vm.$props.index,
+          value: this.value
+        });
+      } else {
+        vm.$emit('input', this.value);
+      }
     });
   },
   watch: {

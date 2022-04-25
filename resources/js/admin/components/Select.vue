@@ -15,11 +15,14 @@
             .trigger("change")
             // emit event on change.
             .on("change", function() {
-                    vm.$emit('input', vm.$props.index!==null ? {
+                if(vm.$props.index!==undefined){
+                    vm.$emit('input',{
                         index : vm.$props.index ,
                         value : this.value
-                    } : this.value )
-            	//vm.$emit("input", this.value);
+                    })
+                }else{
+                    vm.$emit('input',this.value )
+                }
             });
         },
         watch: {

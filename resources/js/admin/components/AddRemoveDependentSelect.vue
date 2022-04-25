@@ -63,7 +63,10 @@
 		methods : {
 			setSubMultipleSelect(object){
 				let main=this.main[object.index];
-				main.selectedSubData=object.value;
+				if(main!==undefined){
+					main.selectedSubData=object.value;
+				}
+				//
 			},
 			setSubSelect(object){
 				let main=this.main[object.index];

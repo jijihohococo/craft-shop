@@ -56,7 +56,7 @@ class ItemController extends Controller
         DB::beginTransaction();
         $item=Item::create($request->all());
         $this->insertImage($item->id);
-        $this->addAttributes($item->id,$request->attributes);
+        $this->addAttributes($item->id,request('attributes'));
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Item is created successfully'
@@ -122,17 +122,15 @@ class ItemController extends Controller
 
   private function addAttributes($id,$attributes){
     foreach($attributes as $attribute){
-        foreach($attribute as $data){
-            $itemAttribute=ItemAttribute::create([
-                'item_id' => $id ,
-                'attribute_id' => $data->id
-            ]);
-            foreach(explode(',', $data->set) as $set){
-                ItemAttributeSet::create([
+        $itemAttribute=ItemAttribute::create([
+            'item_id' => $id ,
+            'attribute_id' => $attribute['id']
+        ]);
+        foreach(explode(',',$attribute['set']) as $set){
+            ItemAttributeSet::create([
                     'item_attribute_id' => $itemAttribute->id ,
                     'set_id'  => $set
                 ]);
-            }
         }
     }
   }

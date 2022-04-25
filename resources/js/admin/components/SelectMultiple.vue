@@ -14,11 +14,15 @@
 			.trigger('change')
 			.on('change', function () {
                     //self.$emit('input', this.value) //single select worked good
-                    //self.$emit('input',  $(this).val()) // multiple select
-                    self.$emit('input', self.$props.index!==null ? {
-                        index : self.$props.index ,
-                        value : $(this).val()
-                    } : $(this).val() )
+                    self.$emit('input',  $(this).val()) // multiple select
+                    if(self.$props.index!==undefined){
+                    	self.$emit('input',{
+                    		index : self.$props.index ,
+                    		value : $(this).val()
+                    	})
+                    }else{
+                    	self.$emit('input',$(this).val())
+                    }
                 })
 		},
 		watch: {

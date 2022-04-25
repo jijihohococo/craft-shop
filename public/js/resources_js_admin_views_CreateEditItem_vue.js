@@ -57,7 +57,11 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     setSubMultipleSelect: function setSubMultipleSelect(object) {
       var main = this.main[object.index];
-      main.selectedSubData = object.value;
+
+      if (main !== undefined) {
+        main.selectedSubData = object.value;
+      } //
+
     },
     setSubSelect: function setSubSelect(object) {
       var main = this.main[object.index];
@@ -346,10 +350,14 @@ __webpack_require__.r(__webpack_exports__);
       val: this.$props.value
     }).val(this.value).trigger("change") // emit event on change.
     .on("change", function () {
-      vm.$emit('input', vm.$props.index !== null ? {
-        index: vm.$props.index,
-        value: this.value
-      } : this.value); //vm.$emit("input", this.value);
+      if (vm.$props.index !== undefined) {
+        vm.$emit('input', {
+          index: vm.$props.index,
+          value: this.value
+        });
+      } else {
+        vm.$emit('input', this.value);
+      }
     });
   },
   watch: {
@@ -403,11 +411,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       data: this.options
     }).val(this.value).trigger('change').on('change', function () {
       //self.$emit('input', this.value) //single select worked good
-      //self.$emit('input',  $(this).val()) // multiple select
-      self.$emit('input', self.$props.index !== null ? {
-        index: self.$props.index,
-        value: $(this).val()
-      } : $(this).val());
+      self.$emit('input', $(this).val()); // multiple select
+
+      if (self.$props.index !== undefined) {
+        self.$emit('input', {
+          index: self.$props.index,
+          value: $(this).val()
+        });
+      } else {
+        self.$emit('input', $(this).val());
+      }
     });
   },
   watch: {
