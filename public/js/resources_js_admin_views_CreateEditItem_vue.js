@@ -52,7 +52,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     setSubMultipleSelect: function setSubMultipleSelect(object) {
       var main = this.main[object.index];
-      main.subSelectData = object.value;
+      main.selectedSubData = object.value;
     },
     setSubSelect: function setSubSelect(object) {
       var main = this.main[object.index];
