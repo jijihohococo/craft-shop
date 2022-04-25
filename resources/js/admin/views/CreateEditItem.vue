@@ -26,7 +26,7 @@
 									<label>Category</label>
 									<Select :value="fields.category_id" @input="setCategoryId">
 										<option value="" disabled >Select Category</option>
-											<option v-for="category in categories" :value="category.id">{{ category.name }}</option>
+										<option v-for="category in categories" :value="category.id">{{ category.name }}</option>
 									</Select>
 									<strong v-if="errors && errors.category_id" class="invalid-feedback" style="display:block!important;">{{ errors.category_id[0] }}</strong>
 								</div>
@@ -34,7 +34,8 @@
 									<label>Attributes</label>
 									<AddRemoveDependentSelect 
 									:mainData="fields.attributes"
-									:selectData="attributes" />
+									:selectData="attributes"
+									ref="attributeSet" />
 								</div>
 								<div class="form-group">
 									<label>File</label>
@@ -91,6 +92,7 @@
 				content : 'Item',
 				categories : {},
 				attributes : {},
+				numberOfAttributes : 0 ,
 				fields : {
 					name : '',
 					category_id : '',
@@ -121,6 +123,24 @@
 			}
 		},
 		methods : {
+			getManyAttributes(){
+				if(this.numberOfAttributes>0){
+					let attributes=[...Array(this.numberOfAttributes).keys()]
+					attributes.map( (data,index) => {
+						this.formData.delete('attributes['+data+']')
+					} )
+				}
+				let attributeSets=this.$refs.attributeSet.main;
+				this.numberOfAttributes=attributeSets.length
+				attributeSets.map( (data,index) => {
+					this.formData.set( 'attributes['+index+'][id]' , data.id  )
+					let setArray=[];
+					data.selectedSubData.map( (set) => {
+						setArray.push(set)
+					} )
+					this.formData.set('attributes['+index+'][set]',setArray)
+				} )
+			},
 			async getAttributes(){
 				window.axios.get('get_attributes').then( (response) => {
 					if(response.data.message=='Loading'){
@@ -134,7 +154,7 @@
 				} )
 			},
 			async getCategories(){
-				 window.axios.get('get_categories').then( (response) => {
+				window.axios.get('get_categories').then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -164,6 +184,8 @@
 				this.formData.set('name',this.fields.name )
 				this.formData.set('category_id',this.fields.category_id);
 				this.formData.set('description',description);
+				this.getManyAttributes();
+
 				if(update!==null){this.formData.append('_method', 'PATCH');}
 				return this.formData
 			},
@@ -206,7 +228,7 @@
 				} )
 			},
 			async getItemData(itemId){
-				 window.axios.get('items/'+itemId + '/edit' ).then((response) => {
+				window.axios.get('items/'+itemId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Item,ItemImage,ItemAttribute};
+use App\Models\{Item,ItemImage,ItemAttribute,ItemAttributeSet};
 use DB,File;
 class ItemController extends Controller
 {
@@ -56,6 +56,7 @@ class ItemController extends Controller
         DB::beginTransaction();
         $item=Item::create($request->all());
         $this->insertImage($item->id);
+        $this->addAttributes($item->id,$request->attributes);
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Item is created successfully'
@@ -108,7 +109,7 @@ class ItemController extends Controller
         ]);
     }
 
-    public function insertImage($id){
+    private function insertImage($id){
       upload_document(request()->pics,
         [
           'name'=>cutSpeicialChar(request()->name),
@@ -117,6 +118,23 @@ class ItemController extends Controller
           'data_id'=>$id,
           'obj'=>'App\Models\ItemImage',
           'file'=>'filename'] );
+  }
+
+  private function addAttributes($id,$attributes){
+    foreach($attributes as $attribute){
+        foreach($attribute as $data){
+            $itemAttribute=ItemAttribute::create([
+                'item_id' => $id ,
+                'attribute_id' => $data->id
+            ]);
+            foreach(explode(',', $data->set) as $set){
+                ItemAttributeSet::create([
+                    'item_attribute_id' => $itemAttribute->id ,
+                    'set_id'  => $set
+                ]);
+            }
+        }
+    }
   }
 
     /**

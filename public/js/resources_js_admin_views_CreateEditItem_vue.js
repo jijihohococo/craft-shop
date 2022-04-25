@@ -447,6 +447,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_File__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/File */ "./resources/js/admin/components/File.vue");
 /* harmony import */ var _components_Select__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Select */ "./resources/js/admin/components/Select.vue");
 /* harmony import */ var _components_AddRemoveDependentSelect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/AddRemoveDependentSelect */ "./resources/js/admin/components/AddRemoveDependentSelect.vue");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -474,6 +486,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       content: 'Item',
       categories: {},
       attributes: {},
+      numberOfAttributes: 0,
       fields: {
         name: '',
         category_id: '',
@@ -529,8 +542,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }))();
   },
   methods: {
-    getAttributes: function getAttributes() {
+    getManyAttributes: function getManyAttributes() {
       var _this2 = this;
+
+      if (this.numberOfAttributes > 0) {
+        var attributes = _toConsumableArray(Array(this.numberOfAttributes).keys());
+
+        attributes.map(function (data, index) {
+          _this2.formData["delete"]('attributes[' + data + ']');
+        });
+      }
+
+      var attributeSets = this.$refs.attributeSet.main;
+      this.numberOfAttributes = attributeSets.length;
+      attributeSets.map(function (data, index) {
+        _this2.formData.set('attributes[' + index + '][id]', data.id);
+
+        var setArray = [];
+        data.selectedSubData.map(function (set) {
+          setArray.push(set);
+        });
+
+        _this2.formData.set('attributes[' + index + '][set]', setArray);
+      });
+    },
+    getAttributes: function getAttributes() {
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
@@ -539,12 +576,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 window.axios.get('get_attributes').then(function (response) {
                   if (response.data.message == 'Loading') {
-                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this2);
+                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this3);
                   } else {
-                    _this2.attributes = response.data.attributes;
+                    _this3.attributes = response.data.attributes;
                   }
                 })["catch"](function (error) {
-                  (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this2, 'read');
+                  (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this3, 'read');
                 });
 
               case 1:
@@ -556,7 +593,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     getCategories: function getCategories() {
-      var _this3 = this;
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
@@ -565,12 +602,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 window.axios.get('get_categories').then(function (response) {
                   if (response.data.message == 'Loading') {
-                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this3);
+                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this4);
                   } else {
-                    _this3.categories = response.data.categories;
+                    _this4.categories = response.data.categories;
                   }
                 })["catch"](function (error) {
-                  (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this3, 'read');
+                  (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this4, 'read');
                 });
 
               case 1:
@@ -588,14 +625,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.fields.pics = [];
     },
     setPic: function setPic(event) {
-      var _this4 = this;
+      var _this5 = this;
 
       if (this.formData.getAll('pics[]').length > 0) {
         this.formData["delete"]('pics[]');
       }
 
       Array.from(event.target.files).forEach(function (file) {
-        _this4.formData.append('pics[]', file);
+        _this5.formData.append('pics[]', file);
       });
     },
     getFormData: function getFormData() {
@@ -604,6 +641,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.formData.set('name', this.fields.name);
       this.formData.set('category_id', this.fields.category_id);
       this.formData.set('description', description);
+      this.getManyAttributes();
 
       if (update !== null) {
         this.formData.append('_method', 'PATCH');
@@ -612,30 +650,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.formData;
     },
     createItem: function createItem() {
-      var _this5 = this;
-
-      window.axios.post("items", this.getFormData()).then(function (response) {
-        if (response.data.message == 'Loading') {
-          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this5);
-        } else {
-          _this5.$swal('Success', response.data.message, 'success');
-
-          _this5.$router.push({
-            path: '/admin/item'
-          });
-        }
-      })["catch"](function (error) {
-        if (error.response.status == 422) {
-          _this5.errors = error.response.data.errors;
-        } else {
-          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this5, 'create');
-        }
-      });
-    },
-    updateItem: function updateItem() {
       var _this6 = this;
 
-      window.axios.post("items/".concat(this.$route.params.id), this.getFormData('update')).then(function (response) {
+      window.axios.post("items", this.getFormData()).then(function (response) {
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this6);
         } else {
@@ -649,12 +666,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         if (error.response.status == 422) {
           _this6.errors = error.response.data.errors;
         } else {
-          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this6, 'update');
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this6, 'create');
+        }
+      });
+    },
+    updateItem: function updateItem() {
+      var _this7 = this;
+
+      window.axios.post("items/".concat(this.$route.params.id), this.getFormData('update')).then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this7);
+        } else {
+          _this7.$swal('Success', response.data.message, 'success');
+
+          _this7.$router.push({
+            path: '/admin/item'
+          });
+        }
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this7.errors = error.response.data.errors;
+        } else {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this7, 'update');
         }
       });
     },
     getItemData: function getItemData(itemId) {
-      var _this7 = this;
+      var _this8 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
@@ -663,13 +701,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 window.axios.get('items/' + itemId + '/edit').then(function (response) {
                   if (response.data.message == 'Loading') {
-                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this7);
+                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this8);
                   } else {
-                    _this7.fields = response.data.item;
-                    _this7.fields.attributes = response.data.attributes;
+                    _this8.fields = response.data.item;
+                    _this8.fields.attributes = response.data.attributes;
                   }
                 })["catch"](function (error) {
-                  (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this7, 'update');
+                  (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this8, 'update');
                 });
 
               case 1:
@@ -1224,7 +1262,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AddRemoveDependentSelect, {
     mainData: $data.fields.attributes,
-    selectData: $data.attributes
+    selectData: $data.attributes,
+    ref: "attributeSet"
   }, null, 8
   /* PROPS */
   , ["mainData", "selectData"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_File, {
