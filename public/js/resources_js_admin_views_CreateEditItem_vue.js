@@ -45,6 +45,11 @@ __webpack_require__.r(__webpack_exports__);
       deep: true,
       handler: function handler(newValue, oldValue) {
         this.main = this.$props.mainData;
+        this.main.map(function (data, index) {
+          window.axios.get('get_attribute_sets/' + data.id).then(function (response) {
+            data.subSelectData = response.data.sets;
+          });
+        });
       }
     }
   },

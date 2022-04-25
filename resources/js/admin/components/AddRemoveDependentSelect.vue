@@ -51,6 +51,11 @@
 				deep : true,
 				handler(newValue,oldValue){
 					this.main=this.$props.mainData;
+					this.main.map( (data,index) => {
+						window.axios.get('get_attribute_sets/'+data.id).then( (response) => {
+							data.subSelectData=response.data.sets;
+						} )
+					} )
 				}
 			}
 		},
