@@ -103,6 +103,7 @@ class ItemController extends Controller
         DB::beginTransaction();
         Item::findOrFail($id)->update($request->all());
         $this->insertImage($id);
+        $this->addAttributes($id,request('attributes'),'yes');
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Item is updated successfully'
@@ -120,7 +121,16 @@ class ItemController extends Controller
           'file'=>'filename'] );
   }
 
-  private function addAttributes($id,$attributes){
+  private function addAttributes($id,$attributes,$update=null){
+    if($update=='yes'){
+        ItemAttributeSet::whereIn('item_attribute_id',function($query) use($id) {
+            $query->select('id')
+            ->from('item_attributes')
+            ->where('item_id',$id)
+            ->get()->toArray();
+        })->delete();
+        ItemAttribute::where('item_id',$id)->delete();
+    }
     foreach($attributes as $attribute){
         $itemAttribute=ItemAttribute::create([
             'item_id' => $id ,

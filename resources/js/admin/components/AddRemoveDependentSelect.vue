@@ -50,10 +50,17 @@
 			mainData : {
 				deep : true,
 				handler(newValue,oldValue){
-					this.main=this.$props.mainData;
-					this.main.map( (data,index) => {
-						window.axios.get('get_attribute_sets/'+data.id).then( (response) => {
-							data.subSelectData=response.data.sets;
+					let mainData=newValue;
+					this.main=[];
+					newValue.map( (data,index) => {
+						window.axios.get('get_attribute_sets/'+data.attribute_id).then( (response) => {
+							window.axios.get('get_item_attribute_sets/'+data.id).then( (newResponse) => {
+								this.main.push({
+									'id' : data.attribute_id ,
+									'subSelectData' : response.data.sets ,
+									'selectedSubData' : newResponse.data.selectedSets
+								})
+							} )
 						} )
 					} )
 				}
@@ -71,8 +78,10 @@
 			setSubSelect(object){
 				let main=this.main[object.index];
 				main.id=object.value;
+				main.selectedSubData=[]
+				main.subSelectData=[]
 				window.axios.get('get_attribute_sets/'+object.value).then( (response) => {
-				main.subSelectData=response.data.sets
+					main.subSelectData=response.data.sets
 				}).catch( (error) => {
 
 				} )

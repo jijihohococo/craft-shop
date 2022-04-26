@@ -44,10 +44,19 @@ __webpack_require__.r(__webpack_exports__);
     mainData: {
       deep: true,
       handler: function handler(newValue, oldValue) {
-        this.main = this.$props.mainData;
-        this.main.map(function (data, index) {
-          window.axios.get('get_attribute_sets/' + data.id).then(function (response) {
-            data.subSelectData = response.data.sets;
+        var _this = this;
+
+        var mainData = newValue;
+        this.main = [];
+        newValue.map(function (data, index) {
+          window.axios.get('get_attribute_sets/' + data.attribute_id).then(function (response) {
+            window.axios.get('get_item_attribute_sets/' + data.id).then(function (newResponse) {
+              _this.main.push({
+                'id': data.attribute_id,
+                'subSelectData': response.data.sets,
+                'selectedSubData': newResponse.data.selectedSets
+              });
+            });
           });
         });
       }
@@ -66,6 +75,8 @@ __webpack_require__.r(__webpack_exports__);
     setSubSelect: function setSubSelect(object) {
       var main = this.main[object.index];
       main.id = object.value;
+      main.selectedSubData = [];
+      main.subSelectData = [];
       window.axios.get('get_attribute_sets/' + object.value).then(function (response) {
         main.subSelectData = response.data.sets;
       })["catch"](function (error) {});

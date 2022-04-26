@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Attribute,AttributeSet};
+use App\Models\{Attribute,AttributeSet,ItemAttributeSet};
 use App\Traits\AdminRolePermission;
 class AttributeController extends Controller
 {
@@ -164,6 +164,12 @@ class AttributeController extends Controller
     public function getAtrributeSets($attributeId){
         return response()->json([
             'sets' => AttributeSet::where('attribute_id',$attributeId)->get()
+        ]);
+    }
+
+    public function getItemAttributeSets($itemAttributeId){
+        return response()->json([
+            'selectedSets' => ItemAttributeSet::select('set_id')->where('item_attribute_id',$itemAttributeId)->get()->pluck('set_id')
         ]);
     }
 }
