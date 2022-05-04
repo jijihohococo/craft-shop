@@ -10,6 +10,7 @@ class Item extends TransactionModel
 
     protected $fillable=[
         'name',
+        'brand_id',
         'category_id',
         'description'
     ];
@@ -19,6 +20,10 @@ class Item extends TransactionModel
 
     public function category(){
         return $this->belongsTo('App\Models\Category')->withDefault()->withTrashed();
+    }
+
+    public function brand(){
+        return $this->belongsTo('App\Models\Brand')->withDefault()->withTrashed();
     }
 
     public function pics(){

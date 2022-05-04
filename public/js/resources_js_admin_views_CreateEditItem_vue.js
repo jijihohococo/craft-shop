@@ -509,11 +509,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       content: 'Item',
       categories: {},
+      brands: {},
       attributes: {},
       numberOfAttributes: 0,
       fields: {
         name: '',
         category_id: '',
+        brand_id: '',
         pics: [],
         description: '',
         attributes: []
@@ -546,18 +548,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 4:
               _context.next = 6;
-              return _this.getAttributes();
+              return _this.getBrands();
 
             case 6:
+              _context.next = 8;
+              return _this.getAttributes();
+
+            case 8:
               if (!(_this.current == 'update')) {
-                _context.next = 9;
+                _context.next = 11;
                 break;
               }
 
-              _context.next = 9;
+              _context.next = 11;
               return _this.getItemData(_this.$route.params.id);
 
-            case 9:
+            case 11:
             case "end":
               return _context.stop();
           }
@@ -642,21 +648,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
+    getBrands: function getBrands() {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                window.axios.get('get_brands').then(function (response) {
+                  if (response.data.message == 'Loading') {
+                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this5);
+                  } else {
+                    _this5.brands = response.data.brands;
+                  }
+                })["catch"](function (error) {
+                  (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this5, 'read');
+                });
+
+              case 1:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
     setCategoryId: function setCategoryId(categoryId) {
       this.fields.category_id = categoryId;
+    },
+    setBrandId: function setBrandId(brandId) {
+      this.fields.brand_id = brandId;
     },
     removePics: function removePics() {
       this.fields.pics = [];
     },
     setPic: function setPic(event) {
-      var _this5 = this;
+      var _this6 = this;
 
       if (this.formData.getAll('pics[]').length > 0) {
         this.formData["delete"]('pics[]');
       }
 
       Array.from(event.target.files).forEach(function (file) {
-        _this5.formData.append('pics[]', file);
+        _this6.formData.append('pics[]', file);
       });
     },
     getFormData: function getFormData() {
@@ -674,30 +709,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.formData;
     },
     createItem: function createItem() {
-      var _this6 = this;
-
-      window.axios.post("items", this.getFormData()).then(function (response) {
-        if (response.data.message == 'Loading') {
-          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this6);
-        } else {
-          _this6.$swal('Success', response.data.message, 'success');
-
-          _this6.$router.push({
-            path: '/admin/item'
-          });
-        }
-      })["catch"](function (error) {
-        if (error.response.status == 422) {
-          _this6.errors = error.response.data.errors;
-        } else {
-          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this6, 'create');
-        }
-      });
-    },
-    updateItem: function updateItem() {
       var _this7 = this;
 
-      window.axios.post("items/".concat(this.$route.params.id), this.getFormData('update')).then(function (response) {
+      window.axios.post("items", this.getFormData()).then(function (response) {
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this7);
         } else {
@@ -711,35 +725,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         if (error.response.status == 422) {
           _this7.errors = error.response.data.errors;
         } else {
-          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this7, 'update');
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this7, 'create');
+        }
+      });
+    },
+    updateItem: function updateItem() {
+      var _this8 = this;
+
+      window.axios.post("items/".concat(this.$route.params.id), this.getFormData('update')).then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this8);
+        } else {
+          _this8.$swal('Success', response.data.message, 'success');
+
+          _this8.$router.push({
+            path: '/admin/item'
+          });
+        }
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this8.errors = error.response.data.errors;
+        } else {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this8, 'update');
         }
       });
     },
     getItemData: function getItemData(itemId) {
-      var _this8 = this;
+      var _this9 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
                 window.axios.get('items/' + itemId + '/edit').then(function (response) {
                   if (response.data.message == 'Loading') {
-                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this8);
+                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this9);
                   } else {
-                    _this8.fields = response.data.item;
-                    _this8.fields.attributes = response.data.attributes;
+                    _this9.fields = response.data.item;
+                    _this9.fields.attributes = response.data.attributes;
                   }
                 })["catch"](function (error) {
-                  (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this8, 'update');
+                  (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this9, 'update');
                 });
 
               case 1:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
           }
-        }, _callee4);
+        }, _callee5);
       }))();
     }
   }
@@ -1176,32 +1211,55 @@ var _hoisted_18 = {
   "class": "form-group"
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Attributes", -1
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Brand", -1
 /* HOISTED */
 );
 
-var _hoisted_20 = {
-  "class": "form-group"
-};
-
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "File", -1
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "",
+  disabled: ""
+}, "Select Brand", -1
 /* HOISTED */
 );
 
+var _hoisted_21 = ["value"];
 var _hoisted_22 = {
+  key: 0,
+  "class": "invalid-feedback",
+  style: {
+    "display": "block!important"
+  }
+};
+var _hoisted_23 = {
   "class": "form-group"
 };
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Description", -1
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Attributes", -1
 /* HOISTED */
 );
 
-var _hoisted_24 = {
+var _hoisted_25 = {
+  "class": "form-group"
+};
+
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "File", -1
+/* HOISTED */
+);
+
+var _hoisted_27 = {
+  "class": "form-group"
+};
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Description", -1
+/* HOISTED */
+);
+
+var _hoisted_29 = {
   key: 0,
   "class": "invalid-feedback"
 };
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "card-footer"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
@@ -1284,13 +1342,35 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["value", "onInput"]), $data.errors && $data.errors.category_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.category_id[0]), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AddRemoveDependentSelect, {
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Select, {
+    value: $data.fields.brand_id,
+    onInput: $options.setBrandId
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_20, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.brands, function (brand) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+          value: brand.id
+        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(brand.name), 9
+        /* TEXT, PROPS */
+        , _hoisted_21);
+      }), 256
+      /* UNKEYED_FRAGMENT */
+      ))];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["value", "onInput"]), $data.errors && $data.errors.brand_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.brand_id[0]), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AddRemoveDependentSelect, {
     mainData: $data.fields.attributes,
     selectData: $data.attributes,
     ref: "attributeSet"
   }, null, 8
   /* PROPS */
-  , ["mainData", "selectData"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_File, {
+  , ["mainData", "selectData"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_File, {
     onChange: $options.setPic,
     pics: $data.fields.pics,
     onRemoved: $options.removePics,
@@ -1300,7 +1380,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     delete_all_path: "delete_item_images/"
   }, null, 8
   /* PROPS */
-  , ["onChange", "pics", "onRemoved"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  , ["onChange", "pics", "onRemoved"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.errors && $data.errors.description ? 'form-control is-invalid' : 'form-control']),
     placeholder: "Description",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
@@ -1308,9 +1388,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, "\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t", 2
   /* CLASS */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.description]]), $data.errors && $data.errors.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.description[0]), 1
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.description]]), $data.errors && $data.errors.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.description[0]), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]), _hoisted_25], 32
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]), _hoisted_30], 32
   /* HYDRATE_EVENTS */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])], 64
   /* STABLE_FRAGMENT */

@@ -31,6 +31,14 @@
 									<strong v-if="errors && errors.category_id" class="invalid-feedback" style="display:block!important;">{{ errors.category_id[0] }}</strong>
 								</div>
 								<div class="form-group">
+									<label>Brand</label>
+									<Select :value="fields.brand_id" @input="setBrandId">
+										<option value="" disabled >Select Brand</option>
+										<option v-for="brand in brands" :value="brand.id">{{ brand.name }}</option>
+									</Select>
+									<strong v-if="errors && errors.brand_id" class="invalid-feedback" style="display:block!important;">{{ errors.brand_id[0] }}</strong>
+								</div>
+								<div class="form-group">
 									<label>Attributes</label>
 									<AddRemoveDependentSelect 
 									:mainData="fields.attributes"
@@ -91,11 +99,13 @@
 			return {
 				content : 'Item',
 				categories : {},
+				brands : {},
 				attributes : {},
 				numberOfAttributes : 0 ,
 				fields : {
 					name : '',
 					category_id : '',
+					brand_id : '',
 					pics : [],
 					description : '' ,
 					attributes : []
@@ -117,6 +127,7 @@
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
 			await this.getCategories()
+			await this.getBrands()
 			await this.getAttributes()
 			if(this.current=='update'){
 				await this.getItemData(this.$route.params.id);
@@ -165,8 +176,23 @@
 					errorResponse(error,this,'read')
 				} )
 			},
+			async getBrands(){
+				window.axios.get('get_brands').then( (response) => {
+					if(response.data.message=='Loading'){
+
+						showSwalLoading(this);
+					}else{
+						this.brands=response.data.brands
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')
+				} )
+			},
 			setCategoryId(categoryId){
 				this.fields.category_id=categoryId
+			},
+			setBrandId(brandId){
+				this.fields.brand_id=brandId
 			},
 			removePics(){
 				this.fields.pics=[];
