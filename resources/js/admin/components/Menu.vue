@@ -67,11 +67,12 @@
      dataRoutes : {
       'admin' : "Admin",
       'attribute' : "Attribute",
-      'tax' : "Tax",
-      'item' : "Item" ,
       'category' : "Category" ,
+      'brand' : "Brand" ,
       'color' : "Color",
+      'item' : "Item" ,
       'banner' : "Banner",
+      'tax' : "Tax",
       'target' : "Target",
       'currency' : "Currency"
     },

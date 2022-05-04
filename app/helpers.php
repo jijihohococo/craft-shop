@@ -133,7 +133,7 @@ function oneFileUpload(array $array,$request,$data){
 		blockFile($requestFile ) ) {
 			//check if the update function is called this function //
 		
-		if($array['old_file']!==null){
+		if($array[$oldFile]!==null){
 			\File::delete(storage_path('app/public/'.$array['path'].'/'.$array[ $oldFile ]));
 		}
 		$extension='webp';

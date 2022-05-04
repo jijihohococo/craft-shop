@@ -15,6 +15,10 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('banner_search','Admin\BannerController@search');
 	Route::delete('banner_restore/{id}','Admin\BannerController@restore');
 
+	Route::resource('brands','Admin\BrandController');
+	Route::get('brand_search','Admin\BrandController@search');
+	Route::delete('brand_restore/{id}','Admin\BrandController@restore');
+	Route::get('get_brands','Admin\BrandController@get');
 
 	Route::resource('items','Admin\ItemController');
 	Route::get('item_search','Admin\ItemController@search');

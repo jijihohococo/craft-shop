@@ -33,4 +33,13 @@ class Item extends TransactionModel
             ->limit(1);
         } ]);
     }
+
+    public function scopeSelectBrandName($query){
+        return $query->addSelect(['brand_name' => function($query) {
+            $query->select('name')
+            ->from('brands')
+            ->whereColumn('brand_id','brands.id')
+            ->limit(1);
+        } ]); 
+    }
 }
