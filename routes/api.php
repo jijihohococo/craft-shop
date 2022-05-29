@@ -23,3 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('items/{id}','User\ItemController@show');
 Route::get('banners','User\BannerController@get');
+
+Route::group(['middleware' => [ 'user_auth'] ], function () {
+Route::get('item_wish_lists','User\WishlistController@get');
+});
