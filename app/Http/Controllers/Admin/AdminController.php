@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Admin,AdminRole};
-use App\Traits\{ApiTokenRefresh,AdminRolePermission};
+use App\Traits\AdminRolePermission;
 use DB;
 class AdminController extends Controller
 {
-    use ApiTokenRefresh,AdminRolePermission;
+    use AdminRolePermission;
 
     public function __construct(){
         $this->authorized(Admin::$content);
@@ -155,10 +155,9 @@ class AdminController extends Controller
     }
 
     public function get(){
-        $admin=auth('admin_api')->user();
-        return $admin!==null ? response()->json([
-            'admin' => $admin
-        ]) : $this->refresh('admin_access_token','admin_refresh_token',Admin::$clientId);
+        return response()->json([
+            'admin' => auth('admin_api')->user()
+        ]);
     }
 
     public function search(Request $request){
