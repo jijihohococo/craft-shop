@@ -10,21 +10,21 @@ class ShoppingCartController extends Controller
     //
 
     public function get(Request $request){
-        $user=auth('user_api')->user();
+        $userId=NULL;
         return response()->json([
-            'shopping_cart_items' => $user!==null ? ShoppingCart::selectUser()
+            'shopping_cart_items' => ShoppingCart::selectUser()
             ->selectItem()
-            ->ofUser($user->id)
+            ->ofUser($userId)
             ->latest('id')
-            ->get() : []
+            ->get()
         ]);
     }
 
-    public function add(Request $request,$itemId){
+    public function addItem(Request $request,$itemId){
 
     }
 
-    public function remove(Request $request,$itemId){
+    public function removeItem(Request $request,$itemId){
 
     }
 }

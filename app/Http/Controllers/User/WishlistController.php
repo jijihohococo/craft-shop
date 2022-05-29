@@ -12,13 +12,13 @@ class WishlistController extends Controller
     //
 
     public function get(Request $request){
-        $user=auth('user_api')->user();
+        $userId=NULL;
         return response()->json([
-            'wish_list_items' => $user!==null ? WishList::selectUser()
+            'wish_list_items' => WishList::selectUser()
             ->selectItem()
-            ->ofUser($user->id)
+            ->ofUser($userId)
             ->latest('id')
-            ->get() : []
+            ->get()
         ]);
     }
 
@@ -28,7 +28,7 @@ class WishlistController extends Controller
     ] );
    }
 
-   public function add(Request $request,$itemId){
+   public function addItem(Request $request,$itemId){
     $userId=null;
     if ($this->validateData($itemId,$userId)->fails() ) {
         return response()->json([
@@ -37,7 +37,7 @@ class WishlistController extends Controller
     }
 }
 
-public function remove(Request $request,$itemId){
+public function removeItem(Request $request,$itemId){
 
 }
 }

@@ -23,12 +23,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('items/{id}','User\ItemController@show');
 Route::get('banners','User\BannerController@get');
-
-Route::group(['middleware' => [ 'user_auth'] ], function () {
+Route::get('get_categories','User\HomeController@getCategories');
 
 Route::get('wish_list','User\WishlistController@get');
 Route::get('shopping_cart','User\ShoppingCartController@get');
 
-Route::get('get_categories','User\HomeController@getCategories');
+Route::post('add_item_to_wish_list','User\WishlistController@addItem');
+Route::post('remove_item_to_wish_list','User\WishlistController@removeItem');
+
+
+Route::post('add_item_to_shopping_cart','User\ShoppingCartController@addItem');
+Route::post('remove_item_to_shopping_cart','User\ShoppingCartController@removeItem');
+
+Route::group(['middleware' => [ 'user_auth'] ], function () {
+
+Route::get('orders','User\OrderController@get');
 
 });
