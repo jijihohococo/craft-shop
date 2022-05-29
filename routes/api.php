@@ -25,5 +25,8 @@ Route::get('items/{id}','User\ItemController@show');
 Route::get('banners','User\BannerController@get');
 
 Route::group(['middleware' => [ 'user_auth'] ], function () {
-Route::get('item_wish_lists','User\WishlistController@get');
+
+Route::get('wish_list','User\WishlistController@get');
+Route::get('shopping_cart','User\ShoppingCartController@get');
+
 });
