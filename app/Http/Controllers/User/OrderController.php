@@ -8,4 +8,9 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     //
+    public function get(){
+        return response()->json([
+            
+        ]);
+    }
 }

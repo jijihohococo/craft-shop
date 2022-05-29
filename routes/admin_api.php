@@ -77,6 +77,9 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('color_search','Admin\ColorController@search');
 	Route::delete('color_restore/{id}','Admin\ColorController@restore');
 
+
+	Route::get('orders','Admin\OrderController@index');
+
 	Route::post('logout','Admin\Auth\LoginController@logOut');
 
 });
