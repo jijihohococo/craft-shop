@@ -23,10 +23,9 @@ class WishlistController extends Controller
     }
 
     public function validateData($itemId,$userId){
-       $this->validateCheck= Validator::make(request()->all(), [
+       return Validator::make(request()->all(), [
         'item_id' => new WishListValidation($itemId,$userId)
     ] );
-       return $this->validateCheck;
    }
 
    public function add(Request $request,$itemId){
