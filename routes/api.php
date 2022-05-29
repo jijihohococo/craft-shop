@@ -29,4 +29,6 @@ Route::group(['middleware' => [ 'user_auth'] ], function () {
 Route::get('wish_list','User\WishlistController@get');
 Route::get('shopping_cart','User\ShoppingCartController@get');
 
+Route::get('get_categories','User\HomeController@getCategories');
+
 });

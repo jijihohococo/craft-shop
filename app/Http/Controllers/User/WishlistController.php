@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\WishList;
+use App\Rules\WishListValidation;
+use Validator;
 class WishlistController extends Controller
 {
     //
@@ -20,11 +22,23 @@ class WishlistController extends Controller
         ]);
     }
 
-    public function add(Request $request,$itemId){
+    public function validateData($itemId,$userId){
+       $this->validateCheck= Validator::make(request()->all(), [
+        'item_id' => new WishListValidation($itemId,$userId)
+    ] );
+       return $this->validateCheck;
+   }
 
+   public function add(Request $request,$itemId){
+    $userId=null;
+    if ($this->validateData($itemId,$userId)->fails() ) {
+        return response()->json([
+            'message' => 'error'
+        ],422);
     }
+}
 
-    public function remove(Request $request,$itemId){
-        
-    }
+public function remove(Request $request,$itemId){
+
+}
 }

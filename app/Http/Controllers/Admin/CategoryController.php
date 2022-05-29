@@ -138,7 +138,7 @@ public function search(Request $request){
 
 public function get(){
     return response()->json([
-        'categories' => Category::orderBy('name')->get()
+        'categories' => (new Category())->get()
     ]);
 }
 }

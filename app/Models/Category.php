@@ -16,5 +16,7 @@ class Category extends TransactionModel
 
     public static $content="Category";
 
-    
+    public function get(){
+        return Category::orderBy('name')->get();
+    }
 }
