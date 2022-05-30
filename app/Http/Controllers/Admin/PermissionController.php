@@ -177,7 +177,7 @@ public function checkPermission(string $model,string $action){
 
 public function get(){
     return response()->json([
-        'permissions' => Permission::orderBy('name')->get()
+        'permissions' => (new Permission)->getAll()
     ]);
 }
 }

@@ -157,7 +157,7 @@ class AttributeController extends Controller
 
     public function get(){
         return response()->json([
-            'attributes' => Attribute::latest('id')->get()
+            'attributes' => (new Attribute)->getAll()
         ]);
     }
 

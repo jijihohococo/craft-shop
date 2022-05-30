@@ -133,7 +133,7 @@ class TaxController extends Controller
 
     public function get(Request $request){
         return response()->json([
-            'taxes' => Tax::orderBy('name')->get()
+            'taxes' => (new Tax)->getAll()
         ]);
     }
 

@@ -6,7 +6,7 @@ namespace App\Listeners;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Models\{Transaction,UserData};
-
+use Illuminate\Support\Facades\Cache;
 class TransactionListener
 {
     /**
@@ -27,12 +27,27 @@ class TransactionListener
      */
     public function handle($event)
     {
-       Transaction::create([
-           'guard' =>  UserData::getGuard(),
-           'user_id' => UserData::getId(),
-           'model' => $event->model::$content ,
-           'model_id' => $event->model->id,
-           'action' => $event->action
-       ]);
-   }
+        $model=$event->model::$content;
+
+        $cachedModels=[
+            'Attribute',
+            'Category',
+            'Brand',
+            'Banner',
+            'Currency',
+            'Role',
+            'Permission',
+            'Tax'
+        ]
+        Transaction::create([
+         'guard' =>  UserData::getGuard(),
+         'user_id' => UserData::getId(),
+         'model' => $model ,
+         'model_id' => $event->model->id,
+         'action' => $event->action
+     ]);
+        if(in_array( $model , $cachedModels)){
+            Cache::tags($event->model::$cacheKey )->flush();
+        }
+    }
 }

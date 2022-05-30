@@ -138,4 +138,10 @@ class CurrencyController extends Controller
             ->paginate(10)
         ]);
     }
+
+    public function get(){
+        return response()->json([
+            'currencies' => (new Currency)->getAll()
+        ]);
+    }
 }

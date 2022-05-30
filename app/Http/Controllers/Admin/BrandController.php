@@ -155,7 +155,7 @@ class BrandController extends Controller
 
     public function get(){
         return response()->json([
-            'brands' => Brand::orderBy('name')->get()
+            'brands' => (new Brand)->getAll()
         ]);
     }
 }
