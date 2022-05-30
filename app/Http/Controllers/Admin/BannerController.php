@@ -153,4 +153,10 @@ public function search(Request $request){
         ->paginate(10)
     ]);
 }
+
+public function get(){
+    return response()->json([
+            'banners' => (new Banner)->getAll()
+        ]);
+}
 }

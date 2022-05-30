@@ -14,6 +14,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::resource('banners','Admin\BannerController');
 	Route::get('banner_search','Admin\BannerController@search');
 	Route::delete('banner_restore/{id}','Admin\BannerController@restore');
+	Route::get('get_banners','Admin\BannerController@get');
 
 	Route::resource('brands','Admin\BrandController');
 	Route::get('brand_search','Admin\BrandController@search');
