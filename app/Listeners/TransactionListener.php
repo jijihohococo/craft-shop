@@ -37,8 +37,9 @@ class TransactionListener
             'Currency',
             'Role',
             'Permission',
-            'Tax'
-        ]
+            'Tax',
+            'Color'
+        ];
         Transaction::create([
          'guard' =>  UserData::getGuard(),
          'user_id' => UserData::getId(),
