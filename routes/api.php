@@ -22,8 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('items/{id}','User\ItemController@show');
-Route::get('banners','User\BannerController@get');
-Route::get('get_categories','User\HomeController@getCategories');
+Route::get('get_home_data','User\HomeController@get');
 
 Route::get('wish_list','User\WishlistController@get');
 Route::get('shopping_cart','User\ShoppingCartController@get');

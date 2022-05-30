@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\CategoryDataTrait;
 class Item extends TransactionModel
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes,CategoryDataTrait;
 
     protected $fillable=[
         'name',
@@ -30,16 +31,7 @@ class Item extends TransactionModel
         return $this->hasMany('App\Models\ItemImage');
     }
 
-    public function scopeSelectCategoryName($query){
-        return $query->addSelect(['category_name' => function($query) {
-            $query->select('name')
-            ->from('categories')
-            ->whereColumn('category_id','categories.id')
-            ->limit(1);
-        } ]);
-    }
-
-    public function scopeSelectBrandName($query){
+    public function scopeSelectBrand($query){
         return $query->addSelect(['brand_name' => function($query) {
             $query->select('name')
             ->from('brands')

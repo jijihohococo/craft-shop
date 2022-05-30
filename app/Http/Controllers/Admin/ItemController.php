@@ -25,7 +25,7 @@ class ItemController extends Controller
         //
         return response()->json([
             'items' => Item::withTrashed()
-            ->selectCategoryName()
+            ->selectCategory()
             ->latest('id')->paginate(10)
         ]);
     }
