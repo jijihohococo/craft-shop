@@ -138,4 +138,10 @@ class ColorController extends Controller
             ->paginate(10)
         ]);
     }
+
+    public function get(){
+        return response()->json([
+            'colors' => (new Color)->getAll()
+        ]);
+    }
 }

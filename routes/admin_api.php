@@ -77,6 +77,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::resource('colors','Admin\ColorController');
 	Route::get('color_search','Admin\ColorController@search');
 	Route::delete('color_restore/{id}','Admin\ColorController@restore');
+	Route::get('get_colors','Admin\ColorController@get');
 
 
 	Route::get('orders','Admin\OrderController@index');
