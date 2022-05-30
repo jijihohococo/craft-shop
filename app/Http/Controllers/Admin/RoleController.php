@@ -168,7 +168,7 @@ public function search(Request $request){
 
 public function get(){
     return response()->json([
-        'roles' => (new Role)->get()
+        'roles' => (new Role)->getAll()
     ]);
 }
 }
