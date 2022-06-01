@@ -165,7 +165,10 @@ public function checkPermission(string $model,string $action){
 
     if($admin==NULL){
 
-        return $this->refresh('admin_access_token','admin_refresh_token',Admin::$clientId);
+        // return $this->refresh('admin_access_token','admin_refresh_token',Admin::$clientId);
+        return response()->json([
+            'message' => 'Unauthenticated'
+        ],401);
     }
 
     return $this->checkRoleAndPermission($admin->id,$model,$action) ? response()->json([
