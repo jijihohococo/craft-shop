@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/admin/{any}','admin.index')->where('any','.*')->middleware('checkAdminCookie');
 // ADMIN ROUTES //
 
-// USER ROUTES //
+// USER FRONTEND ROUTES //
 $userRoutes=[
 	null,
 	'privacy_policy',
@@ -39,4 +39,4 @@ $userRoutes=[
 	foreach($userRoutes as $userRoute){
 		Route::view('/'.$userRoute,'user.index');
 	}
-// USER ROUTES //
+// USER FRONTEND ROUTES //
