@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Permission,TokenRefresh,Admin};
-use App\Traits\{RolePermission,ApiTokenRefresh,AdminRolePermission};
+use App\Traits\{RolePermission,AdminRolePermission};
 
 class PermissionController extends Controller
 {
 
-    use RolePermission,ApiTokenRefresh,AdminRolePermission;
+    use RolePermission,AdminRolePermission;
     
     public function __construct(){
         $this->authorized(Permission::$content);
@@ -164,8 +164,7 @@ public function checkPermission(string $model,string $action){
     $admin=auth('admin_api')->user();
 
     if($admin==NULL){
-
-        // return $this->refresh('admin_access_token','admin_refresh_token',Admin::$clientId);
+        
         return response()->json([
             'message' => 'Unauthenticated'
         ],401);
