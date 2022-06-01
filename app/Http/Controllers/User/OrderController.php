@@ -9,13 +9,17 @@ class OrderController extends Controller
 {
     //
     public function get(){
-        $userId=auth('user_api')->user();
-        return response()->json([
+        $user=auth('user_api')->user();
+        return $user!==NULL ? response()->json([
             'orders' => Order::selectUser()
             ->getTotalQtyAndPrice()
-            ->ofUser($userId)
+            ->ofUser($user->id)
             ->latest('id')
             ->get()
-        ]);
+        ]) : response()->json([
+            'message' => 'Unauthenticated'
+        ],401);
     }
+
+    public function 
 }
