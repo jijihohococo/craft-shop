@@ -15,7 +15,7 @@ class OrderController extends Controller
             ->getTotalQtyAndPrice()
             ->ofUser($user->id)
             ->latest('id')
-            ->get()
+            ->paginate(10)
         ]) : response()->json([
             'message' => 'Unauthenticated'
         ],401);
@@ -32,6 +32,6 @@ class OrderController extends Controller
             ->get()
         ]) : response()->json([
             'message' => 'Unauthenticated'
-        ],401) ;
+        ],401);
     }
 }

@@ -13,7 +13,7 @@ class OrderController extends Controller
             'orders' => Order::selectUser()
             ->getTotalQtyAndPrice()
             ->latest('id')
-            ->get()
+            ->paginate(10)
         ]);
     }
 
