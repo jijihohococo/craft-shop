@@ -35,9 +35,20 @@ class WishlistController extends Controller
             'message' => 'error'
         ],422);
     }
+    WishList::create([
+        'user_id' => $userId ,
+        'item_id' => $itemId ,
+        'created_at' => NOW()
+    ]);
+    return response()->json([
+        'message' => 'Add To Wish List Successfully'
+    ]);
 }
 
-public function removeItem(Request $request,$itemId){
-
+public function removeItem(Request $request,$wishId){
+    WishList::findOrFail($wishId)->delete();
+    return response()->json([
+        'message' => 'Remove From Wish List Successfully'
+    ]);
 }
 }

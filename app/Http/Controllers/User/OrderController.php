@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\{Order,OrderDetail};
 class OrderController extends Controller
 {
     //
@@ -19,5 +19,19 @@ class OrderController extends Controller
         ]) : response()->json([
             'message' => 'Unauthenticated'
         ],401);
+    }
+
+    public function show($id){
+        $user=auth('user_api')->user();
+        return $user!==NULL ? response()->json([
+            'order_details' => OrderDetail::
+            where('order_id',$id)
+            ->selectItem()
+            ->selectCurrency()
+            ->latest('id')
+            ->get()
+        ]) : response()->json([
+            'message' => 'Unauthenticated'
+        ],401) ;
     }
 }
