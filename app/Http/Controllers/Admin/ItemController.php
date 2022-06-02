@@ -182,7 +182,7 @@ public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
         'items' => Item::withTrashed()
-        ->selectCategoryName()
+        ->selectCategory()
         ->where('name','like',$searchData )
         ->orWherein('category_id',
             function($query) use($searchData) {
