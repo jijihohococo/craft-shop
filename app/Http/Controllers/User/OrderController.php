@@ -20,6 +20,4 @@ class OrderController extends Controller
             'message' => 'Unauthenticated'
         ],401);
     }
-
-    public function 
 }

@@ -10,7 +10,7 @@ class ShoppingCartController extends Controller
     //
 
     public function get(Request $request){
-        $userId=NULL;
+        $userId=getUserId( authId() );
         return response()->json([
             'shopping_cart_items' => ShoppingCart::selectUser()
             ->selectItem()

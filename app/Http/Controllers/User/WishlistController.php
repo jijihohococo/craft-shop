@@ -12,7 +12,7 @@ class WishlistController extends Controller
     //
 
     public function get(Request $request){
-        $userId=NULL;
+        $userId=getUserId( authId() );
         return response()->json([
             'wish_list_items' => WishList::selectUser()
             ->selectItem()
@@ -29,7 +29,7 @@ class WishlistController extends Controller
    }
 
    public function addItem(Request $request,$itemId){
-    $userId=null;
+    $userId=getUserId( authId() );
     if ($this->validateData($itemId,$userId)->fails() ) {
         return response()->json([
             'message' => 'error'

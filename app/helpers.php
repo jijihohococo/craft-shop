@@ -1,5 +1,25 @@
 <?php
 
+use App\Models\PassportDate;
+
+function authId(){
+	$user=auth('user_api')->user();
+	return $user==NULL ? NULL : $user->id; 
+}
+
+function getUserId($userId=NULL){
+
+	if(isset($_COOKIE['userId'])){
+		$customerId=$_COOKIE['userId'];
+	}else{
+		$customerId=rand(10,100) . uniqid();
+		saveCookie('userId',$customerId,PassportDate::ACCESS_TOKEN_EXPIRE_DAY , false);
+	}
+
+	return $userId==null ? $customerId : $userId;
+
+}
+
 function add_high_light(array $array){
 	if(isset($array['col'])){
 		if($array['update']=="yes"){
@@ -41,13 +61,13 @@ function mean(array $array){
 	return array_sum($array) / count($array);
 }
 
-function saveCookie(string $key,$value,$time){
+function saveCookie(string $key,$value,$time,$httpOnly=true){
 	setcookie($key, $value, [
 		'expires' =>  time() + (86400 * $time),
 		'path' => '/',
 		'domain' => 'localhost',
 		'secure' => true,
-		'httponly' => true,
+		'httponly' => $httpOnly,
 		'samesite' => 'Lax',
 	]);
 }
