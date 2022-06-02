@@ -22,33 +22,25 @@ class WishlistController extends Controller
         ]);
     }
 
-    public function validateData($itemId,$userId){
-       return Validator::make(request()->all(), [
-        'item_id' => new WishListValidation($itemId,$userId)
-    ] );
-   }
-
-   public function addItem(Request $request,$itemId){
-    $userId=getUserId( authId() );
-    if ($this->validateData($itemId,$userId)->fails() ) {
+    public function addItem(Request $request){
+        $userId=getUserId( authId() );
+        $request->validate([
+            'item_id' => ['integer',new WishListValidation($userId)]
+        ]);
+        WishList::create([
+            'user_id' => $userId ,
+            'item_id' => $request->item_id ,
+            'created_at' => NOW()
+        ]);
         return response()->json([
-            'message' => 'error'
-        ],422);
+            'message' => 'Add To Wish List Successfully'
+        ]);
     }
-    WishList::create([
-        'user_id' => $userId ,
-        'item_id' => $itemId ,
-        'created_at' => NOW()
-    ]);
-    return response()->json([
-        'message' => 'Add To Wish List Successfully'
-    ]);
-}
 
-public function removeItem(Request $request,$wishId){
-    WishList::findOrFail($wishId)->delete();
-    return response()->json([
-        'message' => 'Remove From Wish List Successfully'
-    ]);
-}
+    public function removeItem(Request $request){
+        WishList::findOrFail($request->item_id)->delete();
+        return response()->json([
+            'message' => 'Remove From Wish List Successfully'
+        ]);
+    }
 }

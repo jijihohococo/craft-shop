@@ -11,11 +11,10 @@ class WishListValidation implements Rule
      *
      * @return void
      */
-    public $itemId , $userId;
-    public function __construct($itemId,$userId)
+    public $userId;
+    public function __construct($userId)
     {
         //
-        $this->itemId=$itemId;
         $this->userId=$userId;
     }
 
@@ -30,7 +29,7 @@ class WishListValidation implements Rule
     {
         //
         return WishList::ofUser( $this->userId )
-        ->ofItem( $this->itemId )
+        ->ofItem( $value )
         ->count()==1;
     }
 
@@ -41,6 +40,6 @@ class WishListValidation implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'Duplicated Item in Wish List';
     }
 }
