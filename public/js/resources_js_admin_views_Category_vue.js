@@ -308,6 +308,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       content: 'Category',
+      deleteData: [],
       categories: {},
       search: null,
       currentPage: 1,
@@ -320,6 +321,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    deleteManyData: function deleteManyData() {
+      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_8__.deleteMultipleData)(this.categories.data, this.deleteData);
+    },
+    showData: function showData(route, object, pageName) {
+      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_8__.showWithTrashData)(route, object, pageName);
+    },
+    check: function check($event, deleteData) {
+      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_8__.checkToDelete)($event, deleteData);
+    },
     changePage: function changePage() {
       (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_8__.showTrashPage)(this.$route, this.$router, 'category');
       this.getCategories(1);
@@ -1132,13 +1142,14 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_14 = {
+var _hoisted_14 = ["value"];
+var _hoisted_15 = {
   "class": "text-left"
 };
-var _hoisted_15 = {
+var _hoisted_16 = {
   "class": "card-footer clearfix"
 };
-var _hoisted_16 = {
+var _hoisted_17 = {
   "class": "card card-default"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -1198,18 +1209,33 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.changePage();
     }),
     "class": "btn btn-primary"
-  }, "No Trash"))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  }, "No Trash")), $data.deleteData.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+    key: 2,
+    "class": "btn btn-danger ml-3",
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return $options.deleteManyData();
+    })
+  }, "Delete")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.categories.data, function (category) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: category.id
-    }, [_this.$route.name == 'category' && category.deleted_at == null || _this.$route.name == 'category_bin' && category.deleted_at !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    }, [$options.showData(_this.$route, category, 'category') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: 0
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.name), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      "class": "form-check-input",
+      type: "checkbox",
+      value: category.id,
+      onChange: _cache[5] || (_cache[5] = function ($event) {
+        return $options.check($event, $data.deleteData);
+      })
+    }, null, 40
+    /* PROPS, HYDRATE_EVENTS */
+    , _hoisted_14), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.name), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.deleted_at), 1
+    )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.deleted_at), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
       data_name: category.name,
       data_model: $data.content,
       data_id: category.id
@@ -1238,7 +1264,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
+  ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
     page: $data.currentPage,
     lastPage: $data.categories.last_page,
     onGetData: $options.getCategories,
@@ -1253,7 +1279,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* STABLE_FRAGMENT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")])])) : $data.actions.create == false && $data.actions.read == false && $data.actions.update == false && $data.actions["delete"] == false ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
     httpStatus: 403,
     title: 'Permission Denied',
     description: 'You are not allowed to do any permissions for Category'
@@ -1274,6 +1300,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
+/* harmony export */   "deleteMultipleData": () => (/* binding */ deleteMultipleData),
+/* harmony export */   "deleteFromArray": () => (/* binding */ deleteFromArray),
+/* harmony export */   "showWithTrashData": () => (/* binding */ showWithTrashData),
 /* harmony export */   "checkContentPermission": () => (/* binding */ checkContentPermission),
 /* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
@@ -1282,6 +1312,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
+function checkToDelete($event, deleteData) {
+  switch ($event.target.checked) {
+    case true:
+      deleteData.push($event.target.value);
+      break;
+
+    case false:
+      deleteFromArray(deleteData, $event.target.value);
+      break;
+  }
+}
+function deleteMultipleData(mainArray, deleteArray) {
+  for (var i = 0; i < mainArray.length; i++) {
+    if (deleteArray.includes(mainArray[i].id.toString())) {
+      mainArray[i].deleted_at = 'not null';
+      deleteFromArray(deleteArray, mainArray[i].id.toString());
+    }
+  }
+}
+function deleteFromArray(array, value) {
+  var index = array.indexOf(value);
+
+  if (index > -1) {
+    array.splice(index, 1);
+  }
+}
+function showWithTrashData(route, object, pageName) {
+  return route.name == pageName && object.deleted_at == null || route.name == pageName + '_bin' && object.deleted_at !== null;
+}
 function checkContentPermission(content, permission, object) {
   window.axios.get('check_permission/' + content + '/' + permission).then(function (response) {
     if (response.data.message == 'Loading') {

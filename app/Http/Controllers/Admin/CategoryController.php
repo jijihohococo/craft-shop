@@ -149,4 +149,15 @@ public function get(){
         'categories' => (new Category)->getAll()
     ]);
 }
+
+public function deleteMultiple(Request $request){
+    $request->validate([
+        'categories' => ['required','string']
+    ]);
+    $categories=explode(',', $request->categories);
+    Category::whereIn('id',$categories)->delete();
+    return response()->json([
+        'message' => 'Categories are deleted'
+    ]);
+}
 }

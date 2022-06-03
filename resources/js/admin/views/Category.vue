@@ -26,6 +26,7 @@
         <div class="card-header row">
             <a v-if="this.$route.name=='category'" v-on:click="changePage()" class="btn btn-secondary" >Trash</a>
             <a v-else v-on:click="changePage()" class="btn btn-primary" >No Trash</a>
+            <a v-if="deleteData.length>0" class="btn btn-danger ml-3" v-on:click="deleteManyData()" >Delete</a>
         </div>
         <!-- /.card-header -->
         <template v-if="actions.read">
@@ -40,9 +41,8 @@
               </thead>
               <tbody>
                 <tr v-for="category in categories.data" :key="category.id">
-                    <template v-if="((this.$route.name=='category' && category.deleted_at==null)||
-                    (this.$route.name=='category_bin' && category.deleted_at!==null))">
-                  <td>{{ category.name }}</td>
+                    <template v-if="showData(this.$route,category,'category')">
+                  <td><input class="form-check-input" type="checkbox" :value="category.id" @change="check($event,deleteData)">{{ category.name }}</td>
                   <td>{{ category.deleted_at }}</td>
                   <td class="text-left">
                     <ViewButton :data_name="category.name" :data_model="content" :data_id="category.id" />
@@ -89,7 +89,7 @@
 
     import Loading from '../components/Loading';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , showTrashPage } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , showTrashPage , checkToDelete , showWithTrashData , deleteMultipleData } from '../helpers/check.js';
 
     export default {
         components: {
@@ -105,6 +105,7 @@
         data () {
            return {
             content : 'Category',
+            deleteData : [],
             categories : {},
             search : null ,
             currentPage : 1 ,
@@ -117,6 +118,15 @@
         }
     },
     methods :{
+        deleteManyData(){
+            deleteMultipleData(this.categories.data,this.deleteData)
+        },
+        showData(route,object,pageName){
+            return showWithTrashData(route,object,pageName)
+        },
+        check($event,deleteData){
+            checkToDelete($event,deleteData)
+        },
         changePage(){
             showTrashPage(this.$route,this.$router,'category')
             this.getCategories(1);

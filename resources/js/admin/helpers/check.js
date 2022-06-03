@@ -1,3 +1,32 @@
+export function checkToDelete($event,deleteData){
+    switch($event.target.checked){
+        case true:
+        deleteData.push($event.target.value)
+        break;
+
+        case false:
+        deleteFromArray(deleteData,$event.target.value)
+        break;
+    }
+}
+export function deleteMultipleData(mainArray,deleteArray) {
+    for (var i = 0; i < mainArray.length; i++) {
+                if(deleteArray.includes(mainArray[i].id.toString())){
+                    mainArray[i].deleted_at='not null';
+                    deleteFromArray(deleteArray,mainArray[i].id.toString())
+                }
+            }
+}
+export function deleteFromArray(array,value) {
+    const index = array.indexOf(value);
+        if (index > -1) {
+            array.splice(index, 1);
+        }
+}
+export function showWithTrashData(route,object,pageName){
+    return ((route.name==pageName && object.deleted_at==null)||
+                    (route.name==pageName+'_bin' && object.deleted_at!==null));
+}
 export function checkContentPermission(content,permission,object){
 	window.axios.get('check_permission/'+content+'/'+permission).then( (response) => {
         if(response.data.message=='Loading'){
