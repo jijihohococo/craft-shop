@@ -10,7 +10,8 @@
 	</a>
 	<ul class="nav nav-treeview" :style="[ menu==true ? 'display : block' : 'display : none']" >
 	<li class="nav-item" v-for="(dataRoute, route) in dataRoutes">
-		<router-link :to="'/admin/'+route" :class="[ (currentRoute == route) || 
+		<router-link :to="'/admin/'+route" :class="[ (currentRoute == route) ||
+		(route+'_bin'==currentRoute) || 
 		(route+'.edit'==currentRoute) || (route+'.create'==currentRoute) || (this.$route.params.model!==null && this.$route.params.model==dataRoute)  ? 'nav-link active' : 'nav-link' ]" >
 		<p>{{ dataRoute }}</p>
 	</router-link>
@@ -49,7 +50,8 @@
 		},
 		methods : {
 			checkMenus(route=null){
-				return	(route in this.$props.dataRoutes)  || 
+				return	(route in this.$props.dataRoutes)  ||
+				(route.replace('_bin','') in this.$props.dataRoutes ) ||
 				(route.replace('.edit', '') in this.$props.dataRoutes) || 
 				(route.replace('.create','') in this.$props.dataRoutes ) || 
 				(route=='transaction' && this.$route.params.model!==null && 

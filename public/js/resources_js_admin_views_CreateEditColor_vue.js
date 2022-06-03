@@ -524,6 +524,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "checkContentPermission": () => (/* binding */ checkContentPermission),
+/* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
 /* harmony export */   "checkAuthorize": () => (/* binding */ checkAuthorize),
 /* harmony export */   "checkCreateEditPermission": () => (/* binding */ checkCreateEditPermission),
@@ -540,6 +541,19 @@ function checkContentPermission(content, permission, object) {
   })["catch"](function (error) {
     errorResponse(error, object);
   });
+}
+function showTrashPage(route, router, pageName) {
+  switch (route.name) {
+    case pageName:
+      router.push('/admin/' + pageName + '_bin');
+      route.name = pageName + '_bin';
+      break;
+
+    case pageName + '_bin':
+      router.push('/admin/' + pageName);
+      route.name = pageName;
+      break;
+  }
 }
 function errorResponse(error, object) {
   var action = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;

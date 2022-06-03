@@ -5,9 +5,23 @@ export function checkContentPermission(content,permission,object){
         }else{
             object.actions[permission]=true;
         }
-	} ).catch( (error) => {
-		errorResponse(error,object)
-	} )
+    } ).catch( (error) => {
+      errorResponse(error,object)
+  } )
+}
+
+export function showTrashPage(route,router,pageName){
+    switch(route.name){
+        case pageName:
+        router.push('/admin/'+pageName+'_bin');
+        route.name=pageName+'_bin';
+        break;
+
+        case pageName+'_bin':
+        router.push('/admin/'+pageName);
+        route.name=pageName;
+        break;
+    }
 }
 
 export function errorResponse(error,object,action=null){

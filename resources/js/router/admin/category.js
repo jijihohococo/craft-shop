@@ -16,5 +16,10 @@ export default [
 		path : 'category/edit/:id',
 		component : CreateEditCategory,
 		name : 'category.edit'
+	},
+	{
+		path : 'category_bin',
+		component : Category,
+		name : 'category_bin'
 	}
 ]

@@ -204,7 +204,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     checkMenus: function checkMenus() {
       var route = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-      return route in this.$props.dataRoutes || route.replace('.edit', '') in this.$props.dataRoutes || route.replace('.create', '') in this.$props.dataRoutes || route == 'transaction' && this.$route.params.model !== null && (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.getModel)(this.$route.params.model) in this.$props.dataRoutes;
+      return route in this.$props.dataRoutes || route.replace('_bin', '') in this.$props.dataRoutes || route.replace('.edit', '') in this.$props.dataRoutes || route.replace('.create', '') in this.$props.dataRoutes || route == 'transaction' && this.$route.params.model !== null && (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.getModel)(this.$route.params.model) in this.$props.dataRoutes;
     }
   }
 });
@@ -573,7 +573,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.dataRoutes, function (dataRoute, route) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: '/admin/' + route,
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$props.currentRoute == route || route + '.edit' == $props.currentRoute || route + '.create' == $props.currentRoute || _this.$route.params.model !== null && _this.$route.params.model == dataRoute ? 'nav-link active' : 'nav-link'])
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$props.currentRoute == route || route + '_bin' == $props.currentRoute || route + '.edit' == $props.currentRoute || route + '.create' == $props.currentRoute || _this.$route.params.model !== null && _this.$route.params.model == dataRoute ? 'nav-link active' : 'nav-link'])
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(dataRoute), 1
@@ -606,6 +606,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "checkContentPermission": () => (/* binding */ checkContentPermission),
+/* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
 /* harmony export */   "checkAuthorize": () => (/* binding */ checkAuthorize),
 /* harmony export */   "checkCreateEditPermission": () => (/* binding */ checkCreateEditPermission),
@@ -622,6 +623,19 @@ function checkContentPermission(content, permission, object) {
   })["catch"](function (error) {
     errorResponse(error, object);
   });
+}
+function showTrashPage(route, router, pageName) {
+  switch (route.name) {
+    case pageName:
+      router.push('/admin/' + pageName + '_bin');
+      route.name = pageName + '_bin';
+      break;
+
+    case pageName + '_bin':
+      router.push('/admin/' + pageName);
+      route.name = pageName;
+      break;
+  }
 }
 function errorResponse(error, object) {
   var action = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;

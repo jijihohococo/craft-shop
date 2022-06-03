@@ -22,7 +22,15 @@ class CategoryController extends Controller
     {
         //
         return response()->json([
-            'categories' => Category::withTrashed()->latest('id')->paginate(10)
+            'categories' => Category::latest('id')->paginate(10)
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'categories' => Category::onlyTrashed()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 

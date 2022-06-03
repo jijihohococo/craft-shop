@@ -24,9 +24,17 @@ class ItemController extends Controller
     {
         //
         return response()->json([
-            'items' => Item::withTrashed()
-            ->selectCategory()
+            'items' => Item::selectCategory()
             ->latest('id')->paginate(10)
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'items' => Item::onlyTrashed()
+            ->selectCategory()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 

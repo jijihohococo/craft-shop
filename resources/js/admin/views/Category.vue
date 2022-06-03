@@ -23,6 +23,10 @@
             </div>
             <CreateButton v-if="actions.create" :content="content" :link="'/admin/category/create'" />
         </div>
+        <div class="card-header row">
+            <a v-if="this.$route.name=='category'" v-on:click="changePage()" class="btn btn-secondary" >Trash</a>
+            <a v-else v-on:click="changePage()" class="btn btn-primary" >No Trash</a>
+        </div>
         <!-- /.card-header -->
         <template v-if="actions.read">
             <div class="card-body table-responsive p-0">
@@ -36,6 +40,8 @@
               </thead>
               <tbody>
                 <tr v-for="category in categories.data" :key="category.id">
+                    <template v-if="((this.$route.name=='category' && category.deleted_at==null)||
+                    (this.$route.name=='category_bin' && category.deleted_at!==null))">
                   <td>{{ category.name }}</td>
                   <td>{{ category.deleted_at }}</td>
                   <td class="text-left">
@@ -44,6 +50,7 @@
                     <Delete v-if="actions.delete" :content="content" :deleteAt="category.deleted_at" :deleteLink="'categories/'+category.id" :restoreLink="'category_restore/'+category.id"
                     :id="category.id" :objectData="category" @update="updateData" />
                 </td>
+            </template>
             </tr>
         </tbody>
     </table>
@@ -82,7 +89,7 @@
 
     import Loading from '../components/Loading';
 
-    import { errorResponse , checkContentPermission , showSwalLoading } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , showTrashPage } from '../helpers/check.js';
 
     export default {
         components: {
@@ -110,12 +117,17 @@
         }
     },
     methods :{
+        changePage(){
+            showTrashPage(this.$route,this.$router,'category')
+            this.getCategories(1);
+        },
         updateData(object,deletedTime){
             object.deleted_at=deletedTime;
         },
         getCategories(page){
             this.currentPage=page;
-            window.axios.get("categories?page=" + page ).then(( response ) =>  {
+            let route=this.$route.name=='category' ? 'categories' : 'trash_categories';
+            window.axios.get(route+"?page=" + page ).then(( response ) =>  {
                 if(response.data.message=='Loading'){
 
                     showSwalLoading(this);
