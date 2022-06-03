@@ -119,20 +119,20 @@ class CategoryController extends Controller
         return response()->json([
             'message' => $category->name . ' Category is deleted successfully',
             'deleted_at' => $category->deleted_at
-      ]);
+        ]);
         
     }
 
     public function restore($id){
-       $category=Category::withTrashed()->findOrFail($id);
-       $category->restore();
-       return response()->json([
-          'message' => $category->name . ' Category is restored successfully',
-          'deleted_at' => $category->deleted_at
-      ]);   
-   }
+     $category=Category::withTrashed()->findOrFail($id);
+     $category->restore();
+     return response()->json([
+      'message' => $category->name . ' Category is restored successfully',
+      'deleted_at' => $category->deleted_at
+  ]);   
+ }
 
-   private function validateData($id=NULL){
+ private function validateData($id=NULL){
     return [
         'name' => ['required', 'string', 'max:100', $id==null ? 'unique:categories' : 'unique:categories,name,'.$id ]
     ];
@@ -158,6 +158,17 @@ public function deleteMultiple(Request $request){
     Category::whereIn('id',$categories)->delete();
     return response()->json([
         'message' => 'Categories are deleted'
+    ]);
+}
+
+public function restoreMultiple(Request $request){
+    $request->validate([
+        'categories' => ['required','string']
+    ]);
+    $categories=explode(',', $request->categories);
+    Category::withTrashed()->whereIn('id',$categories)->restore();
+    return response()->json([
+        'message' => 'Categories are restored'
     ]);
 }
 }

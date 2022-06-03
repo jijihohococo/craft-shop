@@ -4,13 +4,24 @@
 <script >
 	import { deleteMultipleData , makeDeleteAt } from '../helpers/check.js';
 	export default {
-		props : ['deleteArrayData','objectArrayData','routeName'],
+		props : ['deleteArrayData','objectArrayData','routeName','request'],
 		methods : {
 			deleteManyData(){
-					makeDeleteAt(this.$props.objectArrayData,
-						this.$props.routeName.includes('_bin') ?null :'not_null')
+				let route=null;
+				let data=null;
+				if(this.$props.routeName.includes('_bin')){
+					route='restore_'+this.$props.request;
+				}else{
+					route='delete_'+this.$props.request;
+					data='not_null';
+				}
+				window.axios.delete(route+"?"+
+					this.$props.request +"="+
+					this.$props.deleteArrayData ).then(( response ) =>  {
+					makeDeleteAt(this.$props.objectArrayData,data )
 					deleteMultipleData(this.$props.deleteArrayData)
 					deleteMultipleData(this.$props.objectArrayData)
+				})
 			}
 		}
 	}

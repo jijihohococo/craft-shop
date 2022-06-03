@@ -12,6 +12,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('get_categories','Admin\CategoryController@get');
 	Route::get('trash_categories','Admin\CategoryController@trash');
 	Route::delete('delete_categories','Admin\CategoryController@deleteMultiple');
+	Route::delete('restore_categories','Admin\CategoryController@restoreMultiple');
 	
 	Route::resource('banners','Admin\BannerController');
 	Route::get('banner_search','Admin\BannerController@search');

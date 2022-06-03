@@ -27,11 +27,14 @@
             <Trash :route="this.$route"
             :router="this.$router"
             content='category'
+            :deleteArrayData="deleteData"
+            :objectArrayData="multipeData"
             @getData="getCategories" />
             <DeleteMultiple 
             :deleteArrayData="deleteData"
             :objectArrayData="multipeData"
-            :routeName="this.$route.name" />
+            :routeName="this.$route.name"
+            request="categories" />
         </div>
         <!-- /.card-header -->
         <template v-if="actions.read">

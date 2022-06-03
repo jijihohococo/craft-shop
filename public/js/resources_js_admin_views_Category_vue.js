@@ -163,12 +163,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['deleteArrayData', 'objectArrayData', 'routeName'],
+  props: ['deleteArrayData', 'objectArrayData', 'routeName', 'request'],
   methods: {
     deleteManyData: function deleteManyData() {
-      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.makeDeleteAt)(this.$props.objectArrayData, this.$props.routeName.includes('_bin') ? null : 'not_null');
-      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(this.$props.deleteArrayData);
-      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(this.$props.objectArrayData);
+      var _this = this;
+
+      var route = null;
+      var data = null;
+
+      if (this.$props.routeName.includes('_bin')) {
+        route = 'restore_' + this.$props.request;
+      } else {
+        route = 'delete_' + this.$props.request;
+        data = 'not_null';
+      }
+
+      window.axios["delete"](route + "?" + this.$props.request + "=" + this.$props.deleteArrayData).then(function (response) {
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.makeDeleteAt)(_this.$props.objectArrayData, data);
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(_this.$props.deleteArrayData);
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(_this.$props.objectArrayData);
+      });
     }
   }
 });
@@ -311,10 +325,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['router', 'route', 'content'],
+  props: ['router', 'route', 'content', 'deleteArrayData', 'objectArrayData'],
   emits: ['getData'],
   methods: {
     changePage: function changePage() {
+      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(this.$props.deleteArrayData);
+      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(this.$props.objectArrayData);
       (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.showTrashPage)(this.$props.route, this.$props.router, this.$props.content);
       this.$emit('getData');
     }
@@ -1371,13 +1387,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     route: this.$route,
     router: this.$router,
     content: "category",
+    deleteArrayData: $data.deleteData,
+    objectArrayData: $data.multipeData,
     onGetData: $options.getCategories
   }, null, 8
   /* PROPS */
-  , ["route", "router", "onGetData"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteMultiple, {
+  , ["route", "router", "deleteArrayData", "objectArrayData", "onGetData"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteMultiple, {
     deleteArrayData: $data.deleteData,
     objectArrayData: $data.multipeData,
-    routeName: this.$route.name
+    routeName: this.$route.name,
+    request: "categories"
   }, null, 8
   /* PROPS */
   , ["deleteArrayData", "objectArrayData", "routeName"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
