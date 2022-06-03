@@ -1,21 +1,23 @@
-export function checkToDelete($event,deleteData){
+export function makeDeleteAt(objectArrayData,data) {
+    objectArrayData.map((object)=>{
+        object.deleted_at=data
+    })
+}
+export function checkToDelete($event,objectData,deleteArrayData,objectArrayData){
     switch($event.target.checked){
         case true:
-        deleteData.push($event.target.value)
+        deleteArrayData.push( objectData.id )
+        objectArrayData.push( objectData )
         break;
 
         case false:
-        deleteFromArray(deleteData,$event.target.value)
+        deleteFromArray(deleteArrayData, objectData.id )
+        deleteFromArray(objectArrayData,objectData)
         break;
     }
 }
-export function deleteMultipleData(mainArray,deleteArray) {
-    for (var i = 0; i < mainArray.length; i++) {
-                if(deleteArray.includes(mainArray[i].id.toString())){
-                    mainArray[i].deleted_at='not null';
-                    deleteFromArray(deleteArray,mainArray[i].id.toString())
-                }
-            }
+export function deleteMultipleData(mainArray) {
+    mainArray.length=0;
 }
 export function deleteFromArray(array,value) {
     const index = array.indexOf(value);

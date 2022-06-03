@@ -1257,6 +1257,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "makeDeleteAt": () => (/* binding */ makeDeleteAt),
 /* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
 /* harmony export */   "deleteMultipleData": () => (/* binding */ deleteMultipleData),
 /* harmony export */   "deleteFromArray": () => (/* binding */ deleteFromArray),
@@ -1269,24 +1270,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
-function checkToDelete($event, deleteData) {
+function makeDeleteAt(objectArrayData, data) {
+  objectArrayData.map(function (object) {
+    object.deleted_at = data;
+  });
+}
+function checkToDelete($event, objectData, deleteArrayData, objectArrayData) {
   switch ($event.target.checked) {
     case true:
-      deleteData.push($event.target.value);
+      deleteArrayData.push(objectData.id);
+      objectArrayData.push(objectData);
       break;
 
     case false:
-      deleteFromArray(deleteData, $event.target.value);
+      deleteFromArray(deleteArrayData, objectData.id);
+      deleteFromArray(objectArrayData, objectData);
       break;
   }
 }
-function deleteMultipleData(mainArray, deleteArray) {
-  for (var i = 0; i < mainArray.length; i++) {
-    if (deleteArray.includes(mainArray[i].id.toString())) {
-      mainArray[i].deleted_at = 'not null';
-      deleteFromArray(deleteArray, mainArray[i].id.toString());
-    }
-  }
+function deleteMultipleData(mainArray) {
+  mainArray.length = 0;
 }
 function deleteFromArray(array, value) {
   var index = array.indexOf(value);

@@ -24,9 +24,14 @@
             <CreateButton v-if="actions.create" :content="content" :link="'/admin/category/create'" />
         </div>
         <div class="card-header row">
-            <a v-if="this.$route.name=='category'" v-on:click="changePage()" class="btn btn-secondary" >Trash</a>
-            <a v-else v-on:click="changePage()" class="btn btn-primary" >No Trash</a>
-            <a v-if="deleteData.length>0" class="btn btn-danger ml-3" v-on:click="deleteManyData()" >Delete</a>
+            <Trash :route="this.$route"
+            :router="this.$router"
+            content='category'
+            @getData="getCategories" />
+            <DeleteMultiple 
+            :deleteArrayData="deleteData"
+            :objectArrayData="multipeData"
+            :routeName="this.$route.name" />
         </div>
         <!-- /.card-header -->
         <template v-if="actions.read">
@@ -34,39 +39,44 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Deleted At</th>
-                      <th>Operation</th>
-                  </tr>
-              </thead>
-              <tbody>
-                <tr v-for="category in categories.data" :key="category.id">
-                    <template v-if="showData(this.$route,category,'category')">
-                  <td><input class="form-check-input" type="checkbox" :value="category.id" @change="check($event,deleteData)">{{ category.name }}</td>
-                  <td>{{ category.deleted_at }}</td>
-                  <td class="text-left">
-                    <ViewButton :data_name="category.name" :data_model="content" :data_id="category.id" />
-                    <EditButton v-if="actions.update && category.deleted_at==null" :content="content" :link="'category.edit'" :dataId="category.id" />
-                    <Delete v-if="actions.delete" :content="content" :deleteAt="category.deleted_at" :deleteLink="'categories/'+category.id" :restoreLink="'category_restore/'+category.id"
-                    :id="category.id" :objectData="category" @update="updateData" />
-                </td>
-            </template>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<!-- /.card-body -->
-<div class="card-footer clearfix">
-    <Pagination :page="currentPage" :lastPage="categories.last_page" @getData="getCategories" @searchData="searchCategories" :search="search" :from="categories.from" :to="categories.to" :total="categories.total" />
-</div>
-</template>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Deleted At</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="category in categories.data" :key="category.id">
+                        <template v-if="showData(this.$route,category,'category')">
+                          <td><DeleteCheck :objectData="category"
+                            :deleteArrayData="deleteData"
+                            :objectArrayData="multipeData"
+                            /></td>
+                            <td>{{ category.name }}</td>
+                            <td>{{ category.deleted_at }}</td>
+                            <td class="text-left">
+                                <ViewButton :data_name="category.name" :data_model="content" :data_id="category.id" />
+                                <EditButton v-if="actions.update && category.deleted_at==null" :content="content" :link="'category.edit'" :dataId="category.id" />
+                                <Delete v-if="actions.delete" :content="content" :deleteAt="category.deleted_at" :deleteLink="'categories/'+category.id" :restoreLink="'category_restore/'+category.id"
+                                :id="category.id" :objectData="category" @update="updateData" />
+                            </td>
+                        </template>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+            <Pagination :page="currentPage" :lastPage="categories.last_page" @getData="getCategories" @searchData="searchCategories" :search="search" :from="categories.from" :to="categories.to" :total="categories.total" />
+        </div>
+    </template>
 </div>
 <!-- /.card -->
 </div>
 </div>
 <!-- /.row -->
 <div v-else-if="actions.create==false && actions.read==false && actions.update==false && actions.delete==false" class="card card-default">
- <Error :httpStatus="403" :title="'Permission Denied'" :description="'You are not allowed to do any permissions for Category'" />
+   <Error :httpStatus="403" :title="'Permission Denied'" :description="'You are not allowed to do any permissions for Category'" />
 </div>
 </div>
 </section>
@@ -89,7 +99,13 @@
 
     import Loading from '../components/Loading';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , showTrashPage , checkToDelete , showWithTrashData , deleteMultipleData } from '../helpers/check.js';
+    import DeleteCheck from '../components/DeleteCheck';
+
+    import Trash from '../components/Trash';
+
+    import DeleteMultiple from '../components/DeleteMultiple';
+
+    import { errorResponse , checkContentPermission , showSwalLoading , showWithTrashData } from '../helpers/check.js';
 
     export default {
         components: {
@@ -100,12 +116,16 @@
             EditButton,
             ViewButton,
             Error,
-            Loading
+            Loading,
+            DeleteCheck,
+            Trash,
+            DeleteMultiple
         },
         data () {
-           return {
+         return {
             content : 'Category',
             deleteData : [],
+            multipeData : [] ,
             categories : {},
             search : null ,
             currentPage : 1 ,
@@ -118,18 +138,8 @@
         }
     },
     methods :{
-        deleteManyData(){
-            deleteMultipleData(this.categories.data,this.deleteData)
-        },
         showData(route,object,pageName){
             return showWithTrashData(route,object,pageName)
-        },
-        check($event,deleteData){
-            checkToDelete($event,deleteData)
-        },
-        changePage(){
-            showTrashPage(this.$route,this.$router,'category')
-            this.getCategories(1);
         },
         updateData(object,deletedTime){
             object.deleted_at=deletedTime;
@@ -142,33 +152,33 @@
 
                     showSwalLoading(this);
                 }else{
-                 this.categories=response.data.categories
-                 this.actions.read=true;
-             }
-         } ).catch( (error) => {
+                   this.categories=response.data.categories
+                   this.actions.read=true;
+               }
+           } ).catch( (error) => {
             errorResponse(error,this,'read')
         } );
-     },
-     searchCategories(page){
+       },
+       searchCategories(page){
         this.currentPage=page;
         window.axios.get('category_search?search=' + this.search + '&page=' + page ).then( (response) => {
-         if(response.data.message=='Loading'){
+           if(response.data.message=='Loading'){
 
             showSwalLoading(this);
         }else{
-         this.categories=response.data.categories
-         this.actions.read=true;
-     }
- } ).catch( (error) => {
+           this.categories=response.data.categories
+           this.actions.read=true;
+       }
+   } ).catch( (error) => {
     errorResponse(error,this,'read');
 } )
 }
 },
 created(){
-   this.getCategories(1);
-   checkContentPermission(this.content,'create',this);
-   checkContentPermission(this.content,'update',this);
-   checkContentPermission(this.content,'delete',this);
+ this.getCategories(1);
+ checkContentPermission(this.content,'create',this);
+ checkContentPermission(this.content,'update',this);
+ checkContentPermission(this.content,'delete',this);
 },
 }
 </script>
