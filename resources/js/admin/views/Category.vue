@@ -8,74 +8,68 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header row">
-                    <div v-if="actions.read" class="card-tools col-8 mt-1">
-                        <form v-on:submit.prevent="searchCategories(1)">
-                          <div class="input-group" >
-                            <input type="text" name="table_search" v-model="search" class="form-control float-right" placeholder="Search">
-
-                            <div class="input-group-append">
-                              <button type="submit" class="btn btn-default" >
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <CreateButton v-if="actions.create" :content="content" :link="'/admin/category/create'" />
+                    <Search 
+                    :read="actions.read"
+                    ref="searchModal"
+                    @searchData="searchCategories"
+                    />
+                    <CreateButton v-if="actions.create" :content="content" :link="'/admin/category/create'" />
+                </div>
+                <div class="card-header row">
+                    <Trash :route="this.$route"
+                    :router="this.$router"
+                    content='category'
+                    :deleteArrayData="deleteData"
+                    :objectArrayData="multipeData"
+                    @getData="getCategories" />
+                    <DeleteMultiple 
+                    :deleteArrayData="deleteData"
+                    :objectArrayData="multipeData"
+                    :routeName="this.$route.name"
+                    request="categories" />
+                </div>
+                <!-- /.card-header -->
+                <template v-if="actions.read">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                          <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Deleted At</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="category in categories.data" :key="category.id">
+                                <template v-if="showData(this.$route,category,'category')">
+                                    <td>
+                                        <DeleteCheck :objectData="category"
+                                        :deleteArrayData="deleteData"
+                                        :objectArrayData="multipeData"
+                                        />
+                                    </td>
+                                    <td>{{ category.name }}</td>
+                                    <td>{{ category.deleted_at }}</td>
+                                    <td class="text-left">
+                                        <ViewButton :data_name="category.name" :data_model="content" :data_id="category.id" />
+                                        <EditButton v-if="actions.update && category.deleted_at==null" :content="content" :link="'category.edit'" :dataId="category.id" />
+                                        <Delete v-if="actions.delete" :content="content" :deleteAt="category.deleted_at" :deleteLink="'categories/'+category.id" :restoreLink="'category_restore/'+category.id"
+                                        :id="category.id" :objectData="category" @update="updateData" />
+                                    </td>
+                                </template>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer clearfix">
+                    <Pagination :page="currentPage" :lastPage="categories.last_page" @getData="getCategories" @searchData="searchCategories" :search="search" :from="categories.from" :to="categories.to" :total="categories.total" />
+                </div>
+            </template>
         </div>
-        <div class="card-header row">
-            <Trash :route="this.$route"
-            :router="this.$router"
-            content='category'
-            :deleteArrayData="deleteData"
-            :objectArrayData="multipeData"
-            @getData="getCategories" />
-            <DeleteMultiple 
-            :deleteArrayData="deleteData"
-            :objectArrayData="multipeData"
-            :routeName="this.$route.name"
-            request="categories" />
-        </div>
-        <!-- /.card-header -->
-        <template v-if="actions.read">
-            <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Deleted At</th>
-                        <th>Operation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="category in categories.data" :key="category.id">
-                        <template v-if="showData(this.$route,category,'category')">
-                          <td><DeleteCheck :objectData="category"
-                            :deleteArrayData="deleteData"
-                            :objectArrayData="multipeData"
-                            /></td>
-                            <td>{{ category.name }}</td>
-                            <td>{{ category.deleted_at }}</td>
-                            <td class="text-left">
-                                <ViewButton :data_name="category.name" :data_model="content" :data_id="category.id" />
-                                <EditButton v-if="actions.update && category.deleted_at==null" :content="content" :link="'category.edit'" :dataId="category.id" />
-                                <Delete v-if="actions.delete" :content="content" :deleteAt="category.deleted_at" :deleteLink="'categories/'+category.id" :restoreLink="'category_restore/'+category.id"
-                                :id="category.id" :objectData="category" @update="updateData" />
-                            </td>
-                        </template>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer clearfix">
-            <Pagination :page="currentPage" :lastPage="categories.last_page" @getData="getCategories" @searchData="searchCategories" :search="search" :from="categories.from" :to="categories.to" :total="categories.total" />
-        </div>
-    </template>
-</div>
-<!-- /.card -->
-</div>
+        <!-- /.card -->
+    </div>
 </div>
 <!-- /.row -->
 <div v-else-if="actions.create==false && actions.read==false && actions.update==false && actions.delete==false" class="card card-default">
@@ -108,10 +102,13 @@
 
     import DeleteMultiple from '../components/DeleteMultiple';
 
+    import Search from '../components/Search';
+
     import { errorResponse , checkContentPermission , showSwalLoading , showWithTrashData } from '../helpers/check.js';
 
     export default {
         components: {
+            Search,
             Pagination,
             ContentHeader,
             Delete,
@@ -130,7 +127,6 @@
             deleteData : [],
             multipeData : [] ,
             categories : {},
-            search : null ,
             currentPage : 1 ,
             actions : {
                 create : '' ,
@@ -164,7 +160,7 @@
        },
        searchCategories(page){
         this.currentPage=page;
-        window.axios.get('category_search?search=' + this.search + '&page=' + page ).then( (response) => {
+        window.axios.get('category_search?search=' + this.$refs.searchModal.searchData + '&page=' + page ).then( (response) => {
            if(response.data.message=='Loading'){
 
             showSwalLoading(this);

@@ -1,5 +1,5 @@
 <template>
-	<input class="form-check-input" type="checkbox" @change="check($event)">
+	<input class="form-check-input-lg" type="checkbox" @change="check($event)">
 </template>
 <script type="text/javascript">
 	import { checkToDelete } from '../helpers/check.js'
