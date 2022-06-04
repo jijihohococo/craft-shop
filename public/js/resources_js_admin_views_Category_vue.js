@@ -128,13 +128,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['deleteArrayData'],
+  props: ['deleteArrayData', 'lengthData'],
   emits: ['selectAll', 'cancelAll'],
   watch: {
     deleteArrayData: {
       deep: true,
       handler: function handler() {
-        this.$el.checked = this.$props.deleteArrayData.length == 3 ? true : false;
+        this.$el.checked = this.$props.deleteArrayData.length == this.$props.lengthData ? true : false;
       }
     }
   },
@@ -173,7 +173,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     check: function check($event) {
-      console.log($event.target.checked);
       (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.checkToDelete)($event.target.checked, this.$props.objectData, this.$props.deleteArrayData, this.$props.objectArrayData);
     }
   }
@@ -1546,10 +1545,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteAllCheck, {
     deleteArrayData: $data.deleteData,
     onSelectAll: $options.selectChecks,
-    onCancelAll: $options.cancelChecks
+    onCancelAll: $options.cancelChecks,
+    lengthData: $data.categories.data.length
   }, null, 8
   /* PROPS */
-  , ["deleteArrayData", "onSelectAll", "onCancelAll"])]), _hoisted_10, _hoisted_11, _hoisted_12])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.categories.data, function (category) {
+  , ["deleteArrayData", "onSelectAll", "onCancelAll", "lengthData"])]), _hoisted_10, _hoisted_11, _hoisted_12])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.categories.data, function (category) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: category.id
     }, [$options.showData(_this.$route, category, 'category') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {

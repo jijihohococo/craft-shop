@@ -39,6 +39,7 @@
                                     :deleteArrayData="deleteData"
                                     @selectAll="selectChecks"
                                     @cancelAll="cancelChecks"
+                                    :lengthData="categories.data.length"
                                     />
                                 </th>
                                 <th>Name</th>

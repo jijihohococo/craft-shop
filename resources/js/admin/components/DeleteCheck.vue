@@ -17,7 +17,6 @@
 		},
 		methods : {
 			check($event){
-				console.log($event.target.checked)
 				checkToDelete(
 					$event.target.checked,
 					this.$props.objectData,
