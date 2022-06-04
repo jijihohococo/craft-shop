@@ -794,8 +794,8 @@ function makeDeleteAt(objectArrayData, data) {
     object.deleted_at = data;
   });
 }
-function checkToDelete($event, objectData, deleteArrayData, objectArrayData) {
-  switch ($event.target.checked) {
+function checkToDelete(checked, objectData, deleteArrayData, objectArrayData) {
+  switch (checked) {
     case true:
       deleteArrayData.push(objectData.id);
       objectArrayData.push(objectData);

@@ -3,8 +3,8 @@ export function makeDeleteAt(objectArrayData,data) {
         object.deleted_at=data
     })
 }
-export function checkToDelete($event,objectData,deleteArrayData,objectArrayData){
-    switch($event.target.checked){
+export function checkToDelete(checked,objectData,deleteArrayData,objectArrayData){
+    switch(checked){
         case true:
         deleteArrayData.push( objectData.id )
         objectArrayData.push( objectData )

@@ -13,7 +13,7 @@
                     ref="searchModal"
                     @searchData="searchCategories"
                     />
-                    <CreateButton v-if="actions.create" :content="content" :link="'/admin/category/create'" />
+                    <CreateButton v-if="actions.create" :content="content" link="/admin/category/create" />
                 </div>
                 <div class="card-header row">
                     <Trash :route="this.$route"
@@ -34,7 +34,13 @@
                         <table class="table table-hover text-nowrap">
                           <thead>
                             <tr>
-                                <th></th>
+                                <th>
+                                    <DeleteAllCheck
+                                    :deleteArrayData="deleteData"
+                                    @selectAll="selectChecks"
+                                    @cancelAll="cancelChecks"
+                                    />
+                                </th>
                                 <th>Name</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
@@ -47,6 +53,7 @@
                                         <DeleteCheck :objectData="category"
                                         :deleteArrayData="deleteData"
                                         :objectArrayData="multipeData"
+                                        ref="deleteCheck"
                                         />
                                     </td>
                                     <td>{{ category.name }}</td>
@@ -64,7 +71,8 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                    <Pagination :page="currentPage" :lastPage="categories.last_page" @getData="getCategories" @searchData="searchCategories" :search="search" :from="categories.from" :to="categories.to" :total="categories.total" />
+                    <Pagination :page="currentPage" :lastPage="categories.last_page" @getData="getCategories" @searchData="searchCategories" 
+                    :search="search" :from="categories.from" :to="categories.to" :total="categories.total" />
                 </div>
             </template>
         </div>
@@ -73,7 +81,7 @@
 </div>
 <!-- /.row -->
 <div v-else-if="actions.create==false && actions.read==false && actions.update==false && actions.delete==false" class="card card-default">
-   <Error :httpStatus="403" :title="'Permission Denied'" :description="'You are not allowed to do any permissions for Category'" />
+   <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Category" />
 </div>
 </div>
 </section>
@@ -83,6 +91,8 @@
     import Pagination from '../components/Pagination';
 
     import Delete from '../components/Delete';
+
+    import DeleteAllCheck from '../components/DeleteAllCheck';
 
     import ContentHeader from '../components/ContentHeader';
 
@@ -119,7 +129,8 @@
             Loading,
             DeleteCheck,
             Trash,
-            DeleteMultiple
+            DeleteMultiple,
+            DeleteAllCheck
         },
         data () {
          return {
@@ -128,6 +139,7 @@
             multipeData : [] ,
             categories : {},
             currentPage : 1 ,
+            search : null ,
             actions : {
                 create : '' ,
                 read : '' ,
@@ -137,6 +149,22 @@
         }
     },
     methods :{
+        selectChecks(){
+            if(this.$refs.deleteCheck!==undefined){
+                this.$refs.deleteCheck.map( (deleteCheck) => {
+                    deleteCheck.$el.checked=true;
+                    deleteCheck.$el.dispatchEvent(new Event('change'))
+                } )
+            }
+        },
+        cancelChecks(){
+            if(this.$refs.deleteCheck!==undefined){
+                this.$refs.deleteCheck.map( (deleteCheck) => {
+                    deleteCheck.$el.checked=false;
+                    deleteCheck.$el.dispatchEvent(new Event('change'))
+                } )
+            }
+        },
         showData(route,object,pageName){
             return showWithTrashData(route,object,pageName)
         },
@@ -160,7 +188,8 @@
        },
        searchCategories(page){
         this.currentPage=page;
-        window.axios.get('category_search?search=' + this.$refs.searchModal.searchData + '&page=' + page ).then( (response) => {
+        this.search=this.refs.searchModal.searchData;
+        window.axios.get('category_search?search=' + this.search + '&page=' + page ).then( (response) => {
            if(response.data.message=='Loading'){
 
             showSwalLoading(this);
