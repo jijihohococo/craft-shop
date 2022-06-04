@@ -40,6 +40,7 @@
                                     @selectAll="selectChecks"
                                     @cancelAll="cancelChecks"
                                     :lengthData="categories.data.length"
+                                    ref="deleteAll"
                                     />
                                 </th>
                                 <th>Name</th>
@@ -82,7 +83,7 @@
 </div>
 <!-- /.row -->
 <div v-else-if="actions.create==false && actions.read==false && actions.update==false && actions.delete==false" class="card card-default">
-   <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Category" />
+ <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Category" />
 </div>
 </div>
 </section>
@@ -115,7 +116,7 @@
 
     import Search from '../components/Search';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , showWithTrashData } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , showWithTrashData , makeSelect } from '../helpers/check.js';
 
     export default {
         components: {
@@ -134,7 +135,7 @@
             DeleteAllCheck
         },
         data () {
-         return {
+           return {
             content : 'Category',
             deleteData : [],
             multipeData : [] ,
@@ -152,18 +153,12 @@
     methods :{
         selectChecks(){
             if(this.$refs.deleteCheck!==undefined){
-                this.$refs.deleteCheck.map( (deleteCheck) => {
-                    deleteCheck.$el.checked=true;
-                    deleteCheck.$el.dispatchEvent(new Event('change'))
-                } )
+                makeSelect(this.$refs.deleteCheck,true)
             }
         },
         cancelChecks(){
             if(this.$refs.deleteCheck!==undefined){
-                this.$refs.deleteCheck.map( (deleteCheck) => {
-                    deleteCheck.$el.checked=false;
-                    deleteCheck.$el.dispatchEvent(new Event('change'))
-                } )
+                makeSelect(this.$refs.deleteCheck,false)
             }
         },
         showData(route,object,pageName){
@@ -173,6 +168,9 @@
             object.deleted_at=deletedTime;
         },
         getCategories(page){
+            if(this.$refs.deleteAll!==undefined){
+                this.$refs.deleteAll.$el.checked=false
+            }
             this.currentPage=page;
             let route=this.$route.name=='category' ? 'categories' : 'trash_categories';
             window.axios.get(route+"?page=" + page ).then(( response ) =>  {
@@ -180,34 +178,34 @@
 
                     showSwalLoading(this);
                 }else{
-                   this.categories=response.data.categories
-                   this.actions.read=true;
-               }
-           } ).catch( (error) => {
+                 this.categories=response.data.categories
+                 this.actions.read=true;
+             }
+         } ).catch( (error) => {
             errorResponse(error,this,'read')
         } );
-       },
-       searchCategories(page){
+     },
+     searchCategories(page){
         this.currentPage=page;
-        this.search=this.refs.searchModal.searchData;
+        this.search=this.$refs.searchModal.searchData;
         window.axios.get('category_search?search=' + this.search + '&page=' + page ).then( (response) => {
-           if(response.data.message=='Loading'){
+         if(response.data.message=='Loading'){
 
             showSwalLoading(this);
         }else{
-           this.categories=response.data.categories
-           this.actions.read=true;
-       }
-   } ).catch( (error) => {
+         this.categories=response.data.categories
+         this.actions.read=true;
+     }
+ } ).catch( (error) => {
     errorResponse(error,this,'read');
 } )
 }
 },
 created(){
- this.getCategories(1);
- checkContentPermission(this.content,'create',this);
- checkContentPermission(this.content,'update',this);
- checkContentPermission(this.content,'delete',this);
+   this.getCategories(1);
+   checkContentPermission(this.content,'create',this);
+   checkContentPermission(this.content,'update',this);
+   checkContentPermission(this.content,'delete',this);
 },
 }
 </script>

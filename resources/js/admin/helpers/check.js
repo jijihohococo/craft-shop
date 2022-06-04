@@ -1,3 +1,9 @@
+export function makeSelect(deleteChecks,value) {
+    deleteChecks.map( (deleteCheck) => {
+        deleteCheck.$el.checked=value;
+        deleteCheck.$el.dispatchEvent(new Event('change'))
+    } )
+}
 export function makeDeleteAt(objectArrayData,data) {
     objectArrayData.map((object)=>{
         object.deleted_at=data
@@ -6,8 +12,12 @@ export function makeDeleteAt(objectArrayData,data) {
 export function checkToDelete(checked,objectData,deleteArrayData,objectArrayData){
     switch(checked){
         case true:
-        deleteArrayData.push( objectData.id )
-        objectArrayData.push( objectData )
+        if(!deleteArrayData.includes(objectData.id)){
+            deleteArrayData.push( objectData.id )
+        }
+        if(!objectArrayData.includes(objectData)){
+            objectArrayData.push( objectData )
+        }
         break;
 
         case false:
@@ -21,13 +31,13 @@ export function deleteMultipleData(mainArray) {
 }
 export function deleteFromArray(array,value) {
     const index = array.indexOf(value);
-        if (index > -1) {
-            array.splice(index, 1);
-        }
+    if (index > -1) {
+        array.splice(index, 1);
+    }
 }
 export function showWithTrashData(route,object,pageName){
     return ((route.name==pageName && object.deleted_at==null)||
-                    (route.name==pageName+'_bin' && object.deleted_at!==null));
+        (route.name==pageName+'_bin' && object.deleted_at!==null));
 }
 export function checkContentPermission(content,permission,object){
 	window.axios.get('check_permission/'+content+'/'+permission).then( (response) => {

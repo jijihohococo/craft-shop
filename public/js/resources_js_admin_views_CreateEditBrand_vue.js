@@ -776,6 +776,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
 /* harmony export */   "makeDeleteAt": () => (/* binding */ makeDeleteAt),
 /* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
 /* harmony export */   "deleteMultipleData": () => (/* binding */ deleteMultipleData),
@@ -789,6 +790,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
+function makeSelect(deleteChecks, value) {
+  deleteChecks.map(function (deleteCheck) {
+    deleteCheck.$el.checked = value;
+    deleteCheck.$el.dispatchEvent(new Event('change'));
+  });
+}
 function makeDeleteAt(objectArrayData, data) {
   objectArrayData.map(function (object) {
     object.deleted_at = data;
@@ -797,8 +804,14 @@ function makeDeleteAt(objectArrayData, data) {
 function checkToDelete(checked, objectData, deleteArrayData, objectArrayData) {
   switch (checked) {
     case true:
-      deleteArrayData.push(objectData.id);
-      objectArrayData.push(objectData);
+      if (!deleteArrayData.includes(objectData.id)) {
+        deleteArrayData.push(objectData.id);
+      }
+
+      if (!objectArrayData.includes(objectData)) {
+        objectArrayData.push(objectData);
+      }
+
       break;
 
     case false:
