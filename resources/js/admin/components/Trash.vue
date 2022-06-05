@@ -12,7 +12,7 @@
 				deleteMultipleData(this.$props.deleteArrayData)
 				deleteMultipleData(this.$props.objectArrayData)
 				showTrashPage(this.$props.route,this.$props.router,this.$props.content)
-				this.$emit('getData')
+				this.$emit('getData',1)
 			}
 		}
 	}

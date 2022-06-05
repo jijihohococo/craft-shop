@@ -107,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
 
         $('#deleteModal' + _this.$props.id).modal('hide');
 
-        _this.$emit('update', _this.$props.objectData, deletedTime);
+        _this.$emit('update', _this.$props.objectData);
       })["catch"](function (error) {
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this, 'delete');
       });
@@ -193,23 +193,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['deleteArrayData', 'objectArrayData', 'routeName', 'request'],
+  props: ['deleteArrayData', 'objectArrayData', 'routeName', 'request', 'mainData'],
   methods: {
     deleteManyData: function deleteManyData() {
       var _this = this;
 
-      var route = null;
-      var data = null;
-
-      if (this.$props.routeName.includes('_bin')) {
-        route = 'restore_' + this.$props.request;
-      } else {
-        route = 'delete_' + this.$props.request;
-        data = 'not_null';
-      }
-
+      var route = this.$props.routeName.includes('_bin') ? 'restore_' + this.$props.request : 'delete_' + this.$props.request;
       window.axios["delete"](route + "?" + this.$props.request + "=" + this.$props.deleteArrayData).then(function (response) {
-        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.makeDeleteAt)(_this.$props.objectArrayData, data);
+        _this.$props.objectArrayData.map(function (object) {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteFromArray)(_this.$props.mainData, object);
+        });
+
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(_this.$props.deleteArrayData);
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(_this.$props.objectArrayData);
       });
@@ -389,7 +383,7 @@ __webpack_require__.r(__webpack_exports__);
       (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(this.$props.deleteArrayData);
       (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(this.$props.objectArrayData);
       (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.showTrashPage)(this.$props.route, this.$props.router, this.$props.content);
-      this.$emit('getData');
+      this.$emit('getData', 1);
     }
   }
 });
@@ -435,15 +429,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Pagination */ "./resources/js/admin/components/Pagination.vue");
 /* harmony import */ var _components_Delete__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Delete */ "./resources/js/admin/components/Delete.vue");
 /* harmony import */ var _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/DeleteAllCheck */ "./resources/js/admin/components/DeleteAllCheck.vue");
-/* harmony import */ var _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/DeleteCheck */ "./resources/js/admin/components/DeleteCheck.vue");
-/* harmony import */ var _components_Trash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Trash */ "./resources/js/admin/components/Trash.vue");
-/* harmony import */ var _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/DeleteMultiple */ "./resources/js/admin/components/DeleteMultiple.vue");
-/* harmony import */ var _components_ContentHeader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/ContentHeader */ "./resources/js/admin/components/ContentHeader.vue");
-/* harmony import */ var _components_CreateButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/CreateButton */ "./resources/js/admin/components/CreateButton.vue");
-/* harmony import */ var _components_EditButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/EditButton */ "./resources/js/admin/components/EditButton.vue");
-/* harmony import */ var _components_ViewButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/ViewButton */ "./resources/js/admin/components/ViewButton.vue");
-/* harmony import */ var _components_Error__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/Error */ "./resources/js/admin/components/Error.vue");
-/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/Loading */ "./resources/js/admin/components/Loading.vue");
+/* harmony import */ var _components_ContentHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/ContentHeader */ "./resources/js/admin/components/ContentHeader.vue");
+/* harmony import */ var _components_CreateButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/CreateButton */ "./resources/js/admin/components/CreateButton.vue");
+/* harmony import */ var _components_EditButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/EditButton */ "./resources/js/admin/components/EditButton.vue");
+/* harmony import */ var _components_ViewButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/ViewButton */ "./resources/js/admin/components/ViewButton.vue");
+/* harmony import */ var _components_Error__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Error */ "./resources/js/admin/components/Error.vue");
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Loading */ "./resources/js/admin/components/Loading.vue");
+/* harmony import */ var _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/DeleteCheck */ "./resources/js/admin/components/DeleteCheck.vue");
+/* harmony import */ var _components_Trash__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/Trash */ "./resources/js/admin/components/Trash.vue");
+/* harmony import */ var _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/DeleteMultiple */ "./resources/js/admin/components/DeleteMultiple.vue");
 /* harmony import */ var _components_Search__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/Search */ "./resources/js/admin/components/Search.vue");
 /* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
 
@@ -462,19 +456,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    Search: _components_Search__WEBPACK_IMPORTED_MODULE_12__["default"],
     Pagination: _components_Pagination__WEBPACK_IMPORTED_MODULE_0__["default"],
-    ContentHeader: _components_ContentHeader__WEBPACK_IMPORTED_MODULE_6__["default"],
+    ContentHeader: _components_ContentHeader__WEBPACK_IMPORTED_MODULE_3__["default"],
     Delete: _components_Delete__WEBPACK_IMPORTED_MODULE_1__["default"],
-    DeleteAllCheck: _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_2__["default"],
-    DeleteCheck: _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_3__["default"],
-    CreateButton: _components_CreateButton__WEBPACK_IMPORTED_MODULE_7__["default"],
-    EditButton: _components_EditButton__WEBPACK_IMPORTED_MODULE_8__["default"],
-    ViewButton: _components_ViewButton__WEBPACK_IMPORTED_MODULE_9__["default"],
-    Error: _components_Error__WEBPACK_IMPORTED_MODULE_10__["default"],
-    Loading: _components_Loading__WEBPACK_IMPORTED_MODULE_11__["default"],
-    Trash: _components_Trash__WEBPACK_IMPORTED_MODULE_4__["default"],
-    DeleteMultiple: _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_5__["default"],
-    Search: _components_Search__WEBPACK_IMPORTED_MODULE_12__["default"]
+    CreateButton: _components_CreateButton__WEBPACK_IMPORTED_MODULE_4__["default"],
+    EditButton: _components_EditButton__WEBPACK_IMPORTED_MODULE_5__["default"],
+    ViewButton: _components_ViewButton__WEBPACK_IMPORTED_MODULE_6__["default"],
+    Error: _components_Error__WEBPACK_IMPORTED_MODULE_7__["default"],
+    Loading: _components_Loading__WEBPACK_IMPORTED_MODULE_8__["default"],
+    DeleteCheck: _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_9__["default"],
+    Trash: _components_Trash__WEBPACK_IMPORTED_MODULE_10__["default"],
+    DeleteMultiple: _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_11__["default"],
+    DeleteAllCheck: _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -493,6 +487,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    checkAuthorizeActions: function checkAuthorizeActions(actions) {
+      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.checkActions)(actions);
+    },
     selectChecks: function selectChecks() {
       if (this.$refs.deleteCheck !== undefined) {
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeSelect)(this.$refs.deleteCheck, true);
@@ -503,23 +500,13 @@ __webpack_require__.r(__webpack_exports__);
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeSelect)(this.$refs.deleteCheck, false);
       }
     },
-    showData: function showData(route, object, pageName) {
-      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showWithTrashData)(route, object, pageName);
-    },
-    updateData: function updateData(object, deletedTime) {
-      object.deleted_at = deletedTime;
+    updateData: function updateData(object) {
+      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.deleteFromArray)(this.attributes.data, object);
     },
     getAttributes: function getAttributes(page) {
       var _this = this;
 
-      if (this.$refs.deleteAll !== undefined) {
-        this.$refs.deleteAll.$el.checked = false;
-        this.search = null;
-      }
-
-      this.currentPage = page;
-      var route = this.$route.name == 'attribute' ? 'attributes' : 'trash_attributes';
-      window.axios.get(route + "?page=" + page).then(function (response) {
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'attribute') + "?page=" + page).then(function (response) {
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this);
         } else {
@@ -533,10 +520,7 @@ __webpack_require__.r(__webpack_exports__);
     searchAttributes: function searchAttributes(page) {
       var _this2 = this;
 
-      this.currentPage = page;
-      this.search = this.$refs.searchModal.searchData;
-      var route = this.$route.name == 'attribute' ? 'attribute_search' : 'attribute_trash_search';
-      window.axios.get(route + '?search=' + this.search + '&page=' + page).then(function (response) {
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'attribute', 'search') + '?search=' + this.search + '&page=' + page).then(function (response) {
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this2);
         } else {
@@ -860,7 +844,7 @@ __webpack_require__.r(__webpack_exports__);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.deleteArrayData.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
     key: 0,
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$props.routeName.includes('_bin') ? 'btn btn-secondary ml-3' : 'btn btn-danger ml-3']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$props.routeName.includes('_bin') ? 'btn btn-warning ml-3' : 'btn btn-danger ml-3']),
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.deleteManyData();
     })
@@ -1480,8 +1464,6 @@ var _hoisted_15 = {
   "class": "card card-default"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _this = this;
-
   var _component_ContentHeader = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ContentHeader");
 
   var _component_Loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Loading");
@@ -1512,7 +1494,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     header: $data.content
   }, null, 8
   /* PROPS */
-  , ["header"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Loading), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), $data.actions.create == true || $data.actions.read == true || $data.actions.update == true || $data.actions["delete"] == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Search, {
+  , ["header"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Loading), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), $options.checkAuthorizeActions($data.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Search, {
     read: $data.actions.read,
     ref: "searchModal",
     onSearchData: $options.searchAttributes
@@ -1537,10 +1519,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     deleteArrayData: $data.deleteData,
     objectArrayData: $data.multipleData,
     routeName: this.$route.name,
-    request: "attributes"
+    mainData: $data.attributes.data,
+    request: "data_attributes"
   }, null, 8
   /* PROPS */
-  , ["deleteArrayData", "objectArrayData", "routeName"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  , ["deleteArrayData", "objectArrayData", "routeName", "mainData"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteAllCheck, {
     deleteArrayData: $data.deleteData,
@@ -1553,8 +1536,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["deleteArrayData", "onSelectAll", "onCancelAll", "lengthData"])]), _hoisted_10, _hoisted_11, _hoisted_12])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.attributes.data, function (attribute) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: attribute.id
-    }, [$options.showData(_this.$route, attribute, 'attribute') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      key: 0
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteCheck, {
       objectData: attribute,
       deleteArrayData: $data.deleteData,
@@ -1591,9 +1572,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onUpdate: $options.updateData
     }, null, 8
     /* PROPS */
-    , ["content", "deleteAt", "deleteLink", "restoreLink", "id", "objectData", "onUpdate"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 64
-    /* STABLE_FRAGMENT */
-    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    , ["content", "deleteAt", "deleteLink", "restoreLink", "id", "objectData", "onUpdate"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
@@ -1613,8 +1592,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
     httpStatus: 403,
-    title: 'Permission Denied',
-    description: 'You are not allowed to do any permissions for Attribute'
+    title: "Permission Denied",
+    description: "You are not allowed to do any permissions for Attribute"
   })])], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 64
@@ -1632,13 +1611,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "checkActions": () => (/* binding */ checkActions),
+/* harmony export */   "UnauthorizedActions": () => (/* binding */ UnauthorizedActions),
 /* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
 /* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
-/* harmony export */   "makeDeleteAt": () => (/* binding */ makeDeleteAt),
 /* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
 /* harmony export */   "deleteMultipleData": () => (/* binding */ deleteMultipleData),
 /* harmony export */   "deleteFromArray": () => (/* binding */ deleteFromArray),
-/* harmony export */   "showWithTrashData": () => (/* binding */ showWithTrashData),
 /* harmony export */   "checkContentPermission": () => (/* binding */ checkContentPermission),
 /* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
@@ -1647,8 +1626,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
+function checkActions(actions) {
+  return actions.create == true || actions.read == true || actions.update == true || actions["delete"] == true;
+}
+function UnauthorizedActions(actions) {
+  return actions.create == false && actions.read == false && actions.update == false && actions["delete"] == false;
+}
+
+function changeWord(word) {
+  return word.slice(-1) == 'y' ? word.slice(0, -1) + 'ies' : word + 's';
+}
+
 function makeRoute(vm, page, name) {
   var search = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+  vm.currentPage = page;
 
   switch (search) {
     case null:
@@ -1659,25 +1650,20 @@ function makeRoute(vm, page, name) {
         vm.$refs.deleteAll.$el.checked = false;
       }
 
+      var routeName = changeWord(name);
+      return vm.$route.name == name ? routeName : 'trash_' + routeName;
       break;
 
     case 'search':
       vm.search = vm.$refs.searchModal.searchData;
+      return vm.$route.name == name ? name + '_search' : name + '_trash_search';
       break;
   }
-
-  vm.currentPage = page;
-  return vm.$route.name == name ? name + '_search' : name + '_trash_search';
 }
 function makeSelect(deleteChecks, value) {
   deleteChecks.map(function (deleteCheck) {
     deleteCheck.$el.checked = value;
     deleteCheck.$el.dispatchEvent(new Event('change'));
-  });
-}
-function makeDeleteAt(objectArrayData, data) {
-  objectArrayData.map(function (object) {
-    object.deleted_at = data;
   });
 }
 function checkToDelete(checked, objectData, deleteArrayData, objectArrayData) {
@@ -1708,9 +1694,6 @@ function deleteFromArray(array, value) {
   if (index > -1) {
     array.splice(index, 1);
   }
-}
-function showWithTrashData(route, object, pageName) {
-  return route.name == pageName && object.deleted_at == null || route.name == pageName + '_bin' && object.deleted_at !== null;
 }
 function checkContentPermission(content, permission, object) {
   window.axios.get('check_permission/' + content + '/' + permission).then(function (response) {

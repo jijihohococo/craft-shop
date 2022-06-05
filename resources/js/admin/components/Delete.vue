@@ -75,7 +75,7 @@
 							this.deleteMessage ,
 							this.$props.deleteAt==null ? 'error' : 'success'  );
 						$('#deleteModal'+this.$props.id).modal('hide')
-						this.$emit('update',this.$props.objectData,deletedTime)
+						this.$emit('update',this.$props.objectData)
 					} ).catch( (error) => {
 						errorResponse(error,this,'delete')
 					} )

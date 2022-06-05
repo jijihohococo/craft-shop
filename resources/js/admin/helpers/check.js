@@ -1,4 +1,14 @@
+export function checkActions(actions) {
+    return actions.create==true || actions.read==true || actions.update==true || actions.delete==true;
+}
+export function UnauthorizedActions(actions) {
+   return actions.create==false && actions.read==false && actions.update==false && actions.delete==false
+}
+function changeWord(word){
+    return word.slice(-1)=='y' ? word.slice(0, -1) + 'ies' : word + 's';
+}
 export function makeRoute(vm,page,name,search=null) {
+    vm.currentPage=page;
     switch(search){
         case null:
         vm.search=null;
@@ -6,25 +16,21 @@ export function makeRoute(vm,page,name,search=null) {
             vm.$refs.searchModal.searchData=null;
             vm.$refs.deleteAll.$el.checked=false
         }
+        let routeName=changeWord(name);
+        return vm.$route.name==name ? routeName : 'trash_' + routeName;
         break;
 
         case 'search':
         vm.search=vm.$refs.searchModal.searchData;
+        return vm.$route.name==name ? name + '_search' : name + '_trash_search';
         break;
     }
-    vm.currentPage=page;
-    return vm.$route.name==name ? name + '_search' : name + '_trash_search';
 }
 export function makeSelect(deleteChecks,value) {
     deleteChecks.map( (deleteCheck) => {
         deleteCheck.$el.checked=value;
         deleteCheck.$el.dispatchEvent(new Event('change'))
     } )
-}
-export function makeDeleteAt(objectArrayData,data) {
-    objectArrayData.map((object)=>{
-        object.deleted_at=data
-    })
 }
 export function checkToDelete(checked,objectData,deleteArrayData,objectArrayData){
     switch(checked){
@@ -52,10 +58,7 @@ export function deleteFromArray(array,value) {
         array.splice(index, 1);
     }
 }
-export function showWithTrashData(route,object,pageName){
-    return ((route.name==pageName && object.deleted_at==null)||
-        (route.name==pageName+'_bin' && object.deleted_at!==null));
-}
+
 export function checkContentPermission(content,permission,object){
 	window.axios.get('check_permission/'+content+'/'+permission).then( (response) => {
         if(response.data.message=='Loading'){

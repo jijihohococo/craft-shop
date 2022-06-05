@@ -1408,13 +1408,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "checkActions": () => (/* binding */ checkActions),
+/* harmony export */   "UnauthorizedActions": () => (/* binding */ UnauthorizedActions),
 /* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
 /* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
-/* harmony export */   "makeDeleteAt": () => (/* binding */ makeDeleteAt),
 /* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
 /* harmony export */   "deleteMultipleData": () => (/* binding */ deleteMultipleData),
 /* harmony export */   "deleteFromArray": () => (/* binding */ deleteFromArray),
-/* harmony export */   "showWithTrashData": () => (/* binding */ showWithTrashData),
 /* harmony export */   "checkContentPermission": () => (/* binding */ checkContentPermission),
 /* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
@@ -1423,8 +1423,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
+function checkActions(actions) {
+  return actions.create == true || actions.read == true || actions.update == true || actions["delete"] == true;
+}
+function UnauthorizedActions(actions) {
+  return actions.create == false && actions.read == false && actions.update == false && actions["delete"] == false;
+}
+
+function changeWord(word) {
+  return word.slice(-1) == 'y' ? word.slice(0, -1) + 'ies' : word + 's';
+}
+
 function makeRoute(vm, page, name) {
   var search = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+  vm.currentPage = page;
 
   switch (search) {
     case null:
@@ -1435,25 +1447,20 @@ function makeRoute(vm, page, name) {
         vm.$refs.deleteAll.$el.checked = false;
       }
 
+      var routeName = changeWord(name);
+      return vm.$route.name == name ? routeName : 'trash_' + routeName;
       break;
 
     case 'search':
       vm.search = vm.$refs.searchModal.searchData;
+      return vm.$route.name == name ? name + '_search' : name + '_trash_search';
       break;
   }
-
-  vm.currentPage = page;
-  return vm.$route.name == name ? name + '_search' : name + '_trash_search';
 }
 function makeSelect(deleteChecks, value) {
   deleteChecks.map(function (deleteCheck) {
     deleteCheck.$el.checked = value;
     deleteCheck.$el.dispatchEvent(new Event('change'));
-  });
-}
-function makeDeleteAt(objectArrayData, data) {
-  objectArrayData.map(function (object) {
-    object.deleted_at = data;
   });
 }
 function checkToDelete(checked, objectData, deleteArrayData, objectArrayData) {
@@ -1484,9 +1491,6 @@ function deleteFromArray(array, value) {
   if (index > -1) {
     array.splice(index, 1);
   }
-}
-function showWithTrashData(route, object, pageName) {
-  return route.name == pageName && object.deleted_at == null || route.name == pageName + '_bin' && object.deleted_at !== null;
 }
 function checkContentPermission(content, permission, object) {
   window.axios.get('check_permission/' + content + '/' + permission).then(function (response) {

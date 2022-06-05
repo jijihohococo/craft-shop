@@ -181,9 +181,9 @@ class AttributeController extends Controller
 
     public function deleteMultiple(Request $request){
         $request->validate([
-            'attributes' => ['required','string']
+            'data_attributes' => ['required','string']
         ]);
-        $attributes=explode(',', $request->attributes);
+        $attributes=explode(',', $request->data_attributes);
         Attribute::whereIn('id',$attributes)->delete();
         return response()->json([
             'message' => 'Attributes are deleted'

@@ -107,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
 
         $('#deleteModal' + _this.$props.id).modal('hide');
 
-        _this.$emit('update', _this.$props.objectData, deletedTime);
+        _this.$emit('update', _this.$props.objectData);
       })["catch"](function (error) {
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this, 'delete');
       });
@@ -308,6 +308,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       content: 'Banner',
+      deleteData: [],
+      multipleData: [],
       banners: {},
       search: null,
       currentPage: 1,
@@ -320,6 +322,19 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    checkAuthorizeActions: function checkAuthorizeActions(actions) {
+      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_8__.checkActions)(actions);
+    },
+    selectChecks: function selectChecks() {
+      if (this.$refs.deleteCheck !== undefined) {
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_8__.makeSelect)(this.$refs.deleteCheck, true);
+      }
+    },
+    cancelChecks: function cancelChecks() {
+      if (this.$refs.deleteCheck !== undefined) {
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_8__.makeSelect)(this.$refs.deleteCheck, false);
+      }
+    },
     updateData: function updateData(object, deletedTime) {
       object.deleted_at = deletedTime;
     },
@@ -1095,32 +1110,24 @@ var _hoisted_6 = {
   "class": "card-header row"
 };
 var _hoisted_7 = {
-  key: 0,
-  "class": "card-tools col-8 mt-1"
+  "class": "card-header row"
 };
 var _hoisted_8 = {
-  "class": "input-group"
-};
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "input-group-append"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "submit",
-  "class": "btn btn-default"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fas fa-search"
-})])], -1
-/* HOISTED */
-);
-
-var _hoisted_10 = {
   "class": "card-body table-responsive p-0"
 };
-var _hoisted_11 = {
+var _hoisted_9 = {
   "class": "table table-hover text-nowrap"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Deleted At"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Operation")])], -1
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Title", -1
+/* HOISTED */
+);
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Deleted At", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Operation", -1
 /* HOISTED */
 );
 
@@ -1138,7 +1145,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_Loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Loading");
 
+  var _component_Search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Search");
+
   var _component_CreateButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CreateButton");
+
+  var _component_Trash = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Trash");
+
+  var _component_DeleteMultiple = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DeleteMultiple");
+
+  var _component_DeleteAllCheck = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DeleteAllCheck");
+
+  var _component_DeleteCheck = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DeleteCheck");
 
   var _component_ViewButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ViewButton");
 
@@ -1154,34 +1171,56 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     header: $data.content
   }, null, 8
   /* PROPS */
-  , ["header"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Loading), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), $data.actions.create == true || $data.actions.read == true || $data.actions.update == true || $data.actions["delete"] == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [$data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $options.searchBanners(1);
-    }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    name: "table_search",
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $data.search = $event;
-    }),
-    "class": "form-control float-right",
-    placeholder: "Search"
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_9])], 32
-  /* HYDRATE_EVENTS */
-  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.actions.create ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CreateButton, {
-    key: 1,
+  , ["header"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Loading), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), $options.checkAuthorizeActions($data.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Search, {
+    read: $data.actions.read,
+    ref: "searchModal",
+    onSearchData: $options.searchBanners
+  }, null, 8
+  /* PROPS */
+  , ["read", "onSearchData"]), $data.actions.create ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CreateButton, {
+    key: 0,
     content: $data.content,
     link: '/admin/banner/create'
   }, null, 8
   /* PROPS */
-  , ["content"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  , ["content"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Trash, {
+    route: this.$route,
+    router: this.$router,
+    content: "banner",
+    deleteArrayData: $data.deleteData,
+    objectArrayData: $data.multipleData,
+    onGetData: $options.getBanners
+  }, null, 8
+  /* PROPS */
+  , ["route", "router", "deleteArrayData", "objectArrayData", "onGetData"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteMultiple, {
+    deleteArrayData: $data.deleteData,
+    objectArrayData: $data.multipleData,
+    routeName: this.$route.name,
+    request: "banners"
+  }, null, 8
+  /* PROPS */
+  , ["deleteArrayData", "objectArrayData", "routeName"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.banners.data, function (banner) {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteAllCheck, {
+    deleteArrayData: $data.deleteData,
+    onSelectAll: $options.selectChecks,
+    onCancelAll: $options.cancelChecks,
+    lengthData: $data.banners.data.length,
+    ref: "deleteAll"
+  }, null, 8
+  /* PROPS */
+  , ["deleteArrayData", "onSelectAll", "onCancelAll", "lengthData"])]), _hoisted_10, _hoisted_11, _hoisted_12])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.banners.data, function (banner) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: banner.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(banner.title), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteCheck, {
+      objectData: _ctx.category,
+      deleteArrayData: $data.deleteData,
+      objectArrayData: $data.multipleData,
+      ref_for: true,
+      ref: "deleteCheck"
+    }, null, 8
+    /* PROPS */
+    , ["objectData", "deleteArrayData", "objectArrayData"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(banner.title), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(banner.deleted_at), 1
     /* TEXT */
@@ -1248,13 +1287,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "checkActions": () => (/* binding */ checkActions),
+/* harmony export */   "UnauthorizedActions": () => (/* binding */ UnauthorizedActions),
 /* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
 /* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
-/* harmony export */   "makeDeleteAt": () => (/* binding */ makeDeleteAt),
 /* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
 /* harmony export */   "deleteMultipleData": () => (/* binding */ deleteMultipleData),
 /* harmony export */   "deleteFromArray": () => (/* binding */ deleteFromArray),
-/* harmony export */   "showWithTrashData": () => (/* binding */ showWithTrashData),
 /* harmony export */   "checkContentPermission": () => (/* binding */ checkContentPermission),
 /* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
@@ -1263,8 +1302,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
+function checkActions(actions) {
+  return actions.create == true || actions.read == true || actions.update == true || actions["delete"] == true;
+}
+function UnauthorizedActions(actions) {
+  return actions.create == false && actions.read == false && actions.update == false && actions["delete"] == false;
+}
+
+function changeWord(word) {
+  return word.slice(-1) == 'y' ? word.slice(0, -1) + 'ies' : word + 's';
+}
+
 function makeRoute(vm, page, name) {
   var search = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+  vm.currentPage = page;
 
   switch (search) {
     case null:
@@ -1275,25 +1326,20 @@ function makeRoute(vm, page, name) {
         vm.$refs.deleteAll.$el.checked = false;
       }
 
+      var routeName = changeWord(name);
+      return vm.$route.name == name ? routeName : 'trash_' + routeName;
       break;
 
     case 'search':
       vm.search = vm.$refs.searchModal.searchData;
+      return vm.$route.name == name ? name + '_search' : name + '_trash_search';
       break;
   }
-
-  vm.currentPage = page;
-  return vm.$route.name == name ? name + '_search' : name + '_trash_search';
 }
 function makeSelect(deleteChecks, value) {
   deleteChecks.map(function (deleteCheck) {
     deleteCheck.$el.checked = value;
     deleteCheck.$el.dispatchEvent(new Event('change'));
-  });
-}
-function makeDeleteAt(objectArrayData, data) {
-  objectArrayData.map(function (object) {
-    object.deleted_at = data;
   });
 }
 function checkToDelete(checked, objectData, deleteArrayData, objectArrayData) {
@@ -1324,9 +1370,6 @@ function deleteFromArray(array, value) {
   if (index > -1) {
     array.splice(index, 1);
   }
-}
-function showWithTrashData(route, object, pageName) {
-  return route.name == pageName && object.deleted_at == null || route.name == pageName + '_bin' && object.deleted_at !== null;
 }
 function checkContentPermission(content, permission, object) {
   window.axios.get('check_permission/' + content + '/' + permission).then(function (response) {

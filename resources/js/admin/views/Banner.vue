@@ -4,57 +4,78 @@
     <section class="content">
         <div class="container-fluid">
             <!-- /.row -->
-            <div v-if="actions.create==true || actions.read==true || actions.update==true || actions.delete==true" class="row">
+            <div v-if="checkAuthorizeActions(actions)" class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-header row">
-                    <div v-if="actions.read" class="card-tools col-8 mt-1">
-                        <form v-on:submit.prevent="searchBanners(1)">
-                          <div class="input-group" >
-                            <input type="text" name="table_search" v-model="search" class="form-control float-right" placeholder="Search">
-
-                            <div class="input-group-append">
-                              <button type="submit" class="btn btn-default">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <CreateButton v-if="actions.create" :content="content" :link="'/admin/banner/create'" />
+                    <Search 
+                    :read="actions.read"
+                    ref="searchModal"
+                    @searchData="searchBanners"
+                    />
+                    <CreateButton v-if="actions.create" :content="content" :link="'/admin/banner/create'" />
+                </div>
+                <div class="card-header row">
+                    <Trash :route="this.$route"
+                    :router="this.$router"
+                    content='banner'
+                    :deleteArrayData="deleteData"
+                    :objectArrayData="multipleData"
+                    @getData="getBanners" />
+                    <DeleteMultiple 
+                    :deleteArrayData="deleteData"
+                    :objectArrayData="multipleData"
+                    :routeName="this.$route.name"
+                    request="banners" />
+                </div>
+                <!-- /.card-header -->
+                <template v-if="actions.read">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                          <thead>
+                            <tr>
+                                <th>
+                                    <DeleteAllCheck
+                                    :deleteArrayData="deleteData"
+                                    @selectAll="selectChecks"
+                                    @cancelAll="cancelChecks"
+                                    :lengthData="banners.data.length"
+                                    ref="deleteAll"
+                                    />
+                                </th>
+                                <th>Title</th>
+                                <th>Deleted At</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="banner in banners.data" :key="banner.id">
+                                <td>
+                                    <DeleteCheck :objectData="category"
+                                    :deleteArrayData="deleteData"
+                                    :objectArrayData="multipleData"
+                                    ref="deleteCheck"
+                                    />
+                                </td>
+                                <td>{{ banner.title }}</td>
+                                <td>{{ banner.deleted_at }}</td>
+                                <td class="text-left">
+                                    <ViewButton :data_name="banner.title" :data_model="content" :data_id="banner.id" />
+                                    <EditButton v-if="actions.update && banner.deleted_at==null" :content="content" :link="'banner.edit'" :dataId="banner.id" />
+                                    <Delete v-if="actions.delete" :content="content" :deleteAt="banner.deleted_at" :deleteLink="'banners/'+banner.id" :restoreLink="'banner_restore/'+banner.id" :id="banner.id" :objectData="banner" @update="updateData" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer clearfix">
+                    <Pagination :page="currentPage" :lastPage="banners.last_page" @getData="getBanners" @searchData="searchBanners" :search="search" :from="banners.from" :to="banners.to" :total="banners.total" />
+                </div>
+            </template>
         </div>
-        <!-- /.card-header -->
-        <template v-if="actions.read">
-            <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>Title</th>
-                      <th>Deleted At</th>
-                      <th>Operation</th>
-                  </tr>
-              </thead>
-              <tbody>
-                <tr v-for="banner in banners.data" :key="banner.id">
-                  <td>{{ banner.title }}</td>
-                  <td>{{ banner.deleted_at }}</td>
-                  <td class="text-left">
-                    <ViewButton :data_name="banner.title" :data_model="content" :data_id="banner.id" />
-                    <EditButton v-if="actions.update && banner.deleted_at==null" :content="content" :link="'banner.edit'" :dataId="banner.id" />
-                    <Delete v-if="actions.delete" :content="content" :deleteAt="banner.deleted_at" :deleteLink="'banners/'+banner.id" :restoreLink="'banner_restore/'+banner.id" :id="banner.id" :objectData="banner" @update="updateData" />
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<!-- /.card-body -->
-<div class="card-footer clearfix">
-    <Pagination :page="currentPage" :lastPage="banners.last_page" @getData="getBanners" @searchData="searchBanners" :search="search" :from="banners.from" :to="banners.to" :total="banners.total" />
-</div>
-</template>
-</div>
-<!-- /.card -->
-</div>
+        <!-- /.card -->
+    </div>
 </div>
 <!-- /.row -->
 <div v-else-if="actions.create==false && actions.read==false && actions.update==false && actions.delete==false" class="card card-default">
@@ -81,7 +102,7 @@
 
     import Loading from '../components/Loading';
 
-    import { errorResponse , checkContentPermission , showSwalLoading } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions } from '../helpers/check.js';
 
     export default {
         components: {
@@ -97,6 +118,8 @@
         data () {
            return {
             content : 'Banner' ,
+            deleteData : [],
+            multipleData : [] ,
             banners : {},
             search : null ,
             currentPage : 1,
@@ -109,6 +132,19 @@
         }
     },
     methods :{
+        checkAuthorizeActions(actions){
+            return checkActions(actions);
+        },
+        selectChecks(){
+            if(this.$refs.deleteCheck!==undefined){
+                makeSelect(this.$refs.deleteCheck,true)
+            }
+        },
+        cancelChecks(){
+            if(this.$refs.deleteCheck!==undefined){
+                makeSelect(this.$refs.deleteCheck,false)
+            }
+        },
         updateData(object,deletedTime){
             object.deleted_at=deletedTime;
         },

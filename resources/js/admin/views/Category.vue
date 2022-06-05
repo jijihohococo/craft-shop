@@ -4,7 +4,7 @@
     <section class="content">
         <div class="container-fluid">
             <!-- /.row -->
-            <div v-if="actions.create==true || actions.read==true || actions.update==true || actions.delete==true" class="row">
+            <div v-if="checkAuthorizeActions(actions)" class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-header row">
@@ -26,6 +26,7 @@
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     :routeName="this.$route.name"
+                    :mainData="categories.data"
                     request="categories" />
                 </div>
                 <!-- /.card-header -->
@@ -50,7 +51,6 @@
                         </thead>
                         <tbody>
                             <tr v-for="category in categories.data" :key="category.id">
-                                <template v-if="showData(this.$route,category,'category')">
                                     <td>
                                         <DeleteCheck :objectData="category"
                                         :deleteArrayData="deleteData"
@@ -66,7 +66,6 @@
                                         <Delete v-if="actions.delete" :content="content" :deleteAt="category.deleted_at" :deleteLink="'categories/'+category.id" :restoreLink="'category_restore/'+category.id"
                                         :id="category.id" :objectData="category" @update="updateData" />
                                     </td>
-                                </template>
                             </tr>
                         </tbody>
                     </table>
@@ -116,7 +115,7 @@
 
     import Search from '../components/Search';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , showWithTrashData , makeSelect , makeRoute } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray } from '../helpers/check.js';
 
     export default {
         components: {
@@ -151,6 +150,9 @@
         }
     },
     methods :{
+        checkAuthorizeActions(actions){
+            return checkActions(actions);
+        },
         selectChecks(){
             if(this.$refs.deleteCheck!==undefined){
                 makeSelect(this.$refs.deleteCheck,true)
@@ -161,11 +163,8 @@
                 makeSelect(this.$refs.deleteCheck,false)
             }
         },
-        showData(route,object,pageName){
-            return showWithTrashData(route,object,pageName)
-        },
-        updateData(object,deletedTime){
-            object.deleted_at=deletedTime;
+        updateData(object){
+            deleteFromArray(this.categories.data,object)
         },
         getCategories(page){
             window.axios.get(makeRoute(this,page,'category')+"?page=" + page ).then(( response ) =>  {

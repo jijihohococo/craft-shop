@@ -4,7 +4,7 @@
     <section class="content">
         <div class="container-fluid">
             <!-- /.row -->
-            <div v-if="actions.create==true || actions.read==true || actions.update==true || actions.delete==true" class="row">
+            <div v-if="checkAuthorizeActions(actions)" class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-header row">
@@ -26,7 +26,8 @@
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     :routeName="this.$route.name"
-                    request="attributes" />
+                    :mainData="attributes.data"
+                    request="data_attributes" />
                 </div>
                 <!-- /.card-header -->
                 <template v-if="actions.read">
@@ -50,7 +51,6 @@
                         </thead>
                         <tbody>
                             <tr v-for="attribute in attributes.data" :key="attribute.id">
-                                <template v-if="showData(this.$route,attribute,'attribute')">
                                 <td>
                                     <DeleteCheck :objectData="attribute"
                                     :deleteArrayData="deleteData"
@@ -66,7 +66,6 @@
                                     <Delete v-if="actions.delete" :content="content" :deleteAt="attribute.deleted_at" :deleteLink="'attributes/'+attribute.id" :restoreLink="'attribute_restore/'+attribute.id"
                                     :id="attribute.id" :objectData="attribute" @update="updateData" />
                                 </td>
-                            </template>
                             </tr>
                         </tbody>
                     </table>
@@ -82,7 +81,7 @@
 </div>
 <!-- /.row -->
 <div v-else-if="actions.create==false && actions.read==false && actions.update==false && actions.delete==false" class="card card-default">
- <Error :httpStatus="403" :title="'Permission Denied'" :description="'You are not allowed to do any permissions for Attribute'" />
+ <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Attribute" />
 </div>
 </div>
 </section>
@@ -94,12 +93,6 @@
     import Delete from '../components/Delete';
 
     import DeleteAllCheck from '../components/DeleteAllCheck';
-
-    import DeleteCheck from '../components/DeleteCheck';
-
-    import Trash from '../components/Trash';
-
-    import DeleteMultiple from '../components/DeleteMultiple';
 
     import ContentHeader from '../components/ContentHeader';
 
@@ -113,25 +106,31 @@
 
     import Loading from '../components/Loading';
 
+    import DeleteCheck from '../components/DeleteCheck';
+
+    import Trash from '../components/Trash';
+
+    import DeleteMultiple from '../components/DeleteMultiple';
+
     import Search from '../components/Search';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , showWithTrashData , makeSelect } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray } from '../helpers/check.js';
 
     export default {
         components: {
+            Search,
             Pagination,
             ContentHeader,
             Delete,
-            DeleteAllCheck,
-            DeleteCheck,
             CreateButton,
             EditButton,
             ViewButton,
             Error,
             Loading,
+            DeleteCheck,
             Trash,
             DeleteMultiple,
-            Search
+            DeleteAllCheck
         },
         data () {
            return {
@@ -150,6 +149,9 @@
         }
     },
     methods :{
+        checkAuthorizeActions(actions){
+            return checkActions(actions);
+        },
         selectChecks(){
             if(this.$refs.deleteCheck!==undefined){
                 makeSelect(this.$refs.deleteCheck,true)
@@ -160,20 +162,11 @@
                 makeSelect(this.$refs.deleteCheck,false)
             }
         },
-        showData(route,object,pageName){
-            return showWithTrashData(route,object,pageName)
-        },
-        updateData(object,deletedTime){
-            object.deleted_at=deletedTime;
+        updateData(object){
+            deleteFromArray(this.attributes.data,object)
         },
         getAttributes(page){
-            if(this.$refs.deleteAll!==undefined){
-                this.$refs.deleteAll.$el.checked=false
-                this.search=null;
-            }
-            this.currentPage=page;
-            let route=this.$route.name=='attribute' ? 'attributes' : 'trash_attributes';
-            window.axios.get(route+"?page=" + page ).then(( response ) =>  {
+            window.axios.get(makeRoute(this,page,'attribute')+"?page=" + page ).then(( response ) =>  {
                 if(response.data.message=='Loading'){
 
                     showSwalLoading(this);
@@ -186,10 +179,7 @@
         } );
      },
      searchAttributes(page){
-        this.currentPage=page;
-        this.search=this.$refs.searchModal.searchData;
-        let route=this.$route.name=='attribute' ? 'attribute_search' : 'attribute_trash_search';
-        window.axios.get(route+'?search=' + this.search + '&page=' + page ).then( (response) => {
+        window.axios.get(makeRoute(this,page,'attribute','search')+'?search=' + this.search + '&page=' + page ).then( (response) => {
          if(response.data.message=='Loading'){
 
             showSwalLoading(this);
