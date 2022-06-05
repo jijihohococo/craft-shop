@@ -480,7 +480,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       content: 'Category',
       deleteData: [],
-      multipeData: [],
+      multipleData: [],
       categories: {},
       currentPage: 1,
       search: null,
@@ -512,13 +512,7 @@ __webpack_require__.r(__webpack_exports__);
     getCategories: function getCategories(page) {
       var _this = this;
 
-      if (this.$refs.deleteAll !== undefined) {
-        this.$refs.deleteAll.$el.checked = false;
-      }
-
-      this.currentPage = page;
-      var route = this.$route.name == 'category' ? 'categories' : 'trash_categories';
-      window.axios.get(route + "?page=" + page).then(function (response) {
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'category') + "?page=" + page).then(function (response) {
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this);
         } else {
@@ -532,9 +526,7 @@ __webpack_require__.r(__webpack_exports__);
     searchCategories: function searchCategories(page) {
       var _this2 = this;
 
-      this.currentPage = page;
-      this.search = this.$refs.searchModal.searchData;
-      window.axios.get('category_search?search=' + this.search + '&page=' + page).then(function (response) {
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'category', 'search') + '?search=' + this.search + '&page=' + page).then(function (response) {
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this2);
         } else {
@@ -1527,13 +1519,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     router: this.$router,
     content: "category",
     deleteArrayData: $data.deleteData,
-    objectArrayData: $data.multipeData,
+    objectArrayData: $data.multipleData,
     onGetData: $options.getCategories
   }, null, 8
   /* PROPS */
   , ["route", "router", "deleteArrayData", "objectArrayData", "onGetData"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteMultiple, {
     deleteArrayData: $data.deleteData,
-    objectArrayData: $data.multipeData,
+    objectArrayData: $data.multipleData,
     routeName: this.$route.name,
     request: "categories"
   }, null, 8
@@ -1556,7 +1548,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteCheck, {
       objectData: category,
       deleteArrayData: $data.deleteData,
-      objectArrayData: $data.multipeData,
+      objectArrayData: $data.multipleData,
       ref_for: true,
       ref: "deleteCheck"
     }, null, 8
@@ -1630,6 +1622,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
 /* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
 /* harmony export */   "makeDeleteAt": () => (/* binding */ makeDeleteAt),
 /* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
@@ -1644,6 +1637,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
+function makeRoute(vm, page, name) {
+  var search = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+
+  switch (search) {
+    case null:
+      vm.search = null;
+
+      if (vm.$refs.deleteAll !== undefined) {
+        vm.$refs.searchModal.searchData = null;
+        vm.$refs.deleteAll.$el.checked = false;
+      }
+
+      break;
+
+    case 'search':
+      vm.search = vm.$refs.searchModal.searchData;
+      break;
+  }
+
+  vm.currentPage = page;
+  return vm.$route.name == name ? name + '_search' : name + '_trash_search';
+}
 function makeSelect(deleteChecks, value) {
   deleteChecks.map(function (deleteCheck) {
     deleteCheck.$el.checked = value;

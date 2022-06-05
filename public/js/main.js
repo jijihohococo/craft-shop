@@ -19589,6 +19589,10 @@ var CreateEditAttribute = function CreateEditAttribute() {
   path: 'attribute/edit/:id',
   component: CreateEditAttribute,
   name: 'attribute.edit'
+}, {
+  path: 'attribute_bin',
+  component: Attribute,
+  name: 'attribute_bin'
 }]);
 
 /***/ }),

@@ -8,6 +8,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	Route::resource('categories','Admin\CategoryController');
 	Route::get('category_search','Admin\CategoryController@search');
+	Route::get('category_trash_search','Admin\CategoryController@trashSearch');
 	Route::delete('category_restore/{id}','Admin\CategoryController@restore');
 	Route::get('get_categories','Admin\CategoryController@get');
 	Route::get('trash_categories','Admin\CategoryController@trash');
@@ -75,6 +76,9 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('get_attributes','Admin\AttributeController@get');
 	Route::get('get_attribute_sets/{attributeId}','Admin\AttributeController@getAtrributeSets');
 	Route::get('get_item_attribute_sets/{itemAttributeId}','Admin\AttributeController@getItemAttributeSets');
+	Route::get('trash_attributes','Admin\AttributeController@trash');
+	Route::delete('delete_attributes','Admin\AttributeController@deleteMultiple');
+	Route::delete('restore_attributes','Admin\AttributeController@restoreMultiple');
 
 
 	Route::resource('colors','Admin\ColorController');

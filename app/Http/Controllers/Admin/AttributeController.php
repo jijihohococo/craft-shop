@@ -24,7 +24,7 @@ class AttributeController extends Controller
     {
         //
         return response()->json([
-            'attributes' => Attribute::withTrashed()->latest('id')->paginate(10)
+            'attributes' => Attribute::latest('id')->paginate(10)
         ]);
     }
 
@@ -170,6 +170,34 @@ class AttributeController extends Controller
     public function getItemAttributeSets($itemAttributeId){
         return response()->json([
             'selectedSets' => ItemAttributeSet::select('set_id')->where('item_attribute_id',$itemAttributeId)->get()->pluck('set_id')
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'attributes' => Attribute::onlyTrashed()->latest('id')->paginate(10)
+        ]);
+    }
+
+    public function deleteMultiple(Request $request){
+        $request->validate([
+            'attributes' => ['required','string']
+        ]);
+        $attributes=explode(',', $request->attributes);
+        Attribute::whereIn('id',$attributes)->delete();
+        return response()->json([
+            'message' => 'Attributes are deleted'
+        ]);
+    }
+
+    public function restoreMultiple(Request $request){
+        $request->validate([
+            'attributes' => ['required','string']
+        ]);
+        $attributes=explode(',', $request->attributes);
+        Attribute::withTrashed()->whereIn('id',$attributes)->restore();
+        return response()->json([
+            'message' => 'Attributes are restored'
         ]);
     }
 }

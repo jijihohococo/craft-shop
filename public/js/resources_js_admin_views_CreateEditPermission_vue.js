@@ -681,6 +681,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
 /* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
 /* harmony export */   "makeDeleteAt": () => (/* binding */ makeDeleteAt),
 /* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
@@ -695,6 +696,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
+function makeRoute(vm, page, name) {
+  var search = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+
+  switch (search) {
+    case null:
+      vm.search = null;
+
+      if (vm.$refs.deleteAll !== undefined) {
+        vm.$refs.searchModal.searchData = null;
+        vm.$refs.deleteAll.$el.checked = false;
+      }
+
+      break;
+
+    case 'search':
+      vm.search = vm.$refs.searchModal.searchData;
+      break;
+  }
+
+  vm.currentPage = page;
+  return vm.$route.name == name ? name + '_search' : name + '_trash_search';
+}
 function makeSelect(deleteChecks, value) {
   deleteChecks.map(function (deleteCheck) {
     deleteCheck.$el.checked = value;

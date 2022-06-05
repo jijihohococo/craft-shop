@@ -20,11 +20,11 @@
                     :router="this.$router"
                     content='category'
                     :deleteArrayData="deleteData"
-                    :objectArrayData="multipeData"
+                    :objectArrayData="multipleData"
                     @getData="getCategories" />
                     <DeleteMultiple 
                     :deleteArrayData="deleteData"
-                    :objectArrayData="multipeData"
+                    :objectArrayData="multipleData"
                     :routeName="this.$route.name"
                     request="categories" />
                 </div>
@@ -54,7 +54,7 @@
                                     <td>
                                         <DeleteCheck :objectData="category"
                                         :deleteArrayData="deleteData"
-                                        :objectArrayData="multipeData"
+                                        :objectArrayData="multipleData"
                                         ref="deleteCheck"
                                         />
                                     </td>
@@ -116,7 +116,7 @@
 
     import Search from '../components/Search';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , showWithTrashData , makeSelect } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , showWithTrashData , makeSelect , makeRoute } from '../helpers/check.js';
 
     export default {
         components: {
@@ -138,7 +138,7 @@
            return {
             content : 'Category',
             deleteData : [],
-            multipeData : [] ,
+            multipleData : [] ,
             categories : {},
             currentPage : 1 ,
             search : null ,
@@ -168,12 +168,7 @@
             object.deleted_at=deletedTime;
         },
         getCategories(page){
-            if(this.$refs.deleteAll!==undefined){
-                this.$refs.deleteAll.$el.checked=false
-            }
-            this.currentPage=page;
-            let route=this.$route.name=='category' ? 'categories' : 'trash_categories';
-            window.axios.get(route+"?page=" + page ).then(( response ) =>  {
+            window.axios.get(makeRoute(this,page,'category')+"?page=" + page ).then(( response ) =>  {
                 if(response.data.message=='Loading'){
 
                     showSwalLoading(this);
@@ -186,9 +181,7 @@
         } );
      },
      searchCategories(page){
-        this.currentPage=page;
-        this.search=this.$refs.searchModal.searchData;
-        window.axios.get('category_search?search=' + this.search + '&page=' + page ).then( (response) => {
+        window.axios.get(makeRoute(this,page,'category','search')+'?search=' + this.search + '&page=' + page ).then( (response) => {
          if(response.data.message=='Loading'){
 
             showSwalLoading(this);

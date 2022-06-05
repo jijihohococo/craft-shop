@@ -1,3 +1,20 @@
+export function makeRoute(vm,page,name,search=null) {
+    switch(search){
+        case null:
+        vm.search=null;
+        if(vm.$refs.deleteAll!==undefined){
+            vm.$refs.searchModal.searchData=null;
+            vm.$refs.deleteAll.$el.checked=false
+        }
+        break;
+
+        case 'search':
+        vm.search=vm.$refs.searchModal.searchData;
+        break;
+    }
+    vm.currentPage=page;
+    return vm.$route.name==name ? name + '_search' : name + '_trash_search';
+}
 export function makeSelect(deleteChecks,value) {
     deleteChecks.map( (deleteCheck) => {
         deleteCheck.$el.checked=value;
