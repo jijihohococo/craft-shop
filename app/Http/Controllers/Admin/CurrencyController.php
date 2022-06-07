@@ -23,7 +23,15 @@ class CurrencyController extends Controller
     {
         //
         return response()->json([
-            'currencies' => Currency::withTrashed()->latest('id')->paginate(10)
+            'currencies' => Currency::latest('id')->paginate(10)
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'currencies' => Currency::onlyTrashed()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 
@@ -131,7 +139,17 @@ class CurrencyController extends Controller
     public function search(Request $request){
         $search='%'.$request->search.'%';
         return response()->json([
-            'currencies' => Currency::withTrashed()
+            'currencies' => Currency::where('name','like',$search)
+            ->orWhere('price','like',$search)
+            ->latest('id')
+            ->paginate(10)
+        ]);
+    }
+
+    public function search(Request $request){
+        $search='%'.$request->search.'%';
+        return response()->json([
+            'currencies' => Currency::onlyTrashed()
             ->where('name','like',$search)
             ->orWhere('price','like',$search)
             ->latest('id')
@@ -142,6 +160,28 @@ class CurrencyController extends Controller
     public function get(){
         return response()->json([
             'currencies' => (new Currency)->getAll()
+        ]);
+    }
+
+    public function deleteMultiple(Request $request){
+        $request->validate([
+            'currencies' => ['required','string']
+        ]);
+        $currencies=explode(',', $request->currencies);
+        Currency::whereIn('id',$currencies)->delete();
+        return response()->json([
+            'message' => 'Currencies are deleted'
+        ]);
+    }
+
+    public function restoreMultiple(Request $request){
+        $request->validate([
+            'currencies' => ['required','string']
+        ]);
+        $currencies=explode(',', $request->currencies);
+        Currency::withTrashed()->whereIn('id',$currencies)->restore();
+        return response()->json([
+            'message' => 'Currencies are restored'
         ]);
     }
 }

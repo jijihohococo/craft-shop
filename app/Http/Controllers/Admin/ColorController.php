@@ -146,9 +146,42 @@ class ColorController extends Controller
         ]);
     }
 
+    public function trashSearch(Request $request){
+        $searchData='%'.$request->search.'%';
+        return response()->json([
+            'colors' => Color::onlyTrashed()
+            ->where('name','like',$searchData)
+            ->orWhere('color_code','like',$searchData)
+            ->latest('id')
+            ->paginate(10)
+        ]);
+    }
+
     public function get(){
         return response()->json([
             'colors' => (new Color)->getAll()
+        ]);
+    }
+
+    public function deleteMultiple(Request $request){
+        $request->validate([
+            'colors' => ['required','string']
+        ]);
+        $colors=explode(',', $request->colors);
+        Color::whereIn('id',$colors)->delete();
+        return response()->json([
+            'message' => 'Colors are deleted'
+        ]);
+    }
+
+    public function restoreMultiple(Request $request){
+        $request->validate([
+            'colors' => ['required','string']
+        ]);
+        $colors=explode(',', $request->colors);
+        Color::withTrashed()->whereIn('id',$colors)->restore();
+        return response()->json([
+            'message' => 'Colors are restored'
         ]);
     }
 }

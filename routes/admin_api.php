@@ -55,7 +55,12 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	Route::resource('currencies','Admin\CurrencyController');
 	Route::get('currency_search','Admin\CurrencyController@search');
+	Route::get('category_trash_search','Admin\CategoryController@trashSearch');
 	Route::delete('currency_restore/{id}','Admin\CurrencyController@restore');
+	Route::get('get_currencies','Admin\CurrencyController@get');
+	Route::get('trash_currencies','Admin\CurrencyController@trash');
+	Route::delete('delete_currencies','Admin\CurrencyController@deleteMultiple');
+	Route::delete('restore_currencies','Admin\CurrencyController@restoreMultiple');
 
 	Route::resource('roles','Admin\RoleController');
 	Route::get('role_search','Admin\RoleController@search');
