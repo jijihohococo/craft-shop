@@ -19628,6 +19628,10 @@ var CreateEditBanner = function CreateEditBanner() {
   path: 'banner/edit/:id',
   component: CreateEditBanner,
   name: 'banner.edit'
+}, {
+  path: 'banner_bin',
+  component: Banner,
+  name: 'banner_bin'
 }]);
 
 /***/ }),
@@ -19663,6 +19667,10 @@ var CreateEditBrand = function CreateEditBrand() {
   path: 'brand/edit/:id',
   component: CreateEditBrand,
   name: 'brand.edit'
+}, {
+  path: 'brand_bin',
+  component: Brand,
+  name: 'brand_bin'
 }]);
 
 /***/ }),

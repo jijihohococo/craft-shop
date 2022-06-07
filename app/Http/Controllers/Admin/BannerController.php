@@ -22,7 +22,15 @@ class BannerController extends Controller
     {
         //
         return response()->json([
-            'banners' => Banner::withTrashed()->latest('id')->paginate(10) 
+            'banners' => Banner::latest('id')->paginate(10) 
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'banners' => Banner::onlyTrashed()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 
@@ -130,15 +138,15 @@ class BannerController extends Controller
     }
 
     public function restore($id){
-     $banner=Banner::withTrashed()->findOrFail($id);
-     $banner->restore();
-     return response()->json([
-      'message' => $banner->title . ' Banner is restored successfully',
-      'deleted_at' => $banner->deleted_at
-  ]);   
- }
+       $banner=Banner::withTrashed()->findOrFail($id);
+       $banner->restore();
+       return response()->json([
+          'message' => $banner->title . ' Banner is restored successfully',
+          'deleted_at' => $banner->deleted_at
+      ]);   
+   }
 
- private function validateData($id=NULL){
+   private function validateData($id=NULL){
     return [
         'title' => ['required', 'string', 'max:100', $id==null ? 'unique:banners' : 'unique:banners,title,'.$id ] ,
         'pic' => $id==null ? requiredImage() : nullableImage()
@@ -147,7 +155,15 @@ class BannerController extends Controller
 
 public function search(Request $request){
     return response()->json([
-        'banners' => Banner::withTrashed()
+        'banners' => Banner::where('title','like','%'.$request->search.'%')
+        ->latest('id')
+        ->paginate(10)
+    ]);
+}
+
+public function trashSearch(Request $request){
+    return response()->json([
+        'banners' => Banner::onlyTrashed()
         ->where('title','like','%'.$request->search.'%')
         ->latest('id')
         ->paginate(10)
@@ -156,7 +172,29 @@ public function search(Request $request){
 
 public function get(){
     return response()->json([
-            'banners' => (new Banner)->getAll()
-        ]);
+        'banners' => (new Banner)->getAll()
+    ]);
+}
+
+public function deleteMultiple(Request $request){
+    $request->validate([
+        'banners' => ['required','string']
+    ]);
+    $banners=explode(',', $request->banners);
+    Banner::whereIn('id',$banners)->delete();
+    return response()->json([
+        'message' => 'Banners are deleted'
+    ]);
+}
+
+public function restoreMultiple(Request $request){
+    $request->validate([
+        'banners' => ['required','string']
+    ]);
+    $banners=explode(',', $request->banners);
+    Banner::withTrashed()->whereIn('id',$banners)->restore();
+    return response()->json([
+        'message' => 'Banners are restored'
+    ]);
 }
 }

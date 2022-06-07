@@ -22,7 +22,15 @@ class BrandController extends Controller
     {
         //
         return response()->json([
-            'brands' => Brand::withTrashed()->latest('id')->paginate(10)
+            'brands' => Brand::latest('id')->paginate(10)
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'brands' => Brand::onlyTrashed()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 
@@ -146,7 +154,15 @@ class BrandController extends Controller
 
     public function search(Request $request){
         return response()->json([
-            'brands' => Brand::withTrashed()
+            'brands' => Brand::where('name','like','%'.$request->search.'%')
+            ->latest('id')
+            ->paginate(10)
+        ]);
+    }
+
+    public function trashSearch(Request $request){
+        return response()->json([
+            'brands' => Brand::onlyTrashed()
             ->where('name','like','%'.$request->search.'%')
             ->latest('id')
             ->paginate(10)
@@ -158,4 +174,26 @@ class BrandController extends Controller
             'brands' => (new Brand)->getAll()
         ]);
     }
+
+    public function deleteMultiple(Request $request){
+    $request->validate([
+        'brands' => ['required','string']
+    ]);
+    $brands=explode(',', $request->brands);
+    Brand::whereIn('id',$brands)->delete();
+    return response()->json([
+        'message' => 'Brands are deleted'
+    ]);
+}
+
+public function restoreMultiple(Request $request){
+    $request->validate([
+        'brands' => ['required','string']
+    ]);
+    $brands=explode(',', $request->brands);
+    Brand::withTrashed()->whereIn('id',$brands)->restore();
+    return response()->json([
+        'message' => 'Brands are restored'
+    ]);
+}
 }

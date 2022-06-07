@@ -490,6 +490,9 @@ __webpack_require__.r(__webpack_exports__);
     checkAuthorizeActions: function checkAuthorizeActions(actions) {
       return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.checkActions)(actions);
     },
+    checkUnauthorizeActions: function checkUnauthorizeActions(actions) {
+      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.unauthorizedActions)(actions);
+    },
     selectChecks: function selectChecks() {
       if (this.$refs.deleteCheck !== undefined) {
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeSelect)(this.$refs.deleteCheck, true);
@@ -1588,7 +1591,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["page", "lastPage", "onGetData", "onSearchData", "search", "from", "to", "total"])])], 64
   /* STABLE_FRAGMENT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")])])) : $data.actions.create == false && $data.actions.read == false && $data.actions.update == false && $data.actions["delete"] == false ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")])])) : $options.checkUnauthorizeActions($data.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
     httpStatus: 403,
@@ -1612,7 +1615,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "checkActions": () => (/* binding */ checkActions),
-/* harmony export */   "UnauthorizedActions": () => (/* binding */ UnauthorizedActions),
+/* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions),
 /* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
 /* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
 /* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
@@ -1629,11 +1632,27 @@ __webpack_require__.r(__webpack_exports__);
 function checkActions(actions) {
   return actions.create == true || actions.read == true || actions.update == true || actions["delete"] == true;
 }
-function UnauthorizedActions(actions) {
+function unauthorizedActions(actions) {
   return actions.create == false && actions.read == false && actions.update == false && actions["delete"] == false;
 }
 
 function changeWord(word) {
+  var lastChar = word.slice(-1);
+
+  switch (lastChar) {
+    case 'y':
+      return word.slice(0, -1) + 'ies';
+      break;
+
+    case 'h':
+      return word.slice(0, -1) + 'es';
+      break;
+
+    default:
+      return word + 's';
+      break;
+  }
+
   return word.slice(-1) == 'y' ? word.slice(0, -1) + 'ies' : word + 's';
 }
 

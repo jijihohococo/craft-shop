@@ -16,5 +16,10 @@ export default [
 		path : 'brand/edit/:id',
 		component : CreateEditBrand,
 		name : 'brand.edit'
+	},
+	{
+		path : 'brand_bin',
+		component : Brand ,
+		name : 'brand_bin'
 	}
 ]

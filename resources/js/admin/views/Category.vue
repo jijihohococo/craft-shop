@@ -81,7 +81,7 @@
     </div>
 </div>
 <!-- /.row -->
-<div v-else-if="actions.create==false && actions.read==false && actions.update==false && actions.delete==false" class="card card-default">
+<div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
  <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Category" />
 </div>
 </div>
@@ -115,7 +115,7 @@
 
     import Search from '../components/Search';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions } from '../helpers/check.js';
 
     export default {
         components: {
@@ -152,6 +152,9 @@
     methods :{
         checkAuthorizeActions(actions){
             return checkActions(actions);
+        },
+        checkUnauthorizeActions(actions){
+            return unauthorizedActions(actions);
         },
         selectChecks(){
             if(this.$refs.deleteCheck!==undefined){

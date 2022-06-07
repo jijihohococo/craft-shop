@@ -137,7 +137,16 @@ class AttributeController extends Controller
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'attributes' => Attribute::withTrashed()
+            'attributes' => Attribute::where('name','like',$searchData)
+            ->latest('id')
+            ->paginate(10)
+        ]);
+    }
+
+    public function trashSearch(Request $request){
+        $searchData='%'.$request->search.'%';
+        return response()->json([
+            'attributes' => Attribute::onlyTrashed()
             ->where('name','like',$searchData)
             ->latest('id')
             ->paginate(10)

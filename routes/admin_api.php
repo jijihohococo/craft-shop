@@ -17,13 +17,21 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	
 	Route::resource('banners','Admin\BannerController');
 	Route::get('banner_search','Admin\BannerController@search');
+	Route::get('banner_trash_search','Admin\BrandController@trashSearch');
 	Route::delete('banner_restore/{id}','Admin\BannerController@restore');
 	Route::get('get_banners','Admin\BannerController@get');
+	Route::get('trash_banners','Admin\BannerController@trash');
+	Route::delete('delete_banners','Admin\BannerController@deleteMultiple');
+	Route::delete('restore_banners','Admin\BannerController@restoreMultiple');
 
 	Route::resource('brands','Admin\BrandController');
 	Route::get('brand_search','Admin\BrandController@search');
+	Route::get('brand_trash_search','Admin\BrandController@trashSearch');
 	Route::delete('brand_restore/{id}','Admin\BrandController@restore');
 	Route::get('get_brands','Admin\BrandController@get');
+	Route::get('trash_brands','Admin\BrandController@trash');
+	Route::delete('delete_brands','Admin\BrandController@deleteMultiple');
+	Route::delete('restore_brands','Admin\BrandController@restoreMultiple');
 
 	Route::resource('items','Admin\ItemController');
 	Route::get('item_search','Admin\ItemController@search');

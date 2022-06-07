@@ -16,5 +16,10 @@ export default [
 		path : 'banner/edit/:id',
 		component : CreateEditBanner,
 		name : 'banner.edit'
+	},
+	{
+		path : 'banner_bin',
+		component : Banner,
+		name : 'banner_bin'
 	}
 ]

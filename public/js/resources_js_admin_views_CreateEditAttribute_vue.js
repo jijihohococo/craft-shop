@@ -646,7 +646,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "checkActions": () => (/* binding */ checkActions),
-/* harmony export */   "UnauthorizedActions": () => (/* binding */ UnauthorizedActions),
+/* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions),
 /* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
 /* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
 /* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
@@ -663,11 +663,27 @@ __webpack_require__.r(__webpack_exports__);
 function checkActions(actions) {
   return actions.create == true || actions.read == true || actions.update == true || actions["delete"] == true;
 }
-function UnauthorizedActions(actions) {
+function unauthorizedActions(actions) {
   return actions.create == false && actions.read == false && actions.update == false && actions["delete"] == false;
 }
 
 function changeWord(word) {
+  var lastChar = word.slice(-1);
+
+  switch (lastChar) {
+    case 'y':
+      return word.slice(0, -1) + 'ies';
+      break;
+
+    case 'h':
+      return word.slice(0, -1) + 'es';
+      break;
+
+    default:
+      return word + 's';
+      break;
+  }
+
   return word.slice(-1) == 'y' ? word.slice(0, -1) + 'ies' : word + 's';
 }
 

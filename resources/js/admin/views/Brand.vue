@@ -4,68 +4,90 @@
     <section class="content">
         <div class="container-fluid">
             <!-- /.row -->
-            <div v-if="actions.create==true || actions.read==true || actions.update==true || actions.delete==true" class="row">
+            <div v-if="checkAuthorizeActions(actions)" class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-header row">
-                    <div v-if="actions.read" class="card-tools col-8 mt-1">
-                        <form v-on:submit.prevent="searchBrands(1)">
-                          <div class="input-group" >
-                            <input type="text" name="table_search" v-model="search" class="form-control float-right" placeholder="Search">
-
-                            <div class="input-group-append">
-                              <button type="submit" class="btn btn-default">
-                                <i class="fas fa-search"></i>
-                            </button>
+                    <Search 
+                    :read="actions.read"
+                    ref="searchModal"
+                    @searchData="searchBrands"
+                    />
+                    <CreateButton v-if="actions.create" :content="content" :link="'/admin/brand/create'" />
+                </div>
+                <!-- /.card-header -->
+                <div class="card-header row">
+                    <Trash :route="this.$route"
+                    :router="this.$router"
+                    content='brand'
+                    :deleteArrayData="deleteData"
+                    :objectArrayData="multipleData"
+                    @getData="getBrands" />
+                    <DeleteMultiple 
+                    :deleteArrayData="deleteData"
+                    :objectArrayData="multipleData"
+                    :routeName="this.$route.name"
+                    :mainData="brands.data"
+                    request="brands" />
+                </div>
+                <template v-if="actions.read">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                          <thead>
+                            <tr>
+                                <th><DeleteAllCheck
+                                    :deleteArrayData="deleteData"
+                                    @selectAll="selectChecks"
+                                    @cancelAll="cancelChecks"
+                                    :lengthData="categories.data.length"
+                                    ref="deleteAll"
+                                    /></th>
+                                    <th>Name</th>
+                                    <th>Deleted At</th>
+                                    <th>Operation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="brand in brands.data" :key="brand.id">
+                                    <td><DeleteCheck :objectData="category"
+                                        :deleteArrayData="deleteData"
+                                        :objectArrayData="multipleData"
+                                        ref="deleteCheck"
+                                        /></td>
+                                        <td>{{ brand.name }}</td>
+                                        <td>{{ brand.deleted_at }}</td>
+                                        <td class="text-left">
+                                            <ViewButton :data_name="brand.name" :data_model="content" :data_id="brand.id" />
+                                            <EditButton v-if="actions.update && brand.deleted_at==null" :content="content" :link="'brand.edit'" :dataId="brand.id" />
+                                            <Delete v-if="actions.delete" :content="content" :deleteAt="brand.deleted_at" :deleteLink="'brands/'+brand.id" :restoreLink="'brand_restore/'+brand.id" :id="brand.id" :objectData="brand" @update="updateData" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-                </form>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            <Pagination :page="currentPage" :lastPage="brands.last_page" @getData="getBrands" @searchData="searchBrands" :search="search" :from="brands.from" :to="brands.to" :total="brands.total" />
+                        </div>
+                    </template>
+                </div>
+                <!-- /.card -->
             </div>
-            <CreateButton v-if="actions.create" :content="content" :link="'/admin/brand/create'" />
         </div>
-        <!-- /.card-header -->
-        <template v-if="actions.read">
-            <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Deleted At</th>
-                      <th>Operation</th>
-                  </tr>
-              </thead>
-              <tbody>
-                <tr v-for="brand in brands.data" :key="brand.id">
-                  <td>{{ brand.name }}</td>
-                  <td>{{ brand.deleted_at }}</td>
-                  <td class="text-left">
-                    <ViewButton :data_name="brand.name" :data_model="content" :data_id="brand.id" />
-                    <EditButton v-if="actions.update && brand.deleted_at==null" :content="content" :link="'brand.edit'" :dataId="brand.id" />
-                    <Delete v-if="actions.delete" :content="content" :deleteAt="brand.deleted_at" :deleteLink="'brands/'+brand.id" :restoreLink="'brand_restore/'+brand.id" :id="brand.id" :objectData="brand" @update="updateData" />
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<!-- /.card-body -->
-<div class="card-footer clearfix">
-    <Pagination :page="currentPage" :lastPage="brands.last_page" @getData="getBrands" @searchData="searchBrands" :search="search" :from="brands.from" :to="brands.to" :total="brands.total" />
-</div>
-</template>
-</div>
-<!-- /.card -->
-</div>
-</div>
-<!-- /.row -->
-<div v-else-if="actions.create==false && actions.read==false && actions.update==false && actions.delete==false" class="card card-default">
- <Error :httpStatus="403" :title="'Permission Denied'" :description="'You are not allowed to do any permissions for Brand'" />
-</div>
-</div>
+        <!-- /.row -->
+        <div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
+         <Error :httpStatus="403" :title="'Permission Denied'" :description="'You are not allowed to do any permissions for Brand'" />
+     </div>
+ </div>
 </section>
 </template>
 <script >
 
     import Pagination from '../components/Pagination';
+
+    import Delete from '../components/Delete';
+
+    import DeleteAllCheck from '../components/DeleteAllCheck';
 
     import ContentHeader from '../components/ContentHeader';
 
@@ -75,28 +97,41 @@
 
     import ViewButton from '../components/ViewButton';
 
-    import Delete from '../components/Delete';
-
     import Error from '../components/Error';
 
     import Loading from '../components/Loading';
 
-    import { errorResponse , checkContentPermission , showSwalLoading } from '../helpers/check.js';
+    import DeleteCheck from '../components/DeleteCheck';
+
+    import Trash from '../components/Trash';
+
+    import DeleteMultiple from '../components/DeleteMultiple';
+
+    import Search from '../components/Search';
+
+    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions } from '../helpers/check.js';
 
     export default {
         components: {
+            Search,
             Pagination,
             ContentHeader,
+            Delete,
             CreateButton,
             EditButton,
             ViewButton,
-            Delete,
             Error,
-            Loading
+            Loading,
+            DeleteCheck,
+            Trash,
+            DeleteMultiple,
+            DeleteAllCheck
         },
         data () {
            return {
             content : 'Brand' ,
+            deleteData : [],
+            multipleData : [] ,
             brands : {},
             search : null ,
             currentPage : 1,
@@ -109,12 +144,27 @@
         }
     },
     methods :{
-        updateData(object,deletedTime){
-            object.deleted_at=deletedTime;
+        checkAuthorizeActions(actions){
+            return checkActions(actions);
+        },
+        checkUnauthorizeActions(actions){
+            return unauthorizedActions(actions);
+        },
+        selectChecks(){
+            if(this.$refs.deleteCheck!==undefined){
+                makeSelect(this.$refs.deleteCheck,true)
+            }
+        },
+        cancelChecks(){
+            if(this.$refs.deleteCheck!==undefined){
+                makeSelect(this.$refs.deleteCheck,false)
+            }
+        },
+        updateData(object){
+            deleteFromArray(this.categories.data,object)
         },
         getBrands(page){
-            this.currentPage=page;
-            window.axios.get("brands?page=" + page ).then(( response ) =>  {
+            window.axios.get(makeRoute(this,page,'brand')+"?page=" + page ).then(( response ) =>  {
                 if(response.data.message=='Loading'){
 
                     showSwalLoading(this);
@@ -127,8 +177,7 @@
         } );
        },
        searchBrands(page){
-        this.currentPage=page;
-        window.axios.get('brand_search?search=' + this.search + '&page=' + page ).then( (response) => {
+        window.axios.get(makeRoute(this,page,'brand','search')+'?search=' + this.search + '&page=' + page ).then( (response) => {
             if(response.data.message=='Loading'){
 
                 showSwalLoading(this);

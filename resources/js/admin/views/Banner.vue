@@ -13,7 +13,7 @@
                     ref="searchModal"
                     @searchData="searchBanners"
                     />
-                    <CreateButton v-if="actions.create" :content="content" :link="'/admin/banner/create'" />
+                    <CreateButton v-if="actions.create" :content="content" link="/admin/banner/create" />
                 </div>
                 <div class="card-header row">
                     <Trash :route="this.$route"
@@ -26,6 +26,7 @@
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     :routeName="this.$route.name"
+                    :mainData="banners.data"
                     request="banners" />
                 </div>
                 <!-- /.card-header -->
@@ -78,8 +79,8 @@
     </div>
 </div>
 <!-- /.row -->
-<div v-else-if="actions.create==false && actions.read==false && actions.update==false && actions.delete==false" class="card card-default">
- <Error :httpStatus="403" :title="'Permission Denied'" :description="'You are not allowed to do any permissions for Banner'" />
+<div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
+ <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Banner" />
 </div>
 </div>
 </section>
@@ -87,6 +88,10 @@
 <script >
 
     import Pagination from '../components/Pagination';
+
+    import Delete from '../components/Delete';
+
+    import DeleteAllCheck from '../components/DeleteAllCheck';
 
     import ContentHeader from '../components/ContentHeader';
 
@@ -96,24 +101,35 @@
 
     import ViewButton from '../components/ViewButton';
 
-    import Delete from '../components/Delete';
-
     import Error from '../components/Error';
 
     import Loading from '../components/Loading';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions } from '../helpers/check.js';
+    import DeleteCheck from '../components/DeleteCheck';
+
+    import Trash from '../components/Trash';
+
+    import DeleteMultiple from '../components/DeleteMultiple';
+
+    import Search from '../components/Search';
+
+    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions } from '../helpers/check.js';
 
     export default {
         components: {
+            Search,
             Pagination,
             ContentHeader,
+            Delete,
             CreateButton,
             EditButton,
             ViewButton,
-            Delete,
             Error,
-            Loading
+            Loading,
+            DeleteCheck,
+            Trash,
+            DeleteMultiple,
+            DeleteAllCheck
         },
         data () {
            return {
@@ -135,6 +151,9 @@
         checkAuthorizeActions(actions){
             return checkActions(actions);
         },
+        checkUnauthorizeActions(actions){
+            return unauthorizedActions(actions);
+        },
         selectChecks(){
             if(this.$refs.deleteCheck!==undefined){
                 makeSelect(this.$refs.deleteCheck,true)
@@ -145,12 +164,11 @@
                 makeSelect(this.$refs.deleteCheck,false)
             }
         },
-        updateData(object,deletedTime){
-            object.deleted_at=deletedTime;
+        updateData(object){
+            deleteFromArray(this.banners.data,object)
         },
         getBanners(page){
-            this.currentPage=page;
-            window.axios.get("banners?page=" + page ).then(( response ) =>  {
+            window.axios.get(makeRoute(this,page,'banner')+"?page=" + page ).then(( response ) =>  {
                 if(response.data.message=='Loading'){
 
                     showSwalLoading(this);
@@ -163,8 +181,7 @@
         } );
        },
        searchBanners(page){
-        this.currentPage=page;
-        window.axios.get('banner_search?search=' + this.search + '&page=' + page ).then( (response) => {
+        window.axios.get(makeRoute(this,page,'banner','search')+'?search=' + this.search + '&page=' + page ).then( (response) => {
             if(response.data.message=='Loading'){
 
                 showSwalLoading(this);

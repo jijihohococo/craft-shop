@@ -22,7 +22,15 @@ class ColorController extends Controller
     {
         //
         return response()->json([
-            'colors' => Color::withTrashed()->latest('id')->paginate(10)
+            'colors' => Color::latest('id')->paginate(10)
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'colors' => Color::onlyTrashed()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 
@@ -131,8 +139,7 @@ class ColorController extends Controller
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'colors' => Color::withTrashed()
-            ->where('name','like',$searchData)
+            'colors' => Color::where('name','like',$searchData)
             ->orWhere('color_code','like',$searchData)
             ->latest('id')
             ->paginate(10)

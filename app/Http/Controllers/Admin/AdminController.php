@@ -24,7 +24,15 @@ class AdminController extends Controller
     {
         //
         return response()->json([
-            'admins' => Admin::withTrashed()->latest('id')->paginate(10)
+            'admins' => Admin::latest('id')->paginate(10)
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'admins' => Admin::onlyTrashed()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 
