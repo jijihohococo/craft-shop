@@ -22,12 +22,14 @@
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     @getData="getColors" />
-                    <DeleteMultiple 
+                    <DeleteMultiple
+                    v-if="actions.delete"  
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     :routeName="this.$route.name"
                     :mainData="colors.data"
-                    request="colors" />
+                    request="colors"
+                    @freshData="freshPage" />
                 </div>
                 <!-- /.card-header -->
                 <template v-if="actions.read">
@@ -36,6 +38,7 @@
                           <thead>
                             <tr>
                                 <th><DeleteAllCheck
+                                    v-if="actions.delete"
                                     :deleteArrayData="deleteData"
                                     @selectAll="selectChecks"
                                     @cancelAll="cancelChecks"
@@ -50,7 +53,9 @@
                             </thead>
                             <tbody>
                                 <tr v-for="color in colors.data" :key="color.id">
-                                    <td><DeleteCheck :objectData="color"
+                                    <td><DeleteCheck 
+                                        v-if="actions.delete"
+                                        :objectData="color"
                                         :deleteArrayData="deleteData"
                                         :objectArrayData="multipleData"
                                         ref="deleteCheck"
@@ -114,7 +119,7 @@
 
     import Search from '../components/Search';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions , showPageNumber } from '../helpers/check.js';
 
     export default {
         components: {
@@ -149,6 +154,9 @@
         }
     },
     methods :{
+        freshPage(){
+            this.getColors( showPageNumber(this.currentPage) )
+        },
         checkAuthorizeActions(actions){
             return checkActions(actions);
         },

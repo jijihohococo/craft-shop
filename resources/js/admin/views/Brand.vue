@@ -23,12 +23,14 @@
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     @getData="getBrands" />
-                    <DeleteMultiple 
+                    <DeleteMultiple
+                    v-if="actions.delete"  
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     :routeName="this.$route.name"
                     :mainData="brands.data"
-                    request="brands" />
+                    request="brands"
+                    @freshData="freshPage" />
                 </div>
                 <template v-if="actions.read">
                     <div class="card-body table-responsive p-0">
@@ -36,6 +38,7 @@
                           <thead>
                             <tr>
                                 <th><DeleteAllCheck
+                                    v-if="actions.delete" 
                                     :deleteArrayData="deleteData"
                                     @selectAll="selectChecks"
                                     @cancelAll="cancelChecks"
@@ -49,7 +52,9 @@
                             </thead>
                             <tbody>
                                 <tr v-for="brand in brands.data" :key="brand.id">
-                                    <td><DeleteCheck :objectData="brand"
+                                    <td><DeleteCheck
+                                        v-if="actions.delete" 
+                                        :objectData="brand"
                                         :deleteArrayData="deleteData"
                                         :objectArrayData="multipleData"
                                         ref="deleteCheck"
@@ -109,7 +114,7 @@
 
     import Search from '../components/Search';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions , showPageNumber } from '../helpers/check.js';
 
     export default {
         components: {
@@ -144,6 +149,9 @@
         }
     },
     methods :{
+        freshPage(){
+            this.getBrands( showPageNumber(this.currentPage) )
+        },
         checkAuthorizeActions(actions){
             return checkActions(actions);
         },

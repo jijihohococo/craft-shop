@@ -981,6 +981,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "showPageNumber": () => (/* binding */ showPageNumber),
 /* harmony export */   "checkActions": () => (/* binding */ checkActions),
 /* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions),
 /* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
@@ -996,6 +997,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
+function showPageNumber(currentPage) {
+  var page = currentPage - 1;
+  return page == 0 ? 1 : page;
+}
 function checkActions(actions) {
   return actions.create == true || actions.read == true || actions.update == true || actions["delete"] == true;
 }

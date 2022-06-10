@@ -1,3 +1,7 @@
+export function showPageNumber(currentPage){
+    let page=currentPage-1;
+    return page ==0 ? 1 : page;
+}
 export function checkActions(actions) {
     return actions.create==true || actions.read==true || actions.update==true || actions.delete==true;
 }

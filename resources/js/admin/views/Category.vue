@@ -29,6 +29,7 @@
                     :routeName="this.$route.name"
                     :mainData="categories.data"
                     request="categories"
+                    @freshData="freshPage"
                      />
                 </div>
                 <!-- /.card-header -->
@@ -119,7 +120,7 @@
 
     import Search from '../components/Search';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions , showPageNumber } from '../helpers/check.js';
 
     export default {
         components: {
@@ -154,6 +155,9 @@
         }
     },
     methods :{
+        freshPage(){
+            this.getCategories( showPageNumber(this.currentPage) )
+        },
         checkAuthorizeActions(actions){
             return checkActions(actions);
         },

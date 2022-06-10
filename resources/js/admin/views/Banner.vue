@@ -27,7 +27,8 @@
                     :objectArrayData="multipleData"
                     :routeName="this.$route.name"
                     :mainData="banners.data"
-                    request="banners" />
+                    request="banners"
+                    @freshData="freshPage" />
                 </div>
                 <!-- /.card-header -->
                 <template v-if="actions.read">
@@ -37,6 +38,7 @@
                             <tr>
                                 <th>
                                     <DeleteAllCheck
+                                    v-if="actions.delete"
                                     :deleteArrayData="deleteData"
                                     @selectAll="selectChecks"
                                     @cancelAll="cancelChecks"
@@ -52,7 +54,9 @@
                         <tbody>
                             <tr v-for="banner in banners.data" :key="banner.id">
                                 <td>
-                                    <DeleteCheck :objectData="category"
+                                    <DeleteCheck
+                                    v-if="actions.delete"
+                                    :objectData="category"
                                     :deleteArrayData="deleteData"
                                     :objectArrayData="multipleData"
                                     ref="deleteCheck"
@@ -113,7 +117,7 @@
 
     import Search from '../components/Search';
 
-    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions , showPageNumber } from '../helpers/check.js';
 
     export default {
         components: {
@@ -148,6 +152,9 @@
         }
     },
     methods :{
+        freshPage(){
+            this.getBanners( showPageNumber(this.currentPage) )
+        },
         checkAuthorizeActions(actions){
             return checkActions(actions);
         },

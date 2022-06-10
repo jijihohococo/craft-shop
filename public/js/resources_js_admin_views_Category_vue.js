@@ -194,6 +194,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['deleteArrayData', 'objectArrayData', 'routeName', 'request', 'mainData'],
+  emits: ['freshData'],
   methods: {
     deleteManyData: function deleteManyData() {
       var _this = this;
@@ -208,6 +209,8 @@ __webpack_require__.r(__webpack_exports__);
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(_this.$props.objectArrayData);
 
         _this.$swal('Success', response.data.message, 'success');
+
+        _this.$emit('freshData', null);
       })["catch"](function (error) {
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this, 'delete');
       });
@@ -491,6 +494,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    freshPage: function freshPage() {
+      this.getCategories((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showPageNumber)(this.currentPage));
+    },
     checkAuthorizeActions: function checkAuthorizeActions(actions) {
       return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.checkActions)(actions);
     },
@@ -1528,10 +1534,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     objectArrayData: $data.multipleData,
     routeName: this.$route.name,
     mainData: $data.categories.data,
-    request: "categories"
+    request: "categories",
+    onFreshData: $options.freshPage
   }, null, 8
   /* PROPS */
-  , ["deleteArrayData", "objectArrayData", "routeName", "mainData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  , ["deleteArrayData", "objectArrayData", "routeName", "mainData", "onFreshData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [$data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteAllCheck, {
     key: 0,
@@ -1621,6 +1628,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "showPageNumber": () => (/* binding */ showPageNumber),
 /* harmony export */   "checkActions": () => (/* binding */ checkActions),
 /* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions),
 /* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
@@ -1636,6 +1644,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "getModel": () => (/* binding */ getModel)
 /* harmony export */ });
+function showPageNumber(currentPage) {
+  var page = currentPage - 1;
+  return page == 0 ? 1 : page;
+}
 function checkActions(actions) {
   return actions.create == true || actions.read == true || actions.update == true || actions["delete"] == true;
 }

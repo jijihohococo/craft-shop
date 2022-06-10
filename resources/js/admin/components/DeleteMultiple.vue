@@ -5,6 +5,7 @@
 	import { deleteMultipleData , deleteFromArray , errorResponse } from '../helpers/check.js';
 	export default {
 		props : ['deleteArrayData','objectArrayData','routeName','request','mainData'],
+		emits : ['freshData'],
 		methods : {
 			deleteManyData(){
 				let route=this.$props.routeName.includes('_bin') ?
@@ -21,6 +22,7 @@
 						this.$swal( 'Success' ,
 							response.data.message ,
 							'success'  );
+						this.$emit('freshData',null);
 					}).catch( (error) => {
 						errorResponse(error,this,'delete')
 					} )
