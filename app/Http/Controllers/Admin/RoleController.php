@@ -24,7 +24,15 @@ class RoleController extends Controller
     {
         //
         return response()->json([
-            'roles' => Role::withTrashed()->latest('id')->paginate(10)
+            'roles' => Role::latest('id')->paginate(10)
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'roles' => Role::onlyTrashed()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 

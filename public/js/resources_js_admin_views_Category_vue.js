@@ -206,6 +206,10 @@ __webpack_require__.r(__webpack_exports__);
 
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(_this.$props.deleteArrayData);
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(_this.$props.objectArrayData);
+
+        _this.$swal('Success', response.data.message, 'success');
+      })["catch"](function (error) {
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this, 'delete');
       });
     }
   }
@@ -1518,7 +1522,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetData: $options.getCategories
   }, null, 8
   /* PROPS */
-  , ["route", "router", "deleteArrayData", "objectArrayData", "onGetData"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteMultiple, {
+  , ["route", "router", "deleteArrayData", "objectArrayData", "onGetData"]), $data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteMultiple, {
+    key: 0,
     deleteArrayData: $data.deleteData,
     objectArrayData: $data.multipleData,
     routeName: this.$route.name,
@@ -1526,9 +1531,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     request: "categories"
   }, null, 8
   /* PROPS */
-  , ["deleteArrayData", "objectArrayData", "routeName", "mainData"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  , ["deleteArrayData", "objectArrayData", "routeName", "mainData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteAllCheck, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [$data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteAllCheck, {
+    key: 0,
     deleteArrayData: $data.deleteData,
     onSelectAll: $options.selectChecks,
     onCancelAll: $options.cancelChecks,
@@ -1536,10 +1542,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ref: "deleteAll"
   }, null, 8
   /* PROPS */
-  , ["deleteArrayData", "onSelectAll", "onCancelAll", "lengthData"])]), _hoisted_10, _hoisted_11, _hoisted_12])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.categories.data, function (category) {
+  , ["deleteArrayData", "onSelectAll", "onCancelAll", "lengthData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_10, _hoisted_11, _hoisted_12])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.categories.data, function (category) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: category.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteCheck, {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [$data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteCheck, {
+      key: 0,
       objectData: category,
       deleteArrayData: $data.deleteData,
       objectArrayData: $data.multipleData,
@@ -1547,7 +1554,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ref: "deleteCheck"
     }, null, 8
     /* PROPS */
-    , ["objectData", "deleteArrayData", "objectArrayData"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.name), 1
+    , ["objectData", "deleteArrayData", "objectArrayData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.name), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.deleted_at), 1
     /* TEXT */
@@ -1560,11 +1567,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["data_name", "data_model", "data_id"]), $data.actions.update && category.deleted_at == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_EditButton, {
       key: 0,
       content: $data.content,
-      link: 'category.edit',
+      link: "category.edit",
       dataId: category.id
     }, null, 8
     /* PROPS */
-    , ["content", "link", "dataId"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Delete, {
+    , ["content", "dataId"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Delete, {
       key: 1,
       content: $data.content,
       deleteAt: category.deleted_at,

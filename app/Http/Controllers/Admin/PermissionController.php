@@ -25,7 +25,15 @@ class PermissionController extends Controller
     {
         //
         return response()->json([
-            'permissions' => Permission::withTrashed()->latest('id')->paginate(10)
+            'permissions' => Permission::latest('id')->paginate(10)
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'permissions' => Permission::onlyTrashed()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 
@@ -152,10 +160,20 @@ class PermissionController extends Controller
 public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
-        'permissions' => Permission::withTrashed()
-        ->where('name','like', $searchData )
+        'permissions' => Permission::where('name','like', $searchData )
         ->orWhere('model','like', $searchData )
         ->latest('id')->paginate(10)
+    ]);
+}
+
+public function trashSearch(Request $request){
+    $searchData='%'.$request->search.'%';
+    return response()->json([
+        'permissions' => Permission::onlyTrashed()
+        ->where('name','like',$searchData)
+        ->orWhere('model','like',$searchData)
+        ->latest('id')
+        ->paginate(10)
     ]);
 }
 

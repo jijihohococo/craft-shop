@@ -206,6 +206,10 @@ __webpack_require__.r(__webpack_exports__);
 
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(_this.$props.deleteArrayData);
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(_this.$props.objectArrayData);
+
+        _this.$swal('Success', response.data.message, 'success');
+      })["catch"](function (error) {
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this, 'delete');
       });
     }
   }
@@ -504,7 +508,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     updateData: function updateData(object) {
-      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.deleteFromArray)(this.categories.data, object);
+      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.deleteFromArray)(this.brands.data, object);
     },
     getBrands: function getBrands(page) {
       var _this = this;
@@ -1532,7 +1536,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     deleteArrayData: $data.deleteData,
     onSelectAll: $options.selectChecks,
     onCancelAll: $options.cancelChecks,
-    lengthData: _ctx.categories.data.length,
+    lengthData: $data.brands.data.length,
     ref: "deleteAll"
   }, null, 8
   /* PROPS */
@@ -1540,7 +1544,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: brand.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteCheck, {
-      objectData: _ctx.category,
+      objectData: brand,
       deleteArrayData: $data.deleteData,
       objectArrayData: $data.multipleData,
       ref_for: true,
@@ -1595,8 +1599,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
     httpStatus: 403,
-    title: 'Permission Denied',
-    description: 'You are not allowed to do any permissions for Brand'
+    title: "Permission Denied",
+    description: "You are not allowed to do any permissions for Brand"
   })])], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 64

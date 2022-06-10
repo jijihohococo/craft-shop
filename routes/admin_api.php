@@ -96,8 +96,12 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	Route::resource('colors','Admin\ColorController');
 	Route::get('color_search','Admin\ColorController@search');
+	Route::get('color_trash_search','Admin\ColorController@trashSearch');
 	Route::delete('color_restore/{id}','Admin\ColorController@restore');
 	Route::get('get_colors','Admin\ColorController@get');
+	Route::get('trash_colors','Admin\ColorController@trash');
+	Route::delete('delete_colors','Admin\ColorController@deleteMultiple');
+	Route::delete('restore_colors','Admin\ColorController@restoreMultiple');
 
 
 	Route::get('orders','Admin\OrderController@index');

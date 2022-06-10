@@ -39,7 +39,7 @@
                                     :deleteArrayData="deleteData"
                                     @selectAll="selectChecks"
                                     @cancelAll="cancelChecks"
-                                    :lengthData="categories.data.length"
+                                    :lengthData="brands.data.length"
                                     ref="deleteAll"
                                     /></th>
                                     <th>Name</th>
@@ -49,7 +49,7 @@
                             </thead>
                             <tbody>
                                 <tr v-for="brand in brands.data" :key="brand.id">
-                                    <td><DeleteCheck :objectData="category"
+                                    <td><DeleteCheck :objectData="brand"
                                         :deleteArrayData="deleteData"
                                         :objectArrayData="multipleData"
                                         ref="deleteCheck"
@@ -76,7 +76,7 @@
         </div>
         <!-- /.row -->
         <div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
-         <Error :httpStatus="403" :title="'Permission Denied'" :description="'You are not allowed to do any permissions for Brand'" />
+            <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Brand" />
      </div>
  </div>
 </section>
@@ -161,7 +161,7 @@
             }
         },
         updateData(object){
-            deleteFromArray(this.categories.data,object)
+            deleteFromArray(this.brands.data,object)
         },
         getBrands(page){
             window.axios.get(makeRoute(this,page,'brand')+"?page=" + page ).then(( response ) =>  {

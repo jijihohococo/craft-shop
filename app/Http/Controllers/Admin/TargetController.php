@@ -22,7 +22,15 @@ class TargetController extends Controller
     {
         //
         return response()->json([
-            'targets' => Target::withTrashed()->latest('id')->paginate(10)
+            'targets' => Target::latest('id')->paginate(10)
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'targets' => Target::onlyTrashed()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 
@@ -34,9 +42,6 @@ class TargetController extends Controller
     public function create()
     {
         //
-        return response()->json([
-            'target' => new Target
-        ]);
     }
 
     /**
@@ -118,7 +123,7 @@ class TargetController extends Controller
         return response()->json([
           'message' => 'Target ' . $target->name . ' is deleted Successfully',
           'deleted_at' => $target->deleted_at
-        ]);   
+        ]);
     }
 
     public function restore($id){

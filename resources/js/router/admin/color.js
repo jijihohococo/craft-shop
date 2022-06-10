@@ -16,5 +16,10 @@ export default [
 		path : 'color/edit/:id',
 		component : CreateEditColor,
 		name : 'color.edit'
+	},
+	{
+		path : 'color_bin',
+		component : Color,
+		name : 'color_bin'
 	}
 ]

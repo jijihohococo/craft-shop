@@ -22,12 +22,14 @@
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     @getData="getCategories" />
-                    <DeleteMultiple 
+                    <DeleteMultiple
+                    v-if="actions.delete" 
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     :routeName="this.$route.name"
                     :mainData="categories.data"
-                    request="categories" />
+                    request="categories"
+                     />
                 </div>
                 <!-- /.card-header -->
                 <template v-if="actions.read">
@@ -37,6 +39,7 @@
                             <tr>
                                 <th>
                                     <DeleteAllCheck
+                                    v-if="actions.delete"
                                     :deleteArrayData="deleteData"
                                     @selectAll="selectChecks"
                                     @cancelAll="cancelChecks"
@@ -52,7 +55,8 @@
                         <tbody>
                             <tr v-for="category in categories.data" :key="category.id">
                                     <td>
-                                        <DeleteCheck :objectData="category"
+                                        <DeleteCheck v-if="actions.delete"
+                                        :objectData="category"
                                         :deleteArrayData="deleteData"
                                         :objectArrayData="multipleData"
                                         ref="deleteCheck"
@@ -62,7 +66,7 @@
                                     <td>{{ category.deleted_at }}</td>
                                     <td class="text-left">
                                         <ViewButton :data_name="category.name" :data_model="content" :data_id="category.id" />
-                                        <EditButton v-if="actions.update && category.deleted_at==null" :content="content" :link="'category.edit'" :dataId="category.id" />
+                                        <EditButton v-if="actions.update && category.deleted_at==null" :content="content" link="category.edit" :dataId="category.id" />
                                         <Delete v-if="actions.delete" :content="content" :deleteAt="category.deleted_at" :deleteLink="'categories/'+category.id" :restoreLink="'category_restore/'+category.id"
                                         :id="category.id" :objectData="category" @update="updateData" />
                                     </td>

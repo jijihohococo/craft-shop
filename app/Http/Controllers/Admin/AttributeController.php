@@ -201,9 +201,9 @@ class AttributeController extends Controller
 
     public function restoreMultiple(Request $request){
         $request->validate([
-            'attributes' => ['required','string']
+            'data_attributes' => ['required','string']
         ]);
-        $attributes=explode(',', $request->attributes);
+        $attributes=explode(',', $request->data_attributes);
         Attribute::withTrashed()->whereIn('id',$attributes)->restore();
         return response()->json([
             'message' => 'Attributes are restored'

@@ -2,7 +2,7 @@
 	<a v-if="deleteArrayData.length>0" :class="[ routeName.includes('_bin') ? 'btn btn-warning ml-3' : 'btn btn-danger ml-3']" v-on:click="deleteManyData()" >{{ routeName.includes('_bin') ? 'Restore' : 'Delete' }}</a>
 </template>
 <script >
-	import { deleteMultipleData , deleteFromArray } from '../helpers/check.js';
+	import { deleteMultipleData , deleteFromArray , errorResponse } from '../helpers/check.js';
 	export default {
 		props : ['deleteArrayData','objectArrayData','routeName','request','mainData'],
 		methods : {
@@ -18,7 +18,12 @@
 						})
 						deleteMultipleData(this.$props.deleteArrayData)
 						deleteMultipleData(this.$props.objectArrayData)
-					})
+						this.$swal( 'Success' ,
+							response.data.message ,
+							'success'  );
+					}).catch( (error) => {
+						errorResponse(error,this,'delete')
+					} )
 				}
 			}
 		}

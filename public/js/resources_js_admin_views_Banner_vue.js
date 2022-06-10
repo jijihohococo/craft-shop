@@ -206,6 +206,10 @@ __webpack_require__.r(__webpack_exports__);
 
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(_this.$props.deleteArrayData);
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.deleteMultipleData)(_this.$props.objectArrayData);
+
+        _this.$swal('Success', response.data.message, 'success');
+      })["catch"](function (error) {
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this, 'delete');
       });
     }
   }
