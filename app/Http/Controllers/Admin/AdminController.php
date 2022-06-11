@@ -174,11 +174,43 @@ class AdminController extends Controller
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'admins' => Admin::withTrashed()
+            'admins' => Admin::where('name','like',$searchData)
+            ->orWhere('email','like',$searchData)
+            ->latest('id')
+            ->paginate(10)
+        ]);
+    }
+
+    public function trashSearch(Request $request){
+        $searchData='%'.$request->search.'%';
+        return response()->json([
+            'admins' => Admin::onlyTrashed()
             ->where('name','like',$searchData)
             ->orWhere('email','like',$searchData)
             ->latest('id')
             ->paginate(10)
+        ]);
+    }
+
+    public function deleteMultiple(Request $request){
+        $request->validate([
+            'admins' => ['required','string']
+        ]);
+        $admins=explode(',', $request->admins);
+        Admin::whereIn('id',$admins)->delete();
+        return response()->json([
+            'message' => 'Admins are deleted'
+        ]);
+    }
+
+    public function restoreMultiple(Request $request){
+        $request->validate([
+            'admins' => ['required','string']
+        ]);
+        $admins=explode(',', $request->admins);
+        Admin::withTrashed()->whereIn('id',$admins)->restore();
+        return response()->json([
+            'message' => 'Admins are restored'
         ]);
     }
 }

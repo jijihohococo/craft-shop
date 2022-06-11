@@ -22,7 +22,8 @@
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     @getData="getBanners" />
-                    <DeleteMultiple 
+                    <DeleteMultiple
+                    v-if="actions.delete"
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     :routeName="this.$route.name"
@@ -175,7 +176,7 @@
             deleteFromArray(this.banners.data,object)
         },
         getBanners(page){
-            window.axios.get(makeRoute(this,page,'banner')+"?page=" + page ).then(( response ) =>  {
+            window.axios.get(makeRoute(this,page,'banner') + page ).then(( response ) =>  {
                 if(response.data.message=='Loading'){
 
                     showSwalLoading(this);
@@ -188,7 +189,7 @@
         } );
        },
        searchBanners(page){
-        window.axios.get(makeRoute(this,page,'banner','search')+'?search=' + this.search + '&page=' + page ).then( (response) => {
+        window.axios.get(makeRoute(this,page,'banner','search') + this.search + '&page=' + page ).then( (response) => {
             if(response.data.message=='Loading'){
 
                 showSwalLoading(this);

@@ -519,7 +519,7 @@ __webpack_require__.r(__webpack_exports__);
     getCategories: function getCategories(page) {
       var _this = this;
 
-      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'category') + "?page=" + page).then(function (response) {
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'category') + page).then(function (response) {
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this);
         } else {
@@ -533,7 +533,7 @@ __webpack_require__.r(__webpack_exports__);
     searchCategories: function searchCategories(page) {
       var _this2 = this;
 
-      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'category', 'search') + '?search=' + this.search + '&page=' + page).then(function (response) {
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'category', 'search') + this.search + '&page=' + page).then(function (response) {
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this2);
         } else {
@@ -1671,8 +1671,6 @@ function changeWord(word) {
       return word + 's';
       break;
   }
-
-  return word.slice(-1) == 'y' ? word.slice(0, -1) + 'ies' : word + 's';
 }
 
 function makeRoute(vm, page, name) {
@@ -1689,12 +1687,14 @@ function makeRoute(vm, page, name) {
       }
 
       var routeName = changeWord(name);
-      return vm.$route.name == name ? routeName : 'trash_' + routeName;
+      var routeData = vm.$route.name == name ? routeName : 'trash_' + routeName;
+      return routeData + '?page=';
       break;
 
     case 'search':
       vm.search = vm.$refs.searchModal.searchData;
-      return vm.$route.name == name ? name + '_search' : name + '_trash_search';
+      var searchRoute = vm.$route.name == name ? name + '_search' : name + '_trash_search';
+      return searchRoute + '?search=';
       break;
   }
 }

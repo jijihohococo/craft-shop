@@ -35,15 +35,23 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	Route::resource('items','Admin\ItemController');
 	Route::get('item_search','Admin\ItemController@search');
+	Route::get('item_trash_search','Admin\ItemController@trashSearch');
 	Route::delete('item_restore/{id}','Admin\ItemController@restore');
 	Route::delete('delete_item_images/{id}','Admin\ItemController@deleteItemImages');
 	Route::post('item_image_delete/{id}','Admin\ItemController@imageDelete');
 	Route::get('total_items','Admin\ItemController@getTotal');
+	Route::get('trash_items','Admin\ItemController@trash');
+	Route::delete('delete_items','Admin\ItemController@deleteMultiple');
+	Route::delete('restore_items','Admin\ItemController@restoreMultiple');
 
 	Route::resource('admins','Admin\AdminController');
 	Route::get('admin','Admin\AdminController@get');
 	Route::get('admin_search','Admin\AdminController@search');
+	Route::get('admin_trash_search','Admin\AdminController@trashSearch');
 	Route::delete('admin_restore/{id}','Admin\AdminController@restore');
+	Route::get('trash_admins','Admin\AdminController@trash');
+	Route::delete('delete_admins','Admin\AdminController@deleteMultiple');
+	Route::delete('restore_admins','Admin\AdminController@restoreMultiple');
 
 	Route::get('users','Admin\UserController@index');
 	Route::get('total_users','Admin\UserController@getTotal');
@@ -69,9 +77,13 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	Route::resource('permissions','Admin\PermissionController');
 	Route::get('permission_search','Admin\PermissionController@search');
+	Route::get('permission_trash_search','Admin\PermissionController@trashSearch');
 	Route::delete('permission_restore/{id}','Admin\PermissionController@restore');
 	Route::get('check_permission/{model}/{action}','Admin\PermissionController@checkPermission');
 	Route::get('get_permissions','Admin\PermissionController@get');
+	Route::get('trash_permissions','Admin\PermissionController@trash');
+	Route::delete('delete_permissions','Admin\PermissionController@deleteMultiple');
+	Route::delete('restore_permissions','Admin\PermissionController@restoreMultiple');
 
 	Route::get('transactions/{model}/{model_id}','Admin\TransactionController@get');
 	Route::get('transaction_search/{model}/{model_id}','Admin\TransactionController@search');

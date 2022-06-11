@@ -15,7 +15,6 @@
                     />
                     <CreateButton v-if="actions.create" :content="content" :link="'/admin/brand/create'" />
                 </div>
-                <!-- /.card-header -->
                 <div class="card-header row">
                     <Trash :route="this.$route"
                     :router="this.$router"
@@ -32,6 +31,7 @@
                     request="brands"
                     @freshData="freshPage" />
                 </div>
+                <!-- /.card-header -->
                 <template v-if="actions.read">
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
@@ -172,7 +172,7 @@
             deleteFromArray(this.brands.data,object)
         },
         getBrands(page){
-            window.axios.get(makeRoute(this,page,'brand')+"?page=" + page ).then(( response ) =>  {
+            window.axios.get(makeRoute(this,page,'brand') + page ).then(( response ) =>  {
                 if(response.data.message=='Loading'){
 
                     showSwalLoading(this);
@@ -185,7 +185,7 @@
         } );
        },
        searchBrands(page){
-        window.axios.get(makeRoute(this,page,'brand','search')+'?search=' + this.search + '&page=' + page ).then( (response) => {
+        window.axios.get(makeRoute(this,page,'brand','search') + this.search + '&page=' + page ).then( (response) => {
             if(response.data.message=='Loading'){
 
                 showSwalLoading(this);

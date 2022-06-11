@@ -146,7 +146,7 @@ class CurrencyController extends Controller
         ]);
     }
 
-    public function search(Request $request){
+    public function trashSearch(Request $request){
         $search='%'.$request->search.'%';
         return response()->json([
             'currencies' => Currency::onlyTrashed()

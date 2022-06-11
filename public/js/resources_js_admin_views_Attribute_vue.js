@@ -519,7 +519,7 @@ __webpack_require__.r(__webpack_exports__);
     getAttributes: function getAttributes(page) {
       var _this = this;
 
-      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'attribute') + "?page=" + page).then(function (response) {
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'attribute') + page).then(function (response) {
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this);
         } else {
@@ -533,7 +533,7 @@ __webpack_require__.r(__webpack_exports__);
     searchAttributes: function searchAttributes(page) {
       var _this2 = this;
 
-      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'attribute', 'search') + '?search=' + this.search + '&page=' + page).then(function (response) {
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'attribute', 'search') + this.search + '&page=' + page).then(function (response) {
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this2);
         } else {
@@ -1528,7 +1528,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetData: $options.getAttributes
   }, null, 8
   /* PROPS */
-  , ["route", "router", "deleteArrayData", "objectArrayData", "onGetData"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DeleteMultiple, {
+  , ["route", "router", "deleteArrayData", "objectArrayData", "onGetData"]), $data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteMultiple, {
+    key: 0,
     deleteArrayData: $data.deleteData,
     objectArrayData: $data.multipleData,
     routeName: this.$route.name,
@@ -1537,7 +1538,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onFreshData: $options.freshPage
   }, null, 8
   /* PROPS */
-  , ["deleteArrayData", "objectArrayData", "routeName", "mainData", "onFreshData"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  , ["deleteArrayData", "objectArrayData", "routeName", "mainData", "onFreshData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [$data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteAllCheck, {
     key: 0,
@@ -1670,8 +1671,6 @@ function changeWord(word) {
       return word + 's';
       break;
   }
-
-  return word.slice(-1) == 'y' ? word.slice(0, -1) + 'ies' : word + 's';
 }
 
 function makeRoute(vm, page, name) {
@@ -1688,12 +1687,14 @@ function makeRoute(vm, page, name) {
       }
 
       var routeName = changeWord(name);
-      return vm.$route.name == name ? routeName : 'trash_' + routeName;
+      var routeData = vm.$route.name == name ? routeName : 'trash_' + routeName;
+      return routeData + '?page=';
       break;
 
     case 'search':
       vm.search = vm.$refs.searchModal.searchData;
-      return vm.$route.name == name ? name + '_search' : name + '_trash_search';
+      var searchRoute = vm.$route.name == name ? name + '_search' : name + '_trash_search';
+      return searchRoute + '?search=';
       break;
   }
 }

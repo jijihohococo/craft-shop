@@ -178,7 +178,7 @@
             deleteFromArray(this.categories.data,object)
         },
         getCategories(page){
-            window.axios.get(makeRoute(this,page,'category')+"?page=" + page ).then(( response ) =>  {
+            window.axios.get(makeRoute(this,page,'category') + page ).then(( response ) =>  {
                 if(response.data.message=='Loading'){
 
                     showSwalLoading(this);
@@ -191,7 +191,7 @@
         } );
      },
      searchCategories(page){
-        window.axios.get(makeRoute(this,page,'category','search')+'?search=' + this.search + '&page=' + page ).then( (response) => {
+        window.axios.get(makeRoute(this,page,'category','search') + this.search + '&page=' + page ).then( (response) => {
          if(response.data.message=='Loading'){
 
             showSwalLoading(this);

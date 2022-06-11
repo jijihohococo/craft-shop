@@ -22,7 +22,8 @@
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     @getData="getAttributes" />
-                    <DeleteMultiple 
+                    <DeleteMultiple
+                    v-if="actions.delete" 
                     :deleteArrayData="deleteData"
                     :objectArrayData="multipleData"
                     :routeName="this.$route.name"
@@ -176,7 +177,7 @@
             deleteFromArray(this.attributes.data,object)
         },
         getAttributes(page){
-            window.axios.get(makeRoute(this,page,'attribute')+"?page=" + page ).then(( response ) =>  {
+            window.axios.get(makeRoute(this,page,'attribute') + page ).then(( response ) =>  {
                 if(response.data.message=='Loading'){
 
                     showSwalLoading(this);
@@ -189,7 +190,7 @@
         } );
      },
      searchAttributes(page){
-        window.axios.get(makeRoute(this,page,'attribute','search')+'?search=' + this.search + '&page=' + page ).then( (response) => {
+        window.axios.get(makeRoute(this,page,'attribute','search') + this.search + '&page=' + page ).then( (response) => {
          if(response.data.message=='Loading'){
 
             showSwalLoading(this);

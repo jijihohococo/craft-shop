@@ -24,7 +24,6 @@ function changeWord(word){
         break;
 
     }
-    return word.slice(-1)=='y' ? word.slice(0, -1) + 'ies' : word + 's';
 }
 export function makeRoute(vm,page,name,search=null) {
     vm.currentPage=page;
@@ -36,12 +35,14 @@ export function makeRoute(vm,page,name,search=null) {
             vm.$refs.deleteAll.$el.checked=false
         }
         let routeName=changeWord(name);
-        return vm.$route.name==name ? routeName : 'trash_' + routeName;
+        let routeData=vm.$route.name==name ? routeName : 'trash_' + routeName;
+        return routeData + '?page=';
         break;
 
         case 'search':
         vm.search=vm.$refs.searchModal.searchData;
-        return vm.$route.name==name ? name + '_search' : name + '_trash_search';
+        let searchRoute=vm.$route.name==name ? name + '_search' : name + '_trash_search';
+        return searchRoute + '?search=';
         break;
     }
 }

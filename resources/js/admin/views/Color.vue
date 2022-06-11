@@ -177,7 +177,7 @@
             deleteFromArray(this.colors.data,object)
         },
         getColors(page){
-            window.axios.get(makeRoute(this,page,'color')+"?page=" + page ).then(( response ) =>  {
+            window.axios.get(makeRoute(this,page,'color') + page ).then(( response ) =>  {
                 if(response.data.message=='Loading'){
 
                     showSwalLoading(this);
@@ -190,7 +190,7 @@
         } );
      },
      searchColors(page){
-        window.axios.get(makeRoute(this,page,'color','search')+'?search=' + this.search + '&page=' + page ).then( (response) => {
+        window.axios.get(makeRoute(this,page,'color','search') + this.search + '&page=' + page ).then( (response) => {
          if(response.data.message=='Loading'){
 
             showSwalLoading(this);

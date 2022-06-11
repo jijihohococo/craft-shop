@@ -189,7 +189,23 @@ class ItemController extends Controller
 public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
-        'items' => Item::withTrashed()
+        'items' => Item::selectCategory()
+        ->where('name','like',$searchData )
+        ->orWherein('category_id',
+            function($query) use($searchData) {
+                $query->select('id')
+                ->from('categories')
+                ->where('name','like', $searchData );
+            }
+        )
+        ->latest('id')->paginate(10)
+    ]);
+}
+
+public function trashSearch(Request $request){
+    $searchData='%'.$request->search.'%';
+    return response()->json([
+        'items' => Item::onlyTrashed()
         ->selectCategory()
         ->where('name','like',$searchData )
         ->orWherein('category_id',
@@ -226,6 +242,28 @@ public function imageDelete(Request $request,$id){
 public function getTotal(){
     return response()->json([
         'total_items' => Item::count()
+    ]);
+}
+
+public function deleteMultiple(Request $request){
+    $request->validate([
+        'items' => ['required','string']
+    ]);
+    $items=explode(',', $request->items);
+    Item::whereIn('id',$items)->delete();
+    return response()->json([
+        'message' => 'Items are deleted'
+    ]);
+}
+
+public function restoreMultiple(Request $request){
+    $request->validate([
+        'items' => ['required','string']
+    ]);
+    $items=explode(',', $request->items);
+    Item::withTrashed()->whereIn('id',$items)->restore();
+    return response()->json([
+        'message' => 'Items are restored'
     ]);
 }
 }

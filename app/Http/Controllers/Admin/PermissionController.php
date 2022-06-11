@@ -200,4 +200,26 @@ public function get(){
         'permissions' => (new Permission)->getAll()
     ]);
 }
+
+public function deleteMultiple(Request $request){
+    $request->validate([
+        'permissions' => ['required','string']
+    ]);
+    $permissions=explode(',', $request->permissions);
+    Permission::whereIn('id',$permissions)->delete();
+    return response()->json([
+        'message' => 'Permissions are deleted'
+    ]);
+}
+
+public function restoreMultiple(Request $request){
+    $request->validate([
+        'permissions' => ['required','string']
+    ]);
+    $permissions=explode(',', $request->permissions);
+    Permission::withTrashed()->whereIn('id',$permissions)->restore();
+    return response()->json([
+        'message' => 'Permissions are restored'
+    ]);
+}
 }
