@@ -13,7 +13,7 @@
                     ref="searchModal"
                     @searchData="searchBrands"
                     />
-                    <CreateButton v-if="actions.create" :content="content" :link="'/admin/brand/create'" />
+                    <CreateButton v-if="actions.create" :content="content" link="/admin/brand/create" />
                 </div>
                 <div class="card-header row">
                     <Trash :route="this.$route"
@@ -63,7 +63,7 @@
                                         <td>{{ brand.deleted_at }}</td>
                                         <td class="text-left">
                                             <ViewButton :data_name="brand.name" :data_model="content" :data_id="brand.id" />
-                                            <EditButton v-if="actions.update && brand.deleted_at==null" :content="content" :link="'brand.edit'" :dataId="brand.id" />
+                                            <EditButton v-if="actions.update && brand.deleted_at==null" :content="content" link="brand.edit" :dataId="brand.id" />
                                             <Delete v-if="actions.delete" :content="content" :deleteAt="brand.deleted_at" :deleteLink="'brands/'+brand.id" :restoreLink="'brand_restore/'+brand.id" :id="brand.id" :objectData="brand" @update="updateData" />
                                         </td>
                                     </tr>

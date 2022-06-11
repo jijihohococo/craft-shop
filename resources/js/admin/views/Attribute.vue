@@ -67,7 +67,7 @@
                                 <td>{{ attribute.deleted_at }}</td>
                                 <td class="text-left">
                                     <ViewButton :data_name="attribute.name" :data_model="content" :data_id="attribute.id" />
-                                    <EditButton v-if="actions.update && attribute.deleted_at==null" :content="content" :link="'attribute.edit'" :dataId="attribute.id" />
+                                    <EditButton v-if="actions.update && attribute.deleted_at==null" :content="content" link="attribute.edit" :dataId="attribute.id" />
                                     <Delete v-if="actions.delete" :content="content" :deleteAt="attribute.deleted_at" :deleteLink="'attributes/'+attribute.id" :restoreLink="'attribute_restore/'+attribute.id"
                                     :id="attribute.id" :objectData="attribute" @update="updateData" />
                                 </td>

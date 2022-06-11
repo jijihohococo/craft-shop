@@ -67,7 +67,7 @@
                                 <td>{{ banner.deleted_at }}</td>
                                 <td class="text-left">
                                     <ViewButton :data_name="banner.title" :data_model="content" :data_id="banner.id" />
-                                    <EditButton v-if="actions.update && banner.deleted_at==null" :content="content" :link="'banner.edit'" :dataId="banner.id" />
+                                    <EditButton v-if="actions.update && banner.deleted_at==null" :content="content" link="banner.edit" :dataId="banner.id" />
                                     <Delete v-if="actions.delete" :content="content" :deleteAt="banner.deleted_at" :deleteLink="'banners/'+banner.id" :restoreLink="'banner_restore/'+banner.id" :id="banner.id" :objectData="banner" @update="updateData" />
                                 </td>
                             </tr>

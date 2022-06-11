@@ -75,7 +75,7 @@
                             <td>{{ permission.deleted_at }}</td>
                             <td class="text-left">
                                 <ViewButton :data_name="permission.name" :data_model="content" :data_id="permission.id" />
-                                <EditButton v-if="actions.update && permission.deleted_at==null" :content="content" :link="'permission.edit'" :dataId="permission.id" />
+                                <EditButton v-if="actions.update && permission.deleted_at==null" :content="content" link="permission.edit" :dataId="permission.id" />
 
                                 <Delete v-if="actions.delete" :content="content" :deleteAt="permission.deleted_at" :deleteLink="'permissions/'+permission.id" :restoreLink="'permission_restore/'+permission.id" :id="permission.id" :objectData="permission" @update="updateData" />
                             </td>

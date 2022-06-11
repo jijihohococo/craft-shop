@@ -1574,11 +1574,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["data_name", "data_model", "data_id"]), $data.actions.update && attribute.deleted_at == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_EditButton, {
       key: 0,
       content: $data.content,
-      link: 'attribute.edit',
+      link: "attribute.edit",
       dataId: attribute.id
     }, null, 8
     /* PROPS */
-    , ["content", "link", "dataId"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Delete, {
+    , ["content", "dataId"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Delete, {
       key: 1,
       content: $data.content,
       deleteAt: attribute.deleted_at,

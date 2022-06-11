@@ -67,7 +67,7 @@
                                     <td>{{ currency.deleted_at }}</td>
                                     <td class="text-left">
                                         <ViewButton :data_name="currency.name" :data_model="content" :data_id="currency.id" />
-                                        <EditButton v-if="actions.update && currency.deleted_at==null" :content="content" :link="'currency.edit'" :dataId="currency.id" />
+                                        <EditButton v-if="actions.update && currency.deleted_at==null" :content="content" link="currency.edit" :dataId="currency.id" />
                                         <Delete v-if="actions.delete" :content="content" :deleteAt="currency.deleted_at" :deleteLink="'currencies/'+currency.id" :restoreLink="'currency_restore/'+currency.id" :id="currency.id" :objectData="currency" @update="updateData" />
                                     </td>
                                 </tr>

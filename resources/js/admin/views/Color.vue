@@ -67,7 +67,7 @@
                                         <td>{{ color.deleted_at }}</td>
                                         <td class="text-left">
                                             <ViewButton :data_name="color.name" :data_model="content" :data_id="color.id" />
-                                            <EditButton v-if="actions.update && color.deleted_at==null" :content="content" :link="'color.edit'" :dataId="color.id" />
+                                            <EditButton v-if="actions.update && color.deleted_at==null" :content="content" link="color.edit" :dataId="color.id" />
                                             <Delete v-if="actions.delete" :content="content" :deleteAt="color.deleted_at" :deleteLink="'colors/'+color.id" :restoreLink="'color_restore/'+color.id"
                                             :id="color.id" :objectData="color" @update="updateData" />
                                         </td>
