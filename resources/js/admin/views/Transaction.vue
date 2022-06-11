@@ -46,7 +46,7 @@
 				</div>
 			</div>
 			<div v-else-if="actions.read==false" class="card card-default">
-				<Error :httpStatus="403" :title="'Permission Denied'" :description="'You are not allowed to view transactions'" />
+				<Error :httpStatus="403" title="Permission Denied" description="You are not allowed to view transactions" />
 			</div>
 		</div>
 	</section>

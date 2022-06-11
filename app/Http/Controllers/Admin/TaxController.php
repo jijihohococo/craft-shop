@@ -22,7 +22,15 @@ class TaxController extends Controller
     {
         //
         return response()->json([
-            'taxes' => Tax::withTrashed()->latest('id')->paginate(10)
+            'taxes' => Tax::latest('id')->paginate(10)
+        ]);
+    }
+
+    public function trash(){
+        return response()->json([
+            'taxes' => Tax::onlyTrashed()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 
@@ -123,7 +131,17 @@ class TaxController extends Controller
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'taxes' => Tax::withTrashed()
+            'taxes' => Tax::where('name','like',$searchData)
+            ->orWhere('rate','like',$searchData)
+            ->latest('id')
+            ->paginate(10)
+        ]);
+    }
+
+    public function trashSearch(Request $request){
+        $searchData='%'.$request->search.'%';
+        return response()->json([
+            'taxes' => Tax::onlyTrashed()
             ->where('name','like',$searchData)
             ->orWhere('rate','like',$searchData)
             ->latest('id')
@@ -142,5 +160,27 @@ class TaxController extends Controller
             'name' => ['required', 'string', 'max:100', $id==null ? 'unique:taxes' : 'unique:taxes,name,'.$id ] ,
             'rate' => 'required|numeric|between:0.000,999999999.9999'
         ];
+    }
+
+    public function deleteMultiple(Request $request){
+        $request->validate([
+            'taxes' => ['required','string']
+        ]);
+        $taxes=explode(',', $request->taxes);
+        Tax::whereIn('id',$taxes)->delete();
+        return response()->json([
+            'message' => 'Taxes are deleted'
+        ]);
+    }
+
+    public function restoreMultiple(Request $request){
+        $request->validate([
+            'taxes' => ['required','string']
+        ]);
+        $taxes=explode(',', $request->taxes);
+        Tax::withTrashed()->whereIn('id',$taxes)->restore();
+        return response()->json([
+            'message' => 'Taxes are restored'
+        ]);
     }
 }

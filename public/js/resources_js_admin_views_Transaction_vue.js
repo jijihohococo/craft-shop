@@ -784,8 +784,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["page", "lastPage", "onGetData", "onSearchData", "search", "from", "to", "total"])])])])])) : $data.actions.read == false ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
     httpStatus: 403,
-    title: 'Permission Denied',
-    description: 'You are not allowed to view transactions'
+    title: "Permission Denied",
+    description: "You are not allowed to view transactions"
   })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 64
   /* STABLE_FRAGMENT */
   );
@@ -837,6 +837,7 @@ function changeWord(word) {
       break;
 
     case 'h':
+    case 'x':
       return word.slice(0, -1) + 'es';
       break;
 

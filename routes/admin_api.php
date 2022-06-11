@@ -59,7 +59,12 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	Route::resource('targets','Admin\TargetController');
 	Route::get('target_search','Admin\TargetController@search');
+	Route::get('target_trash_search','Admin\TargetController@trashSearch');
 	Route::delete('target_restore/{id}','Admin\TargetController@restore');
+	Route::get('trash_targets','Admin\TargetController@trash');
+	Route::delete('delete_targets','Admin\TargetController@deleteMultiple');
+	Route::delete('restore_targets','Admin\TargetController@restoreMultiple');
+
 
 	Route::resource('currencies','Admin\CurrencyController');
 	Route::get('currency_search','Admin\CurrencyController@search');
@@ -72,8 +77,12 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	Route::resource('roles','Admin\RoleController');
 	Route::get('role_search','Admin\RoleController@search');
+	Route::get('role_trash_search','Admin\RoleController@trashSearch');
 	Route::delete('role_restore/{id}','Admin\RoleController@restore');
 	Route::get('get_roles','Admin\RoleController@get');
+	Route::get('trash_roles','Admin\RoleController@trash');
+	Route::delete('delete_roles','Admin\RoleController@deleteMultiple');
+	Route::delete('restore_roles','Admin\RoleController@restoreMultiple');
 
 	Route::resource('permissions','Admin\PermissionController');
 	Route::get('permission_search','Admin\PermissionController@search');
@@ -85,14 +94,20 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::delete('delete_permissions','Admin\PermissionController@deleteMultiple');
 	Route::delete('restore_permissions','Admin\PermissionController@restoreMultiple');
 
+
+
 	Route::get('transactions/{model}/{model_id}','Admin\TransactionController@get');
 	Route::get('transaction_search/{model}/{model_id}','Admin\TransactionController@search');
 
 
 	Route::resource('taxes','Admin\TaxController');
 	Route::get('tax_search','Admin\TaxController@search');
+	Route::get('tax_trash_search','Admin\TaxController@trashSearch');
 	Route::delete('tax_restore/{id}','Admin\TaxController@restore');
 	Route::get('get_taxes','Admin\TaxController@get');
+	Route::get('trash_taxes','Admin\TaxController@trash');
+	Route::delete('delete_taxes','Admin\TaxController@deleteMultiple');
+	Route::delete('restore_taxes','Admin\TaxController@restoreMultiple');
 
 
 	Route::resource('attributes','Admin\AttributeController');

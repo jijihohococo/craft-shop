@@ -123,25 +123,56 @@ class TargetController extends Controller
         return response()->json([
           'message' => 'Target ' . $target->name . ' is deleted Successfully',
           'deleted_at' => $target->deleted_at
-        ]);
+      ]);
     }
 
     public function restore($id){
-       $target=Target::withTrashed()->findOrFail($id);
-       $target->restore();
-       return response()->json([
-          'message' => $target->name . ' Target is restored successfully',
-          'deleted_at' => $target->deleted_at
-      ]);   
-   }
+     $target=Target::withTrashed()->findOrFail($id);
+     $target->restore();
+     return response()->json([
+      'message' => $target->name . ' Target is restored successfully',
+      'deleted_at' => $target->deleted_at
+  ]);   
+ }
 
-    public function search(Request $request){
-        $searchData='%'.$request->search .'%';
-        return response()->json([
-            'targets' => Target::withTrashed()
-            ->where('name','like',$searchData)
-            ->orWhere('duration','like',$searchData)
-            ->latest('id')->paginate(10)
-        ]);
-    }
+ public function search(Request $request){
+    $searchData='%'.$request->search .'%';
+    return response()->json([
+        'targets' => Target::where('name','like',$searchData)
+        ->orWhere('duration','like',$searchData)
+        ->latest('id')->paginate(10)
+    ]);
+}
+
+public function trashSearch(Request $request){
+    $searchData='%'.$request->search .'%';
+    return response()->json([
+        'targets' => Target::onlyTrashed()
+        ->where('name','like',$searchData)
+        ->orWhere('duration','like',$searchData)
+        ->latest('id')->paginate(10)
+    ]);
+}
+
+public function deleteMultiple(Request $request){
+    $request->validate([
+        'targets' => ['required','string']
+    ]);
+    $targets=explode(',', $request->targets);
+    Target::whereIn('id',$targets)->delete();
+    return response()->json([
+        'message' => 'Targets are deleted'
+    ]);
+}
+
+public function restoreMultiple(Request $request){
+    $request->validate([
+        'targets' => ['required','string']
+    ]);
+    $targets=explode(',', $request->targets);
+    Target::withTrashed()->whereIn('id',$targets)->restore();
+    return response()->json([
+        'message' => 'Targets are restored'
+    ]);
+}
 }

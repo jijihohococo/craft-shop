@@ -169,7 +169,15 @@ class RoleController extends Controller
 public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
-        'roles' => Role::withTrashed()->where('name','like',$searchData)
+        'roles' => Role::where('name','like',$searchData)
+        ->latest('id')->paginate(10)
+    ]);
+}
+
+public function trashSearch(Request $request){
+    $searchData='%'.$request->search.'%';
+    return response()->json([
+        'roles' => Role::onlyTrashed()->where('name','like',$searchData)
         ->latest('id')->paginate(10)
     ]);
 }
@@ -177,6 +185,28 @@ public function search(Request $request){
 public function get(){
     return response()->json([
         'roles' => (new Role)->getAll()
+    ]);
+}
+
+public function deleteMultiple(Request $request){
+    $request->validate([
+        'roles' => ['required','string']
+    ]);
+    $roles=explode(',', $request->roles);
+    Role::whereIn('id',$roles)->delete();
+    return response()->json([
+        'message' => 'Roles are deleted'
+    ]);
+}
+
+public function restoreMultiple(Request $request){
+    $request->validate([
+        'roles' => ['required','string']
+    ]);
+    $roles=explode(',', $request->roles);
+    Role::withTrashed()->whereIn('id',$roles)->restore();
+    return response()->json([
+        'message' => 'Roles are restored'
     ]);
 }
 }

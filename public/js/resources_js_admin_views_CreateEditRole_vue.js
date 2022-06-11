@@ -721,6 +721,7 @@ function changeWord(word) {
       break;
 
     case 'h':
+    case 'x':
       return word.slice(0, -1) + 'es';
       break;
 
