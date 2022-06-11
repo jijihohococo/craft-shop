@@ -1,5 +1,5 @@
 <template>
-  <component :is="'style'">
+  <component is="style">
     .toggle {
       --width: 50px;
       --height: calc(var(--width) / 3);

@@ -1,5 +1,5 @@
 <template>
-	<component :is="'style'" >
+	<component is="style" >
 		.fileinput-upload-button, .kv-file-upload{
 			display: none !important;
 		}
