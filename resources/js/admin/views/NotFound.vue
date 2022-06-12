@@ -2,7 +2,7 @@
 	<ContentHeader :header="content" />
 	<section class="content">
 		<div  class="card card-default">
-			<Error :httpStatus="404" :title="'Page Not Found'" :description="'The Page is not found'" />
+			<Error :httpStatus="404" title="Page Not Found" description="The Page is not found" />
 		</div>
 	</section>
 </template>

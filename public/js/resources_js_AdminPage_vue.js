@@ -380,19 +380,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Add icons to the links using the .nav-icon class\n          \twith font-awesome or any other icon font library "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SubMenu, {
     currentRoute: $options.currentRoute,
     dataRoutes: $data.dataRoutes,
-    title: 'Data'
+    title: "Data"
   }, null, 8
   /* PROPS */
   , ["currentRoute", "dataRoutes"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SubMenu, {
     currentRoute: $options.currentRoute,
     dataRoutes: $data.roleAndPermissionRoutes,
-    title: 'Role And Permission'
+    title: "Role And Permission"
   }, null, 8
   /* PROPS */
   , ["currentRoute", "dataRoutes"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SubMenu, {
     currentRoute: $options.currentRoute,
     dataRoutes: $data.processRoutes,
-    title: 'Process'
+    title: "Process"
   }, null, 8
   /* PROPS */
   , ["currentRoute", "dataRoutes"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {

@@ -32,11 +32,11 @@
        </li>
           <!-- Add icons to the links using the .nav-icon class
           	with font-awesome or any other icon font library -->
-          	<SubMenu :currentRoute="currentRoute"  :dataRoutes="dataRoutes" :title="'Data'"  />
+          	<SubMenu :currentRoute="currentRoute"  :dataRoutes="dataRoutes" title="Data"  />
 
-            <SubMenu :currentRoute="currentRoute"  :dataRoutes="roleAndPermissionRoutes" :title="'Role And Permission'"  />
+            <SubMenu :currentRoute="currentRoute"  :dataRoutes="roleAndPermissionRoutes" title="Role And Permission"  />
 
-            <SubMenu :currentRoute="currentRoute"  :dataRoutes="processRoutes" :title="'Process'"  />
+            <SubMenu :currentRoute="currentRoute"  :dataRoutes="processRoutes" title="Process"  />
 
             <li class="nav-item">
              <a role="button" v-on:click="logout" class="nav-link">

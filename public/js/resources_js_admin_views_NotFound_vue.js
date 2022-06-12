@@ -238,8 +238,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["header"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
     httpStatus: 404,
-    title: 'Page Not Found',
-    description: 'The Page is not found'
+    title: "Page Not Found",
+    description: "The Page is not found"
   })])])], 64
   /* STABLE_FRAGMENT */
   );
