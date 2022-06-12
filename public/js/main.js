@@ -19554,6 +19554,10 @@ var CreateEditAdmin = function CreateEditAdmin() {
   path: 'admin/edit/:id',
   component: CreateEditAdmin,
   name: 'admin.edit'
+}, {
+  path: 'admin_bin',
+  component: Admin,
+  name: 'admin_bin'
 }]);
 
 /***/ }),
@@ -19784,6 +19788,10 @@ var CreateEditCurrency = function CreateEditCurrency() {
   path: 'currency/edit/:id',
   component: CreateEditCurrency,
   name: 'currency.edit'
+}, {
+  path: 'currency_bin',
+  component: Currency,
+  name: 'currency_bin'
 }]);
 
 /***/ }),
@@ -19842,6 +19850,10 @@ var CreateEditItem = function CreateEditItem() {
   path: 'item/edit/:id',
   component: CreateEditItem,
   name: 'item.edit'
+}, {
+  path: 'item_bin',
+  component: Item,
+  name: 'item_bin'
 }]);
 
 /***/ }),
@@ -19995,6 +20007,10 @@ var CreateEditPermission = function CreateEditPermission() {
   path: 'permission/edit/:id',
   component: CreateEditPermission,
   name: 'permission.edit'
+}, {
+  path: 'permission_bin',
+  component: Permission,
+  name: 'permission_bin'
 }]);
 
 /***/ }),
@@ -20030,6 +20046,10 @@ var CreateEditRole = function CreateEditRole() {
   path: 'role/edit/:id',
   component: CreateEditRole,
   name: 'role.edit'
+}, {
+  path: 'role_bin',
+  component: Role,
+  name: 'role_bin'
 }]);
 
 /***/ }),
@@ -20065,6 +20085,10 @@ var CreateEditTarget = function CreateEditTarget() {
   path: 'target/edit/:id',
   component: CreateEditTarget,
   name: 'target.edit'
+}, {
+  path: 'target_bin',
+  component: Target,
+  name: 'target_bin'
 }]);
 
 /***/ }),
@@ -20100,6 +20124,10 @@ var CreateEditTax = function CreateEditTax() {
   path: 'tax/edit/:id',
   component: CreateEditTax,
   name: 'tax.edit'
+}, {
+  path: 'tax_bin',
+  component: Tax,
+  name: 'tax_bin'
 }]);
 
 /***/ }),

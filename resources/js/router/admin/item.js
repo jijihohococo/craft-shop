@@ -17,5 +17,10 @@ export default [
 		component : CreateEditItem,
 		name : 'item.edit'
 
+	},
+	{
+		path : 'item_bin',
+		component : Item ,
+		name : 'item_bin'
 	}
 ]

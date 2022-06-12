@@ -16,5 +16,10 @@ export default [
 		path : 'tax/edit/:id',
 		component : CreateEditTax,
 		name : 'tax.edit'
+	},
+	{
+		path : 'tax_bin',
+		component : Tax,
+		name : 'tax_bin'
 	}
 ]

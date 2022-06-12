@@ -16,5 +16,10 @@ export default [
 		path : 'admin/edit/:id',
 		component : CreateEditAdmin,
 		name : 'admin.edit'
+	},
+	{
+		path : 'admin_bin',
+		component : Admin ,
+		name : 'admin_bin'
 	}
 ]

@@ -17,5 +17,10 @@ export default [
 		path : 'role/edit/:id',
 		component : CreateEditRole,
 		name : 'role.edit'
+	},
+	{
+		path : 'role_bin',
+		component : Role,
+		name : 'role_bin'
 	}
 ]

@@ -17,6 +17,10 @@ export default [
 		path : 'target/edit/:id',
 		component : CreateEditTarget,
 		name : 'target.edit'
-
+	},
+	{
+		path : 'target_bin',
+		component : Target,
+		name : 'target_bin'
 	}
 ]

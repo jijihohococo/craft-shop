@@ -18,5 +18,10 @@ export default [
 		component : CreateEditPermission,
 		name : 'permission.edit'
 
+	},
+	{
+		path : 'permission_bin',
+		component : Permission ,
+		name : 'permission_bin'
 	}
 ]

@@ -205,9 +205,9 @@
 },
 created(){
    this.getItems(1);
-   checkContentPermission(this.content,'create',this);
-   checkContentPermission(this.content,'update',this);
-   checkContentPermission(this.content,'delete',this);
+   // checkContentPermission(this.content,'create',this);
+   // checkContentPermission(this.content,'update',this);
+   // checkContentPermission(this.content,'delete',this);
 },
 }
 </script>
