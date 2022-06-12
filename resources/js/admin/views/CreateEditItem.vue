@@ -3,6 +3,10 @@
 		.fileinput-upload-button, .kv-file-upload{
 			display: none !important;
 		}
+		.select2-selection__choice{
+			background-color: #800080 !important;
+			color : white !important;
+		}
 	</component>
 	<CreateEditHeader :header="content" />
 	<Loading />
@@ -13,7 +17,7 @@
 					<h3 class="card-title">{{ isNaN(this.$route.params.id) ? "Create Item" : "Update Item" }}</h3>
 				</div>
 				<Error v-if="actions[current]==false" :httpStatus="errors.error_status" :title="errors.error_title" :description="errors.error_description" />
-				<form v-else-if="actions[current]" enctype="multipart/form-data" @submit.prevent=" !isNaN(this.$route.params.id) ? updateItem() : createItem()" >
+				<form v-else-if="actions[current]" @submit.prevent=" !isNaN(this.$route.params.id) ? updateItem() : createItem()" >
 					<div class="card-body" >
 						<div class="row">
 							<div class="col-md-12">
@@ -46,12 +50,18 @@
 									ref="attributeSet" />
 								</div>
 								<div class="form-group">
+									<label>Colors</label>
+									<SelectMultiple :value="fields.colors"  @input="setColors" >
+										<option :value="color.id" v-for="color in colors">{{ color.name }}</option>
+									</SelectMultiple>
+								</div>
+								<!-- <div class="form-group">
 									<label>File</label>
 									<File @change="setPic" :pics="fields.pics" @removed="removePics" :multiple="true"
 									storage_path='storage/item_images/'
 									delete_path='admin_api/item_image_delete/'
 									delete_all_path='delete_item_images/'  />
-								</div>
+								</div> -->
 								<div class="form-group">
 									<label>Description</label>
 									<textarea :class="[errors && errors.description ? 'form-control is-invalid' : 'form-control']" placeholder="Description" v-model="fields.description">
@@ -80,7 +90,9 @@
 
 	import Loading from '../components/Loading'
 
-	import File from '../components/File'
+	//import File from '../components/File'
+
+	import SelectMultiple from '../components/SelectMultiple';
 
 	import Select from '../components/Select'
 
@@ -90,7 +102,8 @@
 		components: {
 			CreateEditHeader,
 			Error,
-			File,
+			//File,
+			SelectMultiple,
 			Select,
 			Loading,
 			AddRemoveDependentSelect
@@ -101,12 +114,14 @@
 				categories : {},
 				brands : {},
 				attributes : {},
+				colors : {} ,
 				numberOfAttributes : 0 ,
 				fields : {
 					name : '',
 					category_id : '',
 					brand_id : '',
-					pics : [],
+					//pics : [],
+					colors : [],
 					description : '' ,
 					attributes : []
 				},
@@ -129,6 +144,7 @@
 			await this.getCategories()
 			await this.getBrands()
 			await this.getAttributes()
+			await this.getColors()
 			if(this.current=='update'){
 				await this.getItemData(this.$route.params.id);
 			}
@@ -188,27 +204,47 @@
 					errorResponse(error,this,'read')
 				} )
 			},
+			async getColors(){
+				window.axios.get('get_colors').then( (response) => {
+					if(response.data.message=='Loading'){
+						showSwalLoading(this);
+					}else{
+						this.colors=response.data.colors
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')
+				} )
+			},
+			setColors(val){
+				this.fields.colors=val
+			},
 			setCategoryId(categoryId){
 				this.fields.category_id=categoryId
 			},
 			setBrandId(brandId){
 				this.fields.brand_id=brandId
 			},
-			removePics(){
-				this.fields.pics=[];
-			},
-			setPic(event){
-				if(this.formData.getAll('pics[]').length>0){
-					this.formData.delete('pics[]')
-				}
-				Array.from(event.target.files).forEach(file => {
-					this.formData.append('pics[]',file)
-				});
-			},
+			// removePics(){
+			// 	this.fields.pics=[];
+			// },
+			// setPic(event){
+			// 	if(this.formData.getAll('pics[]').length>0){
+			// 		this.formData.delete('pics[]')
+			// 	}
+			// 	Array.from(event.target.files).forEach(file => {
+			// 		this.formData.append('pics[]',file)
+			// 	});
+			// },
 			getFormData(update=null){
 				let description=this.fields.description==null ? '' : this.fields.description;
 				this.formData.set('name',this.fields.name )
 				this.formData.set('category_id',this.fields.category_id);
+				this.formData.set('brand_id',this.fields.brand_id);
+				if(this.fields.colors.length>0){
+					this.fields.colors.map( (data,index) => {
+						this.formData.set( 'colors['+index+']' , data  )
+					} )
+				}
 				this.formData.set('description',description);
 				this.getManyAttributes();
 
@@ -259,13 +295,30 @@
 
 						showSwalLoading(this);
 					}else{
-						this.fields=response.data.item;
-						this.fields.attributes=response.data.attributes;
-					}
-				} ).catch( (error) => {
-					errorResponse(error,this,'update')
-				} )
-			}
+						//this.fields=response.data.item;
+						//if(response.data.attributes!==[]){
+						//this.fields.attributes=response.data.attributes;
+						//}
+					// 	name : '',
+					// 	category_id : '',
+					// 	brand_id : '',
+					// //pics : [],
+					// colors : [],
+					// description : '' ,
+					// attributes : []
+					this.fields.name=response.data.item.name;
+					this.fields.category_id=response.data.item.category_id;
+					this.fields.brand_id=response.data.item.brand_id;
+					this.fields.description=response.data.item.description;
+					 if(response.data.attributes.length>0 ){
+					 	this.fields.attributes=response.data.attributes;
+					 }
+					this.fields.colors=response.data.colors;
+				}
+			} ).catch( (error) => {
+				errorResponse(error,this,'update')
+			} )
 		}
 	}
+}
 </script>

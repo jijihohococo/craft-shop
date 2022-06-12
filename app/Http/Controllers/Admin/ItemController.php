@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Item,ItemImage,ItemAttribute,ItemAttributeSet};
+use App\Models\{Item,ItemImage,ItemAttribute,ItemAttributeSet,ItemVariant};
 use DB,File;
 class ItemController extends Controller
 {
@@ -51,6 +51,18 @@ class ItemController extends Controller
         ]);
     }
 
+    private function insertColors($colors,$itemId,$update=NULL){
+
+        add_high_light([
+            'col'=>$colors,
+            'obj' => 'App\Models\ItemVariant',
+            'parent_id'=>'item_id',
+            'parent_data'=>$itemId,
+            'child_col'=>'color_id',
+            'update'=> $update
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -63,8 +75,9 @@ class ItemController extends Controller
         $request->validate($this->validateData());
         DB::beginTransaction();
         $item=Item::create($request->all());
-        $this->insertImage($item->id);
+        //$this->insertImage($item->id);
         $this->addAttributes($item->id,request('attributes'));
+        $this->insertColors($request->colors,$item->id);
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Item is created successfully'
@@ -92,8 +105,9 @@ class ItemController extends Controller
     {
         //
         return response()->json([
-            'item' => Item::with('pics')->findOrFail($id) ,
-            'attributes' => ItemAttribute::where('item_id',$id)->get()
+            'item' => Item::findOrFail($id) ,
+            'attributes' => ItemAttribute::where('item_id',$id)->get(),
+            'colors' => ItemVariant::select('color_id')->where('item_id',$id)->get()->pluck('color_id')
         ]);
     }
 
@@ -110,8 +124,9 @@ class ItemController extends Controller
         $request->validate($this->validateData($id));
         DB::beginTransaction();
         Item::findOrFail($id)->update($request->all());
-        $this->insertImage($id);
+        //$this->insertImage($id);
         $this->addAttributes($id,request('attributes'),'yes');
+        $this->insertColors($request->colors,$id,'yes');
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Item is updated successfully'
@@ -139,19 +154,23 @@ class ItemController extends Controller
         })->delete();
         ItemAttribute::where('item_id',$id)->delete();
     }
-    foreach($attributes as $attribute){
-        $itemAttribute=ItemAttribute::create([
-            'item_id' => $id ,
-            'attribute_id' => $attribute['id']
-        ]);
-        foreach(explode(',',$attribute['set']) as $set){
-            ItemAttributeSet::create([
-                    'item_attribute_id' => $itemAttribute->id ,
-                    'set_id'  => $set
+    if(is_array($attributes)){
+        foreach($attributes as $attribute){
+            if(isset($attribute['id']) && is_int($attribute['id'])){
+                $itemAttribute=ItemAttribute::create([
+                    'item_id' => $id ,
+                    'attribute_id' => $attribute['id']
                 ]);
+                foreach(explode(',',$attribute['set']) as $set){
+                    ItemAttributeSet::create([
+                        'item_attribute_id' => $itemAttribute->id ,
+                        'set_id'  => $set
+                    ]);
+                }
+            }
         }
     }
-  }
+}
 
     /**
      * Remove the specified resource from storage.
@@ -182,7 +201,9 @@ class ItemController extends Controller
    private function validateData($id=NULL){
     return [
         'name' => ['required', 'string', 'max:100', $id==null ? 'unique:items' : 'unique:items,name,'.$id ] ,
-        'category_id' => ['required','integer']
+        'category_id' => ['required','integer'],
+        'brand_id' => ['required','integer'],
+        'colors' => ['required','array']
     ];
 }
 
