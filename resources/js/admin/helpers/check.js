@@ -17,7 +17,7 @@ function changeWord(word){
 
         case 'h':
         case 'x':
-        return word.slice(0,-1) + 'es';
+        return word + 'es';
         break;
 
         default:
@@ -107,6 +107,7 @@ export function showTrashPage(route,router,pageName){
 }
 
 export function errorResponse(error,object,action=null){
+    console.log(error)
 	if(error.response){
         switch(error.response.status){
             case 401:

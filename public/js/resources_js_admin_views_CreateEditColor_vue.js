@@ -560,7 +560,7 @@ function changeWord(word) {
 
     case 'h':
     case 'x':
-      return word.slice(0, -1) + 'es';
+      return word + 'es';
       break;
 
     default:
@@ -655,6 +655,7 @@ function showTrashPage(route, router, pageName) {
 }
 function errorResponse(error, object) {
   var action = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  console.log(error);
 
   if (error.response) {
     switch (error.response.status) {
