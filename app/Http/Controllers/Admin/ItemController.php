@@ -24,8 +24,11 @@ class ItemController extends Controller
     {
         //
         return response()->json([
-            'items' => Item::selectCategory()
-            ->latest('id')->paginate(10)
+            'items' => Item::select(['id','name','created_at','deleted_at'])
+            ->selectCategory()
+            ->selectItemVariants()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 

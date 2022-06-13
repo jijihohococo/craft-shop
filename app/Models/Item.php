@@ -27,10 +27,6 @@ class Item extends TransactionModel
         return $this->belongsTo('App\Models\Brand')->withDefault()->withTrashed();
     }
 
-    public function pics(){
-        return $this->hasMany('App\Models\ItemImage');
-    }
-
     public function scopeSelectBrand($query){
         return $query->addSelect(['brand_name' => function($query) {
             $query->select('name')
@@ -38,5 +34,19 @@ class Item extends TransactionModel
             ->whereColumn('brand_id','brands.id')
             ->limit(1);
         } ]); 
+    }
+
+    public function scopeSelectItemVariants($query){
+        $selectColorId='colors.id IN  (SELECT item_variants.color_id FROM item_variants WHERE item_variants.item_id=items.id)';
+        return $query->addSelect(['variants' => function($query){
+            $query->select(\DB::raw('GROUP_CONCAT(item_variants.id)'))
+            ->from('item_variants')
+            ->whereColumn('items.id','item_variants.item_id')
+            ->groupBy('item_variants.item_id');
+        } , 'colorCodes' => function($query) use($selectColorId) {
+            $query->select(\DB::raw('GROUP_CONCAT(colors.color_code)'))
+            ->from('colors')
+            ->whereRaw($selectColorId);
+        }  ]);
     }
 }

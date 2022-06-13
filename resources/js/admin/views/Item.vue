@@ -49,6 +49,7 @@
                                 </th>
                                 <th>Name</th>
                                 <th>Category</th>
+                                <th>Variants</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -62,32 +63,38 @@
                                     :objectArrayData="multipleData"
                                     ref="deleteCheck"
                                     /></td>
-                              <td>{{ item.name }}</td>
-                              <td>{{ item.category_name }}</td>
-                              <td>{{ item.deleted_at }}</td>
-                              <td class="text-left">
-                                <ViewButton :data_name="item.name" :data_model="content" :data_id="item.id" />
-                                <EditButton v-if="actions.update && item.deleted_at==null" :content="content" link="item.edit" :dataId="item.id" />
-                                <Delete v-if="actions.delete" :content="content" :deleteAt="item.deleted_at" :deleteLink="'items/'+item.id" :restoreLink="'item_restore/'+item.id"
-                                :id="item.id" :objectData="item" @update="updateData" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.category_name }}</td>
+                                    <td ><div ><template v-for="(variant,key) in item.variants.split(',')">
+                                        <router-link :to="{ name : 'item.variant' , params : { id: variant } }">
+                                            <div :style="'background-color:'+item.colorCodes.split(',')[key]+';width:30px;height:30px;display:inline-block;margin-left:10px;'"></div>
+                                            <!-- <input type="color" :value="item.colorCodes.split(',')[key]" disabled> -->
+                                        </router-link>
+                                    </template></div></td>
+                                    <td>{{ item.deleted_at }}</td>
+                                    <td class="text-left">
+                                        <ViewButton :data_name="item.name" :data_model="content" :data_id="item.id" />
+                                        <EditButton v-if="actions.update && item.deleted_at==null" :content="content" link="item.edit" :dataId="item.id" />
+                                        <Delete v-if="actions.delete" :content="content" :deleteAt="item.deleted_at" :deleteLink="'items/'+item.id" :restoreLink="'item_restore/'+item.id"
+                                        :id="item.id" :objectData="item" @update="updateData" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <Pagination :page="currentPage" :lastPage="items.last_page" @getData="getItems" @searchData="searchItems" :search="search" :from="items.from" :to="items.to" :total="items.total" />
+                    </div>
+                </template>
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer clearfix">
-                <Pagination :page="currentPage" :lastPage="items.last_page" @getData="getItems" @searchData="searchItems" :search="search" :from="items.from" :to="items.to" :total="items.total" />
-            </div>
-        </template>
+            <!-- /.card -->
+        </div>
     </div>
-    <!-- /.card -->
-</div>
-</div>
-<!-- /.row -->
-<div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
-   <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Item" />
-</div>
+    <!-- /.row -->
+    <div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
+     <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Item" />
+ </div>
 </div>
 </section>
 </template>
@@ -138,7 +145,7 @@
             DeleteAllCheck
         },
         data () {
-           return {
+         return {
             content : 'Item',
             deleteData : [],
             multipleData : [] ,
@@ -182,32 +189,32 @@
 
                     showSwalLoading(this);
                 }else{
-                 this.items=response.data.items
-                 this.actions.read=true;
-             }
-         } ).catch( (error) => {
+                   this.items=response.data.items
+                   this.actions.read=true;
+               }
+           } ).catch( (error) => {
             errorResponse(error,this,'read')
         } );
-     },
-     searchItems(page){
+       },
+       searchItems(page){
         window.axios.get( makeRoute(this,page,'item','search') + this.search + '&page=' + page ).then( (response) => {
             if(response.data.message=='Loading'){
 
                 showSwalLoading(this);
             }else{
-             this.items=response.data.items
-             this.actions.read=true
-         }
-     } ).catch( (error) => {
+               this.items=response.data.items
+               this.actions.read=true
+           }
+       } ).catch( (error) => {
         errorResponse(error,this,'read');
     } )
- }
+   }
 },
 created(){
-   this.getItems(1);
-   checkContentPermission(this.content,'create',this);
-   checkContentPermission(this.content,'update',this);
-   checkContentPermission(this.content,'delete',this);
+ this.getItems(1);
+ checkContentPermission(this.content,'create',this);
+ checkContentPermission(this.content,'update',this);
+ checkContentPermission(this.content,'delete',this);
 },
 }
 </script>
