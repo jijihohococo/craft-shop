@@ -26,24 +26,5 @@ class AdminAuthMiddleware
         $tokenRefresh->setClientId(Admin::$clientId);
         $tokenRefresh->makeApiRequest();
         return $tokenRefresh->make();
-
-
-        
-        // if( isset($_COOKIE['admin_access_token']) ){
-        //     $request->headers->set('Authorization','Bearer '. $_COOKIE['admin_access_token'] );
-            
-        //     $admin=auth('admin_api')->user();
-        //     if($admin!==NULL){
-        //         return $next($request);
-        //     }else{
-        //         return response()->json([
-        //             'message' => 'Unauthenticated'
-        //         ],401);
-        //     }
-        // }else{
-        //     return response()->json([
-        //         'message' => 'Unauthenticated'
-        //     ],401);
-        // }
     }
 }

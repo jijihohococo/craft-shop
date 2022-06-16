@@ -140,7 +140,7 @@
 			if(this.$props.multiple){
 				$(vm.$el).attr('multiple', true);
 			}
-			if(isNaN(vm.$route.params.id)){
+			if(this.$props.pics.length==0 ){
 				$(vm.$el)
 				.fileinput({
 					initialPreviewAsData: true,
