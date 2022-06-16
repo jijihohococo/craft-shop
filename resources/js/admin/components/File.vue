@@ -59,39 +59,39 @@
 						} )
 					}
 
-						$(vm.$el).fileinput({
-							initialPreview: vm.picArray,
-							initialPreviewAsData: true,
-							initialPreviewConfig : vm.array ,
-							theme: 'fa',
-							overwriteInitial: vm.$props.multiple==true ? false : true ,
-							maxFileSize:22048,
-							maxFilesNum: 10,
-							allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"] ,
-						})
+					$(vm.$el).fileinput({
+						initialPreview: vm.picArray,
+						initialPreviewAsData: true,
+						initialPreviewConfig : vm.array ,
+						theme: 'fa',
+						overwriteInitial: vm.$props.multiple==true ? false : true ,
+						maxFileSize:22048,
+						maxFilesNum: 10,
+						allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"] ,
+					})
 
-						$(vm.$el).on('fileclear',function(){
-							if(vm.array.length>0){
-								$(vm.$el).fileinput('refresh',{
-									initialPreview: [],
-									initialPreviewAsData: true,
-									initialPreviewConfig : [] ,
-									theme: 'fa',
-									overwriteInitial: true ,
-									maxFileSize:22048,
-									maxFilesNum: 10,
-									allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"] ,
-								})
-								window.axios.delete(vm.$props.delete_all_path+vm.$route.params.id).then((response)=>{
-									console.log(response.data.message)
-								}).catch( (error) => {
-									errorResponse(error,this,'delete')
-								} )
-							}
-							vm.array=[];
-							vm.picArray=[];
-							vm.$emit('removed');
-						})
+					$(vm.$el).on('fileclear',function(){
+						if(vm.array.length>0){
+							$(vm.$el).fileinput('refresh',{
+								initialPreview: [],
+								initialPreviewAsData: true,
+								initialPreviewConfig : [] ,
+								theme: 'fa',
+								overwriteInitial: true ,
+								maxFileSize:22048,
+								maxFilesNum: 10,
+								allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"] ,
+							})
+							window.axios.delete(vm.$props.delete_all_path+vm.$route.params.id).then((response)=>{
+								console.log(response.data.message)
+							}).catch( (error) => {
+								errorResponse(error,this,'delete')
+							} )
+						}
+						vm.array=[];
+						vm.picArray=[];
+						vm.$emit('removed');
+					})
 				}
 			}
 		},
@@ -140,17 +140,18 @@
 			if(this.$props.multiple){
 				$(vm.$el).attr('multiple', true);
 			}
-			if(this.$props.pics.length==0 ){
-				$(vm.$el)
-				.fileinput({
-					initialPreviewAsData: true,
-					theme: 'fa',
-					overwriteInitial: true,
-					maxFileSize:22048,
-					maxFilesNum: 10,
-					allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"]
-				})
-			}
-		},
-	}
-</script>
+			// if(this.$props.pics.length==0 ){
+				if(isNaN(vm.$route.params.id)){
+					$(vm.$el)
+					.fileinput({
+						initialPreviewAsData: true,
+						theme: 'fa',
+						overwriteInitial: true,
+						maxFileSize:22048,
+						maxFilesNum: 10,
+						allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"]
+					})
+				}
+			},
+		}
+	</script>

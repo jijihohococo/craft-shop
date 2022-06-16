@@ -150,9 +150,10 @@ __webpack_require__.r(__webpack_exports__);
 
     if (this.$props.multiple) {
       $(vm.$el).attr('multiple', true);
-    }
+    } // if(this.$props.pics.length==0 ){
 
-    if (this.$props.pics.length == 0) {
+
+    if (isNaN(vm.$route.params.id)) {
       $(vm.$el).fileinput({
         initialPreviewAsData: true,
         theme: 'fa',
@@ -285,7 +286,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" .modal-dialog-person { width: 80% !important; height: 100% !important; padding: 0 !important; max-width: none !important; } ");
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"content\"><div class=\"container-fluid\"><!-- Small boxes (Stat box) --><div class=\"row\"><a class=\"item-image\"><div class=\"col-lg-3 col-6\"><div class=\"small-box bg-info\"><div class=\"inner\"><h3>150</h3><p>Today Orders</p></div><div class=\"icon\"><i class=\"ion ion-bag\"></i></div><a class=\"small-box-footer\">More info <i class=\"fas fa-arrow-circle-right\"></i></a></div></div></a></div></div></section>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"content\"><div class=\"container-fluid\"><!-- Small boxes (Stat box) --><div class=\"row\"><a class=\"item-image\"><div class=\"col-lg-3 col-6\"><div class=\"small-box bg-info\"><div class=\"inner\"><h3>150</h3><p>Today Orders</p></div><div class=\"icon\"><i class=\"ion ion-bag\"></i></div><a class=\"small-box-footer\"></a></div></div></a></div></div></section>", 1);
 
 var _hoisted_3 = {
   "class": "modal fade",

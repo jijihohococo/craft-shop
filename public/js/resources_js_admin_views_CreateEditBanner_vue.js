@@ -210,9 +210,10 @@ __webpack_require__.r(__webpack_exports__);
 
     if (this.$props.multiple) {
       $(vm.$el).attr('multiple', true);
-    }
+    } // if(this.$props.pics.length==0 ){
 
-    if (this.$props.pics.length == 0) {
+
+    if (isNaN(vm.$route.params.id)) {
       $(vm.$el).fileinput({
         initialPreviewAsData: true,
         theme: 'fa',
