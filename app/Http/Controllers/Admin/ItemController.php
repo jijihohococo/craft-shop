@@ -243,26 +243,6 @@ public function trashSearch(Request $request){
     ]);
 }
 
-public function deleteItemImages(Request $request,$id){
-    $itemImages=ItemImage::where('item_id',$id)->get();
-    foreach($itemImages as $image){
-        File::delete(storage_path('app/public/item_images/'.$image->filename  ));
-    }
-    ItemImage::where('item_id',$id)->delete();
-    return response()->json([
-        'message' => 'Images are deleted successfully'
-    ]);
-}
-
-public function imageDelete(Request $request,$id){
-    $image=ItemImage::findOrFail($id);
-    File::delete(storage_path('app/public/item_images/'.$image->filename  ));
-    $image->delete();
-    return response()->json([
-        'message' => 'Image is deleted successfully'
-    ]);
-}
-
 public function getTotal(){
     return response()->json([
         'total_items' => Item::count()

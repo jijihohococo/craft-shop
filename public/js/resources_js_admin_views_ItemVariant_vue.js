@@ -197,8 +197,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    ContentHeader: _components_File__WEBPACK_IMPORTED_MODULE_0__["default"],
+    File: _components_File__WEBPACK_IMPORTED_MODULE_0__["default"],
     CreateEditItemVariantImage: _CreateEditItemVariantImage__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      pics: [],
+      formData: new FormData()
+    };
+  },
+  mounted: function mounted() {
+    var vm = this;
+    $('.item-image').click(function () {
+      $("#itemImageModal").modal("show");
+      window.axios.get('item_variant_images/' + vm.$route.params.id).then(function (response) {
+        vm.pics = response.data.images;
+      });
+    });
+  },
+  methods: {
+    removePics: function removePics() {
+      this.pics = [];
+    } // setPic(event){
+    // 	if(this.formData.getAll('pics[]').length>0){
+    // 		this.formData.delete('pics[]')
+    // 	}
+    // 	Array.from(event.target.files).forEach(file => {
+    // 		this.formData.append('pics[]',file)
+    // 	});
+    // }
+
   }
 });
 
@@ -254,15 +282,57 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "content"
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" .modal-dialog-person { width: 80% !important; height: 100% !important; padding: 0 !important; max-width: none !important; } ");
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"content\"><div class=\"container-fluid\"><!-- Small boxes (Stat box) --><div class=\"row\"><a class=\"item-image\"><div class=\"col-lg-3 col-6\"><div class=\"small-box bg-info\"><div class=\"inner\"><h3>150</h3><p>Today Orders</p></div><div class=\"icon\"><i class=\"ion ion-bag\"></i></div><a class=\"small-box-footer\">More info <i class=\"fas fa-arrow-circle-right\"></i></a></div></div></a></div></div></section>", 1);
+
+var _hoisted_3 = {
+  "class": "modal fade",
+  id: "itemImageModal",
+  tabindex: "-1",
+  role: "dialog"
+};
+var _hoisted_4 = {
+  "class": "modal-dialog modal-dialog-person"
+};
+var _hoisted_5 = {
+  "class": "modal-content"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"container-fluid\"><!-- Small boxes (Stat box) --><div class=\"row\"><div class=\"col-lg-3 col-6\"><div class=\"small-box bg-info\"><div class=\"inner\"><h3>150</h3><p>Today Orders</p></div><div class=\"icon\"><i class=\"ion ion-bag\"></i></div><a class=\"small-box-footer\">More info <i class=\"fas fa-arrow-circle-right\"></i></a></div></div></div></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "modal-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+  "class": "modal-title"
+}, "Images Upload")], -1
+/* HOISTED */
+);
 
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_7 = {
+  "class": "modal-body"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", _hoisted_1, _hoisted_3);
+  var _component_File = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("File");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("style"), null, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_1];
+    }),
+    _: 1
+    /* STABLE */
+
+  })), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_File, {
+    pics: $data.pics,
+    onRemoved: $options.removePics,
+    multiple: true,
+    storage_path: "storage/item_images/",
+    delete_path: "admin_api/item_image_delete/",
+    delete_all_path: "delete_item_images/"
+  }, null, 8
+  /* PROPS */
+  , ["pics", "onRemoved"])])])])])], 64
+  /* STABLE_FRAGMENT */
+  );
 }
 
 /***/ }),
