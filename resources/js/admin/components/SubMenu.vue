@@ -12,6 +12,7 @@
 	<li class="nav-item" v-for="(dataRoute, route) in dataRoutes">
 		<router-link :to="'/admin/'+route" :class="[ (currentRoute == route) ||
 		(route+'_bin'==currentRoute) || 
+		(route+'.variant'==currentRoute) ||
 		(route+'.edit'==currentRoute) || (route+'.create'==currentRoute) || (this.$route.params.model!==null && this.$route.params.model==dataRoute)  ? 'nav-link active' : 'nav-link' ]" >
 		<p>{{ dataRoute }}</p>
 	</router-link>
@@ -53,7 +54,8 @@
 				return	(route in this.$props.dataRoutes)  ||
 				(route.replace('_bin','') in this.$props.dataRoutes ) ||
 				(route.replace('.edit', '') in this.$props.dataRoutes) || 
-				(route.replace('.create','') in this.$props.dataRoutes ) || 
+				(route.replace('.create','') in this.$props.dataRoutes ) ||
+				(route.replace('.variant','') in this.$props.dataRoutes ) || 
 				(route=='transaction' && this.$route.params.model!==null && 
 				(getModel(this.$route.params.model) in this.$props.dataRoutes) );
 			}
