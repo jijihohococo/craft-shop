@@ -152,6 +152,10 @@
 						allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"]
 					})
 				}
+
+				$('.fileinput-upload-button').on('submit',function(){
+					console.log("hi")
+				})
 			},
 		}
 	</script>

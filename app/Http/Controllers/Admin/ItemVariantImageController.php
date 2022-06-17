@@ -29,6 +29,10 @@ class ItemVariantImageController extends Controller
     ]);
 }
 
+public function upload(Request $request){
+    dd($request);
+}
+
 public function save($id){
     $this->insertImage($id);
 }

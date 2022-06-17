@@ -46,6 +46,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 
 	Route::get('item_variant_images/{id}','Admin\ItemVariantImageController@index');
+	Route::get('upload_item_variant_images','Admin\ItemVariantImageController@upload');
 
 	Route::resource('admins','Admin\AdminController');
 	Route::get('admin','Admin\AdminController@get');
