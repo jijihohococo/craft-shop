@@ -37,8 +37,6 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('item_search','Admin\ItemController@search');
 	Route::get('item_trash_search','Admin\ItemController@trashSearch');
 	Route::delete('item_restore/{id}','Admin\ItemController@restore');
-	Route::delete('delete_item_images/{id}','Admin\ItemVariantImageController@deleteItemImages');
-	Route::post('item_image_delete/{id}','Admin\ItemVariantImageController@imageDelete');
 	Route::get('total_items','Admin\ItemController@getTotal');
 	Route::get('trash_items','Admin\ItemController@trash');
 	Route::delete('delete_items','Admin\ItemController@deleteMultiple');
@@ -46,7 +44,9 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 
 	Route::get('item_variant_images/{id}','Admin\ItemVariantImageController@index');
-	Route::get('upload_item_variant_images','Admin\ItemVariantImageController@upload');
+	Route::post('upload_item_variant_images/{id}','Admin\ItemVariantImageController@upload');
+	Route::delete('delete_item_images/{id}','Admin\ItemVariantImageController@deleteItemImages');
+	Route::post('item_image_delete/{id}','Admin\ItemVariantImageController@imageDelete');
 
 	Route::resource('admins','Admin\AdminController');
 	Route::get('admin','Admin\AdminController@get');

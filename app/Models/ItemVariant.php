@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ItemVariant extends Model
 {
     use HasFactory;
+
+    public function item(){
+        return $this->belongsTo('App\Models\Item')->withDefault()->withTrashed();
+    }
 }
