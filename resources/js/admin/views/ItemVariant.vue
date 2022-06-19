@@ -45,7 +45,6 @@
 				<!-- -->
 				<div class="modal-body">
 					<File
-					ref="filePic"
 					:changeData="fileChange"
 					@change="setPic"
 					:pics="pics" 
