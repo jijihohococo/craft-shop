@@ -56,7 +56,9 @@
 					/>	
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" style="margin-right:50%;" v-on:click="uploadPics">Upload</button>
+					<button type="button" class="btn btn-primary" style="margin-right:50%;" v-on:click="uploadPics">
+						<i class="ion ion-upload"></i>
+					Upload</button>
 				</div>
 				
 			</div>

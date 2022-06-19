@@ -40,10 +40,6 @@ class ItemVariantImageController extends Controller
         ]);
     }
 
-    public function save($id){
-        $this->insertImage($id);
-    }
-
     public function deleteItemImages(Request $request,$id){
         $itemImages=ItemImage::where('item_variant_id',$id)->get();
         foreach($itemImages as $image){
