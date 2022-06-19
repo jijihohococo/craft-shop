@@ -13,7 +13,7 @@
 			display: none !important;
 		}
 	</component>
-	<ContentHeader />
+	<ContentHeader :header="itemColor" />
 	<section class="content">
 		<div class="container-fluid">
 			<!-- Small boxes (Stat box) -->
@@ -22,7 +22,7 @@
 					<div class="col-lg-3 col-6">
 						<div class="small-box bg-info">
 							<div class="inner">
-								<h3>Item Images</h3>
+								<h3>Images</h3>
 
 								<p>Upload</p>
 							</div>
@@ -80,10 +80,14 @@
 		},
 		data(){
 			return {
+				itemColor : null ,
 				pics : [] ,
 				formData : new FormData ,
 				fileChange : 0
 			}
+		},
+		created(){
+			this.getItemWithColor();
 		},
 		mounted : function(){
 			let vm=this;
@@ -98,6 +102,18 @@
 			})
 		},
 		methods : {
+			getItemWithColor(){
+				window.axios.get('item_variants/'+this.$route.params.id).then((response) => {
+					if(response.data.message=='Loading'){
+
+						showSwalLoading(this);
+					}else{
+						this.itemColor=response.data.item + "'s " + response.data.color;
+						// this.item=response.data.item;
+						// this.color=response.data.color;
+					}
+				} )
+			},
 			removePics(){
 				this.pics=[];
 			},

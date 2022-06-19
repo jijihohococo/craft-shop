@@ -259,10 +259,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      itemColor: null,
       pics: [],
       formData: new FormData(),
       fileChange: 0
     };
+  },
+  created: function created() {
+    this.getItemWithColor();
   },
   mounted: function mounted() {
     var vm = this;
@@ -279,34 +283,46 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    getItemWithColor: function getItemWithColor() {
+      var _this2 = this;
+
+      window.axios.get('item_variants/' + this.$route.params.id).then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this2);
+        } else {
+          _this2.itemColor = response.data.item + "'s " + response.data.color; // this.item=response.data.item;
+          // this.color=response.data.color;
+        }
+      });
+    },
     removePics: function removePics() {
       this.pics = [];
     },
     setPic: function setPic(event) {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.formData.getAll('pics[]').length > 0) {
         this.formData["delete"]('pics[]');
       }
 
       Array.from(event.target.files).forEach(function (file) {
-        _this2.formData.append('pics[]', file);
+        _this3.formData.append('pics[]', file);
       });
     },
     uploadPics: function uploadPics() {
-      var _this3 = this;
+      var _this4 = this;
 
       window.axios.post("upload_item_variant_images/" + this.$route.params.id, this.formData).then(function (response) {
         if (response.data.message == 'Loading') {
-          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this3);
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this4);
         } else {
-          _this3.$swal('Success', response.data.message, 'success');
+          _this4.$swal('Success', response.data.message, 'success');
 
           $('#itemImageModal').modal('hide');
-          _this3.fileChange++;
+          _this4.fileChange++;
         }
       })["catch"](function (error) {
-        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.errorResponse)(error, _this3, 'read');
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.errorResponse)(error, _this4, 'read');
       });
     }
   }
@@ -450,7 +466,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" .modal-dialog-person { width: 80% !important; height: 100% !important; padding: 0 !important; max-width: none !important; } .item-image{ cursor: pointer } .fileinput-upload-button, .kv-file-upload{ display: none !important; } ");
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"content\"><div class=\"container-fluid\"><!-- Small boxes (Stat box) --><div class=\"row\"><a class=\"item-image\"><div class=\"col-lg-3 col-6\"><div class=\"small-box bg-info\"><div class=\"inner\"><h3>Item Images</h3><p>Upload</p></div><div class=\"icon\"><i class=\"ion ion-briefcase\"></i></div><a class=\"small-box-footer\"></a></div></div></a></div></div></section>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"content\"><div class=\"container-fluid\"><!-- Small boxes (Stat box) --><div class=\"row\"><a class=\"item-image\"><div class=\"col-lg-3 col-6\"><div class=\"small-box bg-info\"><div class=\"inner\"><h3>Images</h3><p>Upload</p></div><div class=\"icon\"><i class=\"ion ion-briefcase\"></i></div><a class=\"small-box-footer\"></a></div></div></a></div></div></section>", 1);
 
 var _hoisted_3 = {
   "class": "modal fade",
@@ -501,7 +517,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContentHeader), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_File, {
+  })), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContentHeader, {
+    header: $data.itemColor
+  }, null, 8
+  /* PROPS */
+  , ["header"]), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_File, {
     changeData: $data.fileChange,
     onChange: $options.setPic,
     pics: $data.pics,
