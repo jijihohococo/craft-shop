@@ -12,4 +12,8 @@ class ItemVariant extends Model
     public function item(){
         return $this->belongsTo('App\Models\Item')->withDefault()->withTrashed();
     }
+
+    public function color(){
+        return $this->belongsTo('App\Models\Color')->withDefault()->withTrashed();
+    }
 }

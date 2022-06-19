@@ -48,6 +48,9 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::delete('delete_item_images/{id}','Admin\ItemVariantImageController@deleteItemImages');
 	Route::post('item_image_delete/{id}','Admin\ItemVariantImageController@imageDelete');
 
+
+	Route::get('item_variants/{id}','Admin\ItemVariantController@find');
+
 	Route::resource('admins','Admin\AdminController');
 	Route::get('admin','Admin\AdminController@get');
 	Route::get('admin_search','Admin\AdminController@search');
