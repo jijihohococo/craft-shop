@@ -78,7 +78,6 @@ class ItemController extends Controller
         $request->validate($this->validateData());
         DB::beginTransaction();
         $item=Item::create($request->all());
-        //$this->insertImage($item->id);
         $this->addAttributes($item->id,request('attributes'));
         $this->insertColors($request->colors,$item->id);
         DB::commit();
@@ -127,7 +126,6 @@ class ItemController extends Controller
         $request->validate($this->validateData($id));
         DB::beginTransaction();
         Item::findOrFail($id)->update($request->all());
-        //$this->insertImage($id);
         $this->addAttributes($id,request('attributes'),'yes');
         $this->insertColors($request->colors,$id,'yes');
         DB::commit();
@@ -136,44 +134,33 @@ class ItemController extends Controller
         ]);
     }
 
-    private function insertImage($id){
-      upload_document(request()->pics,
-        [
-          'name'=>cutSpeicialChar(request()->name),
-          'path'=>'item_images/',
-          'id'=>'item_id',
-          'data_id'=>$id,
-          'obj'=>'App\Models\ItemImage',
-          'file'=>'filename'] );
-  }
-
-  private function addAttributes($id,$attributes,$update=null){
-    if($update=='yes'){
-        ItemAttributeSet::whereIn('item_attribute_id',function($query) use($id) {
-            $query->select('id')
-            ->from('item_attributes')
-            ->where('item_id',$id)
-            ->get()->toArray();
-        })->delete();
-        ItemAttribute::where('item_id',$id)->delete();
-    }
-    if(is_array($attributes)){
-        foreach($attributes as $attribute){
-            if(isset($attribute['id']) && is_int($attribute['id'])){
-                $itemAttribute=ItemAttribute::create([
-                    'item_id' => $id ,
-                    'attribute_id' => $attribute['id']
-                ]);
-                foreach(explode(',',$attribute['set']) as $set){
-                    ItemAttributeSet::create([
-                        'item_attribute_id' => $itemAttribute->id ,
-                        'set_id'  => $set
+    private function addAttributes($id,$attributes,$update=null){
+        if($update=='yes'){
+            ItemAttributeSet::whereIn('item_attribute_id',function($query) use($id) {
+                $query->select('id')
+                ->from('item_attributes')
+                ->where('item_id',$id)
+                ->get()->toArray();
+            })->delete();
+            ItemAttribute::where('item_id',$id)->delete();
+        }
+        if(is_array($attributes)){
+            foreach($attributes as $attribute){
+                if(isset($attribute['id']) && is_int($attribute['id'])){
+                    $itemAttribute=ItemAttribute::create([
+                        'item_id' => $id ,
+                        'attribute_id' => $attribute['id']
                     ]);
+                    foreach(explode(',',$attribute['set']) as $set){
+                        ItemAttributeSet::create([
+                            'item_attribute_id' => $itemAttribute->id ,
+                            'set_id'  => $set
+                        ]);
+                    }
                 }
             }
         }
     }
-}
 
     /**
      * Remove the specified resource from storage.
@@ -193,15 +180,15 @@ class ItemController extends Controller
     }
 
     public function restore($id){
-       $item=Item::withTrashed()->findOrFail($id);
-       $item->restore();
-       return response()->json([
-          'message' => $item->name . ' Item is restored successfully',
-          'deleted_at' => $item->deleted_at
-      ]);   
-   }
+     $item=Item::withTrashed()->findOrFail($id);
+     $item->restore();
+     return response()->json([
+      'message' => $item->name . ' Item is restored successfully',
+      'deleted_at' => $item->deleted_at
+  ]);   
+ }
 
-   private function validateData($id=NULL){
+ private function validateData($id=NULL){
     return [
         'name' => ['required', 'string', 'max:100', $id==null ? 'unique:items' : 'unique:items,name,'.$id ] ,
         'category_id' => ['required','integer'],
