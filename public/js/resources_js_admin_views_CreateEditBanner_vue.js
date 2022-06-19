@@ -102,41 +102,63 @@ __webpack_require__.r(__webpack_exports__);
     delete_all_path: {
       type: String,
       "default": ''
+    },
+    changeData: {
+      type: Number,
+      "default": 0
     }
   },
   watch: {
+    changeData: {
+      handler: function handler() {
+        $(this.$el).fileinput('destroy');
+        this.picArray = [];
+        this.array = [];
+      }
+    },
     pics: {
       deep: true,
       handler: function handler() {
+        var changeFileInput = function changeFileInput(vm) {
+          $(vm.$el).fileinput({
+            initialPreview: vm.picArray,
+            initialPreviewAsData: true,
+            initialPreviewConfig: vm.array,
+            theme: 'fa',
+            overwriteInitial: vm.$props.multiple == true ? false : true,
+            maxFileSize: 22048,
+            maxFilesNum: 10,
+            allowedFileExtensions: ["jpg", "gif", "png", "jpeg", "webp"]
+          });
+        };
+
         var vm = this;
         var pics = this.$props.pics;
         var currentPath = window.location.pathname.substring(1);
 
-        if (pics.length > 0) {
-          pics.map(function (pic) {
-            var picName = window.location.href.replace(currentPath, vm.$props.storage_path + pic.filename);
-            vm.picArray.push(picName);
-            vm.array.push({
-              'caption': pic.filename,
-              'width': '35px',
-              'url': window.location.href.replace(currentPath, vm.$props.delete_path + pic.id),
-              'key': pic.id,
-              'downloadURL': picName,
-              'type': vm.checkExtension(pic.filename)
+        switch (pics.length) {
+          case 0:
+            vm.picArray = [];
+            vm.array = [];
+            break;
+
+          default:
+            pics.map(function (pic) {
+              var picName = window.location.href.replace(currentPath, vm.$props.storage_path + pic.filename);
+              vm.picArray.push(picName);
+              vm.array.push({
+                'caption': pic.filename,
+                'width': '35px',
+                'url': window.location.href.replace(currentPath, vm.$props.delete_path + pic.id),
+                'key': pic.id,
+                'downloadURL': picName,
+                'type': vm.checkExtension(pic.filename)
+              });
             });
-          });
+            break;
         }
 
-        $(vm.$el).fileinput({
-          initialPreview: vm.picArray,
-          initialPreviewAsData: true,
-          initialPreviewConfig: vm.array,
-          theme: 'fa',
-          overwriteInitial: vm.$props.multiple == true ? false : true,
-          maxFileSize: 22048,
-          maxFilesNum: 10,
-          allowedFileExtensions: ["jpg", "gif", "png", "jpeg", "webp"]
-        });
+        changeFileInput(vm);
         $(vm.$el).on('fileclear', function () {
           var _this = this;
 

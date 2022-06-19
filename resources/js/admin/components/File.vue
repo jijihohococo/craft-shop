@@ -34,16 +34,46 @@
 			delete_all_path  : {
 				type : String ,
 				default : ''
+			},
+			changeData : {
+				type : Number ,
+				default : 0
 			}
 		},
 		watch : {
+			changeData : {
+				handler(){
+					$(this.$el).fileinput('destroy')
+					this.picArray=[];
+					this.array=[];
+				}
+			},
 			pics : {
 				deep : true ,
 				handler(){
+					let changeFileInput = (vm) => {
+						$(vm.$el).fileinput({
+							initialPreview: vm.picArray,
+							initialPreviewAsData: true,
+							initialPreviewConfig : vm.array ,
+							theme: 'fa',
+							overwriteInitial: vm.$props.multiple==true ? false : true ,
+							maxFileSize:22048,
+							maxFilesNum: 10,
+							allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"] ,
+						})
+					}
+
 					let vm=this;
 					let pics=this.$props.pics;
 					let currentPath=window.location.pathname.substring(1)
-					if(pics.length>0){
+					switch(pics.length){
+						case 0:
+						vm.picArray=[]
+						vm.array=[];
+						break;
+
+						default:
 						pics.map( function(pic) {
 							let picName=window.location.href.replace(currentPath,vm.$props.storage_path+pic.filename );
 							vm.picArray.push(picName);
@@ -57,18 +87,9 @@
 								'type' : vm.checkExtension(pic.filename)
 							})
 						} )
+						break;
 					}
-
-					$(vm.$el).fileinput({
-						initialPreview: vm.picArray,
-						initialPreviewAsData: true,
-						initialPreviewConfig : vm.array ,
-						theme: 'fa',
-						overwriteInitial: vm.$props.multiple==true ? false : true ,
-						maxFileSize:22048,
-						maxFilesNum: 10,
-						allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"] ,
-					})
+					changeFileInput(vm);
 
 					$(vm.$el).on('fileclear',function(){
 						if(vm.array.length>0){

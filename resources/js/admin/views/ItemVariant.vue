@@ -45,6 +45,8 @@
 				<!-- -->
 				<div class="modal-body">
 					<File
+					ref="filePic"
+					:changeData="fileChange"
 					@change="setPic"
 					:pics="pics" 
 					@removed="removePics" 
@@ -78,7 +80,8 @@
 		data(){
 			return {
 				pics : [] ,
-				formData : new FormData
+				formData : new FormData ,
+				fileChange : 0
 			}
 		},
 		mounted : function(){
@@ -88,12 +91,22 @@
 				$("#itemImageModal").modal("show");
 				window.axios.get( 'item_variant_images/' + id ).then(( response ) =>  {
 					vm.pics=response.data.images
+				}).catch((error)=> {
+					errorResponse(error,this,'read')
 				})
 			})
 		},
 		methods : {
 			removePics(){
 				this.pics=[];
+			},
+			setPic(event){
+				if(this.formData.getAll('pics[]').length>0){
+					this.formData.delete('pics[]')
+				}
+				Array.from(event.target.files).forEach(file => {
+					this.formData.append('pics[]',file)
+				});
 			},
 			uploadPics(){
 				window.axios.post("upload_item_variant_images/"+this.$route.params.id,this.formData).then( (response) => {
@@ -104,19 +117,12 @@
 						this.$swal( 'Success' ,
 							response.data.message ,
 							'success'  );
-
+						$('#itemImageModal').modal('hide')
+						this.fileChange++;
 					}
 				} ).catch((error)=> {
 					errorResponse(error,this,'read')
 				})
-			},
-			setPic(event){
-				if(this.formData.getAll('pics[]').length>0){
-					this.formData.delete('pics[]')
-				}
-				Array.from(event.target.files).forEach(file => {
-					this.formData.append('pics[]',file)
-				});
 			}
 		}
 	}
