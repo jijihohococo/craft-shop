@@ -109,8 +109,6 @@
 						showSwalLoading(this);
 					}else{
 						this.itemColor=response.data.item + "'s " + response.data.color;
-						// this.item=response.data.item;
-						// this.color=response.data.color;
 					}
 				} )
 			},
