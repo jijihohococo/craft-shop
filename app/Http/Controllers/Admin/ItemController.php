@@ -68,8 +68,7 @@ class ItemController extends Controller
                 ->pluck('color_id')
                 ->toArray();
 
-                //dd($oldColorIds);
-                //dd($colors);
+                
                 if($oldColorIds!==$colors){
 
                     $itemVariants= ItemVariant::select(['id','color_id'])
