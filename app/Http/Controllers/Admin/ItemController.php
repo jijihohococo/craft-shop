@@ -155,7 +155,7 @@ class ItemController extends Controller
                     ->pluck('id');
                 $deleteImages=ItemImage::whereIn('item_variant_id',
                     $deleteItemVariants)->get();
-                
+
                 foreach ($deleteImages as $key => $image) {
                     // code...
                     File::delete(storage_path('app/public/item_images/'.$image->filename  ));
@@ -163,10 +163,7 @@ class ItemController extends Controller
                 ItemImage::whereIn('item_variant_id',
                     $deleteItemVariants)->delete();
 
-                ItemVariant::select('id')
-                ->where('item_id',$itemId)
-                ->whereIn('color_id',$deleteColorIds)
-                ->delete();
+                ItemVariant::whereIn('id',$deleteItemVariants)->delete();
             }
             if(!empty($insertObjArray)){
                 ItemVariant::insert($insertObjArray);
