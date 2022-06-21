@@ -58,7 +58,7 @@ class ItemController extends Controller
 
         if(isset($colors)){
             sort($colors);
-            $colorsWithFiles=$oldColors=[];
+            $colorsWithFiles=$oldColors=$oldColorIds=[];
             if($update=="yes"){
                 // all color ids of item //
                 $oldColorIds=ItemVariant::select('color_id')
@@ -105,7 +105,7 @@ class ItemController extends Controller
             }
 
             $insertObjArray=$deleteColors=$deleteColorIds=[];
-            if(count($colors)>=count($oldColorIds)){
+            if( (count($colors)>=count($oldColorIds)) && $oldColorIds!==$colors ){
                 foreach( array_filter($colors) as $key => $color ){
                     // if color is not in old color ids //
                     if(!in_array($color, $oldColorIds)  ){
@@ -167,7 +167,8 @@ class ItemController extends Controller
             }
             ItemImage::whereIn('item_variant_id',
                 $deleteItemVariants)->delete();
-
+        }
+        if(!empty($deleteColorIds)){
             ItemVariant::where('item_id',$itemId)
             ->whereIn('color_id',$deleteColorIds)
             ->delete();
@@ -292,15 +293,15 @@ class ItemController extends Controller
     }
 
     public function restore($id){
-     $item=Item::withTrashed()->findOrFail($id);
-     $item->restore();
-     return response()->json([
-      'message' => $item->name . ' Item is restored successfully',
-      'deleted_at' => $item->deleted_at
-  ]);   
- }
+       $item=Item::withTrashed()->findOrFail($id);
+       $item->restore();
+       return response()->json([
+          'message' => $item->name . ' Item is restored successfully',
+          'deleted_at' => $item->deleted_at
+      ]);   
+   }
 
- private function validateData($id=NULL){
+   private function validateData($id=NULL){
     return [
         'name' => ['required', 'string', 'max:100', $id==null ? 'unique:items' : 'unique:items,name,'.$id ] ,
         'category_id' => ['required','integer'],
