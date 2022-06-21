@@ -56,14 +56,91 @@ class ItemController extends Controller
 
     private function insertColors($colors,$itemId,$update=NULL){
 
-        add_high_light([
-            'col'=>$colors,
-            'obj' => 'App\Models\ItemVariant',
-            'parent_id'=>'item_id',
-            'parent_data'=>$itemId,
-            'child_col'=>'color_id',
-            'update'=> $update
-        ]);
+        if(isset($colors)){
+            sort($colors);
+            $colorsWithFiles=[];
+            if($update=="yes"){
+                $itemVariants= ItemVariant::select(['id','color_id'])
+                ->where('item_id',$itemId)
+                ->whereIn('color_id',$colors)
+                ->orderBy('color_id')
+                ->get()
+                ->pluck('id','color_id')
+                ->toArray();
+
+                $itemImages=ItemImage::whereIn('item_variant_id', 
+                    function($query) use ($itemId,$colors) {
+                        $query->select('id')
+                        ->from('item_variants')
+                        ->where('item_id',$itemId)
+                        ->whereIn('color_id',$colors)
+                        ->orderBy('color_id')
+                        ->get()
+                        ->pluck('id');
+                    }
+                )->orderBy('item_variant_id')
+                ->get();
+               // dd($itemVariants );
+                foreach($itemImages as $image){
+                    if( in_array($image->item_variant_id, $itemVariants) ){
+                        $colorId=array_search($image->item_variant_id, $itemVariants );
+                        $colorsWithFiles[$colorId][]=$image->filename;
+                    }
+                }
+
+                dd($colorsWithFiles);
+                
+
+                ItemVariant::where('item_id',$itemId)
+                ->whereIn('color_id',$colors)
+                ->delete();
+
+            }
+            $objArray=$newItemVariantIds=[];
+            foreach(array_filter($colors) as $color){
+                array_push($objArray , [
+                    'item_id' => $itemId ,
+                    'color_id' => $color
+                ]);
+                // $itemVariant=ItemVariant::create([
+                //     'item_id' => $itemId ,
+                //     'color_id' => $color ,
+                //     'created_at' => NOW()
+                // ]);
+                // if( in_array($color,$colorIds ) ){
+
+                // }
+                
+            }
+            if(!empty($objArray)){
+                ItemVariant::insert($objArray);
+            }
+            // if(!empty($objArray)){
+            //     ItemVariant::insert($objArray);
+            //     $newItemVariantIds=ItemVariant::select('id')
+            //     ->where('item_id',$itemId)
+            //     ->whereIn('color_id',$colors)
+            //     ->get()
+            //     ->pluck('id');
+            // }
+            // if($update=='yes'){
+            //     $itemVariantImages=ItemImage::whereIn('item_variant_id',$itemVariantIds)->orderBy('item_variant_id')->get();
+            //     dd($itemVariantImages);
+            //     dd($itemVariantIds);
+            //    foreach ($itemVariantImages as $key => $image) {
+            //     if( in_array($image->item_variant_id, $itemVariantIds) ){
+            //        array_push($imgArray, [
+            //         'item_variant_id' => $newItemVariantIds[$key] ,
+            //         'filename' => $image->filename 
+            //        ]);
+            //    }
+            //    }
+            //    ItemImage::whereIn('item_variant_id',$itemVariantIds)->delete();
+            //    // ItemImage::insert($imgArray);
+            //    // 
+
+            // }
+        }
     }
 
     /**
