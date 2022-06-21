@@ -70,18 +70,16 @@ class ItemController extends Controller
 
                 $itemVariants= ItemVariant::select(['id','color_id'])
                 ->where('item_id',$itemId)
-                ->whereIn('color_id',$colors)
                 ->orderBy('color_id')
                 ->get()
                 ->pluck('id','color_id')
                 ->toArray();
 
                 $itemImages=ItemImage::whereIn('item_variant_id', 
-                    function($query) use ($itemId,$colors) {
+                    function($query) use ($itemId) {
                         $query->select('id')
                         ->from('item_variants')
                         ->where('item_id',$itemId)
-                        ->whereIn('color_id',$colors)
                         ->orderBy('color_id')
                         ->get()
                         ->pluck('id');
@@ -124,15 +122,20 @@ class ItemController extends Controller
                 }
 
             }elseif( count($colors) < count($oldColorIds) ){
+
                 foreach( $oldColorIds as $key => $oldColorId ){
                     // if old color (with or without file) is not in request colors //
                     if( !in_array($oldColorId, $colors) ){
+                        //dd("hihi");
                         $deleteColorIds[]=$oldColorId;
                     }
 
                     // if old color (with file) is not in request colors //
-                    if( in_array($oldColorId,$oldColors) && !in_array($oldColorId,$colors)  ){
-                        $deleteColors[]=$oldColorId;
+                    if( isset($oldColors[$key]) && 
+                        in_array($oldColors[$key],$oldColorIds) && 
+                        !in_array($oldColors[$key],$colors)  ){
+                        
+                        $deleteColors[]=$oldColors[$key];
                     }
                     // if request color is in old colors (with or without file) //
                     if(isset($colors[$key]) && !in_array($colors[$key], $oldColorIds) ){
@@ -142,16 +145,24 @@ class ItemController extends Controller
                         ]);
                     }
                 }
-
+                
             }
             if(!empty($deleteColors)){
-                ItemImage::whereIn('item_variant_id', 
-                    ItemVariant::select('id')
+                $deleteItemVariants=ItemVariant::select('id')
                     ->where('item_id',$itemId)
                     ->whereIn('color_id',$deleteColors)
                     ->get()
-                    ->pluck('id')
-                )->delete();
+                    ->pluck('id');
+                $deleteImages=ItemImage::whereIn('item_variant_id',
+                    $deleteItemVariants)->get();
+                
+                foreach ($deleteImages as $key => $image) {
+                    // code...
+                    File::delete(storage_path('app/public/item_images/'.$image->filename  ));
+                }
+                ItemImage::whereIn('item_variant_id',
+                    $deleteItemVariants)->delete();
+
                 ItemVariant::select('id')
                 ->where('item_id',$itemId)
                 ->whereIn('color_id',$deleteColorIds)
