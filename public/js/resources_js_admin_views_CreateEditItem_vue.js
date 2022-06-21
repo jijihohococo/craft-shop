@@ -24,6 +24,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Select */ "./resources/js/admin/components/Select.vue");
 /* harmony import */ var _SelectMultiple__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectMultiple */ "./resources/js/admin/components/SelectMultiple.vue");
+/* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -56,7 +58,11 @@ __webpack_require__.r(__webpack_exports__);
                 'subSelectData': response.data.sets,
                 'selectedSubData': newResponse.data.selectedSets
               });
+            })["catch"](function (newError) {
+              (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(newError, _this, 'read');
             });
+          })["catch"](function (error) {
+            (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this, 'read');
           });
         });
       }
@@ -73,13 +79,21 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     setSubSelect: function setSubSelect(object) {
+      var _this2 = this;
+
       var main = this.main[object.index];
       main.id = object.value;
       main.selectedSubData = [];
       main.subSelectData = [];
       window.axios.get('get_attribute_sets/' + object.value).then(function (response) {
-        main.subSelectData = response.data.sets;
-      })["catch"](function (error) {});
+        if (response.data.message == 'Loading') {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this2);
+        } else {
+          main.subSelectData = response.data.sets;
+        }
+      })["catch"](function (error) {
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this2, 'read');
+      });
     },
     add: function add() {
       this.main.push({

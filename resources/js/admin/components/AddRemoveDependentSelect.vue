@@ -30,6 +30,7 @@
 <script >
 	import Select from './Select';
 	import SelectMultiple from './SelectMultiple';
+	import { errorResponse , showSwalLoading  } from '../helpers/check.js';
 
 	export default {
 		components: {
@@ -60,7 +61,11 @@
 									'subSelectData' : response.data.sets ,
 									'selectedSubData' : newResponse.data.selectedSets
 								})
+							} ).catch( (newError) => {
+								errorResponse(newError,this,'read')
 							} )
+						} ).catch( (error) => {
+							errorResponse(error,this,'read')
 						} )
 					} )
 				}
@@ -81,9 +86,14 @@
 				main.selectedSubData=[]
 				main.subSelectData=[]
 				window.axios.get('get_attribute_sets/'+object.value).then( (response) => {
-					main.subSelectData=response.data.sets
-				}).catch( (error) => {
+					if(response.data.message=='Loading'){
 
+						showSwalLoading(this);
+					}else{
+						main.subSelectData=response.data.sets
+					}
+				}).catch( (error) => {
+					errorResponse(error,this,'read')
 				} )
 			},
 			add(){
