@@ -126,7 +126,7 @@ class ItemController extends Controller
                 foreach( $oldColorIds as $key => $oldColorId ){
                     // if old color (with or without file) is not in request colors //
                     if( !in_array($oldColorId, $colors) ){
-                        //dd("hihi");
+                        
                         $deleteColorIds[]=$oldColorId;
                     }
 
@@ -163,7 +163,9 @@ class ItemController extends Controller
                 ItemImage::whereIn('item_variant_id',
                     $deleteItemVariants)->delete();
 
-                ItemVariant::whereIn('id',$deleteItemVariants)->delete();
+                ItemVariant::where('item_id',$itemId)
+                ->whereIn('color_id',$deleteColorIds)
+                ->delete();
             }
             if(!empty($insertObjArray)){
                 ItemVariant::insert($insertObjArray);
