@@ -60,6 +60,14 @@ class ItemController extends Controller
             sort($colors);
             $colorsWithFiles=[];
             if($update=="yes"){
+                // all color ids of item //
+                $oldColorIds=ItemVariant::select('color_id')
+                ->where('item_id',$itemId)
+                ->orderBy('color_id')
+                ->get()
+                ->pluck('color_id')
+                ->toArray();
+
                 $itemVariants= ItemVariant::select(['id','color_id'])
                 ->where('item_id',$itemId)
                 ->whereIn('color_id',$colors)
@@ -80,7 +88,7 @@ class ItemController extends Controller
                     }
                 )->orderBy('item_variant_id')
                 ->get();
-               // dd($itemVariants );
+
                 foreach($itemImages as $image){
                     if( in_array($image->item_variant_id, $itemVariants) ){
                         $colorId=array_search($image->item_variant_id, $itemVariants );
@@ -88,58 +96,70 @@ class ItemController extends Controller
                     }
                 }
 
-                dd($colorsWithFiles);
-                
+            }
+            // color ids with files //
+            $oldColors=array_keys($colorsWithFiles);
+            // color ids with files //
 
-                ItemVariant::where('item_id',$itemId)
-                ->whereIn('color_id',$colors)
+            $insertObjArray=$deleteColors=$deleteColorIds=[];
+            if(count($colors)>=count($oldColorIds)){
+                foreach( array_filter($colors) as $key => $color ){
+                    // if color is not in old color ids //
+                    if(!in_array($color, $oldColorIds)  ){
+                        array_push($insertObjArray, [
+                            'item_id' => $itemId ,
+                            'color_id' => $color
+                        ]);
+                    }
+
+                    // if old color (with file) is not in request colors //
+                    if(isset($oldColors[$key]) && !in_array($oldColors[$key], $colors) ){
+                        $deleteColors[]=$oldColors[$key];
+                    }
+
+                    // if old color (with or without file) is not in request colors//
+                    if(isset($oldColorIds[$key]) && !in_array($oldColorIds[$key], $colors) ){
+                        $deleteColorIds[]=$oldColorIds[$key];
+                    }
+                }
+
+            }elseif( count($colors) < count($oldColorIds) ){
+                foreach( $oldColorIds as $key => $oldColorId ){
+                    // if old color (with or without file) is not in request colors //
+                    if( !in_array($oldColorId, $colors) ){
+                        $deleteColorIds[]=$oldColorId;
+                    }
+
+                    // if old color (with file) is not in request colors //
+                    if( in_array($oldColorId,$oldColors) && !in_array($oldColorId,$colors)  ){
+                        $deleteColors[]=$oldColorId;
+                    }
+                    // if request color is in old colors (with or without file) //
+                    if(isset($colors[$key]) && !in_array($colors[$key], $oldColorIds) ){
+                        array_push($insertObjArray,[
+                            'item_id' => $itemId ,
+                            'color_id' => $colors[$key]
+                        ]);
+                    }
+                }
+
+            }
+            if(!empty($deleteColors)){
+                ItemImage::whereIn('item_variant_id', 
+                    ItemVariant::select('id')
+                    ->where('item_id',$itemId)
+                    ->whereIn('color_id',$deleteColors)
+                    ->get()
+                    ->pluck('id')
+                )->delete();
+                ItemVariant::select('id')
+                ->where('item_id',$itemId)
+                ->whereIn('color_id',$deleteColorIds)
                 ->delete();
-
             }
-            $objArray=$newItemVariantIds=[];
-            foreach(array_filter($colors) as $color){
-                array_push($objArray , [
-                    'item_id' => $itemId ,
-                    'color_id' => $color
-                ]);
-                // $itemVariant=ItemVariant::create([
-                //     'item_id' => $itemId ,
-                //     'color_id' => $color ,
-                //     'created_at' => NOW()
-                // ]);
-                // if( in_array($color,$colorIds ) ){
-
-                // }
-                
+            if(!empty($insertObjArray)){
+                ItemVariant::insert($insertObjArray);
             }
-            if(!empty($objArray)){
-                ItemVariant::insert($objArray);
-            }
-            // if(!empty($objArray)){
-            //     ItemVariant::insert($objArray);
-            //     $newItemVariantIds=ItemVariant::select('id')
-            //     ->where('item_id',$itemId)
-            //     ->whereIn('color_id',$colors)
-            //     ->get()
-            //     ->pluck('id');
-            // }
-            // if($update=='yes'){
-            //     $itemVariantImages=ItemImage::whereIn('item_variant_id',$itemVariantIds)->orderBy('item_variant_id')->get();
-            //     dd($itemVariantImages);
-            //     dd($itemVariantIds);
-            //    foreach ($itemVariantImages as $key => $image) {
-            //     if( in_array($image->item_variant_id, $itemVariantIds) ){
-            //        array_push($imgArray, [
-            //         'item_variant_id' => $newItemVariantIds[$key] ,
-            //         'filename' => $image->filename 
-            //        ]);
-            //    }
-            //    }
-            //    ItemImage::whereIn('item_variant_id',$itemVariantIds)->delete();
-            //    // ItemImage::insert($imgArray);
-            //    // 
-
-            // }
         }
     }
 
