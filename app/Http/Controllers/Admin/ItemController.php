@@ -93,7 +93,9 @@ class ItemController extends Controller
                     foreach($itemImages as $image){
                         if( in_array($image->item_variant_id, $itemVariants) ){
                             $colorId=array_search($image->item_variant_id, $itemVariants );
-                            $colorsWithFiles[$colorId][]=$image->filename;
+                            if($colorId!==NULL){
+                                $colorsWithFiles[$colorId][]=$image->filename;
+                            }
                         }
                     }
                 }
@@ -293,15 +295,15 @@ class ItemController extends Controller
     }
 
     public function restore($id){
-       $item=Item::withTrashed()->findOrFail($id);
-       $item->restore();
-       return response()->json([
-          'message' => $item->name . ' Item is restored successfully',
-          'deleted_at' => $item->deleted_at
-      ]);   
-   }
+     $item=Item::withTrashed()->findOrFail($id);
+     $item->restore();
+     return response()->json([
+      'message' => $item->name . ' Item is restored successfully',
+      'deleted_at' => $item->deleted_at
+  ]);   
+ }
 
-   private function validateData($id=NULL){
+ private function validateData($id=NULL){
     return [
         'name' => ['required', 'string', 'max:100', $id==null ? 'unique:items' : 'unique:items,name,'.$id ] ,
         'category_id' => ['required','integer'],
