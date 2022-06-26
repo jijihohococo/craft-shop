@@ -5,10 +5,10 @@
 		<div class="container-fluid">
 			<div class="card card-default">
 				<div class="card-header">
-					<h3 class="card-title">{{ isNaN(this.$route.params.id) ? "Create Attribute" : "Update Attribute" }}</h3>
+					<h3 class="card-title">{{ isNaN(this.$route.params.id) ? "Create Subcategory" : "Update Subcategory" }}</h3>
 				</div>
 				<Error v-if="actions[current]==false" :httpStatus="errors.error_status" :title="errors.error_title" :description="errors.error_description" />
-				<form v-else-if="actions[current]"  @submit.prevent=" !isNaN(this.$route.params.id) ? updateAttribute() : createAttribute()">
+				<form v-else-if="actions[current]" @submit.prevent=" !isNaN(this.$route.params.id) ? updateSubcategory() : createSubcategory()">
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-12">
@@ -18,12 +18,12 @@
 									<strong v-if="errors && errors.name" class="invalid-feedback">{{ errors.name[0] }}</strong>
 								</div>
 								<div class="form-group">
-									<label>Sets</label>
-									<AttributeSet :inputData="fields.sets" ref="attributeSet" />
-									<strong v-if="errors && errors.set" 
-									style="width: 100%;margin-top: .25rem;font-size: 80%;color: #dc3545;" >
-									{{ errors.set[0] }}
-								</strong>
+									<label>Category</label>
+									<Select :value="fields.category_id" @input="setCategoryId">
+										<option value="" disabled >Select Category</option>
+										<option v-for="category in categories" :value="category.id">{{ category.name }}</option>
+									</Select>
+									<strong v-if="errors && errors.category_id" class="invalid-feedback" style="display:block!important;">{{ errors.category_id[0] }}</strong>
 								</div>
 							</div>
 						</div>
@@ -46,23 +46,23 @@
 
 	import Loading from '../components/Loading'
 
-	import AttributeSet from '../components/AttributeSet'
+	import Select from '../components/Select'
 	
 	export default {
 		components: {
 			CreateEditHeader,
 			Error,
 			Loading,
-			AttributeSet
+			Select
 		},
 		data(){
 			return {
-				content : 'Attribute',
+				content : 'Subcategory',
+				categories : {},
 				fields : {
 					name : '',
-					sets : []
+					category_id : ''
 				},
-				formData : new FormData ,
 				errors : {
 					error_status : 0 ,
 					error_title : '',
@@ -78,18 +78,18 @@
 		async created(){
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
-
+			await this.getCategories()
 			if(this.current=='update'){
-				await this.getAttributeData(this.$route.params.id);
+				await this.getSubcategoryData(this.$route.params.id);
 			}
 		},
 		methods : {
-			getAttributeSets(){
-				this.fields.sets=this.$refs.attributeSet.input;
+			setCategoryId(categoryId){
+				this.fields.category_id=categoryId
 			},
-			createAttribute(){
-				this.getAttributeSets();
-				window.axios.post("attributes",this.fields ).then( (response) => {
+			createSubcategory(){
+
+				window.axios.post("subcategories",this.fields).then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -97,7 +97,7 @@
 						this.$swal( 'Success' ,
 							response.data.message ,
 							'success'  );
-						this.$router.push({path: '/admin/attribute' })
+						this.$router.push({path: '/admin/subcategory' })
 					}
 				} ).catch( (error) => {
 					if(error.response.status==422){
@@ -107,9 +107,8 @@
 					}
 				} )
 			},
-			updateAttribute(){
-				this.getAttributeSets();
-				window.axios.put(`attributes/${this.$route.params.id}`,this.fields ).then( (response) => {
+			updateSubcategory(){
+				window.axios.put(`subcategories/${this.$route.params.id}`,this.fields).then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -117,7 +116,7 @@
 						this.$swal('Success',
 							response.data.message,
 							'success');
-						this.$router.push({path:'/admin/attribute'})
+						this.$router.push({path:'/admin/subcategory'})
 					}
 				} ).catch( (error) => {
 					if(error.response.status==422){
@@ -127,19 +126,30 @@
 					}
 				} )
 			},
-			async getAttributeData( attributeId ){
-				window.axios.get('attributes/'+attributeId + '/edit' ).then((response) => {
+			async getSubcategoryData( subcategoryId ){
+				window.axios.get('subcategories/'+subcategoryId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
 					}else{
-						this.fields=response.data.attribute;
-						this.fields.sets=response.data.sets;
+						this.fields=response.data.subcategory;
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'update')
 				} )
-			}
+			},
+			async getCategories(){
+				window.axios.get('get_categories').then( (response) => {
+					if(response.data.message=='Loading'){
+
+						showSwalLoading(this);
+					}else{
+						this.categories=response.data.categories
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')
+				} )
+			},
 		}
 	}
 </script>

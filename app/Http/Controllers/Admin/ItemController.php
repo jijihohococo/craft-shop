@@ -26,6 +26,7 @@ class ItemController extends Controller
         return response()->json([
             'items' => Item::select(['id','name','created_at','deleted_at'])
             ->selectCategory()
+            ->selectSubcategory()
             ->selectItemVariants()
             ->latest('id')
             ->paginate(10)
@@ -36,6 +37,8 @@ class ItemController extends Controller
         return response()->json([
             'items' => Item::onlyTrashed()
             ->selectCategory()
+            ->selectSubcategory()
+            ->selectItemVariants()
             ->latest('id')
             ->paginate(10)
         ]);
@@ -316,6 +319,8 @@ public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
         'items' => Item::selectCategory()
+        ->selectSubcategory()
+        ->selectItemVariants()
         ->where('name','like',$searchData )
         ->orWherein('category_id',
             function($query) use($searchData) {
@@ -324,6 +329,11 @@ public function search(Request $request){
                 ->where('name','like', $searchData );
             }
         )
+        ->orWherein('subcategory_id',function($query) use($searchData){
+            $query->select('id')
+            ->from('subcategories')
+            ->where('name','like',$searchData)
+        })
         ->latest('id')->paginate(10)
     ]);
 }
@@ -333,6 +343,8 @@ public function trashSearch(Request $request){
     return response()->json([
         'items' => Item::onlyTrashed()
         ->selectCategory()
+        ->selectSubcategory()
+        ->selectItemVariants()
         ->where('name','like',$searchData )
         ->orWherein('category_id',
             function($query) use($searchData) {
@@ -341,6 +353,11 @@ public function trashSearch(Request $request){
                 ->where('name','like', $searchData );
             }
         )
+        ->orWherein('subcategory_id',function($query) use($searchData){
+            $query->select('id')
+            ->from('subcategories')
+            ->where('name','like',$searchData)
+        })
         ->latest('id')->paginate(10)
     ]);
 }

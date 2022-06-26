@@ -83,6 +83,7 @@
 				'Admin',
 				'Banner',
 				'Category',
+				'Subcategory',
 				'Brand',
 				'Group',
 				'Item',

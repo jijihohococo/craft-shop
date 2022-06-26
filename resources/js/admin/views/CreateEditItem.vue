@@ -35,6 +35,14 @@
 									<strong v-if="errors && errors.category_id" class="invalid-feedback" style="display:block!important;">{{ errors.category_id[0] }}</strong>
 								</div>
 								<div class="form-group">
+									<label>Subcategory</label>
+									<Select :value="fields.subcategory_id" @input="setSubcategoryId">
+										<option value="" disabled >Select Subcategory</option>
+										<option v-for="subcategory in subcategories" :value="subcategory.id">{{ subcategory.name }}</option>
+									</Select>
+									<strong v-if="errors && errors.subcategory_id" class="invalid-feedback" style="display:block!important;">{{ errors.subcategory_id[0] }}</strong>
+								</div>
+								<div class="form-group">
 									<label>Brand</label>
 									<Select :value="fields.brand_id" @input="setBrandId">
 										<option value="" disabled >Select Brand</option>
@@ -112,6 +120,7 @@
 			return {
 				content : 'Item',
 				categories : {},
+				subcategories : {},
 				brands : {},
 				attributes : {},
 				colors : {} ,
@@ -119,6 +128,7 @@
 				fields : {
 					name : '',
 					category_id : '',
+					subcategory_id : '',
 					brand_id : '',
 					//pics : [],
 					colors : [],
@@ -192,6 +202,17 @@
 					errorResponse(error,this,'read')
 				} )
 			},
+			async getSubcategories(categoryId){
+				window.axios.get('get_subcategories/'+categoryId).then( (response) => {
+					if(response.data.message=='Loading'){
+						showSwalLoading(this);
+					}else{
+						this.subcategories=response.data.subcategories
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')
+				} )
+			},
 			async getBrands(){
 				window.axios.get('get_brands').then( (response) => {
 					if(response.data.message=='Loading'){
@@ -220,6 +241,11 @@
 			},
 			setCategoryId(categoryId){
 				this.fields.category_id=categoryId
+				this.fields.subcategory_id=''
+				this.getSubcategories(categoryId)
+			},
+			setSubcategoryId(subcategoryId){
+				this.fields.subcategory_id=subcategoryId
 			},
 			setBrandId(brandId){
 				this.fields.brand_id=brandId

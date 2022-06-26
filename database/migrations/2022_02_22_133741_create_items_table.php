@@ -17,6 +17,7 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('category_id');
+            $table->integer('subcategory_id');
             $table->integer('brand_id');
             $table->text('description')->nullable();
             $table->softDeletes();

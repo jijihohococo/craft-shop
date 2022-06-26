@@ -32,6 +32,7 @@ class TransactionListener
         $cachedModels=[
             'Attribute',
             'Category',
+            'Subcategory',
             'Brand',
             'Banner',
             'Currency',

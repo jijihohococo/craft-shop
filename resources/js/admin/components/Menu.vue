@@ -68,6 +68,7 @@
       'admin' : "Admin",
       'attribute' : "Attribute",
       'category' : "Category" ,
+      'subcategory' : "Subcategory",
       'brand' : "Brand" ,
       'color' : "Color",
       'item' : "Item" ,

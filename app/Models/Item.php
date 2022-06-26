@@ -13,6 +13,7 @@ class Item extends TransactionModel
         'name',
         'brand_id',
         'category_id',
+        'subcategory_id',
         'description'
     ];
     protected $dates = ['deleted_at'];
@@ -21,6 +22,19 @@ class Item extends TransactionModel
 
     public function category(){
         return $this->belongsTo('App\Models\Category')->withDefault()->withTrashed();
+    }
+
+    public function subcategory(){
+        return $this->belongsTo('App\Models\Subcategory')->withDefault()->withTrashed();
+    }
+
+    public function scopeSelectSubcategory($query){
+        return $query->addSelect(['subcategory_name' => function($query) {
+            $query->select('name')
+            ->from('subcategories')
+            ->whereColumn('subcategory_id','subcategories.id')
+            ->limit(1);
+        } ]);
     }
 
     public function brand(){
