@@ -303,7 +303,7 @@ class ItemController extends Controller
      return response()->json([
       'message' => $item->name . ' Item is restored successfully',
       'deleted_at' => $item->deleted_at
-  ]);   
+  ]);
  }
 
  private function validateData($id=NULL){
@@ -332,7 +332,7 @@ public function search(Request $request){
         ->orWherein('subcategory_id',function($query) use($searchData){
             $query->select('id')
             ->from('subcategories')
-            ->where('name','like',$searchData)
+            ->where('name','like',$searchData);
         })
         ->latest('id')->paginate(10)
     ]);
@@ -356,7 +356,7 @@ public function trashSearch(Request $request){
         ->orWherein('subcategory_id',function($query) use($searchData){
             $query->select('id')
             ->from('subcategories')
-            ->where('name','like',$searchData)
+            ->where('name','like',$searchData);
         })
         ->latest('id')->paginate(10)
     ]);

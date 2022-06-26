@@ -49,6 +49,7 @@
                                 </th>
                                 <th>Name</th>
                                 <th>Category</th>
+                                <th>Subcategory</th>
                                 <th>Variants</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
@@ -65,6 +66,7 @@
                                     /></td>
                                     <td>{{ item.name }}</td>
                                     <td>{{ item.category_name }}</td>
+                                    <td>{{ item.subcategory_name }}</td>
                                     <td ><div >
                                         <template v-if="item.variants!==null" >
                                         <template v-for="(variant,key) in item.variants.split(',')">

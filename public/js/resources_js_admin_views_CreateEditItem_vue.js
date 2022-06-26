@@ -615,6 +615,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var description = this.fields.description == null ? '' : this.fields.description;
       this.formData.set('name', this.fields.name);
       this.formData.set('category_id', this.fields.category_id);
+      this.formData.set('subcategory_id', this.fields.subcategory_id);
       this.formData.set('brand_id', this.fields.brand_id);
 
       if (this.fields.colors.length > 0) {
@@ -699,6 +700,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     // attributes : []
                     _this11.fields.name = response.data.item.name;
                     _this11.fields.category_id = response.data.item.category_id;
+                    _this11.fields.subcategory_id = response.data.item.subcategory_id;
                     _this11.fields.brand_id = response.data.item.brand_id;
                     _this11.fields.description = response.data.item.description;
 
@@ -707,6 +709,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     }
 
                     _this11.fields.colors = response.data.colors;
+
+                    _this11.getSubcategories(response.data.item.category_id);
                   }
                 })["catch"](function (error) {
                   (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.errorResponse)(error, _this11, 'update');

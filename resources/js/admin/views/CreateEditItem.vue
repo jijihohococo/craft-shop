@@ -265,6 +265,7 @@
 				let description=this.fields.description==null ? '' : this.fields.description;
 				this.formData.set('name',this.fields.name )
 				this.formData.set('category_id',this.fields.category_id);
+				this.formData.set('subcategory_id',this.fields.subcategory_id);
 				this.formData.set('brand_id',this.fields.brand_id);
 				if(this.fields.colors.length>0){
 					this.fields.colors.map( (data,index) => {
@@ -334,12 +335,14 @@
 					// attributes : []
 					this.fields.name=response.data.item.name;
 					this.fields.category_id=response.data.item.category_id;
+					this.fields.subcategory_id=response.data.item.subcategory_id;
 					this.fields.brand_id=response.data.item.brand_id;
 					this.fields.description=response.data.item.description;
 					 if(response.data.attributes.length>0 ){
 					 	this.fields.attributes=response.data.attributes;
 					 }
 					this.fields.colors=response.data.colors;
+					this.getSubcategories(response.data.item.category_id)
 				}
 			} ).catch( (error) => {
 				errorResponse(error,this,'update')
