@@ -28,6 +28,7 @@ class ItemController extends Controller
             ->selectCategory()
             ->selectSubcategory()
             ->selectItemVariants()
+            ->selectBrand()
             ->latest('id')
             ->paginate(10)
         ]);
@@ -39,6 +40,7 @@ class ItemController extends Controller
             ->selectCategory()
             ->selectSubcategory()
             ->selectItemVariants()
+            ->selectBrand()
             ->latest('id')
             ->paginate(10)
         ]);
@@ -321,6 +323,7 @@ public function search(Request $request){
         'items' => Item::selectCategory()
         ->selectSubcategory()
         ->selectItemVariants()
+        ->selectBrand()
         ->where('name','like',$searchData )
         ->orWherein('category_id',
             function($query) use($searchData) {
@@ -345,6 +348,7 @@ public function trashSearch(Request $request){
         ->selectCategory()
         ->selectSubcategory()
         ->selectItemVariants()
+        ->selectBrand()
         ->where('name','like',$searchData )
         ->orWherein('category_id',
             function($query) use($searchData) {

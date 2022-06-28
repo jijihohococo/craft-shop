@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('items/{id}','User\ItemController@show');
-Route::get('get_home_data','User\HomeController@get');
 
 Route::get('wish_list','User\WishlistController@get');
 Route::get('shopping_cart','User\ShoppingCartController@get');
@@ -34,8 +33,14 @@ Route::post('remove_item_to_wish_list','User\WishlistController@removeItem');
 Route::post('add_item_to_shopping_cart','User\ShoppingCartController@addItem');
 Route::post('remove_item_to_shopping_cart','User\ShoppingCartController@removeItem');
 
+Route::get('get_categories','User\CategoryController@get');
+Route::get('get_brands','User\BrandController@get');
+Route::get('get_banners','User\BannerController@get');
+Route::get('get_colors','User\ColorController@get');
+
 Route::group(['middleware' => [ 'user_auth'] ], function () {
 
 Route::get('orders','User\OrderController@get');
+Route::post('logout','User\Auth\LoginController@logOut');
 
 });

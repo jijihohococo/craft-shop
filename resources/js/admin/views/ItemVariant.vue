@@ -6,7 +6,7 @@
 			padding: 0 !important;
 			max-width: none !important;
 		}
-		.item-image{
+		.item-image , .item-stock{
 			cursor: pointer
 		}
 		.fileinput-upload-button, .kv-file-upload{
@@ -20,11 +20,25 @@
 			<div class="row">
 				<a  class="item-image">
 					<div class="col-lg-3 col-6">
-						<div class="small-box bg-info">
+						<div class="small-box bg-warning">
 							<div class="inner">
 								<h3>Images</h3>
 
 								<p>Upload</p>
+							</div>
+							<div class="icon">
+								<i class="ion ion-android-image"></i>
+							</div>
+							<a class="small-box-footer"></a>
+						</div>
+					</div>
+				</a>
+				<a class="item-stock">
+					<div class="col-lg-3 col-6">
+						<div class="small-box bg-info">
+							<div class="inner">
+								<h3>Stock</h3>
+								<p>Input</p>
 							</div>
 							<div class="icon">
 								<i class="ion ion-briefcase"></i>

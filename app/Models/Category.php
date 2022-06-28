@@ -23,4 +23,17 @@ class Category extends TransactionModel
             return self::orderBy('name')->get();
         });
     }
+
+    public function getWithSubcategories(){
+        return Cache::tags(self::$cacheKey)->remember('all-categories',60*60*24,function(){
+            return self::addSelect(['subcategories' => function($query){
+                $query->select(\DB::raw('GROUP_CONCAT(subcategories.name)'))
+                ->from('subcategories')
+                ->whereColumn('categories.id','subcategories.category_id')
+                ->groupBy('subcategories.category_id');
+            } ])
+            ->orderBy('name')
+            ->get();
+        });
+    }
 }

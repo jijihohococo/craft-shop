@@ -35,4 +35,8 @@ class LoginController extends Controller
             ],422);
         }
     }
+
+    public function logOut(Request $request){
+        
+    }
 }
