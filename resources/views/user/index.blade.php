@@ -13,26 +13,26 @@
             <base href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/" />
             <meta name="description" content="My Store" />
             <script src="{{ asset('user/catalog/view/javascript/jquery/jquery-2.1.1.min.js') }}"></script>
-            <script src="{{ asset('catalog/view/javascript/bootstrap/js/bootstrap.min.js') }}"></script>
-            <script src="catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js"></script>
-            <script src="catalog/view/javascript/jquery.countdown.min.js"></script>
-            <script src="catalog/view/javascript/jquery.countdown.js"></script>
+            <script src="{{ asset('user/catalog/view/javascript/bootstrap/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/jquery.countdown.min.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/jquery.countdown.js') }}"></script>
 
-            <script type="text/javascript" src="catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
-            <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/magnific/magnific-popup.css" />
-            <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> 
-            <link href="catalog/view/theme/OPC100248_1/stylesheet/stylesheet.css" rel="stylesheet" />
+            <script type="text/javascript" src="{{ asset('user/catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js') }}"></script>
+            <link rel="stylesheet" type="text/css" href="{{ asset('user/catalog/view/javascript/jquery/magnific/magnific-popup.css') }}" />
+            <link href="{{ asset('user/catalog/view/javascript/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" /> 
+            <link href="{{ asset('user/catalog/view/theme/OPC100248_1/stylesheet/stylesheet.css') }}" rel="stylesheet" />
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@400;500;700&family=Inter:wght@100;300;400;500;600;700;800&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300&family=Nunito:wght@200;300;400;500;600;700&family=Outfit:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet"> 
             <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet"> 
-            <link rel="stylesheet" type="text/css" href="catalog/view/theme/OPC100248_1/stylesheet/megnor/lightbox.css" />
-            <link rel="stylesheet" type="text/css" href="catalog/view/theme/OPC100248_1/stylesheet/megnor/carousel.css" />
-            <link rel="stylesheet" type="text/css" href="catalog/view/theme/OPC100248_1/stylesheet/megnor/custom.css" />
-            <link rel="stylesheet" type="text/css" href="catalog/view/theme/OPC100248_1/stylesheet/megnor/bootstrap.min.css" />
-            <link rel="stylesheet" type="text/css" href="catalog/view/theme/OPC100248_1/stylesheet/megnor/animate.css" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('user/catalog/view/theme/OPC100248_1/stylesheet/megnor/lightbox.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('user/catalog/view/theme/OPC100248_1/stylesheet/megnor/carousel.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('user/catalog/view/theme/OPC100248_1/stylesheet/megnor/custom.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('user/catalog/view/theme/OPC100248_1/stylesheet/megnor/bootstrap.min.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('user/catalog/view/theme/OPC100248_1/stylesheet/megnor/animate.css') }}" />
             <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" />
             <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/owl-carousel/owl.transitions.css" />
 
@@ -59,28 +59,28 @@
 
 
             <script>
-              (function () {
-                var feedToken = 'https://ig.instant-tokens.com/users/bc2afecf-30b2-4a91-b819-38edd295cd71/instagram/17841402307816714/token?userSecret=jird860sk2dgid0scrvj5';
+            //   (function () {
+            //     var feedToken = 'https://ig.instant-tokens.com/users/bc2afecf-30b2-4a91-b819-38edd295cd71/instagram/17841402307816714/token?userSecret=jird860sk2dgid0scrvj5';
 
-                fetch(feedToken).then(function(resp) {
-                  return resp.json();
-                }).then(function (data) {
-                  var feed = new Instafeed({
-            accessToken: data.Token, // Access token from json response
-            target: 'instafeed',
-            limit: 6,
-            template: '<div class="item instafeed-item-wrap"><a href="\{\{link\}\}"><figure data-src="\{\{image\}\}"></figure></a></div>',
-            after: function() {
-                // disable button if no more results to load
-                $('.instafeed-item-wrap figure').lazy();
-              },
-            });
-                  feed.run();
-                }).catch(function (error) {
-                  console.log(error);
-                });
+            //     fetch(feedToken).then(function(resp) {
+            //       return resp.json();
+            //     }).then(function (data) {
+            //       var feed = new Instafeed({
+            // accessToken: data.Token, // Access token from json response
+            // target: 'instafeed',
+            // limit: 6,
+            // template: '<div class="item instafeed-item-wrap"><a href="\{\{link\}\}"><figure data-src="\{\{image\}\}"></figure></a></div>',
+            // after: function() {
+            //     // disable button if no more results to load
+            //     $('.instafeed-item-wrap figure').lazy();
+            //   },
+            // });
+            //       feed.run();
+            //     }).catch(function (error) {
+            //       console.log(error);
+            //     });
                 
-              })();
+            //   })();
 
             </script>
 
