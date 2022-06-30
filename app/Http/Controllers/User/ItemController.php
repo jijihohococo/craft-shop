@@ -13,8 +13,7 @@ class ItemController extends Controller
     public function show(Request $request,$id){
         return response()->json([
             'item' => Item::findOrFail($id) ,
-            'images' => ItemImage::where('item_id',$id)->get() ,
-            'reviews' => $this->calculateReview('App\Models\ItemReview','item_id',$id)
+            'reviews' => $this->getReviews('item_reviews','item_id',$id)
         ]);
     }
 }
