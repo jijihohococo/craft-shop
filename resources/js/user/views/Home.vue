@@ -1,14 +1,5 @@
 <template>
-	  <div id="spinner"></div>
-  <nav id="topbar_outer">
-  <!-- <div class="container">
-    <div class="row"> -->
-      Need It Today? Free In Store & Pickup / $9.99 Same Day Delivery
-      <button type="button" class="btnclose"><i class="fa fa-times" aria-hidden="true"></i></button>
-  <!-- </div>
-  </div> -->
-</nav>
-<header>
+	<header>
   <div class="header_top">
     <div class="container">
      <div class="row">
@@ -2357,7 +2348,8 @@ $('#banner1').swiper({
                </div>
 
                <footer>
-                <div class="content_footer_top"><!-- <script>
+                <div class="content_footer_top">
+                	<!-- <script>
                   function subscribe()
                   {
                    var emailpattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -2558,16 +2550,88 @@ $('#banner1').swiper({
 </div>
 </div>
 </footer>
-
 </template>
-<script>
-
-	import Topbar from '../components/Topbar';
-	import Navbar from '../components/Navbar';
+<script >
 	export default {
-		components: {
-            Topbar,
-            Navbar
-        }
+		mounted (){
+			$('.total-review49').on('click', function() { 
+   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=49'; 
+   const parseResult = new DOMParser().parseFromString(t, "text/html");
+   const parsedUrl = parseResult.documentElement.textContent;
+   window.location.href = parsedUrl + '&review';
+   return false;
+ });
+			$('.total-review40').on('click', function() { 
+   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=40'; 
+   const parseResult = new DOMParser().parseFromString(t, "text/html");
+   const parsedUrl = parseResult.documentElement.textContent;
+   window.location.href = parsedUrl + '&review';
+   return false;
+ });
+			$('.total-review44').on('click', function() { 
+   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=44'; 
+   const parseResult = new DOMParser().parseFromString(t, "text/html");
+   const parsedUrl = parseResult.documentElement.textContent;
+   window.location.href = parsedUrl + '&review';
+   return false;
+ });
+			$('.total-review29').on('click', function() { 
+   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=29'; 
+   const parseResult = new DOMParser().parseFromString(t, "text/html");
+   const parsedUrl = parseResult.documentElement.textContent;
+   window.location.href = parsedUrl + '&review';
+   return false;
+ });
+			$('.total-review31').on('click', function() { 
+   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=31'; 
+   const parseResult = new DOMParser().parseFromString(t, "text/html");
+   const parsedUrl = parseResult.documentElement.textContent;
+   window.location.href = parsedUrl + '&review';
+   return false;
+ });
+			$('.total-review42').on('click', function() { 
+   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=42'; 
+   const parseResult = new DOMParser().parseFromString(t, "text/html");
+   const parsedUrl = parseResult.documentElement.textContent;
+   window.location.href = parsedUrl + '&review';
+   return false;
+ });
+			$('.total-review30').on('click', function() { 
+   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=30'; 
+   const parseResult = new DOMParser().parseFromString(t, "text/html");
+   const parsedUrl = parseResult.documentElement.textContent;
+   window.location.href = parsedUrl + '&review';
+   return false;
+ });
+			$('#slideshow0').swiper({
+     mode: 'horizontal',
+     slidesPerView: 1,
+     pagination: '.slideshow0',
+     paginationClickable: true,
+     nextButton: '.swiper-button-next',
+     prevButton: '.swiper-button-prev',
+     spaceBetween: 0,
+     autoplay: 2500,
+     autoplayDisableOnInteraction: true,
+     loop: true,
+     effect:'fade'
+   });
+			$('#banner0').swiper({
+  autoplay: 4000,
+    pagination: '.swiper-pagination',  // If we need pagination
+    autoplayDisableOnInteraction: false
+  });
+			$('.blogcarousel').owlCarousel({
+      items: 3,
+      autoPlay: false,
+      singleItem: false,
+      navigation: true,
+      navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+      pagination: true,
+      itemsDesktop : [980,3],
+      itemsDesktopSmall:[979,2],
+      itemsTablet : [479,1]
+    });
+		}
 	}
 </script>

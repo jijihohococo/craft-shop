@@ -79,65 +79,68 @@
             //     }).catch(function (error) {
             //       console.log(error);
             //     });
-
+                
             //   })();
 
+            </script>
+
+            <script type="text/javascript">
+
+              $(document).ready(function(){
+                $('.instafeed-item-wrap').owlCarousel({
+                  items: 6,
+                  autoPlay: true,
+                  singleItem: false,
+                  navigation: true,
+                  navigationText: ['<i class="prev fa fa-arrow-left"></i>', '<i class="next fa fa-arrow-right"></i>'],
+                  pagination:false,
+                  itemsDesktop: [1500, 5],
+                  itemsDesktopSmall: [1200, 4],
+                  itemsTablet: [991, 3],
+                  itemsMobile: [767, 2]
+                });
+              });   
+            </script>
+
+
+
+
+            <!-- ======= Quick view JS ========= -->
+            <script> 
+
+              function quickbox(){
+               if ($(window).width() > 767) {
+                $('.quickview-button').magnificPopup({
+                  type:'iframe',
+                  delegate: 'a',
+                  preloader: true,
+                  tLoading: 'Loading image #%curr%...',
+                });
+              }  
+            }
+            jQuery(document).ready(function() {quickbox();});
+            jQuery(window).resize(function() {quickbox();});
+
           </script>
 
-          <script type="text/javascript">
+          <!-- Megnor www.templatemela.com - End -->
 
-            $(document).ready(function(){
-              $('.instafeed-item-wrap').owlCarousel({
-                items: 6,
-                autoPlay: true,
-                singleItem: false,
-                navigation: true,
-                navigationText: ['<i class="prev fa fa-arrow-left"></i>', '<i class="next fa fa-arrow-right"></i>'],
-                pagination:false,
-                itemsDesktop: [1500, 5],
-                itemsDesktopSmall: [1200, 4],
-                itemsTablet: [991, 3],
-                itemsMobile: [767, 2]
-              });
-            });   
-          </script>
-
-
-
-
-          <!-- ======= Quick view JS ========= -->
-          <script> 
-
-            function quickbox(){
-             if ($(window).width() > 767) {
-              $('.quickview-button').magnificPopup({
-                type:'iframe',
-                delegate: 'a',
-                preloader: true,
-                tLoading: 'Loading image #%curr%...',
-              });
-            }  
-          }
-          jQuery(document).ready(function() {quickbox();});
-          jQuery(window).resize(function() {quickbox();});
-
-        </script>
-
-        <!-- Megnor www.templatemela.com - End -->
-
-        <script src="{{ asset('user/catalog/view/javascript/common.js') }}"></script>
-        <script>
+          <script src="{{ asset('user/catalog/view/javascript/common.js') }}"></script>
+          <script>
     // Can also be used with $(document).ready()
     $(window).load(function() {     
-     $("#spinner").fadeOut("slow");
-   });    
- </script>
+   $("#spinner").fadeOut("slow");
+ });    
+</script>
 
 </head>
 
 
 <body class="common-home   layout-2 left-col">
-  <div id="app"></div>
+ <div id="app">
+ </div>
+
+
 <!--
 OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
 Please donate via PayPal to donate@opencart.com
@@ -145,15 +148,15 @@ Please donate via PayPal to donate@opencart.com
 <!-- Theme created by Welford Media for OpenCart 2.0 www.welfordmedia.co.uk -->
 </body>
 <script >
- window.Laravel = {!! json_encode([
-   'csrfToken' => csrf_token(),
-   ])!!}
+       window.Laravel = {!! json_encode([
+         'csrfToken' => csrf_token(),
+         ])!!}
 
- window.Urls = {!!json_encode([
-  'baseURL' => '/api/',
+       window.Urls = {!!json_encode([
+        'baseURL' => '/admin_api/',
         //'login' => url('login'),
         //'logout' => url('logout'),
         ])!!}
       </script>
-      <script src="/js/main.js"></script>
-      </html>
+<script src="/js/main.js"></script>
+</html>
