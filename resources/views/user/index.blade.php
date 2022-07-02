@@ -33,28 +33,28 @@
             <link rel="stylesheet" type="text/css" href="{{ asset('user/catalog/view/theme/OPC100248_1/stylesheet/megnor/custom.css') }}" />
             <link rel="stylesheet" type="text/css" href="{{ asset('user/catalog/view/theme/OPC100248_1/stylesheet/megnor/bootstrap.min.css') }}" />
             <link rel="stylesheet" type="text/css" href="{{ asset('user/catalog/view/theme/OPC100248_1/stylesheet/megnor/animate.css') }}" />
-            <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" />
-            <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/owl-carousel/owl.transitions.css" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('user/catalog/view/javascript/jquery/owl-carousel/owl.carousel.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('user/catalog/view/javascript/jquery/owl-carousel/owl.transitions.css') }}" />
 
-            <link href="catalog/view/javascript/jquery/swiper/css/swiper.min.css" type="text/css" rel="stylesheet" media="screen" />
-            <link href="catalog/view/javascript/jquery/swiper/css/opencart.css" type="text/css" rel="stylesheet" media="screen" />
-            <script src="catalog/view/javascript/jquery/swiper/js/swiper.jquery.js"></script>
-            <link href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/catalog/cart.png" rel="icon" />
+            <link href="{{ asset('user/catalog/view/javascript/jquery/swiper/css/swiper.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
+            <link href="{{ asset('user/catalog/view/javascript/jquery/swiper/css/opencart.css') }}" type="text/css" rel="stylesheet" media="screen" />
+            <script src="{{ asset('user/catalog/view/javascript/jquery/swiper/js/swiper.jquery.js') }}"></script>
+            <link href="{{ asset('user/image/catalog/cart.png') }}" rel="icon" />
             <!-- Megnor www.templatemela.com - Start -->
-            <script src="catalog/view/javascript/megnor/custom.js"></script>
-            <script src="catalog/view/javascript/megnor/jstree.min.js"></script>
-            <script src="catalog/view/javascript/megnor/instagram-scripts-min.js"></script>
-            <script src="catalog/view/javascript/megnor/carousel.min.js"></script>
-            <script src="catalog/view/javascript/megnor/megnor.min.js"></script>
-            <script src="catalog/view/javascript/megnor/jquery.custom.min.js"></script>
-            <script src="catalog/view/javascript/megnor/jquery.formalize.min.js"></script>
-            <script src="catalog/view/javascript/megnor/jquery.elevatezoom.min.js"></script>
-            <script src="catalog/view/javascript/megnor/bootstrap-notify.min.js"></script>  
-            <script src="catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
-            <script src="catalog/view/javascript/megnor/tabs.js"></script>
-            <script src="catalog/view/javascript/megnor/jquery.hoverdir.js"></script>
-            <script src="catalog/view/javascript/megnor/modernizr.js"></script>
-            <script src="catalog/view/javascript/lightbox/lightbox-2.6.min.js"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/custom.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/jstree.min.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/instagram-scripts-min.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/carousel.min.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/megnor.min.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/jquery.custom.min.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/jquery.formalize.min.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/jquery.elevatezoom.min.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/bootstrap-notify.min.js') }}"></script>  
+            <script src="{{ asset('user/catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/tabs.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/jquery.hoverdir.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/megnor/modernizr.js') }}"></script>
+            <script src="{{ asset('user/catalog/view/javascript/lightbox/lightbox-2.6.min.js') }}"></script>
 
 
 
@@ -125,7 +125,7 @@
 
           <!-- Megnor www.templatemela.com - End -->
 
-          <script src="catalog/view/javascript/common.js"></script>
+          <script src="{{ asset('user/catalog/view/javascript/common.js') }}"></script>
           <script>
     // Can also be used with $(document).ready()
     $(window).load(function() {     
