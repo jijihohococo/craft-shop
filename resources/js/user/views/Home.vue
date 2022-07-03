@@ -1,39 +1,39 @@
 <template>
 	<header>
-  <div class="header_top">
-    <div class="container">
-     <div class="row">
-      <div class="offer-title">Call us free 24/7 : (555) 172-244-7888
-      </div>
+    <div class="header_top">
+      <div class="container">
+       <div class="row">
+        <div class="offer-title">Call us free 24/7 : (555) 172-244-7888
+        </div>
 
 
-      <div class="top-links-cover">
-        <span class="top-links-toggle"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-          viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-          <g>
-           <g>
+        <div class="top-links-cover">
+          <span class="top-links-toggle"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
             <g>
-             <circle cx="256" cy="256" r="64"/>
-             <circle cx="256" cy="448" r="64"/>
-             <circle cx="256" cy="64" r="64"/>
+             <g>
+              <g>
+               <circle cx="256" cy="256" r="64"/>
+               <circle cx="256" cy="448" r="64"/>
+               <circle cx="256" cy="64" r="64"/>
+             </g>
            </g>
          </g>
-       </g>
-     </svg></span>
-     <div class="top-links">
-      
-       <a href="#" class="links-item">Today's Deal</a>
-       
-       <a href="#" class="links-item">Customer Service</a>
-       
-       <a href="#" class="links-item">Track Order</a>
-       
-     </div>
-   </div>
+       </svg></span>
+       <div class="top-links">
 
-   
+         <a href="#" class="links-item">Today's Deal</a>
+
+         <a href="#" class="links-item">Customer Service</a>
+
+         <a href="#" class="links-item">Track Order</a>
+
+       </div>
+     </div>
+
+
+   </div>
  </div>
-</div>
 </div>
 <div class="header_middle">   
   <div class="container">
@@ -51,7 +51,7 @@
   </div>    
 
   <div class="account">  
-   
+
    <!-- <button class="compare_button" type="button"  title="Add to compare " onclick="compare.add(' ');"><i class="fa fa-exchange"></i></button> --> 
    
    <!-- <div class="header_wishlist"><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=account/wishlist" id="wishlist-total"><span>0</span></a></div> -->
@@ -72,15 +72,15 @@
             <div class="btn-group">
               <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
                 <span class="hidden-xs hidden-sm hidden-md">
-                 
-                  <img src="catalog/language/en-gb/en-gb.png" alt="English" title="English">
+
+                  <img src="user/catalog/language/en-gb/en-gb.png" alt="English" title="English">
                   Language<i class="fa fa-caret-down" aria-hidden="true"></i></span></button>
                   <ul class="language-menu">
                     <li>
-                      <button class="btn btn-link btn-block language-select" type="button" name="en-gb"><img src="catalog/language/en-gb/en-gb.png" alt="English" title="English" /> English</button>
+                      <button class="btn btn-link btn-block language-select" type="button" name="en-gb"><img src="user/catalog/language/en-gb/en-gb.png" alt="English" title="English" /> English</button>
                     </li>
                     <li>
-                      <button class="btn btn-link btn-block language-select" type="button" name="ar"><img src="catalog/language/ar/ar.png" alt="Arebic" title="Arebic" /> Arebic</button>
+                      <button class="btn btn-link btn-block language-select" type="button" name="ar"><img src="user/catalog/language/ar/ar.png" alt="Arebic" title="Arebic" /> Arebic</button>
                     </li>
                   </ul>
                 </div>
@@ -123,10 +123,10 @@
       </a></div>
       <div class="col-sm-3 header_cart"><div id="cart" class="btn-group btn-block">
         <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle">
-          
+
           <div class="cart_image"></div>
           <div class="cart_detail">
-            
+
             <span id="cart-total"><span class="item-count">0</span></span>
           </div>
           
@@ -166,118 +166,118 @@
               
               <span class="res-menu-close">
               	<svg>
-                <g>
-                  <path fill="#1D1D1B" d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"/>
-                </g>
-              </svg></span>
-              <ul class="main-navigation">
-                <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=common/home">Home</a></li>
-                <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20">Accessories</a>
+                  <g>
+                    <path fill="#1D1D1B" d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"/>
+                  </g>
+                </svg></span>
+                <ul class="main-navigation">
+                  <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=common/home">Home</a></li>
+                  <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20">Accessories</a>
 
-                 <ul>
-                   <!-- 2 Level Sub Categories START -->
-                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_70">Car Accessories</a></li>
-                   <!-- 2 Level Sub Categories END -->
-                   <!-- 2 Level Sub Categories START -->
-                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_71">Electronic Accessories</a></li>
-                   <!-- 2 Level Sub Categories END -->
-                   <!-- 2 Level Sub Categories START -->
-                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_68">Hair Acceseries</a></li>
-                   <!-- 2 Level Sub Categories END -->
-                   <!-- 2 Level Sub Categories START -->
-                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_69">Home Accessories</a></li>
-                   <!-- 2 Level Sub Categories END -->
-                   <!-- 2 Level Sub Categories START -->
-                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_26">Color-Glasses</a></li>
-                   <!-- 2 Level Sub Categories END -->
-                   <!-- 2 Level Sub Categories START -->
-                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_27">Apron</a></li>
-                   <!-- 2 Level Sub Categories END -->
-                   
-                 </ul>
-                 
+                   <ul>
+                     <!-- 2 Level Sub Categories START -->
+                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_70">Car Accessories</a></li>
+                     <!-- 2 Level Sub Categories END -->
+                     <!-- 2 Level Sub Categories START -->
+                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_71">Electronic Accessories</a></li>
+                     <!-- 2 Level Sub Categories END -->
+                     <!-- 2 Level Sub Categories START -->
+                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_68">Hair Acceseries</a></li>
+                     <!-- 2 Level Sub Categories END -->
+                     <!-- 2 Level Sub Categories START -->
+                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_69">Home Accessories</a></li>
+                     <!-- 2 Level Sub Categories END -->
+                     <!-- 2 Level Sub Categories START -->
+                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_26">Color-Glasses</a></li>
+                     <!-- 2 Level Sub Categories END -->
+                     <!-- 2 Level Sub Categories START -->
+                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_27">Apron</a></li>
+                     <!-- 2 Level Sub Categories END -->
 
-               </li>
-               <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18">Clothes</a>
-
-                 <ul>
-                   <!-- 2 Level Sub Categories START -->
-                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_46">Apron</a></li>
-                   <!-- 2 Level Sub Categories END -->
-                   <!-- 2 Level Sub Categories START -->
-                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_45">Contact-lens</a></li>
-                   <!-- 2 Level Sub Categories END -->
-                   <!-- 2 Level Sub Categories START -->
-                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_63">Inner-Wear</a></li>
-                   <!-- 2 Level Sub Categories END -->
-                   <!-- 2 Level Sub Categories START -->
-                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_64">Pants</a></li>
-                   <!-- 2 Level Sub Categories END -->
-                   
-                 </ul>
-                 
-
-               </li>
-               <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25">Digital-camera</a>
-
-                 <ul>
-                   <!-- 2 Level Sub Categories START -->
-                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_29">360-cameras</a></li>
-                   <!-- 2 Level Sub Categories END -->
-                   <!-- 2 Level Sub Categories START -->
-                   <li class="dropdown"><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_28">DSLR-cameras</a>
-                    
-                    <ul class="col14">
-                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_28_35">Film Cameras</a></li>
-                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_28_36">Simulated Cameras</a></li>
                    </ul>
-                   
+
+
                  </li>
-                 <!-- 2 Level Sub Categories END -->
-                 <!-- 2 Level Sub Categories START -->
-                 <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_30">Medium-format</a></li>
-                 <!-- 2 Level Sub Categories END -->
-                 <!-- 2 Level Sub Categories START -->
-                 <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_31">Mirrorless-cameras</a></li>
-                 <!-- 2 Level Sub Categories END -->
-                 <!-- 2 Level Sub Categories START -->
-                 <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_32">Web Cameras</a></li>
-                 <!-- 2 Level Sub Categories END -->
-                 
-               </ul>
-               
+                 <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18">Clothes</a>
 
-             </li>
-             <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=61">Eyeware</a></li>
-             <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=17">Software</a></li>
-             <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=57">Lenses</a></li>
-             <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=24">Phones &amp; PDAs</a></li>
-             <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=33">Cameras</a></li>
-             <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=60">Digital Camera</a></li>
-             <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=67">sports-outdoors</a></li>
-           </ul>
-         </div>
-         <div class="static-menu">
-           <ul id="static-menu">
-            <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=common/home">Home</a></li>
-            <li class="dropdown hottag"><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/manufacturer">Brands </a>
-              
-            </li>
-            <li class="hot menu-item"><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/special">Specials</a></li>
-            <li class="helptag"><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/contact">Contact Us</a></li>
-            <li class="toplink"><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger/blogs">Blogs </a></li>
-            <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/sitemap">Site Map</a></li>
-            <li class="toplink"><a href="View offer Deals">View offer Deals </a></li>
-          </ul>
+                   <ul>
+                     <!-- 2 Level Sub Categories START -->
+                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_46">Apron</a></li>
+                     <!-- 2 Level Sub Categories END -->
+                     <!-- 2 Level Sub Categories START -->
+                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_45">Contact-lens</a></li>
+                     <!-- 2 Level Sub Categories END -->
+                     <!-- 2 Level Sub Categories START -->
+                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_63">Inner-Wear</a></li>
+                     <!-- 2 Level Sub Categories END -->
+                     <!-- 2 Level Sub Categories START -->
+                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_64">Pants</a></li>
+                     <!-- 2 Level Sub Categories END -->
+
+                   </ul>
+
+
+                 </li>
+                 <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25">Digital-camera</a>
+
+                   <ul>
+                     <!-- 2 Level Sub Categories START -->
+                     <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_29">360-cameras</a></li>
+                     <!-- 2 Level Sub Categories END -->
+                     <!-- 2 Level Sub Categories START -->
+                     <li class="dropdown"><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_28">DSLR-cameras</a>
+
+                      <ul class="col14">
+                       <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_28_35">Film Cameras</a></li>
+                       <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_28_36">Simulated Cameras</a></li>
+                     </ul>
+
+                   </li>
+                   <!-- 2 Level Sub Categories END -->
+                   <!-- 2 Level Sub Categories START -->
+                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_30">Medium-format</a></li>
+                   <!-- 2 Level Sub Categories END -->
+                   <!-- 2 Level Sub Categories START -->
+                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_31">Mirrorless-cameras</a></li>
+                   <!-- 2 Level Sub Categories END -->
+                   <!-- 2 Level Sub Categories START -->
+                   <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_32">Web Cameras</a></li>
+                   <!-- 2 Level Sub Categories END -->
+
+                 </ul>
+
+
+               </li>
+               <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=61">Eyeware</a></li>
+               <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=17">Software</a></li>
+               <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=57">Lenses</a></li>
+               <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=24">Phones &amp; PDAs</a></li>
+               <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=33">Cameras</a></li>
+               <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=60">Digital Camera</a></li>
+               <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=67">sports-outdoors</a></li>
+             </ul>
+           </div>
+           <div class="static-menu">
+             <ul id="static-menu">
+              <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=common/home">Home</a></li>
+              <li class="dropdown hottag"><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/manufacturer">Brands </a>
+
+              </li>
+              <li class="hot menu-item"><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/special">Specials</a></li>
+              <li class="helptag"><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/contact">Contact Us</a></li>
+              <li class="toplink"><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger/blogs">Blogs </a></li>
+              <li><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/sitemap">Site Map</a></li>
+              <li class="toplink"><a href="View offer Deals">View offer Deals </a></li>
+            </ul>
+          </div>
+
         </div>
-        
       </div>
-    </div>
-  </nav>   
+    </nav>   
 
 
-</div>          
-<div class="header_right"></div>
+  </div>          
+  <div class="header_right"></div>
 </div> 
 </div>
 </div>
@@ -424,7 +424,7 @@ $('#banner0').swiper({
     <div class="box-content-cms">
       <div class="inner-cms">
         <div class="box-cms-content">
-          
+
           <div class="second-content main-content">
             <div class="inner-content">
               <div class="service-content">
@@ -519,14 +519,14 @@ $('#banner1').swiper({
   <div class="testimonials box-content" id="testimonial">
     <div class="homepage-testimonial-inner"> 
       <div class="testimonial_inner">
-       
+
         <div class=" box-product owl-carousel clientcarousel  owl-theme " id="testimonial-carousel">
-         
+
           <div class="peoplesay-block">
             <div class="test-content">
-              
+
               <div class="test-desc">
-                
+
                 <p class="desc">Electrons typesetting dummy amet
                   populari release available that
                   variantion text
@@ -542,9 +542,9 @@ $('#banner1').swiper({
 
           <div class="peoplesay-block">
             <div class="test-content">
-              
+
               <div class="test-desc">
-                
+
                 <p class="desc">Electrons typesetting dummy amet
                   populari release available that
                   variantion text
@@ -559,9 +559,9 @@ $('#banner1').swiper({
 
           <div class="peoplesay-block">
             <div class="test-content">
-              
+
               <div class="test-desc">
-                
+
                 <p class="desc">Electrons typesetting dummy amet
                   populari release available that
                 variantion text</p>
@@ -586,9 +586,9 @@ $('#banner1').swiper({
 
 <div id="content" class="col-sm-9">
   <div class="content-top"> 
-   
+
     <div class="main-slider">
-      
+
       <div class="swiper-viewport">
         <div id="slideshow0" class="swiper-container" style="opacity: 1;">
           <div class="swiper-wrapper"> 
@@ -623,7 +623,7 @@ $('#banner1').swiper({
  <div class="cmsbanner-block">
    <div class="cms-inner-block1">
     <div class="cms1_img">
-      <a href="#" title="banner1"><img class="cms_image1" src="image/catalog/Cms-banner-3.jpg" alt=""></a>
+      <a href="#" title="banner1"><img class="cms_image1" src="user/image/catalog/Cms-banner-3.jpg" alt=""></a>
       <div class="description">
         <div class="subtitle">Trendy Designer</div>
         <div class="title">Crafted Arts</div>
@@ -635,7 +635,7 @@ $('#banner1').swiper({
   </div>
   <div class="cms-inner-block2">
     <div class="cms2_img">
-      <a href="#" title="banner2"><img class="cms2_image2" src="image/catalog/Cms-Banner-4.jpg" alt=""></a>
+      <a href="#" title="banner2"><img class="cms2_image2" src="user/image/catalog/Cms-Banner-4.jpg" alt=""></a>
       <div class="description">
         <div class="subtitle">Trendy Designer</div>
         <div class="title">Crafted Dolls</div>
@@ -651,7 +651,7 @@ $('#banner1').swiper({
 
 
 <div class="box special">
-    
+
 
 
   <div class="box-heading">Deal Of The Day</div>
@@ -679,47 +679,47 @@ $('#banner1').swiper({
          <div class="product_hover_block">
            <div class="action">
               <!--                  <button type="button" class="cart_button" onclick="cart.add('49');" title="Add to Cart" ></button>
-       -->
-       <div class="quickview-button">
-         <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=49"></a>
-       </div>
-       <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('49');"></button>
-       
-     </div>
-   </div>   
+              -->
+              <div class="quickview-button">
+               <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=49"></a>
+             </div>
+             <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('49');"></button>
 
- </div>
- <div class="product-details">
-   <div class="caption">
-     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=49 ">accelerate their growth started out </a></h4>
-     <div class="rating">
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+         </div>   
+
+       </div>
+       <div class="product-details">
+         <div class="caption">
+           <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=49 ">accelerate their growth started out </a></h4>
+           <div class="rating">
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+
+
+
+
+           <p class="price">
+            <span class="price-new">$110.00</span> <span class="price-old">$241.99</span>
+            <span class="price-tax">Ex Tax: $90.00</span>
+          </p>
+        </div>
+        <div class="countdown">
+          <div class="count-down clock">
+           <div data-countdown="2024-05-13" class="countbox hastime"></div>
+         </div>   
+       </div>
+
+
+       <button type="button" class="cart_button" onclick="cart.add('49');" title="Add to Cart" >Add to Cart</button>
+
      </div>
-     
-     
-     
-     
-     <p class="price">
-      <span class="price-new">$110.00</span> <span class="price-old">$241.99</span>
-      <span class="price-tax">Ex Tax: $90.00</span>
-    </p>
-  </div>
-  <div class="countdown">
-    <div class="count-down clock">
-     <div data-countdown="2024-05-13" class="countbox hastime"></div>
-   </div>   
+   </div>
  </div>
- 
- 
- <button type="button" class="cart_button" onclick="cart.add('49');" title="Add to Cart" >Add to Cart</button>
- 
-</div>
-</div>
-</div>
 
 <!-- <script> 
  $('.total-review49').on('click', function() { 
@@ -748,47 +748,47 @@ $('#banner1').swiper({
      <div class="product_hover_block">
        <div class="action">
               <!--                  <button type="button" class="cart_button" onclick="cart.add('40');" title="Add to Cart" ></button>
-       -->
-       <div class="quickview-button">
-         <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=40"></a>
-       </div>
-       <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('40');"></button>
-       
-     </div>
-   </div>   
+              -->
+              <div class="quickview-button">
+               <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=40"></a>
+             </div>
+             <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('40');"></button>
 
- </div>
- <div class="product-details">
-   <div class="caption">
-     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=40 ">Auis Nostrum Eget Ullamb Velit Esse  </a></h4>
-     <div class="rating">
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+         </div>   
+
+       </div>
+       <div class="product-details">
+         <div class="caption">
+           <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=40 ">Auis Nostrum Eget Ullamb Velit Esse  </a></h4>
+           <div class="rating">
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+
+
+
+
+           <p class="price">
+            <span class="price-new">$110.00</span> <span class="price-old">$123.20</span>
+            <span class="price-tax">Ex Tax: $90.00</span>
+          </p>
+        </div>
+        <div class="countdown">
+          <div class="count-down clock">
+           <div data-countdown="2023-05-16" class="countbox hastime"></div>
+         </div>   
+       </div>
+
+
+       <button type="button" class="cart_button" onclick="cart.add('40');" title="Add to Cart" >Add to Cart</button>
+
      </div>
-     
-     
-     
-     
-     <p class="price">
-      <span class="price-new">$110.00</span> <span class="price-old">$123.20</span>
-      <span class="price-tax">Ex Tax: $90.00</span>
-    </p>
-  </div>
-  <div class="countdown">
-    <div class="count-down clock">
-     <div data-countdown="2023-05-16" class="countbox hastime"></div>
-   </div>   
+   </div>
  </div>
- 
- 
- <button type="button" class="cart_button" onclick="cart.add('40');" title="Add to Cart" >Add to Cart</button>
- 
-</div>
-</div>
-</div>
 
 <!-- <script> 
  $('.total-review40').on('click', function() { 
@@ -816,47 +816,47 @@ $('#banner1').swiper({
      <div class="product_hover_block">
        <div class="action">
               <!--                  <button type="button" class="cart_button" onclick="cart.add('44');" title="Add to Cart" ></button>
-       -->
-       <div class="quickview-button">
-         <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=44"></a>
-       </div>
-       <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('44');"></button>
-       
-     </div>
-   </div>   
+              -->
+              <div class="quickview-button">
+               <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=44"></a>
+             </div>
+             <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('44');"></button>
 
- </div>
- <div class="product-details">
-   <div class="caption">
-     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=44 ">Commodo Consequat Lorem Ipsum </a></h4>
-     <div class="rating">
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+         </div>   
+
+       </div>
+       <div class="product-details">
+         <div class="caption">
+           <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=44 ">Commodo Consequat Lorem Ipsum </a></h4>
+           <div class="rating">
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+
+
+
+
+           <p class="price">
+            $1,202.00
+            <span class="price-tax">Ex Tax: $1,000.00</span>
+          </p>
+        </div>
+        <div class="countdown">
+          <div class="count-down clock">
+           <div data-countdown="2024-05-13" class="countbox hastime"></div>
+         </div>   
+       </div>
+
+
+       <button type="button" class="cart_button" onclick="cart.add('44');" title="Add to Cart" >Add to Cart</button>
+
      </div>
-     
-     
-     
-     
-     <p class="price">
-      $1,202.00
-      <span class="price-tax">Ex Tax: $1,000.00</span>
-    </p>
-  </div>
-  <div class="countdown">
-    <div class="count-down clock">
-     <div data-countdown="2024-05-13" class="countbox hastime"></div>
-   </div>   
+   </div>
  </div>
- 
- 
- <button type="button" class="cart_button" onclick="cart.add('44');" title="Add to Cart" >Add to Cart</button>
- 
-</div>
-</div>
-</div>
 
 <!-- <script> 
  $('.total-review44').on('click', function() { 
@@ -884,47 +884,47 @@ $('#banner1').swiper({
      <div class="product_hover_block">
        <div class="action">
               <!--                  <button type="button" class="cart_button" onclick="cart.add('29');" title="Add to Cart" ></button>
-       -->
-       <div class="quickview-button">
-         <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=29"></a>
-       </div>
-       <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('29');"></button>
-       
-     </div>
-   </div>   
+              -->
+              <div class="quickview-button">
+               <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=29"></a>
+             </div>
+             <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('29');"></button>
 
- </div>
- <div class="product-details">
-   <div class="caption">
-     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=29 ">Cras Eget Argue Calvin Kleiin Collab </a></h4>
-     <div class="rating">
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+         </div>   
+
+       </div>
+       <div class="product-details">
+         <div class="caption">
+           <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=29 ">Cras Eget Argue Calvin Kleiin Collab </a></h4>
+           <div class="rating">
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+
+
+
+
+           <p class="price">
+            $337.99
+            <span class="price-tax">Ex Tax: $279.99</span>
+          </p>
+        </div>
+        <div class="countdown">
+          <div class="count-down clock">
+           <div data-countdown="2023-05-08" class="countbox hastime"></div>
+         </div>   
+       </div>
+
+
+       <button type="button" class="cart_button" onclick="cart.add('29');" title="Add to Cart" >Add to Cart</button>
+
      </div>
-     
-     
-     
-     
-     <p class="price">
-      $337.99
-      <span class="price-tax">Ex Tax: $279.99</span>
-    </p>
-  </div>
-  <div class="countdown">
-    <div class="count-down clock">
-     <div data-countdown="2023-05-08" class="countbox hastime"></div>
-   </div>   
+   </div>
  </div>
- 
- 
- <button type="button" class="cart_button" onclick="cart.add('29');" title="Add to Cart" >Add to Cart</button>
- 
-</div>
-</div>
-</div>
 
 <!-- <script> 
  $('.total-review29').on('click', function() { 
@@ -952,47 +952,47 @@ $('#banner1').swiper({
      <div class="product_hover_block">
        <div class="action">
               <!--                  <button type="button" class="cart_button" onclick="cart.add('31');" title="Add to Cart" ></button>
-       -->
-       <div class="quickview-button">
-         <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=31"></a>
-       </div>
-       <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('31');"></button>
-       
-     </div>
-   </div>   
+              -->
+              <div class="quickview-button">
+               <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=31"></a>
+             </div>
+             <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('31');"></button>
 
- </div>
- <div class="product-details">
-   <div class="caption">
-     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=31 ">Dapibus In Scalf Duis Aute Irure </a></h4>
-     <div class="rating">
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+         </div>   
+
+       </div>
+       <div class="product-details">
+         <div class="caption">
+           <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=31 ">Dapibus In Scalf Duis Aute Irure </a></h4>
+           <div class="rating">
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+
+
+
+
+           <p class="price">
+            $98.00
+            <span class="price-tax">Ex Tax: $80.00</span>
+          </p>
+        </div>
+        <div class="countdown">
+          <div class="count-down clock">
+           <div data-countdown="2023-05-08" class="countbox hastime"></div>
+         </div>   
+       </div>
+
+
+       <button type="button" class="cart_button" onclick="cart.add('31');" title="Add to Cart" >Add to Cart</button>
+
      </div>
-     
-     
-     
-     
-     <p class="price">
-      $98.00
-      <span class="price-tax">Ex Tax: $80.00</span>
-    </p>
-  </div>
-  <div class="countdown">
-    <div class="count-down clock">
-     <div data-countdown="2023-05-08" class="countbox hastime"></div>
-   </div>   
+   </div>
  </div>
- 
- 
- <button type="button" class="cart_button" onclick="cart.add('31');" title="Add to Cart" >Add to Cart</button>
- 
-</div>
-</div>
-</div>
 
 <!-- <script> 
  $('.total-review31').on('click', function() { 
@@ -1021,47 +1021,47 @@ $('#banner1').swiper({
      <div class="product_hover_block">
        <div class="action">
               <!--                  <button type="button" class="cart_button" onclick="cart.add('42');" title="Add to Cart" ></button>
-       -->
-       <div class="quickview-button">
-         <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=42"></a>
-       </div>
-       <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('42');"></button>
-       
-     </div>
-   </div>   
+              -->
+              <div class="quickview-button">
+               <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=42"></a>
+             </div>
+             <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('42');"></button>
 
- </div>
- <div class="product-details">
-   <div class="caption">
-     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=42 ">Denimad Minima Veniam Lorem </a></h4>
-     <div class="rating">
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+         </div>   
+
+       </div>
+       <div class="product-details">
+         <div class="caption">
+           <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=42 ">Denimad Minima Veniam Lorem </a></h4>
+           <div class="rating">
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+
+
+
+
+           <p class="price">
+            <span class="price-new">$110.00</span> <span class="price-old">$122.00</span>
+            <span class="price-tax">Ex Tax: $90.00</span>
+          </p>
+        </div>
+        <div class="countdown">
+          <div class="count-down clock">
+           <div data-countdown="2023-06-15" class="countbox hastime"></div>
+         </div>   
+       </div>
+
+
+       <button type="button" class="cart_button" onclick="cart.add('42');" title="Add to Cart" >Add to Cart</button>
+
      </div>
-     
-     
-     
-     
-     <p class="price">
-      <span class="price-new">$110.00</span> <span class="price-old">$122.00</span>
-      <span class="price-tax">Ex Tax: $90.00</span>
-    </p>
-  </div>
-  <div class="countdown">
-    <div class="count-down clock">
-     <div data-countdown="2023-06-15" class="countbox hastime"></div>
-   </div>   
+   </div>
  </div>
- 
- 
- <button type="button" class="cart_button" onclick="cart.add('42');" title="Add to Cart" >Add to Cart</button>
- 
-</div>
-</div>
-</div>
 
 <!-- <script> 
  $('.total-review42').on('click', function() { 
@@ -1090,47 +1090,47 @@ $('#banner1').swiper({
      <div class="product_hover_block">
        <div class="action">
               <!--                  <button type="button" class="cart_button" onclick="cart.add('30');" title="Add to Cart" ></button>
-       -->
-       <div class="quickview-button">
-         <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=30"></a>
-       </div>
-       <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('30');"></button>
-       
-     </div>
-   </div>   
+              -->
+              <div class="quickview-button">
+               <a class="quickbox"  title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=30"></a>
+             </div>
+             <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('30');"></button>
 
- </div>
- <div class="product-details">
-   <div class="caption">
-     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=30 ">Lusto Consectetur Adipis Duis Aute </a></h4>
-     <div class="rating">
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-       <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+         </div>   
+
+       </div>
+       <div class="product-details">
+         <div class="caption">
+           <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=30 ">Lusto Consectetur Adipis Duis Aute </a></h4>
+           <div class="rating">
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+             <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+           </div>
+
+
+
+
+           <p class="price">
+            <span class="price-new">$98.00</span> <span class="price-old">$122.00</span>
+            <span class="price-tax">Ex Tax: $80.00</span>
+          </p>
+        </div>
+        <div class="countdown">
+          <div class="count-down clock">
+           <div data-countdown="2023-05-09" class="countbox hastime"></div>
+         </div>   
+       </div>
+
+
+       <button type="button" class="cart_button" onclick="cart.add('30');" title="Add to Cart" >Add to Cart</button>
+
      </div>
-     
-     
-     
-     
-     <p class="price">
-      <span class="price-new">$98.00</span> <span class="price-old">$122.00</span>
-      <span class="price-tax">Ex Tax: $80.00</span>
-    </p>
-  </div>
-  <div class="countdown">
-    <div class="count-down clock">
-     <div data-countdown="2023-05-09" class="countbox hastime"></div>
-   </div>   
+   </div>
  </div>
- 
- 
- <button type="button" class="cart_button" onclick="cart.add('30');" title="Add to Cart" >Add to Cart</button>
- 
-</div>
-</div>
-</div>
 
 <!-- <script> 
  $('.total-review30').on('click', function() { 
@@ -1177,7 +1177,7 @@ $('#banner1').swiper({
           <div class="percentsaving">-55%</div>
           <div class="product_hover_block">
            <div class="action">
-            
+
              <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('49 ');"></button>
              <div class="quickview-button">
               <a class="quickbox" title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=49"></a>
@@ -1189,7 +1189,7 @@ $('#banner1').swiper({
         </div>
       </div>    
       <div class="product-details">
-        
+
         <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=49 ">accelerate their growth started out </a></h4>
         
         <div class="rating">
@@ -1230,7 +1230,7 @@ $('#banner1').swiper({
       </div>
       <div class="product_hover_block">
        <div class="action">
-        
+
          <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('48 ');"></button>
          <div class="quickview-button">
           <a class="quickbox" title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=48"></a>
@@ -1242,7 +1242,7 @@ $('#banner1').swiper({
     </div>
   </div>    
   <div class="product-details">
-    
+
     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=48 ">Eiusmod Empor Incididunt Labore </a></h4>
     
     <div class="rating">
@@ -1283,7 +1283,7 @@ $('#banner1').swiper({
       </div>
       <div class="product_hover_block">
        <div class="action">
-        
+
          <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('47 ');"></button>
          <div class="quickview-button">
           <a class="quickbox" title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=47"></a>
@@ -1295,7 +1295,7 @@ $('#banner1').swiper({
     </div>
   </div>    
   <div class="product-details">
-    
+
     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=47 ">Lusto Consectetur Adipis Duis Aute </a></h4>
     
     <div class="rating">
@@ -1336,7 +1336,7 @@ $('#banner1').swiper({
       </div>
       <div class="product_hover_block">
        <div class="action">
-        
+
          <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('46 ');"></button>
          <div class="quickview-button">
           <a class="quickbox" title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=46"></a>
@@ -1348,7 +1348,7 @@ $('#banner1').swiper({
     </div>
   </div>    
   <div class="product-details">
-    
+
     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=46 ">Donec in interdum libero. Nulla molestie </a></h4>
     
     <div class="rating">
@@ -1385,7 +1385,7 @@ $('#banner1').swiper({
        </div>
        <div class="product_hover_block">
          <div class="action">
-          
+
            <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('45 ');"></button>
            <div class="quickview-button">
             <a class="quickbox" title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=45"></a>
@@ -1397,7 +1397,7 @@ $('#banner1').swiper({
       </div>
     </div>  
     <div class="product-details">
-      
+
       <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=45 ">Etion Harum Quidem Rerum Lorem </a></h4>
       
       <div class="rating">
@@ -1438,7 +1438,7 @@ $('#banner1').swiper({
       </div>
       <div class="product_hover_block">
        <div class="action">
-        
+
          <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('44 ');"></button>
          <div class="quickview-button">
           <a class="quickbox" title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=44"></a>
@@ -1450,7 +1450,7 @@ $('#banner1').swiper({
     </div>
   </div>    
   <div class="product-details">
-    
+
     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=44 ">Commodo Consequat Lorem Ipsum </a></h4>
     
     <div class="rating">
@@ -1491,7 +1491,7 @@ $('#banner1').swiper({
       </div>
       <div class="product_hover_block">
        <div class="action">
-        
+
          <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('43 ');"></button>
          <div class="quickview-button">
           <a class="quickbox" title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=43"></a>
@@ -1503,7 +1503,7 @@ $('#banner1').swiper({
     </div>
   </div>    
   <div class="product-details">
-    
+
     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=43 ">Similique Suntulpa Official Consectetur </a></h4>
     
     <div class="rating">
@@ -1545,7 +1545,7 @@ $('#banner1').swiper({
       <div class="percentsaving">-10%</div>
       <div class="product_hover_block">
        <div class="action">
-        
+
          <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('42 ');"></button>
          <div class="quickview-button">
           <a class="quickbox" title="" href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/quick_view&amp;product_id=42"></a>
@@ -1557,7 +1557,7 @@ $('#banner1').swiper({
     </div>
   </div>    
   <div class="product-details">
-    
+
     <h4><a href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=42 ">Denimad Minima Veniam Lorem </a></h4>
     
     <div class="rating">
@@ -1590,7 +1590,7 @@ $('#banner1').swiper({
 <div class="cmsbanner-block">
  <div class="cms-inner-block1">
   <div class="cms1_img">
-    <a href="#" title="banner1"><img class="cms_image1" src="image/catalog/Cms-banner-1.jpg" alt=""></a>
+    <a href="#" title="banner1"><img class="cms_image1" src="user/image/catalog/Cms-banner-1.jpg" alt=""></a>
     <div class="description">
       <div class="subtitle">Trendy Designer</div>
       <div class="title">Homemade<br>
@@ -1604,7 +1604,7 @@ $('#banner1').swiper({
 </div>
 <div class="cms-inner-block2">
   <div class="cms2_img">
-    <a href="#" title="banner2"><img class="cms2_image2" src="image/catalog/Cms-banner-2.jpg" alt=""></a>
+    <a href="#" title="banner2"><img class="cms2_image2" src="user/image/catalog/Cms-banner-2.jpg" alt=""></a>
     <div class="description">
       <div class="subtitle">Trendy Designer</div>
       <div class="title">Handycraft<br>Flowers
@@ -1620,7 +1620,7 @@ $('#banner1').swiper({
 <p><br></p>
 
 <div class="category-cms">
-    <div class="box-heading">Shop By Category
+  <div class="box-heading">Shop By Category
   </div>
   <div class="sub-title">Contrary to popular belief, Lorem Ipsum is</div>
   <div class="categorycms box" id="category">
@@ -1638,7 +1638,7 @@ $('#banner1').swiper({
            <div class="peoplesay-block">
             <div class="test-image">
              <div class="left-img">
-              <a href="#"><img src="image/catalog/cat1.jpg" alt=""></a>
+              <a href="#"><img src="user/image/catalog/cat1.jpg" alt=""></a>
             </div>
           </div>
           <div class="test-dec">
@@ -1652,7 +1652,7 @@ $('#banner1').swiper({
      <div class="peoplesay-block">
       <div class="test-image">
        <div class="left-img">
-        <a href="#"><img src="image/catalog/cat2.jpg" alt=""></a>
+        <a href="#"><img src="user/image/catalog/cat2.jpg" alt=""></a>
       </div>
     </div>
     <div class="test-dec">
@@ -1667,7 +1667,7 @@ $('#banner1').swiper({
  <div class="peoplesay-block">
   <div class="test-image">
    <div class="left-img">
-    <a href="#"><img src="image/catalog/cat3.jpg" alt=""></a>
+    <a href="#"><img src="user/image/catalog/cat3.jpg" alt=""></a>
   </div>
 </div>
 <div class="test-dec">
@@ -1682,7 +1682,7 @@ $('#banner1').swiper({
  <div class="peoplesay-block">
   <div class="test-image">
    <div class="left-img">
-    <a href="#"><img src="image/catalog/cat4.jpg" alt=""></a>
+    <a href="#"><img src="user/image/catalog/cat4.jpg" alt=""></a>
   </div>
 </div>
 <div class="test-dec">
@@ -1697,7 +1697,7 @@ $('#banner1').swiper({
  <div class="peoplesay-block">
   <div class="test-image">
    <div class="left-img">
-    <a href="#"><img src="image/catalog/cat5.jpg" alt=""></a>
+    <a href="#"><img src="user/image/catalog/cat5.jpg" alt=""></a>
   </div>
 </div>
 <div class="test-dec">
@@ -1712,7 +1712,7 @@ $('#banner1').swiper({
  <div class="peoplesay-block">
   <div class="test-image">
    <div class="left-img">
-    <a href="#"><img src="image/catalog/cat6.jpg" alt=""></a>
+    <a href="#"><img src="user/image/catalog/cat6.jpg" alt=""></a>
   </div>
 </div>
 <div class="test-dec">
@@ -1726,7 +1726,7 @@ $('#banner1').swiper({
  <div class="peoplesay-block">
   <div class="test-image">
    <div class="left-img">
-    <a href="#"><img src="image/catalog/cat1.jpg" alt=""></a>
+    <a href="#"><img src="user/image/catalog/cat1.jpg" alt=""></a>
   </div>
 </div>
 <div class="test-dec">
@@ -1741,7 +1741,7 @@ $('#banner1').swiper({
  <div class="peoplesay-block">
   <div class="test-image">
    <div class="left-img">
-    <a href="#"><img src="image/catalog/cat2.jpg" alt=""></a>
+    <a href="#"><img src="user/image/catalog/cat2.jpg" alt=""></a>
   </div>
 </div>
 <div class="test-dec">
@@ -1756,7 +1756,7 @@ $('#banner1').swiper({
  <div class="peoplesay-block">
   <div class="test-image">
    <div class="left-img">
-    <a href="#"><img src="image/catalog/cat3.jpg" alt=""></a>
+    <a href="#"><img src="user/image/catalog/cat3.jpg" alt=""></a>
   </div>
 </div>
 <div class="test-dec">
@@ -1771,7 +1771,7 @@ $('#banner1').swiper({
  <div class="peoplesay-block">
   <div class="test-image">
    <div class="left-img">
-    <a href="#"><img src="image/catalog/cat4.jpg" alt=""></a>
+    <a href="#"><img src="user/image/catalog/cat4.jpg" alt=""></a>
   </div>
 </div>
 <div class="test-dec">
@@ -2119,14 +2119,14 @@ $('#banner1').swiper({
   <div class="box-heading">From Our Blog </div>
   <div class="sub-title">Contrary to popular belief, Lorem Ipsum is</div>
   <div class="box megnorblog">
-   
-   
+
+
     <div class="box-content">
       <div class="box-product   blogcarousel " id="blog-carousel">
-       
+
         <div class="blog-item">
          <div class="product-block">
-          
+
            <div class="blog-left">
              <div class="blog-image">
                <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog8-909x600.jpg" alt="From Our Blog " title="From Our Blog " class="img-thumbnail" />
@@ -2147,7 +2147,7 @@ $('#banner1').swiper({
       
       <div class="blog-item">
        <div class="product-block">
-        
+
          <div class="blog-left">
            <div class="blog-image">
              <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog4-909x600.jpg" alt="From Our Blog " title="From Our Blog " class="img-thumbnail" />
@@ -2168,7 +2168,7 @@ $('#banner1').swiper({
     
     <div class="blog-item">
      <div class="product-block">
-      
+
        <div class="blog-left">
          <div class="blog-image">
            <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog3-909x600.jpg" alt="From Our Blog " title="From Our Blog " class="img-thumbnail" />
@@ -2189,7 +2189,7 @@ $('#banner1').swiper({
   
   <div class="blog-item">
    <div class="product-block">
-    
+
      <div class="blog-left">
        <div class="blog-image">
          <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog7-909x600.jpg" alt="From Our Blog " title="From Our Blog " class="img-thumbnail" />
@@ -2209,8 +2209,8 @@ $('#banner1').swiper({
 </div>
 
 <div class="blog-item">
-    <div class="product-block">
-    
+  <div class="product-block">
+
    <div class="blog-left">
      <div class="blog-image">
        <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog2-909x600.jpg" alt="From Our Blog " title="From Our Blog " class="img-thumbnail" />
@@ -2230,8 +2230,8 @@ $('#banner1').swiper({
 </div>
 
 <div class="blog-item">
-    <div class="product-block">
-    
+  <div class="product-block">
+
    <div class="blog-left">
      <div class="blog-image">
        <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog1-909x600.jpg" alt="From Our Blog " title="From Our Blog " class="img-thumbnail" />
@@ -2276,7 +2276,7 @@ $('#banner1').swiper({
 </script> -->
 
 <div id="carousel-0" class="banners-slider-carousel">
- 
+
   <div class="box-content">
    <div class="customNavigation">
     <a class="prev fa fa-arrow-left">&nbsp;</a>
@@ -2422,7 +2422,7 @@ $('#banner1').swiper({
 
     </div>
     <div class="footer-top">
-      
+
       <div id="footer" class="container">
        <div class="row">
         <div class="footer-blocks">
@@ -2533,13 +2533,13 @@ $('#banner1').swiper({
      <div class="content_footer_bottom">   <div class="payment-block">
       <ul>
         <li>
-          <img alt="visa" src="image/catalog/visa.png">
-          <img alt="discover" src="image/catalog/discover.png">
-          <img alt="maestro" src="image/catalog/maestro.png">
-          <img alt="master" src="image/catalog/master.png">
-          <img alt="paypal" src="image/catalog/paypal.png">
-          <img alt="american-express" src="image/catalog/american-express.png">
-          <img alt="mastercard" src="image/catalog/mastercard.png">
+          <img alt="visa" src="user/image/catalog/visa.png">
+          <img alt="discover" src="user/image/catalog/discover.png">
+          <img alt="maestro" src="user/image/catalog/maestro.png">
+          <img alt="master" src="user/image/catalog/master.png">
+          <img alt="paypal" src="user/image/catalog/paypal.png">
+          <img alt="american-express" src="user/image/catalog/american-express.png">
+          <img alt="mastercard" src="user/image/catalog/mastercard.png">
         </li>
       </ul>
     </div><p><br></p>
@@ -2553,57 +2553,87 @@ $('#banner1').swiper({
 </template>
 <script >
 	export default {
-		mounted (){
-			$('.total-review49').on('click', function() { 
-   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=49'; 
-   const parseResult = new DOMParser().parseFromString(t, "text/html");
-   const parsedUrl = parseResult.documentElement.textContent;
-   window.location.href = parsedUrl + '&review';
-   return false;
- });
-			$('.total-review40').on('click', function() { 
-   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=40'; 
-   const parseResult = new DOMParser().parseFromString(t, "text/html");
-   const parsedUrl = parseResult.documentElement.textContent;
-   window.location.href = parsedUrl + '&review';
-   return false;
- });
-			$('.total-review44').on('click', function() { 
-   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=44'; 
-   const parseResult = new DOMParser().parseFromString(t, "text/html");
-   const parsedUrl = parseResult.documentElement.textContent;
-   window.location.href = parsedUrl + '&review';
-   return false;
- });
-			$('.total-review29').on('click', function() { 
-   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=29'; 
-   const parseResult = new DOMParser().parseFromString(t, "text/html");
-   const parsedUrl = parseResult.documentElement.textContent;
-   window.location.href = parsedUrl + '&review';
-   return false;
- });
-			$('.total-review31').on('click', function() { 
-   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=31'; 
-   const parseResult = new DOMParser().parseFromString(t, "text/html");
-   const parsedUrl = parseResult.documentElement.textContent;
-   window.location.href = parsedUrl + '&review';
-   return false;
- });
-			$('.total-review42').on('click', function() { 
-   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=42'; 
-   const parseResult = new DOMParser().parseFromString(t, "text/html");
-   const parsedUrl = parseResult.documentElement.textContent;
-   window.location.href = parsedUrl + '&review';
-   return false;
- });
-			$('.total-review30').on('click', function() { 
-   var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=30'; 
-   const parseResult = new DOMParser().parseFromString(t, "text/html");
-   const parsedUrl = parseResult.documentElement.textContent;
-   window.location.href = parsedUrl + '&review';
-   return false;
- });
-			$('#slideshow0').swiper({
+    methods : {
+     quickbox(){
+       if ($(window).width() > 767) {
+        $('.quickview-button').magnificPopup({
+          type:'iframe',
+          delegate: 'a',
+          preloader: true,
+          tLoading: 'Loading image #%curr%...',
+        });
+      }  
+    }
+  },
+  mounted (){
+    $.getScript('user/catalog/view/javascript/common.js');
+    $.getScript('user/catalog/view/javascript/megnor/custom.js');
+    let vm=this
+    jQuery(document).ready(function() {vm.quickbox();});
+    jQuery(window).resize(function() { vm.quickbox();});
+    $('.instafeed-item-wrap').owlCarousel({
+      items: 6,
+      autoPlay: true,
+      singleItem: false,
+      navigation: true,
+      navigationText: ['<i class="prev fa fa-arrow-left"></i>', '<i class="next fa fa-arrow-right"></i>'],
+      pagination:false,
+      itemsDesktop: [1500, 5],
+      itemsDesktopSmall: [1200, 4],
+      itemsTablet: [991, 3],
+      itemsMobile: [767, 2]
+    });
+
+    $('.total-review49').on('click', function() { 
+     var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=49'; 
+     const parseResult = new DOMParser().parseFromString(t, "text/html");
+     const parsedUrl = parseResult.documentElement.textContent;
+     window.location.href = parsedUrl + '&review';
+     return false;
+   });
+    $('.total-review40').on('click', function() { 
+     var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=40'; 
+     const parseResult = new DOMParser().parseFromString(t, "text/html");
+     const parsedUrl = parseResult.documentElement.textContent;
+     window.location.href = parsedUrl + '&review';
+     return false;
+   });
+    $('.total-review44').on('click', function() { 
+     var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=44'; 
+     const parseResult = new DOMParser().parseFromString(t, "text/html");
+     const parsedUrl = parseResult.documentElement.textContent;
+     window.location.href = parsedUrl + '&review';
+     return false;
+   });
+    $('.total-review29').on('click', function() { 
+     var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=29'; 
+     const parseResult = new DOMParser().parseFromString(t, "text/html");
+     const parsedUrl = parseResult.documentElement.textContent;
+     window.location.href = parsedUrl + '&review';
+     return false;
+   });
+    $('.total-review31').on('click', function() { 
+     var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=31'; 
+     const parseResult = new DOMParser().parseFromString(t, "text/html");
+     const parsedUrl = parseResult.documentElement.textContent;
+     window.location.href = parsedUrl + '&review';
+     return false;
+   });
+    $('.total-review42').on('click', function() { 
+     var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=42'; 
+     const parseResult = new DOMParser().parseFromString(t, "text/html");
+     const parsedUrl = parseResult.documentElement.textContent;
+     window.location.href = parsedUrl + '&review';
+     return false;
+   });
+    $('.total-review30').on('click', function() { 
+     var t='https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/product&amp;product_id=30'; 
+     const parseResult = new DOMParser().parseFromString(t, "text/html");
+     const parsedUrl = parseResult.documentElement.textContent;
+     window.location.href = parsedUrl + '&review';
+     return false;
+   });
+    $('#slideshow0').swiper({
      mode: 'horizontal',
      slidesPerView: 1,
      pagination: '.slideshow0',
@@ -2616,12 +2646,12 @@ $('#banner1').swiper({
      loop: true,
      effect:'fade'
    });
-			$('#banner0').swiper({
-  autoplay: 4000,
+    $('#banner0').swiper({
+      autoplay: 4000,
     pagination: '.swiper-pagination',  // If we need pagination
     autoplayDisableOnInteraction: false
   });
-			$('.blogcarousel').owlCarousel({
+    $('.blogcarousel').owlCarousel({
       items: 3,
       autoPlay: false,
       singleItem: false,
@@ -2632,6 +2662,9 @@ $('#banner1').swiper({
       itemsDesktopSmall:[979,2],
       itemsTablet : [479,1]
     });
-		}
-	}
+    $(window).load(function() {     
+   $("#spinner").fadeOut("slow");
+ });
+  }
+}
 </script>

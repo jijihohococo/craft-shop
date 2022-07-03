@@ -10,7 +10,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <title>Your Store</title>
-            <!-- <base href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/" /> -->
+             <!-- <base href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/" />  -->
             <meta name="description" content="My Store" />
             <script src="{{ asset('user/catalog/view/javascript/jquery/jquery-2.1.1.min.js') }}"></script>
             <script src="{{ asset('user/catalog/view/javascript/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -41,7 +41,7 @@
             <script src="{{ asset('user/catalog/view/javascript/jquery/swiper/js/swiper.jquery.js') }}"></script>
             <link href="{{ asset('user/image/catalog/cart.png') }}" rel="icon" />
             <!-- Megnor www.templatemela.com - Start -->
-            <script src="{{ asset('user/catalog/view/javascript/megnor/custom.js') }}"></script>
+            <!-- <script src="{{ asset('user/catalog/view/javascript/megnor/custom.js') }}"></script> -->
             <script src="{{ asset('user/catalog/view/javascript/megnor/jstree.min.js') }}"></script>
             <script src="{{ asset('user/catalog/view/javascript/megnor/instagram-scripts-min.js') }}"></script>
             <script src="{{ asset('user/catalog/view/javascript/megnor/carousel.min.js') }}"></script>
@@ -59,32 +59,11 @@
 
 
             <script>
-            //   (function () {
-            //     var feedToken = 'https://ig.instant-tokens.com/users/bc2afecf-30b2-4a91-b819-38edd295cd71/instagram/17841402307816714/token?userSecret=jird860sk2dgid0scrvj5';
-
-            //     fetch(feedToken).then(function(resp) {
-            //       return resp.json();
-            //     }).then(function (data) {
-            //       var feed = new Instafeed({
-            // accessToken: data.Token, // Access token from json response
-            // target: 'instafeed',
-            // limit: 6,
-            // template: '<div class="item instafeed-item-wrap"><a href="\{\{link\}\}"><figure data-src="\{\{image\}\}"></figure></a></div>',
-            // after: function() {
-            //     // disable button if no more results to load
-            //     $('.instafeed-item-wrap figure').lazy();
-            //   },
-            // });
-            //       feed.run();
-            //     }).catch(function (error) {
-            //       console.log(error);
-            //     });
-                
-            //   })();
+            
 
             </script>
 
-            <script type="text/javascript">
+            <!-- <script type="text/javascript">
 
               $(document).ready(function(){
                 $('.instafeed-item-wrap').owlCarousel({
@@ -100,13 +79,13 @@
                   itemsMobile: [767, 2]
                 });
               });   
-            </script>
+            </script> -->
 
 
 
 
             <!-- ======= Quick view JS ========= -->
-            <script> 
+            <!-- <script> 
 
               function quickbox(){
                if ($(window).width() > 767) {
@@ -121,11 +100,11 @@
             jQuery(document).ready(function() {quickbox();});
             jQuery(window).resize(function() {quickbox();});
 
-          </script>
+          </script> -->
 
           <!-- Megnor www.templatemela.com - End -->
 
-          <script src="{{ asset('user/catalog/view/javascript/common.js') }}"></script>
+         <!--  <script src="{{ asset('user/catalog/view/javascript/common.js') }}"></script> -->
           <script>
     // Can also be used with $(document).ready()
     $(window).load(function() {     

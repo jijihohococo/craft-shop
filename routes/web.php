@@ -37,6 +37,7 @@ $userRoutes=[
 	'orders/{id}',
 	'promotions/{id}'];
 	foreach($userRoutes as $userRoute){
+		dd("hi");
 		Route::view('/'.$userRoute,'user.index');
 	}
 // USER FRONTEND ROUTES //
