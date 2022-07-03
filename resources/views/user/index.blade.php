@@ -10,7 +10,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <title>Your Store</title>
-             <!-- <base href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/" />  -->
+            <!-- <base href="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/" />  -->
             <meta name="description" content="My Store" />
             <script src="{{ asset('user/catalog/view/javascript/jquery/jquery-2.1.1.min.js') }}"></script>
             <script src="{{ asset('user/catalog/view/javascript/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -59,7 +59,7 @@
 
 
             <script>
-            
+              
 
             </script>
 
@@ -104,20 +104,14 @@
 
           <!-- Megnor www.templatemela.com - End -->
 
-         <!--  <script src="{{ asset('user/catalog/view/javascript/common.js') }}"></script> -->
-          <script>
-    // Can also be used with $(document).ready()
-    $(window).load(function() {     
-   $("#spinner").fadeOut("slow");
- });    
-</script>
+          <!--  <script src="{{ asset('user/catalog/view/javascript/common.js') }}"></script> -->
 
-</head>
+        </head>
 
 
-<body class="common-home   layout-2 left-col">
- <div id="app">
- </div>
+        <body class="common-home   layout-2 left-col">
+         <div id="app">
+         </div>
 
 
 <!--
@@ -127,15 +121,15 @@ Please donate via PayPal to donate@opencart.com
 <!-- Theme created by Welford Media for OpenCart 2.0 www.welfordmedia.co.uk -->
 </body>
 <script >
-       window.Laravel = {!! json_encode([
-         'csrfToken' => csrf_token(),
-         ])!!}
+ window.Laravel = {!! json_encode([
+   'csrfToken' => csrf_token(),
+   ])!!}
 
-       window.Urls = {!!json_encode([
-        'baseURL' => '/admin_api/',
+ window.Urls = {!!json_encode([
+  'baseURL' => '/admin_api/',
         //'login' => url('login'),
         //'logout' => url('logout'),
         ])!!}
       </script>
-<script src="/js/main.js"></script>
-</html>
+      <script src="/js/main.js"></script>
+      </html>
