@@ -14,8 +14,6 @@ class Brand extends TransactionModel
         'pic'
     ];
 
-    public static $content='Brand';
-
     public static $cacheKey='brands_cache';
 
     public function getAll(){

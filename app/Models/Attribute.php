@@ -13,8 +13,6 @@ class Attribute extends TransactionModel
         'name'
     ];
 
-    public static $content='Attribute';
-
     public static $cacheKey='attributes_cache';
 
     public function sets(){

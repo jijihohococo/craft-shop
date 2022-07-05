@@ -16,8 +16,6 @@ class Color extends TransactionModel
 
     public static $cacheKey='colors_cache';
 
-    public static $content='Color';
-
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-colors',60*60*24,function(){
             return self::latest('name')->get();

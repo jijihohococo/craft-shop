@@ -15,8 +15,6 @@ class Banner extends TransactionModel
     ];
     protected $dates = ['deleted_at'];
 
-    public static $content="Banner";
-
     public static $cacheKey='banners_cache';
 
     public function getAll(){

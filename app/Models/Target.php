@@ -14,6 +14,4 @@ class Target extends TransactionModel
         'check'
     ];
 
-    public static $content="Target";
-
 }

@@ -14,8 +14,6 @@ class Category extends TransactionModel
     ];
     protected $dates = ['deleted_at'];
 
-    public static $content="Category";
-
     public static $cacheKey='categories_cache';
 
     public function getAll(){

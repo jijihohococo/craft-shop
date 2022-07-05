@@ -18,8 +18,6 @@ class Item extends TransactionModel
     ];
     protected $dates = ['deleted_at'];
 
-    public static $content="Item";
-
     public function category(){
         return $this->belongsTo('App\Models\Category')->withDefault()->withTrashed();
     }

@@ -16,8 +16,6 @@ class Role extends TransactionModel
 
     public static $cacheKey='roles_cache';
 
-    public static $content="Role";
-
     public function permissions(){
         return $this->hasMany('App\Models\RolePermission');
     }

@@ -49,7 +49,4 @@ class User extends Authenticatable
 
     public $guardProviderName='users';
     //----- Need to assign clientId and tokenName class's variables to access customized Passport function -----//
-
-
-    public static $content="User";
 }

@@ -16,8 +16,6 @@ class Currency extends TransactionModel
 
     public static $cacheKey='currencies_cache';
 
-    public static $content='Currency';
-
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-currencies',60*60*24,function(){
             return self::latest('name')->get();
