@@ -27,28 +27,15 @@ class TransactionListener
      */
     public function handle($event)
     {
-        $model=$event->model::$content;
-
-        $cachedModels=[
-            'Attribute',
-            'Category',
-            'Subcategory',
-            'Brand',
-            'Banner',
-            'Currency',
-            'Role',
-            'Permission',
-            'Tax',
-            'Color'
-        ];
+        $class=trim(get_class($event->model),'App\Models\\');
         Transaction::create([
          'guard' =>  UserData::getGuard(),
          'user_id' => UserData::getId(),
-         'model' => $model ,
+         'model' => $class ,
          'model_id' => $event->model->id,
          'action' => $event->action
      ]);
-        if(in_array( $model , $cachedModels)){
+        if(property_exists($event->model,'cacheKey')){
             Cache::tags($event->model::$cacheKey )->flush();
         }
     }
