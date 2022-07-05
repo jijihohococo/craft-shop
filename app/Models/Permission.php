@@ -25,7 +25,6 @@ class Permission extends TransactionModel
             'Subcategory',
             'Brand',
             'Item',
-            'self',
             'Role',
             'Target',
             'User',
@@ -33,7 +32,8 @@ class Permission extends TransactionModel
             'Tax',
             'ShopSetting',
             'Attribute',
-            'Color'
+            'Color',
+            'Permission'
         ];
     }
 
