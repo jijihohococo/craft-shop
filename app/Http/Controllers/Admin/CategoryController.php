@@ -11,7 +11,7 @@ class CategoryController extends Controller
     use AdminRolePermission;
 
     public function __construct(){
-        $this->authorized(Category::$content);
+        $this->authorized('Category');
     }
     /**
      * Display a listing of the resource.

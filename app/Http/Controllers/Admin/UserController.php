@@ -9,7 +9,7 @@ class UserController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('rolePermission:'.User::$content.',read')->only(['index','getTotal']);
+        $this->middleware('rolePermission:'.'User'.',read')->only(['index','getTotal']);
     }
 
     public function index(){

@@ -11,7 +11,7 @@ class TargetController extends Controller
     use AdminRolePermission;
 
     public function __construct(){
-        $this->authorized(Target::$content);
+        $this->authorized('Target');
     }
     /**
      * Display a listing of the resource.

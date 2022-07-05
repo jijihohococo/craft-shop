@@ -14,6 +14,4 @@ class ShopSetting extends TransactionModel
         'app_pic',
         'theme_color'
     ];
-
-    public static $content="Setting";
 }

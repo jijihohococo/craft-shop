@@ -14,6 +14,8 @@ class ColorSeeder extends Seeder
     public function run()
     {
         //
+        $colorData=[];
+        $colorTransactions=[];
         foreach([
             ['color_code' => '#000000' , 'name' =>  'Black'],
             ['color_code' => '#0C090A' , 'name' =>  'Night'],
@@ -611,15 +613,25 @@ class ColorSeeder extends Seeder
             ['color_code' => '#FEFCFF' , 'name' =>  'Milk White'],
             ['color_code' => '#FFFFFF' , 'name' =>  'White']
         ] as $key => $color){
-    DB::table('colors')->insert($color);
-    DB::table('transactions')
-        ->insert([
-            'guard' => 'admin_api',
-            'user_id' => 1,
-            'model' => 'Color',
-            'model_id' => $key + 1 ,
-            'action' => 'create'
-        ]);
+    array_push($colorData,$color);
+    array_push($colorTransactions,[
+        'guard' => 'admin_api',
+        'user_id' => 1,
+        'model' => 'Color',
+        'model_id' => $key + 1,
+        'action' => 'create'
+    ]);
+    // DB::table('colors')->insert($color);
+    // DB::table('transactions')
+    //     ->insert([
+    //         'guard' => 'admin_api',
+    //         'user_id' => 1,
+    //         'model' => 'Color',
+    //         'model_id' => $key + 1 ,
+    //         'action' => 'create'
+    //     ]);
 }
+DB::table('colors')->insert($colorData);
+DB::table('transactions')->insert($colorTransactions);
 }
 }

@@ -11,7 +11,7 @@ class BannerController extends Controller
     use AdminRolePermission;
 
     public function __construct(){
-        $this->authorized(Banner::$content);
+        $this->authorized('Banner');
     }
     /**
      * Display a listing of the resource.

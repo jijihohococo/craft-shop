@@ -12,7 +12,7 @@ class AttributeController extends Controller
     use AdminRolePermission;
 
     public function __construct(){
-        $this->authorized(Attribute::$content);
+        $this->authorized('Attribute');
     }
 
     /**

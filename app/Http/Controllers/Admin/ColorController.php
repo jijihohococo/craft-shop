@@ -11,7 +11,7 @@ class ColorController extends Controller
     use AdminRolePermission;
 
     public function __construct(){
-        $this->authorized(Color::$content);
+        $this->authorized('Color');
     }
     /**
      * Display a listing of the resource.

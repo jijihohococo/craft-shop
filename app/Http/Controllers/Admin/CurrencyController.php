@@ -11,7 +11,7 @@ class CurrencyController extends Controller
     use AdminRolePermission;
 
     public function __construct(){
-        $this->authorized(Currency::$content);
+        $this->authorized('Currency');
     }
 
     /**

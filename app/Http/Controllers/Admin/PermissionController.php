@@ -13,7 +13,7 @@ class PermissionController extends Controller
     use RolePermission,AdminRolePermission;
     
     public function __construct(){
-        $this->authorized(Permission::$content);
+        $this->authorized('Permission');
     }
 
     /**

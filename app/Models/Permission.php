@@ -19,21 +19,21 @@ class Permission extends TransactionModel
 
     public static function getModels(){
         return [
-            Admin::$content,
-            Banner::$content,
-            Category::$content,
-            Subcategory::$content,
-            Brand::$content,
-            Item::$content,
-            self::$content,
-            Role::$content,
-            Target::$content,
-            User::$content,
-            Currency::$content,
-            Tax::$content,
-            ShopSetting::$content,
-            Attribute::$content,
-            Color::$content
+            'Admin',
+            'Banner',
+            'Category',
+            'Subcategory',
+            'Brand',
+            'Item',
+            'self',
+            'Role',
+            'Target',
+            'User',
+            'Currency',
+            'Tax',
+            'ShopSetting',
+            'Attribute',
+            'Color'
         ];
     }
 

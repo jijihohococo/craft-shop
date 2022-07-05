@@ -11,7 +11,7 @@ class TaxController extends Controller
     use AdminRolePermission;
     
     public function __construct(){
-        $this->authorized(Tax::$content);
+        $this->authorized('Tax');
     }
     /**
      * Display a listing of the resource.

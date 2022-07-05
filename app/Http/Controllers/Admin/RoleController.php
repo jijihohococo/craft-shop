@@ -13,7 +13,7 @@ class RoleController extends Controller
     use AdminRolePermission;
 
     public function __construct(){
-        $this->authorized(Role::$content);
+        $this->authorized('Role');
     }
     /**
      * Display a listing of the resource.

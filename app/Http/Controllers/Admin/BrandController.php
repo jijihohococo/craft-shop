@@ -11,7 +11,7 @@ class BrandController extends Controller
     use AdminRolePermission;
 
     public function __construct(){
-        $this->authorized(Brand::$content);
+        $this->authorized('Brand');
     }
     /**
      * Display a listing of the resource.

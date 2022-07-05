@@ -11,7 +11,7 @@ class ShopSettingController extends Controller
     use AdminRolePermission;
 
     public function __construct(){
-        $this->authorized(ShopSetting::$content);
+        $this->authorized('ShopSetting');
     }
     /**
      * Display a listing of the resource.

@@ -12,7 +12,7 @@ class SubcategoryController extends Controller
     use AdminRolePermission;
 
     public function __construct(){
-        $this->authorized(Subcategory::$content);
+        $this->authorized('Subcategory');
     }
     /**
      * Display a listing of the resource.
