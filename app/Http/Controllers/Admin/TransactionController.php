@@ -15,8 +15,7 @@ class TransactionController extends Controller
     public function get(Request $request,$model,$model_id){
         return response()->json([
             'transactions' => Transaction::
-            selectAdminName()
-            ->selectAdminEmail()
+            selectAdmin()
             ->selectAdminModel($model,$model_id)
             ->latest('id')
             ->paginate(10)
@@ -27,8 +26,7 @@ class TransactionController extends Controller
         $searchData='%'.$request->search.'%';
         return response()->json([
             'transactions' => Transaction::
-            selectAdminName()
-            ->selectAdminEmail()
+            selectAdmin()
             ->selectAdminModel($model,$model_id)
             ->whereIn('user_id',function($query) use ($searchData){
                 $query->select('id')

@@ -19,6 +19,7 @@ class Permission extends TransactionModel
 
     public static function getModels(){
         return [
+            'Permission',
             'Admin',
             'Banner',
             'Category',
@@ -32,8 +33,7 @@ class Permission extends TransactionModel
             'Tax',
             'ShopSetting',
             'Attribute',
-            'Color',
-            'Permission'
+            'Color'
         ];
     }
 
