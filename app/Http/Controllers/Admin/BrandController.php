@@ -59,8 +59,8 @@ class BrandController extends Controller
             'name'=> cutSpeicialChar(rand() . $request->name) ,
             'path'=>'brand_images',
             'old_file'=>null , 
-            'width'  => null , 
-            'height' => null ],$request,$brand );
+            'width'  => 138 , 
+            'height' => 80 ],$request,$brand );
         $brand->save( $brand->getAttributes() );
         return response()->json([
             'message' => $brand->name . ' Brand is created successfully'
@@ -109,8 +109,8 @@ class BrandController extends Controller
             'name'=> cutSpeicialChar(rand() . $request->name) ,
             'path'=>'brand_images',
             'old_file'=> $brand->pic , 
-            'width'  => null , 
-            'height' => null ],$request,$newBrand );
+            'width'  => 138 , 
+            'height' => 80 ],$request,$newBrand );
         $brand->update($newBrand->getAttributes());
         return response()->json([
             'message' => $request->name . ' Brand is updated successfully'

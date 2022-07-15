@@ -1985,63 +1985,7 @@ $('#banner1').swiper({
     <a class="prev fa fa-arrow-left">&nbsp;</a>
     <a class="next fa fa-arrow-right">&nbsp;</a>
   </div>
-  <div class="product-carousel" id="module-0-carousel">
-   <div class="slider-item">
-    <div class="product-block">
-      <div class="product-block-inner">
-       <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b2-138x80.png" class="img-responsive" alt="NFL" />
-     </div></div></div>
-     <div class="slider-item">
-      <div class="product-block">
-        <div class="product-block-inner">
-         <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b3-138x80.png" class="img-responsive" alt="RedBull" />
-       </div></div></div>
-       <div class="slider-item">
-        <div class="product-block">
-          <div class="product-block-inner">
-           <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b4-138x80.png" class="img-responsive" alt="Sony" />
-         </div></div></div>
-         <div class="slider-item">
-          <div class="product-block">
-            <div class="product-block-inner">
-             <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b1-138x80.png" class="img-responsive" alt="Coca Cola" />
-           </div></div></div>
-           <div class="slider-item">
-            <div class="product-block">
-              <div class="product-block-inner">
-               <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b5-138x80.png" class="img-responsive" alt="Burger King" />
-             </div></div></div>
-             <div class="slider-item">
-              <div class="product-block">
-                <div class="product-block-inner">
-                 <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b2-138x80.png" class="img-responsive" alt="Canon" />
-               </div></div></div>
-               <div class="slider-item">
-                <div class="product-block">
-                  <div class="product-block-inner">
-                   <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b3-138x80.png" class="img-responsive" alt="Harley Davidson" />
-                 </div></div></div>
-                 <div class="slider-item">
-                  <div class="product-block">
-                    <div class="product-block-inner">
-                     <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b5-138x80.png" class="img-responsive" alt="Dell" />
-                   </div></div></div>
-                   <div class="slider-item">
-                    <div class="product-block">
-                      <div class="product-block-inner">
-                       <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b3-138x80.png" class="img-responsive" alt="Disney" />
-                     </div></div></div>
-                     <div class="slider-item">
-                      <div class="product-block">
-                        <div class="product-block-inner">
-                         <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b4-138x80.png" class="img-responsive" alt="Starbucks" />
-                       </div></div></div>
-                       <div class="slider-item">
-                        <div class="product-block">
-                          <div class="product-block-inner">
-                           <img src="https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b1-138x80.png" class="img-responsive" alt="Nintendo" />
-                         </div></div></div>
-                       </div>
+  <Brand />
                      </div>
                    </div>
 
@@ -2255,7 +2199,11 @@ $('#banner1').swiper({
 </footer>
 </template>
 <script >
+  import Brand from '../components/Brand';
 	export default {
+    components : {
+      Brand
+    },
     methods : {
      quickbox(){
        if ($(window).width() > 767) {

@@ -126,7 +126,7 @@ Please donate via PayPal to donate@opencart.com
    ])!!}
 
  window.Urls = {!!json_encode([
-  'baseURL' => '/admin_api/',
+  'baseURL' => '/api/',
         //'login' => url('login'),
         //'logout' => url('logout'),
         ])!!}

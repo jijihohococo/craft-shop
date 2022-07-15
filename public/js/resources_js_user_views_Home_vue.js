@@ -1,6 +1,38 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_user_views_Home_vue"],{
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/Brand.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/Brand.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      brands: {}
+    };
+  },
+  methods: {
+    getBrands: function getBrands() {
+      var _this = this;
+
+      window.axios.get('get_brands').then(function (response) {
+        _this.brands = response.data.brands;
+      });
+    }
+  },
+  created: function created() {
+    this.getBrands();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/views/Home.vue?vue&type=script&lang=js":
 /*!**********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/views/Home.vue?vue&type=script&lang=js ***!
@@ -11,7 +43,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _components_Brand__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Brand */ "./resources/js/user/components/Brand.vue");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    Brand: _components_Brand__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   methods: {
     quickbox: function quickbox() {
       if ($(window).width() > 767) {
@@ -130,6 +167,48 @@ __webpack_require__.r(__webpack_exports__);
     });
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/Brand.vue?vue&type=template&id=56436864":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/Brand.vue?vue&type=template&id=56436864 ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "product-carousel",
+  id: "module-0-carousel"
+};
+var _hoisted_2 = {
+  "class": "slider-item"
+};
+var _hoisted_3 = {
+  "class": "product-block"
+};
+var _hoisted_4 = {
+  "class": "product-block-inner"
+};
+var _hoisted_5 = ["src", "alt"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.brands, function (brand) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+      src: 'image/brand_images/' + brand.pic,
+      "class": "img-responsive",
+      alt: brand.name
+    }, null, 8
+    /* PROPS */
+    , _hoisted_5)])])])]);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  );
+}
 
 /***/ }),
 
@@ -521,293 +600,16 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_3 = {
   "class": "container"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+var _hoisted_4 = {
   "class": "row"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("aside", {
-  id: "column-left",
-  "class": "col-sm-3 hidden-xs"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box-category-top"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box-heading"
-}, "All Categories")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box-content-category"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
-  id: "nav-one",
-  "class": "dropmenu box-category"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "top_level dropdown"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=20"
-}, "Accessories"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "dropdown-menu megamenu column1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "dropdown-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
-  "class": "list-unstyled childs_1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=20_70"
-}, "Car Accessories")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=20_71"
-}, "Electronic Accessories")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=20_68"
-}, "Hair Acceseries")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=20_69"
-}, "Home Accessories")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=20_26"
-}, "Color-Glasses")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=20_27"
-}, "Apron")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END ")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "top_level dropdown"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=18"
-}, "Clothes"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "dropdown-menu megamenu column1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "dropdown-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
-  "class": "list-unstyled childs_1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=18_46"
-}, "Apron")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=18_45"
-}, "Contact-lens")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=18_63"
-}, "Inner-Wear")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=18_64"
-}, "Pants")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END ")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "top_level dropdown"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=25"
-}, "Digital-camera"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "dropdown-menu megamenu column1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "dropdown-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
-  "class": "list-unstyled childs_1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=25_29"
-}, "360-cameras")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "dropdown"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=25_28"
-}, "DSLR-cameras"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "dropdown-menu"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "dropdown-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
-  "class": "list-unstyled childs_2"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=25_28_35"
-}, "Film Cameras")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=25_28_36"
-}, "Simulated Cameras")])])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=25_30"
-}, "Medium-format")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=25_31"
-}, "Mirrorless-cameras")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories START "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=25_32"
-}, "Web Cameras")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 Level Sub Categories END ")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "top_level"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=61"
-}, "Eyeware")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "top_level"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=17"
-}, "Software")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "top_level"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=57"
-}, "Lenses")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "top_level"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=24"
-}, "Phones & PDAs")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "top_level"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=33"
-}, "Cameras")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "top_level"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=60"
-}, "Digital Camera")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "top_level"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&path=67"
-}, "sports-outdoors")])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "swiper-viewport"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  id: "banner",
-  "class": "swiper-container single-banner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "swiper-wrapper"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "swiper-slide"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/left-banner-1-260x380.jpg",
-  alt: "LeftBanner2",
-  "class": "img-responsive"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" If we need pagination "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "swiper-pagination"
-})])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <script type=\"text/javascript\">\n$('#banner0').swiper({\n  autoplay: 4000,\n    pagination: '.swiper-pagination',  // If we need pagination\n    autoplayDisableOnInteraction: false\n  });\n</script>  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  id: "servicecmsblock"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  id: "servicecmsinfo_block1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box-content-cms"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "inner-cms"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box-cms-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "second-content main-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "inner-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "service-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "icon-left two"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "service-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "title"
-}, "Fast Delivery"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "desc"
-}, "Shipping order $100")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "third-content main-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "inner-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "service-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "icon-left three"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "service-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "title"
-}, "Online support"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "desc"
-}, "Fast Delivery Service")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "Fourth-content main-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "inner-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "service-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "icon-left four"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "service-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "title"
-}, "Special Offer"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "desc"
-}, "Fast Delivery Service")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "Fifth-content main-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "inner-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "service-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "icon-left five"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "service-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "title"
-}, "Special Offer"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "desc"
-}, "Fast Delivery Service")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "Sixth-content main-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "inner-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "service-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "icon-left six"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "service-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "title"
-}, "Special Offer"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "desc"
-}, "Fast Delivery Service")])])])])])])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "swiper-viewport"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  id: "banner",
-  "class": "swiper-container single-banner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "swiper-wrapper"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "swiper-slide"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/Left-banner-2-260x380.jpg",
-  alt: "leftBanner",
-  "class": "img-responsive"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" If we need pagination "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "swiper-pagination"
-})])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <script type=\"text/javascript\">\n$('#banner1').swiper({\n  autoplay: 4000,\n    pagination: '.swiper-pagination',  // If we need pagination\n    autoplayDisableOnInteraction: false\n  });\n</script>  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "testimonial-cms box"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box-heading"
-}, "Client Say's "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "testimonials box-content",
-  id: "testimonial"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "homepage-testimonial-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "testimonial_inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box-product owl-carousel clientcarousel owl-theme",
-  id: "testimonial-carousel"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "peoplesay-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "test-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "test-desc"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "desc"
-}, "Electrons typesetting dummy amet populari release available that variantion text "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "title1"
-}, "Mark Jekno"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "testimonial-designation"
-}, "Iphone Developer")])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "peoplesay-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "test-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "test-desc"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "desc"
-}, "Electrons typesetting dummy amet populari release available that variantion text "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "title1"
-}, "Mark Jekno"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "testimonial-designation"
-}, "Iphone Developer")])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "peoplesay-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "test-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "test-desc"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "desc"
-}, "Electrons typesetting dummy amet populari release available that variantion text"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "title1"
-}, "Mark Jekno"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "testimonial-designation"
-}, "Iphone Developer")])])])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "testimonial_default_width",
-  style: {
-    "display": "none",
-    "visibility": "hidden"
-  }
-}, " ")])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<aside id=\"column-left\" class=\"col-sm-3 hidden-xs\"><div class=\"box-category-top\"><div class=\"box-heading\">All Categories</div></div><div class=\"box-content-category\"><ul id=\"nav-one\" class=\"dropmenu box-category\"><li class=\"top_level dropdown\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20\">Accessories</a><div class=\"dropdown-menu megamenu column1\"><div class=\"dropdown-inner\"><ul class=\"list-unstyled childs_1\"><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_70\">Car Accessories</a></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_71\">Electronic Accessories</a></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_68\">Hair Acceseries</a></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_69\">Home Accessories</a></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_26\">Color-Glasses</a></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=20_27\">Apron</a></li><!-- 2 Level Sub Categories END --></ul></div></div></li><li class=\"top_level dropdown\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18\">Clothes</a><div class=\"dropdown-menu megamenu column1\"><div class=\"dropdown-inner\"><ul class=\"list-unstyled childs_1\"><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_46\">Apron</a></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_45\">Contact-lens</a></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_63\">Inner-Wear</a></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=18_64\">Pants</a></li><!-- 2 Level Sub Categories END --></ul></div></div></li><li class=\"top_level dropdown\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25\">Digital-camera</a><div class=\"dropdown-menu megamenu column1\"><div class=\"dropdown-inner\"><ul class=\"list-unstyled childs_1\"><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_29\">360-cameras</a></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li class=\"dropdown\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_28\">DSLR-cameras</a><div class=\"dropdown-menu\"><div class=\"dropdown-inner\"><ul class=\"list-unstyled childs_2\"><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_28_35\">Film Cameras</a></li><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_28_36\">Simulated Cameras</a></li></ul></div></div></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_30\">Medium-format</a></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_31\">Mirrorless-cameras</a></li><!-- 2 Level Sub Categories END --><!-- 2 Level Sub Categories START --><li><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=25_32\">Web Cameras</a></li><!-- 2 Level Sub Categories END --></ul></div></div></li><li class=\"top_level\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=61\">Eyeware</a></li><li class=\"top_level\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=17\">Software</a></li><li class=\"top_level\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=57\">Lenses</a></li><li class=\"top_level\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=24\">Phones &amp; PDAs</a></li><li class=\"top_level\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=33\">Cameras</a></li><li class=\"top_level\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=60\">Digital Camera</a></li><li class=\"top_level\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=product/category&amp;path=67\">sports-outdoors</a></li></ul></div><div class=\"swiper-viewport\"><div id=\"banner\" class=\"swiper-container single-banner\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\"><a href=\"#\"><img src=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/left-banner-1-260x380.jpg\" alt=\"LeftBanner2\" class=\"img-responsive\"></a></div></div><!-- If we need pagination --><div class=\"swiper-pagination\"></div></div></div><!-- &lt;script type=&quot;text/javascript&quot;&gt;\n$(&#39;#banner0&#39;).swiper({\n  autoplay: 4000,\n    pagination: &#39;.swiper-pagination&#39;,  // If we need pagination\n    autoplayDisableOnInteraction: false\n  });\n&lt;/script&gt;  --><div id=\"servicecmsblock\"><div id=\"servicecmsinfo_block1\"><div class=\"box-content-cms\"><div class=\"inner-cms\"><div class=\"box-cms-content\"><div class=\"second-content main-content\"><div class=\"inner-content\"><div class=\"service-content\"><div class=\"icon-left two\"></div><div class=\"service-right\"><div class=\"title\">Fast Delivery</div><div class=\"desc\">Shipping order $100</div></div></div></div></div><div class=\"third-content main-content\"><div class=\"inner-content\"><div class=\"service-content\"><div class=\"icon-left three\"></div><div class=\"service-right\"><div class=\"title\">Online support</div><div class=\"desc\">Fast Delivery Service</div></div></div></div></div><div class=\"Fourth-content main-content\"><div class=\"inner-content\"><div class=\"service-content\"><div class=\"icon-left four\"></div><div class=\"service-right\"><div class=\"title\">Special Offer</div><div class=\"desc\">Fast Delivery Service</div></div></div></div></div><div class=\"Fifth-content main-content\"><div class=\"inner-content\"><div class=\"service-content\"><div class=\"icon-left five\"></div><div class=\"service-right\"><div class=\"title\">Special Offer</div><div class=\"desc\">Fast Delivery Service</div></div></div></div></div><div class=\"Sixth-content main-content\"><div class=\"inner-content\"><div class=\"service-content\"><div class=\"icon-left six\"></div><div class=\"service-right\"><div class=\"title\">Special Offer</div><div class=\"desc\">Fast Delivery Service</div></div></div></div></div></div></div></div></div></div><div class=\"swiper-viewport\"><div id=\"banner\" class=\"swiper-container single-banner\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\"><a href=\"#\"><img src=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/Left-banner-2-260x380.jpg\" alt=\"leftBanner\" class=\"img-responsive\"></a></div></div><!-- If we need pagination --><div class=\"swiper-pagination\"></div></div></div><!-- &lt;script type=&quot;text/javascript&quot;&gt;\n$(&#39;#banner1&#39;).swiper({\n  autoplay: 4000,\n    pagination: &#39;.swiper-pagination&#39;,  // If we need pagination\n    autoplayDisableOnInteraction: false\n  });\n&lt;/script&gt;  --><div class=\"testimonial-cms box\"><div class=\"box-heading\">Client Say&#39;s </div><div class=\"testimonials box-content\" id=\"testimonial\"><div class=\"homepage-testimonial-inner\"><div class=\"testimonial_inner\"><div class=\"box-product owl-carousel clientcarousel owl-theme\" id=\"testimonial-carousel\"><div class=\"peoplesay-block\"><div class=\"test-content\"><div class=\"test-desc\"><p class=\"desc\">Electrons typesetting dummy amet populari release available that variantion text </p><div class=\"title1\">Mark Jekno</div><div class=\"testimonial-designation\">Iphone Developer</div></div></div></div><div class=\"peoplesay-block\"><div class=\"test-content\"><div class=\"test-desc\"><p class=\"desc\">Electrons typesetting dummy amet populari release available that variantion text </p><div class=\"title1\">Mark Jekno</div><div class=\"testimonial-designation\">Iphone Developer</div></div></div></div><div class=\"peoplesay-block\"><div class=\"test-content\"><div class=\"test-desc\"><p class=\"desc\">Electrons typesetting dummy amet populari release available that variantion text</p><div class=\"title1\">Mark Jekno</div><div class=\"testimonial-designation\">Iphone Developer</div></div></div></div></div></div></div><div class=\"testimonial_default_width\" style=\"display:none;visibility:hidden;\"> </div></div></div></aside>", 1);
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   id: "content",
   "class": "col-sm-9"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -2590,400 +2392,41 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
     "display": "none",
     "visibility": "hidden"
   }
-})])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-mainhead"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box-heading"
-}, "From Our Blog "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "sub-title"
-}, "Contrary to popular belief, Lorem Ipsum is"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box megnorblog"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box-product blogcarousel",
-  id: "blog-carousel"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-image"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog8-909x600.jpg",
-  alt: "From Our Blog ",
-  title: "From Our Blog ",
-  "class": "img-thumbnail"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "post_hover"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  "class": "icon zoom",
-  title: "Click to view Full Image ",
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog8-909x600.jpg",
-  "data-lightbox": "example-set"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-search-plus"
-})])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "date-time"
-}, " 28 Jul, 2021"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=6"
-}, "Passage of Lorem Ipsum")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "write-comment"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=6"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-comments"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 0 Comments")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-desc"
-}, " Lorem ipsum dolor sit amet, consectetuer adipiscing. Aenean commodo ligula eget dolor. Aen... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "read-more"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=6"
-}, "read more")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-image"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog4-909x600.jpg",
-  alt: "From Our Blog ",
-  title: "From Our Blog ",
-  "class": "img-thumbnail"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "post_hover"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  "class": "icon zoom",
-  title: "Click to view Full Image ",
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog4-909x600.jpg",
-  "data-lightbox": "example-set"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-search-plus"
-})])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "date-time"
-}, " 28 Jul, 2021"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=5"
-}, "Blend into the Nature for freshness")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "write-comment"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=5"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-comments"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 0 Comments")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-desc"
-}, " Passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in Mi... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "read-more"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=5"
-}, "read more")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-image"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog3-909x600.jpg",
-  alt: "From Our Blog ",
-  title: "From Our Blog ",
-  "class": "img-thumbnail"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "post_hover"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  "class": "icon zoom",
-  title: "Click to view Full Image ",
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog3-909x600.jpg",
-  "data-lightbox": "example-set"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-search-plus"
-})])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "date-time"
-}, " 28 Jul, 2021"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=4"
-}, " Peat book is a treatise")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "write-comment"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=4"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-comments"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 0 Comments")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-desc"
-}, " Link: St. Louis Blues Audio shortcode: “Lorem ipsum dolor sit amet, consectetur adipiscing... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "read-more"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=4"
-}, "read more")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-image"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog7-909x600.jpg",
-  alt: "From Our Blog ",
-  title: "From Our Blog ",
-  "class": "img-thumbnail"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "post_hover"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  "class": "icon zoom",
-  title: "Click to view Full Image ",
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog7-909x600.jpg",
-  "data-lightbox": "example-set"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-search-plus"
-})])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "date-time"
-}, " 28 Jul, 2021"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=3"
-}, " Excepteur sint occaecat cupidatat")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "write-comment"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=3"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-comments"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 0 Comments")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-desc"
-}, " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nul... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "read-more"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=3"
-}, "read more")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-image"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog2-909x600.jpg",
-  alt: "From Our Blog ",
-  title: "From Our Blog ",
-  "class": "img-thumbnail"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "post_hover"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  "class": "icon zoom",
-  title: "Click to view Full Image ",
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog2-909x600.jpg",
-  "data-lightbox": "example-set"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-search-plus"
-})])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "date-time"
-}, " 28 Jul, 2021"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=2"
-}, "Libro Lorem Vehicula Conseq")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "write-comment"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=2"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-comments"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 0 Comments")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-desc"
-}, " Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "read-more"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=2"
-}, "read more")])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-image"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog1-909x600.jpg",
-  alt: "From Our Blog ",
-  title: "From Our Blog ",
-  "class": "img-thumbnail"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "post_hover"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  "class": "icon zoom",
-  title: "Click to view Full Image ",
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog1-909x600.jpg",
-  "data-lightbox": "example-set"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-search-plus"
-})])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "date-time"
-}, " 28 Jul, 2021"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=1"
-}, "Nostrum Iesum Christum cupidatat")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "write-comment"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-comments"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 0 Comments")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "blog-desc"
-}, " Lorem ipsum dolor sit amet, consectetuer adipiscing. Aenean commodo ligula eget dolor. Aen... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "read-more"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&blogger_id=1"
-}, "read more")])])])])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "blog_default_width",
-  style: {
-    "display": "none",
-    "visibility": "hidden"
-  }
-})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <script type=\"text/javascript\">\n\n  $(document).ready(function(){\n    $('.blogcarousel').owlCarousel({\n      items: 3,\n      autoPlay: false,\n      singleItem: false,\n      navigation: true,\n      navigationText: ['<i class=\"fa fa-angle-left\"></i>', '<i class=\"fa fa-angle-right\"></i>'],\n      pagination: true,\n      itemsDesktop : [980,3],\n      itemsDesktopSmall:[979,2],\n      itemsTablet : [479,1]\n    });\n  });   \n</script> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"blog-mainhead\"><div class=\"box-heading\">From Our Blog </div><div class=\"sub-title\">Contrary to popular belief, Lorem Ipsum is</div><div class=\"box megnorblog\"><div class=\"box-content\"><div class=\"box-product blogcarousel\" id=\"blog-carousel\"><div class=\"blog-item\"><div class=\"product-block\"><div class=\"blog-left\"><div class=\"blog-image\"><img src=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog8-909x600.jpg\" alt=\"From Our Blog \" title=\"From Our Blog \" class=\"img-thumbnail\"><p class=\"post_hover\"><a class=\"icon zoom\" title=\"Click to view Full Image \" href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog8-909x600.jpg\" data-lightbox=\"example-set\"><i class=\"fa fa-search-plus\"></i></a></p></div></div><div class=\"blog-right\"><div class=\"date-time\"> 28 Jul, 2021</div><h4><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=6\">Passage of Lorem Ipsum</a></h4><div class=\"write-comment\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=6\"><i class=\"fa fa-comments\"></i> 0 Comments</a></div><div class=\"blog-desc\"> Lorem ipsum dolor sit amet, consectetuer adipiscing. Aenean commodo ligula eget dolor. Aen... </div><div class=\"read-more\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=6\">read more</a></div></div></div></div><div class=\"blog-item\"><div class=\"product-block\"><div class=\"blog-left\"><div class=\"blog-image\"><img src=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog4-909x600.jpg\" alt=\"From Our Blog \" title=\"From Our Blog \" class=\"img-thumbnail\"><p class=\"post_hover\"><a class=\"icon zoom\" title=\"Click to view Full Image \" href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog4-909x600.jpg\" data-lightbox=\"example-set\"><i class=\"fa fa-search-plus\"></i></a></p></div></div><div class=\"blog-right\"><div class=\"date-time\"> 28 Jul, 2021</div><h4><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=5\">Blend into the Nature for freshness</a></h4><div class=\"write-comment\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=5\"><i class=\"fa fa-comments\"></i> 0 Comments</a></div><div class=\"blog-desc\"> Passage of Lorem Ipsum, you need to be sure there isn&#39;t anything embarrassing hidden in Mi... </div><div class=\"read-more\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=5\">read more</a></div></div></div></div><div class=\"blog-item\"><div class=\"product-block\"><div class=\"blog-left\"><div class=\"blog-image\"><img src=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog3-909x600.jpg\" alt=\"From Our Blog \" title=\"From Our Blog \" class=\"img-thumbnail\"><p class=\"post_hover\"><a class=\"icon zoom\" title=\"Click to view Full Image \" href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog3-909x600.jpg\" data-lightbox=\"example-set\"><i class=\"fa fa-search-plus\"></i></a></p></div></div><div class=\"blog-right\"><div class=\"date-time\"> 28 Jul, 2021</div><h4><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=4\"> Peat book is a treatise</a></h4><div class=\"write-comment\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=4\"><i class=\"fa fa-comments\"></i> 0 Comments</a></div><div class=\"blog-desc\"> Link: St. Louis Blues Audio shortcode: “Lorem ipsum dolor sit amet, consectetur adipiscing... </div><div class=\"read-more\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=4\">read more</a></div></div></div></div><div class=\"blog-item\"><div class=\"product-block\"><div class=\"blog-left\"><div class=\"blog-image\"><img src=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog7-909x600.jpg\" alt=\"From Our Blog \" title=\"From Our Blog \" class=\"img-thumbnail\"><p class=\"post_hover\"><a class=\"icon zoom\" title=\"Click to view Full Image \" href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog7-909x600.jpg\" data-lightbox=\"example-set\"><i class=\"fa fa-search-plus\"></i></a></p></div></div><div class=\"blog-right\"><div class=\"date-time\"> 28 Jul, 2021</div><h4><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=3\"> Excepteur sint occaecat cupidatat</a></h4><div class=\"write-comment\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=3\"><i class=\"fa fa-comments\"></i> 0 Comments</a></div><div class=\"blog-desc\"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nul... </div><div class=\"read-more\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=3\">read more</a></div></div></div></div><div class=\"blog-item\"><div class=\"product-block\"><div class=\"blog-left\"><div class=\"blog-image\"><img src=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog2-909x600.jpg\" alt=\"From Our Blog \" title=\"From Our Blog \" class=\"img-thumbnail\"><p class=\"post_hover\"><a class=\"icon zoom\" title=\"Click to view Full Image \" href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog2-909x600.jpg\" data-lightbox=\"example-set\"><i class=\"fa fa-search-plus\"></i></a></p></div></div><div class=\"blog-right\"><div class=\"date-time\"> 28 Jul, 2021</div><h4><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=2\">Libro Lorem Vehicula Conseq</a></h4><div class=\"write-comment\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=2\"><i class=\"fa fa-comments\"></i> 0 Comments</a></div><div class=\"blog-desc\"> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece... </div><div class=\"read-more\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=2\">read more</a></div></div></div></div><div class=\"blog-item\"><div class=\"product-block\"><div class=\"blog-left\"><div class=\"blog-image\"><img src=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog1-909x600.jpg\" alt=\"From Our Blog \" title=\"From Our Blog \" class=\"img-thumbnail\"><p class=\"post_hover\"><a class=\"icon zoom\" title=\"Click to view Full Image \" href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/blog1-909x600.jpg\" data-lightbox=\"example-set\"><i class=\"fa fa-search-plus\"></i></a></p></div></div><div class=\"blog-right\"><div class=\"date-time\"> 28 Jul, 2021</div><h4><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=1\">Nostrum Iesum Christum cupidatat</a></h4><div class=\"write-comment\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=1\"><i class=\"fa fa-comments\"></i> 0 Comments</a></div><div class=\"blog-desc\"> Lorem ipsum dolor sit amet, consectetuer adipiscing. Aenean commodo ligula eget dolor. Aen... </div><div class=\"read-more\"><a href=\"https://opencart.templatemela.com/OPC10/OPC100248/OPC1/index.php?route=information/blogger&amp;blogger_id=1\">read more</a></div></div></div></div></div></div></div><span class=\"blog_default_width\" style=\"display:none;visibility:hidden;\"></span></div>", 1);
+
+var _hoisted_8 = {
   id: "carousel-0",
   "class": "banners-slider-carousel"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+var _hoisted_9 = {
   "class": "box-content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "customNavigation"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   "class": "prev fa fa-arrow-left"
 }, " "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   "class": "next fa fa-arrow-right"
-}, " ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-carousel",
-  id: "module-0-carousel"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "slider-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b2-138x80.png",
-  "class": "img-responsive",
-  alt: "NFL"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "slider-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b3-138x80.png",
-  "class": "img-responsive",
-  alt: "RedBull"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "slider-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b4-138x80.png",
-  "class": "img-responsive",
-  alt: "Sony"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "slider-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b1-138x80.png",
-  "class": "img-responsive",
-  alt: "Coca Cola"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "slider-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b5-138x80.png",
-  "class": "img-responsive",
-  alt: "Burger King"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "slider-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b2-138x80.png",
-  "class": "img-responsive",
-  alt: "Canon"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "slider-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b3-138x80.png",
-  "class": "img-responsive",
-  alt: "Harley Davidson"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "slider-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b5-138x80.png",
-  "class": "img-responsive",
-  alt: "Dell"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "slider-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b3-138x80.png",
-  "class": "img-responsive",
-  alt: "Disney"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "slider-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b4-138x80.png",
-  "class": "img-responsive",
-  alt: "Starbucks"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "slider-item"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "product-block-inner"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://opencart.templatemela.com/OPC10/OPC100248/OPC1/image/cache/catalog/b1-138x80.png",
-  "class": "img-responsive",
-  alt: "Nintendo"
-})])])])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+}, " ")], -1
+/* HOISTED */
+);
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "module_default_width",
   style: {
     "display": "none",
     "visibility": "hidden"
   }
-})])], -1
+}, null, -1
 /* HOISTED */
 );
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "content_footer_top"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <script>\n                  function subscribe()\n                  {\n                   var emailpattern = /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;\n                   var email = $('#txtemail').val();\n                   if(email != \"\")\n                   {\n                    if(!emailpattern.test(email))\n                    {\n                     $('.text-danger').remove();\n                     var str = '<span class=\"error\">Invalid Email</span>';\n                     $('#txtemail').after('<div class=\"text-danger\">Invalid Email</div>');\n\n                     return false;\n                   }\n                   else\n                   {\n                     $.ajax({\n                      url: 'index.php?route=extension/module/newsletters/news',\n                      type: 'post',\n                      data: 'email=' + $('#txtemail').val(),\n                      dataType: 'json',\n                      \n                      \n                      success: function(json) {\n                        \n                        $('.text-danger').remove();\n                        $('#txtemail').after('<div class=\"text-danger\">' + json.message + '</div>');\n                        \n                      }\n                      \n                    });\n                     return false;\n                   }\n                 }\n                 else\n                 {\n                  $('.text-danger').remove();\n                  $('#txtemail').after('<div class=\"text-danger\">Email Is Require</div>');\n                  $(email).focus();\n\n                  return false;\n                }\n                \n\n              }\n            </script> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "newsletter"
@@ -3195,10 +2638,39 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, _hoisted_2, _hoisted_3, _hoisted_4], 64
+  var _component_Brand = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Brand");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <script type=\"text/javascript\">\n\n  $(document).ready(function(){\n    $('.blogcarousel').owlCarousel({\n      items: 3,\n      autoPlay: false,\n      singleItem: false,\n      navigation: true,\n      navigationText: ['<i class=\"fa fa-angle-left\"></i>', '<i class=\"fa fa-angle-right\"></i>'],\n      pagination: true,\n      itemsDesktop : [980,3],\n      itemsDesktopSmall:[979,2],\n      itemsTablet : [479,1]\n    });\n  });   \n</script> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Brand)])]), _hoisted_11])]), _hoisted_12], 64
   /* STABLE_FRAGMENT */
   );
 }
+
+/***/ }),
+
+/***/ "./resources/js/user/components/Brand.vue":
+/*!************************************************!*\
+  !*** ./resources/js/user/components/Brand.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Brand_vue_vue_type_template_id_56436864__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Brand.vue?vue&type=template&id=56436864 */ "./resources/js/user/components/Brand.vue?vue&type=template&id=56436864");
+/* harmony import */ var _Brand_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Brand.vue?vue&type=script&lang=js */ "./resources/js/user/components/Brand.vue?vue&type=script&lang=js");
+/* harmony import */ var _var_www_html_craft_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_var_www_html_craft_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Brand_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Brand_vue_vue_type_template_id_56436864__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/user/components/Brand.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
 
 /***/ }),
 
@@ -3229,6 +2701,21 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/user/components/Brand.vue?vue&type=script&lang=js":
+/*!************************************************************************!*\
+  !*** ./resources/js/user/components/Brand.vue?vue&type=script&lang=js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Brand_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Brand_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Brand.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/Brand.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/user/views/Home.vue?vue&type=script&lang=js":
 /*!******************************************************************!*\
   !*** ./resources/js/user/views/Home.vue?vue&type=script&lang=js ***!
@@ -3241,6 +2728,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Home_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Home.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/views/Home.vue?vue&type=script&lang=js");
  
+
+/***/ }),
+
+/***/ "./resources/js/user/components/Brand.vue?vue&type=template&id=56436864":
+/*!******************************************************************************!*\
+  !*** ./resources/js/user/components/Brand.vue?vue&type=template&id=56436864 ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Brand_vue_vue_type_template_id_56436864__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Brand_vue_vue_type_template_id_56436864__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Brand.vue?vue&type=template&id=56436864 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/Brand.vue?vue&type=template&id=56436864");
+
 
 /***/ }),
 
