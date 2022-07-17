@@ -1,7 +1,6 @@
 require('./bootstrap');
 
 import { createApp } from 'vue'
-import vuetify from 'vuetify'
 import router from './router'
 import App from './App.vue'
 import VueSweetalert2 from 'vue-sweetalert2';
