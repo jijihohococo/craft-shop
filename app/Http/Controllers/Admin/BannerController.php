@@ -62,8 +62,8 @@ class BannerController extends Controller
             'name'=> cutSpeicialChar(rand() . $request->title) ,
             'path'=>'banner_images',
             'old_file'=>null , 
-            'width'  => null , 
-            'height' => null ],$request,$banner );
+            'width'  => 920 , 
+            'height' => 480 ],$request,$banner );
         $banner->save( $banner->getAttributes() );
         return response()->json([
             'message' => $banner->title . ' Banner is created successfully'
@@ -112,8 +112,8 @@ class BannerController extends Controller
             'name'=> cutSpeicialChar(rand() . $request->title) ,
             'path'=>'banner_images',
             'old_file'=> $banner->pic , 
-            'width'  => null , 
-            'height' => null ],$request,$newBanner );
+            'width'  => 920 , 
+            'height' => 480 ],$request,$newBanner );
         $banner->update($newBanner->getAttributes());
         return response()->json([
             'message' => $request->title . ' Banner is updated successfully'

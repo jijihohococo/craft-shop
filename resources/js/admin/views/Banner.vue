@@ -48,6 +48,7 @@
                                     />
                                 </th>
                                 <th>Title</th>
+                                <th>Picture</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -64,6 +65,7 @@
                                     />
                                 </td>
                                 <td>{{ banner.title }}</td>
+                                <td><img class="img-fluid" :src="'/image/banner_images/'+banner.pic"></td>
                                 <td>{{ banner.deleted_at }}</td>
                                 <td class="text-left">
                                     <ViewButton :data_name="banner.title" :data_model="content" :data_id="banner.id" />

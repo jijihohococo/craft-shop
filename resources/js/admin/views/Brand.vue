@@ -46,6 +46,7 @@
                                     ref="deleteAll"
                                     /></th>
                                     <th>Name</th>
+                                    <th>Picture</th>
                                     <th>Deleted At</th>
                                     <th>Operation</th>
                                 </tr>
@@ -60,6 +61,7 @@
                                         ref="deleteCheck"
                                         /></td>
                                         <td>{{ brand.name }}</td>
+                                        <td><img :src="'/image/brand_images/'+brand.pic"></td>
                                         <td>{{ brand.deleted_at }}</td>
                                         <td class="text-left">
                                             <ViewButton :data_name="brand.name" :data_model="content" :data_id="brand.id" />
