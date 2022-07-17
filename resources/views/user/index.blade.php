@@ -3040,7 +3040,7 @@
 <!-- isotope min js --> 
 <script src="https://bestwebcreator.com/shopwise/demo/assets/js/isotope.min.js"></script>
 <!-- jquery.dd.min js -->
-<script src="https://bestwebcreator.com/shopwise/demo/assets/js/jquery.dd.min.js"></script>
+<!-- <script src="https://bestwebcreator.com/shopwise/demo/assets/js/jquery.dd.min.js"></script> -->
 <!-- slick js -->
 <script src="https://bestwebcreator.com/shopwise/demo/assets/js/slick.min.js"></script>
 <!-- elevatezoom js -->
