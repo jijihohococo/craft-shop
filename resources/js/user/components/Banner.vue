@@ -1,5 +1,4 @@
 <template>
-	<!-- START SECTION BANNER -->
 <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
   <div class="container">
       <div class="row">
@@ -7,7 +6,8 @@
                 <div id="carouselExampleControls" class="carousel slide light_arrow" data-ride="carousel">
                     <div class="carousel-inner">
                     	<template v-for="(banner,key) in banners" >
-                        <div :class="key==0 ? 'carousel-item active background_bg' : 'carousel-item background_bg'" :data-img-src="'/image/banner_images/'+banner.pic">
+                        <div :class="key==0 ? 'carousel-item active background_bg' : 'carousel-item background_bg'"
+                        v-bind:style="{ 'background-image': 'url(/image/banner_images/' + banner.pic + ')' }" >
                             <div class="banner_slide_content banner_content_inner">
                                 <div class="col-lg-8 col-10">
                                     <div class="banner_content overflow-hidden">
@@ -30,7 +30,6 @@
         </div>
     </div>
 </div>
-<!-- END SECTION BANNER -->
 </template>
 <script >
 	export default {

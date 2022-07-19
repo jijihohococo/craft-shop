@@ -18,8 +18,8 @@
 <!-- Latest Bootstrap min CSS -->
 <link rel="stylesheet" href="{{ asset('user/bootstrap/css/bootstrap.min.css') }}">
 <!-- Google Font -->
-<link href="{{ asset('font/Roboto.css') }}" rel="stylesheet"> 
-<link href="{{ asset('font/Poppins.css') }}" rel="stylesheet"> 
+<link href="{{ asset('user/fonts/Roboto.css') }}" rel="stylesheet"> 
+<link href="{{ asset('user/fonts/Poppins.css') }}" rel="stylesheet"> 
 <!-- Icon Font CSS -->
 <link rel="stylesheet" href="{{ asset('user/css/all.min.css') }}">
 <link rel="stylesheet" href="{{ asset('user/css/ionicons.min.css') }}">
@@ -42,6 +42,7 @@
 
 </head>
 
+<body>
 <div id="app"></div>
 
 <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a> 
