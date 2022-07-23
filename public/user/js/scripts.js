@@ -24,12 +24,12 @@ PAGE JS
 	02. BACKGROUND IMAGE JS
 	*===================================*/
 	/*data image src*/
-	$(".background_bg").each(function() {
-		var attr = $(this).attr('data-img-src');
-		if (typeof attr !== typeof undefined && attr !== false) {
-			$(this).css('background-image', 'url(' + attr + ')');
-		}
-	});
+	// $(".background_bg").each(function() {
+	// 	var attr = $(this).attr('data-img-src');
+	// 	if (typeof attr !== typeof undefined && attr !== false) {
+	// 		$(this).css('background-image', 'url(' + attr + ')');
+	// 	}
+	// });
 	
 	/*===================================*
 	03. ANIMATION JS
@@ -823,28 +823,28 @@ PAGE JS
 	/*===================================*
 	*===================================*/
 	$( window ).on( "load", function() {
-		document.onkeydown = function(e) {
-			if(e.keyCode == 123) {
-			 return false;
-			}
-			if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
-			 return false;
-			}
-			if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
-			 return false;
-			}
-			if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
-			 return false;
-			}
+		// document.onkeydown = function(e) {
+		// 	if(e.keyCode == 123) {
+		// 	 return false;
+		// 	}
+		// 	if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+		// 	 return false;
+		// 	}
+		// 	if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+		// 	 return false;
+		// 	}
+		// 	if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+		// 	 return false;
+		// 	}
 		
-			if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){
-			 return false;
-			}      
-		 };
+		// 	if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){
+		// 	 return false;
+		// 	}      
+		//  };
 		 
-		$("html").on("contextmenu",function(){
-			return false;
-		});
+		// $("html").on("contextmenu",function(){
+		// 	return false;
+		// });
 	});
 	
 	

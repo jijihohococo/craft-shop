@@ -17,7 +17,7 @@
                             <div class="custom_select">
                                 <select class="first_null">
                                     <option value="">All Category </option>
-                                    <option :value="category.id" v-for="category in categories.data">{{ category.name }} </option>
+                                    <option :value="category.id" v-for="category in categories">{{ category.name }} </option>
                                 </select>
                             </div>
                         </div>
@@ -31,12 +31,12 @@
 </div>
 </template>
 <script >
-	import { categories  } from '../store/category.js';
 	export default {
-       data() {
-        return {
-          categories
-      }
-  }
-}
+        props : {
+            categories : {
+                type : Object ,
+                default : {}
+            }
+        }
+    }
 </script>

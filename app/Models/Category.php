@@ -28,6 +28,7 @@ class Category extends TransactionModel
                 $query->select(\DB::raw('GROUP_CONCAT(subcategories.name)'))
                 ->from('subcategories')
                 ->whereColumn('categories.id','subcategories.category_id')
+                ->where('deleted_at',NULL)
                 ->groupBy('subcategories.category_id');
             } ])
             ->orderBy('name')
