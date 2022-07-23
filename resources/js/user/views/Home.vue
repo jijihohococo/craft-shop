@@ -94,40 +94,7 @@
             </div>
         </div>
     </div>
-    <div class="middle-header dark_skin">
-      <div class="container">
-          <div class="nav_block">
-                <a class="navbar-brand" href="index.html">
-                    <img class="logo_light" src="https://bestwebcreator.com/shopwise/demo/assets/images/logo_light.png" alt="logo" />
-                    <img class="logo_dark" src="https://bestwebcreator.com/shopwise/demo/assets/images/logo_dark.png" alt="logo" />
-                </a>
-                <div class="contact_phone order-md-last">
-                    <i class="linearicons-phone-wave"></i>
-                    <span>123-456-7689</span>
-                </div>
-                <div class="product_search_form">
-                    <form>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="custom_select">
-                                    <select class="first_null">
-                                        <option value="">All Category</option>
-                                        <option value="Dresses">Dresses</option>
-                                        <option value="Shirt-Tops">Shirt & Tops</option>
-                                        <option value="T-Shirt">T-Shirt</option>
-                                        <option value="Pents">Pents</option>
-                                        <option value="Jeans">Jeans</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <input class="form-control" placeholder="Search Product..." required=""  type="text">
-                            <button type="submit" class="search_btn"><i class="linearicons-magnifier"></i></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <Search />
     <div class="bottom_header light_skin main_menu_uppercase bg_dark mb-4">
       <div class="container">
             <div class="row"> 
@@ -2915,9 +2882,11 @@
 </template>
 <script >
 	import Banner from '../components/Banner';
+    import Search from '../components/Search';
 	export default {
 		components : {
-			Banner
+			Banner,
+            Search
 		}
 	}
 </script>

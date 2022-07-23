@@ -40,19 +40,13 @@
 		},
 		methods: {
 			getBanners(){
-				window.axios.get( 'get_banners' ).then( (response) => {
+				window.axios.get( 'banners' ).then( (response) => {
 					this.banners=response.data.banners
 				} )
 			}
 		},
 		created(){
 			this.getBanners()
-		},
-		mounted : function (){
-			$('#myCarousel').carousel({
-				interval: 3000,
-				cycle: true
-			});
 		}
 	}
 </script>
