@@ -170,10 +170,8 @@ __webpack_require__.r(__webpack_exports__);
       content: 'Shop',
       shops: {},
       actions: {
-        create: '',
         read: '',
-        update: '',
-        "delete": ''
+        update: ''
       }
     };
   },

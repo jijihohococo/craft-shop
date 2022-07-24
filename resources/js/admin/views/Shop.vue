@@ -71,10 +71,8 @@
             content : 'Shop' ,
             shops : {},
             actions : {
-                create : '' ,
                 read : '' ,
-                update : '' ,
-                delete : ''
+                update : ''
             }
         }
     },

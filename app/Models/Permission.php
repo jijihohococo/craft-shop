@@ -32,7 +32,6 @@ class Permission extends TransactionModel
             'User',
             'Currency',
             'Tax',
-            'ShopSetting',
             'Attribute',
             'Color'
         ];
