@@ -1,6 +1,7 @@
 import { createRouter , createWebHistory } from 'vue-router'
 
 //------ADMIN ROUTES------//
+import shopRoutes from './admin/shop';
 import adminRoutes from './admin/admin';
 import brandRoutes from './admin/brand';
 import bannerRoutes from './admin/banner';
@@ -49,6 +50,7 @@ const router = createRouter({
     component: AdminPage ,
     children: [
     ...loginRoutes,
+    ...shopRoutes,
     ...adminRoutes,
     ...dashboardRoutes,
     ...bannerRoutes,

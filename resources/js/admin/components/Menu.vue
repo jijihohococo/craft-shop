@@ -65,6 +65,7 @@
    return {
      admin : {},
      dataRoutes : {
+      'shop' : "Shop",
       'admin' : "Admin",
       'attribute' : "Attribute",
       'category' : "Category" ,

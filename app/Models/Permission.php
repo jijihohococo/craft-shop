@@ -20,6 +20,7 @@ class Permission extends TransactionModel
     public static function getModels(){
         return [
             'Permission',
+            'Shop',
             'Admin',
             'Banner',
             'Category',

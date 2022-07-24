@@ -6,6 +6,8 @@ Route::post('login','Admin\Auth\LoginController@login');
 
 Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
+	Route::resource('shops','Admin\ShopController');
+
 	Route::resource('categories','Admin\CategoryController');
 	Route::get('category_search','Admin\CategoryController@search');
 	Route::get('category_trash_search','Admin\CategoryController@trashSearch');

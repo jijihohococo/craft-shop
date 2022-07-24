@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class ,
             AdminRoleSeeder::class,
             RolePermissionSeeder::class,
+            ShopSeeder::class ,
             CurrencySeeder::class ,
             ColorSeeder::class ,
             TaxSeeder::class

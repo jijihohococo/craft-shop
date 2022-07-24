@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ShopSetting;
+use App\Models\Shop;
 use App\Traits\AdminRolePermission;
-class ShopSettingController extends Controller
+class ShopController extends Controller
 {
     use AdminRolePermission;
 
     public function __construct(){
-        $this->authorized('ShopSetting');
+        $this->authorized('Shop');
     }
     /**
      * Display a listing of the resource.
@@ -21,6 +21,9 @@ class ShopSettingController extends Controller
     public function index()
     {
         //
+        return response()->json([
+            'shops' => Shop::latest('id')->take(1)->get()
+        ]);
     }
 
     /**
@@ -64,6 +67,9 @@ class ShopSettingController extends Controller
     public function edit($id)
     {
         //
+        return response()->json([
+            'shop' => Shop::findOrFail($id)
+        ]);
     }
 
     /**
@@ -76,6 +82,19 @@ class ShopSettingController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate($this->validateData($id));
+        $shop = Shop::findOrFail($id);
+        $newShop=new Shop($request->all());
+        oneFileUpload(['file' => 'pic',
+            'name'=> cutSpeicialChar(rand() . $request->name) ,
+            'path'=>'shop_images',
+            'old_file'=> $shop->pic , 
+            'width'  => 182 , 
+            'height' => 47 ],$request,$newShop );
+        $shop->update($newShop->getAttributes());
+        return response()->json([
+            'message' => $request->name . ' Shop is updated successfully'
+        ]);
     }
 
     /**
