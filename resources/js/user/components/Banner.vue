@@ -11,8 +11,6 @@
                             <div class="banner_slide_content banner_content_inner">
                                 <div class="col-lg-8 col-10">
                                     <div class="banner_content overflow-hidden">
-                                        <h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Get up to 50% off Today Only!</h5>
-                                        <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">{{ banner.title }}</h2>
                                         <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
                                     </div>
                                 </div>
