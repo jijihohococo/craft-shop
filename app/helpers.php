@@ -218,7 +218,7 @@ function requiredImage(){
 	return 'required|image|mimes:jpeg,jpg,png,svg,gif,webp|max:4096';
 }
 function nullableImage(){
-	return 'nullable|image|mimes:jpeg,jpg,png,svg,gif,webp|max:4096';
+	return 'nullable|mimes:jpeg,jpg,png,svg,gif,webp|max:4096';
 }
 
 function changeDaysToMinutes(int $days){

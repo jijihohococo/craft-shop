@@ -156,8 +156,8 @@ class AdminController extends Controller
 
     private function validateData($id=NULL){
         return [
-            'name' => 'required|string',
-            'email' => ['required', 'email' , 'max:100', $id==null ? 'unique:admins' : 'unique:admins,name,'.$id ] ,
+            'name' => 'required|string|max:100',
+            'email' => ['required', 'email' , 'max:100', $id==null ? 'unique:admins' : 'unique:admins,email,'.$id ] ,
             'roles' => ['required','array']
         ];
     }

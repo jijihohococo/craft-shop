@@ -107,4 +107,15 @@ class ShopController extends Controller
     {
         //
     }
+
+    private function validateData($id){
+        return [
+            'name' => 'required|string|max:100',
+            'phone' => 'required|string|max:30',
+            'email' => ['required', 'email' , 'max:100',
+            'unique:shops,email,'.$id ] ,
+            'address' => 'required|string|max:100' ,
+            'pic' => nullableImage()
+        ];
+    }
 }

@@ -27,7 +27,7 @@ class TransactionListener
      */
     public function handle($event)
     {
-        $class=trim(get_class($event->model),'App\Models\\');
+        $class=(new \ReflectionClass(get_class($event->model)))->getShortName();
         Transaction::create([
          'guard' =>  UserData::getGuard(),
          'user_id' => UserData::getId(),

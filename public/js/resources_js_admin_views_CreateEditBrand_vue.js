@@ -381,6 +381,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var pic = typeof this.fields.pic == 'string' && !isNaN(this.$route.params.id) ? '' : this.fields.pic;
       this.formData.set('name', this.fields.name);
       this.formData.set('pic', pic);
+      console.log(pic);
 
       if (update !== null) {
         this.formData.append('_method', 'PATCH');
