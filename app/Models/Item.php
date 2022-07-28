@@ -26,6 +26,25 @@ class Item extends TransactionModel
         return $this->belongsTo('App\Models\Subcategory')->withDefault()->withTrashed();
     }
 
+    public function scopeSearchWithCategory($query,$searchData){
+        return $query->orWherein('category_id',
+            function($query) use($searchData) {
+                $query->select('id')
+                ->from('categories')
+                ->where('name','like', $searchData );
+            }
+        );
+    }
+
+    public function scopeSearchWithSubcategory($query,$searchData){
+        return $query->orWherein('subcategory_id',
+            function($query) use($searchData){
+            $query->select('id')
+            ->from('subcategories')
+            ->where('name','like',$searchData);
+        });
+    }
+
     public function scopeSelectItemData($query){
         return $query->selectCategory()
         ->selectSubcategory()

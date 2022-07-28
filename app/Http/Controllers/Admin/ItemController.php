@@ -315,19 +315,10 @@ public function search(Request $request){
     return response()->json([
         'items' => Item::selectItemData()
         ->where('name','like',$searchData )
-        ->orWherein('category_id',
-            function($query) use($searchData) {
-                $query->select('id')
-                ->from('categories')
-                ->where('name','like', $searchData );
-            }
-        )
-        ->orWherein('subcategory_id',function($query) use($searchData){
-            $query->select('id')
-            ->from('subcategories')
-            ->where('name','like',$searchData);
-        })
-        ->latest('id')->paginate(10)
+        ->searchWithCategory($searchData)
+        ->searchWithSubcategory($searchData)
+        ->latest('id')
+        ->paginate(10)
     ]);
 }
 
@@ -337,19 +328,10 @@ public function trashSearch(Request $request){
         'items' => Item::onlyTrashed()
         ->selectItemData()
         ->where('name','like',$searchData )
-        ->orWherein('category_id',
-            function($query) use($searchData) {
-                $query->select('id')
-                ->from('categories')
-                ->where('name','like', $searchData );
-            }
-        )
-        ->orWherein('subcategory_id',function($query) use($searchData){
-            $query->select('id')
-            ->from('subcategories')
-            ->where('name','like',$searchData);
-        })
-        ->latest('id')->paginate(10)
+        ->searchWithCategory($searchData)
+        ->searchWithSubcategory($searchData)
+        ->latest('id')
+        ->paginate(10)
     ]);
 }
 
