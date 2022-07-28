@@ -16,12 +16,6 @@ class Category extends TransactionModel
 
     public static $cacheKey='categories_cache';
 
-    public function getAll(){
-        return Cache::tags( self::$cacheKey )->remember('all-categories',60*60*24,function(){
-            return self::orderBy('name')->get();
-        });
-    }
-
     public function getWithSubcategories(){
         return Cache::tags(self::$cacheKey)->remember('all-categories',60*60*24,function(){
             return self::addSelect(['subcategories' => function($query){
