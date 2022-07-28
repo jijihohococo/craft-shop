@@ -1600,7 +1600,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-            style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)('background-color:' + variant + ';width:30px;height:30px;display:inline-block;margin-left:10px;')
+            style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)('background-color:' + item.colorCodes.split(',')[key] + ';width:30px;height:30px;display:inline-block;margin-left:10px;')
           }, null, 4
           /* STYLE */
           ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"color\" :value=\"item.colorCodes.split(',')[key]\" disabled> ")];

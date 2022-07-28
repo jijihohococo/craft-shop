@@ -12,10 +12,7 @@ class ItemController extends Controller
     //
     public function show(Request $request,$id){
         return response()->json([
-            'item' => Item::selectCategory()
-            ->selectSubcategory()
-            ->selectItemVariants()
-            ->selectBrand()
+            'item' => Item::selectItemData()
             ->where('id',$id)
             ->first() ,
             'reviews' => $this->getReviews('item_reviews','item_id',$id)

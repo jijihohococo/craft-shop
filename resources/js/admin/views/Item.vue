@@ -69,11 +69,12 @@
                                     <td>{{ item.category_name }}</td>
                                     <td>{{ item.subcategory_name }}</td>
                                     <td>{{ item.brand_name }}</td>
-                                    <td ><div >
+                                    <td >
+                                        <div >
                                         <template v-if="item.variants!==null" >
                                         <template v-for="(variant,key) in item.variants.split(',')">
                                         <router-link :to="{ name : 'item.variant' , params : { id: variant } }">
-                                            <div :style="'background-color:'+variant+';width:30px;height:30px;display:inline-block;margin-left:10px;'"></div>
+                                            <div :style="'background-color:'+item.colorCodes.split(',')[key]+';width:30px;height:30px;display:inline-block;margin-left:10px;'"></div>
                                             <!-- <input type="color" :value="item.colorCodes.split(',')[key]" disabled> -->
                                         </router-link>
                                     </template>

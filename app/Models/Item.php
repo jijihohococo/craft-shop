@@ -26,6 +26,13 @@ class Item extends TransactionModel
         return $this->belongsTo('App\Models\Subcategory')->withDefault()->withTrashed();
     }
 
+    public function scopeSelectItemData($query){
+        return $query->selectCategory()
+        ->selectSubcategory()
+        ->selectBrand()
+        ->selectItemVariants();
+    }
+
     public function scopeSelectSubcategory($query){
         return $query->addSelect(['subcategory_name' => function($query) {
             $query->select('name')

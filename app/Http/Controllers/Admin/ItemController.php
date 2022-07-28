@@ -24,11 +24,7 @@ class ItemController extends Controller
     {
         //
         return response()->json([
-            'items' => Item::select(['id','name','created_at','deleted_at'])
-            ->selectCategory()
-            ->selectSubcategory()
-            ->selectItemVariants()
-            ->selectBrand()
+            'items' => Item::selectItemData()
             ->latest('id')
             ->paginate(10)
         ]);
@@ -37,10 +33,7 @@ class ItemController extends Controller
     public function trash(){
         return response()->json([
             'items' => Item::onlyTrashed()
-            ->selectCategory()
-            ->selectSubcategory()
-            ->selectItemVariants()
-            ->selectBrand()
+            ->selectItemData()
             ->latest('id')
             ->paginate(10)
         ]);
@@ -320,10 +313,7 @@ class ItemController extends Controller
 public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
-        'items' => Item::selectCategory()
-        ->selectSubcategory()
-        ->selectItemVariants()
-        ->selectBrand()
+        'items' => Item::selectItemData()
         ->where('name','like',$searchData )
         ->orWherein('category_id',
             function($query) use($searchData) {
@@ -345,10 +335,7 @@ public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
         'items' => Item::onlyTrashed()
-        ->selectCategory()
-        ->selectSubcategory()
-        ->selectItemVariants()
-        ->selectBrand()
+        ->selectItemData()
         ->where('name','like',$searchData )
         ->orWherein('category_id',
             function($query) use($searchData) {
