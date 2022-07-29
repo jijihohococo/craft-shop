@@ -16,7 +16,6 @@ window.axios.defaults.headers.common = {
 
 
 const app=createApp(App);
-//app.use(Vuetify);
 app.use(router);
 app.use(VueSweetalert2);
 
