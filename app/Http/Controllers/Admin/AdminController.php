@@ -11,6 +11,8 @@ class AdminController extends Controller
 {
     use AdminRolePermission;
 
+    private $roles=[];
+
     public function __construct(){
         $this->authorized('Admin');
     }
@@ -46,15 +48,24 @@ class AdminController extends Controller
         //
     }
 
-    private function insertAdminRoles($roles,$adminId){
-        $adminRoles=[];
-        foreach($roles as $role){
-            array_push($adminRoles, [
-                'admin_id' => $adminId ,
-                'role_id' => $role
-            ]);
-        }
-        AdminRole::insert($adminRoles);
+    private function insertAdminRoles($roles,$adminId,$update=NULL){
+        // $adminRoles=[];
+        // foreach($roles as $role){
+        //     array_push($adminRoles, [
+        //         'admin_id' => $adminId ,
+        //         'role_id' => $role
+        //     ]);
+        // }
+        // AdminRole::insert($adminRoles);
+        add_high_light([
+            'col'=>$roles,
+            'old_col' => $this->roles ,
+            'obj' => 'App\Models\AdminRole',
+            'parent_id'=>'admin_id',
+            'parent_data'=>$adminId,
+            'child_col'=>'role_id',
+            'update'=> $update
+        ]);
     }
 
     /**
@@ -69,7 +80,7 @@ class AdminController extends Controller
         $request->validate($this->validateData());
         DB::beginTransaction();
         $admin=Admin::create($request->all());
-        $this->insertAdminRoles($request->roles,$adminId);
+        $this->insertAdminRoles($request->roles,$admin->id);
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Admin is created successfully' 
@@ -115,11 +126,12 @@ class AdminController extends Controller
         DB::beginTransaction();
         $admin=Admin::findOrFail($id);
         $admin->update($request->all());
-        $roles=$admin->roles->pluck('role_id')->toArray();
-        if( $roles+$request->roles!==$roles ){
-            AdminRole::where('admin_id',$admin->id )->delete();
-            $this->insertAdminRoles($request->roles,$admin->id);
-        }
+        $this->roles=$admin->roles->pluck('role_id')->toArray();
+        $this->insertAdminRoles($request->roles,$id,'yes');
+        // if( $roles+$request->roles!==$roles ){
+        //     AdminRole::where('admin_id',$admin->id )->delete();
+        //     $this->insertAdminRoles($request->roles,$admin->id);
+        // }
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Admin is updated successfully' 

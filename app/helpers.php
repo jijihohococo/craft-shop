@@ -22,10 +22,8 @@ function getUserId($userId=NULL){
 
 function add_high_light(array $array){
 	if(isset($array['col'])){
-		if($array['update']=="yes"){
-			$array['obj']::where($array['parent_id'],$array['parent_data'])->delete();
-		}
-		$objArray=[];
+		$saved=function() use($array) {
+			$objArray=[];
 		foreach(array_filter($array['col']) as $data){
 			array_push($objArray , [
 				$array['parent_id']=>$array['parent_data'],
@@ -34,6 +32,14 @@ function add_high_light(array $array){
 		}
 		if(!empty($objArray)){
 			$array['obj']::insert($objArray);
+		}
+		};
+		if($array['update']=="yes" && 
+		($array['old_col']+$array['col']!==$array['old_col']) ){
+			$array['obj']::where($array['parent_id'],$array['parent_data'])->delete();
+			$saved();
+		}elseif($array['update']==NULL){
+			$saved();
 		}
 	}
 

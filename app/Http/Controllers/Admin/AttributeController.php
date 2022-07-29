@@ -11,6 +11,8 @@ class AttributeController extends Controller
 
     use AdminRolePermission;
 
+    private $sets;
+
     public function __construct(){
         $this->authorized('Attribute');
     }
@@ -92,7 +94,9 @@ class AttributeController extends Controller
     {
         //
         $request->validate($this->validateData($id));
-        Attribute::findOrFail($id)->update($request->all());
+        $attribute=Attribute::findOrFail($id);
+        $attribute->update($request->all());
+        $this->sets=$attribute->sets->pluck('set')->toArray();
         $this->addAttributeSets($request->sets , $id,'yes');
         return response()->json([
             'message' => $request->name . ' Attribute is updated successfully'
@@ -156,6 +160,7 @@ class AttributeController extends Controller
     private function addAttributeSets($sets,$id,$update=null){
         add_high_light([
             'col'=>$sets,
+            'old_col' => $this->sets ,
             'obj' => 'App\Models\AttributeSet',
             'parent_id'=>'attribute_id',
             'parent_data'=>$id,

@@ -12,6 +12,8 @@ class RoleController extends Controller
 
     use AdminRolePermission;
 
+    private $permissions=[];
+
     public function __construct(){
         $this->authorized('Role');
     }
@@ -53,6 +55,7 @@ class RoleController extends Controller
         
         add_high_light([
             'col'=>$permissions,
+            'old_col' => $this->permissions ,
             'obj' => 'App\Models\RolePermission',
             'parent_id'=>'role_id',
             'parent_data'=>$roleId,
@@ -126,6 +129,7 @@ class RoleController extends Controller
         DB::beginTransaction();
         $role=Role::findOrFail($id);
         $role->update($request->all());
+        $this->permissions=$role->permissions->pluck('permission_id')->toArray();
         $this->insertRolePermissions($request->permissions,$role->id,'yes');
         DB::commit();
         return response()->json([
