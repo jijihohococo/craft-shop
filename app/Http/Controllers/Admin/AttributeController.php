@@ -11,7 +11,7 @@ class AttributeController extends Controller
 
     use AdminRolePermission;
 
-    private $sets;
+    private $sets=[];
 
     public function __construct(){
         $this->authorized('Attribute');
