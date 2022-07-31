@@ -69,6 +69,8 @@
 
 	import File from '../components/File'
 
+	import { shop } from '../../store';
+
 	export default {
 		components: {
 			CreateEditHeader,
@@ -78,6 +80,7 @@
 		},
 		data(){
 			return {
+				shop ,
 				content : 'Shop',
 				fields : {
 					name : '',
@@ -135,6 +138,8 @@
 						this.$swal('Success',
 							response.data.message,
 							'success');
+						this.shop.changeData(this.fields);
+						document.title=this.shop.data.name
 						this.$router.push({path:'/admin/shop'})
 					}
 				}).catch( (error) => {
@@ -151,10 +156,11 @@
 
 						showSwalLoading(this);
 					}else{
-						this.fields=response.data.shop;
+						this.fields=this.shop.data;
 						this.fields.pics=[{
-							'filename':this.fields.pic,
-							'id': this.$route.params.id }]
+							'filename' : this.shop.data.pic ,
+							'id' : this.$route.params.id
+						}]
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'update')

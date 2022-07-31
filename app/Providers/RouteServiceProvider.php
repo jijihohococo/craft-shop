@@ -7,7 +7,8 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
-
+use View;
+use App\Models\Shop;
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -36,7 +37,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
-
+        $this->getShop();
         $this->routes(function () {
             Route::prefix('api')
             ->middleware('api')
@@ -64,5 +65,11 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
+    }
+
+    private function getShop(){
+        View::share([
+            'shop' => Shop::findOrFail(1)
+        ]);
     }
 }

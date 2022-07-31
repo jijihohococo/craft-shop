@@ -14,11 +14,9 @@ window.axios.defaults.headers.common = {
 };
 
 
-
 const app=createApp(App);
 app.use(router);
 app.use(VueSweetalert2);
-
 app.mount('#app');
 
 //new Vue({router}).$mount('#app')

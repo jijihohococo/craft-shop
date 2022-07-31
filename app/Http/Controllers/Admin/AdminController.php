@@ -49,14 +49,6 @@ class AdminController extends Controller
     }
 
     private function insertAdminRoles($roles,$adminId,$update=NULL){
-        // $adminRoles=[];
-        // foreach($roles as $role){
-        //     array_push($adminRoles, [
-        //         'admin_id' => $adminId ,
-        //         'role_id' => $role
-        //     ]);
-        // }
-        // AdminRole::insert($adminRoles);
         add_high_light([
             'col'=>$roles,
             'old_col' => $this->roles ,

@@ -20,9 +20,8 @@ class ShopController extends Controller
      */
     public function index()
     {
-        //
-        return response()->json([
-            'shops' => Shop::latest('id')->take(1)->get()
+        return  response()->json([
+            'message' => 'Success'
         ]);
     }
 
@@ -67,8 +66,8 @@ class ShopController extends Controller
     public function edit($id)
     {
         //
-        return response()->json([
-            'shop' => Shop::findOrFail($id)
+        return  response()->json([
+            'message' => 'Success'
         ]);
     }
 

@@ -19,13 +19,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="shop in shops" :key="shop.id">
-                                    <td>{{ shop.name }}</td>
-                                    <td><img :src="'/image/shop_images/'+shop.pic"></td>
+                                <tr >
+                                    <td>{{ shop.data.name }}</td>
+                                    <td><img :src="'/image/shop_images/'+shop.data.pic"></td>
                                     <td class="text-left">
-                                        <ViewButton :data_name="shop.name" :data_model="content" :data_id="shop.id" />
-                                        <EditButton v-if="actions.update" 
-                                        :content="content" link="shop.edit" :dataId="shop.id" />
+                                        <ViewButton 
+                                        :data_name="shop.data.name" 
+                                        :data_model="content"
+                                        :data_id="shop.data.id" />
+                                        <EditButton 
+                                        v-if="actions.update" 
+                                        :content="content" 
+                                        link="shop.edit" 
+                                        :dataId="shop.data.id" />
                                     </td>
                                 </tr>
                             </tbody>
@@ -58,6 +64,8 @@
 
     import { errorResponse , checkContentPermission , showSwalLoading , checkActions , unauthorizedActions } from '../helpers/check.js';
 
+    import { shop } from '../../store';
+
     export default {
         components: {
             ContentHeader,
@@ -68,8 +76,8 @@
         },
         data () {
            return {
+            shop ,
             content : 'Shop' ,
-            shops : {},
             actions : {
                 read : '' ,
                 update : ''
@@ -89,7 +97,7 @@
 
                     showSwalLoading(this);
                 }else{
-                   this.shops=response.data.shops
+                  // this.shops=response.data.shops
                    this.actions.read=true;
                }
            } ).catch( (error) => {

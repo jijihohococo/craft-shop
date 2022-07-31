@@ -7,7 +7,7 @@
      <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Craft Shop</title>
+      <title>{{ $shop->name }}</title>
 
       <!-- Google Font: Source Sans Pro -->
       <link rel="stylesheet" href="/css/google-font.css">
@@ -88,12 +88,14 @@
       <script src="/js/bootstrap-fileinput/theme.js" type="text/javascript"></script>
       @endif
       <script >
-       window.Laravel = {!! json_encode([
+        window.shop={!! json_encode($shop) !!};
+        
+        window.Laravel = {!! json_encode([
          'csrfToken' => csrf_token(),
          ])!!}
 
-       window.Urls = {!!json_encode([
-        'baseURL' => '/admin_api/',
+        window.Urls = {!!json_encode([
+          'baseURL' => '/admin_api/',
         //'login' => url('login'),
         //'logout' => url('logout'),
         ])!!}

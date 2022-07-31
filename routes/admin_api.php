@@ -4,6 +4,8 @@ Route::post('login','Admin\Auth\LoginController@login');
 
 // Route::get('get_token','Admin\SecureController@getToken');
 
+Route::get('shop','ShopController@get');
+
 Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	Route::resource('shops','Admin\ShopController');

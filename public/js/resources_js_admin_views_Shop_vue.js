@@ -151,6 +151,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Error__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Error */ "./resources/js/admin/components/Error.vue");
 /* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Loading */ "./resources/js/admin/components/Loading.vue");
 /* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../store */ "./resources/js/store.js");
+
 
 
 
@@ -167,8 +169,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      shop: _store__WEBPACK_IMPORTED_MODULE_6__.shop,
       content: 'Shop',
-      shops: {},
       actions: {
         read: '',
         update: ''
@@ -189,7 +191,7 @@ __webpack_require__.r(__webpack_exports__);
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_5__.showSwalLoading)(_this);
         } else {
-          _this.shops = response.data.shops;
+          // this.shops=response.data.shops
           _this.actions.read = true;
         }
       })["catch"](function (error) {
@@ -548,33 +550,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["header"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Loading), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), $options.checkAuthorizeActions($data.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.shops, function (shop) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
-      key: shop.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(shop.name), 1
-    /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-      src: '/image/shop_images/' + shop.pic
-    }, null, 8
-    /* PROPS */
-    , _hoisted_9)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
-      data_name: shop.name,
-      data_model: $data.content,
-      data_id: shop.id
-    }, null, 8
-    /* PROPS */
-    , ["data_name", "data_model", "data_id"]), $data.actions.update ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_EditButton, {
-      key: 0,
-      content: $data.content,
-      link: "shop.edit",
-      dataId: shop.id
-    }, null, 8
-    /* PROPS */
-    , ["content", "dataId"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
-  }), 128
-  /* KEYED_FRAGMENT */
-  ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body ")], 2112
-  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.shop.data.name), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: '/image/shop_images/' + $data.shop.data.pic
+  }, null, 8
+  /* PROPS */
+  , _hoisted_9)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
+    data_name: $data.shop.data.name,
+    data_model: $data.content,
+    data_id: $data.shop.data.id
+  }, null, 8
+  /* PROPS */
+  , ["data_name", "data_model", "data_id"]), $data.actions.update ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_EditButton, {
+    key: 0,
+    content: $data.content,
+    link: "shop.edit",
+    dataId: $data.shop.data.id
+  }, null, 8
+  /* PROPS */
+  , ["content", "dataId"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body ")], 64
+  /* STABLE_FRAGMENT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")])])) : $options.checkUnauthorizeActions($data.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
@@ -598,21 +594,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "showPageNumber": () => (/* binding */ showPageNumber),
 /* harmony export */   "checkActions": () => (/* binding */ checkActions),
-/* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions),
+/* harmony export */   "checkAuthorize": () => (/* binding */ checkAuthorize),
+/* harmony export */   "checkContentPermission": () => (/* binding */ checkContentPermission),
+/* harmony export */   "checkCreateEditPermission": () => (/* binding */ checkCreateEditPermission),
+/* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
+/* harmony export */   "deleteFromArray": () => (/* binding */ deleteFromArray),
+/* harmony export */   "deleteMultipleData": () => (/* binding */ deleteMultipleData),
+/* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
+/* harmony export */   "getModel": () => (/* binding */ getModel),
 /* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
 /* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
-/* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
-/* harmony export */   "deleteMultipleData": () => (/* binding */ deleteMultipleData),
-/* harmony export */   "deleteFromArray": () => (/* binding */ deleteFromArray),
-/* harmony export */   "checkContentPermission": () => (/* binding */ checkContentPermission),
-/* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
-/* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
-/* harmony export */   "checkAuthorize": () => (/* binding */ checkAuthorize),
-/* harmony export */   "checkCreateEditPermission": () => (/* binding */ checkCreateEditPermission),
+/* harmony export */   "showPageNumber": () => (/* binding */ showPageNumber),
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
-/* harmony export */   "getModel": () => (/* binding */ getModel)
+/* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
+/* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions)
 /* harmony export */ });
 function showPageNumber(currentPage) {
   var page = currentPage - 1;
@@ -795,6 +791,36 @@ function showSwalLoading(object) {
 function getModel(model) {
   return model[0].toLowerCase() + model.substring(1);
 }
+
+/***/ }),
+
+/***/ "./resources/js/store.js":
+/*!*******************************!*\
+  !*** ./resources/js/store.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "shop": () => (/* binding */ shop)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+
+
+function getShop(shop) {
+  window.axios.get('shop').then(function (response) {
+    shop = response.data.shop;
+  });
+}
+
+var shop = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  data: window.shop,
+  changeData: function changeData(data) {
+    this.data = data;
+  }
+});
 
 /***/ }),
 

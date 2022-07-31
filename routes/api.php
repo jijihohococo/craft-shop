@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-
+Route::get('shop','ShopController@get');
 
 Route::get('items/{id}','User\ItemController@show');
 
