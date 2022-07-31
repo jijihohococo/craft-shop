@@ -16,3 +16,5 @@ export const shop = reactive( {
     this.data=data;
   }
 } )
+
+export const currentYear = new Date().getFullYear()

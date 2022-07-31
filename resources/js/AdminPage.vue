@@ -23,10 +23,11 @@
 <script >
 	import Navigation from './admin/components/Navigation';
 	import Menu from './admin/components/Menu';
+	import { currentYear } from './store.js'
 	export default {
 		data(){
 			return {
-				currentYear : new Date().getFullYear()
+				currentYear
 			}
 		},
 		components: {

@@ -30,9 +30,13 @@
 							</div>
 							<div class="ml-3">
 								<select name="countries" class="custome_select">
-									<option value='USD' data-title="USD">USD</option>
-									<option value='EUR' data-title="EUR">EUR</option>
-									<option value='GBR' data-title="GBR">GBR</option>
+									<option v-for="currency in currencies" 
+									:value='currency.name' 
+									:data-title="currency.name">
+										{{ currency.name }}
+									</option>
+									<!-- <option value='EUR' data-title="EUR">EUR</option>
+									<option value='GBR' data-title="GBR">GBR</option> -->
 								</select>
 							</div>
 						</div>
@@ -306,7 +310,8 @@
 		},
 		data(){
 			return {
-				categories : {}
+				categories : {},
+				currencies : {}
 			}
 		},
 		methods : {
@@ -314,10 +319,16 @@
 				window.axios.get( 'categories' ).then( (response) => {
 					this.categories=response.data.categories
 				} )
+			},
+			getCurrencies(){
+				window.axios.get( 'currencies' ).then( (response) => {
+					this.currencies=response.data.currencies
+				} )
 			}
 		},
 		created(){
-			this.getCategories() 
+			this.getCategories()
+			this.getCurrencies()
 		},
 	}
 </script>

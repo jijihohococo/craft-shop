@@ -1035,6 +1035,7 @@ function getModel(model) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "currentYear": () => (/* binding */ currentYear),
 /* harmony export */   "shop": () => (/* binding */ shop)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
@@ -1054,6 +1055,7 @@ var shop = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
     this.data = data;
   }
 });
+var currentYear = new Date().getFullYear();
 
 /***/ }),
 
