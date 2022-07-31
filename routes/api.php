@@ -18,9 +18,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-
-Route::get('shop','ShopController@get');
-
 Route::get('items/{id}','User\ItemController@show');
 
 Route::get('wish_list','User\WishlistController@get');
@@ -38,7 +35,6 @@ Route::get('brands','User\BrandController@get');
 Route::get('banners','User\BannerController@get');
 Route::get('colors','User\ColorController@get');
 Route::get('currencies','User\CurrencyController@get');
-Route::get('shop','User\ShopController@get');
 
 Route::group(['middleware' => [ 'user_auth'] ], function () {
 

@@ -3,12 +3,13 @@
       <div class="container">
           <div class="nav_block">
             <a class="navbar-brand" href="index.html">
-                <img class="logo_light" src="https://bestwebcreator.com/shopwise/demo/assets/images/logo_light.png" alt="logo" />
-                <img class="logo_dark" src="https://bestwebcreator.com/shopwise/demo/assets/images/logo_dark.png" alt="logo" />
+                <!-- <img class="logo_light" src="https://bestwebcreator.com/shopwise/demo/assets/images/logo_light.png" alt="logo" /> -->
+                <img class="logo_dark" 
+                :src="'/image/shop_images/'+shop.data.pic" alt="logo" />
             </a>
             <div class="contact_phone order-md-last">
                 <i class="linearicons-phone-wave"></i>
-                <span>123-456-7689</span>
+                <span>{{ shop.data.phone }}</span>
             </div>
             <div class="product_search_form">
                 <form>
@@ -31,7 +32,13 @@
 </div>
 </template>
 <script >
+    import { shop } from '../../store';
 	export default {
+        data(){
+            return {
+                shop
+            }
+        },
         props : {
             categories : {
                 type : Object ,

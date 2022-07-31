@@ -1,15 +1,25 @@
 <template>
 	<PromotionBox />
+	<Header />
 	<router-view />
 </template>
 <script >
-	import Navbar from './user/components/Navbar';
 	import PromotionBox from './user/components/PromotionBox';
+	import Header from './user/components/Header';
 	export default {
 		components: {
-			Navbar,
-			PromotionBox
+			PromotionBox,
+			Header
 		},
+		mounted() {
+			const plugin = document.createElement("script");
+			plugin.setAttribute(
+				"src",
+				"/user/js/scripts.js"
+				);
+			plugin.async = true;
+			document.head.appendChild(plugin);
+		}
 		
 	}
 </script>
