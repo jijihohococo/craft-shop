@@ -12,7 +12,7 @@ class ItemController extends Controller
     //
     public function show(Request $request,$id){
         return response()->json([
-            'item' => Item::selectItemData()
+            'item' => Item::selectItemDataWithImages()
             ->where('id',$id)
             ->first() ,
             'reviews' => $this->getReviews('item_reviews','item_id',$id)
@@ -21,7 +21,7 @@ class ItemController extends Controller
 
     public function showByCategory(Request $request,$categoryId){
         return response()->json([
-            'items' => Item::selectItemData()
+            'items' => Item::selectItemDataWithImages()
             ->where('category_id',$categoryId)
             ->latest('id')
             ->paginate(10)
@@ -30,7 +30,7 @@ class ItemController extends Controller
 
     public function showBySubcategory(Request $request,$subcategoryId){
         return response()->json([
-            'items' => Item::selectItemData()
+            'items' => Item::selectItemDataWithImages()
             ->where('subcategory_id',$subcategoryId)
             ->latest('id')
             ->paginate(10)
@@ -39,7 +39,7 @@ class ItemController extends Controller
 
     public function showByBrand(Request $request,$brandId){
         return response()->json([
-            'items' => Item::selectItemData()
+            'items' => Item::selectItemDataWithImages()
             ->where('brand_id',$brandId)
             ->latest('id')
             ->paginate(10)

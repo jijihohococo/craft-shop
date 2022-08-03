@@ -49,8 +49,7 @@ class Item extends TransactionModel
         return $query->selectCategory()
         ->selectSubcategory()
         ->selectBrand()
-        ->selectItemVariants()
-        ->selectItemImageWithVariants();
+        ->selectItemVariants();
     }
 
     public function scopeSelectItemDataWithImages($query){
