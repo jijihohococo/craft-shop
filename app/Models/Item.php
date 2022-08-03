@@ -39,17 +39,25 @@ class Item extends TransactionModel
     public function scopeSearchWithSubcategory($query,$searchData){
         return $query->orWherein('subcategory_id',
             function($query) use($searchData){
-            $query->select('id')
-            ->from('subcategories')
-            ->where('name','like',$searchData);
-        });
+                $query->select('id')
+                ->from('subcategories')
+                ->where('name','like',$searchData);
+            });
     }
 
     public function scopeSelectItemData($query){
         return $query->selectCategory()
         ->selectSubcategory()
         ->selectBrand()
-        ->selectItemVariants();
+        ->selectItemVariants()
+        ->selectItemImageWithVariants();
+    }
+
+    public function scopeSelectItemDataWithImages($query){
+        return $query->selectCategory()
+        ->selectSubcategory()
+        ->selectBrand()
+        ->selectItemImageWithVariants();
     }
 
     public function scopeSelectSubcategory($query){
@@ -86,5 +94,22 @@ class Item extends TransactionModel
             ->from('colors')
             ->whereRaw($selectColorId);
         }  ]);
+    }
+
+    public function scopeSelectItemImageWithVariants($query){
+        return $query->addSelect(['images' => function($query){
+            $query->select(
+                \DB::raw("GROUP_CONCAT(
+                   DISTINCT CONCAT(item_images.item_variant_id,':',
+                   item_images.filename) 
+                   SEPARATOR ';')")
+            )->from('item_images')
+            ->whereIn('item_variant_id',function($newQuery){
+                $newQuery->select('id')
+                ->from('item_variants')
+                ->whereColumn('items.id','item_variants.item_id')
+                ->groupBy('item_variants.item_id');
+            });
+        } ]);
     }
 }
