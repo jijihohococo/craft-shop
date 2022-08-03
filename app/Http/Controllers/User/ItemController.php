@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Item,ItemImage};
+use App\Models\Item;
 use App\Traits\Review;
 class ItemController extends Controller
 {
