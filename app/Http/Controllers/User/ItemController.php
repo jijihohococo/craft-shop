@@ -14,8 +14,7 @@ class ItemController extends Controller
     public function show(Request $request,$id){
         return response()->json([
             'item' => new ItemResource(Item::selectItemData()
-            ->where('id',$id)
-            ->first()) ,
+        ->findOrFail($id)) ,
             'reviews' => $this->getReviews('item_reviews','item_id',$id)
         ]);
     }
