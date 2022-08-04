@@ -6,15 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Traits\Review;
+use App\Http\Resources\ItemResource;
 class ItemController extends Controller
 {
     use Review;
     //
     public function show(Request $request,$id){
         return response()->json([
-            'item' => Item::selectItemDataWithImages()
+            'item' => new ItemResource(Item::selectItemData()
             ->where('id',$id)
-            ->first() ,
+            ->first()) ,
             'reviews' => $this->getReviews('item_reviews','item_id',$id)
         ]);
     }

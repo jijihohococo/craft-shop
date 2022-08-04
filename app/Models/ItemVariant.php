@@ -16,4 +16,8 @@ class ItemVariant extends Model
     public function color(){
         return $this->belongsTo('App\Models\Color')->withDefault()->withTrashed();
     }
+
+    public function images(){
+        return $this->hasMany('App\Models\ItemImage');
+    }
 }

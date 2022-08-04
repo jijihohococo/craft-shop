@@ -26,6 +26,10 @@ class Item extends TransactionModel
         return $this->belongsTo('App\Models\Subcategory')->withDefault()->withTrashed();
     }
 
+    public function itemVariants(){
+        return $this->hasMany('App\Models\ItemVariant');
+    }
+
     public function scopeSearchWithCategory($query,$searchData){
         return $query->orWherein('category_id',
             function($query) use($searchData) {
@@ -98,18 +102,17 @@ class Item extends TransactionModel
     public function scopeSelectItemImageWithVariants($query){
         return $query->addSelect(['images' => function($query){
             $query->select(
-                // \DB::raw("GROUP_CONCAT(
-                //    DISTINCT CONCAT(item_images.item_variant_id,':',
-                //    item_images.filename) 
-                //    SEPARATOR ';')")
-                \DB::raw('GROUP_CONCAT(filename)')
+                \DB::raw("GROUP_CONCAT(
+                   DISTINCT CONCAT(item_images.item_variant_id,':',
+                   item_images.filename) 
+                   SEPARATOR ';')")
             )->from('item_images')
             ->whereIn('item_variant_id',function($newQuery){
                 $newQuery->select('id')
                 ->from('item_variants')
                 ->whereColumn('items.id','item_variants.item_id')
                 ->groupBy('item_variants.item_id');
-            })->orderBy('item_variant_id');
+            });
         } ]);
     }
 }
