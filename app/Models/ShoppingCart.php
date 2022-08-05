@@ -20,7 +20,8 @@ class ShoppingCart extends Model
             $query->selectSub(function($query){
                 $query->select('color_code')
                 ->from('colors')
-                ->whereColumn('item_variants.color_id','colors.id');
+                ->whereColumn('item_variants.color_id','colors.id')
+                ->limit(1);
             },'color_code')
             ->from('item_variants')
             ->whereColumn('item_variant_id','item_variants.id')
