@@ -13,4 +13,14 @@ trait CategoryDataTrait{
         } ]);
 	}
 
+    public function scopeSearchWithCategory($query,$searchData){
+        return $query->orWherein('category_id',
+            function($query) use($searchData) {
+                $query->select('id')
+                ->from('categories')
+                ->where('name','like', $searchData );
+            }
+        );
+    }
+
 }

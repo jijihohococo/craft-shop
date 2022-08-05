@@ -317,6 +317,7 @@ public function search(Request $request){
         ->searchWithName($searchData)
         ->searchWithCategory($searchData)
         ->searchWithSubcategory($searchData)
+        ->searchWithBrand($searchData)
         ->latest('id')
         ->paginate(10)
     ]);
@@ -330,6 +331,7 @@ public function trashSearch(Request $request){
         ->searchWithName($searchData)
         ->searchWithCategory($searchData)
         ->searchWithSubcategory($searchData)
+        ->searchWithBrand($searchData)
         ->latest('id')
         ->paginate(10)
     ]);

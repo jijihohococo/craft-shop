@@ -47,10 +47,14 @@ class ItemController extends Controller
     }
 
     public function search(Request $request,$categoryId){
+        $searchData='%'.$request->search.'%';
         return response()->json([
             'items' => Item::selectItemDataWithImages()
             ->where('category_id',$categoryId)
-            ->where('name','like')
+            ->searchWithName( $searchData )
+            ->searchWithSubcategory($searchData)
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 }

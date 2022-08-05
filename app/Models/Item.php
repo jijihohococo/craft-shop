@@ -30,6 +30,15 @@ class Item extends TransactionModel
         return $this->hasMany('App\Models\ItemVariant');
     }
 
+    public function scopeSearchWithBrand($query,$searchData){
+        return $query->orWherein('brand_id',
+            function($query) use($searchData){
+                $query->select('id')
+                ->from('brands')
+                ->where('name','like',$searchData);
+        });
+    }
+
     public function scopeSearchWithSubcategory($query,$searchData){
         return $query->orWherein('subcategory_id',
             function($query) use($searchData){
