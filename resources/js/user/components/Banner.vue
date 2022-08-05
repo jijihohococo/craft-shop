@@ -1,5 +1,5 @@
 <template>
-<div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
+<div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap" style="margin-top:-24px;">
   <div class="container">
       <div class="row">
           <div class="col-lg-9 offset-lg-3">

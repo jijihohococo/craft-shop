@@ -267,8 +267,8 @@
 							</div>
 							<ul class="navbar-nav attr-nav align-items-center">
 								<li><a href="#" class="nav-link"><i class="linearicons-user"></i></a></li>
-								<li><a href="#" class="nav-link"><i class="linearicons-heart"></i><span class="wishlist_count">0</span></a></li>
-								<li class="dropdown cart_dropdown"><a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">2</span></a>
+								<li><a href="#" class="nav-link"><i class="linearicons-heart"></i><span class="wishlist_count">{{ number_of_wish }}</span></a></li>
+								<li class="dropdown cart_dropdown"><a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">{{ shopping_cart_items.length }}</span></a>
 									<div class="cart_box dropdown-menu dropdown-menu-right">
 										<ul class="cart_list">
 											<li>
@@ -311,7 +311,9 @@
 		data(){
 			return {
 				categories : {},
-				currencies : {}
+				currencies : {},
+				number_of_wish : 0 ,
+				shopping_cart_items : {}
 			}
 		},
 		methods : {
@@ -324,11 +326,23 @@
 				window.axios.get( 'currencies' ).then( (response) => {
 					this.currencies=response.data.currencies
 				} )
+			},
+			getShoppingCart(){
+				window.axios.get( 'shopping_cart' ).then( (response) => {
+					this.shopping_cart_items=response.data.shopping_cart_items
+				} )
+			},
+			getNumberOfWish(){
+				window.axios.get('number_of_wish').then( (response) => {
+					this.number_of_wish=response.data.number_of_wish
+				} )
 			}
 		},
-		created(){
-			this.getCategories()
-			this.getCurrencies()
+		async created(){
+			await this.getCategories()
+			await this.getCurrencies()
+			await this.getShoppingCart()
+			await this.getNumberOfWish()
 		},
 	}
 </script>

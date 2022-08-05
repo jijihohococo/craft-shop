@@ -10,20 +10,31 @@ use Validator;
 class WishlistController extends Controller
 {
     //
+    private $userId;
+
+    public function __construct(){
+        $this->userId=getUserId( authId() );
+    }
+
+    public function getCount(Request $request){
+        return response()->json([
+            'number_of_whish' => WishList::ofUser($this->userId)
+            ->count()
+        ]);
+    }
 
     public function get(Request $request){
-        $userId=getUserId( authId() );
         return response()->json([
             'wish_list_items' => WishList::selectUser()
             ->selectItem()
-            ->ofUser($userId)
+            ->ofUser($this->userId)
             ->latest('id')
             ->get()
         ]);
     }
 
     public function addItem(Request $request){
-        $userId=getUserId( authId() );
+
         $request->validate([
             'item_id' => ['integer',new WishListValidation($userId)]
         ]);
