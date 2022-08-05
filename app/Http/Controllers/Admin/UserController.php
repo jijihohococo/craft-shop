@@ -27,7 +27,7 @@ class UserController extends Controller
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'users' => User::where('name','like',$searchData)
+            'users' => User::searchWithName($searchData)
             ->orWhere('email','like',$searchData)
             ->latest('id')
             ->paginate(10)

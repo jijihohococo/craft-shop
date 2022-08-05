@@ -137,21 +137,21 @@ class CurrencyController extends Controller
     }
 
     public function search(Request $request){
-        $search='%'.$request->search.'%';
+        $searchData='%'.$request->search.'%';
         return response()->json([
-            'currencies' => Currency::where('name','like',$search)
-            ->orWhere('price','like',$search)
+            'currencies' => Currency::searchWithName($searchData)
+            ->orWhere('price','like',$searchData)
             ->latest('id')
             ->paginate(10)
         ]);
     }
 
     public function trashSearch(Request $request){
-        $search='%'.$request->search.'%';
+        $searchData='%'.$request->search.'%';
         return response()->json([
             'currencies' => Currency::onlyTrashed()
-            ->where('name','like',$search)
-            ->orWhere('price','like',$search)
+            ->searchWithName($searchData)
+            ->orWhere('price','like',$searchData)
             ->latest('id')
             ->paginate(10)
         ]);

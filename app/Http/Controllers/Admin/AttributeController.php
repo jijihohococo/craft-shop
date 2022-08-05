@@ -141,7 +141,7 @@ class AttributeController extends Controller
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'attributes' => Attribute::where('name','like',$searchData)
+            'attributes' => Attribute::searchWithName($searchData)
             ->latest('id')
             ->paginate(10)
         ]);
@@ -151,7 +151,7 @@ class AttributeController extends Controller
         $searchData='%'.$request->search.'%';
         return response()->json([
             'attributes' => Attribute::onlyTrashed()
-            ->where('name','like',$searchData)
+            ->searchWithName($searchData)
             ->latest('id')
             ->paginate(10)
         ]);

@@ -154,7 +154,7 @@ class BrandController extends Controller
 
     public function search(Request $request){
         return response()->json([
-            'brands' => Brand::where('name','like','%'.$request->search.'%')
+            'brands' => Brand::searchWithName('%'.$request->search.'%')
             ->latest('id')
             ->paginate(10)
         ]);
@@ -163,7 +163,7 @@ class BrandController extends Controller
     public function trashSearch(Request $request){
         return response()->json([
             'brands' => Brand::onlyTrashed()
-            ->where('name','like','%'.$request->search.'%')
+            ->searchWithName('%'.$request->search.'%')
             ->latest('id')
             ->paginate(10)
         ]);

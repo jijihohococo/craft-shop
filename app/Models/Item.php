@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Traits\CategoryDataTrait;
+use App\Traits\{CategoryDataTrait,SearchNameTrait};
 class Item extends TransactionModel
 {
-    use HasFactory,SoftDeletes,CategoryDataTrait;
+    use HasFactory,SoftDeletes,CategoryDataTrait,SearchNameTrait;
 
     protected $fillable=[
         'name',
@@ -28,16 +28,6 @@ class Item extends TransactionModel
 
     public function itemVariants(){
         return $this->hasMany('App\Models\ItemVariant');
-    }
-
-    public function scopeSearchWithCategory($query,$searchData){
-        return $query->orWherein('category_id',
-            function($query) use($searchData) {
-                $query->select('id')
-                ->from('categories')
-                ->where('name','like', $searchData );
-            }
-        );
     }
 
     public function scopeSearchWithSubcategory($query,$searchData){
@@ -102,10 +92,11 @@ class Item extends TransactionModel
     public function scopeSelectItemImageWithVariants($query){
         return $query->addSelect(['images' => function($query){
             $query->select(
-                \DB::raw("GROUP_CONCAT(
-                   DISTINCT CONCAT(item_images.item_variant_id,':',
-                   item_images.filename) 
-                   SEPARATOR ';')")
+                // \DB::raw("GROUP_CONCAT(
+                //    DISTINCT CONCAT(item_images.item_variant_id,':',
+                //    item_images.filename) 
+                //    SEPARATOR ';')")
+                \DB::raw(" SUBSTRING_INDEX( GROUP_CONCAT(item_images.filename) ,',',1) ")
             )->from('item_images')
             ->whereIn('item_variant_id',function($newQuery){
                 $newQuery->select('id')

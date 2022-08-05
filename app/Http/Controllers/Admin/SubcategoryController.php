@@ -139,19 +139,23 @@ class SubcategoryController extends Controller
  }
 
  public function search(Request $request){
+    $searchData='%'.$request->search.'%';
     return response()->json([
-        'subcategories' => Subcategory::where('name','like','%'.$request->search.'%')
-        ->selectCategory()
+        'subcategories' => Subcategory::selectCategory()
+        ->searchWithName($searchData)
+        ->searchWithCategory($searchData)
         ->latest('id')
         ->paginate(10)
     ]);
 }
 
 public function trashSearch(Request $request){
+    $searchData='%'.$request->search.'%';
     return response()->json([
         'subcategories' => Subcategory::onlyTrashed()
         ->selectCategory()
-        ->where('name','like','%'.$request->search.'%')
+        ->searchWithName($searchData)
+        ->searchWithCategory($searchData)
         ->latest('id')
         ->paginate(10)
     ]);

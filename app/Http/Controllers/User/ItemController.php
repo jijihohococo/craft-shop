@@ -45,4 +45,12 @@ class ItemController extends Controller
             ->paginate(10)
         ]);
     }
+
+    public function search(Request $request,$categoryId){
+        return response()->json([
+            'items' => Item::selectItemDataWithImages()
+            ->where('category_id',$categoryId)
+            ->where('name','like')
+        ]);
+    }
 }

@@ -140,14 +140,14 @@ class CategoryController extends Controller
 
 public function search(Request $request){
     return response()->json([
-        'categories' => Category::where('name','like','%'.$request->search.'%')->latest('id')->paginate(10)
+        'categories' => Category::searchWithName('%'.$request->search.'%')->latest('id')->paginate(10)
     ]);
 }
 
 public function trashSearch(Request $request){
     return response()->json([
         'categories' => Category::onlyTrashed()
-        ->where('name','like','%'.$request->search.'%')
+        ->searchWithName('%'.$request->search.'%')
         ->latest('id')
         ->paginate(10)
     ]);

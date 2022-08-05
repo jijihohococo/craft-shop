@@ -314,7 +314,7 @@ public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
         'items' => Item::selectItemData()
-        ->where('name','like',$searchData )
+        ->searchWithName($searchData)
         ->searchWithCategory($searchData)
         ->searchWithSubcategory($searchData)
         ->latest('id')
@@ -327,7 +327,7 @@ public function trashSearch(Request $request){
     return response()->json([
         'items' => Item::onlyTrashed()
         ->selectItemData()
-        ->where('name','like',$searchData )
+        ->searchWithName($searchData)
         ->searchWithCategory($searchData)
         ->searchWithSubcategory($searchData)
         ->latest('id')

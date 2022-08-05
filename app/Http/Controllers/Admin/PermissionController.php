@@ -160,7 +160,7 @@ class PermissionController extends Controller
 public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
-        'permissions' => Permission::where('name','like', $searchData )
+        'permissions' => Permission::searchWithName($searchData)
         ->orWhere('model','like', $searchData )
         ->latest('id')->paginate(10)
     ]);
@@ -170,7 +170,7 @@ public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
         'permissions' => Permission::onlyTrashed()
-        ->where('name','like',$searchData)
+        ->searchWithName($searchData)
         ->orWhere('model','like',$searchData)
         ->latest('id')
         ->paginate(10)
