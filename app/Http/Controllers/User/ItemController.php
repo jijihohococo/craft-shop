@@ -53,6 +53,7 @@ class ItemController extends Controller
             ->where('category_id',$categoryId)
             ->searchWithName( $searchData )
             ->searchWithSubcategory($searchData)
+            ->searchWithBrand($searchData)
             ->latest('id')
             ->paginate(10)
         ]);
