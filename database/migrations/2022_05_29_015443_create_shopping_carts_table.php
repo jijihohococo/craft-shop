@@ -17,6 +17,7 @@ class CreateShoppingCartsTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->integer('item_id');
+            $table->integer('item_variant_id');
             $table->integer('qty');
             $table->timestamps();
         });
