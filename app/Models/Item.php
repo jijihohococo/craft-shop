@@ -90,7 +90,7 @@ class Item extends TransactionModel
             ->from('item_variants')
             ->whereColumn('items.id','item_variants.item_id')
             ->groupBy('item_variants.item_id');
-        } , 'colorCodes' => function($query) use($selectColorId) {
+        } , 'colorCodes' => function($query){
             $query->select(\DB::raw('GROUP_CONCAT(colors.color_code)'))
             ->from('colors')
             ->whereIn('colors.id',function($query){
@@ -101,9 +101,8 @@ class Item extends TransactionModel
         }  ]);
     }
 
-    public function scopeSelectItemImageWithVariants($query){
-        return $query->addSelect(['image' => function($query){
-            $query->select(
+    public static function selectImage($query){
+        return $query->select(
                 \DB::raw(" SUBSTRING_INDEX( GROUP_CONCAT(item_images.filename) ,',',1) ")
             )->from('item_images')
             ->whereIn('item_variant_id',function($newQuery){
@@ -112,6 +111,11 @@ class Item extends TransactionModel
                 ->whereColumn('items.id','item_variants.item_id')
                 ->groupBy('item_variants.item_id');
             });
+    }
+
+    public function scopeSelectItemImageWithVariants($query){
+        return $query->addSelect(['image' => function($query){
+            self::selectImage($query);
         } ]);
     }
 }

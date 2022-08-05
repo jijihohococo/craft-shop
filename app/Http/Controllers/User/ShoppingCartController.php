@@ -14,7 +14,7 @@ class ShoppingCartController extends Controller
         return response()->json([
             'shopping_cart_items' => ShoppingCart::selectUser()
             ->selectItem()
-            ->ofUser($userId)
+            ->ofUser(1)
             ->latest('id')
             ->get()
         ]);
