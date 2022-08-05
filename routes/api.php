@@ -20,14 +20,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('items/{id}','User\ItemController@show');
 
-Route::get('wish_list','User\WishlistController@get');
-Route::get('shopping_cart','User\ShoppingCartController@get');
 
+Route::get('wish_list','User\WishlistController@get');
 Route::get('get_wish_number','User\WishlistController@getCount');
 Route::post('add_item_to_wish_list','User\WishlistController@addItem');
 Route::post('remove_item_to_wish_list','User\WishlistController@removeItem');
 
-
+Route::get('shopping_cart','User\ShoppingCartController@get');
 Route::post('add_item_to_shopping_cart','User\ShoppingCartController@addItem');
 Route::post('remove_item_to_shopping_cart','User\ShoppingCartController@removeItem');
 
