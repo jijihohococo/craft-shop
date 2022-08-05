@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
+use App\Traits\SearchNameTrait;
 class Color extends TransactionModel
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes,SearchNameTrait;
 
     protected $fillable=[
         'name',

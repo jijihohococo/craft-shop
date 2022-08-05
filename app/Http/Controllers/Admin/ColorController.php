@@ -139,7 +139,7 @@ class ColorController extends Controller
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'colors' => Color::where('name','like',$searchData)
+            'colors' => Color::searchWithName($searchData)
             ->orWhere('color_code','like',$searchData)
             ->latest('id')
             ->paginate(10)
@@ -150,7 +150,7 @@ class ColorController extends Controller
         $searchData='%'.$request->search.'%';
         return response()->json([
             'colors' => Color::onlyTrashed()
-            ->where('name','like',$searchData)
+            ->searchWithName($searchData)
             ->orWhere('color_code','like',$searchData)
             ->latest('id')
             ->paginate(10)
