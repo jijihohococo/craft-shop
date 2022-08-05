@@ -5,10 +5,16 @@ namespace App\Http\Controllers\User\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Traits\Logout;
 use DB;
 class LoginController extends Controller
 {
     //
+    use Logout;
+
+    private $accessToken = 'access_token';
+    private $refreshToken = 'refresh_token';
+    private $authAPI = 'user_api';
 
     public function login(Request $request){
         $request->validate([
@@ -23,8 +29,8 @@ class LoginController extends Controller
             
             return response()->json([
                 'message' => 'Login Success'
-            ])->withCookie( cookie('access_token', $token->original['access_token'], 10, null, null, true) )
-            ->withCookie( cookie('refresh_token',$token->original['refresh_token'],10,null,null,true) );
+            ])->withCookie( cookie($this->accessToken, $token->original['access_token'], 10, null, null, true) )
+            ->withCookie( cookie($this->refreshToken,$token->original['refresh_token'],10,null,null,true) );
 
         }catch(\Throwable $e){
             return response()->json([
@@ -37,6 +43,8 @@ class LoginController extends Controller
     }
 
     public function logOut(Request $request){
-        
+        DB::beginTransaction();
+        $result=$this->revoke();
+        DB::commit();
     }
 }

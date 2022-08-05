@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Admin\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Admin,PassportDate};
-use Laravel\Passport\{Token,RefreshToken};
+use App\Traits\Logout;
 use DB;
 class LoginController extends Controller
 {
     //
+    use Logout;
+
+    private $accessToken = 'admin_access_token';
+    private $refreshToken = 'admin_refresh_token';
+    private $authAPI = 'admin_api';
 
     public function login(Request $request){
         $request->validate([
@@ -24,8 +29,8 @@ class LoginController extends Controller
             
             return response()->json([
                 'message' => 'Login Success'
-            ])->withCookie( cookie('admin_access_token', $token->original['access_token'], changeDaysToMinutes(PassportDate::ACCESS_TOKEN_EXPIRE_DAY), null, null, true) )
-            ->withCookie( cookie('admin_refresh_token',$token->original['refresh_token'],changeDaysToMinutes(PassportDate::REFRESH_TOKEN_EXPIRE_DAY),null,null,true) );
+            ])->withCookie( cookie($this->accessToken, $token->original['access_token'], changeDaysToMinutes(PassportDate::ACCESS_TOKEN_EXPIRE_DAY), null, null, true) )
+            ->withCookie( cookie($this->refreshToken,$token->original['refresh_token'],changeDaysToMinutes(PassportDate::REFRESH_TOKEN_EXPIRE_DAY),null,null,true) );
 
         }catch(\Throwable $e){
             return response()->json([
@@ -40,21 +45,13 @@ class LoginController extends Controller
     public function logOut(Request $request){
         
         try{
-    
-            $cookie = \Cookie::forget('admin_access_token');
-            $refreshCookie=\Cookie::forget('admin_refresh_token');
-            $admin=auth('admin_api')->user()->token();
-            $tokens=$admin->get()->pluck('id');
             DB::beginTransaction();
-            Token::whereIn('id', $tokens)
-            ->update(['revoked' => true]);
-
-            RefreshToken::whereIn('access_token_id', $tokens)->update(['revoked' => true]);
+            $result=$this->revoke();
             DB::commit();
             return response()->json([
                 'message' => 'Log out success'
-            ])->withCookie($cookie)
-            ->withCookie($refreshCookie);
+            ])->withCookie($result['cookie'])
+            ->withCookie($result['refreshCookie']);
         }catch(\Throwable $e){
             DB::rollback();
             return response()->json([
