@@ -85,7 +85,6 @@ class Item extends TransactionModel
     }
 
     public function scopeSelectItemVariants($query){
-        $selectColorId='colors.id IN  (SELECT item_variants.color_id FROM item_variants WHERE item_variants.item_id=items.id)';
         return $query->addSelect(['variants' => function($query){
             $query->select(\DB::raw('GROUP_CONCAT(item_variants.id)'))
             ->from('item_variants')
@@ -94,7 +93,11 @@ class Item extends TransactionModel
         } , 'colorCodes' => function($query) use($selectColorId) {
             $query->select(\DB::raw('GROUP_CONCAT(colors.color_code)'))
             ->from('colors')
-            ->whereRaw($selectColorId);
+            ->whereIn('colors.id',function($query){
+            $query->select('color_id')
+            ->from('item_variants')
+            ->whereColumn('item_variants.item_id','items.id');
+            });
         }  ]);
     }
 
