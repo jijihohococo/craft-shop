@@ -99,12 +99,8 @@ class Item extends TransactionModel
     }
 
     public function scopeSelectItemImageWithVariants($query){
-        return $query->addSelect(['images' => function($query){
+        return $query->addSelect(['image' => function($query){
             $query->select(
-                // \DB::raw("GROUP_CONCAT(
-                //    DISTINCT CONCAT(item_images.item_variant_id,':',
-                //    item_images.filename) 
-                //    SEPARATOR ';')")
                 \DB::raw(" SUBSTRING_INDEX( GROUP_CONCAT(item_images.filename) ,',',1) ")
             )->from('item_images')
             ->whereIn('item_variant_id',function($newQuery){
