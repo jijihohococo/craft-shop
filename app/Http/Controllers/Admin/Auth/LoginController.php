@@ -54,9 +54,7 @@ class LoginController extends Controller
             ->withCookie($result['refreshCookie']);
         }catch(\Throwable $e){
             DB::rollback();
-            return response()->json([
-                'message' => 'Unauthenticated'
-            ],401);
+            return unauthenticated();
         }
     }
 }

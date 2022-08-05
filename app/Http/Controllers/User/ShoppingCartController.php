@@ -8,14 +8,18 @@ use App\Models\ShoppingCart;
 class ShoppingCartController extends Controller
 {
     //
+    private $userId;
+
+    public function __construct(){
+        $this->userId=getUserId( authId() );
+    }
 
     public function get(Request $request){
-        $userId=getUserId( authId() );
         return response()->json([
             'shopping_cart_items' => ShoppingCart::selectUser()
             ->selectItem()
             ->selectItemColorCode()
-            ->ofUser($userId)
+            ->ofUser($this->userId)
             ->latest('id')
             ->get()
         ]);

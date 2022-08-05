@@ -2,6 +2,18 @@
 
 use App\Models\PassportDate;
 
+function unauthorized(){
+	return response()->json([
+           'message' => 'Unauthorized'
+      ],403);
+}
+
+function unauthenticated(){
+	return response()->json([
+            'message' => 'Unauthenticated'
+        ],401);
+}
+
 function authId(){
 	$user=auth('user_api')->user();
 	return $user==NULL ? NULL : $user->id; 

@@ -97,9 +97,7 @@ class TokenRefresh
             if($this->apiRequest==FALSE){
                 return $this->loginRequest==FALSE ? redirect($redirectURL) : $next($request) ;
             }else{
-                return response()->json([
-                    'message' => 'Unauthenticated'
-                ],401);
+                return unauthenticated();
             }
         }else{
             $tokenExpired=$user->tokenExpired();
@@ -119,9 +117,7 @@ class TokenRefresh
         if($this->apiRequest==FALSE){
             return $this->loginRequest==FALSE ? redirect($redirectURL) : $next($request);
         }else{
-            return response()->json([
-                'message' => 'Unauthenticated'
-            ],401); 
+            return unauthenticated();
         }
     }
 }
@@ -152,9 +148,7 @@ public function refreshAPI($userRefreshToken,$clientId){
             if($this->apiRequest==FALSE){
                 return $this->loginRequest==FALSE ? redirect($redirectURL) : $next($request) ;
             }else{
-                return response()->json([
-                    'message' => 'Unauthenticated'
-                ],401);
+                return unauthenticated();
             }
         }
 
@@ -173,9 +167,7 @@ public function refreshAPI($userRefreshToken,$clientId){
         if($this->apiRequest==FALSE){
             return $this->loginRequest==FALSE ? redirect($redirectURL) : $next($request) ;
         }else{
-            return response()->json([
-                'message' => 'Unauthenticated'
-            ],401);
+            return unauthenticated();
         }
     }
 }

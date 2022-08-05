@@ -20,9 +20,7 @@ class RolePermissionMiddleware
     {
         $admin=auth('admin_api')->user();
         if($admin==NULL){
-            return response()->json([
-                'message' => 'Unauthenticated'
-            ],401);
+            return unauthenticated();
         }
         
         if($this->checkRoleAndPermission($admin->id,$model,$permission)){
@@ -30,9 +28,7 @@ class RolePermissionMiddleware
             UserData::setId($admin->id);
             return $next($request);
         }else{
-            return response()->json([
-                'message' => 'Unauthorized'
-            ],403);
+            return unauthorized();
         }
     }
 }

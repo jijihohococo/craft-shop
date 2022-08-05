@@ -170,9 +170,7 @@ class AdminController extends Controller
         $admin=auth('admin_api')->user();
         return $admin!==NULL ? response()->json([
             'admin' => $admin
-        ]) : response()->json([
-            'message' => 'Unauthenticated'
-        ] , 401) ;
+        ]) : unauthenticated() ;
     }
 
     public function search(Request $request){

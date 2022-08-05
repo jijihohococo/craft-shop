@@ -36,6 +36,9 @@ Route::get('banners','User\BannerController@get');
 Route::get('colors','User\ColorController@get');
 Route::get('currencies','User\CurrencyController@get');
 
+
+
+
 Route::group(['middleware' => [ 'user_auth'] ], function () {
 
 Route::get('orders','User\OrderController@get');

@@ -36,10 +36,10 @@ class WishlistController extends Controller
     public function addItem(Request $request){
 
         $request->validate([
-            'item_id' => ['integer',new WishListValidation($userId)]
+            'item_id' => ['integer',new WishListValidation($this->userId)]
         ]);
         WishList::create([
-            'user_id' => $userId ,
+            'user_id' => $this->userId ,
             'item_id' => $request->item_id ,
             'created_at' => NOW()
         ]);

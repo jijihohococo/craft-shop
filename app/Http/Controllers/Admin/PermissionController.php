@@ -182,17 +182,12 @@ public function checkPermission(string $model,string $action){
     $admin=auth('admin_api')->user();
 
     if($admin==NULL){
-        
-        return response()->json([
-            'message' => 'Unauthenticated'
-        ],401);
+        return unauthenticated();
     }
 
     return $this->checkRoleAndPermission($admin->id,$model,$action) ? response()->json([
         'message' => 'Authorized'
-    ]) : response()->json([
-        'message' => 'Unauthorized'
-    ],403);
+    ]) : unauthorized();
 }
 
 public function get(){

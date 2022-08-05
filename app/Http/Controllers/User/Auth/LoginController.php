@@ -43,8 +43,17 @@ class LoginController extends Controller
     }
 
     public function logOut(Request $request){
-        DB::beginTransaction();
-        $result=$this->revoke();
-        DB::commit();
+        try{
+            DB::beginTransaction();
+            $result=$this->revoke();
+            DB::commit();
+            return response()->json([
+                'message' => 'Log out success'
+            ])->withCookie($result['cookie'])
+            ->withCookie($result['refreshCookie']);
+        }catch(\Throwable $e){
+            DB::rollback();
+            return unauthenticated();
+        }
     }
 }
