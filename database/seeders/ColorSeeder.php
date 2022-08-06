@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use DB;
+use App\Traits\DataInsertSeeder;
+
 class ColorSeeder extends Seeder
 {
+    use DataInsertSeeder;
     /**
      * Run the database seeds.
      *
@@ -14,9 +16,7 @@ class ColorSeeder extends Seeder
     public function run()
     {
         //
-        $colorData=[];
-        $colorTransactions=[];
-        foreach([
+        $this->insertSeed([
             ['color_code' => '#000000' , 'name' =>  'Black'],
             ['color_code' => '#0C090A' , 'name' =>  'Night'],
             ['color_code' => '#34282C' , 'name' =>  'Charcoal'],
@@ -612,26 +612,6 @@ class ColorSeeder extends Seeder
             ['color_code' => '#FFFAFA' , 'name' =>  'Snow'],
             ['color_code' => '#FEFCFF' , 'name' =>  'Milk White'],
             ['color_code' => '#FFFFFF' , 'name' =>  'White']
-        ] as $key => $color){
-    array_push($colorData,$color);
-    array_push($colorTransactions,[
-        'guard' => 'admin_api',
-        'user_id' => 1,
-        'model' => 'Color',
-        'model_id' => $key + 1,
-        'action' => 'create'
-    ]);
-    // DB::table('colors')->insert($color);
-    // DB::table('transactions')
-    //     ->insert([
-    //         'guard' => 'admin_api',
-    //         'user_id' => 1,
-    //         'model' => 'Color',
-    //         'model_id' => $key + 1 ,
-    //         'action' => 'create'
-    //     ]);
-}
-DB::table('colors')->insert($colorData);
-DB::table('transactions')->insert($colorTransactions);
+        ],'Color','colors');
 }
 }

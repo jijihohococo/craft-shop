@@ -23,7 +23,9 @@ class DatabaseSeeder extends Seeder
             ShopSeeder::class ,
             CurrencySeeder::class ,
             ColorSeeder::class ,
-            TaxSeeder::class
+            TaxSeeder::class , 
+            CategorySeeder::class ,
+            SubcategorySeeder::class
         ]);
         DB::commit();
         // \App\Models\User::factory(10)->create();

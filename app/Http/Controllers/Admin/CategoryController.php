@@ -155,7 +155,7 @@ public function trashSearch(Request $request){
 
 public function get(){
     return response()->json([
-        'categories' => (new Category)->getAll()
+        'categories' => (new Category)->getWithSubcategories()
     ]);
 }
 

@@ -2,11 +2,11 @@
 	<div class="middle-header dark_skin">
       <div class="container">
           <div class="nav_block">
-            <a class="navbar-brand" href="index.html">
+            <router-link class="navbar-brand" :to="{name:'home'}">
                 <!-- <img class="logo_light" src="https://bestwebcreator.com/shopwise/demo/assets/images/logo_light.png" alt="logo" /> -->
                 <img class="logo_dark" 
                 :src="'/image/shop_images/'+shop.data.pic" alt="logo" />
-            </a>
+            </router-link>
             <div class="contact_phone order-md-last">
                 <i class="linearicons-phone-wave"></i>
                 <span>{{ shop.data.phone }}</span>

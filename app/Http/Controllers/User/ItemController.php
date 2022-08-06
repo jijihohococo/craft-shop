@@ -52,10 +52,21 @@ class ItemController extends Controller
             'items' => Item::selectItemDataWithImages()
             ->where('category_id',$categoryId)
             ->searchWithName( $searchData )
+            ->searchWithCategory($searchData)
             ->searchWithSubcategory($searchData)
             ->searchWithBrand($searchData)
             ->latest('id')
             ->paginate(10)
+        ]);
+    }
+
+    public function showBestSeller(){
+        return response()->json([
+            'laptops' => ,
+            'desktops' => ,
+            'accessories' => ,
+            
+
         ]);
     }
 }
