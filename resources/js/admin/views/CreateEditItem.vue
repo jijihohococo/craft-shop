@@ -241,6 +241,7 @@
 			},
 			setCategoryId(categoryId){
 				this.fields.category_id=categoryId
+				this.subcategories={}
 				this.fields.subcategory_id=''
 				this.getSubcategories(categoryId)
 			},
