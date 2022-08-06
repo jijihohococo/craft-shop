@@ -77,6 +77,41 @@ class SubcategorySeeder extends Seeder
             ['name' => 'Air Pod','category_id'=>5],
             ['name' => 'Apple Pencil','category_id'=>5],
             // Mobile Accessories //
+
+            // Gaming //
+            ['name'=>'Gaming Laptop','category_id'=>6],
+            ['name'=> 'Gaming Desktop','category_id'=>6],
+            ['name'=> 'Gaming Mouse','category_id'=>6],
+            ['name'=> 'Gaming Keyboard','category_id'=>6],
+            ['name'=> 'Gaming Headphone','category_id'=>6],
+            ['name'=> 'Gaming Phone','category_id'=>6],
+            ['name'=> 'Gaming Backpack','category_id'=>6],
+            ['name'=> 'Gaming Mouse Mat','category_id'=>6],
+            ['name'=> 'Gaming Peripherals','category_id'=>6],
+            ['name'=> 'Gaming Monitor','category_id'=>6],
+            // Gaming //
+
+            // Desktop Components //
+            ['name' => 'Monitor' , 'category_id' => 7 ],
+            ['name' => 'RAM' , 'category_id' => 7 ],
+            ['name' => 'Motherboard','category_id'=>7],
+            ['name' => 'HDD','category_id'=>7],
+            ['name'=> 'SSD','category_id'=>7],
+            ['name' => 'CPU','category_id'=>7],
+            ['name' => 'Graphics Card','category_id'=>7]
+            // Desktop Components //
+
+            // Software //
+            ['name' => 'Learning','category_id'=>8],
+            ['name'=>'Anti-Virus','category_id'=>8],
+            // Software //
+
+            // Networking Components //
+            ['name'=>'Router','category_id'=>9],
+            ['name' => 'Switch','category_id'=>9],
+            ['name'=> 'Modem','category_id'=>9],
+            ['name'=>'Ethernet Adapter','category_id'=>9],
+            // Networking Components //
         ],'Subcategory','subcategories');
         
     }

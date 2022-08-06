@@ -23,8 +23,9 @@ class CategorySeeder extends Seeder
             ['name' =>    'Mobile & Tablet'],
             ['name' =>    'Mobile Accessories'],
             ['name' =>    'Gaming Gadgets'],
+            ['name' => 'Desktop Components' ],
             ['name' =>    'Software'],
-            ['name' =>    'Networking'],
+            ['name' =>    'Networking Components'],
             ['name' =>    'Electronic'],
             ['name' =>    'Office']
         ],'Category','categories');
