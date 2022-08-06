@@ -62,11 +62,19 @@ class ItemController extends Controller
 
     public function showBestSeller(){
         return response()->json([
-            'laptops' => ,
-            'desktops' => ,
-            'accessories' => ,
-            
+            'laptops' => Item::selectItemDataWithImages()->where('category_id',1)->latest('id')->limit(7)->get() ,
+            'desktops' => Item::selectItemDataWithImages()->where('category_id',2)->latest('id')->limit(7)->get() ,
+            'accessories' => Item::selectItemDataWithImages()->where('category_id',3)->latest('id')->limit(7)->get() ,
+            'desktop_components' => Item::selectItemDataWithImages()->where('category_id',7)->latest('id')->limit(7)->get()
+        ]);
+    }
 
+    public function showGaming(){
+        return response()->json([
+            'gaming_laptops' =>  Item::selectItemDataWithImages()->where('subcategory_id',46)->latest('id')->limit(7)->get() ,
+            'gaming_mouses' => Item::selectItemDataWithImages()->where('subcategory_id',48)->latest('id')->limit(7)->get() ,
+            'gaming_keyboards' => Item::selectItemDataWithImages()->where('subcategory_id',49)->latest('id')->limit(7)->get() ,
+            'gaming_headphones' => Item::selectItemDataWithImages()->where('subcategory_id',50)->latest('id')->limit(7)->get()
         ]);
     }
 }

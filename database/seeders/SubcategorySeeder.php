@@ -98,7 +98,7 @@ class SubcategorySeeder extends Seeder
             ['name' => 'HDD','category_id'=>7],
             ['name'=> 'SSD','category_id'=>7],
             ['name' => 'CPU','category_id'=>7],
-            ['name' => 'Graphics Card','category_id'=>7]
+            ['name' => 'Graphics Card','category_id'=>7],
             // Desktop Components //
 
             // Software //
