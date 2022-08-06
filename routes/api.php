@@ -38,7 +38,7 @@ Route::get('currencies','User\CurrencyController@get');
 
 Route::get('best_sellers','User\ItemController@showBestSeller');
 Route::get('gamings','User\ItemController@showGaming');
-
+Route::get('feature_products','User\ItemController@showFeatureProducts');
 
 Route::group(['middleware' => [ 'user_auth'] ], function () {
 

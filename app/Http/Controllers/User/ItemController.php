@@ -77,4 +77,13 @@ class ItemController extends Controller
             'gaming_headphones' => Item::selectItemDataWithImages()->where('subcategory_id',50)->latest('id')->limit(7)->get()
         ]);
     }
+
+    public function showFeatureProducts(){
+        return response()->json([
+            'feature_products' => Item::selectItemDataWithImages()
+            ->latest('id')
+            ->limit(15)
+            ->get()
+        ]);
+    }
 }
