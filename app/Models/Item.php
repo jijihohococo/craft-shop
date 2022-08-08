@@ -36,7 +36,7 @@ class Item extends TransactionModel
                 $query->select('id')
                 ->from('brands')
                 ->where('name','like',$searchData);
-        });
+            });
     }
 
     public function scopeSearchWithSubcategory($query,$searchData){
@@ -94,28 +94,64 @@ class Item extends TransactionModel
             $query->select(\DB::raw('GROUP_CONCAT(colors.color_code)'))
             ->from('colors')
             ->whereIn('colors.id',function($query){
-            $query->select('color_id')
-            ->from('item_variants')
-            ->whereColumn('item_variants.item_id','items.id');
+                $query->select('color_id')
+                ->from('item_variants')
+                ->whereColumn('item_variants.item_id','items.id');
             });
         }  ]);
     }
 
     public static function selectImage($query){
         return $query->select(
-                \DB::raw(" SUBSTRING_INDEX( GROUP_CONCAT(item_images.filename) ,',',1) ")
-            )->from('item_images')
-            ->whereIn('item_variant_id',function($newQuery){
-                $newQuery->select('id')
-                ->from('item_variants')
-                ->whereColumn('items.id','item_variants.item_id')
-                ->groupBy('item_variants.item_id');
-            });
+            \DB::raw(" SUBSTRING_INDEX( GROUP_CONCAT(item_images.filename) ,',',1) ")
+        )->from('item_images')
+        ->whereIn('item_variant_id',function($newQuery){
+            $newQuery->select('id')
+            ->from('item_variants')
+            ->whereColumn('items.id','item_variants.item_id')
+            ->groupBy('item_variants.item_id');
+        });
     }
 
     public function scopeSelectItemImageWithVariants($query){
         return $query->addSelect(['image' => function($query){
             self::selectImage($query);
         } ]);
+    }
+
+    public function scopeSelectPrice($query){
+        return $query->addSelect(['sale_price' => function($query){
+            $query->select(
+                \DB::raw(
+                    "GROUP_CONCAT(
+                    CASE
+                    WHEN item_prices.promotion_start_time <=NOW() THEN promotion_price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)
+                    WHEN item_prices.promotion_end_time >=NOW() THEN promotion_price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)
+                    ELSE item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) END )"
+                )
+            )
+            ->from('item_prices')
+            ->whereIn('item_prices.item_variant_id',function($newQuery){
+                $newQuery->select('item_variants.id')
+                ->from('item_variants')
+                ->whereColumn('items.id','item_variants.item_id')
+                ->groupBy('item_variants.item_id');
+            });
+        } , 
+        'normal_price' => function($query){
+            $query->select(
+                \DB::raw(
+                    "GROUP_CONCAT(
+                    item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) )"
+                )
+            )->from('item_prices')
+            ->whereIn('item_prices.item_variant_id',function($newQuery){
+                $newQuery->select('item_variants.id')
+                ->from('item_variants')
+                ->whereColumn('items.id','item_variants.item_id')
+                ->groupBy('item_variants.item_id');
+            });
+        }
+    ]);
     }
 }

@@ -100,8 +100,8 @@
 				fileChange : 0
 			}
 		},
-		created(){
-			this.getItemWithColor();
+		async created(){
+			await this.getItemWithColor();
 		},
 		mounted : function(){
 			let vm=this;
@@ -116,7 +116,7 @@
 			})
 		},
 		methods : {
-			getItemWithColor(){
+			async getItemWithColor(){
 				window.axios.get('item_variants/'+this.$route.params.id).then((response) => {
 					if(response.data.message=='Loading'){
 

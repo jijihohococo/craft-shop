@@ -3,7 +3,7 @@ const CreateEditItemStock = () => import('Admin/Views/CreateEditItemStock')
 
 export default [
 {
-	path : 'item_stock',
+	path : 'item_stock/:item_varaint_id',
 	component : ItemStock ,
 	name : 'item_stock'
 

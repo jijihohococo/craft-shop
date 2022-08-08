@@ -20146,7 +20146,7 @@ var CreateEditItemStock = function CreateEditItemStock() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
-  path: 'item_stock',
+  path: 'item_stock/:item_varaint_id',
   component: ItemStock,
   name: 'item_stock'
 }, {

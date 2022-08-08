@@ -37,14 +37,14 @@
 			}
 		},
 		methods: {
-			getBanners(){
+			async getBanners(){
 				window.axios.get( 'banners' ).then( (response) => {
 					this.banners=response.data.banners
 				} )
 			}
 		},
-		created(){
-			this.getBanners()
+		async created(){
+			await this.getBanners()
 		}
 	}
 </script>

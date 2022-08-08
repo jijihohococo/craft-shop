@@ -69,61 +69,113 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getCategories: function getCategories() {
       var _this = this;
 
-      window.axios.get('categories').then(function (response) {
-        _this.categories = response.data.categories;
-      });
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                window.axios.get('categories').then(function (response) {
+                  _this.categories = response.data.categories;
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     },
     getCurrencies: function getCurrencies() {
       var _this2 = this;
 
-      window.axios.get('currencies').then(function (response) {
-        _this2.currencies = response.data.currencies;
-      });
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                window.axios.get('currencies').then(function (response) {
+                  _this2.currencies = response.data.currencies;
+                });
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
     },
     getShoppingCart: function getShoppingCart() {
       var _this3 = this;
 
-      window.axios.get('shopping_cart').then(function (response) {
-        _this3.shopping_cart_items = response.data.shopping_cart_items;
-      });
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                window.axios.get('shopping_cart').then(function (response) {
+                  _this3.shopping_cart_items = response.data.shopping_cart_items;
+                });
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
     },
     getNumberOfWish: function getNumberOfWish() {
       var _this4 = this;
 
-      window.axios.get('number_of_wish').then(function (response) {
-        _this4.number_of_wish = response.data.number_of_wish;
-      });
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                window.axios.get('number_of_wish').then(function (response) {
+                  _this4.number_of_wish = response.data.number_of_wish;
+                });
+
+              case 1:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
     }
   },
   created: function created() {
     var _this5 = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
         while (1) {
-          switch (_context.prev = _context.next) {
+          switch (_context5.prev = _context5.next) {
             case 0:
-              _context.next = 2;
+              _context5.next = 2;
               return _this5.getCategories();
 
             case 2:
-              _context.next = 4;
+              _context5.next = 4;
               return _this5.getCurrencies();
 
             case 4:
-              _context.next = 6;
+              _context5.next = 6;
               return _this5.getShoppingCart();
 
             case 6:
-              _context.next = 8;
+              _context5.next = 8;
               return _this5.getNumberOfWish();
 
             case 8:
             case "end":
-              return _context.stop();
+              return _context5.stop();
           }
         }
-      }, _callee);
+      }, _callee5);
     }))();
   }
 });

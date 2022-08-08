@@ -33,14 +33,14 @@
 			}
 		},
 		methods :{
-			getBrands(){
+			async getBrands(){
 				window.axios.get( 'brands' ).then(( response ) =>  {
 					this.brands=response.data.brands
 				} )
 			}
 		},
-		created(){
-			this.getBrands()
+		async created(){
+			await this.getBrands()
 		}
 	}
 </script>

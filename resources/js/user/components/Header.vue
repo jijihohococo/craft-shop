@@ -317,22 +317,22 @@
 			}
 		},
 		methods : {
-			getCategories(){
+			async getCategories(){
 				window.axios.get( 'categories' ).then( (response) => {
 					this.categories=response.data.categories
 				} )
 			},
-			getCurrencies(){
+			async getCurrencies(){
 				window.axios.get( 'currencies' ).then( (response) => {
 					this.currencies=response.data.currencies
 				} )
 			},
-			getShoppingCart(){
+			async getShoppingCart(){
 				window.axios.get( 'shopping_cart' ).then( (response) => {
 					this.shopping_cart_items=response.data.shopping_cart_items
 				} )
 			},
-			getNumberOfWish(){
+			async getNumberOfWish(){
 				window.axios.get('number_of_wish').then( (response) => {
 					this.number_of_wish=response.data.number_of_wish
 				} )
