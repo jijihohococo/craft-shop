@@ -11,11 +11,22 @@ class Banner extends TransactionModel
 
     protected $fillable =[
         'title',
-        'pic'
+        'pic',
+        'content',
+        'contents_id'
     ];
     protected $dates = ['deleted_at'];
 
     public static $cacheKey='banners_cache';
+
+    public static function getContents(){
+        return [
+            'Category',
+            'Subcategory',
+            'Brand',
+            'Promotion'
+        ];
+    }
 
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-banners',60*60*24,function(){

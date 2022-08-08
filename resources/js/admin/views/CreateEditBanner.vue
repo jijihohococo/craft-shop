@@ -78,7 +78,13 @@
 					create : '',
 					update : ''
 				},
-				current : null
+				current : null,
+				contents : [
+				'Category',
+				'Subcategory',
+				'Brand',
+				'Promotion'
+				]
 			}
 		},
 		async created(){
