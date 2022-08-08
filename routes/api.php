@@ -40,6 +40,8 @@ Route::get('best_sellers','User\ItemController@showBestSeller');
 Route::get('gamings','User\ItemController@showGaming');
 Route::get('feature_products','User\ItemController@showFeatureProducts');
 
+Route::get('show_items_by_categories/{categoryId}','User\ItemController@showByCategory');
+
 Route::group(['middleware' => [ 'user_auth'] ], function () {
 
 Route::get('orders','User\OrderController@get');

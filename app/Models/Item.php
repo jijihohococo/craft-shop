@@ -123,11 +123,11 @@ class Item extends TransactionModel
         return $query->addSelect(['sale_price' => function($query){
             $query->select(
                 \DB::raw(
-                    "GROUP_CONCAT(
+                    "SUBSTRING_INDEX( GROUP_CONCAT(
                     CASE
                     WHEN item_prices.promotion_start_time <=NOW() THEN promotion_price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)
                     WHEN item_prices.promotion_end_time >=NOW() THEN promotion_price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)
-                    ELSE item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) END )"
+                    ELSE item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) END ) ,',',1)"
                 )
             )
             ->from('item_prices')
@@ -136,13 +136,14 @@ class Item extends TransactionModel
                 ->from('item_variants')
                 ->whereColumn('items.id','item_variants.item_id')
                 ->groupBy('item_variants.item_id');
-            });
+            })->orderBy('item_prices.id','DESC')
+            ->limit(1);
         } , 
         'normal_price' => function($query){
             $query->select(
                 \DB::raw(
-                    "GROUP_CONCAT(
-                    item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) )"
+                    "SUBSTRING_INDEX( GROUP_CONCAT(
+                    item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) ) ,',',1)"
                 )
             )->from('item_prices')
             ->whereIn('item_prices.item_variant_id',function($newQuery){
@@ -150,7 +151,8 @@ class Item extends TransactionModel
                 ->from('item_variants')
                 ->whereColumn('items.id','item_variants.item_id')
                 ->groupBy('item_variants.item_id');
-            });
+            })->orderBy('item_prices.id')
+            ->limit(1);
         }
     ]);
     }

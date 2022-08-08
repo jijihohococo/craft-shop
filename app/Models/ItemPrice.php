@@ -18,4 +18,8 @@ class ItemPrice extends TransactionModel
         'promotion_start_time',
         'promotion_end_time'
     ];
+
+    public function currency(){
+        return $this->belongsTo('App\Models\Currency')->withDefault()->withTrashed();
+    }
 }
