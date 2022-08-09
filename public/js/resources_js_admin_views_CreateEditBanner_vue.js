@@ -318,7 +318,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         create: '',
         update: ''
       },
-      current: null
+      current: null,
+      contents: ['Category', 'Subcategory', 'Brand', 'Promotion']
     };
   },
   created: function created() {
