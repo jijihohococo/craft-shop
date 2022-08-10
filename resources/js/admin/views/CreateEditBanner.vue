@@ -24,10 +24,26 @@
 								</div>
 								<div class="form-group">
 									<label>Picture</label>
-									<File @change="setPic" :pics="this.fields.pics" @removed="removePic"
+									<File @change="setPic" :pics="fields.pics" @removed="removePic"
 									storage_path='storage/banner_images/'
 									delete_path='admin_api/banner_image_delete/'  />
 									<strong v-if="errors && errors.pic" class="invalid-feedback" style="display:block!important;" >{{ errors.pic[0] }}</strong>
+								</div>
+								<div class="form-group">
+									<label>Link With Content</label>
+									<input type="checkbox" v-model="contentSelected">
+								</div>
+								<div class="form-group" v-if="contentSelected">
+									<Select :options="contents" :value="fields.content" @input="setContent">
+										<option value="" disabled >Select Content</option>
+									</Select>
+									<strong v-if="errors && errors.content" class="invalid-feedback" style="display:block!important;" >{{ errors.content[0] }}</strong>
+								</div>
+								<div class="form-group" v-if="fields.content!==null && contentSelected">
+									<Select :value="fields.content_id" @input="setContentId">
+										<option value="" disabled >Select</option>
+										<option v-for="selectedContent in selectedContents" :value="selectedContent.id">{{ selectedContent.name }}</option>
+									</Select>
 								</div>
 							</div>
 						</div>
@@ -52,21 +68,27 @@
 
 	import File from '../components/File'
 
+	import Select from '../components/Select'
+
 	export default {
 		components: {
 			CreateEditHeader,
 			Error,
 			File,
-			Loading
+			Loading,
+			Select
 		},
 		data(){
 			return {
 				content : 'Banner',
+				contentSelected : false ,
 				fields : {
 					title : '',
 					pic : '',
 					pics : [] ,
-					count : 0
+					count : 0 ,
+					content : null ,
+					content_id : null
 				},
 				formData : new FormData ,
 				errors : {
@@ -84,7 +106,8 @@
 				'Subcategory',
 				'Brand',
 				'Promotion'
-				]
+				],
+				selectedContents : {}
 			}
 		},
 		async created(){
@@ -98,6 +121,15 @@
 			removePic(){
 				this.fields.pic='';
 			},
+			setContentId(id){
+				this.fields.content_id=id
+			},
+			setContent(content){
+				this.selectedContents={};
+				this.fields.content_id=null;
+				this.fields.content=content
+				this.getSubcategories(content);
+			},
 			setPic(event){
 				this.fields.pic=event.target.files[0];
 				if(this.count==0){
@@ -105,10 +137,40 @@
 				}
 				this.count++
 			},
+			getSubcategories(content){
+				const check=(content) => {
+					switch(content){
+						case 'Category':
+						return 'get_categories';
+						break;
+
+						case 'Subcategory':
+						return 'get_all_subcategories';
+						break;
+
+						case 'Brand':
+						return 'get_brands';
+						break;
+					}
+				}
+				window.axios.get(check(content)).then( (response) => {
+					if(response.data.message=='Loading'){
+						showSwalLoading(this);
+					}else{
+						this.selectedContents=response.data[Object.keys(response.data)[0]]
+					}
+				} )
+			},
 			getFormData(update=null){
 				let pic=typeof this.fields.pic == 'string' && !isNaN(this.$route.params.id) ? '' : this.fields.pic;
 				this.formData.set('title',this.fields.title )
 				this.formData.set('pic',pic)
+				if(this.contentSelected==false){
+					this.fields.content='';
+					this.fields.content_id='';
+				}
+				this.formData.set('content',this.fields.content)
+				this.formData.set('content_id',this.fields.content_id)
 				if(update!==null){this.formData.append('_method', 'PATCH');}
 				return this.formData
 			},
@@ -158,6 +220,10 @@
 					}else{
 						this.fields=response.data.banner;
 						this.fields.pics=[{'filename':this.fields.pic,'id': !isNaN(this.$route.params.id) ? this.$route.params.id : null }]
+						if(this.fields.content!==null){
+							this.contentSelected=true;
+							this.getSubcategories(this.fields.content)
+						}
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'update')

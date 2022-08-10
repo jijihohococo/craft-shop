@@ -169,6 +169,12 @@ public function get($categoryId){
     ]);
 }
 
+public function getAll(){
+    return response()->json([
+        'subcategories' => (new Subcategory)->getAll()
+    ]);
+}
+
 public function deleteMultiple(Request $request){
     $request->validate([
         'subcategories' => ['required','string']

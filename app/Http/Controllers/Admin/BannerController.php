@@ -154,7 +154,7 @@ class BannerController extends Controller
         'nullable',
         'in:'.implode(',', Banner::getContents())
          ],
-        'content_id' => ['nullable','integer']
+        'content_id' => ['nullable','string']
     ];
 }
 

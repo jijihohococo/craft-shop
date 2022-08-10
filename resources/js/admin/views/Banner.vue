@@ -58,7 +58,7 @@
                                 <td>
                                     <DeleteCheck
                                     v-if="actions.delete"
-                                    :objectData="category"
+                                    :objectData="banner"
                                     :deleteArrayData="deleteData"
                                     :objectArrayData="multipleData"
                                     ref="deleteCheck"

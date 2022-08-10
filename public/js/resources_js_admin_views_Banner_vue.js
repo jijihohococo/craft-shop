@@ -1559,7 +1559,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: banner.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [$data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteCheck, {
       key: 0,
-      objectData: _ctx.category,
+      objectData: banner,
       deleteArrayData: $data.deleteData,
       objectArrayData: $data.multipleData,
       ref_for: true,

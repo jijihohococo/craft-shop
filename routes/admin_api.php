@@ -24,6 +24,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('subcategory_trash_search','Admin\SubcategoryController@trashSearch');
 	Route::delete('subcategory_restore/{id}','Admin\SubcategoryController@restore');
 	Route::get('get_subcategories/{categoryId}','Admin\SubcategoryController@get');
+	Route::get('get_all_subcategories','Admin\SubcategoryController@getAll');
 	Route::get('trash_subcategories','Admin\SubcategoryController@trash');
 	Route::delete('delete_subcategories','Admin\SubcategoryController@deleteMultiple');
 	Route::delete('restore_subcategories','Admin\SubcategoryController@restoreMultiple');

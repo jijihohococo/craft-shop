@@ -13,7 +13,7 @@ class Banner extends TransactionModel
         'title',
         'pic',
         'content',
-        'contents_id'
+        'content_id'
     ];
     protected $dates = ['deleted_at'];
 
