@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\{CategoryDataTrait,SearchNameTrait};
+use Illuminate\Support\Facades\Cache;
 class Item extends TransactionModel
 {
     use HasFactory,SoftDeletes,CategoryDataTrait,SearchNameTrait;
@@ -16,6 +17,9 @@ class Item extends TransactionModel
         'subcategory_id',
         'description'
     ];
+
+    public static $cacheKey='items_cache';
+
     protected $dates = ['deleted_at'];
 
     public function category(){
@@ -46,6 +50,18 @@ class Item extends TransactionModel
                 ->from('subcategories')
                 ->where('name','like',$searchData);
             });
+    }
+
+    public function scopeSearchWithColor($query,$searchData){
+        return $query->orWherein('id',function($query) use($searchData){
+            $query->select('id')
+            ->from('item_variants')
+            ->whereIn('item_variants.color_id',function($query) use($searchData){
+                $query->select('id')
+                ->from('colors')
+                ->where('colors.name','like',$searchData);
+            });
+        });
     }
 
     public function scopeSelectItemData($query){
@@ -123,11 +139,7 @@ class Item extends TransactionModel
         return $query->addSelect(['sale_price' => function($query){
             $query->select(
                 \DB::raw(
-                    "SUBSTRING_INDEX( GROUP_CONCAT(
-                    CASE
-                    WHEN item_prices.promotion_start_time <=NOW() THEN promotion_price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)
-                    WHEN item_prices.promotion_end_time >=NOW() THEN promotion_price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)
-                    ELSE item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) END ) ,',',1)"
+                    ItemPrice::SALE_PRICE_SQL
                 )
             )
             ->from('item_prices')
@@ -142,8 +154,7 @@ class Item extends TransactionModel
         'normal_price' => function($query){
             $query->select(
                 \DB::raw(
-                    "SUBSTRING_INDEX( GROUP_CONCAT(
-                    item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) ) ,',',1)"
+                    ItemPrice::NORMAL_PRICE_SQL
                 )
             )->from('item_prices')
             ->whereIn('item_prices.item_variant_id',function($newQuery){
@@ -151,9 +162,107 @@ class Item extends TransactionModel
                 ->from('item_variants')
                 ->whereColumn('items.id','item_variants.item_id')
                 ->groupBy('item_variants.item_id');
-            })->orderBy('item_prices.id')
+            })->orderBy('item_prices.id','DESC')
             ->limit(1);
         }
     ]);
+    }
+
+    public function getLaptops(){
+        return Cache::tags( self::$cacheKey )->remember('laptops',60*60*24,function(){
+            return self::selectItemDataWithImages()
+            ->selectPrice()
+            ->where('category_id',1)
+            ->latest('id')
+            ->limit(7)
+            ->get();
+        });
+    }
+
+    public function getDesktops(){
+        return Cache::tags( self::$cacheKey )->remember('desktops',60*60*24,function(){
+            return self::selectItemDataWithImages()
+            ->selectPrice()
+            ->where('category_id',2)
+            ->latest('id')
+            ->limit(7)
+            ->get();
+        });
+    }
+
+    public function getAccessories(){
+        return Cache::tags( self::$cacheKey )->remember('accessories',60*60*24,function(){
+            return self::selectItemDataWithImages()
+            ->selectPrice()
+            ->where('category_id',3)
+            ->latest('id')
+            ->limit(7)
+            ->get();
+        });
+    }
+
+    public function getDesktopComponents(){
+        return Cache::tags( self::$cacheKey )->remember('desktop_components',60*60*24,function(){
+            return self::selectItemDataWithImages()
+            ->selectPrice()
+            ->where('category_id',7)
+            ->latest('id')
+            ->limit(7)
+            ->get();
+        });
+    }
+
+    public function getGamingLaptops(){
+        return Cache::tags( self::$cacheKey )->remember('desktop_components',60*60*24,function(){
+            return self::selectItemDataWithImages()
+            ->selectPrice()
+            ->where('subcategory_id',46)
+            ->latest('id')
+            ->limit(7)
+            ->get();
+        });
+    }
+
+    public function getGamingMouses(){
+        return Cache::tags( self::$cacheKey )->remember('gaming_mouses',60*60*24,function(){
+            return self::selectItemDataWithImages()
+            ->selectPrice()
+            ->where('subcategory_id',48)
+            ->latest('id')
+            ->limit(7)
+            ->get(); 
+        });
+    }
+
+    public function getGamingKeyboards(){
+        return Cache::tags( self::$cacheKey )->remember('gaming_keyboards',60*60*24,function(){
+            return self::selectItemDataWithImages()
+            ->selectPrice()
+            ->where('subcategory_id',49)
+            ->latest('id')
+            ->limit(7)
+            ->get();
+        });
+    }
+
+    public function getGamingHeadphones(){
+        return Cache::tags( self::$cacheKey )->remember('gaming_headphones',60*60*24,function(){
+            return self::selectItemDataWithImages()
+            ->selectPrice()
+            ->where('subcategory_id',50)
+            ->latest('id')
+            ->limit(7)
+            ->get();
+        });
+    }
+
+    public function getFeatureProducts(){
+        return Cache::tags( self::$cacheKey )->remember('feature_products',60*60*24,function(){
+            return self::selectItemDataWithImages()
+            ->selectPrice()
+            ->latest('id')
+            ->limit(15)
+            ->get();
+        });
     }
 }

@@ -16,7 +16,7 @@ trait ItemDataTrait{
 				Item::selectImage($query);
 			},'image')
 			->from('items')
-			->whereColumn('shopping_carts.item_id','items.id')
+			->whereColumn('item_id','items.id')
 			->limit(1);
 		} ]);
 	}

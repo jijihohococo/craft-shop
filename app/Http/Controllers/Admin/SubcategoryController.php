@@ -163,9 +163,7 @@ public function trashSearch(Request $request){
 
 public function get($categoryId){
     return response()->json([
-        'subcategories' => Subcategory::where('category_id',$categoryId)
-        ->latest('name')
-        ->get()
+        'subcategories' => (new Subcategory)->getByCategoryId($categoryId)
     ]);
 }
 

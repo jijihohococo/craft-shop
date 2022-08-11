@@ -177,7 +177,7 @@ class AttributeController extends Controller
 
     public function getAtrributeSets($attributeId){
         return response()->json([
-            'sets' => AttributeSet::where('attribute_id',$attributeId)->get()
+            'sets' => (new AttributeSet)->getByAttributeId($attributeId)
         ]);
     }
 

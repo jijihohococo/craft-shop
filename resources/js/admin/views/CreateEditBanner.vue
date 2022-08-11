@@ -159,6 +159,12 @@
 					}else{
 						this.selectedContents=response.data[Object.keys(response.data)[0]]
 					}
+				} ).catch( (error) => {
+					if(error.response.status==422){
+						this.errors= error.response.data.errors
+					}else{
+						errorResponse(error,this,'update')
+					}
 				} )
 			},
 			getFormData(update=null){

@@ -120,10 +120,6 @@ class AdminController extends Controller
         $admin->update($request->all());
         $this->roles=$admin->roles->pluck('role_id')->toArray();
         $this->insertAdminRoles($request->roles,$id,'yes');
-        // if( $roles+$request->roles!==$roles ){
-        //     AdminRole::where('admin_id',$admin->id )->delete();
-        //     $this->insertAdminRoles($request->roles,$admin->id);
-        // }
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Admin is updated successfully' 

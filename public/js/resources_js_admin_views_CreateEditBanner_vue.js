@@ -452,6 +452,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         } else {
           _this2.selectedContents = response.data[Object.keys(response.data)[0]];
         }
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this2.errors = error.response.data.errors;
+        } else {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.errorResponse)(error, _this2, 'update');
+        }
       });
     },
     getFormData: function getFormData() {

@@ -14,13 +14,21 @@ class Subcategory extends TransactionModel
         'category_id',
         'name'];
 
-    protected $dates = ['deleted_at'];
+        protected $dates = ['deleted_at'];
 
-    public static $cacheKey='subcategories_cache';
+        public static $cacheKey='subcategories_cache';
 
-    public function getAll(){
-        return Cache::tags( self::$cacheKey )->remember('all-subcategories',60*60*24,function(){
-            return self::orderBy('name')->get();
-        });
+        public function getAll(){
+            return Cache::tags( self::$cacheKey )->remember('all-subcategories',60*60*24,function(){
+                return self::orderBy('name')->get();
+            });
+        }
+
+        public function getByCategoryId($categoryId){
+            return Cache::tags( self::$cacheKey )->remember('subcategories-by-category',60*60*24,function() use ($categoryId) {
+                return self::where('category_id',$categoryId)
+                ->latest('name')
+                ->get();
+            });
+        }
     }
-}

@@ -59,76 +59,36 @@ class ItemController extends Controller
             ->searchWithCategory($searchData)
             ->searchWithSubcategory($searchData)
             ->searchWithBrand($searchData)
+            ->searchWithColor($searchData)
             ->latest('id')
             ->paginate(10)
         ]);
     }
 
     public function showBestSeller(){
+        $item=new Item;
         return response()->json([
-            'laptops' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('category_id',1)
-            ->latest('id')
-            ->limit(7)
-            ->get() ,
-            'desktops' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('category_id',2)
-            ->latest('id')
-            ->limit(7)
-            ->get() ,
-            'accessories' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('category_id',3)
-            ->latest('id')
-            ->limit(7)
-            ->get() ,
-            'desktop_components' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('category_id',7)
-            ->latest('id')
-            ->limit(7)
-            ->get()
+            'laptops' => $item->getLaptops(),
+            'desktops' => $item->getDesktops() ,
+            'accessories' => $item->getAccessories() ,
+            'desktop_components' => $item->getDesktopComponents()
         ]);
     }
 
     public function showGaming(){
+        $item=new Item;
         return response()->json([
-            'gaming_laptops' =>  Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('subcategory_id',46)
-            ->latest('id')
-            ->limit(7)
-            ->get() ,
-            'gaming_mouses' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('subcategory_id',48)
-            ->latest('id')
-            ->limit(7)
-            ->get() ,
-            'gaming_keyboards' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('subcategory_id',49)
-            ->latest('id')
-            ->limit(7)
-            ->get() ,
-            'gaming_headphones' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('subcategory_id',50)
-            ->latest('id')
-            ->limit(7)
-            ->get()
+            'gaming_laptops' =>  $item->getGamingLaptops() ,
+            'gaming_mouses' => $item->getGamingMouses() ,
+            'gaming_keyboards' => $item->getGamingKeyboards(),
+            'gaming_headphones' => $item->getGamingHeadphones()
         ]);
     }
 
     public function showFeatureProducts(){
+        $item=new Item;
         return response()->json([
-            'feature_products' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->latest('id')
-            ->limit(15)
-            ->get()
+            'feature_products' => $item->getFeatureProducts()
         ]);
     }
 }
