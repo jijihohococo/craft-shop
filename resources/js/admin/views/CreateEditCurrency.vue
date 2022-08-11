@@ -14,12 +14,12 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="name" :class="[errors && errors.name ? 'form-control is-invalid' : 'form-control']" placeholder="Name" v-model="fields.name">
+									<input type="text" :class="[errors && errors.name ? 'form-control is-invalid' : 'form-control']" placeholder="Name" v-model="fields.name">
 									<strong v-if="errors && errors.name" class="invalid-feedback">{{ errors.name[0] }}</strong>
 								</div>
 								<div class="form-group">
 									<label>Rate</label>
-									<input type="name" :class="[errors && errors.price ? 'form-control is-invalid' : 'form-control']" placeholder="Rate" v-model="fields.price">
+									<input type="text" :class="[errors && errors.price ? 'form-control is-invalid' : 'form-control']" placeholder="Rate" v-model="fields.price">
 									<strong v-if="errors && errors.price" class="invalid-feedback">{{ errors.price[0] }}</strong>
 								</div>
 							</div>

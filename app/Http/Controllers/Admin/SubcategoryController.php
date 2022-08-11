@@ -31,7 +31,7 @@ class SubcategoryController extends Controller
 
     public function trash(){
         return response()->json([
-            'subcategories' => Subcategory::withTrashed()
+            'subcategories' => Subcategory::onlyTrashed()
             ->selectCategory()
             ->latest('id')
             ->paginate(10)

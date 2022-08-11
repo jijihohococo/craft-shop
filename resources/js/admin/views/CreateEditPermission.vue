@@ -14,7 +14,7 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label>Name {{ fields.model }}</label>
-									<input type="name" :class="[errors && errors.name ? 'form-control is-invalid' : 'form-control']" placeholder="Name" v-model="fields.name">
+									<input type="text" :class="[errors && errors.name ? 'form-control is-invalid' : 'form-control']" placeholder="Name" v-model="fields.name">
 								</div>
 								<div class="form-group">
 									<label>Content</label>
