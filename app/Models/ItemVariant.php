@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Traits\ItemDataTrait;
 class ItemVariant extends Model
 {
-    use HasFactory;
+    use HasFactory,ItemDataTrait;
 
     public function item(){
         return $this->belongsTo('App\Models\Item')->withDefault()->withTrashed();
@@ -19,5 +19,14 @@ class ItemVariant extends Model
 
     public function images(){
         return $this->hasMany('App\Models\ItemImage');
+    }
+
+    public function scopeSelectColor($query){
+        return $query->addSelect(['color_name' => function($query) {
+            $query->select('name')
+            ->from('colors')
+            ->whereColumn('color_id','colors.id')
+            ->limit(1);
+        } ]); 
     }
 }

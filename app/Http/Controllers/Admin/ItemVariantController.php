@@ -9,10 +9,11 @@ class ItemVariantController extends Controller
 {
     //
     public function find($id){
-        $itemVariant=ItemVariant::findOrFail($id);
+        $itemVariant=ItemVariant::selectItem()->
+        selectColor()->findOrFail($id);
         return response()->json([
-            'item' => $itemVariant->item->name ,
-            'color' => $itemVariant->color->name
+            'item' => $itemVariant->item_name ,
+            'color' => $itemVariant->color_name
         ]);
     }
 }
