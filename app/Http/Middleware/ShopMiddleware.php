@@ -2,9 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
+use Closure,View;
 use Illuminate\Http\Request;
-use View;
 use App\Models\Shop;
 class ShopMiddleware
 {
