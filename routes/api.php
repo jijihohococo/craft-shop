@@ -23,12 +23,12 @@ Route::get('items/{id}','User\ItemController@show');
 
 Route::get('wish_list','User\WishlistController@get');
 Route::get('get_wish_number','User\WishlistController@getCount');
-Route::post('add_item_to_wish_list','User\WishlistController@addItem');
-Route::post('remove_item_from_wish_list','User\WishlistController@removeItem')->middleware('wishListDelete');
+Route::post('add_item_to_wish_list/{itemId}','User\WishlistController@addItem');
+Route::post('remove_item_from_wish_list/{itemId}','User\WishlistController@removeItem')->middleware('wishListDelete');
 
 Route::get('shopping_cart','User\ShoppingCartController@get');
-Route::post('add_item_to_shopping_cart','User\ShoppingCartController@addSimpleItem');
-Route::post('add_item_to_shopping_cart_detail','User\ShoppingCartController@addDetailItem');
+Route::post('add_item_to_shopping_cart/{itemVariantId}','User\ShoppingCartController@addSimpleItem');
+Route::post('add_item_to_shopping_cart_detail/{itemVariantId}','User\ShoppingCartController@addDetailItem');
 Route::post('remove_item_from_shopping_cart','User\ShoppingCartController@removeItem')->middleware('shoppingCartDelete');
 
 Route::get('categories','User\CategoryController@get');

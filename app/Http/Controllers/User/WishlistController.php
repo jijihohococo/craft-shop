@@ -13,7 +13,7 @@ class WishlistController extends Controller
     private $userId;
 
     public function __construct(){
-        $this->userId=getUserId( authId() );
+        $this->userId= (string) getUserId( authId() );
     }
 
     public function getCount(Request $request){
@@ -33,25 +33,25 @@ class WishlistController extends Controller
         ]);
     }
 
-    public function addItem(Request $request){
+    public function addItem(Request $request,$itemId){
 
         $request->validate([
             'item_id' => ['integer',new WishListValidation($this->userId)]
         ]);
         WishList::create([
             'user_id' => $this->userId ,
-            'item_id' => $request->item_id ,
+            'item_id' => $itemId ,
             'created_at' => NOW()
         ]);
         return response()->json([
-            'message' => 'Add To Wish List Successfully'
+            'message' => 'Add to wish list successfully'
         ]);
     }
 
-    public function removeItem(Request $request){
-        WishList::findOrFail($request->item_id)->delete();
+    public function removeItem(Request $request,$itemId){
+        WishList::findOrFail($itemId)->delete();
         return response()->json([
-            'message' => 'Remove From Wish List Successfully'
+            'message' => 'Remove from wish list successfully'
         ]);
     }
 }

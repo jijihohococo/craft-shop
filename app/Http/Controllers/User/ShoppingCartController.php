@@ -28,7 +28,7 @@ class ShoppingCartController extends Controller
                 'qty' => 1 ,
                 'qtyCheck' => "simple" ]);
         return response()->json([
-            'message' => 'Item is added into shopping cart successfully'
+            'message' => 'Add to shopping cart successfully'
         ]);
     }
 
@@ -38,14 +38,14 @@ class ShoppingCartController extends Controller
                 'qty' => $request->qty ,
                 'qtyCheck' => "multiple" ]);
         return response()->json([
-            'message' => 'Item is added into shopping cart successfully'
+            'message' => 'Add to shopping cart successfully'
         ]);
     }
 
     public function removeItem(Request $request,$id){
         ShoppingCart::findOrFail($id)->delete();
         return response()->json([
-            'message' => 'Item is removed from shopping cart successfully'
+            'message' => 'Remove from shopping cart successfully'
         ]);
     }
 }
