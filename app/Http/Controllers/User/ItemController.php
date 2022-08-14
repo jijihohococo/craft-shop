@@ -7,10 +7,17 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Traits\Review;
 use App\Http\Resources\ItemResource;
+use App\Repositories\ItemRepositoryInterface;
 class ItemController extends Controller
 {
     use Review;
     //
+    private $item;
+
+    public function __construct(ItemRepositoryInterface $item){
+        $this->item=$item;
+    }
+
     public function show(Request $request,$id){
         return response()->json([
             'item' => new ItemResource(Item::selectItemData()
@@ -52,16 +59,7 @@ class ItemController extends Controller
     public function search(Request $request,$categoryId){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'items' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('category_id',$categoryId)
-            ->searchWithName( $searchData )
-            ->searchWithCategory($searchData)
-            ->searchWithSubcategory($searchData)
-            ->searchWithBrand($searchData)
-            ->searchWithColor($searchData)
-            ->latest('id')
-            ->paginate(10)
+            'items' => $this->item->search($categoryId,$searchData)
         ]);
     }
 
