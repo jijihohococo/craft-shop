@@ -28,31 +28,19 @@ class ItemController extends Controller
 
     public function showByCategory(Request $request,$categoryId){
         return response()->json([
-            'items' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('category_id',$categoryId)
-            ->latest('id')
-            ->paginate(10)
+            'items' => $this->item->getByContent('category',$categoryId)
         ]);
     }
 
     public function showBySubcategory(Request $request,$subcategoryId){
         return response()->json([
-            'items' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('subcategory_id',$subcategoryId)
-            ->latest('id')
-            ->paginate(10)
+            'items' => $this->item->getByContent('subcategory',$subcategoryId)
         ]);
     }
 
     public function showByBrand(Request $request,$brandId){
         return response()->json([
-            'items' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('brand_id',$brandId)
-            ->latest('id')
-            ->paginate(10)
+            'items' => $this->item->getByContent('brand',$brandId)
         ]);
     }
 

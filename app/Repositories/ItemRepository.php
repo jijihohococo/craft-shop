@@ -18,4 +18,13 @@ class ItemRepository implements ItemRepositoryInterface{
             ->paginate(10);
 	}
 
+
+    public function getByContent($content,$id){
+        return Item::selectItemDataWithImages()
+            ->selectPrice()
+            ->where($content.'_id',$id)
+            ->latest('id')
+            ->paginate(10);
+    }
+
 }
