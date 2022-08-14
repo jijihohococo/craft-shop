@@ -119,7 +119,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-4">
-                <p class="mb-lg-0 text-center">© {{ currentYear }} All Rights Reserved by Bestwebcreator</p>
+                <p class="mb-lg-0 text-center">© {{ currentYear }} All Rights Reserved by {{ shop.data.name }}</p>
             </div>
             <div class="col-lg-4 order-lg-first">
               <div class="widget mb-lg-0">
