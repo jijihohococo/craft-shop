@@ -20,7 +20,7 @@ class ShoppingCartRepository implements ShoppingCartRepositoryInterface{
 			$array['variantID'])->ofUser($array['userID']);
 		$qty=$shoppingCart->first()->qty ?? 0;
 		$changedQty=[
-			'simple' => $qty +1 , 
+			'simple' => $qty +1 ,
 			'multiple' => $qty + $array['qty'] , 
 			'direct' => $array['qty']
 		];
