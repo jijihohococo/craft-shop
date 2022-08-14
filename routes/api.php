@@ -31,11 +31,11 @@ Route::post('add_item_to_shopping_cart/{itemVariantId}','User\ShoppingCartContro
 Route::post('add_item_to_shopping_cart_detail/{itemVariantId}','User\ShoppingCartController@addDetailItem');
 Route::post('remove_item_from_shopping_cart','User\ShoppingCartController@removeItem')->middleware('shoppingCartDelete');
 
-Route::get('categories','User\CategoryController@get');
-Route::get('brands','User\BrandController@get');
-Route::get('banners','User\BannerController@get');
-Route::get('colors','User\ColorController@get');
-Route::get('currencies','User\CurrencyController@get');
+Route::get('categories','CategoryController@get');
+Route::get('brands','BrandController@get');
+Route::get('banners','BannerController@get');
+Route::get('colors','ColorController@get');
+Route::get('currencies','CurrencyController@get');
 
 Route::get('best_sellers','User\ItemController@showBestSeller');
 Route::get('gamings','User\ItemController@showGaming');

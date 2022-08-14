@@ -153,12 +153,6 @@ public function trashSearch(Request $request){
     ]);
 }
 
-public function get(){
-    return response()->json([
-        'categories' => (new Category)->getWithSubcategories()
-    ]);
-}
-
 public function deleteMultiple(Request $request){
     $request->validate([
         'categories' => ['required','string']

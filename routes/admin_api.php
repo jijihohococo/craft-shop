@@ -12,7 +12,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('category_search','Admin\CategoryController@search');
 	Route::get('category_trash_search','Admin\CategoryController@trashSearch');
 	Route::delete('category_restore/{id}','Admin\CategoryController@restore');
-	Route::get('get_categories','Admin\CategoryController@get');
+	Route::get('get_categories','CategoryController@get');
 	Route::get('trash_categories','Admin\CategoryController@trash');
 	Route::delete('delete_categories','Admin\CategoryController@deleteMultiple');
 	Route::delete('restore_categories','Admin\CategoryController@restoreMultiple');
@@ -35,7 +35,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('banner_search','Admin\BannerController@search');
 	Route::get('banner_trash_search','Admin\BrandController@trashSearch');
 	Route::delete('banner_restore/{id}','Admin\BannerController@restore');
-	Route::get('get_banners','Admin\BannerController@get');
+	Route::get('get_banners','BannerController@get');
 	Route::get('trash_banners','Admin\BannerController@trash');
 	Route::delete('delete_banners','Admin\BannerController@deleteMultiple');
 	Route::delete('restore_banners','Admin\BannerController@restoreMultiple');
@@ -44,7 +44,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('brand_search','Admin\BrandController@search');
 	Route::get('brand_trash_search','Admin\BrandController@trashSearch');
 	Route::delete('brand_restore/{id}','Admin\BrandController@restore');
-	Route::get('get_brands','Admin\BrandController@get');
+	Route::get('get_brands','BrandController@get');
 	Route::get('trash_brands','Admin\BrandController@trash');
 	Route::delete('delete_brands','Admin\BrandController@deleteMultiple');
 	Route::delete('restore_brands','Admin\BrandController@restoreMultiple');
@@ -93,7 +93,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('currency_search','Admin\CurrencyController@search');
 	Route::get('category_trash_search','Admin\CategoryController@trashSearch');
 	Route::delete('currency_restore/{id}','Admin\CurrencyController@restore');
-	Route::get('get_currencies','Admin\CurrencyController@get');
+	Route::get('get_currencies','CurrencyController@get');
 	Route::get('trash_currencies','Admin\CurrencyController@trash');
 	Route::delete('delete_currencies','Admin\CurrencyController@deleteMultiple');
 	Route::delete('restore_currencies','Admin\CurrencyController@restoreMultiple');
@@ -148,7 +148,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('color_search','Admin\ColorController@search');
 	Route::get('color_trash_search','Admin\ColorController@trashSearch');
 	Route::delete('color_restore/{id}','Admin\ColorController@restore');
-	Route::get('get_colors','Admin\ColorController@get');
+	Route::get('get_colors','ColorController@get');
 	Route::get('trash_colors','Admin\ColorController@trash');
 	Route::delete('delete_colors','Admin\ColorController@deleteMultiple');
 	Route::delete('restore_colors','Admin\ColorController@restoreMultiple');

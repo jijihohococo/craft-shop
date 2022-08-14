@@ -169,12 +169,6 @@ class BrandController extends Controller
         ]);
     }
 
-    public function get(){
-        return response()->json([
-            'brands' => (new Brand)->getAll()
-        ]);
-    }
-
     public function deleteMultiple(Request $request){
     $request->validate([
         'brands' => ['required','string']

@@ -157,12 +157,6 @@ class ColorController extends Controller
         ]);
     }
 
-    public function get(){
-        return response()->json([
-            'colors' => (new Color)->getAll()
-        ]);
-    }
-
     public function deleteMultiple(Request $request){
         $request->validate([
             'colors' => ['required','string']

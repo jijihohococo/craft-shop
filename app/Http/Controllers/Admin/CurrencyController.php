@@ -157,12 +157,6 @@ class CurrencyController extends Controller
         ]);
     }
 
-    public function get(){
-        return response()->json([
-            'currencies' => (new Currency)->getAll()
-        ]);
-    }
-
     public function deleteMultiple(Request $request){
         $request->validate([
             'currencies' => ['required','string']
