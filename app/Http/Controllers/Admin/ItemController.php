@@ -314,10 +314,7 @@ public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
         'items' => Item::selectItemData()
-        ->searchWithName($searchData)
-        ->searchWithCategory($searchData)
-        ->searchWithSubcategory($searchData)
-        ->searchWithBrand($searchData)
+        ->searchData($searchData)
         ->latest('id')
         ->paginate(10)
     ]);
@@ -328,10 +325,7 @@ public function trashSearch(Request $request){
     return response()->json([
         'items' => Item::onlyTrashed()
         ->selectItemData()
-        ->searchWithName($searchData)
-        ->searchWithCategory($searchData)
-        ->searchWithSubcategory($searchData)
-        ->searchWithBrand($searchData)
+        ->searchData($searchData)
         ->latest('id')
         ->paginate(10)
     ]);

@@ -34,6 +34,14 @@ class Item extends TransactionModel
         return $this->hasMany('App\Models\ItemVariant');
     }
 
+    public function scopeSearchData($query,$searchData){
+        return $query->searchWithName( $searchData )
+            ->searchWithCategory($searchData)
+            ->searchWithSubcategory($searchData)
+            ->searchWithBrand($searchData)
+            ->searchWithColor($searchData);
+    }
+
     public function scopeSearchWithBrand($query,$searchData){
         return $query->orWherein('brand_id',
             function($query) use($searchData){

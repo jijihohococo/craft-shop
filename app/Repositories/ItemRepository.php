@@ -9,11 +9,7 @@ class ItemRepository implements ItemRepositoryInterface{
 		return Item::selectItemDataWithImages()
             ->selectPrice()
             ->where('category_id',$categoryId)
-            ->searchWithName( $searchData )
-            ->searchWithCategory($searchData)
-            ->searchWithSubcategory($searchData)
-            ->searchWithBrand($searchData)
-            ->searchWithColor($searchData)
+            ->searchData($searchData)
             ->latest('id')
             ->paginate(10);
 	}
