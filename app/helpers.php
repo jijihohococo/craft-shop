@@ -2,6 +2,13 @@
 
 use App\Models\PassportDate;
 
+function out($result){
+	return response()->json([
+                'message' => 'Log out success'
+            ])->withCookie($result['cookie'])
+            ->withCookie($result['refreshCookie']);
+}
+
 function unauthorized(){
 	return response()->json([
            'message' => 'Unauthorized'
