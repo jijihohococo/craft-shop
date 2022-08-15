@@ -42,8 +42,8 @@ class ShoppingCartController extends Controller
         ]);
     }
 
-    public function removeItem(Request $request,$id){
-        ShoppingCart::findOrFail($id)->delete();
+    public function removeItem(Request $request){
+        DeleteData::get()->delete();
         return response()->json([
             'message' => 'Remove from shopping cart successfully'
         ]);

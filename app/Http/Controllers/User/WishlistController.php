@@ -48,8 +48,8 @@ class WishlistController extends Controller
         ]);
     }
 
-    public function removeItem(Request $request,$itemId){
-        WishList::findOrFail($itemId)->delete();
+    public function removeItem(Request $request){
+        DeleteData::get()->delete();
         return response()->json([
             'message' => 'Remove from wish list successfully'
         ]);
