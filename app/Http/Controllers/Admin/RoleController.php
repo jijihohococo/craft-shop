@@ -46,9 +46,6 @@ class RoleController extends Controller
     public function create()
     {
         //
-        return response()->json([
-            'role' => new Role
-        ]);
     }
 
     private function insertRolePermissions($permissions,$roleId,$update=NULL){

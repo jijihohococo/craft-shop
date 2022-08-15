@@ -42,9 +42,6 @@ class BannerController extends Controller
     public function create()
     {
         //
-        return response()->json([
-            'banner' => new Banner
-        ]);
     }
 
     /**

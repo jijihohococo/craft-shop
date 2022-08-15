@@ -47,9 +47,6 @@ class ItemController extends Controller
     public function create()
     {
         //
-        return response()->json([
-            'item' => new Item
-        ]);
     }
 
     private function insertColors($colors,$itemId,$update=NULL){

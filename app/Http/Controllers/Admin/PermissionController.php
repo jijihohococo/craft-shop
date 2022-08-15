@@ -45,9 +45,6 @@ class PermissionController extends Controller
     public function create()
     {
         //
-        return response()->json([
-            'permission' => new Permission
-        ]);
     }
 
     /**
