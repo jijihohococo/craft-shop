@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use DB;
+use App\Traits\TransactionSeeder;
 class RoleSeeder extends Seeder
 {
+    use TransactionSeeder;
     /**
      * Run the database seeds.
      *
@@ -16,15 +18,10 @@ class RoleSeeder extends Seeder
         //
         DB::table('roles')
         ->insert([
-            'name' => 'Super Admin'
+            'name' => 'Super Admin' ,
+            'created_at' => NOW() ,
+            'updated_at' => NOW()
         ]);
-        DB::table('transactions')
-        ->insert([
-            'guard' => 'admin_api',
-            'user_id' => 1,
-            'model' => 'Role',
-            'model_id' => 1 ,
-            'action' => 'create'
-        ]);
+        $this->insertTransaction('Role');
     }
 }

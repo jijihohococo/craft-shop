@@ -4,8 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use DB;
+use App\Traits\TransactionSeeder;
 class TaxSeeder extends Seeder
 {
+
+    use TransactionSeeder;
     /**
      * Run the database seeds.
      *
@@ -18,14 +21,6 @@ class TaxSeeder extends Seeder
             'name' => 'Commercial Tax',
             'rate' => 5
         ]);
-
-        DB::table('transactions')
-        ->insert([
-            'guard' => 'admin_api',
-            'user_id' => 1,
-            'model' => 'Tax',
-            'model_id' => 1 ,
-            'action' => 'create'
-        ]);
+        $this->insertTransaction('Tax');
     }
 }

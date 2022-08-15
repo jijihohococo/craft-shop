@@ -4,8 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use DB;
+use App\Traits\TransactionSeeder;
 class CurrencySeeder extends Seeder
 {
+
+    use TransactionSeeder;
     /**
      * Run the database seeds.
      *
@@ -16,15 +19,10 @@ class CurrencySeeder extends Seeder
         //
         DB::table('currencies')->insert([
             'name' => 'USD',
-            'price' => 2050
+            'price' => 2050 ,
+            'created_at' => NOW() ,
+            'updated_at' => NOW()
         ]);
-        DB::table('transactions')
-        ->insert([
-            'guard' => 'admin_api',
-            'user_id' => 1,
-            'model' => 'Currency',
-            'model_id' => 1 ,
-            'action' => 'create'
-        ]);
+        $this->insertTransaction('Currency');
     }
 }

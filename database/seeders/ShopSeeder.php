@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use DB;
-
+use App\Traits\TransactionSeeder;
 class ShopSeeder extends Seeder
 {
+
+    use TransactionSeeder;
     /**
      * Run the database seeds.
      *
@@ -22,14 +24,6 @@ class ShopSeeder extends Seeder
             'address' => '123 Street, Old Trafford, NewYork, USA',
             'pic' => 'logo_dark.png'
         ]);
-
-        DB::table('transactions')
-        ->insert([
-            'guard' => 'admin_api',
-            'user_id' => 1,
-            'model' => 'Shop',
-            'model_id' => 1 ,
-            'action' => 'create'
-        ]);
+        $this->insertTransaction('Shop');
     }
 }

@@ -5,8 +5,11 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Permission;
 use DB;
+use App\Traits\TransactionSeeder;
 class PermissionSeeder extends Seeder
 {
+
+    use TransactionSeeder;
     /**
      * Run the database seeds.
      *
@@ -23,16 +26,11 @@ class PermissionSeeder extends Seeder
                 'create' => TRUE ,
                 'read' => TRUE ,
                 'update' => TRUE ,
-                'delete' => TRUE
+                'delete' => TRUE ,
+                'created_at' => NOW() ,
+                'updated_at' => NOW()
             ]);
-                DB::table('transactions')
-                ->insert([
-                    'guard' => 'admin_api',
-                    'user_id' => 1,
-                    'model' => 'Permission',
-                    'model_id' => $key + 1 ,
-                    'action' => 'create'
-                ]);
+            $this->insertTransaction('Permission',$key+1);
         }
     }
 }
