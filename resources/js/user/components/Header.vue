@@ -333,7 +333,7 @@
 				} )
 			},
 			async getNumberOfWish(){
-				window.axios.get('number_of_wish').then( (response) => {
+				window.axios.get('get_wish_number').then( (response) => {
 					this.number_of_wish=response.data.number_of_wish
 				} )
 			}

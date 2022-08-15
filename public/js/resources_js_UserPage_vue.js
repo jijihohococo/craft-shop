@@ -134,7 +134,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                window.axios.get('number_of_wish').then(function (response) {
+                window.axios.get('get_wish_number').then(function (response) {
                   _this4.number_of_wish = response.data.number_of_wish;
                 });
 

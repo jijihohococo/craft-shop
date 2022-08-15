@@ -18,7 +18,7 @@ class WishlistController extends Controller
 
     public function getCount(Request $request){
         return response()->json([
-            'number_of_whish' => WishList::ofUser($this->userId)
+            'number_of_wish' => WishList::ofUser($this->userId)
             ->count()
         ]);
     }

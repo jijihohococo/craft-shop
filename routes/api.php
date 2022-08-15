@@ -41,7 +41,9 @@ Route::get('best_sellers','User\ItemController@showBestSeller');
 Route::get('gamings','User\ItemController@showGaming');
 Route::get('feature_products','User\ItemController@showFeatureProducts');
 
-Route::get('show_items_by_categories/{categoryId}','User\ItemController@showByCategory');
+Route::get('get_items_by_categories/{categoryId}','User\ItemController@showByCategory');
+Route::get('get_items_by_subcategories/{subcategoryId}','User\ItemController@showBySubcategory');
+Route::get('get_items_by_brands/{brandId}','User\ItemController@showByBrand');
 
 Route::group(['middleware' => [ 'user_auth'] ], function () {
 
