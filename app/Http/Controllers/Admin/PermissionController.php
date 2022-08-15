@@ -159,6 +159,7 @@ public function search(Request $request){
     return response()->json([
         'permissions' => Permission::searchWithName($searchData)
         ->orWhere('model','like', $searchData )
+        ->searchCreateAndUpdate($searchData)
         ->latest('id')->paginate(10)
     ]);
 }
@@ -169,6 +170,7 @@ public function trashSearch(Request $request){
         'permissions' => Permission::onlyTrashed()
         ->searchWithName($searchData)
         ->orWhere('model','like',$searchData)
+        ->searchDelete($searchData)
         ->latest('id')
         ->paginate(10)
     ]);

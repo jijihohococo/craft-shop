@@ -312,6 +312,7 @@ public function search(Request $request){
     return response()->json([
         'items' => Item::selectItemData()
         ->searchData($searchData)
+        ->searchCreateAndUpdate($searchData)
         ->latest('id')
         ->paginate(10)
     ]);
@@ -323,6 +324,7 @@ public function trashSearch(Request $request){
         'items' => Item::onlyTrashed()
         ->selectItemData()
         ->searchData($searchData)
+        ->searchDelete($searchData)
         ->latest('id')
         ->paginate(10)
     ]);

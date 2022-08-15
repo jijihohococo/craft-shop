@@ -141,6 +141,7 @@ class ColorController extends Controller
         return response()->json([
             'colors' => Color::searchWithName($searchData)
             ->orWhere('color_code','like',$searchData)
+            ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
         ]);
@@ -152,6 +153,7 @@ class ColorController extends Controller
             'colors' => Color::onlyTrashed()
             ->searchWithName($searchData)
             ->orWhere('color_code','like',$searchData)
+            ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
         ]);

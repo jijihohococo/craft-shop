@@ -153,17 +153,21 @@ class BrandController extends Controller
     }
 
     public function search(Request $request){
+        $searchData='%'.$request->search.'%';
         return response()->json([
-            'brands' => Brand::searchWithName('%'.$request->search.'%')
+            'brands' => Brand::searchWithName($searchData)
+            ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
         ]);
     }
 
     public function trashSearch(Request $request){
+        $searchData='%'.$request->search.'%';
         return response()->json([
             'brands' => Brand::onlyTrashed()
-            ->searchWithName('%'.$request->search.'%')
+            ->searchWithName($searchData)
+            ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
         ]);

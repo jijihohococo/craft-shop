@@ -156,17 +156,21 @@ class BannerController extends Controller
 }
 
 public function search(Request $request){
+    $searchData='%'.$request->search.'%';
     return response()->json([
-        'banners' => Banner::where('title','like','%'.$request->search.'%')
+        'banners' => Banner::where('title','like',$searchData)
+        ->searchCreateAndUpdate($searchData)
         ->latest('id')
         ->paginate(10)
     ]);
 }
 
 public function trashSearch(Request $request){
+    $searchData='%'.$request->search.'%';
     return response()->json([
         'banners' => Banner::onlyTrashed()
-        ->where('title','like','%'.$request->search.'%')
+        ->where('title','like',$searchData)
+        ->searchDelete($searchData)
         ->latest('id')
         ->paginate(10)
     ]);

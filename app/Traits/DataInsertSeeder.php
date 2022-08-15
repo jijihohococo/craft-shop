@@ -9,6 +9,7 @@ trait DataInsertSeeder{
 		$data=[];
 		$transactions=[];
 		foreach($insertData as $key =>  $d){
+			$d=$d+['created_at'=>NOW() , 'updated_at' => NOW() ];
 			array_push($data,$d);
             array_push($transactions,[
                 'guard' => 'admin_api',

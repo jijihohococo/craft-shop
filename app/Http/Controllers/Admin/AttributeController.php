@@ -142,6 +142,7 @@ class AttributeController extends Controller
         $searchData='%'.$request->search.'%';
         return response()->json([
             'attributes' => Attribute::searchWithName($searchData)
+            ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
         ]);
@@ -152,6 +153,7 @@ class AttributeController extends Controller
         return response()->json([
             'attributes' => Attribute::onlyTrashed()
             ->searchWithName($searchData)
+            ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
         ]);

@@ -144,6 +144,7 @@ class SubcategoryController extends Controller
         'subcategories' => Subcategory::selectCategory()
         ->searchWithName($searchData)
         ->searchWithCategory($searchData)
+        ->searchCreateAndUpdate($searchData)
         ->latest('id')
         ->paginate(10)
     ]);
@@ -156,6 +157,7 @@ public function trashSearch(Request $request){
         ->selectCategory()
         ->searchWithName($searchData)
         ->searchWithCategory($searchData)
+        ->searchDelete($searchData)
         ->latest('id')
         ->paginate(10)
     ]);

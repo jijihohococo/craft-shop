@@ -54,4 +54,18 @@ class ShoppingCart extends Model
                 }
             ]);
         }
+
+
+        public function scopeSelectItemQty($query){
+            return $query->addSelect([
+                'qty' => function($query){
+                    $query->select(
+
+                    )->from('item_quantities')
+                    ->whereColumn('item_quantities.item_variant_id','shopping_carts.item_variant_id')
+                    ->orderBy('item_quantities.id','DESC')
+                    ->limit(1);
+                }
+            ]);
+        }
     }

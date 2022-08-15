@@ -136,15 +136,21 @@ class CategoryController extends Controller
 }
 
 public function search(Request $request){
+    $searchData='%'.$request->search.'%';
     return response()->json([
-        'categories' => Category::searchWithName('%'.$request->search.'%')->latest('id')->paginate(10)
+        'categories' => Category::searchWithName($searchData)
+        ->searchCreateAndUpdate($searchData)
+        ->latest('id')
+        ->paginate(10)
     ]);
 }
 
 public function trashSearch(Request $request){
+    $searchData='%'.$request->search.'%';
     return response()->json([
         'categories' => Category::onlyTrashed()
-        ->searchWithName('%'.$request->search.'%')
+        ->searchWithName($searchData)
+        ->searchDelete($searchData)
         ->latest('id')
         ->paginate(10)
     ]);

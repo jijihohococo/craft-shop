@@ -133,6 +133,7 @@ class TaxController extends Controller
         return response()->json([
             'taxes' => Tax::searchWithName($searchData)
             ->orWhere('rate','like',$searchData)
+            ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
         ]);
@@ -144,6 +145,7 @@ class TaxController extends Controller
             'taxes' => Tax::onlyTrashed()
             ->searchWithName($searchData)
             ->orWhere('rate','like',$searchData)
+            ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
         ]);

@@ -141,6 +141,7 @@ class CurrencyController extends Controller
         return response()->json([
             'currencies' => Currency::searchWithName($searchData)
             ->orWhere('price','like',$searchData)
+            ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
         ]);
@@ -152,6 +153,7 @@ class CurrencyController extends Controller
             'currencies' => Currency::onlyTrashed()
             ->searchWithName($searchData)
             ->orWhere('price','like',$searchData)
+            ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
         ]);

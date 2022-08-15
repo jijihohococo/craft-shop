@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
-use App\Traits\{CategoryDataTrait,SearchNameTrait};
+use App\Traits\{CategoryDataTrait,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch};
 class Subcategory extends TransactionModel
 {
-    use HasFactory,SoftDeletes,CategoryDataTrait,SearchNameTrait;
+    use HasFactory,SoftDeletes,CategoryDataTrait,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch;
 
     protected $fillable = [
         'category_id',

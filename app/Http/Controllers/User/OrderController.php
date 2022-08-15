@@ -14,6 +14,10 @@ class OrderController extends Controller
         $this->user=auth('user_api')->user();
     }
 
+    public function make(Request $request){
+
+    }
+
     public function get(){
         return $this->user!==NULL ? response()->json([
             'orders' => Order::selectUser()

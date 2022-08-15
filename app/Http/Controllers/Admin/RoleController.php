@@ -171,6 +171,7 @@ public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return response()->json([
         'roles' => Role::searchWithName($searchData)
+        ->searchCreateAndUpdate($searchData)
         ->latest('id')
         ->paginate(10)
     ]);
@@ -181,6 +182,7 @@ public function trashSearch(Request $request){
     return response()->json([
         'roles' => Role::onlyTrashed()
         ->searchWithName($searchData)
+        ->searchDelete($searchData)
         ->latest('id')->paginate(10)
     ]);
 }
