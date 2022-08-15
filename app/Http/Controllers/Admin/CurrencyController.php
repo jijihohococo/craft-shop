@@ -132,7 +132,7 @@ class CurrencyController extends Controller
     private function validateData($id=NULL){
         return [
             'name' => ['required', 'string', 'max:100', $id==null ? 'unique:currencies' : 'unique:currencies,name,'.$id ],
-            'price' => 'required|numeric|between:0.000,999999999.9999'
+            'price' => requiredDouble()
         ];
     }
 

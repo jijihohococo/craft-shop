@@ -246,6 +246,10 @@ function nullableImage(){
 	return 'nullable|image|mimes:jpeg,jpg,png,svg,gif,webp|max:4096';
 }
 
+function requiredDouble(){
+	return 'required|numeric|between:0.000,999999999.9999';
+}
+
 function changeDaysToMinutes(int $days){
 	return $days * 1440 ;
 }

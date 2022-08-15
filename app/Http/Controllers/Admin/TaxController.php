@@ -160,7 +160,7 @@ class TaxController extends Controller
     private function validateData($id=NULL){
         return [
             'name' => ['required', 'string', 'max:100', $id==null ? 'unique:taxes' : 'unique:taxes,name,'.$id ] ,
-            'rate' => 'required|numeric|between:0.000,999999999.9999'
+            'rate' => requiredDouble()
         ];
     }
 

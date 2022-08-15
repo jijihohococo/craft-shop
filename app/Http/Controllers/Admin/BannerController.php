@@ -176,12 +176,6 @@ public function trashSearch(Request $request){
     ]);
 }
 
-public function get(){
-    return response()->json([
-        'banners' => (new Banner)->getAll()
-    ]);
-}
-
 public function deleteMultiple(Request $request){
     $request->validate([
         'banners' => ['required','string']
