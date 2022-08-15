@@ -174,6 +174,7 @@ class AdminController extends Controller
         return response()->json([
             'admins' => Admin::where('name','like',$searchData)
             ->orWhere('email','like',$searchData)
+            ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
         ]);
@@ -185,6 +186,7 @@ class AdminController extends Controller
             'admins' => Admin::onlyTrashed()
             ->where('name','like',$searchData)
             ->orWhere('email','like',$searchData)
+            ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
         ]);
