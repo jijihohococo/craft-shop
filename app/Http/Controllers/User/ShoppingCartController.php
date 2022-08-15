@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{ItemVariant,ShoppingCart};
+use App\Models\{ItemVariant,ShoppingCart,UserData};
 use App\Repositories\ShoppingCartRepositoryInterface;
 class ShoppingCartController extends Controller
 {
@@ -12,7 +12,8 @@ class ShoppingCartController extends Controller
     private $userId , $shoppingCart;
 
     public function __construct(ShoppingCartRepositoryInterface $shoppingCart){
-        $this->userId= (string) getUserId( authId() );
+        $userId=UserData::getId();
+        $this->userId= $userId== null ? (string) getUserId( authId() ) : $userId ;
         $this->shoppingCart=$shoppingCart;
     }
 

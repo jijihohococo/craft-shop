@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\WishList;
+use App\Models\{WishList,UserData};
 use App\Rules\WishListValidation;
 use Validator;
 class WishlistController extends Controller
@@ -13,7 +13,8 @@ class WishlistController extends Controller
     private $userId;
 
     public function __construct(){
-        $this->userId= (string) getUserId( authId() );
+        $userId=UserData::getId();
+        $this->userId= $userId==null ? (string) getUserId( authId() ) : $userId ;
     }
 
     public function getCount(Request $request){
