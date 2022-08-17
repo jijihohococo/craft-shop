@@ -51,6 +51,14 @@ class ShoppingCart extends Model
                     ->whereColumn('item_prices.item_variant_id','shopping_carts.item_variant_id')
                     ->orderBy('item_prices.id','DESC')
                     ->limit(1);
+                } ,
+                'tax' => function($query){
+                    $query->selectSub(function($query){
+                        Tax::getTaxFromItemPrice($query);
+                    },'tax')->from('item_prices')
+                    ->whereColumn('item_prices.item_variant_id','shopping_carts.item_variant_id')
+                    ->orderBy('item_prices.id','DESC')
+                    ->limit(1);
                 }
             ]);
         }

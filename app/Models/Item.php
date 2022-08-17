@@ -176,10 +176,7 @@ class Item extends TransactionModel
     },
     'tax' => function($query){
        $query->selectSub(function($query){
-        $query->select('rate')
-        ->from('taxes')
-        ->whereColumn('item_prices.tax_id','taxes.id')
-        ->limit(1);
+        Tax::getTaxFromItemPrice($query);
     },'tax')
        ->from('item_prices')
        ->whereIn('item_prices.item_variant_id',function($newQuery){

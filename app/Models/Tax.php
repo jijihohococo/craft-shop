@@ -22,5 +22,12 @@ class Tax extends TransactionModel
             return self::latest('name')->get();
         });
     }
+
+    public static function getTaxFromItemPrice($query){
+        return $query->select('rate')
+        ->from('taxes')
+        ->whereColumn('item_prices.tax_id','taxes.id')
+        ->limit(1);
+    }
     
 }
