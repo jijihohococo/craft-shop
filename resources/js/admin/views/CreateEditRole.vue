@@ -24,7 +24,9 @@
 								</div>
 								<div class="form-group">
 									<label>Permissions</label>
-									<SelectMultiple :value="fields.permissions"  @input="setPermissions" >
+									<SelectMultiple
+									placeholder="Select Permissions"
+									:value="fields.permissions"  @input="setPermissions" >
 										<option :value="permission.id" v-for="permission in permissions">{{ permission.name }}</option>
 									</SelectMultiple>
 								</div>

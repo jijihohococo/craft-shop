@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->integer('currency_id');
             $table->string('address');
             $table->integer('country_id');
+            $table->string('status');
             $table->timestamps();
         });
     }

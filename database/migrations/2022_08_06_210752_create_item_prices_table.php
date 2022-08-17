@@ -16,6 +16,7 @@ class CreateItemPricesTable extends Migration
         Schema::create('item_prices', function (Blueprint $table) {
             $table->id();
             $table->integer('currency_id');
+            $table->integer('tax_id');
             $table->integer('item_variant_id');
             $table->decimal('price', 13, 4);
             $table->string('promotion_type')->nullable();

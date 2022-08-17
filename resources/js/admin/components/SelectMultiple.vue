@@ -1,11 +1,12 @@
 <template>
-	<select class="select2" multiple="multiple" data-placeholder="Select Permissions" data-dropdown-css-class="select2-purple" style="width: 100%;">
+	<select class="select2" multiple="multiple" 
+	:data-placeholder="placeholder" data-dropdown-css-class="select2-purple" style="width: 100%;">
 		<slot></slot>
 	</select>
 </template>
 <script >
 	export default{
-		props: ['options', 'value' , 'index'],
+		props: ['options', 'value' , 'index','placeholder'],
 		mounted(){
 			var self = this;
 			$(this.$el)

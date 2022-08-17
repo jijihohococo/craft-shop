@@ -36,10 +36,10 @@ class Item extends TransactionModel
 
     public function scopeSearchData($query,$searchData){
         return $query->searchWithName( $searchData )
-            ->searchWithCategory($searchData)
-            ->searchWithSubcategory($searchData)
-            ->searchWithBrand($searchData)
-            ->searchWithColor($searchData);
+        ->searchWithCategory($searchData)
+        ->searchWithSubcategory($searchData)
+        ->searchWithBrand($searchData)
+        ->searchWithColor($searchData);
     }
 
     public function scopeSearchWithBrand($query,$searchData){
@@ -143,134 +143,148 @@ class Item extends TransactionModel
         } ]);
     }
 
-    public function scopeSelectPrice($query){
-        return $query->addSelect(['sale_price' => function($query){
-            $query->select(
-                \DB::raw(
-                    ItemPrice::SALE_PRICE_SQL
-                )
+    public static function selectWithItemVariant($newQuery){
+      return  $newQuery->select('item_variants.id')
+      ->from('item_variants')
+      ->whereColumn('items.id','item_variants.item_id')
+      ->groupBy('item_variants.item_id');   
+  }
+
+  public function scopeSelectPrice($query){
+    return $query->addSelect(['sale_price' => function($query){
+        $query->select(
+            \DB::raw(
+                ItemPrice::SALE_PRICE_SQL
             )
-            ->from('item_prices')
-            ->whereIn('item_prices.item_variant_id',function($newQuery){
-                $newQuery->select('item_variants.id')
-                ->from('item_variants')
-                ->whereColumn('items.id','item_variants.item_id')
-                ->groupBy('item_variants.item_id');
-            })->orderBy('item_prices.id','DESC')
-            ->limit(1);
-        } , 
-        'normal_price' => function($query){
-            $query->select(
-                \DB::raw(
-                    ItemPrice::NORMAL_PRICE_SQL
-                )
-            )->from('item_prices')
-            ->whereIn('item_prices.item_variant_id',function($newQuery){
-                $newQuery->select('item_variants.id')
-                ->from('item_variants')
-                ->whereColumn('items.id','item_variants.item_id')
-                ->groupBy('item_variants.item_id');
-            })->orderBy('item_prices.id','DESC')
-            ->limit(1);
-        }
-    ]);
-    }
+        )
+        ->from('item_prices')
+        ->whereIn('item_prices.item_variant_id',function($newQuery){
+            self::selectWithItemVariant($newQuery);
+        })->orderBy('item_prices.id','DESC')
+        ->limit(1);
+    } , 
+    'normal_price' => function($query){
+        $query->select(
+            \DB::raw(
+                ItemPrice::NORMAL_PRICE_SQL
+            )
+        )->from('item_prices')
+        ->whereIn('item_prices.item_variant_id',function($newQuery){
+            self::selectWithItemVariant($newQuery);
+        })->orderBy('item_prices.id','DESC')
+        ->limit(1);
+    },
+    'tax' => function($query){
+       $query->selectSub(function($query){
+        $query->select('rate')
+        ->from('taxes')
+        ->whereColumn('item_prices.tax_id','taxes.id')
+        ->limit(1);
+    },'tax')
+       ->from('item_prices')
+       ->whereIn('item_prices.item_variant_id',function($newQuery){
+           self::selectWithItemVariant($newQuery);
+       })->orderBy('item_prices.id','DESC')
+       ->limit(1);
+   }
+]);
+}
 
-    public function getLaptops(){
-        return Cache::tags( self::$cacheKey )->remember('laptops',60*60*24,function(){
-            return self::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('category_id',1)
-            ->latest('id')
-            ->limit(7)
-            ->get();
-        });
-    }
+public function getLaptops(){
+    return Cache::tags( self::$cacheKey )->remember('laptops',60*60*24,function(){
+        return self::selectItemDataWithImages()
+        ->selectPrice()
+        ->where('category_id',1)
+        ->latest('id')
+        ->limit(7)
+        ->get();
+    });
+}
 
-    public function getDesktops(){
-        return Cache::tags( self::$cacheKey )->remember('desktops',60*60*24,function(){
-            return self::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('category_id',2)
-            ->latest('id')
-            ->limit(7)
-            ->get();
-        });
-    }
+public function getDesktops(){
+    return Cache::tags( self::$cacheKey )->remember('desktops',60*60*24,function(){
+        return self::selectItemDataWithImages()
+        ->selectPrice()
+        ->where('category_id',2)
+        ->latest('id')
+        ->limit(7)
+        ->get();
+    });
+}
 
-    public function getAccessories(){
-        return Cache::tags( self::$cacheKey )->remember('accessories',60*60*24,function(){
-            return self::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('category_id',3)
-            ->latest('id')
-            ->limit(7)
-            ->get();
-        });
-    }
+public function getAccessories(){
+    return Cache::tags( self::$cacheKey )->remember('accessories',60*60*24,function(){
+        return self::selectItemDataWithImages()
+        ->selectPrice()
+        ->where('category_id',3)
+        ->latest('id')
+        ->limit(7)
+        ->get();
+    });
+}
 
-    public function getDesktopComponents(){
-        return Cache::tags( self::$cacheKey )->remember('desktop_components',60*60*24,function(){
-            return self::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('category_id',7)
-            ->latest('id')
-            ->limit(7)
-            ->get();
-        });
-    }
+public function getDesktopComponents(){
+    return Cache::tags( self::$cacheKey )->remember('desktop_components',60*60*24,function(){
+        return self::selectItemDataWithImages()
+        ->selectPrice()
+        ->where('category_id',7)
+        ->latest('id')
+        ->limit(7)
+        ->get();
+    });
+}
 
-    public function getGamingLaptops(){
-        return Cache::tags( self::$cacheKey )->remember('desktop_components',60*60*24,function(){
-            return self::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('subcategory_id',46)
-            ->latest('id')
-            ->limit(7)
-            ->get();
-        });
-    }
+public function getGamingLaptops(){
+    return Cache::tags( self::$cacheKey )->remember('desktop_components',60*60*24,function(){
+        return self::selectItemDataWithImages()
+        ->selectPrice()
+        ->where('subcategory_id',46)
+        ->latest('id')
+        ->limit(7)
+        ->get();
+    });
+}
 
-    public function getGamingMouses(){
-        return Cache::tags( self::$cacheKey )->remember('gaming_mouses',60*60*24,function(){
-            return self::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('subcategory_id',48)
-            ->latest('id')
-            ->limit(7)
-            ->get(); 
-        });
-    }
+public function getGamingMouses(){
+    return Cache::tags( self::$cacheKey )->remember('gaming_mouses',60*60*24,function(){
+        return self::selectItemDataWithImages()
+        ->selectPrice()
+        ->where('subcategory_id',48)
+        ->latest('id')
+        ->limit(7)
+        ->get(); 
+    });
+}
 
-    public function getGamingKeyboards(){
-        return Cache::tags( self::$cacheKey )->remember('gaming_keyboards',60*60*24,function(){
-            return self::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('subcategory_id',49)
-            ->latest('id')
-            ->limit(7)
-            ->get();
-        });
-    }
+public function getGamingKeyboards(){
+    return Cache::tags( self::$cacheKey )->remember('gaming_keyboards',60*60*24,function(){
+        return self::selectItemDataWithImages()
+        ->selectPrice()
+        ->where('subcategory_id',49)
+        ->latest('id')
+        ->limit(7)
+        ->get();
+    });
+}
 
-    public function getGamingHeadphones(){
-        return Cache::tags( self::$cacheKey )->remember('gaming_headphones',60*60*24,function(){
-            return self::selectItemDataWithImages()
-            ->selectPrice()
-            ->where('subcategory_id',50)
-            ->latest('id')
-            ->limit(7)
-            ->get();
-        });
-    }
+public function getGamingHeadphones(){
+    return Cache::tags( self::$cacheKey )->remember('gaming_headphones',60*60*24,function(){
+        return self::selectItemDataWithImages()
+        ->selectPrice()
+        ->where('subcategory_id',50)
+        ->latest('id')
+        ->limit(7)
+        ->get();
+    });
+}
 
-    public function getFeatureProducts(){
-        return Cache::tags( self::$cacheKey )->remember('feature_products',60*60*24,function(){
-            return self::selectItemDataWithImages()
-            ->selectPrice()
-            ->latest('id')
-            ->limit(15)
-            ->get();
-        });
-    }
+public function getFeatureProducts(){
+    return Cache::tags( self::$cacheKey )->remember('feature_products',60*60*24,function(){
+        return self::selectItemDataWithImages()
+        ->selectPrice()
+        ->latest('id')
+        ->limit(15)
+        ->get();
+    });
+}
 }

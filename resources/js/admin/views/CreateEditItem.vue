@@ -52,14 +52,17 @@
 								</div>
 								<div class="form-group">
 									<label>Attributes</label>
-									<AddRemoveDependentSelect 
+									<AddRemoveDependentSelect
+									placeholder="Select Sets" 
 									:mainData="fields.attributes"
 									:selectData="attributes"
 									ref="attributeSet" />
 								</div>
 								<div class="form-group">
 									<label>Colors</label>
-									<SelectMultiple :value="fields.colors"  @input="setColors" >
+									<SelectMultiple
+									placeholder="Select Colors"
+									:value="fields.colors"  @input="setColors" >
 										<option :value="color.id" v-for="color in colors">{{ color.name }}</option>
 									</SelectMultiple>
 								</div>

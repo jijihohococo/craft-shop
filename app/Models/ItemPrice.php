@@ -11,6 +11,7 @@ class ItemPrice extends TransactionModel
 
     protected $fillable=[
         'currency_id',
+        'tax_id',
         'item_variant_id',
         'price',
         'promotion_type',

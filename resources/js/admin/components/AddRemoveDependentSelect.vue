@@ -13,7 +13,9 @@
 			</Select>
 		</div>
 		<div class="col-4">
-			<SelectMultiple :value="data.selectedSubData" :index="index" @input="setSubMultipleSelect" >
+			<SelectMultiple
+			:placeholder="placeholder"
+			:value="data.selectedSubData" :index="index" @input="setSubMultipleSelect" >
 				<option :value="subSelect.id" v-for="subSelect in data.subSelectData">{{ subSelect.set }}</option>
 			</SelectMultiple>
 		</div>
@@ -71,7 +73,7 @@
 				}
 			}
 		},
-		props : ['mainData','selectData'],
+		props : ['mainData','selectData','placeholder'],
 		methods : {
 			setSubMultipleSelect(object){
 				let main=this.main[object.index];

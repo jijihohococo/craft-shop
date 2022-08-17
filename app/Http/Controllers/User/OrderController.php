@@ -5,13 +5,15 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Order,OrderDetail};
+use App\Repositories\OrderRepositoryInterface;
 class OrderController extends Controller
 {
     //
-    private $user;
+    private $user , $order;
 
-    public function __construct(){
+    public function __construct(OrderRepositoryInterface $order){
         $this->user=auth('user_api')->user();
+        $this->order=$order;
     }
 
     public function make(Request $request){
@@ -29,7 +31,7 @@ class OrderController extends Controller
     }
 
     public function show($id){
-        return $this->user!==NULL ? response()->json([
+        return $this->user!==NULL && ( $this->user->id == OrderDetail::findOrFail($id)->order->user_id )  ? response()->json([
             'order_details' => OrderDetail::
             where('order_id',$id)
             ->selectItem()

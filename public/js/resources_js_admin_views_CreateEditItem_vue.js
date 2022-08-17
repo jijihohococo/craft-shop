@@ -57,7 +57,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  props: ['mainData', 'selectData'],
+  props: ['mainData', 'selectData', 'placeholder'],
   methods: {
     setSubMultipleSelect: function setSubMultipleSelect(object) {
       var main = this.main[object.index];
@@ -245,7 +245,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['options', 'value', 'index'],
+  props: ['options', 'value', 'index', 'placeholder'],
   mounted: function mounted() {
     var self = this;
     $(this.$el).select2({
@@ -786,6 +786,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
     , ["value", "index", "onInput"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SelectMultiple, {
+      placeholder: $props.placeholder,
       value: data.selectedSubData,
       index: index,
       onInput: $options.setSubMultipleSelect
@@ -806,7 +807,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
-    , ["value", "index", "onInput"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    , ["placeholder", "value", "index", "onInput"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       "class": "btn btn-danger",
       onClick: function onClick($event) {
         return $options.remove(index);
@@ -1019,17 +1020,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "select2",
-  multiple: "multiple",
-  "data-placeholder": "Select Permissions",
-  "data-dropdown-css-class": "select2-purple",
-  style: {
-    "width": "100%"
-  }
-};
+var _hoisted_1 = ["data-placeholder"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("select", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("select", {
+    "class": "select2",
+    multiple: "multiple",
+    "data-placeholder": $props.placeholder,
+    "data-dropdown-css-class": "select2-purple",
+    style: {
+      "width": "100%"
+    }
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")], 8
+  /* PROPS */
+  , _hoisted_1);
 }
 
 /***/ }),
@@ -1311,12 +1314,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["value", "onInput"]), $data.errors && $data.errors.brand_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.brand_id[0]), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AddRemoveDependentSelect, {
+    placeholder: "Select Sets",
     mainData: $data.fields.attributes,
     selectData: $data.attributes,
     ref: "attributeSet"
   }, null, 8
   /* PROPS */
   , ["mainData", "selectData"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SelectMultiple, {
+    placeholder: "Select Colors",
     value: $data.fields.colors,
     onInput: $options.setColors
   }, {

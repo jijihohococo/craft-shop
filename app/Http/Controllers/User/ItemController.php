@@ -77,4 +77,13 @@ class ItemController extends Controller
             'feature_products' => $item->getFeatureProducts()
         ]);
     }
+
+    public function get(){
+        return response()->json([
+            'items' => Item::selectItemDataWithImages()
+            ->selectPrice()
+            ->latest('id')
+            ->get()
+        ]);
+    }
 }
