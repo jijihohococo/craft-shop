@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-
+use App\Traits\CurrencyDataTrait;
 class ItemPrice extends TransactionModel
 {
+    use CurrencyDataTrait;
 
     protected $fillable=[
         'currency_id',
@@ -28,5 +29,14 @@ class ItemPrice extends TransactionModel
 
     public function currency(){
         return $this->belongsTo('App\Models\Currency')->withDefault()->withTrashed();
+    }
+
+    public function scopeSelectTax(){
+        return $query->addSelect(['tax_rate' => function($query) {
+            $query->select('rate')
+            ->from('taxes')
+            ->whereColumn('tax_id','taxes.id')
+            ->limit(1);
+        } ]);
     }
 }
