@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ItemQuantity;
-class ItemQuantityController extends Controller
+use App\Models\ItemPrice;
+class ItemPriceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +16,25 @@ class ItemQuantityController extends Controller
     {
         //
         return response()->json([
-            'item_quantities' => ItemQuantity::where('item_variant_id',$itemVariantId)->latest('id')->paginate(10)
+            'item_prices' => ItemPrice::where('item_variant_id',$itemVariantId)
+            ->selectCurrency()
+            ->selectTax()
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 
     public function search(Request $request,$itemVariantId){
-        
+        $searchData='%'.$request->search.'%';
+        return response()->json([
+            'item_prices' => ItemPrice::where('item_variant_id',$itemVariantId)
+            ->selectCurrency()
+            ->selectTax()
+            ->where('price','like',$searchData)
+            ->searchWithCurrency($searchData)
+            ->latest('id')
+            ->paginate(10)
+        ]);   
     }
 
     /**
@@ -66,7 +79,7 @@ class ItemQuantityController extends Controller
     {
         //
         return response()->json([
-            'item_quantity' => ItemQuantity::findOrFail($id)
+            'item_price' => ItemPrice::findOrFail($id)
         ]);
     }
 
