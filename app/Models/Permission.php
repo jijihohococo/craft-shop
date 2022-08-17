@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
 use App\Traits\{SearchNameTrait,CreateAndUpdateSearch,DeleteSearch};
 class Permission extends TransactionModel
 {
-    use HasFactory,SoftDeletes,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch;
+    use SoftDeletes,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch;
 
     protected $fillable = [
         'name',

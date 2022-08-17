@@ -2,12 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class ItemQuantity extends Model
+class ItemQuantity extends TransactionModel
 {
-    use HasFactory;
 
     protected $fillable=[
         'item_variant_id',

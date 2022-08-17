@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Support\Facades\Cache;
 class AttributeSet extends TransactionModel
 {
-    use HasFactory;
 
     public static $cacheKey='attribute_sets_cache';
 
