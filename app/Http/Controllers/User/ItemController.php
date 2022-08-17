@@ -26,24 +26,6 @@ class ItemController extends Controller
         ]);
     }
 
-    public function showByCategory(Request $request,$categoryId){
-        return response()->json([
-            'items' => $this->item->getByContent('category',$categoryId)
-        ]);
-    }
-
-    public function showBySubcategory(Request $request,$subcategoryId){
-        return response()->json([
-            'items' => $this->item->getByContent('subcategory',$subcategoryId)
-        ]);
-    }
-
-    public function showByBrand(Request $request,$brandId){
-        return response()->json([
-            'items' => $this->item->getByContent('brand',$brandId)
-        ]);
-    }
-
     public function search(Request $request,$categoryId){
         $searchData='%'.$request->search.'%';
         return response()->json([
