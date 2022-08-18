@@ -19,6 +19,11 @@ class BackendServiceProvider extends ServiceProvider{
 		);
 
 		$this->app->bind(
+			'App\Repositories\BrandRepositoryInterface',
+			'App\Repositories\BrandRepository'
+		);
+
+		$this->app->bind(
 			'App\Repositories\OrderRepositoryInterface',
 			'App\Repositories\OrderRepository'
 		);

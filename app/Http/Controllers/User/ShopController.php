@@ -4,16 +4,17 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Repositories\ItemRepositoryInterface;
-use App\Models\{Brand,Attribute};
-use App\Http\Resources\AttributeResource;
+use App\Repositories\{ItemRepositoryInterface,BrandRepositoryInterface};
 class ShopController extends Controller
 {
     //
-    public $item;
+    public $item , $brand , $attribute;
 
-    public function __construct(ItemRepositoryInterface $item){
+    public function __construct(ItemRepositoryInterface $item,BrandRepositoryInterface $brand,
+        AttributeResource $attribute){
         $this->item=$item;
+        $this->brand=$brand;
+        $this->attribute=$attribute;
     }
 
     public function showByCategory(Request $request,$categoryId){
@@ -36,54 +37,46 @@ class ShopController extends Controller
 
     public function getBrandsByCategory(Request $request,$categoryId){
         return response()->json([
-            'brands' => Brand::getByItemData('category_id',$categoryId)
-            ->latest('name')
-            ->get()
+            'brands' => $this->brand->getByContent('category',$categoryId)
         ]);
     }
 
     public function getBrandsBySubcategory(Request $request,$subcategoryId){
         return response()->json([
-            'brands' => Brand::getByItemData('subcategory_id',$categoryId)
-            ->latest('name')
-            ->get()
+            'brands' => $this->brand->getByContent('subcategory',$subcategoryId)
         ]);
     }
 
     public function getBrandsByCategorySearch(Request $request,$categoryId){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'brands' => Brand::getByItemSearch('category_id',$categoryId,$searchData)
-            ->latest('name')
-            ->get()
+            'brands' => $this->brand->searchByContent('category',$categoryId,$searchData)
         ]);
     }
 
     public function getBrandsBySubcategorySearch(Request $request,$subcategoryId){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'brands' => Brand::getByItemSearch('subcategory_id',$categoryId,$searchData)
-            ->latest('name')
-            ->get()
+            'brands' => $this->brand->searchByContent('subcategory',$subcategoryId,$searchData)
         ]);
     }
 
 
     public function getAttributesByCategory(Request $request,$categoryId){
         return response()->json([
-            'attributes' => AttributeResource::collection(Attribute::getByItemData('category_id',$categoryId)->orderBy('name')->get())
+            'attributes' => $this->attribute->getByContent('category',$categoryId)
         ]);
     }
 
     public function getAttributesBySubcategory(Request $request,$subcategoryId){
         return response()->json([
-            'attributes' => AttributeResource::collection(Attribute::getByItemData('subcategory_id',$subcategoryId)->orderBy('name')->get())
+            'attributes' => $this->attribute->getByContent('subcategory',$subcategoryId)
         ]);
     }
 
     public function getAttributesByBrand(Request $request,$brandId){
         return response()->json([
-            'attributes' => AttributeResource::collection(Attribute::getByItemData('brand_id',$brandId)->orderBy('name')->get())
+            'attributes' => $this->attribute->getByContent('brand',$brandId)
         ]);
     }
 }

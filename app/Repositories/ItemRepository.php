@@ -5,10 +5,10 @@ namespace App\Repositories;
 use App\Models\Item;
 class ItemRepository implements ItemRepositoryInterface{
 
-	public function search($categoryId,$searchData){
+	public function searchByContent($content,$id,$searchData){
 		return Item::selectItemDataWithImages()
             ->selectPrice()
-            ->where('category_id',$categoryId)
+            ->where($content.'_id',$id)
             ->searchData($searchData)
             ->latest('id')
             ->paginate(10);

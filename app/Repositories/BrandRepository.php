@@ -12,4 +12,10 @@ class BrandRepository implements BrandRepositoryInterface{
             ->get();
 	}
 
+	public function searchByContent($content,$id,$searchData){
+		return Brand::getByItemSearch($content.'_id',$id,$searchData)
+            ->latest('name')
+            ->get();
+	}
+
 }

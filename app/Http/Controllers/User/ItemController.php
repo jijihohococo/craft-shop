@@ -29,7 +29,7 @@ class ItemController extends Controller
     public function search(Request $request,$categoryId){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'items' => $this->item->search($categoryId,$searchData)
+            'items' => $this->item->searchByContent('category',$categoryId,$searchData)
         ]);
     }
 
