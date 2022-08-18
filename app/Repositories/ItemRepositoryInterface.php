@@ -3,9 +3,8 @@
 namespace App\Repositories;
 
 
-interface ItemRepositoryInterface{
+interface ItemRepositoryInterface extends ContentInterface{
 
 	public function search($categoryId,$searchData);
 
-	public function getByContent($content,$id);
 }

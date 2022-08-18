@@ -26,7 +26,7 @@ class Attribute extends TransactionModel
         });
     }
 
-    public function scopeSelectAttributes($query,$column,$id){
+    public function scopeGetByItemData($query,$column,$id){
         return $query->whereIn('id',function($query) use($column,$id) {
             $query->select('attribute_id')
             ->from('item_attributes')

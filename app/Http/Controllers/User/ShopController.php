@@ -5,7 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\ItemRepositoryInterface;
-use App\Models\Brand;
+use App\Models\{Brand,Attribute};
+use App\Http\Resources\AttributeResource;
 class ShopController extends Controller
 {
     //
@@ -64,6 +65,25 @@ class ShopController extends Controller
             'brands' => Brand::getByItemSearch('subcategory_id',$categoryId,$searchData)
             ->latest('name')
             ->get()
+        ]);
+    }
+
+
+    public function getAttributesByCategory(Request $request,$categoryId){
+        return response()->json([
+            'attributes' => AttributeResource::collection(Attribute::getByItemData('category_id',$categoryId)->orderBy('name')->get())
+        ]);
+    }
+
+    public function getAttributesBySubcategory(Request $request,$subcategoryId){
+        return response()->json([
+            'attributes' => AttributeResource::collection(Attribute::getByItemData('subcategory_id',$subcategoryId)->orderBy('name')->get())
+        ]);
+    }
+
+    public function getAttributesByBrand(Request $request,$brandId){
+        return response()->json([
+            'attributes' => AttributeResource::collection(Attribute::getByItemData('brand_id',$brandId)->orderBy('name')->get())
         ]);
     }
 }
