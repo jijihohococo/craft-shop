@@ -4,11 +4,11 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Traits\{CategoryDataTrait,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch};
+use App\Traits\{CategoryDataTrait,BrandDataTrait,SubcategoryDataTrait,ColorDataTrait,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch};
 use Illuminate\Support\Facades\Cache;
 class Item extends TransactionModel
 {
-    use SoftDeletes,CategoryDataTrait,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch;
+    use SoftDeletes,CategoryDataTrait,BrandDataTrait,SubcategoryDataTrait,ColorDataTrait,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch;
 
     protected $fillable=[
         'name',
@@ -42,36 +42,6 @@ class Item extends TransactionModel
         ->searchWithColor($searchData);
     }
 
-    public function scopeSearchWithBrand($query,$searchData){
-        return $query->orWherein('brand_id',
-            function($query) use($searchData){
-                $query->select('id')
-                ->from('brands')
-                ->where('name','like',$searchData);
-            });
-    }
-
-    public function scopeSearchWithSubcategory($query,$searchData){
-        return $query->orWherein('subcategory_id',
-            function($query) use($searchData){
-                $query->select('id')
-                ->from('subcategories')
-                ->where('name','like',$searchData);
-            });
-    }
-
-    public function scopeSearchWithColor($query,$searchData){
-        return $query->orWherein('id',function($query) use($searchData){
-            $query->select('id')
-            ->from('item_variants')
-            ->whereIn('item_variants.color_id',function($query) use($searchData){
-                $query->select('id')
-                ->from('colors')
-                ->where('colors.name','like',$searchData);
-            });
-        });
-    }
-
     public function scopeSelectItemData($query){
         return $query->selectCategory()
         ->selectSubcategory()
@@ -86,26 +56,8 @@ class Item extends TransactionModel
         ->selectItemImageWithVariants();
     }
 
-    public function scopeSelectSubcategory($query){
-        return $query->addSelect(['subcategory_name' => function($query) {
-            $query->select('name')
-            ->from('subcategories')
-            ->whereColumn('subcategory_id','subcategories.id')
-            ->limit(1);
-        } ]);
-    }
-
     public function brand(){
         return $this->belongsTo('App\Models\Brand')->withDefault()->withTrashed();
-    }
-
-    public function scopeSelectBrand($query){
-        return $query->addSelect(['brand_name' => function($query) {
-            $query->select('name')
-            ->from('brands')
-            ->whereColumn('brand_id','brands.id')
-            ->limit(1);
-        } ]); 
     }
 
     public function scopeSelectItemVariants($query){
@@ -175,15 +127,15 @@ class Item extends TransactionModel
         ->limit(1);
     },
     'tax' => function($query){
-       $query->selectSub(function($query){
+     $query->selectSub(function($query){
         Tax::getTaxFromItemPrice($query);
     },'tax')
-       ->from('item_prices')
-       ->whereIn('item_prices.item_variant_id',function($newQuery){
-           self::selectWithItemVariant($newQuery);
-       })->orderBy('item_prices.id','DESC')
-       ->limit(1);
-   }
+     ->from('item_prices')
+     ->whereIn('item_prices.item_variant_id',function($newQuery){
+         self::selectWithItemVariant($newQuery);
+     })->orderBy('item_prices.id','DESC')
+     ->limit(1);
+ }
 ]);
 }
 

@@ -17,19 +17,19 @@ class ShopController extends Controller
         $this->attribute=$attribute;
     }
 
-    public function showByCategory(Request $request,$categoryId){
+    public function getItemsByCategory(Request $request,$categoryId){
         return response()->json([
             'items' => $this->item->getByContent('category',$categoryId)
         ]);
     }
 
-    public function showBySubcategory(Request $request,$subcategoryId){
+    public function getItemsBySubcategory(Request $request,$subcategoryId){
         return response()->json([
             'items' => $this->item->getByContent('subcategory',$subcategoryId)
         ]);
     }
 
-    public function showByBrand(Request $request,$brandId){
+    public function getItemsByBrand(Request $request,$brandId){
         return response()->json([
             'items' => $this->item->getByContent('brand',$brandId)
         ]);
