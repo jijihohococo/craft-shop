@@ -25,4 +25,16 @@ class Attribute extends TransactionModel
             return self::latest('name')->get();
         });
     }
+
+    public function scopeSelectAttributes($query,$column,$id){
+        return $query->whereIn('id',function($query) use($column,$id) {
+            $query->select('attribute_id')
+            ->from('item_attributes')
+            ->whereIn('item_id',function($query) use($column,$id) {
+                $query->select('id')
+                ->from('items')
+                ->where($column,$id);
+            });
+        });
+    }
 }

@@ -14,13 +14,5 @@ class ItemAttribute extends Model
         'attribute_id'
     ];
 
-    public function scopeSelectAttributesByItemColumn($query,$column,$id){
-        return $query->whereIn('item_id',function($query) use ($column,$id) {
-            $query->select('id')
-            ->from('items')
-            ->where($column,$id);
-        });
-    }
-
 
 }
