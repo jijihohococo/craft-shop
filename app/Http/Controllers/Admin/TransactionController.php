@@ -30,7 +30,7 @@ class TransactionController extends Controller
             ->selectAdminModel($model,$model_id)
             ->whereIn('user_id',Admin::select('id')
                 ->searchWithName($searchData)
-                ->where('email','like',$searchData)
+                ->searchWithEmail($searchData)
                 ->getQuery()
              )->orWhere('action','like',$searchData)
             ->latest('id')

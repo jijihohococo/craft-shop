@@ -173,7 +173,7 @@ class AdminController extends Controller
         $searchData='%'.$request->search.'%';
         return response()->json([
             'admins' => Admin::searchWithName($searchData)
-            ->orWhere('email','like',$searchData)
+            ->searchWithEmail($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -185,7 +185,7 @@ class AdminController extends Controller
         return response()->json([
             'admins' => Admin::onlyTrashed()
             ->searchWithName($searchData)
-            ->orWhere('email','like',$searchData)
+            ->searchWithEmail($searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
