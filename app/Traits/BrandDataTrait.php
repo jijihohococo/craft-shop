@@ -2,21 +2,11 @@
 
 namespace App\Traits;
 
-
+use App\Models\Brand;
 trait BrandDataTrait{
 
-	use SearchNameTrait;
-
 	public function scopeSearchWithBrand($query,$searchData){
-        $that=$this;
-        return $query->orWherein('brand_id',
-            function($query) use($searchData,$that){
-                $that->scopeSearchWithName(
-                    $query->select('id')
-                    ->from('brands') ,
-                    $searchData
-                );
-            });
+        return $query->orWherein('brand_id',Brand::select('id')->searchWithName($searchData)->getQuery());
     }
 
     public function scopeSelectBrand($query){

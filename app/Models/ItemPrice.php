@@ -47,10 +47,9 @@ class ItemPrice extends TransactionModel
     }
 
     public function scopeSearchWithTax($query,$searchData){
-        return $query->orWherein('tax_id',function($query) use ($searchData) {
-            $query->select('id')
-            ->from('taxes')
-            ->where('name','like',$searchData);
-        });
+        return $query->orWherein('tax_id',Tax::select('id')
+            ->searchWithName($searchData)
+            ->getQuery()
+         );
     }
 }

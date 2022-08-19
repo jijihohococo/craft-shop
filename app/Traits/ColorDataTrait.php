@@ -2,21 +2,15 @@
 
 namespace App\Traits;
 
+use App\Models\Color;
 trait ColorDataTrait{
-
-	use SearchNameTrait;
 	
 	public function scopeSearchWithColor($query,$searchData){
-        $that=$this;
-        return $query->orWherein('id',function($query) use($searchData,$that){
+        return $query->orWherein('id',function($query) use($searchData){
             $query->select('id')
             ->from('item_variants')
-            ->whereIn('item_variants.color_id',function($query) use($searchData,$that){
-                $that->scopeSearchWithName(
-                $query->select('id')
-                ->from('colors') ,
-                $searchData );
-            });
+            ->whereIn('item_variants.color_id',
+                Color::select('id')->searchWithName($searchData)->getQuery());
         });
     }
 

@@ -2,19 +2,11 @@
 
 namespace App\Traits;
 
+use App\Models\Subcategory;
 trait SubcategoryDataTrait{
 
-	use SearchNameTrait;
-
 	public function scopeSearchWithSubcategory($query,$searchData){
-        $that=$this;
-        return $query->orWherein('subcategory_id',
-            function($query) use($searchData,$that){
-                $that->scopeSearchWithName(
-                $query->select('id')
-                ->from('subcategories') ,
-                $searchData );
-            });
+        return $query->orWherein('subcategory_id',Subcategory::select('id')->searchWithName($searchData)->getQuery() );
     }
 
     public function scopeSelectSubcategory($query){

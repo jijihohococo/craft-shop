@@ -32,11 +32,13 @@ class Brand extends TransactionModel
     }
 
     public function scopeGetByItemSearch($query,$column,$categoryId,$searchData){
-        return $query->whereIn('id',function($query) use($column,$categoryId,$searchData){
-            $query->select('brand_id')
-            ->from('items')
+        return $query->whereIn('id',
+            Item::select('brand_id')
             ->where($column,$categoryId)
-            ->where('name','like',$searchData);
-        } );
+            ->searchWithName( $searchData )
+            ->searchWithCategory($searchData)
+            ->searchWithSubcategory($searchData)
+            ->searchWithColor($searchData)
+            ->getQuery() );
     }
 }

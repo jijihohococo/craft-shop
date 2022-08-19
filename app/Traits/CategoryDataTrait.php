@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\Category;
 trait CategoryDataTrait{
 
 	public function scopeSelectCategory($query){
@@ -14,13 +15,8 @@ trait CategoryDataTrait{
 	}
 
     public function scopeSearchWithCategory($query,$searchData){
-        return $query->orWherein('category_id',
-            function($query) use($searchData) {
-                $query->select('id')
-                ->from('categories')
-                ->where('name','like', $searchData );
-            }
-        );
+        return $query->orWherein('category_id',Category::select('id')
+        ->searchWithName($searchData)->getQuery() );
     }
 
 }

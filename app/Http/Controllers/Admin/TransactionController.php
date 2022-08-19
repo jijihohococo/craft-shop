@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Transaction;
+use App\Models\{Transaction,Admin};
 class TransactionController extends Controller
 {
     //
@@ -28,13 +28,11 @@ class TransactionController extends Controller
             'transactions' => Transaction::
             selectAdmin()
             ->selectAdminModel($model,$model_id)
-            ->whereIn('user_id',function($query) use ($searchData){
-                $query->select('id')
-                ->from('admins')
-                ->where('name','like',$searchData)
-                ->orWhere('email','like',$searchData);
-            })
-            ->orWhere('action','like',$searchData)
+            ->whereIn('user_id',Admin::select('id')
+                ->searchWithName($searchData)
+                ->where('email','like',$searchData)
+                ->getQuery()
+             )->orWhere('action','like',$searchData)
             ->latest('id')
             ->paginate(10)
         ]);

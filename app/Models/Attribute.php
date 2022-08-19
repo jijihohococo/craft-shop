@@ -5,10 +5,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
-use App\Traits\{SearchNameTrait,CreateAndUpdateSearch,DeleteSearch};
+use App\Traits\{SearchNameTrait,CreateAndUpdateSearch,DeleteSearch,CategoryDataTrait,SubcategoryDataTrait,ColorDataTrait,BrandDataTrait};
 class Attribute extends TransactionModel
 {
-    use SoftDeletes,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch;
+    use SoftDeletes,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch,CategoryDataTrait,SubcategoryDataTrait,ColorDataTrait,BrandDataTrait;
 
     protected $fillable=[
         'name'
@@ -43,12 +43,10 @@ class Attribute extends TransactionModel
         ->orWhereIn('id',function($query) use($column,$id,$searchData) {
             $query->select('attribute_id')
             ->from('item_attributes')
-            ->whereIn('item_id',function($query) use($column,$id) {
-                $query->select('id')
-                ->from('items')
+            ->whereIn('item_id',Item::select('id')
                 ->where($column,$id)
-                ->where('name','like',$searchData);
-            });
+                ->searchData($searchData)
+                ->getQuery());
         });
     }
 }
