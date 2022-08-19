@@ -47,6 +47,10 @@ class Attribute extends TransactionModel
                 ->where($column,$id)
                 ->searchData($searchData)
                 ->getQuery());
+        })->orWhereIn('id',function($query) use($searchData) {
+            $query->select('attribute_id')
+            ->from('attribute_sets')
+            ->where('set','like',$searchData);
         });
     }
 }
