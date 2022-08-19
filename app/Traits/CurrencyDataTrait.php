@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\Currency;
 trait CurrencyDataTrait{
 
     public function scopeSelectCurrency($query){
@@ -15,11 +16,9 @@ trait CurrencyDataTrait{
 
     public function scopeSearchWithCurrency($query,$searchData){
         return $query->orWherein('currency_id',
-            function($query) use($searchData) {
-                $query->select('id')
-                ->from('currencies')
-                ->where('name','like', $searchData );
-            }
+            Currency::select('id')
+            ->searchWithName($searchData)
+            ->getQuery()
         );
     }
 
