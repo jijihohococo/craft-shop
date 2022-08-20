@@ -41,9 +41,20 @@ Route::get('best_sellers','User\ItemController@showBestSeller');
 Route::get('gamings','User\ItemController@showGaming');
 Route::get('feature_products','User\ItemController@showFeatureProducts');
 
-Route::get('get_items_by_categories/{categoryId}','User\ItemController@showByCategory');
-Route::get('get_items_by_subcategories/{subcategoryId}','User\ItemController@showBySubcategory');
-Route::get('get_items_by_brands/{brandId}','User\ItemController@showByBrand');
+//------------------------------SHOP-----------------------------//
+//----items----//
+Route::get('get_items_by_categories/{categoryId}','User\Shop\ItemController@getItemsByCategory');
+Route::get('get_items_by_subcategories/{subcategoryId}','User\Shop\ItemController@getItemsBySubcategory');
+Route::get('get_items_by_brands/{brandId}','User\Shop\ItemController@getItemsByBrand');
+//----items----//
+
+//----attributes----//
+Route::get('get_attributes_by_categories/{categoryId}','User\Shop\AttributeController@getAttributesByCategory');
+Route::get('get_attributes_by_subcategories/{subcategoryId}','User\Shop\AttributeController@getAttributesBySubcategory');
+Route::get('get_attributes_by_brands/{brandId}','User\Shop\AttributeController@getAttributesByBrand');
+//----attributes----//
+
+//------------------------------SHOP-----------------------------//
 
 Route::group(['middleware' => [ 'user_auth'] ], function () {
 
