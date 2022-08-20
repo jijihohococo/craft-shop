@@ -22,4 +22,28 @@ class Color extends TransactionModel
             return self::latest('name')->get();
         });
     }
+
+    public function scopeGetByItemData($query,$column,$id){
+        return $query->whereIn('id',function($query) use($column,$id){
+            $query->select('color_id')
+            ->from('item_variants')
+            ->whereIn('item_id',function($query) use($column,$id) {
+                $query->select('id')
+                ->from('items')
+                ->where($column,$id);
+            });
+        });
+    }
+
+    public function scopeGetByItemSearch($query,$column,$id,$searchData){
+        return $query->searchWithName($searchData)
+        ->orWhereIn('id',function($query) use($column,$id,$searchData) {
+            $query->select('color_id')
+            ->from('item_variants')
+            ->whereIn('item_id',Item::select('id')
+                ->where($column,$id)
+                ->searchData($searchData)
+                ->getQuery());
+        });
+    }
 }

@@ -19,6 +19,16 @@ class BackendServiceProvider extends ServiceProvider{
 		);
 
 		$this->app->bind(
+			'App\Repositories\AttributeRepositoryInterface',
+			'App\Repositories\AttributeRepository'
+		);
+
+		$this->app->bind(
+			'App\Repositories\ColorRepositoryInterface',
+			'App\Repositories\ColorRepository'
+		);
+
+		$this->app->bind(
 			'App\Repositories\BrandRepositoryInterface',
 			'App\Repositories\BrandRepository'
 		);
