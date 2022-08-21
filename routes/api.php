@@ -52,7 +52,25 @@ Route::get('get_items_by_brands/{brandId}','User\Shop\ItemController@getItemsByB
 Route::get('get_attributes_by_categories/{categoryId}','User\Shop\AttributeController@getAttributesByCategory');
 Route::get('get_attributes_by_subcategories/{subcategoryId}','User\Shop\AttributeController@getAttributesBySubcategory');
 Route::get('get_attributes_by_brands/{brandId}','User\Shop\AttributeController@getAttributesByBrand');
+Route::get('search_attributes_by_categories/{categoryId}','User\Shop\AttributeController@getAttributesByCategorySearch');
+Route::get('search_attributes_by_subcategories/{subcategoryId}','User\Shop\AttributeController@getAttributesBySubcategorySearch');
+Route::get('search_attributes_by_brands/{brandId}','User\Shop\AttributeController@getAttributesByBrandSearch');
 //----attributes----//
+
+//----brands----//
+Route::get('get_brands_by_categories/{categoryId}','User\Shop\BrandController@getBrandsByCategory');
+Route::get('get_brands_by_subcategories/{subcategoryId}','User\Shop\BrandController@getBrandsBySubcategory');
+Route::get('search_brands_by_categories/{categoryId}','User\Shop\BrandController@getBrandsByCategorySearch');
+Route::get('search_brands_by_subcategories/{subcategoryId}','User\Shop\BrandController@getBrandsBySubcategorySearch');
+//----brands----//
+
+//----colors----//
+Route::get('get_colors_by_categories/{categoryId}','User\Shop\ColorController@getColorsByCategory');
+Route::get('get_colors_by_subcategories/{subcategoryId}','User\Shop\ColorController@getColorsBySubcategory');
+Route::get('get_colors_by_brands/{brandId}','User\Shop\ColorController@getColorsByBrand');
+Route::get('search_colors_by_categories/{categoryId}','User\Shop\ColorController@getColorsByCategorySearch');
+Route::get('search_colors_by_subcategories/{subcategoryId}','User\Shop\ColorController@getColorsBySubcategorySearch');
+//----colors----//
 
 //------------------------------SHOP-----------------------------//
 
