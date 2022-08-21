@@ -9,7 +9,7 @@ trait RepositoryTrait{
 
 	public function getContent($content,$id,$searchData=null){
         return response()->json([
-            $content .'s' => $searchData==NULL ? $this->{$this->content}->getByContent($content,$id) :
+            $this->content .'s' => $searchData==NULL ? $this->{$this->content}->getByContent($content,$id) :
             $this->{$this->content}->searchByContent($content,$id,$searchData)
         ]);
     }
