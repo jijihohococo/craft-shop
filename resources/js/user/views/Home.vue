@@ -20,11 +20,29 @@
     <!-- START SECTION SHOP -->
     <div class="section small_pb">
       <div class="container">
+        <ItemSlider
+        main_title="Best Seller Products"
+        :titles='[
+        { name : "Laptop" , link :"laptop" },
+        { name : "Desktop" , link : "desktop" },
+        { name : "Accessory" , link : "accessory" },
+        { name : "Desktop Component" , link : "component"  }
+        ]'
+         />
+         <ItemSlider 
+         main_title="Gaming Products"
+         :titles='[
+         { name : "Gaming Laptop" , link : "gaming_laptop" },
+         { name : "Gaming Mouse" , link : "gaming_mouse" },
+         { name : "Gaming Keyboard" , link : "gaming_keyboard" },
+         { name : "Gaming Headphone" , link : "gaming_headphone" }
+         ]'
+         />
         <div class="row">
           <div class="col-12">
               <div class="heading_tab_header">
                 <div class="heading_s2">
-                    <h2>Exclusive Products</h2>
+                    <h2>Best Seller Products</h2>
                 </div>
                 <div class="tab-style2">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tabmenubar" aria-expanded="false"> 
@@ -32,16 +50,16 @@
                     </button>
                     <ul class="nav nav-tabs justify-content-center justify-content-md-end" id="tabmenubar" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="arrival-tab" data-toggle="tab" href="#arrival" role="tab" aria-controls="arrival" aria-selected="true">New Arrival</a>
+                            <a class="nav-link active" id="arrival-tab" data-toggle="tab" href="#arrival" role="tab" aria-controls="arrival" aria-selected="true">Laptop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="sellers-tab" data-toggle="tab" href="#sellers" role="tab" aria-controls="sellers" aria-selected="false">Best Sellers</a>
+                            <a class="nav-link" id="sellers-tab" data-toggle="tab" href="#sellers" role="tab" aria-controls="sellers" aria-selected="false">Desktop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="featured-tab" data-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">Featured</a>
+                            <a class="nav-link" id="featured-tab" data-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">Accessory</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="special-tab" data-toggle="tab" href="#special" role="tab" aria-controls="special" aria-selected="false">Special Offer
+                            <a class="nav-link" id="special-tab" data-toggle="tab" href="#special" role="tab" aria-controls="special" aria-selected="false">Desktop Component
                             </a>
                         </li>
                     </ul>
@@ -2155,11 +2173,13 @@
 	import Banner from '../components/Banner';
     import Brand from '../components/Brand';
     import Footer from '../components/Footer';
+    import ItemSlider from '../components/ItemSlider';
     export default {
       components : {
          Banner,
          Brand,
-         Footer
+         Footer,
+         ItemSlider
      },
      // data(){
      //    return {
