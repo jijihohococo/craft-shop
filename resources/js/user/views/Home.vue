@@ -28,6 +28,7 @@
         { name : "Accessory" , link : "accessory" },
         { name : "Desktop Component" , link : "component"  }
         ]'
+        api="best_sellers"
          />
          <ItemSlider 
          main_title="Gaming Products"
@@ -37,6 +38,7 @@
          { name : "Gaming Keyboard" , link : "gaming_keyboard" },
          { name : "Gaming Headphone" , link : "gaming_headphone" }
          ]'
+         api="gamings"
          />
         <div class="row">
           <div class="col-12">

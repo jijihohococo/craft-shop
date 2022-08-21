@@ -11,7 +11,8 @@
 					</button>
 					<ul class="nav nav-tabs justify-content-center justify-content-md-end" id="tabmenubar" role="tablist">
 						<li class="nav-item" v-for="(title,key) in titles">
-							<a :class="[key==0 ? 'nav-link active':'nav-link']"
+							<a :class="[key==0 ? 'nav-link active':
+							'nav-link']"
 							:id="title.link+'-tab'"
 							data-toggle="tab"
 							:href="'#'+title.link"
@@ -30,6 +31,7 @@
 				<SliderDetail v-for="(title,key) in titles"
 				:content="title.link"
 				:tab_class="showFadeClass(key)"
+				:items="items[key]"
 				/>
 			</div>
 		</div>
@@ -42,19 +44,36 @@
 		components : {
 			SliderDetail
 		},
+		data(){
+			return {
+				items : {}
+			}
+		},
 		props : {
 			main_title : {
 				type : String
 			},
 			titles : {
 				type : Array
+			},
+			api : {
+				type : String
 			}
 		},
 		methods : {
 			showFadeClass(key){
 				return key==0 ? "tab-pane fade show active" :
 				"tab-pane fade";
+			},
+			async getData(){
+				window.axios.get( this.$props.api ).then( (response) => {
+					this.items=response.data
+					console.log(this.items)
+				} )
 			}
+		},
+		async created(){
+			await this.getData();
 		}
 	}
 </script>

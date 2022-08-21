@@ -5,7 +5,7 @@
 	role="tabpanel"
 	:aria-labelledby="content+'-tab'">
 		<div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
-			<div class="item">
+			<div class="item" v-for="item in items">
 				<div class="product">
 					<div class="product_img">
 						<a href="shop-product-detail.html">
@@ -21,7 +21,7 @@
 						</div>
 					</div>
 					<div class="product_info">
-						<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
+						<h6 class="product_title"><a href="shop-product-detail.html">{{ item.name }}</a></h6>
 						<div class="product_price">
 							<span class="price">$45.00</span>
 							<del>$55.25</del>
@@ -60,6 +60,9 @@
 			},
 			tab_class : {
 				type : String
+			},
+			items : {
+				type : Array
 			}
 		}
 	}
