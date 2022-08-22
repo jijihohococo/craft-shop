@@ -31,7 +31,7 @@
 				<SliderDetail v-for="(title,key) in titles"
 				:content="title.link"
 				:tab_class="showFadeClass(key)"
-				:items="items[key]"
+				:items="getItems(items,key)"
 				/>
 			</div>
 		</div>
@@ -65,10 +65,12 @@
 				return key==0 ? "tab-pane fade show active" :
 				"tab-pane fade";
 			},
+			getItems(items,key){
+				return Object.values(items)[key]
+			},
 			async getData(){
 				window.axios.get( this.$props.api ).then( (response) => {
 					this.items=response.data
-					console.log(this.items)
 				} )
 			}
 		},
