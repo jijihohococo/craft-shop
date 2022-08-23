@@ -60,6 +60,18 @@ class Item extends TransactionModel
         return $this->belongsTo('App\Models\Brand')->withDefault()->withTrashed();
     }
 
+    public function scopeWhereInAttributeSets($query,$sets){
+        return $query->whereIn('id',function($query) use ($sets) {
+            $query->select('item_id')
+            ->from('item_attributes')
+            ->whereIn('item_attributes.id',function($query) use($sets) {
+                $query->select('item_attribute_id')
+                ->from('item_attribute_sets')
+                ->whereIn('set_id',$sets);
+            });
+        });
+    }
+
     public function scopeSelectItemVariants($query){
         return $query->addSelect(['variants' => function($query){
             $query->select(\DB::raw('GROUP_CONCAT(item_variants.id)'))

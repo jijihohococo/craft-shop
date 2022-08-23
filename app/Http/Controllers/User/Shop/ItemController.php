@@ -60,7 +60,7 @@ class ItemController extends Controller
         }
 
         if(!empty($items) && $request->sets!==NULL){
-
+            $items=$items->whereInAttributeSets($request->sets);
         }
 
         return response()->json([
