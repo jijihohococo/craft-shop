@@ -26,13 +26,6 @@ class ItemController extends Controller
         ]);
     }
 
-    public function search(Request $request,$categoryId=NULL){
-        $searchData='%'.$request->search.'%';
-        return response()->json([
-            'items' => $categoryId!==NULL ? $this->item->searchByContent('category',$categoryId,$searchData)->latest('id')->paginate(10) : $this->item->getAll()->searchData($searchData)->latest('id')->paginate(10)
-        ]);
-    }
-
     public function showBestSeller(){
         $item=new Item;
         return response()->json([
