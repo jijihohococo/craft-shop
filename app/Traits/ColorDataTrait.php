@@ -14,4 +14,12 @@ trait ColorDataTrait{
         });
     }
 
+    public function scopeWhereInColorIds($query,$colorIds){
+        return $query->whereIn('id',function($query) use($colorIds){
+            $query->select('id')
+            ->from('item_variants')
+            ->whereIn('item_variants.color_id',$colorIds);
+        } );
+    }
+
 }

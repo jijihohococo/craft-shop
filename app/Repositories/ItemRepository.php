@@ -6,21 +6,20 @@ use App\Models\Item;
 class ItemRepository implements ItemRepositoryInterface{
 
 	public function searchByContent($content,$id,$searchData){
-		return Item::selectItemDataWithImages()
-            ->selectPrice()
+		return $this->getAll()
             ->where($content.'_id',$id)
-            ->searchData($searchData)
-            ->latest('id')
-            ->paginate(10);
+            ->searchData($searchData);
 	}
 
 
     public function getByContent($content,$id){
+        return $this->getAll()
+            ->where($content.'_id',$id);
+    }
+
+    public function getAll(){
         return Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->where($content.'_id',$id)
-            ->latest('id')
-            ->paginate(10);
+        ->selectPrice();
     }
 
 }

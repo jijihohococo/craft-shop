@@ -29,7 +29,7 @@ class ItemController extends Controller
     public function search(Request $request,$categoryId){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'items' => $this->item->searchByContent('category',$categoryId,$searchData)
+            'items' => $this->item->searchByContent('category',$categoryId,$searchData)->latest('id')->paginate(10)
         ]);
     }
 
@@ -62,10 +62,7 @@ class ItemController extends Controller
 
     public function get(){
         return response()->json([
-            'items' => Item::selectItemDataWithImages()
-            ->selectPrice()
-            ->latest('id')
-            ->get()
+            'items' => $this->item->getAll()->latest('id')->get()
         ]);
     }
 }

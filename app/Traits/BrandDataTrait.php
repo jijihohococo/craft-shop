@@ -18,5 +18,9 @@ trait BrandDataTrait{
         } ]); 
     }
 
+    public function scopeWhereInBrandIds($query,$brandIds){
+        return $query->whereIn('brand_id',$brandIds);
+    }
+
 
 }
