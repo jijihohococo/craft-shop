@@ -35,11 +35,11 @@ class ItemController extends Controller
         $items=[];
 
         if($content!=='All'){
-            $items=$this->getContent($content,$contentId,$request->search!==NULL ? '%'.$request->search.'%' : NULL );
+            $items=$request->search==NULL ? $this->item->getByContent($content,$contentId) : $this->item->searchByContent($content,$contentId,'%'.$request->search.'%');
         }
 
         if($content=='All'){
-            $items=$this->items->getAll();
+            $items=$this->item->getAll();
             if($request->search!==NULL){
                 $items=$items->searchData( '%' . $request->search . '%' );
             }
@@ -58,9 +58,9 @@ class ItemController extends Controller
         if(!empty($items) && $request->sets!==NULL){
             $items=$items->whereInAttributeSets($request->sets);
         }
-
+        
         return response()->json([
-            'items' => $items
+            'items' => empty($items) ? $items : $items->latest('id')->paginate(10)
         ]);
     }
 }

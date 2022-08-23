@@ -46,6 +46,8 @@ Route::get('feature_products','User\ItemController@showFeatureProducts');
 Route::get('get_items_by_categories/{categoryId}','User\Shop\ItemController@getItemsByCategory');
 Route::get('get_items_by_subcategories/{subcategoryId}','User\Shop\ItemController@getItemsBySubcategory');
 Route::get('get_items_by_brands/{brandId}','User\Shop\ItemController@getItemsByBrand');
+
+Route::get('shop/{content}/{contentId?}','User\Shop\ItemController@shop');
 //----items----//
 
 //----attributes----//
