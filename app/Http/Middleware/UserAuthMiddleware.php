@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\TokenRefresh;
-use App\Models\User;
+
+use App\Models\{User,TokenRefresh};
 class UserAuthMiddleware
 {
     /**
