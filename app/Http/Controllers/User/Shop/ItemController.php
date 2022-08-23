@@ -44,7 +44,12 @@ class ItemController extends Controller
 
         if($content=='NULL'){
             $items=$this->items->getAll();
+            if($request->search!==NULL){
+                $items=$items->searchData( '%' . $request->search . '%' );
+            }
         }
+
+
 
         if(!empty($items) && $request->brands!==NULL){
             $items=$items->whereInBrandIds($request->brands);
@@ -55,7 +60,7 @@ class ItemController extends Controller
         }
 
         if(!empty($items) && $request->sets!==NULL){
-            
+
         }
 
     }
