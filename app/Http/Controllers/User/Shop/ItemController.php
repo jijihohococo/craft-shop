@@ -42,7 +42,7 @@ class ItemController extends Controller
             $items=$this->getContent($content,$contentId,'%'.$request->search.'%');
         }
 
-        if($content=='NULL'){
+        if($content=='NULL' || $content=='All' ){
             $items=$this->items->getAll();
             if($request->search!==NULL){
                 $items=$items->searchData( '%' . $request->search . '%' );
@@ -63,5 +63,8 @@ class ItemController extends Controller
 
         }
 
+        return response()->json([
+            'items' => $items
+        ]);
     }
 }
