@@ -34,11 +34,11 @@ class ItemController extends Controller
 
         $items=[];
 
-        if($content!=='NULL'){
+        if($content!=='All'){
             $items=$this->getContent($content,$contentId,$request->search!==NULL ? '%'.$request->search.'%' : NULL );
         }
 
-        if($content=='NULL'){
+        if($content=='All'){
             $items=$this->items->getAll();
             if($request->search!==NULL){
                 $items=$items->searchData( '%' . $request->search . '%' );
