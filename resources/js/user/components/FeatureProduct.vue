@@ -40,60 +40,14 @@
 							</div>
 						</div>
 						<div class="item">
-							<div class="product">
+							<div class="product" v-for="item in two_feature_products">
 								<div class="product_img">
 									<a href="shop-product-detail.html">
 										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img2.jpg" alt="product_img2">
 									</a>
 								</div>
 								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Lether Gray Tuxedo</a></h6>
-									<div class="product_price">
-										<span class="price">$55.00</span>
-										<del>$95.00</del>
-										<div class="on_sale">
-											<span>25% Off</span>
-										</div>
-									</div>
-									<div class="rating_wrap">
-										<div class="rating">
-											<div class="product_rate" style="width:68%"></div>
-										</div>
-										<span class="rating_num">(15)</span>
-									</div>
-								</div>
-							</div>
-							<div class="product">
-								<div class="product_img">
-									<a href="shop-product-detail.html">
-										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img7.jpg" alt="product_img7">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">white black line dress</a></h6>
-									<div class="product_price">
-										<span class="price">$68.00</span>
-										<del>$99.00</del>
-										<div class="on_sale">
-											<span>20% Off</span>
-										</div>
-									</div>
-									<div class="rating_wrap">
-										<div class="rating">
-											<div class="product_rate" style="width:87%"></div>
-										</div>
-										<span class="rating_num">(25)</span>
-									</div>
-								</div>
-							</div>
-							<div class="product">
-								<div class="product_img">
-									<a href="shop-product-detail.html">
-										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img10.jpg" alt="product_img10">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Red &amp; Black check shirt</a></h6>
+									<h6 class="product_title"><a href="shop-product-detail.html">{{ item.name }}</a></h6>
 									<div class="product_price">
 										<span class="price">$55.00</span>
 										<del>$95.00</del>
@@ -111,14 +65,14 @@
 							</div>
 						</div>
 						<div class="item">
-							<div class="product">
+							<div class="product" v-for="item in three_feature_products">
 								<div class="product_img">
 									<a href="shop-product-detail.html">
 										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img3.jpg" alt="product_img3">
 									</a>
 								</div>
 								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">woman full sliv dress</a></h6>
+									<h6 class="product_title"><a href="shop-product-detail.html">{{ item.name }}</a></h6>
 									<div class="product_price">
 										<span class="price">$68.00</span>
 										<del>$99.00</del>
@@ -131,62 +85,16 @@
 									</div>
 								</div>
 							</div>
-							<div class="product">
-								<div class="product_img">
-									<a href="shop-product-detail.html">
-										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img8.jpg" alt="product_img8">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Men blue jins Shirt</a></h6>
-									<div class="product_price">
-										<span class="price">$69.00</span>
-										<del>$89.00</del>
-										<div class="on_sale">
-											<span>20% Off</span>
-										</div>
-									</div>
-									<div class="rating_wrap">
-										<div class="rating">
-											<div class="product_rate" style="width:70%"></div>
-										</div>
-										<span class="rating_num">(22)</span>
-									</div>
-								</div>
-							</div>
-							<div class="product">
-								<div class="product_img">
-									<a href="shop-product-detail.html">
-										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img13.jpg" alt="product_img13">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Pink Dress for woman</a></h6>
-									<div class="product_price">
-										<span class="price">$65.00</span>
-										<del>$80.00</del>
-										<div class="on_sale">
-											<span>30% Off</span>
-										</div>
-									</div>
-									<div class="rating_wrap">
-										<div class="rating">
-											<div class="product_rate" style="width:80%"></div>
-										</div>
-										<span class="rating_num">(28)</span>
-									</div>
-								</div>
-							</div>
 						</div>
 						<div class="item">
-							<div class="product">
+							<div class="product" v-for="item in four_feature_products">
 								<div class="product_img">
 									<a href="shop-product-detail.html">
 										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img4.jpg" alt="product_img4">
 									</a>
 								</div>
 								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">light blue Shirt</a></h6>
+									<h6 class="product_title"><a href="shop-product-detail.html">{{ item.name }}</a></h6>
 									<div class="product_price">
 										<span class="price">$69.00</span>
 										<del>$89.00</del>
@@ -202,59 +110,16 @@
 									</div>
 								</div>
 							</div>
-							<div class="product">
-								<div class="product_img">
-									<a href="shop-product-detail.html">
-										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img9.jpg" alt="product_img9">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
-									<div class="product_price">
-										<span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-									</div>
-									<div class="rating_wrap">
-										<div class="rating">
-											<div class="product_rate" style="width:80%"></div>
-										</div>
-										<span class="rating_num">(21)</span>
-									</div>
-								</div>
-							</div>
-							<div class="product">
-								<div class="product_img">
-									<a href="shop-product-detail.html">
-										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img14.jpg" alt="product_img14">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">White shirt for man</a></h6>
-									<div class="product_price">
-										<span class="price">$55.00</span>
-										<del>$60.00</del>
-									</div>
-									<div class="rating_wrap">
-										<div class="rating">
-											<div class="product_rate" style="width:68%"></div>
-										</div>
-										<span class="rating_num">(15)</span>
-									</div>
-								</div>
-							</div>
 						</div>
 						<div class="item">
-							<div class="product">
+							<div class="product" v-for="item in five_feature_products">
 								<div class="product_img">
 									<a href="shop-product-detail.html">
 										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img5.jpg" alt="product_img5">
 									</a>
 								</div>
 								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">blue dress for woman</a></h6>
+									<h6 class="product_title"><a href="shop-product-detail.html">{{ item.name }}</a></h6>
 									<div class="product_price">
 										<span class="price">$45.00</span>
 										<del>$55.25</del>
@@ -267,49 +132,6 @@
 											<div class="product_rate" style="width:80%"></div>
 										</div>
 										<span class="rating_num">(21)</span>
-									</div>
-								</div>
-							</div>
-							<div class="product">
-								<div class="product_img">
-									<a href="shop-product-detail.html">
-										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img11.jpg" alt="product_img11">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Black dress for woman</a></h6>
-									<div class="product_price">
-										<span class="price">$68.00</span>
-										<del>$99.00</del>
-										<div class="on_sale">
-											<span>20% Off</span>
-										</div>
-									</div>
-									<div class="rating_wrap">
-										<div class="rating">
-											<div class="product_rate" style="width:87%"></div>
-										</div>
-										<span class="rating_num">(25)</span>
-									</div>
-								</div>
-							</div>
-							<div class="product">
-								<div class="product_img">
-									<a href="shop-product-detail.html">
-										<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img15.jpg" alt="product_img15">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Pink Dress for Baby Kids</a></h6>
-									<div class="product_price">
-										<span class="price">$55.00</span>
-										<del>$60.00</del>
-									</div>
-									<div class="rating_wrap">
-										<div class="rating">
-											<div class="product_rate" style="width:68%"></div>
-										</div>
-										<span class="rating_num">(15)</span>
 									</div>
 								</div>
 							</div>
