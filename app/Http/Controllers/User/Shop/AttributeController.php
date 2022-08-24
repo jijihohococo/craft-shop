@@ -14,17 +14,19 @@ class AttributeController extends Controller
 
     public $attribute;
 
+    public $acceptArray=[
+        'category',
+        'subcategory',
+        'brand'
+    ];
+
     public function __construct(AttributeRepositoryInterface $attribute){
         $this->attribute=$attribute;
         $this->content='attribute';
     }
 
     public function getAttributesByContent(Request $request,$content,$contentId){
-        $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),['category','subcategory','brand']);
-        if($validator->fails()){
-            return $this->makeErrorMessage($validator);
-        }
-        return $this->getContent($content,$contentId,$this->makeSearch($request->search));
+        return $this->makeContent($content,$contentId,$request->search);
     }
 
     // public function getAttributesByCategory(Request $request,$categoryId){

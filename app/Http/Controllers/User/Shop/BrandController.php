@@ -13,17 +13,18 @@ class BrandController extends Controller
     
     public $brand;
 
+    public $acceptArray=[
+        'category',
+        'subcategory'
+    ];
+
     public function __construct(BrandRepositoryInterface $brand){
         $this->brand=$brand;
         $this->content='brand';
     }
 
     public function getBrandsByContent(Request $request,$content,$contentId){
-        $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),['category','subcategory']);
-        if($validator->fails()){
-            return $this->makeErrorMessage($validator);
-        }
-        return $this->getContent($content,$contentId,$this->makeSearch($request->search));
+        return $this->makeContent($content,$contentId,$request->search);
     }
 
     // public function getBrandsByCategory(Request $request,$categoryId){

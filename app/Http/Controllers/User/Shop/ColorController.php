@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User\Shop;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\ColorRepositoryInterface;
-use App\Traits\{RepositoryTrait,APIValidator};
+use App\Traits\RepositoryTrait;
 class ColorController extends Controller
 {
     //
@@ -13,17 +13,19 @@ class ColorController extends Controller
 
     public $color;
 
+    public $acceptArray=[
+        'category',
+        'subcategory',
+        'brand'
+    ];
+
     public function __construct(ColorRepositoryInterface $color){
         $this->color=$color;
         $this->content='color';
     }
 
     public function getColorsByContent(Request $request,$content,$contentId){
-        $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),['category','subcategory','brand']);
-        if($validator->fails()){
-            return $this->makeErrorMessage($validator);
-        }
-        return $this->getContent($content,$contentId,$this->makeSearch($request->search));
+        return $this->makeContent($content,$contentId,$request->search);
     }
 
     // public function getColorsByCategory(Request $request,$categoryId){
