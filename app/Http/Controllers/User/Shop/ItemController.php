@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User\Shop;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\ItemRepositoryInterface;
-use Validator;
 use App\Traits\APIValidator;
 class ItemController extends Controller
 {
