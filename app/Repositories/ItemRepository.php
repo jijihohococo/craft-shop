@@ -22,4 +22,13 @@ class ItemRepository implements ItemRepositoryInterface{
         ->selectPrice();
     }
 
+    public function getFilterContents(){
+        return [
+            'All',
+            'category',
+            'subcategory',
+            'brand'
+        ];
+    }
+
 }

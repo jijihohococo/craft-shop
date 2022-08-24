@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User\Shop;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\ItemRepositoryInterface;
-
+use Validator;
 class ItemController extends Controller
 {
     //
@@ -17,7 +17,20 @@ class ItemController extends Controller
     }
 
     public function shop(Request $request,$content,$contentId=null){
-
+        $inputData=[
+            'content' => $content ,
+            'contentId' => $contentId ,
+            'search' => $request->search ,
+        ];
+        $validator=Validator::make( $inputData ,  [
+            'content' => 'in:'.implode(',', $this->item->getFilterContents() ) ,
+            'contentId' => ['nullable','integer']
+        ]);
+        if ($validator->fails() ) {
+            return response()->json([
+                'message' => 'error'
+            ]);
+        }
         $items=[];
 
         if($content!=='All'){
