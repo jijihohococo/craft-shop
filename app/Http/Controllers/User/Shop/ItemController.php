@@ -28,8 +28,9 @@ class ItemController extends Controller
         ]);
         if ($validator->fails() ) {
             return response()->json([
-                'message' => 'error'
-            ]);
+                'message' => 'The given data was invalid.',
+                'errors'  => $validator->errors()
+            ],422);
         }
         $items=[];
 
