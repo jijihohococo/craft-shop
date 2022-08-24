@@ -5,12 +5,12 @@ namespace App\Http\Controllers\User\Shop;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\AttributeRepositoryInterface;
-use App\Traits\{RepositoryTrait,APIValidator};
+use App\Traits\RepositoryTrait;
 class AttributeController extends Controller
 {
     //
 
-    use RepositoryTrait,APIValidator;
+    use RepositoryTrait;
 
     public $attribute;
 
