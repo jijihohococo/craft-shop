@@ -9,7 +9,7 @@ use App\Traits\RepositoryTrait;
 class ColorController extends Controller
 {
     //
-    use RepositoryTrait,APIValidator;
+    use RepositoryTrait;
 
     public $color;
 
