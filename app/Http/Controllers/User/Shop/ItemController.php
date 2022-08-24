@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\ItemRepositoryInterface;
 use Validator;
+use App\Traits\APIValidator;
 class ItemController extends Controller
 {
     //
+
+    use APIValidator;
 
     public $item;
 
@@ -17,20 +20,9 @@ class ItemController extends Controller
     }
 
     public function shop(Request $request,$content,$contentId=null){
-        $inputData=[
-            'content' => $content ,
-            'contentId' => $contentId ,
-            'search' => $request->search ,
-        ];
-        $validator=Validator::make( $inputData ,  [
-            'content' => 'in:'.implode(',', $this->item->getFilterContents() ) ,
-            'contentId' => ['nullable','integer']
-        ]);
-        if ($validator->fails() ) {
-            return response()->json([
-                'message' => 'The given data was invalid.',
-                'errors'  => $validator->errors()
-            ],422);
+        $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),$this->item->getFilterContents());
+        if($validator->fails()){
+            return $this->makeErrorMessage($validator);
         }
         $items=[];
 
