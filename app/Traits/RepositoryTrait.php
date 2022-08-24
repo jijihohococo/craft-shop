@@ -14,4 +14,8 @@ trait RepositoryTrait{
         ]);
     }
 
+    public function makeSearch($searchData=NULL){
+        return $searchData!==NULL?'%'.$searchData.'%':NULL;
+    }
+
 }

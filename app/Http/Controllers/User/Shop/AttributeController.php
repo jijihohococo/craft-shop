@@ -24,7 +24,7 @@ class AttributeController extends Controller
         if($validator->fails()){
             return $this->makeErrorMessage($validator);
         }
-        return $this->getContent($content,$contentId,$request->search!==NULL ? '%'.$request->search.'%':NULL);
+        return $this->getContent($content,$contentId,$this->makeSearch($request->search));
     }
 
     // public function getAttributesByCategory(Request $request,$categoryId){
