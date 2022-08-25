@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\User\Shop;
 
-
-use Illuminate\Http\Request;
 use App\Repositories\BrandRepositoryInterface;
 
 class BrandController extends ContentController

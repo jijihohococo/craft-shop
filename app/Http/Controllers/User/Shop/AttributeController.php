@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User\Shop;
 
-use Illuminate\Http\Request;
 use App\Repositories\AttributeRepositoryInterface;
 
 class AttributeController extends ContentController
