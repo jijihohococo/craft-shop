@@ -47,15 +47,15 @@ Route::get('shop/{content}/{contentId?}','User\Shop\ItemController@shop');
 //----items----//
 
 //----attributes----//
-Route::get('get_attributes_by_content/{content}/{contentId}','User\Shop\AttributeController@getAttributesByContent');
+Route::get('get_attributes_by_content/{content}/{contentId}','User\Shop\AttributeController@getDataByContent');
 //----attributes----//
 
 //----brands----//
-Route::get('get_brands_by_content/{content}/{contentId}','User\Shop\BrandController@getBrandsByContent');
+Route::get('get_brands_by_content/{content}/{contentId}','User\Shop\BrandController@getDataByContent');
 //----brands----//
 
 //----colors----//
-Route::get('get_colors_by_content/{content}/{contentId}','User\Shop\ColorController@getColorsByContent');
+Route::get('get_colors_by_content/{content}/{contentId}','User\Shop\ColorController@getDataByContent');
 //----colors----//
 
 //------------------------------SHOP-----------------------------//
