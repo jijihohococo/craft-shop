@@ -5,10 +5,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
-use App\Traits\{SearchNameTrait,CreateAndUpdateSearch,DeleteSearch,CategoryDataTrait,SubcategoryDataTrait,ColorDataTrait,BrandDataTrait};
+use App\Traits\{SearchNameTrait,DeleteSearch,CategoryDataTrait,SubcategoryDataTrait,ColorDataTrait,BrandDataTrait};
 class Attribute extends TransactionModel
 {
-    use SoftDeletes,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch,CategoryDataTrait,SubcategoryDataTrait,ColorDataTrait,BrandDataTrait;
+    use SoftDeletes,SearchNameTrait,DeleteSearch,CategoryDataTrait,SubcategoryDataTrait,ColorDataTrait,BrandDataTrait;
 
     protected $fillable=[
         'name'

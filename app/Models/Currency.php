@@ -5,10 +5,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
-use App\Traits\{SearchNameTrait,CreateAndUpdateSearch,DeleteSearch};
+use App\Traits\{SearchNameTrait,DeleteSearch};
 class Currency extends TransactionModel
 {
-    use SoftDeletes,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch;
+    use SoftDeletes,SearchNameTrait,DeleteSearch;
 
     protected $fillable=[
         'name',

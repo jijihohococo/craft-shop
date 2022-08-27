@@ -4,11 +4,11 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Traits\{CategoryDataTrait,BrandDataTrait,SubcategoryDataTrait,ColorDataTrait,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch};
+use App\Traits\{CategoryDataTrait,BrandDataTrait,SubcategoryDataTrait,ColorDataTrait,SearchNameTrait,DeleteSearch};
 use Illuminate\Support\Facades\Cache;
 class Item extends TransactionModel
 {
-    use SoftDeletes,CategoryDataTrait,BrandDataTrait,SubcategoryDataTrait,ColorDataTrait,SearchNameTrait,CreateAndUpdateSearch,DeleteSearch;
+    use SoftDeletes,CategoryDataTrait,BrandDataTrait,SubcategoryDataTrait,ColorDataTrait,SearchNameTrait,DeleteSearch;
 
     protected $fillable=[
         'name',
