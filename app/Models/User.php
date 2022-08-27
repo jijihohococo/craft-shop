@@ -6,11 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Traits\{HasApi,SearchNameTrait};
+use App\Traits\{HasApi,SearchNameTrait,SearchEmailTrait,CreateAndUpdateSearch};
 
 class User extends Authenticatable
 {
-    use HasApi, HasFactory, Notifiable , SearchNameTrait;
+    use HasApi, HasFactory, Notifiable , SearchNameTrait , SearchEmailTrait,CreateAndUpdateSearch;
 
     /**
      * The attributes that are mass assignable.
