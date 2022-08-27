@@ -2,45 +2,17 @@
 
 namespace App\Http\Controllers\User\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Auth\LoginController as Login;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Traits\Logout;
 use DB;
-class LoginController extends Controller
+class LoginController extends Login
 {
     //
-    use Logout;
 
-    private $accessToken = 'access_token';
-    private $refreshToken = 'refresh_token';
-    private $authAPI = 'user_api';
-
-    public function login(Request $request){
-        $request->validate([
-            'email' => ['required','email'],
-            'password' => ['required']
-        ]);
-        
-        
-        try{
-
-            $token=User::where('email',$request->email )->first()->passportToken();
-            
-            return response()->json([
-                'message' => 'Login Success'
-            ])->withCookie( cookie($this->accessToken, $token->original['access_token'], 10, null, null, true) )
-            ->withCookie( cookie($this->refreshToken,$token->original['refresh_token'],10,null,null,true) );
-
-        }catch(\Throwable $e){
-            return response()->json([
-                'message' => 'The given data was invalid.',
-                'errors' => [
-                    'account' => ['Login Failed']
-                ]
-            ],422);
-        }
-    }
+    protected $accessToken = 'access_token';
+    protected $refreshToken = 'refresh_token';
+    protected $authAPI = 'user_api';
+    protected $model='User';
 
     public function logOut(Request $request){
         try{
