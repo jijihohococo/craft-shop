@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use App\Models\{Attribute,AttributeSet,ItemAttributeSet};
-use App\Traits\AdminRolePermission;
-class AttributeController extends Controller
+class AttributeController extends CommonController
 {
-
-    use AdminRolePermission;
 
     private $sets=[];
 
-    public function __construct(){
-        $this->authorized('Attribute');
-    }
+    public $model = 'Attribute';
+
+    public $content = 'data_attributes';
 
     /**
      * Display a listing of the resource.
@@ -103,34 +100,6 @@ class AttributeController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $attribute=Attribute::withTrashed()->findOrFail($id);
-        $attribute->delete();
-        return response()->json([
-          'message' => $attribute->name . ' Attribute is deleted successfully',
-          'deleted_at' => $attribute->deleted_at
-      ]);
-    }
-
-    public function restore($id)
-    {
-        //
-        $attribute=Attribute::withTrashed()->findOrFail($id);
-        $attribute->restore();
-        return response()->json([
-          'message' => $attribute->name . ' Attribute is restored successfully',
-          'deleted_at' => $attribute->deleted_at
-      ]);
-    }
-
     private function validateData($id=NULL){
         return [
             'name' => ['required', 'string', 'max:100', $id==null ? 'unique:attributes' : 'unique:attributes,name,'.$id ] ,
@@ -192,28 +161,6 @@ class AttributeController extends Controller
     public function trash(){
         return response()->json([
             'attributes' => Attribute::onlyTrashed()->latest('id')->paginate(10)
-        ]);
-    }
-
-    public function deleteMultiple(Request $request){
-        $request->validate([
-            'data_attributes' => ['required','string']
-        ]);
-        $attributes=explode(',', $request->data_attributes);
-        Attribute::whereIn('id',$attributes)->delete();
-        return response()->json([
-            'message' => 'Attributes are deleted'
-        ]);
-    }
-
-    public function restoreMultiple(Request $request){
-        $request->validate([
-            'data_attributes' => ['required','string']
-        ]);
-        $attributes=explode(',', $request->data_attributes);
-        Attribute::withTrashed()->whereIn('id',$attributes)->restore();
-        return response()->json([
-            'message' => 'Attributes are restored'
         ]);
     }
 }

@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use App\Models\Banner;
-use App\Traits\AdminRolePermission;
-class BannerController extends Controller
+class BannerController extends CommonController
 {
-    use AdminRolePermission;
 
-    public function __construct(){
-        $this->authorized('Banner');
-    }
+    public $model = 'Banner';
+
+    public $content='banners';
+
+    public $mainData='title';
     /**
      * Display a listing of the resource.
      *
@@ -117,32 +117,6 @@ class BannerController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $banner=Banner::withTrashed()->findOrFail($id);
-        $banner->delete();
-        return response()->json([
-          'message' => $banner->title . ' Banner is deleted successfully',
-          'deleted_at' => $banner->deleted_at
-      ]);
-    }
-
-    public function restore($id){
-       $banner=Banner::withTrashed()->findOrFail($id);
-       $banner->restore();
-       return response()->json([
-          'message' => $banner->title . ' Banner is restored successfully',
-          'deleted_at' => $banner->deleted_at
-      ]);   
-   }
-
    private function validateData($id=NULL){
     return [
         'title' => ['required', 'string', 'max:100', $id==null ? 'unique:banners' : 'unique:banners,title,'.$id ] ,
@@ -173,28 +147,6 @@ public function trashSearch(Request $request){
         ->searchDelete($searchData)
         ->latest('id')
         ->paginate(10)
-    ]);
-}
-
-public function deleteMultiple(Request $request){
-    $request->validate([
-        'banners' => ['required','string']
-    ]);
-    $banners=explode(',', $request->banners);
-    Banner::whereIn('id',$banners)->delete();
-    return response()->json([
-        'message' => 'Banners are deleted'
-    ]);
-}
-
-public function restoreMultiple(Request $request){
-    $request->validate([
-        'banners' => ['required','string']
-    ]);
-    $banners=explode(',', $request->banners);
-    Banner::withTrashed()->whereIn('id',$banners)->restore();
-    return response()->json([
-        'message' => 'Banners are restored'
     ]);
 }
 }

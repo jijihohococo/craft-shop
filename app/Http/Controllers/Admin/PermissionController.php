@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Permission,TokenRefresh,Admin};
-use App\Traits\{RolePermission,AdminRolePermission};
+use App\Traits\RolePermission;
 
-class PermissionController extends Controller
+class PermissionController extends CommonController
 {
 
-    use RolePermission,AdminRolePermission;
+    use RolePermission;
     
-    public function __construct(){
-        $this->authorized('Permission');
-    }
+    public $model = 'Permission';
+
+    public $content = 'permissions';
 
     /**
      * Display a listing of the resource.
@@ -107,32 +106,6 @@ class PermissionController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $permission=Permission::withTrashed()->findOrFail($id);
-        $permission->delete();
-        return response()->json([
-          'message' => $permission->name . ' Permission is deleted successfully',
-          'deleted_at' => $permission->deleted_at
-      ]);
-    }
-
-    public function restore($id){
-       $permission=Permission::withTrashed()->findOrFail($id);
-       $permission->restore();
-       return response()->json([
-          'message' => $permission->name . ' Permission is restored successfully',
-          'deleted_at' => $permission->deleted_at
-      ]);   
-   }
-
    private function validateData($id=NULL){
     return [
         'name' => ['required', 'string', 'max:100', $id==null ? 'unique:permissions' : 'unique:permissions,name,'.$id ],
@@ -192,28 +165,6 @@ public function checkPermission(string $model,string $action){
 public function get(){
     return response()->json([
         'permissions' => (new Permission)->getAll()
-    ]);
-}
-
-public function deleteMultiple(Request $request){
-    $request->validate([
-        'permissions' => ['required','string']
-    ]);
-    $permissions=explode(',', $request->permissions);
-    Permission::whereIn('id',$permissions)->delete();
-    return response()->json([
-        'message' => 'Permissions are deleted'
-    ]);
-}
-
-public function restoreMultiple(Request $request){
-    $request->validate([
-        'permissions' => ['required','string']
-    ]);
-    $permissions=explode(',', $request->permissions);
-    Permission::withTrashed()->whereIn('id',$permissions)->restore();
-    return response()->json([
-        'message' => 'Permissions are restored'
     ]);
 }
 }

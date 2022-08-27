@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Admin,AdminRole};
-use App\Traits\AdminRolePermission;
 use DB;
-class AdminController extends Controller
+class AdminController extends CommonController
 {
-    use AdminRolePermission;
 
     private $roles=[];
 
-    public function __construct(){
-        $this->authorized('Admin');
-    }
+    public $model = 'Admin';
+
+    public $content = 'admins';
 
     /**
      * Display a listing of the resource.
@@ -126,34 +123,6 @@ class AdminController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $admin=Admin::withTrashed()->findOrFail($id);
-        $admin->delete();
-        return response()->json([
-          'message' => $admin->name . ' Admin is deleted successfully',
-          'deleted_at' => $admin->deleted_at
-      ]);
-    }
-
-    public function restore($id)
-    {
-        //
-        $admin=Admin::withTrashed()->findOrFail($id);
-        $admin->restore();
-        return response()->json([
-          'message' => $admin->name . ' Admin is restored successfully',
-          'deleted_at' => $admin->deleted_at
-      ]);
-    }
-
     private function validateData($id=NULL){
         return [
             'name' => 'required|string|max:100',
@@ -189,28 +158,6 @@ class AdminController extends Controller
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
-    }
-
-    public function deleteMultiple(Request $request){
-        $request->validate([
-            'admins' => ['required','string']
-        ]);
-        $admins=explode(',', $request->admins);
-        Admin::whereIn('id',$admins)->delete();
-        return response()->json([
-            'message' => 'Admins are deleted'
-        ]);
-    }
-
-    public function restoreMultiple(Request $request){
-        $request->validate([
-            'admins' => ['required','string']
-        ]);
-        $admins=explode(',', $request->admins);
-        Admin::withTrashed()->whereIn('id',$admins)->restore();
-        return response()->json([
-            'message' => 'Admins are restored'
         ]);
     }
 }

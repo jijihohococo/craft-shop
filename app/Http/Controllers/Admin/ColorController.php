@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Color;
-use App\Traits\AdminRolePermission;
-class ColorController extends Controller
+class ColorController extends CommonController
 {
-    use AdminRolePermission;
+    
+    public $model = 'Color';
 
-    public function __construct(){
-        $this->authorized('Color');
-    }
+    public $contents='colors';
     /**
      * Display a listing of the resource.
      *
@@ -102,34 +99,6 @@ class ColorController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $color=Color::withTrashed()->findOrFail($id);
-        $color->delete();
-        return response()->json([
-          'message' => $color->name . ' Color is deleted successfully',
-          'deleted_at' => $color->deleted_at
-      ]);
-    }
-
-    public function restore($id)
-    {
-        //
-        $color=Color::withTrashed()->findOrFail($id);
-        $color->restore();
-        return response()->json([
-          'message' => $color->name . ' Color is restored successfully',
-          'deleted_at' => $color->deleted_at
-      ]);
-    }
-
     private function validateData($id=NULL){
         return [
             'name' => ['required', 'string', 'max:100', $id==null ? 'unique:colors' : 'unique:colors,name,'.$id ] ,
@@ -156,28 +125,6 @@ class ColorController extends Controller
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
-    }
-
-    public function deleteMultiple(Request $request){
-        $request->validate([
-            'colors' => ['required','string']
-        ]);
-        $colors=explode(',', $request->colors);
-        Color::whereIn('id',$colors)->delete();
-        return response()->json([
-            'message' => 'Colors are deleted'
-        ]);
-    }
-
-    public function restoreMultiple(Request $request){
-        $request->validate([
-            'colors' => ['required','string']
-        ]);
-        $colors=explode(',', $request->colors);
-        Color::withTrashed()->whereIn('id',$colors)->restore();
-        return response()->json([
-            'message' => 'Colors are restored'
         ]);
     }
 }

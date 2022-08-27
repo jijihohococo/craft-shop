@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
-use App\Traits\AdminRolePermission;
-class BrandController extends Controller
+class BrandController extends CommonController
 {
-    use AdminRolePermission;
 
-    public function __construct(){
-        $this->authorized('Brand');
-    }
+    public $model = 'Brand';
+
+    public $content = 'brands';
     /**
      * Display a listing of the resource.
      *
@@ -117,34 +114,6 @@ class BrandController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $brand=Brand::withTrashed()->findOrFail($id);
-        $brand->destroy();
-        return response()->json([
-          'message' => $brand->name . ' Brand is deleted successfully',
-          'deleted_at' => $brand->deleted_at
-      ]);
-    }
-
-    public function restore($id)
-    {
-        //
-        $brand=Brand::withTrashed()->findOrFail($id);
-        $brand->restore();
-        return response()->json([
-          'message' => $brand->name . ' Brand is restored successfully',
-          'deleted_at' => $brand->deleted_at
-      ]);
-    }
-
     private function validateData($id=NULL){
         return [
             'name' => ['required', 'string', 'max:100', $id==null ? 'unique:brands' : 'unique:brands,name,'.$id ] ,
@@ -172,26 +141,4 @@ class BrandController extends Controller
             ->paginate(10)
         ]);
     }
-
-    public function deleteMultiple(Request $request){
-    $request->validate([
-        'brands' => ['required','string']
-    ]);
-    $brands=explode(',', $request->brands);
-    Brand::whereIn('id',$brands)->delete();
-    return response()->json([
-        'message' => 'Brands are deleted'
-    ]);
-}
-
-public function restoreMultiple(Request $request){
-    $request->validate([
-        'brands' => ['required','string']
-    ]);
-    $brands=explode(',', $request->brands);
-    Brand::withTrashed()->whereIn('id',$brands)->restore();
-    return response()->json([
-        'message' => 'Brands are restored'
-    ]);
-}
 }

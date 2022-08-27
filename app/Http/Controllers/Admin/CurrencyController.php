@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Currency;
-use App\Traits\AdminRolePermission;
-class CurrencyController extends Controller
+class CurrencyController extends CommonController
 {
-    use AdminRolePermission;
 
-    public function __construct(){
-        $this->authorized('Currency');
-    }
+    public $model = 'Currency';
+
+    public $content = 'currencies';
 
     /**
      * Display a listing of the resource.
@@ -103,32 +100,6 @@ class CurrencyController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $currency=Currency::withTrashed()->findOrFail($id);
-        $currency->delete();
-        return response()->json([
-          'message' => $currency->name . ' Currency is deleted successfully',
-          'deleted_at' => $currency->deleted_at
-        ]);
-    }
-
-    public function restore($id){
-       $currency=Currency::withTrashed()->findOrFail($id);
-       $currency->restore();
-       return response()->json([
-          'message' => $currency->name . ' Currency is restored successfully',
-          'deleted_at' => $currency->deleted_at
-      ]);
-   }
-
     private function validateData($id=NULL){
         return [
             'name' => ['required', 'string', 'max:100', $id==null ? 'unique:currencies' : 'unique:currencies,name,'.$id ],
@@ -156,28 +127,6 @@ class CurrencyController extends Controller
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
-    }
-
-    public function deleteMultiple(Request $request){
-        $request->validate([
-            'currencies' => ['required','string']
-        ]);
-        $currencies=explode(',', $request->currencies);
-        Currency::whereIn('id',$currencies)->delete();
-        return response()->json([
-            'message' => 'Currencies are deleted'
-        ]);
-    }
-
-    public function restoreMultiple(Request $request){
-        $request->validate([
-            'currencies' => ['required','string']
-        ]);
-        $currencies=explode(',', $request->currencies);
-        Currency::withTrashed()->whereIn('id',$currencies)->restore();
-        return response()->json([
-            'message' => 'Currencies are restored'
         ]);
     }
 }

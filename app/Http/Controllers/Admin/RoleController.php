@@ -5,18 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Role,RolePermission};
-use App\Traits\AdminRolePermission;
 use DB;
-class RoleController extends Controller
+class RoleController extends CommonController
 {
-
-    use AdminRolePermission;
 
     private $permissions=[];
 
-    public function __construct(){
-        $this->authorized('Role');
-    }
+    public $model ='Role';
+
+    public $content = 'roles';
     /**
      * Display a listing of the resource.
      *
@@ -134,32 +131,6 @@ class RoleController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $role=Role::withTrashed()->findOrFail($id);
-        $role->delete();
-        return response()->json([
-          'message' => $role->name . ' Role is deleted successfully',
-          'deleted_at' => $role->deleted_at
-      ]);
-    }
-
-    public function restore($id){
-     $role=Role::withTrashed()->findOrFail($id);
-     $role->restore();
-     return response()->json([
-      'message' => $role->name . ' Role is restored successfully',
-      'deleted_at' => $role->deleted_at
-  ]);   
- }
-
  private function validateData($id=NULL){
     return [
         'name' => ['required', 'string', 'max:100', $id==null ? 'unique:roles' : 'unique:roles,name,'.$id ],
@@ -190,28 +161,6 @@ public function trashSearch(Request $request){
 public function get(){
     return response()->json([
         'roles' => (new Role)->getAll()
-    ]);
-}
-
-public function deleteMultiple(Request $request){
-    $request->validate([
-        'roles' => ['required','string']
-    ]);
-    $roles=explode(',', $request->roles);
-    Role::whereIn('id',$roles)->delete();
-    return response()->json([
-        'message' => 'Roles are deleted'
-    ]);
-}
-
-public function restoreMultiple(Request $request){
-    $request->validate([
-        'roles' => ['required','string']
-    ]);
-    $roles=explode(',', $request->roles);
-    Role::withTrashed()->whereIn('id',$roles)->restore();
-    return response()->json([
-        'message' => 'Roles are restored'
     ]);
 }
 }

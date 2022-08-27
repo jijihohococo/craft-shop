@@ -5,14 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Traits\AdminRolePermission;
-class CategoryController extends Controller
+class CategoryController extends CommonController
 {
-    use AdminRolePermission;
 
-    public function __construct(){
-        $this->authorized('Category');
-    }
+    public $model = 'Category';
+
+    public $content = 'categories';
     /**
      * Display a listing of the resource.
      *
@@ -102,79 +100,30 @@ class CategoryController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $category=Category::withTrashed()->findOrFail($id);
-        $category->delete();
-        return response()->json([
-            'message' => $category->name . ' Category is deleted successfully',
-            'deleted_at' => $category->deleted_at
-        ]);
-        
+    private function validateData($id=NULL){
+        return [
+            'name' => ['required', 'string', 'max:100', $id==null ? 'unique:categories' : 'unique:categories,name,'.$id ]
+        ];
     }
 
-    public function restore($id){
-     $category=Category::withTrashed()->findOrFail($id);
-     $category->restore();
-     return response()->json([
-      'message' => $category->name . ' Category is restored successfully',
-      'deleted_at' => $category->deleted_at
-  ]);   
- }
+    public function search(Request $request){
+        $searchData='%'.$request->search.'%';
+        return response()->json([
+            'categories' => Category::searchWithName($searchData)
+            ->searchCreateAndUpdate($searchData)
+            ->latest('id')
+            ->paginate(10)
+        ]);
+    }
 
- private function validateData($id=NULL){
-    return [
-        'name' => ['required', 'string', 'max:100', $id==null ? 'unique:categories' : 'unique:categories,name,'.$id ]
-    ];
-}
-
-public function search(Request $request){
-    $searchData='%'.$request->search.'%';
-    return response()->json([
-        'categories' => Category::searchWithName($searchData)
-        ->searchCreateAndUpdate($searchData)
-        ->latest('id')
-        ->paginate(10)
-    ]);
-}
-
-public function trashSearch(Request $request){
-    $searchData='%'.$request->search.'%';
-    return response()->json([
-        'categories' => Category::onlyTrashed()
-        ->searchWithName($searchData)
-        ->searchDelete($searchData)
-        ->latest('id')
-        ->paginate(10)
-    ]);
-}
-
-public function deleteMultiple(Request $request){
-    $request->validate([
-        'categories' => ['required','string']
-    ]);
-    $categories=explode(',', $request->categories);
-    Category::whereIn('id',$categories)->delete();
-    return response()->json([
-        'message' => 'Categories are deleted'
-    ]);
-}
-
-public function restoreMultiple(Request $request){
-    $request->validate([
-        'categories' => ['required','string']
-    ]);
-    $categories=explode(',', $request->categories);
-    Category::withTrashed()->whereIn('id',$categories)->restore();
-    return response()->json([
-        'message' => 'Categories are restored'
-    ]);
-}
+    public function trashSearch(Request $request){
+        $searchData='%'.$request->search.'%';
+        return response()->json([
+            'categories' => Category::onlyTrashed()
+            ->searchWithName($searchData)
+            ->searchDelete($searchData)
+            ->latest('id')
+            ->paginate(10)
+        ]);
+    }
 }

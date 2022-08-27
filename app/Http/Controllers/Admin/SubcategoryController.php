@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Subcategory,Category};
-use App\Traits\AdminRolePermission;
-class SubcategoryController extends Controller
+class SubcategoryController extends CommonController
 {
 
-    use AdminRolePermission;
+    public $model = 'Subcategory';
 
-    public function __construct(){
-        $this->authorized('Subcategory');
-    }
+    public $content ='subcategories';
     /**
      * Display a listing of the resource.
      *
@@ -112,88 +108,40 @@ class SubcategoryController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $subcategory=Subcategory::withTrashed()->findOrFail($id);
-        $subcategory->delete();
+    public function search(Request $request){
+        $searchData='%'.$request->search.'%';
         return response()->json([
-            'message' => $subcategory->name . ' Subcategory is deleted successfully',
-            'deleted_at' => $subcategory->deleted_at
+            'subcategories' => Subcategory::selectCategory()
+            ->searchWithName($searchData)
+            ->searchWithCategory($searchData)
+            ->searchCreateAndUpdate($searchData)
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 
-    public function restore($id){
-     $subcategory=Subcategory::withTrashed()->findOrFail($id);
-     $subcategory->restore();
-     return response()->json([
-      'message' => $subcategory->name . ' Subcategory is restored successfully',
-      'deleted_at' => $subcategory->deleted_at
-  ]);   
- }
+    public function trashSearch(Request $request){
+        $searchData='%'.$request->search.'%';
+        return response()->json([
+            'subcategories' => Subcategory::onlyTrashed()
+            ->selectCategory()
+            ->searchWithName($searchData)
+            ->searchWithCategory($searchData)
+            ->searchDelete($searchData)
+            ->latest('id')
+            ->paginate(10)
+        ]);
+    }
 
- public function search(Request $request){
-    $searchData='%'.$request->search.'%';
-    return response()->json([
-        'subcategories' => Subcategory::selectCategory()
-        ->searchWithName($searchData)
-        ->searchWithCategory($searchData)
-        ->searchCreateAndUpdate($searchData)
-        ->latest('id')
-        ->paginate(10)
-    ]);
-}
+    public function get($categoryId){
+        return response()->json([
+            'subcategories' => (new Subcategory)->getByCategoryId($categoryId)
+        ]);
+    }
 
-public function trashSearch(Request $request){
-    $searchData='%'.$request->search.'%';
-    return response()->json([
-        'subcategories' => Subcategory::onlyTrashed()
-        ->selectCategory()
-        ->searchWithName($searchData)
-        ->searchWithCategory($searchData)
-        ->searchDelete($searchData)
-        ->latest('id')
-        ->paginate(10)
-    ]);
-}
-
-public function get($categoryId){
-    return response()->json([
-        'subcategories' => (new Subcategory)->getByCategoryId($categoryId)
-    ]);
-}
-
-public function getAll(){
-    return response()->json([
-        'subcategories' => (new Subcategory)->getAll()
-    ]);
-}
-
-public function deleteMultiple(Request $request){
-    $request->validate([
-        'subcategories' => ['required','string']
-    ]);
-    $subcategories=explode(',', $request->subcategories);
-    Subcategory::whereIn('id',$subcategories)->delete();
-    return response()->json([
-        'message' => 'Subcategories are deleted'
-    ]);
-}
-
-public function restoreMultiple(Request $request){
-    $request->validate([
-        'subcategories' => ['required','string']
-    ]);
-    $subcategories=explode(',', $request->subcategories);
-    Subategory::withTrashed()->whereIn('id',$subcategories)->restore();
-    return response()->json([
-        'message' => 'Subcategories are restored'
-    ]);
-}
+    public function getAll(){
+        return response()->json([
+            'subcategories' => (new Subcategory)->getAll()
+        ]);
+    }
 }

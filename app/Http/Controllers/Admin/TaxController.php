@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tax;
-use App\Traits\AdminRolePermission;
-class TaxController extends Controller
+class TaxController extends CommonController
 {
-    use AdminRolePermission;
     
-    public function __construct(){
-        $this->authorized('Tax');
-    }
+    public $model = 'Tax';
+
+    public $content = 'taxes';
     /**
      * Display a listing of the resource.
      *
@@ -102,32 +99,6 @@ class TaxController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $tax=Tax::withTrashed()->findOrFail($id);
-        $tax->delete();
-        return response()->json([
-          'message' => $tax->name .' Tax is deleted successfully',
-          'deleted_at' => $tax->deleted_at
-      ]);
-    }
-
-    public function restore($id){
-        $tax=Tax::withTrashed()->findOrFail($id);
-        $tax->restore();
-        return response()->json([
-          'message' => $tax->name .' Tax is restored successfully',
-          'deleted_at' => $tax->deleted_at
-      ]);
-    }
-
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return response()->json([
@@ -162,27 +133,5 @@ class TaxController extends Controller
             'name' => ['required', 'string', 'max:100', $id==null ? 'unique:taxes' : 'unique:taxes,name,'.$id ] ,
             'rate' => requiredDouble()
         ];
-    }
-
-    public function deleteMultiple(Request $request){
-        $request->validate([
-            'taxes' => ['required','string']
-        ]);
-        $taxes=explode(',', $request->taxes);
-        Tax::whereIn('id',$taxes)->delete();
-        return response()->json([
-            'message' => 'Taxes are deleted'
-        ]);
-    }
-
-    public function restoreMultiple(Request $request){
-        $request->validate([
-            'taxes' => ['required','string']
-        ]);
-        $taxes=explode(',', $request->taxes);
-        Tax::withTrashed()->whereIn('id',$taxes)->restore();
-        return response()->json([
-            'message' => 'Taxes are restored'
-        ]);
     }
 }
