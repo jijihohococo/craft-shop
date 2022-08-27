@@ -181,7 +181,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         update: ''
       },
       current: null,
-      contents: ['Admin', 'Banner', 'Category', 'Subcategory', 'Brand', 'Group', 'Item', 'Permission', 'Role', 'Target', 'User', 'Currency'],
+      contents: ['Permission', 'Shop', 'Admin', 'Banner', 'Category', 'Subcategory', 'Brand', 'Item', 'Role', 'Target', 'User', 'Currency', 'Tax', 'Attribute', 'Color', 'Country'],
       permissions: ['create', 'read', 'update', 'delete']
     };
   },

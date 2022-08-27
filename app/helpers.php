@@ -1,6 +1,17 @@
 <?php
 
 use App\Models\PassportDate;
+use Illuminate\Support\Facades\Route;
+
+function adminResourceApi($content,$plural,$controller){
+	Route::resource($plural,'Admin\\'.$controller);
+	Route::get($content.'_search','Admin\\'.$controller.'@search');
+	Route::get($content.'_trash_search','Admin\\'.$controller.'@trashSearch');
+	Route::delete($content.'_restore/{id}','Admin\\'.$controller.'@restore');
+	Route::get('trash_'.$plural,'Admin\\'.$controller.'@trash');
+	Route::delete('delete_'.$plural,'Admin\\'.$controller.'@deleteMultiple');
+	Route::delete('restore_'.$plural,'Admin\\'.$controller.'@restoreMultiple');
+}
 
 function out($result){
 	return response()->json([

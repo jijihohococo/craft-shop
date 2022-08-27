@@ -34,7 +34,8 @@ class Permission extends TransactionModel
             'Currency',
             'Tax',
             'Attribute',
-            'Color'
+            'Color',
+            'Country'
         ];
     }
 

@@ -80,18 +80,22 @@
 				},
 				current : null,
 				contents : [
+				'Permission',
+				'Shop',
 				'Admin',
 				'Banner',
 				'Category',
 				'Subcategory',
 				'Brand',
-				'Group',
 				'Item',
-				'Permission',
 				'Role',
 				'Target',
 				'User',
-				'Currency'
+				'Currency',
+				'Tax',
+				'Attribute',
+				'Color',
+				'Country'
 				],
 				permissions: [
 				'create',
@@ -105,7 +109,7 @@
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
 			if(this.current=='update'){
-			await	this.getPermissionData(this.$route.params.id);
+				await	this.getPermissionData(this.$route.params.id);
 			}
 		},
 		methods : {
