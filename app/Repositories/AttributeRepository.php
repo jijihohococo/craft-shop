@@ -11,7 +11,11 @@ class AttributeRepository implements AttributeRepositoryInterface{
 	}
 
 	public function searchByContent($content,$id,$searchData){
-		return AttributeResource::collection(Attribute::getByItemSearch($column.'_id',$id,$searchData)->orderBy('name')->get());
+		return AttributeResource::collection(Attribute::getByItemSearch($content.'_id',$id,$searchData)->orderBy('name')->get());
+	}
+
+	public function getAll(){
+		return AttributeResource::collection((new Attribute)->getAll());
 	}
 
 }

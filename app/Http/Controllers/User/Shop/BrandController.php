@@ -10,6 +10,7 @@ class BrandController extends ContentController
     public $brand;
 
     public $acceptArray=[
+        'All',
         'category',
         'subcategory'
     ];

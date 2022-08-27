@@ -10,6 +10,7 @@ class AttributeController extends ContentController
     public $attribute;
 
     public $acceptArray=[
+        'All',
         'category',
         'subcategory',
         'brand'

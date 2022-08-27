@@ -10,4 +10,6 @@ interface ContentInterface{
 
 	public function searchByContent($content,$id,$searchData);
 
+	public function getAll();
+
 }

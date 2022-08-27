@@ -248,4 +248,12 @@ public function getFeatureProducts(){
         ->get();
     });
 }
+public function getAll(){
+    return Cache::tags( self::$cacheKey )->remember('all-items',60*60*24,function(){
+        return self::selectItemDataWithImages()
+        ->selectPrice()
+        ->latest('id')
+        ->get();
+    });
+}
 }

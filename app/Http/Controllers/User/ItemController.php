@@ -7,16 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Traits\Review;
 use App\Http\Resources\ItemResource;
-use App\Repositories\ItemRepositoryInterface;
 class ItemController extends Controller
 {
     use Review;
     //
     private $item;
-
-    public function __construct(ItemRepositoryInterface $item){
-        $this->item=$item;
-    }
 
     public function show(Request $request,$id){
         return response()->json([
@@ -50,12 +45,6 @@ class ItemController extends Controller
         $item=new Item;
         return response()->json([
             'feature_products' => $item->getFeatureProducts()
-        ]);
-    }
-
-    public function get(){
-        return response()->json([
-            'items' => $this->item->getAll()->latest('id')->get()
         ]);
     }
 }

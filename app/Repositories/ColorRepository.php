@@ -15,4 +15,8 @@ class ColorRepository implements ColorRepositoryInterface{
 		->get();
 	}
 
+	public function getAll(){
+		return (new Color)->getAll();
+	}
+
 }

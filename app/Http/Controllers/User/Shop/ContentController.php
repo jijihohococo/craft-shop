@@ -14,16 +14,24 @@ abstract class ContentController extends Controller
 
     public function getContent($content,$id,$searchData=null){
         return response()->json([
-            $this->content .'s' => $searchData==NULL ? $this->{$this->content}->getByContent($content,$id) :
-            $this->{$this->content}->searchByContent($content,$id,$searchData)
+            $this->content .'s' => $this->getContentData($content,$id,$searchData)
         ]);
+    }
+
+    public function getContentData($content,$id,$searchData=null){
+        if($content=='All'){
+            return $this->{$this->content}->getAll();
+        }else{
+            return $searchData==NULL ? $this->{$this->content}->getByContent($content,$id) :
+            $this->{$this->content}->searchByContent($content,$id,$searchData);
+        }
     }
 
     public function makeSearch($searchData=NULL){
         return $searchData!==NULL?'%'.$searchData.'%':NULL;
     }
 
-    public function getDataByContent(Request $request,$content,$contentId){
+    public function getDataByContent(Request $request,$content,$contentId=NULL){
         $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),$this->acceptArray);
         if($validator->fails()){
             return $this->makeErrorMessage($validator);

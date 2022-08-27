@@ -18,4 +18,8 @@ class BrandRepository implements BrandRepositoryInterface{
             ->get();
 	}
 
+	public function getAll(){
+		return (new Brand)->getAll();
+	}
+
 }

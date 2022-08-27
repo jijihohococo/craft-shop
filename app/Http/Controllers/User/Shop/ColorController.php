@@ -10,6 +10,7 @@ class ColorController extends ContentController
     public $color;
 
     public $acceptArray=[
+        'All',
         'category',
         'subcategory',
         'brand'

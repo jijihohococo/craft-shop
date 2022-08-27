@@ -366,7 +366,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         create: '',
         update: ''
       },
-      current: null
+      current: null,
+      old_subcategory_id: ''
     };
   },
   created: function created() {
@@ -488,7 +489,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    getSubcategories: function getSubcategories(categoryId) {
+    getSubcategories: function getSubcategories(categoryId, subcategoryId) {
       var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
@@ -500,7 +501,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   if (response.data.message == 'Loading') {
                     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this5);
                   } else {
-                    _this5.subcategories = response.data.subcategories;
+                    _this5.subcategories = response.data.subcategories; //if(this.old_subcategory_id!==''){
+
+                    _this5.fields.subcategory_id = subcategoryId; //}
                   }
                 })["catch"](function (error) {
                   (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.errorResponse)(error, _this5, 'read');
@@ -571,9 +574,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     setCategoryId: function setCategoryId(categoryId) {
       this.fields.category_id = categoryId;
-      this.subcategories = {};
-      this.fields.subcategory_id = '';
-      this.getSubcategories(categoryId);
+      this.subcategories = {}; //this.fields.subcategory_id=''
+
+      this.getSubcategories(categoryId, this.old_subcategory_id);
     },
     setSubcategoryId: function setSubcategoryId(subcategoryId) {
       this.fields.subcategory_id = subcategoryId;
@@ -675,16 +678,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     //if(response.data.attributes!==[]){
                     //this.fields.attributes=response.data.attributes;
                     //}
-                    // 	name : '',
-                    // 	category_id : '',
-                    // 	brand_id : '',
-                    // //pics : [],
-                    // colors : [],
-                    // description : '' ,
-                    // attributes : []
+                    _this11.old_subcategory_id = response.data.item.subcategory_id;
                     _this11.fields.name = response.data.item.name;
-                    _this11.fields.category_id = response.data.item.category_id;
-                    _this11.fields.subcategory_id = response.data.item.subcategory_id;
+                    _this11.fields.category_id = response.data.item.category_id; // this.fields.subcategory_id=response.data.item.subcategory_id;
+
                     _this11.fields.brand_id = response.data.item.brand_id;
                     _this11.fields.description = response.data.item.description;
 
@@ -693,8 +690,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     }
 
                     _this11.fields.colors = response.data.colors;
-
-                    _this11.getSubcategories(response.data.item.category_id);
                   }
                 })["catch"](function (error) {
                   (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.errorResponse)(error, _this11, 'update');
@@ -1175,19 +1170,26 @@ var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_32 = ["value"];
 var _hoisted_33 = {
+  key: 0,
+  "class": "invalid-feedback",
+  style: {
+    "display": "block!important"
+  }
+};
+var _hoisted_34 = {
   "class": "form-group"
 };
 
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Description", -1
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Description", -1
 /* HOISTED */
 );
 
-var _hoisted_35 = {
+var _hoisted_36 = {
   key: 0,
   "class": "invalid-feedback"
 };
 
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "card-footer"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
@@ -1341,7 +1343,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["value", "onInput"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t<label>File</label>\n\t\t\t\t\t\t\t\t\t<File @change=\"setPic\" :pics=\"fields.pics\" @removed=\"removePics\" :multiple=\"true\"\n\t\t\t\t\t\t\t\t\tstorage_path='storage/item_images/'\n\t\t\t\t\t\t\t\t\tdelete_path='admin_api/item_image_delete/'\n\t\t\t\t\t\t\t\t\tdelete_all_path='delete_item_images/'  />\n\t\t\t\t\t\t\t\t</div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  , ["value", "onInput"])]), $data.errors && $data.errors.colors ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.colors[0]), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t<label>File</label>\n\t\t\t\t\t\t\t\t\t<File @change=\"setPic\" :pics=\"fields.pics\" @removed=\"removePics\" :multiple=\"true\"\n\t\t\t\t\t\t\t\t\tstorage_path='storage/item_images/'\n\t\t\t\t\t\t\t\t\tdelete_path='admin_api/item_image_delete/'\n\t\t\t\t\t\t\t\t\tdelete_all_path='delete_item_images/'  />\n\t\t\t\t\t\t\t\t</div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.errors && $data.errors.description ? 'form-control is-invalid' : 'form-control']),
     placeholder: "Description",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
@@ -1349,9 +1353,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, "\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t", 2
   /* CLASS */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.description]]), $data.errors && $data.errors.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.description[0]), 1
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.description]]), $data.errors && $data.errors.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.description[0]), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]), _hoisted_36], 32
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]), _hoisted_37], 32
   /* HYDRATE_EVENTS */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])], 64
   /* STABLE_FRAGMENT */

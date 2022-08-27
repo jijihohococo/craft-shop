@@ -66,6 +66,7 @@
 										<option :value="color.id" v-for="color in colors">{{ color.name }}</option>
 									</SelectMultiple>
 								</div>
+								<strong v-if="errors && errors.colors" class="invalid-feedback" style="display:block!important;">{{ errors.colors[0] }}</strong>
 								<!-- <div class="form-group">
 									<label>File</label>
 									<File @change="setPic" :pics="fields.pics" @removed="removePics" :multiple="true"
@@ -148,7 +149,8 @@
 					create : '',
 					update : ''
 				},
-				current : null
+				current : null ,
+				old_subcategory_id : '' 
 			}
 		},
 		async created(){
@@ -205,12 +207,15 @@
 					errorResponse(error,this,'read')
 				} )
 			},
-			async getSubcategories(categoryId){
+			async getSubcategories(categoryId,subcategoryId){
 				window.axios.get('get_subcategories/'+categoryId).then( (response) => {
 					if(response.data.message=='Loading'){
 						showSwalLoading(this);
 					}else{
 						this.subcategories=response.data.subcategories
+						//if(this.old_subcategory_id!==''){
+						this.fields.subcategory_id=subcategoryId
+					//}
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'read')
@@ -245,8 +250,8 @@
 			setCategoryId(categoryId){
 				this.fields.category_id=categoryId
 				this.subcategories={}
-				this.fields.subcategory_id=''
-				this.getSubcategories(categoryId)
+				//this.fields.subcategory_id=''
+				this.getSubcategories(categoryId,this.old_subcategory_id)
 			},
 			setSubcategoryId(subcategoryId){
 				this.fields.subcategory_id=subcategoryId
@@ -330,23 +335,16 @@
 						//if(response.data.attributes!==[]){
 						//this.fields.attributes=response.data.attributes;
 						//}
-					// 	name : '',
-					// 	category_id : '',
-					// 	brand_id : '',
-					// //pics : [],
-					// colors : [],
-					// description : '' ,
-					// attributes : []
+					this.old_subcategory_id=response.data.item.subcategory_id
 					this.fields.name=response.data.item.name;
 					this.fields.category_id=response.data.item.category_id;
-					this.fields.subcategory_id=response.data.item.subcategory_id;
+					// this.fields.subcategory_id=response.data.item.subcategory_id;
 					this.fields.brand_id=response.data.item.brand_id;
 					this.fields.description=response.data.item.description;
 					 if(response.data.attributes.length>0 ){
 					 	this.fields.attributes=response.data.attributes;
 					 }
 					this.fields.colors=response.data.colors;
-					this.getSubcategories(response.data.item.category_id)
 				}
 			} ).catch( (error) => {
 				errorResponse(error,this,'update')
