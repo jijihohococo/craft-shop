@@ -107,6 +107,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	//--------------COUNTRY----------------//
 	adminResourceApi('country','countries','CountryController');
+	Route::get('get_countries','CountryController@get');
 	//--------------COUNTRY----------------//
 
 	Route::get('orders','Admin\OrderController@index');
