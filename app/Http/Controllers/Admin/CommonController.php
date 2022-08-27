@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Traits\AdminRolePermission;
-class CommonController extends Controller
+abstract class CommonController extends Controller
 {
     //
     use AdminRolePermission;
