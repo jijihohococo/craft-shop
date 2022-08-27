@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Item,ItemImage,ItemAttribute,ItemAttributeSet,ItemVariant};
 use DB,File;
-class ItemController extends Controller
+class ItemController extends CommonController
 {
+
+    public $model = 'Item';
+
+    public $content = 'items';
 
     public function __construct(){
         $this->middleware('rolePermission:'.'Item'.',read')->only(['index','search']);
@@ -272,32 +275,6 @@ class ItemController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $item=Item::withTrashed()->findOrFail($id);
-        $item->delete();
-        return response()->json([
-          'message' => $item->name . ' Item is deleted successfully',
-          'deleted_at' => $item->deleted_at
-      ]);
-    }
-
-    public function restore($id){
-     $item=Item::withTrashed()->findOrFail($id);
-     $item->restore();
-     return response()->json([
-      'message' => $item->name . ' Item is restored successfully',
-      'deleted_at' => $item->deleted_at
-  ]);
- }
-
  private function validateData($id=NULL){
     return [
         'name' => ['required', 'string', 'max:100', $id==null ? 'unique:items' : 'unique:items,name,'.$id ] ,
@@ -334,28 +311,6 @@ public function trashSearch(Request $request){
 public function getTotal(){
     return response()->json([
         'total_items' => Item::count()
-    ]);
-}
-
-public function deleteMultiple(Request $request){
-    $request->validate([
-        'items' => ['required','string']
-    ]);
-    $items=explode(',', $request->items);
-    Item::whereIn('id',$items)->delete();
-    return response()->json([
-        'message' => 'Items are deleted'
-    ]);
-}
-
-public function restoreMultiple(Request $request){
-    $request->validate([
-        'items' => ['required','string']
-    ]);
-    $items=explode(',', $request->items);
-    Item::withTrashed()->whereIn('id',$items)->restore();
-    return response()->json([
-        'message' => 'Items are restored'
     ]);
 }
 }
