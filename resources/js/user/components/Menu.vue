@@ -1,10 +1,10 @@
 <template>
     <div class="col-lg-3 col-md-4 col-sm-6 col-3">
       <div class="categories_wrap">
-        <button type="button" data-toggle="collapse" data-target="#navCatContent" aria-expanded="false" class="categories_btn">
+        <button type="button" data-toggle="collapse" data-target="#navCatContent" aria-expanded="false" class="categories_btn" v-on:click="changeShow()">
             <i class="linearicons-menu"></i><span>All Categories </span>
         </button>
-        <div id="navCatContent" class="nav_cat navbar collapse">
+        <div id="navCatContent" class="nav_cat navbar collapse" v-if="show">
             <ul> 
                 <li class="dropdown dropdown-mega-menu" v-for="category in categories">
                     <a class="dropdown-item nav-link dropdown-toggler" href="#" data-toggle="dropdown">{{ category.name }}</a>
@@ -44,6 +44,19 @@
             categories : {
                 type : Object ,
                 default : {}
+            }
+        },
+        data(){
+            return {
+                show : false
+            }
+        },
+        created(){
+            this.show=this.$route.name == 'home' ? true : false
+        },
+        methods : {
+            changeShow(){
+              this.show = ! this.show 
             }
         }
     }

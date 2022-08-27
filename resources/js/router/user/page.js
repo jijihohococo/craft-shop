@@ -6,6 +6,7 @@ const ReturnPolicy = () => import('User/Views/ReturnPolicy')
 const TermsAndConditions = () => import('User/Views/TermsAndConditions')
 const Home = () => import('User/Views/Home')
 const ShoppingCart = () => import('User/Views/ShoppingCart')
+const WishList = () => import('User/Views/WishList')
 
 export default [
 {
@@ -50,5 +51,10 @@ export default [
 	path : 'shopping_cart',
 	component : ShoppingCart ,
 	name : 'shopping_cart'	
+},
+{
+	path : 'wish_list',
+	component : WishList ,
+	name : 'wish_list'
 }
 ]

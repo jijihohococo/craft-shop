@@ -20641,6 +20641,10 @@ var ShoppingCart = function ShoppingCart() {
   return __webpack_require__.e(/*! import() */ "resources_js_user_views_ShoppingCart_vue").then(__webpack_require__.bind(__webpack_require__, /*! User/Views/ShoppingCart */ "./resources/js/user/views/ShoppingCart.vue"));
 };
 
+var WishList = function WishList() {
+  return __webpack_require__.e(/*! import() */ "resources_js_user_views_WishList_vue").then(__webpack_require__.bind(__webpack_require__, /*! User/Views/WishList */ "./resources/js/user/views/WishList.vue"));
+};
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
   path: '',
   component: Home,
@@ -20676,6 +20680,10 @@ var ShoppingCart = function ShoppingCart() {
   path: 'shopping_cart',
   component: ShoppingCart,
   name: 'shopping_cart'
+}, {
+  path: 'wish_list',
+  component: WishList,
+  name: 'wish_list'
 }]);
 
 /***/ }),
@@ -42681,7 +42689,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/var/www/html/craft-shop
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_AdminPage_vue":1,"resources_js_UserPage_vue":1,"resources_js_admin_views_Shop_vue":1,"resources_js_admin_views_EditShop_vue":1,"resources_js_admin_views_Admin_vue":1,"resources_js_admin_views_CreateEditAdmin_vue":1,"resources_js_admin_views_Brand_vue":1,"resources_js_admin_views_CreateEditBrand_vue":1,"resources_js_admin_views_Banner_vue":1,"resources_js_admin_views_CreateEditBanner_vue":1,"resources_js_admin_views_Dashboard_vue":1,"resources_js_admin_views_Attribute_vue":1,"resources_js_admin_views_CreateEditAttribute_vue":1,"resources_js_admin_views_Item_vue":1,"resources_js_admin_views_CreateEditItem_vue":1,"resources_js_admin_views_ItemVariant_vue":1,"resources_js_admin_views_Category_vue":1,"resources_js_admin_views_CreateEditCategory_vue":1,"resources_js_admin_views_Login_vue":1,"resources_js_admin_views_NotFound_vue":1,"resources_js_admin_views_Role_vue":1,"resources_js_admin_views_CreateEditRole_vue":1,"resources_js_admin_views_Permission_vue":1,"resources_js_admin_views_CreateEditPermission_vue":1,"resources_js_admin_views_Order_vue":1,"resources_js_admin_views_EditOrder_vue":1,"resources_js_admin_views_Target_vue":1,"resources_js_admin_views_CreateEditTarget_vue":1,"resources_js_admin_views_Currency_vue":1,"resources_js_admin_views_CreateEditCurrency_vue":1,"resources_js_admin_views_ItemStock_vue":1,"resources_js_admin_views_CreateEditItemStock_vue":1,"resources_js_admin_views_Transaction_vue":1,"resources_js_admin_views_Tax_vue":1,"resources_js_admin_views_CreateEditTax_vue":1,"resources_js_admin_views_Color_vue":1,"resources_js_admin_views_CreateEditColor_vue":1,"resources_js_admin_views_Subcategory_vue":1,"resources_js_admin_views_CreateEditSubcategory_vue":1,"resources_js_user_views_PrivacyPolicy_vue":1,"resources_js_user_views_ContactUs_vue":1,"resources_js_user_views_AboutUs_vue":1,"resources_js_user_views_FAQ_vue":1,"resources_js_user_views_ReturnPolicy_vue":1,"resources_js_user_views_TermsAndConditions_vue":1,"resources_js_user_views_Home_vue":1,"resources_js_user_views_ShoppingCart_vue":1,"resources_js_user_views_NotFound_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_AdminPage_vue":1,"resources_js_UserPage_vue":1,"resources_js_admin_views_Shop_vue":1,"resources_js_admin_views_EditShop_vue":1,"resources_js_admin_views_Admin_vue":1,"resources_js_admin_views_CreateEditAdmin_vue":1,"resources_js_admin_views_Brand_vue":1,"resources_js_admin_views_CreateEditBrand_vue":1,"resources_js_admin_views_Banner_vue":1,"resources_js_admin_views_CreateEditBanner_vue":1,"resources_js_admin_views_Dashboard_vue":1,"resources_js_admin_views_Attribute_vue":1,"resources_js_admin_views_CreateEditAttribute_vue":1,"resources_js_admin_views_Item_vue":1,"resources_js_admin_views_CreateEditItem_vue":1,"resources_js_admin_views_ItemVariant_vue":1,"resources_js_admin_views_Category_vue":1,"resources_js_admin_views_CreateEditCategory_vue":1,"resources_js_admin_views_Login_vue":1,"resources_js_admin_views_NotFound_vue":1,"resources_js_admin_views_Role_vue":1,"resources_js_admin_views_CreateEditRole_vue":1,"resources_js_admin_views_Permission_vue":1,"resources_js_admin_views_CreateEditPermission_vue":1,"resources_js_admin_views_Order_vue":1,"resources_js_admin_views_EditOrder_vue":1,"resources_js_admin_views_Target_vue":1,"resources_js_admin_views_CreateEditTarget_vue":1,"resources_js_admin_views_Currency_vue":1,"resources_js_admin_views_CreateEditCurrency_vue":1,"resources_js_admin_views_ItemStock_vue":1,"resources_js_admin_views_CreateEditItemStock_vue":1,"resources_js_admin_views_Transaction_vue":1,"resources_js_admin_views_Tax_vue":1,"resources_js_admin_views_CreateEditTax_vue":1,"resources_js_admin_views_Color_vue":1,"resources_js_admin_views_CreateEditColor_vue":1,"resources_js_admin_views_Subcategory_vue":1,"resources_js_admin_views_CreateEditSubcategory_vue":1,"resources_js_user_views_PrivacyPolicy_vue":1,"resources_js_user_views_ContactUs_vue":1,"resources_js_user_views_AboutUs_vue":1,"resources_js_user_views_FAQ_vue":1,"resources_js_user_views_ReturnPolicy_vue":1,"resources_js_user_views_TermsAndConditions_vue":1,"resources_js_user_views_Home_vue":1,"resources_js_user_views_ShoppingCart_vue":1,"resources_js_user_views_WishList_vue":1,"resources_js_user_views_NotFound_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
