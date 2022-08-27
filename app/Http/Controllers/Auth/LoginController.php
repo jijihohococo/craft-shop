@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PassportDate;
 use App\Traits\Logout;
-class LoginController extends Controller
+abstract class LoginController extends Controller
 {
     //
     use Logout;

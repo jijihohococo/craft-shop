@@ -111,6 +111,7 @@ class CountryController extends CommonController
         $searchData='%'.$request->search.'%';
         return response()->json([
             'countries' => Country::searchWithName($searchData)
+            ->orWhere('code','like',$searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -122,6 +123,7 @@ class CountryController extends CommonController
         return response()->json([
             'countries' => Country::onlyTrashed()
             ->searchWithName($searchData)
+            ->orWhere('code','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
