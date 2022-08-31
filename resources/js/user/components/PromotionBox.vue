@@ -40,7 +40,8 @@
 </div>
 </div>
 </div>
-<!-- End Screen Load Popup Section --> 
+<!-- End Screen Load Popup Section -->
+<component is="script" src="user/js/scripts.js" />
 </template>
 <script >
 	export default {

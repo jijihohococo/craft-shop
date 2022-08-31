@@ -17,8 +17,8 @@
                                             <!-- <template v-if="category.subcategories.indexOf(',') > -1"> -->
                                                 <li v-for="(subcategory,key) in category.subcategories.split(',')">
                                                     <a class="dropdown-item nav-link nav_item" href="#">
-                                                    {{ subcategory }}
-                                                </a>
+                                                        {{ subcategory }}
+                                                    </a>
                                                 </li>
                                             <!-- </template>
                                             <li v-else >
@@ -29,6 +29,11 @@
                                         </ul>
                                     </li>
                                 </ul>
+                            </li>
+                            <li class="mega-menu-col col-lg-5">
+                                <div class="header-banner2">
+                                    <!-- <a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/menu_banner4.jpg" alt="menu_banner4"></a> -->
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -57,7 +62,7 @@
         methods : {
             changeShow(){
               this.show = ! this.show 
-            }
-        }
-    }
+          }
+      }
+  }
 </script>

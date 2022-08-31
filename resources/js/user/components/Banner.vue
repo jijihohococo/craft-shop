@@ -28,6 +28,7 @@
         </div>
     </div>
 </div>
+<component is="script" src="user/js/scripts.js" />
 </template>
 <script >
 	export default {

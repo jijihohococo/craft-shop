@@ -6,10 +6,10 @@
 					<h2>{{ main_title }}</h2>
 				</div>
 				<div class="tab-style2">
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tabmenubar" aria-expanded="false"> 
+					<button class="navbar-toggler" type="button" data-toggle="collapse" :data-target="'#'+api" aria-expanded="false"> 
 						<span class="ion-android-menu"></span>
 					</button>
-					<ul class="nav nav-tabs justify-content-center justify-content-md-end" id="tabmenubar" role="tablist">
+					<ul class="nav nav-tabs justify-content-center justify-content-md-end" :id="api" role="tablist">
 						<li class="nav-item" v-for="(title,key) in titles">
 							<a :class="[key==0 ? 'nav-link active':
 							'nav-link']"
@@ -36,6 +36,7 @@
 			</div>
 		</div>
 	</div>
+	<component is="script" src="user/js/scripts.js" />
 </template>
 <script >
 	import SliderDetail from './SliderDetail'

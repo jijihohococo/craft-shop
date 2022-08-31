@@ -146,6 +146,7 @@
 </div>
 </footer>
 <!-- END FOOTER -->
+<component is="script" src="user/js/scripts.js" />
 </template>
 <script >
 	import { shop , currentYear } from '../../store';

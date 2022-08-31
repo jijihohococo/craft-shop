@@ -11,15 +11,15 @@
 			PromotionBox,
 			Header
 		},
-		mounted() {
-			const plugin = document.createElement("script");
-			plugin.setAttribute(
-				"src",
-				"/user/js/scripts.js"
-				);
-			plugin.async = true;
-			document.head.appendChild(plugin);
-		}
+		// mounted() {
+		// 	const plugin = document.createElement("script");
+		// 	plugin.setAttribute(
+		// 		"src",
+		// 		"/user/js/scripts.js"
+		// 		);
+		// 	plugin.async = true;
+		// 	document.head.appendChild(plugin);
+		// }
 		
 	}
 </script>
