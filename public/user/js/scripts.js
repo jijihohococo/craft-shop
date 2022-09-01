@@ -191,19 +191,13 @@ PAGE JS
 		$('.product_search_form').toggleClass('show');
 	});
 	
-	var rclass = true;
-	
-	$("html").on('click', function () {
-		if (rclass) {
+	$("html").on('click', function (e) {
+		if($(e.target).is('a.dropdown-item.nav-link.dropdown-toggler')==false
+		  ){
 			$('.categories_btn').addClass('collapsed');
-			$('.categories_btn,.side_navbar_toggler').attr('aria-expanded', 'false');
-			$('#navCatContent,#navbarSidetoggle').removeClass('show');
+		 	$('.categories_btn,.side_navbar_toggler').attr('aria-expanded', 'false');
+		 	$('#navCatContent,#navbarSidetoggle').removeClass('show');
 		}
-		rclass = true;
-	});
-	
-	$(".categories_btn,#navCatContent,#navbarSidetoggle .navbar-nav,.side_navbar_toggler").on('click', function() {
-		rclass = false;
 	});
 	
 	/*===================================*
