@@ -107,7 +107,6 @@ export function showTrashPage(route,router,pageName){
 }
 
 export function errorResponse(error,object,action=null){
-    console.log(error)
 	if(error.response){
         switch(error.response.status){
             case 401:
