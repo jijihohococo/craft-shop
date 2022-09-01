@@ -7,7 +7,7 @@
         <button v-else type="button" data-toggle="collapse" data-target="#navCatContent" aria-expanded="false" class="categories_btn" >
             <i class="linearicons-menu"></i><span>All Categories </span>
         </button>
-        <div id="navCatContent" class="nav_cat navbar collapse" v-if="((mobile==false || mobile==true ) && show)" >
+        <div id="navCatContent" class="nav_cat navbar collapse" v-if="show" >
             <ul> 
                 <li class="dropdown dropdown-mega-menu" v-for="category in categories">
                     <a class="dropdown-item nav-link dropdown-toggler" href="#" data-toggle="dropdown">{{ category.name }}</a>
@@ -59,7 +59,9 @@
             || document.body.clientWidth;
             // we will use hide and show category menu UI feature if it is not mobile screen
             this.mobile=width > 991 ? false : true
-            this.show=this.$route.name=='home' ? true : false
+            this.show=(this.$route.name=='home') ||
+                (this.$route.name!=='home' && this.mobile==true) ? 
+                true : false
         },
         methods : {
             changeShow(){
