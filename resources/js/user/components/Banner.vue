@@ -5,8 +5,7 @@
           <div class="col-lg-9 offset-lg-3">
                 <div id="carouselExampleControls" class="carousel slide light_arrow" data-ride="carousel">
                     <div class="carousel-inner">
-                    	<template v-for="(banner,key) in banners" >
-                        <div :class="key==0 ? 'carousel-item active background_bg' : 'carousel-item background_bg'"
+                        <div v-for="(banner,key) in banners" :class="key==0 ? 'carousel-item active background_bg' : 'carousel-item background_bg'"
                         v-bind:style="{ 'background-image': 'url(/image/banner_images/' + banner.pic + ')' }" >
                             <div class="banner_slide_content banner_content_inner">
                                 <div class="col-lg-8 col-10">
@@ -16,12 +15,9 @@
                                 </div>
                             </div>
                         </div>
-                      </template>
                     </div>
                     <ol class="carousel-indicators indicators_style1">
-                    	<template v-for="(banner,key) in banners">
-                        <li data-target="#carouselExampleControls" :data-slide-to="key" :class="key==0 ? 'active' : null"></li>
-                      </template>
+                        <li v-for="(banner,key) in banners" data-target="#carouselExampleControls" :data-slide-to="key" :class="key==0 ? 'active' : null"></li>
                     </ol>
                 </div>
             </div>
