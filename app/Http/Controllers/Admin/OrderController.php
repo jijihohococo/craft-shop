@@ -39,6 +39,10 @@ class OrderController extends Controller
 
     public function show($orderId){
         return response()->json([
+            'order' => Order::selectUser()
+            ->getTotalQtyAndPrice()
+            ->findOrFail($orderId) ,
+            
             'order_details' => OrderDetail::
             where('order_id',$orderId)
             ->selectItem()
