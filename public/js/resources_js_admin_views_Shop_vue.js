@@ -813,6 +813,7 @@ function getModel(model) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "admin": () => (/* binding */ admin),
 /* harmony export */   "currentYear": () => (/* binding */ currentYear),
 /* harmony export */   "shop": () => (/* binding */ shop)
 /* harmony export */ });
@@ -829,6 +830,12 @@ function getShop(shop) {
 
 var shop = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   data: window.shop,
+  changeData: function changeData(data) {
+    this.data = data;
+  }
+});
+var admin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  data: {},
   changeData: function changeData(data) {
     this.data = data;
   }

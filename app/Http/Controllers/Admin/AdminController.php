@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\{Admin,AdminRole,UserData};
+use App\Models\{Admin,AdminRole};
 use DB;
 class AdminController extends CommonController
 {
@@ -72,6 +72,7 @@ class AdminController extends CommonController
     {
         //
         $request->validate($this->validateData());
+        $this->makePassword($request);
         DB::beginTransaction();
         $admin=Admin::create($request->all());
         $this->insertAdminRoles($request->roles,$admin->id);
@@ -124,6 +125,7 @@ class AdminController extends CommonController
     {
         //
         $request->validate($this->validateData($id));
+        $this->makePassword($request);
         DB::beginTransaction();
         $admin=Admin::findOrFail($id);
         $admin->update($request->all());
@@ -135,11 +137,18 @@ class AdminController extends CommonController
         ]);
     }
 
+    private function makePassword($request){
+        $request->merge([
+            'password' => \Hash::make($request->password)
+        ]);
+    }
+
     private function validateData($id=NULL){
         return [
             'name' => 'required|string|max:100',
             'email' => ['required', 'email' , 'max:100', $id==null ? 'unique:admins' : 'unique:admins,email,'.$id ] ,
-            'roles' => ['required','array']
+            'roles' => ['required','array'] ,
+            'password' => ['required', 'string', 'min:8', 'confirmed']
         ];
     }
 

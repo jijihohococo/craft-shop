@@ -62,7 +62,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       shop: _store__WEBPACK_IMPORTED_MODULE_2__.shop,
-      admin: {},
+      admin: _store__WEBPACK_IMPORTED_MODULE_2__.admin,
       dataRoutes: {
         'shop': "Shop",
         'admin': "Admin",
@@ -108,7 +108,7 @@ __webpack_require__.r(__webpack_exports__);
         if (response.data.message == 'Loading') {
           (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this2);
         } else {
-          _this2.admin = response.data.admin;
+          _this2.admin.changeData(response.data.admin);
         }
       })["catch"](function (error) {
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.errorResponse)(error, _this2);
@@ -358,7 +358,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     alt: "User Image"
   }, null, 8
   /* PROPS */
-  , _hoisted_7)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.admin.name), 1
+  , _hoisted_7)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.admin.data.name), 1
   /* TEXT */
   )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Sidebar Menu "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/admin/dashboard",
@@ -819,6 +819,7 @@ function getModel(model) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "admin": () => (/* binding */ admin),
 /* harmony export */   "currentYear": () => (/* binding */ currentYear),
 /* harmony export */   "shop": () => (/* binding */ shop)
 /* harmony export */ });
@@ -835,6 +836,12 @@ function getShop(shop) {
 
 var shop = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   data: window.shop,
+  changeData: function changeData(data) {
+    this.data = data;
+  }
+});
+var admin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  data: {},
   changeData: function changeData(data) {
     this.data = data;
   }

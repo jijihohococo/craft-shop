@@ -14,7 +14,7 @@
 					<img :src="'/dist/img/user2-160x160.jpg'" class="img-circle elevation-2" alt="User Image">
 				</div>
 				<div class="info">
-					<a href="#" class="d-block">{{ admin.name }}</a>
+					<a href="#" class="d-block">{{ admin.data.name }}</a>
 				</div>
 			</div>
 
@@ -55,7 +55,7 @@
  import SubMenu from './SubMenu.vue';
 
  import { errorResponse , showSwalLoading } from '../helpers/check.js';
- import { shop } from '../../store';
+ import { shop , admin } from '../../store';
 
  export default {
   components : {
@@ -64,8 +64,8 @@
  data(){
    return {
     shop,
-     admin : {},
-     dataRoutes : {
+    admin ,
+    dataRoutes : {
       'shop' : "Shop",
       'admin' : "Admin",
       'attribute' : "Attribute",
@@ -106,7 +106,7 @@ methods : {
     if(response.data.message=='Loading'){
       showSwalLoading(this);
     }else{
-     this.admin=response.data.admin
+     this.admin.changeData(response.data.admin);
    }
  } ).catch( (error) => {
   errorResponse(error,this);

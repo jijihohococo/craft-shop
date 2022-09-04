@@ -14,7 +14,7 @@
 					<h3 class="card-title">{{ isNaN(this.$route.params.id) ? "Create Admin" : "Update Admin" }}</h3>
 				</div>
 				<Error v-if="actions[current]==false" :httpStatus="errors.error_status" :title="errors.error_title" :description="errors.error_description" />
-				<form v-else-if="actions[current]" @submit.prevent=" !isNaN(this.$route.params.id) ? updateRole() : createRole()">
+				<form v-else-if="actions[current]" @submit.prevent=" !isNaN(this.$route.params.id) ? updateAdmin() : createAdmin()">
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-12">
@@ -39,12 +39,12 @@
 							<div class="form-group">
 								<label>Password</label>
 								<input type="password" :class="[ errors & errors.password ? 'form-control is-invalid' : 'form-control' ]" placeholder="Password" v-model="fields.password">
-								<strong v-if="errors && errors.password" class="invalid-feedback">{{ errors.password[0] }}</strong>
+								<strong v-if="errors && errors.password" class="invalid-feedback" style="display:block!important;">{{ errors.password[0] }}</strong>
 							</div>
 							<div class="form-group">
 								<label>Confirm Password</label>
-								<input type="password" :class="[ errors & errors.confirm_password ? 'form-control is-invalid' : 'form-control' ]" placeholder="Password" v-model="fields.confirm_password">
-								<strong v-if="errors && errors.confirm_password" class="invalid-feedback">{{ errors.confirm_password[0] }}</strong>
+								<input type="password" :class="[ errors & errors.password_confirmation ? 'form-control is-invalid' : 'form-control' ]" placeholder="Password" v-model="fields.password_confirmation">
+								<strong v-if="errors && errors.password_confirmation" class="invalid-feedback" style="display:block!important;">{{ errors.password_confirmation[0] }}</strong>
 							</div>
 							
 						</div>
@@ -69,6 +69,8 @@
 	import Loading from '../components/Loading'
 
 	import SelectMultiple from '../components/SelectMultiple';
+
+	import { admin } from '../../store';
 	
 	export default {
 		components: {
@@ -79,13 +81,14 @@
 		},
 		data(){
 			return {
+				admin ,
 				content : 'Admin',
 				roles : {},
 				fields : {
 					name : '',
 					email : '',
 					password : '',
-					confirm_password : '',
+					password_confirmation : '',
 					roles : []
 				},
 				errors : {
@@ -105,6 +108,7 @@
 			checkContentPermission(this.content,this.current,this);
 			this.getRoles()
 			if(this.current=='update'){
+				console.log(this.admin.data)
 				await this.getAdminData(this.$route.params.id);
 			}
 		},
@@ -140,6 +144,9 @@
 						this.$swal('Success',
 							response.data.message,
 							'success');
+						if(this.admin.data.id==this.$route.params.id){
+							this.admin.changeData(this.fields);
+						}
 						this.$router.push({path:'/admin/admin'})
 					}
 				} ).catch( (error) => {
@@ -158,7 +165,7 @@
 					}else{
 						this.fields=response.data.admin;
 						this.fields.password='';
-						this.fields.confirm_password=''
+						this.fields.password_confirmation=''
 						this.fields.roles=mergeArray(response.data.roles);
 					}
 				} ).catch( (error) => {

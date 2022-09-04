@@ -17,4 +17,11 @@ export const shop = reactive( {
   }
 } )
 
+export const admin= reactive ({
+  data : {} ,
+  changeData(data){
+    this.data=data;
+  }
+})
+
 export const currentYear = new Date().getFullYear()
