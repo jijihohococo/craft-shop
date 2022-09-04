@@ -178,6 +178,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    getPic: function getPic() {},
     checkAuthorizeActions: function checkAuthorizeActions(actions) {
       return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_5__.checkActions)(actions);
     },

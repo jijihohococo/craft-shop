@@ -85,6 +85,9 @@
         }
     },
     methods :{
+        getPic(){
+            
+        },
         checkAuthorizeActions(actions){
             return checkActions(actions);
         },

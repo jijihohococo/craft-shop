@@ -409,7 +409,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   if (response.data.message == 'Loading') {
                     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this3);
                   } else {
-                    console.log(_this3.shop.data);
                     _this3.fields.name = _this3.shop.data.name;
                     _this3.fields.email = _this3.shop.data.email;
                     _this3.fields.phone = _this3.shop.data.phone;

@@ -157,7 +157,6 @@
 
 						showSwalLoading(this);
 					}else{
-						console.log(this.shop.data)
 						this.fields.name=this.shop.data.name;
 						this.fields.email=this.shop.data.email;
 						this.fields.phone=this.shop.data.phone;
