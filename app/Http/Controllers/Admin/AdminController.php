@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\{Admin,AdminRole};
+use App\Models\{Admin,AdminRole,UserData};
 use DB;
 class AdminController extends CommonController
 {
@@ -16,6 +16,7 @@ class AdminController extends CommonController
 
     public function __construct(){
         parent::__construct();
+        $this->middleware('checkAdmin')->only(['edit','update']);
     }
 
     /**

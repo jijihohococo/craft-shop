@@ -69,6 +69,7 @@ class Kernel extends HttpKernel
         'user_auth' => \App\Http\Middleware\UserAuthMiddleware::class,
         'rolePermission' => \App\Http\Middleware\RolePermissionMiddleware::class ,
         'shoppingCartDelete'  => \App\Http\Middleware\ShoppingCartDelete::class,
-        'wishListDelete' => \App\Http\Middleware\WishListDelete::class
+        'wishListDelete' => \App\Http\Middleware\WishListDelete::class ,
+        'checkAdmin' => \App\Http\Middleware\CheckAdmin::class
     ];
 }
