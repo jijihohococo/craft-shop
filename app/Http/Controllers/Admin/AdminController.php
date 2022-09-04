@@ -97,7 +97,14 @@ class AdminController extends CommonController
     {
         //
         return response()->json([
-            'admin' => Admin::findOrFail($id)
+            'admin' => Admin::findOrFail($id) ,
+            'roles' => DB::table('roles')
+            ->select('id')->whereIn('id',function($query) use ($id){
+                $query->select('role_id')
+                ->from('admin_roles')
+                ->where('admin_roles.admin_id',$id);
+            })->where('roles.deleted_at',null)
+            ->get()
         ]);
     }
 

@@ -280,16 +280,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this4);
                   } else {
                     _this4.fields = response.data.role;
-                    var permissions = response.data.permissions;
-                    var array = [];
-
-                    if (permissions.length > 0) {
-                      Object.keys(permissions).map(function (k) {
-                        array.push(permissions[k]['id']);
-                      });
-                    }
-
-                    _this4.fields.permissions = array;
+                    _this4.fields.permissions = (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.mergeArray)(response.data.permissions);
                   }
                 })["catch"](function (error) {
                   (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.errorResponse)(error, _this4, 'update');
@@ -566,16 +557,20 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_12 = {
+  key: 0,
+  "class": "invalid-feedback"
+};
+var _hoisted_13 = {
   "class": "form-group"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Permissions", -1
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Permissions", -1
 /* HOISTED */
 );
 
-var _hoisted_14 = ["value"];
+var _hoisted_15 = ["value"];
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "card-footer"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
@@ -629,7 +624,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 2
   /* CLASS */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SelectMultiple, {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.name]]), $data.errors && $data.errors.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.name[0]), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SelectMultiple, {
     placeholder: "Select Permissions",
     value: $data.fields.permissions,
     onInput: $options.setPermissions
@@ -640,7 +637,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           value: permission.id
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(permission.name), 9
         /* TEXT, PROPS */
-        , _hoisted_14);
+        , _hoisted_15);
       }), 256
       /* UNKEYED_FRAGMENT */
       ))];
@@ -650,7 +647,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["value", "onInput"])])])])]), _hoisted_15], 32
+  , ["value", "onInput"])])])])]), _hoisted_16], 32
   /* HYDRATE_EVENTS */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])], 64
   /* STABLE_FRAGMENT */
@@ -678,11 +675,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getModel": () => (/* binding */ getModel),
 /* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
 /* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
+/* harmony export */   "mergeArray": () => (/* binding */ mergeArray),
 /* harmony export */   "showPageNumber": () => (/* binding */ showPageNumber),
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions)
 /* harmony export */ });
+function mergeArray(inputArray) {
+  var array = [];
+
+  if (inputArray.length > 0) {
+    Object.keys(inputArray).map(function (k) {
+      array.push(inputArray[k]['id']);
+    });
+  }
+
+  return array;
+}
 function showPageNumber(currentPage) {
   var page = currentPage - 1;
   return page == 0 ? 1 : page;

@@ -21,6 +21,7 @@
 								<div class="form-group">
 									<label>Name</label>
 									<input type="text" :class="[errors && errors.name ? 'form-control is-invalid' : 'form-control']" placeholder="Name" v-model="fields.name">
+									<strong v-if="errors && errors.name" class="invalid-feedback">{{ errors.name[0] }}</strong>
 								</div>
 								<div class="form-group">
 									<label>Permissions</label>
@@ -45,7 +46,7 @@
 
 	import CreateEditHeader from '../components/CreateEditHeader';
 
-	import { errorResponse , checkContentPermission , showSwalLoading } from '../helpers/check.js';
+	import { errorResponse , checkContentPermission , showSwalLoading , mergeArray } from '../helpers/check.js';
 
 	import Error from '../components/Error'
 
@@ -138,14 +139,7 @@
 						showSwalLoading(this);
 					}else{
 						this.fields=response.data.role;
-						let permissions=response.data.permissions;
-						let array = [];
-						if(permissions.length>0){
-							Object.keys(permissions).map((k) => {
-								array.push(permissions[k]['id'])
-							} )
-						}
-						this.fields.permissions=array;
+						this.fields.permissions=mergeArray(response.data.permissions);
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'update')

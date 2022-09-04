@@ -1,3 +1,13 @@
+export function mergeArray(inputArray){
+    let array = [];
+    if(inputArray.length>0){
+        Object.keys(inputArray).map((k) => {
+            array.push(inputArray[k]['id'])
+        } )
+    }
+    return array;
+}
+
 export function showPageNumber(currentPage){
     let page=currentPage-1;
     return page ==0 ? 1 : page;
@@ -6,7 +16,7 @@ export function checkActions(actions) {
     return actions.create==true || actions.read==true || actions.update==true || actions.delete==true;
 }
 export function unauthorizedActions(actions) {
-   return actions.create==false && actions.read==false && actions.update==false && actions.delete==false
+ return actions.create==false && actions.read==false && actions.update==false && actions.delete==false
 }
 function changeWord(word){
     let lastChar=word.slice(-1)

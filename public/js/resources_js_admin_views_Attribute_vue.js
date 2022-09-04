@@ -1639,11 +1639,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getModel": () => (/* binding */ getModel),
 /* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
 /* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
+/* harmony export */   "mergeArray": () => (/* binding */ mergeArray),
 /* harmony export */   "showPageNumber": () => (/* binding */ showPageNumber),
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions)
 /* harmony export */ });
+function mergeArray(inputArray) {
+  var array = [];
+
+  if (inputArray.length > 0) {
+    Object.keys(inputArray).map(function (k) {
+      array.push(inputArray[k]['id']);
+    });
+  }
+
+  return array;
+}
 function showPageNumber(currentPage) {
   var page = currentPage - 1;
   return page == 0 ? 1 : page;
