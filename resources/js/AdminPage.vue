@@ -14,7 +14,7 @@
 				<router-view />
 			</div>
 			<footer class="main-footer">
-				<strong>Copyright &copy; {{ currentYear }} <a >Craft Shop</a>.</strong>
+				<strong>Copyright &copy; {{ currentYear }} <a >{{ shop.data.name  }}</a>.</strong>
 				All rights reserved.
 			</footer>
 		</div>
@@ -23,10 +23,11 @@
 <script >
 	import Navigation from './admin/components/Navigation';
 	import Menu from './admin/components/Menu';
-	import { currentYear } from './store.js'
+	import { currentYear , shop } from './store.js'
 	export default {
 		data(){
 			return {
+				shop,
 				currentYear
 			}
 		},
