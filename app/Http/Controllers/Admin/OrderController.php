@@ -23,9 +23,17 @@ class OrderController extends Controller
         ]);
     }
 
-    public function search(){
+    public function search(Request $request){
+        $searchData='%'.$request->search.'%';
         return response()->json([
-
+            'orders' => Order::selectUser()
+            ->getTotalQtyAndPrice()
+            ->where('delivery_price','like',$searchData)
+            ->orWhere('address','like',$searchData)
+            ->orWhere('status','like',$searchData)
+            ->searchWithUser($searchData)
+            ->latest('id')
+            ->paginate(10)
         ]);
     }
 

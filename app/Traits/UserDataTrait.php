@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\User;
 trait UserDataTrait{
 
 	public function scopeSelectUser($query){
@@ -21,6 +22,14 @@ trait UserDataTrait{
 
 	public function scopeOfUser($query,$userId){
 		return $query->where('user_id',$userId);
+	}
+
+	public function scopeSearchWithUser($query,$searchData){
+		return $query->orWherein('user_id',User::select('id')
+			->searchWithName($searchData)
+			->searchWithEmail($searchData)
+			->getQuery()
+		 );
 	}
 
 }

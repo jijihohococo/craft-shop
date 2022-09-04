@@ -18,13 +18,21 @@
 								<table class="table table-hover text-nowrap">
 									<thead>
 										<tr>
-											<th>User</th>
-											<th></th>
+											<th>User Name</th>
+											<th>User Email</th>
+											<th>Delivery Price</th>
+											<th>Address</th>
+											<th>Status</th>
+											<th>Operation</th>
 										</tr>
 									</thead>
 									<tbody v-for="order in orders.data" :key="order.id">
 										<tr>
 											<td>{{ order.user_name }}</td>
+											<td>{{ order.user_email }}</td>
+											<td>{{ order.delivery_price }}</td>
+											<td>{{ order.address }}</td>
+											<td>{{ order.status }}</td>
 											<td></td>
 										</tr>
 									</tbody>

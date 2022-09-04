@@ -95,7 +95,8 @@
 				'Tax',
 				'Attribute',
 				'Color',
-				'Country'
+				'Country',
+				'Order'
 				],
 				permissions: [
 				'create',
