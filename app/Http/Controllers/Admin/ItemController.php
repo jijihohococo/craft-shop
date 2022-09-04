@@ -13,10 +13,10 @@ class ItemController extends CommonController
     public $content = 'items';
 
     public function __construct(){
-        $this->middleware('rolePermission:'.'Item'.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.'Item'.',create')->only(['create','store']);
-        $this->middleware('rolePermission:'.'Item'.',update')->only(['edit','update']);
-        $this->middleware('rolePermission:'.'Item'.',delete')->only(['destroy','restore','deleteItemImages','imageDelete']);
+        $this->middleware('rolePermission:'.$this->model.',read')->only(['index','search']);
+        $this->middleware('rolePermission:'.$this->model.',create')->only(['create','store']);
+        $this->middleware('rolePermission:'.$this->model.',update')->only(['edit','update']);
+        $this->middleware('rolePermission:'.$this->model.',delete')->only(['destroy','restore','deleteItemImages','imageDelete']);
     }
     /**
      * Display a listing of the resource.
