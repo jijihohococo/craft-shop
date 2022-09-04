@@ -1,3 +1,111 @@
 <template>
-	
+	<ContentHeader :header="content" />
+	<Loading />
+	<section class="content">
+		<div class="container-fluid">
+			<div v-if="checkAuthorizeActions(actions)" class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header row">
+							<Search 
+							:read="actions.read"
+							ref="searchModal"
+							@searchData="searchOrders"
+							/>
+						</div>
+						<template v-if="actions.read">
+							<div class="card-body table-responsive p-0">
+								<table class="table table-hover text-nowrap">
+									<thead>
+										<tr>
+											<th>User</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody v-for="order in orders.data" :key="order.id">
+										<tr>
+											<td>{{ order.user_name }}</td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="card-footer clearfix">
+								<Pagination :page="currentPage" :lastPage="orders.last_page" @getData="getOrders" @searchData="searchOrders" :search="search" :from="orders.from" :to="orders.to" :total="orders.total" />
+							</div>
+						</template>
+					</div>
+				</div>
+			</div>
+			<div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
+				<Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Order" />
+			</div>
+		</div>
+	</section>
 </template>
+<script >
+
+	import Pagination from '../components/Pagination';
+
+	import ContentHeader from '../components/ContentHeader';
+
+	import ViewButton from '../components/ViewButton';
+
+	import Error from '../components/Error';
+
+	import Loading from '../components/Loading';
+
+	import Search from '../components/Search';
+
+	import { errorResponse , showSwalLoading , makeRoute ,  checkActions, unauthorizedActions } from '../helpers/check.js';
+
+	export default {
+		components : {
+			Pagination ,
+			ContentHeader ,
+			ViewButton ,
+			Error ,
+			Loading ,
+			Search
+		},
+		data(){
+			return {
+				content : 'Order',
+				orders : {},
+				search : null ,
+				currentPage : 1 ,
+				actions : {
+					read : ''
+				}
+			}
+		},
+		created(){
+			this.getOrders(1);
+		},
+		methods : {
+			checkAuthorizeActions(actions){
+				return checkActions(actions);
+			},
+			checkUnauthorizeActions(actions){
+				return unauthorizedActions(actions);
+			},
+			searchOrders(page){
+
+			},
+			getOrders(page){
+				window.axios.get(makeRoute(this,page,'order') + page ).then(( response ) =>  {
+					if(response.data.message=='Loading'){
+
+						showSwalLoading(this);
+					}else{
+						this.orders=response.data.orders
+						this.actions.read=true;
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')
+				} );
+			},
+
+		}
+	}
+</script>

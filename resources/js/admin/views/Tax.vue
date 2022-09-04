@@ -204,6 +204,7 @@
 },
 created(){
  this.getTaxes(1);
+ checkContentPermission(this.content,'read',this);
  checkContentPermission(this.content,'create',this);
  checkContentPermission(this.content,'update',this);
  checkContentPermission(this.content,'delete',this);
