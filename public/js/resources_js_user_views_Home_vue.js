@@ -1269,7 +1269,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "admin": () => (/* binding */ admin),
 /* harmony export */   "currentYear": () => (/* binding */ currentYear),
-/* harmony export */   "shop": () => (/* binding */ shop)
+/* harmony export */   "shop": () => (/* binding */ shop),
+/* harmony export */   "user": () => (/* binding */ user)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -1289,6 +1290,12 @@ var shop = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   }
 });
 var admin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  data: {},
+  changeData: function changeData(data) {
+    this.data = data;
+  }
+});
+var user = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   data: {},
   changeData: function changeData(data) {
     this.data = data;

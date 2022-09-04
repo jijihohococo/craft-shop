@@ -54,22 +54,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="admin in admins.data" :key="admin.id">
+                            <tr v-for="ad in admins.data" :key="ad.id">
                                 <td><DeleteCheck
                                     v-if="actions.delete"
-                                    :objectData="admin"
+                                    :objectData="ad"
                                     :deleteArrayData="deleteData"
                                     :objectArrayData="multipleData"
                                     ref="deleteCheck"
                                     /></td>
-                                    <td>{{ admin.name }}</td>
-                                    <td>{{ admin.email }}</td>
-                                    <td>{{ admin.deleted_at }}</td>
+                                    <td>{{ ad.name }}</td>
+                                    <td>{{ ad.email }}</td>
+                                    <td>{{ ad.deleted_at }}</td>
                                     <td class="text-left">
-                                        <ViewButton :data_name="admin.name" :data_model="content" :data_id="admin.id" />
-                                        <EditButton v-if="actions.update && admin.deleted_at==null" :content="content" link="admin.edit" :dataId="admin.id" />
-                                        <Delete v-if="actions.delete" :content="content" :deleteAt="admin.deleted_at" :deleteLink="'admins/'+admin.id" :restoreLink="'admin_restore/'+admin.id"
-                                        :id="admin.id" :objectData="admin" @update="updateData" />
+                                        <ViewButton :data_name="ad.name" :data_model="content" :data_id="ad.id" />
+                                        <EditButton v-if="admin.data!=={} && admin.data.id==ad.id && actions.update && ad.deleted_at==null" :content="content" link="admin.edit" :dataId="ad.id" />
+                                        <Delete v-if="actions.delete" :content="content" :deleteAt="ad.deleted_at" :deleteLink="'admins/'+ad.id" :restoreLink="'admin_restore/'+ad.id"
+                                        :id="ad.id" :objectData="ad" @update="updateData" />
                                     </td>
                                 </tr>
                             </tbody>
@@ -120,7 +120,7 @@
     import Search from '../components/Search';
 
     import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions , showPageNumber } from '../helpers/check.js';
-
+    import { admin } from '../../store';
     export default {
         components: {
             Search,
@@ -139,6 +139,7 @@
         },
         data () {
            return {
+            admin,
             content : 'Admin',
             deleteData : [],
             multipleData : [] ,

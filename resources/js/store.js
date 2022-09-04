@@ -24,4 +24,11 @@ export const admin= reactive ({
   }
 })
 
+export const user = reactive ({
+  data : {},
+  changeData(data){
+    this.data=data;
+  }
+})
+
 export const currentYear = new Date().getFullYear()

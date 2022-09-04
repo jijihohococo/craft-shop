@@ -447,6 +447,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/DeleteMultiple */ "./resources/js/admin/components/DeleteMultiple.vue");
 /* harmony import */ var _components_Search__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/Search */ "./resources/js/admin/components/Search.vue");
 /* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../store */ "./resources/js/store.js");
+
 
 
 
@@ -479,6 +481,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      admin: _store__WEBPACK_IMPORTED_MODULE_14__.admin,
       content: 'Admin',
       deleteData: [],
       multipleData: [],
@@ -1553,45 +1556,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ref: "deleteAll"
   }, null, 8
   /* PROPS */
-  , ["deleteArrayData", "onSelectAll", "onCancelAll", "lengthData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.admins.data, function (admin) {
+  , ["deleteArrayData", "onSelectAll", "onCancelAll", "lengthData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.admins.data, function (ad) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
-      key: admin.id
+      key: ad.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [$data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteCheck, {
       key: 0,
-      objectData: admin,
+      objectData: ad,
       deleteArrayData: $data.deleteData,
       objectArrayData: $data.multipleData,
       ref_for: true,
       ref: "deleteCheck"
     }, null, 8
     /* PROPS */
-    , ["objectData", "deleteArrayData", "objectArrayData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(admin.name), 1
+    , ["objectData", "deleteArrayData", "objectArrayData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(ad.name), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(admin.email), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(ad.email), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(admin.deleted_at), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(ad.deleted_at), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
-      data_name: admin.name,
+      data_name: ad.name,
       data_model: $data.content,
-      data_id: admin.id
+      data_id: ad.id
     }, null, 8
     /* PROPS */
-    , ["data_name", "data_model", "data_id"]), $data.actions.update && admin.deleted_at == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_EditButton, {
+    , ["data_name", "data_model", "data_id"]), $data.admin.data !== {} && $data.admin.data.id == ad.id && $data.actions.update && ad.deleted_at == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_EditButton, {
       key: 0,
       content: $data.content,
       link: "admin.edit",
-      dataId: admin.id
+      dataId: ad.id
     }, null, 8
     /* PROPS */
     , ["content", "dataId"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Delete, {
       key: 1,
       content: $data.content,
-      deleteAt: admin.deleted_at,
-      deleteLink: 'admins/' + admin.id,
-      restoreLink: 'admin_restore/' + admin.id,
-      id: admin.id,
-      objectData: admin,
+      deleteAt: ad.deleted_at,
+      deleteLink: 'admins/' + ad.id,
+      restoreLink: 'admin_restore/' + ad.id,
+      id: ad.id,
+      objectData: ad,
       onUpdate: $options.updateData
     }, null, 8
     /* PROPS */
@@ -1842,6 +1845,52 @@ function showSwalLoading(object) {
 function getModel(model) {
   return model[0].toLowerCase() + model.substring(1);
 }
+
+/***/ }),
+
+/***/ "./resources/js/store.js":
+/*!*******************************!*\
+  !*** ./resources/js/store.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "admin": () => (/* binding */ admin),
+/* harmony export */   "currentYear": () => (/* binding */ currentYear),
+/* harmony export */   "shop": () => (/* binding */ shop),
+/* harmony export */   "user": () => (/* binding */ user)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+
+
+function getShop(shop) {
+  window.axios.get('shop').then(function (response) {
+    shop = response.data.shop;
+  });
+}
+
+var shop = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  data: window.shop,
+  changeData: function changeData(data) {
+    this.data = data;
+  }
+});
+var admin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  data: {},
+  changeData: function changeData(data) {
+    this.data = data;
+  }
+});
+var user = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  data: {},
+  changeData: function changeData(data) {
+    this.data = data;
+  }
+});
+var currentYear = new Date().getFullYear();
 
 /***/ }),
 

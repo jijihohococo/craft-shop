@@ -35,6 +35,7 @@
 									:value="fields.roles"  @input="setRoles" >
 									<option :value="role.id" v-for="role in roles">{{ role.name }}</option>
 								</SelectMultiple>
+								<strong v-if="errors && errors.roles" class="invalid-feedback" style="display:block!important;">{{ errors.roles[0] }}</strong>
 							</div>
 							<div class="form-group">
 								<label>Password</label>
@@ -108,13 +109,12 @@
 			checkContentPermission(this.content,this.current,this);
 			this.getRoles()
 			if(this.current=='update'){
-				console.log(this.admin.data)
 				await this.getAdminData(this.$route.params.id);
 			}
 		},
 		methods : {
 			setRoles(val){
-				this.fields.permissions=val
+				this.fields.roles=val
 			},
 			createAdmin(){
 				window.axios.post("admins",this.fields).then( (response) => {
