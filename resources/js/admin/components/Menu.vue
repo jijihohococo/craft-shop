@@ -68,6 +68,7 @@
     dataRoutes : {
       'shop' : "Shop",
       'admin' : "Admin",
+      'user'  : "User",
       'attribute' : "Attribute",
       'category' : "Category" ,
       'subcategory' : "Subcategory",

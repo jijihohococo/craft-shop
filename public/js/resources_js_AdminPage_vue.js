@@ -67,6 +67,7 @@ __webpack_require__.r(__webpack_exports__);
       dataRoutes: {
         'shop': "Shop",
         'admin': "Admin",
+        'user': "User",
         'attribute': "Attribute",
         'category': "Category",
         'subcategory': "Subcategory",
