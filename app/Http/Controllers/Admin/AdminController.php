@@ -14,6 +14,10 @@ class AdminController extends CommonController
 
     public $content = 'admins';
 
+    public function __construct(){
+        parent::__construct();
+    }
+
     /**
      * Display a listing of the resource.
      *
