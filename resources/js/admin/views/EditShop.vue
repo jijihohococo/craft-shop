@@ -42,7 +42,7 @@
 								<div class="form-group">
 									<label>Picture</label>
 									<File @change="setPic" :pics="this.fields.pics" @removed="removePic"
-									storage_path='storage/shop_images/'
+									storage_path='image/shop_images/'
 									delete_path='admin_api/shop_image_delete/'  />
 									<strong v-if="errors && errors.pic" class="invalid-feedback" style="display:block!important;" >{{ errors.pic[0] }}</strong>
 								</div>
@@ -140,6 +140,7 @@
 							'success');
 						this.shop.changeData(this.fields);
 						document.title=this.shop.data.name
+						this.shop.data.pic=response.data.pic
 						this.$router.push({path:'/admin/shop'})
 					}
 				}).catch( (error) => {
@@ -156,7 +157,13 @@
 
 						showSwalLoading(this);
 					}else{
-						this.fields=this.shop.data;
+						console.log(this.shop.data)
+						this.fields.name=this.shop.data.name;
+						this.fields.email=this.shop.data.email;
+						this.fields.phone=this.shop.data.phone;
+						this.fields.address=this.shop.data.address;
+						this.fields.pic=this.shop.data.pic;
+						this.fields.id=this.shop.data.id;
 						this.fields.pics=[{
 							'filename' : this.shop.data.pic ,
 							'id' : this.$route.params.id

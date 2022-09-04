@@ -92,7 +92,8 @@ class ShopController extends Controller
             'height' => 47 ],$request,$newShop );
         $shop->update($newShop->getAttributes());
         return response()->json([
-            'message' => $request->name . ' Shop is updated successfully'
+            'message' => $request->name . ' Shop is updated successfully' ,
+            'pic' => $shop->pic
         ]);
     }
 

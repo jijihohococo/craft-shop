@@ -64,7 +64,7 @@
 					:pics="pics" 
 					@removed="removePics" 
 					:multiple="true"
-					storage_path='storage/item_images/'
+					storage_path='image/item_images/'
 					delete_path='admin_api/item_image_delete/'
 					delete_all_path='delete_item_images/'
 					/>	

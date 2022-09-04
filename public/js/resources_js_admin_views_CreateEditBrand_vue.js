@@ -755,7 +755,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: $options.setPic,
     pics: this.fields.pics,
     onRemoved: $options.removePic,
-    storage_path: "storage/brand_images/",
+    storage_path: "image/brand_images/",
     delete_path: "admin_api/brand_image_delete/"
   }, null, 8
   /* PROPS */

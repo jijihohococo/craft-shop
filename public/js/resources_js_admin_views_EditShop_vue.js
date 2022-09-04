@@ -383,6 +383,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           _this2.shop.changeData(_this2.fields);
 
           document.title = _this2.shop.data.name;
+          _this2.shop.data.pic = response.data.pic;
 
           _this2.$router.push({
             path: '/admin/shop'
@@ -408,7 +409,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   if (response.data.message == 'Loading') {
                     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this3);
                   } else {
-                    _this3.fields = _this3.shop.data;
+                    console.log(_this3.shop.data);
+                    _this3.fields.name = _this3.shop.data.name;
+                    _this3.fields.email = _this3.shop.data.email;
+                    _this3.fields.phone = _this3.shop.data.phone;
+                    _this3.fields.address = _this3.shop.data.address;
+                    _this3.fields.pic = _this3.shop.data.pic;
+                    _this3.fields.id = _this3.shop.data.id;
                     _this3.fields.pics = [{
                       'filename': _this3.shop.data.pic,
                       'id': _this3.$route.params.id
@@ -804,7 +811,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: $options.setPic,
     pics: this.fields.pics,
     onRemoved: $options.removePic,
-    storage_path: "storage/shop_images/",
+    storage_path: "image/shop_images/",
     delete_path: "admin_api/shop_image_delete/"
   }, null, 8
   /* PROPS */

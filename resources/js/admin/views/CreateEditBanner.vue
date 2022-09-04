@@ -25,7 +25,7 @@
 								<div class="form-group">
 									<label>Picture</label>
 									<File @change="setPic" :pics="fields.pics" @removed="removePic"
-									storage_path='storage/banner_images/'
+									storage_path='image/banner_images/'
 									delete_path='admin_api/banner_image_delete/'  />
 									<strong v-if="errors && errors.pic" class="invalid-feedback" style="display:block!important;" >{{ errors.pic[0] }}</strong>
 								</div>
