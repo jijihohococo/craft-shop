@@ -7,7 +7,7 @@ const TermsAndConditions = () => import('User/Views/TermsAndConditions')
 const Home = () => import('User/Views/Home')
 const ShoppingCart = () => import('User/Views/ShoppingCart')
 const WishList = () => import('User/Views/WishList')
-
+const Shop = () => import('User/Views/Shop')
 export default [
 {
 	path : '',
@@ -56,5 +56,10 @@ export default [
 	path : 'wish_list',
 	component : WishList ,
 	name : 'wish_list'
+},
+{
+	path : 'shop',
+	component : Shop ,
+	name : 'shop'
 }
 ]
