@@ -547,7 +547,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.getTaxes(1);
-    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.checkContentPermission)(this.content, 'read', this);
     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.checkContentPermission)(this.content, 'create', this);
     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.checkContentPermission)(this.content, 'update', this);
     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.checkContentPermission)(this.content, 'delete', this);
