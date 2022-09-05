@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Target;
-use App\Traits\AdminRolePermission;
-class TargetController extends Controller
+class TargetController extends CommonController
 {
-    use AdminRolePermission;
 
-    public function __construct(){
-        $this->authorized('Target');
-    }
+    public $model = 'Target';
+
+    public $contents='targets';
     /**
      * Display a listing of the resource.
      *
@@ -109,70 +106,22 @@ class TargetController extends Controller
         ];
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $target=Target::withTrashed()->findOrFail($id);
-        $target->delete();
+    public function search(Request $request){
+        $searchData='%'.$request->search .'%';
         return response()->json([
-          'message' => 'Target ' . $target->name . ' is deleted Successfully',
-          'deleted_at' => $target->deleted_at
-      ]);
+            'targets' => Target::where('name','like',$searchData)
+            ->orWhere('duration','like',$searchData)
+            ->latest('id')->paginate(10)
+        ]);
     }
 
-    public function restore($id){
-     $target=Target::withTrashed()->findOrFail($id);
-     $target->restore();
-     return response()->json([
-      'message' => $target->name . ' Target is restored successfully',
-      'deleted_at' => $target->deleted_at
-  ]);   
- }
-
- public function search(Request $request){
-    $searchData='%'.$request->search .'%';
-    return response()->json([
-        'targets' => Target::where('name','like',$searchData)
-        ->orWhere('duration','like',$searchData)
-        ->latest('id')->paginate(10)
-    ]);
-}
-
-public function trashSearch(Request $request){
-    $searchData='%'.$request->search .'%';
-    return response()->json([
-        'targets' => Target::onlyTrashed()
-        ->where('name','like',$searchData)
-        ->orWhere('duration','like',$searchData)
-        ->latest('id')->paginate(10)
-    ]);
-}
-
-public function deleteMultiple(Request $request){
-    $request->validate([
-        'targets' => ['required','string']
-    ]);
-    $targets=explode(',', $request->targets);
-    Target::whereIn('id',$targets)->delete();
-    return response()->json([
-        'message' => 'Targets are deleted'
-    ]);
-}
-
-public function restoreMultiple(Request $request){
-    $request->validate([
-        'targets' => ['required','string']
-    ]);
-    $targets=explode(',', $request->targets);
-    Target::withTrashed()->whereIn('id',$targets)->restore();
-    return response()->json([
-        'message' => 'Targets are restored'
-    ]);
-}
+    public function trashSearch(Request $request){
+        $searchData='%'.$request->search .'%';
+        return response()->json([
+            'targets' => Target::onlyTrashed()
+            ->where('name','like',$searchData)
+            ->orWhere('duration','like',$searchData)
+            ->latest('id')->paginate(10)
+        ]);
+    }
 }
