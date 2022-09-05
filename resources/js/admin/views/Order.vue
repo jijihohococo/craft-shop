@@ -23,6 +23,7 @@
 											<th>Delivery Price</th>
 											<th>Address</th>
 											<th>Status</th>
+											<th>Created At</th>
 											<th>Operation</th>
 										</tr>
 									</thead>
@@ -33,6 +34,7 @@
 											<td>{{ order.delivery_price }}</td>
 											<td>{{ order.address }}</td>
 											<td>{{ order.status }}</td>
+											<td>{{ order.created_at }}</td>
 											<td></td>
 										</tr>
 									</tbody>
@@ -98,7 +100,17 @@
 				return unauthorizedActions(actions);
 			},
 			searchOrders(page){
+				window.axios.get(makeRoute(this,page,'order','search')+ this.search + '&page=' + page).then( (response) => {
+					if(response.data.message=='Loading'){
 
+						showSwalLoading(this);
+					}else{
+						this.orders=response.data.orders
+						this.actions.read=true;
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')
+				} );
 			},
 			getOrders(page){
 				window.axios.get(makeRoute(this,page,'order') + page ).then(( response ) =>  {

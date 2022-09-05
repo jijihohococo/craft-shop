@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 class UserController extends Controller
 {
+    public $model = 'User';
 
     public function __construct(){
-        $this->middleware('rolePermission:'.'User'.',read')->only(['index','getTotal']);
+        $this->middleware('rolePermission:'.$this->model.',read')->only(['index', 'search']);
     }
 
     public function index(){
