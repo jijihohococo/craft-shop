@@ -35,10 +35,11 @@ $userRoutes=[
 	'items/{id}',
 	'orders',
 	'orders/{id}',
-	'promotions/{id}'];
+	'promotions/{id}',
+	'shop'];
 	foreach($userRoutes as $userRoute){
 		Route::view('/'.$userRoute,'user.index');
 	}
 
-Route::get('/image/{folder}/{imageUrl}','ImageCacheController@cacheImage');
+	Route::get('/image/{folder}/{imageUrl}','ImageCacheController@cacheImage');
 // USER FRONTEND ROUTES //

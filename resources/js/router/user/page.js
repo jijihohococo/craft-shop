@@ -15,6 +15,11 @@ export default [
 	name : 'home'
 },
 {
+	path : 'shop',
+	component : Shop ,
+	name : 'shop_page'
+},
+{
 	path : 'privacy_policy',
 	component : PrivacyPolicy ,
 	name : 'privacy_policy',
@@ -56,10 +61,5 @@ export default [
 	path : 'wish_list',
 	component : WishList ,
 	name : 'wish_list'
-},
-{
-	path : 'shop',
-	component : Shop ,
-	name : 'shop'
 }
 ]

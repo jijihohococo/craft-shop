@@ -1,12 +1,6 @@
 <template>
-	
+	<div>Hey</div>
 </template>
 <script >
-	export default {
-		data(){
-			return {
-				
-			}
-		}
-	}
+	export default {}
 </script>

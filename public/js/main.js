@@ -20679,6 +20679,10 @@ var Shop = function Shop() {
   component: Home,
   name: 'home'
 }, {
+  path: 'shop',
+  component: Shop,
+  name: 'shop_page'
+}, {
   path: 'privacy_policy',
   component: PrivacyPolicy,
   name: 'privacy_policy',
@@ -20713,10 +20717,6 @@ var Shop = function Shop() {
   path: 'wish_list',
   component: WishList,
   name: 'wish_list'
-}, {
-  path: 'shop',
-  component: Shop,
-  name: 'shop'
 }]);
 
 /***/ }),
