@@ -1,3 +1,3 @@
-@extends('user.layouts.app')
-@section('content')
-@endsection
+@include('user.error',[
+'error_code' => $error_code
+])

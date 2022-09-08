@@ -3,7 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Throwable;
+use Throwable,View;
 use App\Traits\ShopData;
 class Handler extends ExceptionHandler
 {
@@ -44,6 +44,9 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
 
+        View::share([
+            'error_code' => $exception->getStatusCode()
+        ]);
        $this->getShop();
 
        return parent::render($request, $exception);
