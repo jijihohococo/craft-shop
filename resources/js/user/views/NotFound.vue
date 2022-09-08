@@ -1,15 +1,12 @@
 <template>
-	<p>Page Not Found!</p>
+	<p>{{ error }} Page Not Found!</p>
 </template>
 <script >
 	export default {
 		data(){
 			return {
-				error : ''
+				error : window.error_code ?? 404
 			}
-		},
-		created(){
-
 		}
 	}
 </script>
