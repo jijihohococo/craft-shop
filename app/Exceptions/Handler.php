@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use App\Traits\ShopData;
 class Handler extends ExceptionHandler
 {
 
@@ -39,4 +40,12 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $exception)
+    {
+
+       $this->getShop();
+
+       return parent::render($request, $exception);
+   }
 }

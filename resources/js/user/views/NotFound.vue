@@ -7,7 +7,7 @@
 			return {
 				error : ''
 			}
-		}
+		},
 		created(){
 
 		}
