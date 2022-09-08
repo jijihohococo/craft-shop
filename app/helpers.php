@@ -1,7 +1,18 @@
 <?php
 
-use App\Models\PassportDate;
+use App\Models\{PassportDate,TokenRefresh};
 use Illuminate\Support\Facades\Route;
+
+function setTokenData(array $data,$next,$request){
+	$tokenRefresh=new TokenRefresh;
+	$tokenRefresh->setAccessTokenCookieName($data['access_token']);
+	$tokenRefresh->setRefreshTokenCookieName($data['refresh_token']);
+	$tokenRefresh->setNext($next);
+	$tokenRefresh->setRequest($request);
+	$tokenRefresh->setGuardName($data['api']);
+	$tokenRefresh->setClientId($data['client_id']);
+	return $tokenRefresh;
+}
 
 function adminResourceApi($content,$plural,$controller){
 	Route::resource($plural,'Admin\\'.$controller);
@@ -15,21 +26,21 @@ function adminResourceApi($content,$plural,$controller){
 
 function out($result){
 	return response()->json([
-                'message' => 'Log out success'
-            ])->withCookie($result['cookie'])
-            ->withCookie($result['refreshCookie']);
+		'message' => 'Log out success'
+	])->withCookie($result['cookie'])
+	->withCookie($result['refreshCookie']);
 }
 
 function unauthorized(){
 	return response()->json([
-           'message' => 'Unauthorized'
-      ],403);
+		'message' => 'Unauthorized'
+	],403);
 }
 
 function unauthenticated(){
 	return response()->json([
-            'message' => 'Unauthenticated'
-        ],401);
+		'message' => 'Unauthenticated'
+	],401);
 }
 
 function authId(){
@@ -54,24 +65,24 @@ function add_high_light(array $array){
 	if(isset($array['col'])){
 		$saved=function() use($array) {
 			$objArray=[];
-		foreach(array_filter($array['col']) as $data){
-			array_push($objArray , [
-				$array['parent_id']=>$array['parent_data'],
-				$array['child_col']=>$data
-			]);
-		}
-		if(!empty($objArray)){
-			$array['obj']::insert($objArray);
-		}
+			foreach(array_filter($array['col']) as $data){
+				array_push($objArray , [
+					$array['parent_id']=>$array['parent_data'],
+					$array['child_col']=>$data
+				]);
+			}
+			if(!empty($objArray)){
+				$array['obj']::insert($objArray);
+			}
 		};
 		if($array['update']=="yes" && 
-		($array['old_col']+$array['col']!==$array['old_col']) ){
+			($array['old_col']+$array['col']!==$array['old_col']) ){
 			$array['obj']::where($array['parent_id'],$array['parent_data'])->delete();
-			$saved();
-		}elseif($array['update']==NULL){
-			$saved();
-		}
+		$saved();
+	}elseif($array['update']==NULL){
+		$saved();
 	}
+}
 
 }
 

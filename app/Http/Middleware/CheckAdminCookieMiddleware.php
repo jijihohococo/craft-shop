@@ -6,12 +6,9 @@ use Closure;
 use Illuminate\Http\Request;
 
 
-use App\Models\Admin;
-use App\Traits\TokenTrait;
+use App\Models\{Admin,TokenRefresh};
 class CheckAdminCookieMiddleware
 {
-
-    use TokenTrait;
     /**
      * Handle an incoming request.
      *
@@ -23,8 +20,7 @@ class CheckAdminCookieMiddleware
     {
         $currentURL=getCurrentURL();
         $adminLogin=adminLogin();
-
-        $tokenRefresh=$this->setTokenData([
+        $tokenRefresh=setTokenData([
             'access_token' => 'admin_access_token',
             'refresh_token' => 'admin_refresh_token',
             'api' => 'admin_api',

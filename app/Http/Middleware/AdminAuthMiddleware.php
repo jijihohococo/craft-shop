@@ -6,10 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 
 use App\Models\Admin;
-use App\Traits\TokenTrait;
 class AdminAuthMiddleware
 {
-    use TokenTrait;
     /**
      * Handle an incoming request.
      *
@@ -19,7 +17,7 @@ class AdminAuthMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $tokenRefresh=$this->setTokenData([
+        $tokenRefresh=setTokenData([
             'access_token' => 'admin_access_token',
             'refresh_token' => 'admin_refresh_token',
             'api' => 'admin_api',
