@@ -5,9 +5,11 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-use App\Models\{Admin,TokenRefresh};
+use App\Models\Admin;
+use App\Traits\TokenTrait;
 class AdminAuthMiddleware
 {
+    use TokenTrait;
     /**
      * Handle an incoming request.
      *
@@ -17,13 +19,12 @@ class AdminAuthMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $tokenRefresh=new TokenRefresh;
-        $tokenRefresh->setAccessTokenCookieName('admin_access_token');
-        $tokenRefresh->setRefreshTokenCookieName('admin_refresh_token');
-        $tokenRefresh->setNext($next);
-        $tokenRefresh->setRequest($request);
-        $tokenRefresh->setGuardName('admin_api');
-        $tokenRefresh->setClientId(Admin::$clientId);
+        $tokenRefresh=$this->setTokenData([
+            'access_token' => 'admin_access_token',
+            'refresh_token' => 'admin_refresh_token',
+            'api' => 'admin_api',
+            'client_id' => Admin::$clientId
+        ],$next,$request);
         $tokenRefresh->makeApiRequest();
         return $tokenRefresh->make();
     }

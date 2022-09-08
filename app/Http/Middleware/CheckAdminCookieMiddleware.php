@@ -6,9 +6,12 @@ use Closure;
 use Illuminate\Http\Request;
 
 
-use App\Models\{Admin,TokenRefresh};
+use App\Models\Admin;
+use App\Traits\TokenTrait;
 class CheckAdminCookieMiddleware
 {
+
+    use TokenTrait;
     /**
      * Handle an incoming request.
      *
@@ -21,13 +24,12 @@ class CheckAdminCookieMiddleware
         $currentURL=getCurrentURL();
         $adminLogin=adminLogin();
 
-        $tokenRefresh=new TokenRefresh;
-        $tokenRefresh->setAccessTokenCookieName('admin_access_token');
-        $tokenRefresh->setRefreshTokenCookieName('admin_refresh_token');
-        $tokenRefresh->setNext($next);
-        $tokenRefresh->setRequest($request);
-        $tokenRefresh->setGuardName('admin_api');
-        $tokenRefresh->setClientId(Admin::$clientId);
+        $tokenRefresh=$this->setTokenData([
+            'access_token' => 'admin_access_token',
+            'refresh_token' => 'admin_refresh_token',
+            'api' => 'admin_api',
+            'client_id' => Admin::$clientId
+        ],$next,$request);
         
         if($currentURL==$adminLogin && isset($_COOKIE['admin_access_token'] ))
         {

@@ -5,9 +5,11 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-use App\Models\{User,TokenRefresh};
+use App\Models\User;
+use App\Traits\TokenTrait;
 class UserAuthMiddleware
 {
+    use TokenTrait;
     /**
      * Handle an incoming request.
      *
@@ -17,13 +19,12 @@ class UserAuthMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $tokenRefresh=new TokenRefresh;
-        $tokenRefresh->setAccessTokenCookieName('user_access_token');
-        $tokenRefresh->setRefreshTokenCookieName('user_refresh_token');
-        $tokenRefresh->setNext($next);
-        $tokenRefresh->setRequest($request);
-        $tokenRefresh->setGuardName('user_api');
-        $tokenRefresh->setClientId(User::$clientId);
+        $tokenRefresh=$this->setTokenData([
+            'access_token' => 'user_access_token',
+            'refresh_token' => 'user_refresh_token',
+            'api' => 'user_api',
+            'client_id' => User::$clientId
+        ],$next,$request);
         $tokenRefresh->makeApiRequest();
         return $tokenRefresh->make();
     }
