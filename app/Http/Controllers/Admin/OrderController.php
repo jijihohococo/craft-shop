@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Order,OrderDetail};
+use Carbon\Carbon;
 class OrderController extends Controller
 {
     //
@@ -49,6 +50,13 @@ class OrderController extends Controller
             ->selectCurrency()
             ->latest('id')
             ->get()
+        ]);
+    }
+
+    public function getTodayTotal(){
+        return response()->json([
+            'today_total_orders' => Order::select('id')
+            ->whereDate('created_at',Carbon::today())->count()
         ]);
     }
 }

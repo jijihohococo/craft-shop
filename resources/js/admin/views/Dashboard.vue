@@ -9,7 +9,7 @@
 					<!-- small box -->
 					<div class="small-box bg-info">
 						<div class="inner">
-							<h3>150</h3>
+							<h3>{{ todayTotalOrders }}</h3>
 
 							<p>Today Orders</p>
 						</div>
@@ -287,7 +287,8 @@
 			return {
 				content : 'Dashboard',
 				totalUsers : 0 ,
-				totalItems : 0
+				totalItems : 0 ,
+				todayTotalOrders : 0
 			}
 		},
 		components: {
@@ -295,7 +296,7 @@
 			Calendar
 		},
 		methods : {
-			getTotalUsers(){
+			async getTotalUsers(){
 				window.axios.get("total_users").then(( response ) =>  {
 					if(response.data.message=='Loading'){
 
@@ -307,7 +308,7 @@
 					errorResponse(error,this,'read')				
 				} )
 			},
-			getTotalItems(){
+			async getTotalItems(){
 				window.axios.get("total_items").then(( response ) =>  {
 					if(response.data.message=='Loading'){
 
@@ -318,11 +319,24 @@
 				} ).catch( (error) => {
 					errorResponse(error,this,'read')				
 				} )
-			}
+			},
+			async getTodayTotalOrders(){
+				window.axios.get("today_total_orders").then(( response ) =>  {
+					if(response.data.message=='Loading'){
+
+						showSwalLoading(this);
+					}else{
+						this.todayTotalOrders=response.data.today_total_orders
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')				
+				} )
+			},
 		},
-		created(){
-			this.getTotalUsers();
-			this.getTotalItems();
+		async created(){
+			await this.getTotalUsers()
+			await this.getTotalItems()
+			await this.getTodayTotalOrders()
 		}
 	}
 </script>

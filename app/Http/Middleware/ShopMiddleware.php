@@ -2,11 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use Closure,View;
+use Closure;
 use Illuminate\Http\Request;
-use App\Models\Shop;
+use App\Traits\ShopData;
 class ShopMiddleware
 {
+    use ShopData;
     /**
      * Handle an incoming request.
      *
@@ -16,9 +17,7 @@ class ShopMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        View::share([
-            'shop' => Shop::findOrFail(1)
-        ]);
+        $this->getShop();
         return $next($request);
     }
 }

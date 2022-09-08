@@ -4,9 +4,11 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-
+use App\Traits\ShopData;
 class Handler extends ExceptionHandler
 {
+
+    use ShopData;
     /**
      * A list of the exception types that are not reported.
      *
@@ -34,6 +36,7 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
+        $this->getShop();
         $this->reportable(function (Throwable $e) {
             //
         });

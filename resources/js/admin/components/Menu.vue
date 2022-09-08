@@ -102,7 +102,7 @@ methods : {
       errorResponse(error,this);
     } )
   },
-  getAdmin(){
+  async getAdmin(){
    window.axios.get("admin").then(( response ) =>  {
     if(response.data.message=='Loading'){
       showSwalLoading(this);
@@ -114,8 +114,8 @@ methods : {
 } )
 }
 },
-created(){
- this.getAdmin();
+async created(){
+ await this.getAdmin();
 },
 computed : {
  checkValue : function() {

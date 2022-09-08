@@ -111,6 +111,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	//--------------COUNTRY----------------//
 
 	Route::get('orders','Admin\OrderController@index');
+	Route::get('today_total_orders','Admin\OrderController@getTodayTotal');
 
 	Route::post('logout','Admin\Auth\LoginController@logOut');
 
