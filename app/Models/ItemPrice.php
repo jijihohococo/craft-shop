@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Traits\CurrencyDataTrait;
+use App\Traits\{CurrencyDataTrait,ItemVariantTrait};
 class ItemPrice extends TransactionModel
 {
-    use CurrencyDataTrait;
+    use CurrencyDataTrait,ItemVariantTrait;
 
     protected $fillable=[
         'currency_id',

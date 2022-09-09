@@ -18,7 +18,7 @@ class ItemPriceController extends Controller
         return response()->json([
             'item_prices' => ItemPrice::selectCurrency()
             ->selectTax()
-            ->where('item_variant_id',$itemVariantId)
+            ->ofItemVariant($itemVariantId)
             ->latest('id')
             ->paginate(10)
         ]);
@@ -29,9 +29,9 @@ class ItemPriceController extends Controller
         return response()->json([
             'item_prices' => ItemPrice::selectCurrency()
             ->selectTax()
+            ->ofItemVariant($itemVariantId)
             ->where('price','like',$searchData)
             ->searchWithCurrency($searchData)
-            ->where('item_variant_id',$itemVariantId)
             ->latest('id')
             ->paginate(10)
         ]);   
