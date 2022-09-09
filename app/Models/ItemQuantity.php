@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Traits\ItemVariantTrait;
 class ItemQuantity extends TransactionModel
 {
+    use ItemVariantTrait;
 
     protected $fillable=[
         'item_variant_id',

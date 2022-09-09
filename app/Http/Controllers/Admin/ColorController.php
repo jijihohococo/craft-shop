@@ -9,7 +9,7 @@ class ColorController extends CommonController
     
     public $model = 'Color';
 
-    public $contents='colors';
+    public $content='colors';
     /**
      * Display a listing of the resource.
      *

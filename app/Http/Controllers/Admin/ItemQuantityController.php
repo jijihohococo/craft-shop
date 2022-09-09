@@ -16,12 +16,20 @@ class ItemQuantityController extends Controller
     {
         //
         return response()->json([
-            'item_quantities' => ItemQuantity::where('item_variant_id',$itemVariantId)->latest('id')->paginate(10)
+            'item_quantities' => ItemQuantity::ofItemVariant($itemVariantId)->latest('id')->paginate(10)
         ]);
     }
 
     public function search(Request $request,$itemVariantId){
-        
+        $searchData='%'.$request->search.'%';
+        return response()->json([
+            'item_quantities' => ItemQuantity::ofItemVariant($itemVariantId)
+            ->where('qty','like',$searchData)
+            ->orWhere('stock','like',$searchData)
+            ->orWhere('available_stock','like',$searchData)
+            ->latest('id')
+            ->paginate(10)
+        ]);
     }
 
     /**
