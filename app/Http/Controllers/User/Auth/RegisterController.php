@@ -18,8 +18,10 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request){
+        DB::beginTransaction();
         $request->validate($this->validateData());
         $token=User::create($request->all())->passportToken();
+        DB::commit();
         return getToken(['access_token' => User::ACCESS_TOKEN ,
             'refresh_token' => User::REFRESH_TOKEN  ],$token,'Login Success');
     }
