@@ -24,6 +24,8 @@ Route::view('/admin/{any}','admin.index')->where('any','.*')->middleware('checkA
 // USER FRONTEND ROUTES //
 $userRoutes=[
 	null,
+	'register',
+	'login',
 	'privacy_policy',
 	'contact_us',
 	'about_us',

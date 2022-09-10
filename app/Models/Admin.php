@@ -53,6 +53,13 @@ class Admin extends Authenticatable
     public $guardProviderName='admins';
     //----- Need to assign clientId and tokenName class's variables to access customized Passport function -----//
 
+
+    //----- Token Information  -----//
+    public const ACCESS_TOKEN='admin_access_token';
+    public const REFRESH_TOKEN='admin_refresh_token';
+    public const API='admin_api';
+    //----- Token Information  -----//
+
     protected $dispatchesEvents=[
         'created' => CreatedTransaction::class,
         'updated' => UpdatedTransaction::class,

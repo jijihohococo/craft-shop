@@ -2,6 +2,12 @@
 
 use App\Models\{PassportDate,TokenRefresh};
 use Illuminate\Support\Facades\Route;
+function getToken(array $data,$token,$message){
+	return response()->json([
+                'message' => $message
+            ])->withCookie( cookie($data['access_token'], $token->original['access_token'], changeDaysToMinutes(PassportDate::ACCESS_TOKEN_EXPIRE_DAY), null, null, true) )
+            ->withCookie( cookie($data['refresh_token'],$token->original['refresh_token'],changeDaysToMinutes(PassportDate::REFRESH_TOKEN_EXPIRE_DAY),null,null,true) );
+}
 
 function setTokenData(array $data,$next,$request){
 	$tokenRefresh=new TokenRefresh;

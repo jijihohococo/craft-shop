@@ -4,15 +4,20 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Auth\LoginController as Login;
 use Illuminate\Http\Request;
+use App\Models\Admin;
 use DB;
 class LoginController extends Login
 {
     //
 
-    protected $accessToken = 'admin_access_token';
-    protected $refreshToken = 'admin_refresh_token';
-    protected $authAPI = 'admin_api';
+    protected $accessToken , $refreshToken , $authAPI;
     protected $model='Admin';
+
+    public function __construct(){
+        $this->accessToken=Admin::ACCESS_TOKEN;
+        $this->refreshToken=Admin::REFRESH_TOKEN;
+        $this->authAPI=Admin::API;
+    }
 
     public function logOut(Request $request){
         

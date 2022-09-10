@@ -8,11 +8,23 @@ const Home = () => import('User/Views/Home')
 const ShoppingCart = () => import('User/Views/ShoppingCart')
 const WishList = () => import('User/Views/WishList')
 const Shop = () => import('User/Views/Shop')
+const Register = () => import('User/Views/Register')
+const Login = () => import('User/Views/Login')
 export default [
 {
 	path : '',
 	component : Home,
 	name : 'home'
+},
+{
+	path : 'register',
+	component : Register,
+	name : 'register_page'
+},
+{
+	path : 'login',
+	component : Login,
+	name : 'login_page'
 },
 {
 	path : 'shop',

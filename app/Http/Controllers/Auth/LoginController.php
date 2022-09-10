@@ -21,11 +21,9 @@ abstract class LoginController extends Controller
         try{
             $model='App\Models\\'.$this->model;
             $token=$model::where('email',$request->email )->first()->passportToken();
-            
-            return response()->json([
-                'message' => 'Login Success'
-            ])->withCookie( cookie($this->accessToken, $token->original['access_token'], changeDaysToMinutes(PassportDate::ACCESS_TOKEN_EXPIRE_DAY), null, null, true) )
-            ->withCookie( cookie($this->refreshToken,$token->original['refresh_token'],changeDaysToMinutes(PassportDate::REFRESH_TOKEN_EXPIRE_DAY),null,null,true) );
+
+            return getToken(['access_token' => $this->accessToken ,
+            'refresh_token' => $this->refreshToken  ],$token,'Login Success');
 
         }catch(\Throwable $e){
             return response()->json([
