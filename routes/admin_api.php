@@ -5,8 +5,9 @@ Route::post('login','Admin\Auth\LoginController@login');
 // Route::get('get_token','Admin\SecureController@getToken');
 
 Route::group(['middleware' => [ 'admin_auth'] ], function () {
-
+	//--------------SHOP----------------//
 	Route::resource('shops','Admin\ShopController');
+	//--------------SHOP----------------//
 
 	//--------------CATEGORY----------------//
 	Route::get('get_categories','CategoryController@get');
@@ -50,10 +51,11 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	//--------------ADMIN----------------//
 
 
-
+	//--------------USER----------------//
 	Route::get('users','Admin\UserController@index');
 	Route::get('total_users','Admin\UserController@getTotal');
 	Route::get('user_search','Admin\UserController@search');
+	//--------------USER----------------//
 
 	Route::resource('targets','Admin\TargetController');
 	Route::get('target_search','Admin\TargetController@search');
@@ -110,8 +112,10 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('get_countries','CountryController@get');
 	//--------------COUNTRY----------------//
 
+	//--------------ORDER----------------//
 	Route::get('orders','Admin\OrderController@index');
 	Route::get('today_total_orders','Admin\OrderController@getTodayTotal');
+	//--------------ORDER----------------//
 
 	Route::post('logout','Admin\Auth\LoginController@logOut');
 

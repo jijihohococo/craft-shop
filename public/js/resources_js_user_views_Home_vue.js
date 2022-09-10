@@ -429,6 +429,9 @@ __webpack_require__.r(__webpack_exports__);
     ItemSlider: _components_ItemSlider__WEBPACK_IMPORTED_MODULE_3__["default"],
     FeatureProduct: _components_FeatureProduct__WEBPACK_IMPORTED_MODULE_4__["default"],
     Subscribe: _components_Subscribe__WEBPACK_IMPORTED_MODULE_5__["default"]
+  },
+  created: function created() {
+    window.scrollTo(0, 0);
   } // data(){
   //    return {
   //        categories : {}

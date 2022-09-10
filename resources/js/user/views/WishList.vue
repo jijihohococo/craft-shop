@@ -61,6 +61,21 @@
 	export default {
 		components : {
 			PageTitle
+		},
+		data(){
+			return {
+				wish_list_items : {}
+			}
+		},
+		async created(){
+			await this.getWishListItems()
+		},
+		methods : {
+			async getWishListItems(){
+				window.axios.get('wish_list').then( (response) => {
+					this.wish_list_items=response.data.wish_list_items
+				} )
+			}
 		}
 	}
 </script>
