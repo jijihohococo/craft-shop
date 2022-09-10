@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\UserData;
+use App\Models\{UserData,Admin};
 class CheckAdmin
 {
     /**
@@ -16,7 +16,7 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $admin=auth('admin_api')->user();
+        $admin=auth(Admin::API)->user();
         if($admin==NULL){
             return unauthenticated();
         }

@@ -18,9 +18,9 @@ class AdminAuthMiddleware
     public function handle(Request $request, Closure $next)
     {
         $tokenRefresh=setTokenData([
-            'access_token' => 'admin_access_token',
-            'refresh_token' => 'admin_refresh_token',
-            'api' => 'admin_api',
+            'access_token' => Admin::ACCESS_TOKEN,
+            'refresh_token' => Admin::REFRESH_TOKEN,
+            'api' => Admin::API,
             'client_id' => Admin::$clientId
         ],$next,$request);
         $tokenRefresh->makeApiRequest();

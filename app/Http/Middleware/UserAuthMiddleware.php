@@ -18,9 +18,9 @@ class UserAuthMiddleware
     public function handle(Request $request, Closure $next)
     {
         $tokenRefresh=setTokenData([
-            'access_token' => 'user_access_token',
-            'refresh_token' => 'user_refresh_token',
-            'api' => 'user_api',
+            'access_token' => User::ACCESS_TOKEN,
+            'refresh_token' => User::REFRESH_TOKEN,
+            'api' => User::API,
             'client_id' => User::$clientId
         ],$next,$request);
         $tokenRefresh->makeApiRequest();
