@@ -22,6 +22,10 @@ class Item extends TransactionModel
 
     protected $dates = ['deleted_at'];
 
+    private $salePrice='sale_price';
+
+    private $normalPrice='normal_price';
+
     public function category(){
         return $this->belongsTo('App\Models\Category')->withDefault()->withTrashed();
     }
@@ -115,7 +119,7 @@ class Item extends TransactionModel
   }
 
   public function scopeSelectPrice($query){
-    return $query->addSelect(['sale_price' => function($query){
+    return $query->addSelect([$this->salePrice => function($query){
         $query->select(
             \DB::raw(
                 ItemPrice::SALE_PRICE_SQL
@@ -127,7 +131,7 @@ class Item extends TransactionModel
         })->orderBy('item_prices.id','DESC')
         ->limit(1);
     } , 
-    'normal_price' => function($query){
+    $this->normalPrice => function($query){
         $query->select(
             \DB::raw(
                 ItemPrice::NORMAL_PRICE_SQL
@@ -151,11 +155,17 @@ class Item extends TransactionModel
 ]);
 }
 
+public function scopeHavePrice($query){
+    return $query->having($this->salePrice,'>',0)
+    ->having($this->normalPrice,'>',0);
+}
+
 public function getLaptops(){
     return Cache::tags( self::$cacheKey )->remember('laptops',60*60*24,function(){
         return self::selectItemDataWithImages()
         ->selectPrice()
         ->where('category_id',1)
+        ->havePrice()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -167,6 +177,7 @@ public function getDesktops(){
         return self::selectItemDataWithImages()
         ->selectPrice()
         ->where('category_id',2)
+        ->havePrice()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -178,6 +189,7 @@ public function getAccessories(){
         return self::selectItemDataWithImages()
         ->selectPrice()
         ->where('category_id',3)
+        ->havePrice()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -189,6 +201,7 @@ public function getDesktopComponents(){
         return self::selectItemDataWithImages()
         ->selectPrice()
         ->where('category_id',7)
+        ->havePrice()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -200,6 +213,7 @@ public function getGamingLaptops(){
         return self::selectItemDataWithImages()
         ->selectPrice()
         ->where('subcategory_id',46)
+        ->havePrice()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -211,6 +225,7 @@ public function getGamingMouses(){
         return self::selectItemDataWithImages()
         ->selectPrice()
         ->where('subcategory_id',48)
+        ->havePrice()
         ->latest('id')
         ->limit(7)
         ->get(); 
@@ -222,6 +237,7 @@ public function getGamingKeyboards(){
         return self::selectItemDataWithImages()
         ->selectPrice()
         ->where('subcategory_id',49)
+        ->havePrice()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -233,6 +249,7 @@ public function getGamingHeadphones(){
         return self::selectItemDataWithImages()
         ->selectPrice()
         ->where('subcategory_id',50)
+        ->havePrice()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -243,6 +260,7 @@ public function getFeatureProducts(){
     return Cache::tags( self::$cacheKey )->remember('feature_products',60*60*24,function(){
         return self::selectItemDataWithImages()
         ->selectPrice()
+        ->havePrice()
         ->latest('id')
         ->limit(15)
         ->get();
@@ -252,6 +270,7 @@ public function getAll(){
     return Cache::tags( self::$cacheKey )->remember('all-items',60*60*24,function(){
         return self::selectItemDataWithImages()
         ->selectPrice()
+        ->havePrice()
         ->latest('id')
         ->get();
     });

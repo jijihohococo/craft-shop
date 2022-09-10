@@ -23,7 +23,7 @@
 				<div class="product_info">
 					<h6 class="product_title"><a href="shop-product-detail.html">{{ item.name }}</a></h6>
 					<div class="product_price">
-						<span class="price">{{ item.price==null ? 0 : item.price }}MMK</span>
+						<span class="price">{{ item.sale_price }}MMK</span>
 						<del>$55.25</del>
 						<div class="on_sale">
 							<span>35% Off</span>
