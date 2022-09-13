@@ -44,9 +44,9 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
 
-        View::share([
-            'error_code' => $exception->getStatusCode()
-        ]);
+        // View::share([
+        //     'error_code' => $exception->getStatusCode()
+        // ]);
        $this->getShop();
 
        return parent::render($request, $exception);

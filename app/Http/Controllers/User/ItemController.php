@@ -16,7 +16,7 @@ class ItemController extends Controller
     public function show(Request $request,$id){
         return response()->json([
             'item' => new ItemResource(Item::selectItemData()
-        ->findOrFail($id)) ,
+                ->findOrFail($id)) ,
             'reviews' => $this->getReviews('item_reviews','item_id',$id)
         ]);
     }
@@ -45,6 +45,16 @@ class ItemController extends Controller
         $item=new Item;
         return response()->json([
             'feature_products' => $item->getFeatureProducts()
+        ]);
+    }
+
+    public function get(){
+        $item=new Item;
+        return response()->json([
+            'items' => $item
+            ->selectItemDataWithImages()
+            ->selectPrice()
+            ->get()
         ]);
     }
 }

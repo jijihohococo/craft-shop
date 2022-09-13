@@ -97,14 +97,13 @@ class Item extends TransactionModel
 
     public static function selectImage($query){
         return $query->select(
-            \DB::raw(getLastData('item_images.filename'))
+            'item_images.filename'
+            //\DB::raw(getLastData('item_images.filename'))
         )->from('item_images')
         ->whereIn('item_variant_id',function($newQuery){
-            $newQuery->select('id')
-            ->from('item_variants')
-            ->whereColumn('items.id','item_variants.item_id')
-            ->groupBy('item_variants.item_id');
-        });
+            self::selectWithItemVariant($newQuery);
+        })->orderBy('item_images.id','DESC')
+        ->limit(1);
     }
 
     public function scopeSelectItemImageWithVariants($query){
