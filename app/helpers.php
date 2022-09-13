@@ -2,6 +2,9 @@
 
 use App\Models\{PassportDate,TokenRefresh};
 use Illuminate\Support\Facades\Route;
+function getLastData($field){
+	return " SUBSTRING_INDEX( GROUP_CONCAT(".$field.") ,',',1) ";
+}
 function getToken(array $data,$token,$message){
 	return response()->json([
                 'message' => $message
