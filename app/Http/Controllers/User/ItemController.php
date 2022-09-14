@@ -51,10 +51,7 @@ class ItemController extends Controller
     public function get(){
         $item=new Item;
         return response()->json([
-            'items' => $item
-            ->selectItemDataWithImages()
-            ->selectPrice()
-            ->get()
+            'items' => $item->getAll()
         ]);
     }
 }
