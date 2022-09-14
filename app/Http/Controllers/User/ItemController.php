@@ -47,11 +47,4 @@ class ItemController extends Controller
             'feature_products' => $item->getFeatureProducts()
         ]);
     }
-
-    public function get(){
-        $item=new Item;
-        return response()->json([
-            'items' => $item->getAll()
-        ]);
-    }
 }
