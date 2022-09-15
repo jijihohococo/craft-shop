@@ -178,14 +178,22 @@ public function scopeHaveStock($query){
     return $query->having($this->stock,'>',0);
 }
 
+public function scopeSelectShopItem($query){
+    return $query->selectItemDataWithImages()
+        ->selectPrice()
+        ->selectStock();
+}
+
+public function scopeAvailable($query){
+    return $query->havePrice()
+    ->haveStock();
+}
+
 public function getLaptops(){
     return Cache::tags( self::$cacheKey )->remember('laptops',60*60*24,function(){
-        return self::selectItemDataWithImages()
-        ->selectPrice()
-        ->selectStock()
+        return self::selectShopItem()
         ->where('category_id',1)
-        ->havePrice()
-        ->haveStock()
+        ->available()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -194,12 +202,9 @@ public function getLaptops(){
 
 public function getDesktops(){
     return Cache::tags( self::$cacheKey )->remember('desktops',60*60*24,function(){
-        return self::selectItemDataWithImages()
-        ->selectPrice()
-        ->selectStock()
+        return self::selectShopItem()
         ->where('category_id',2)
-        ->havePrice()
-        ->haveStock()
+        ->available()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -208,12 +213,9 @@ public function getDesktops(){
 
 public function getAccessories(){
     return Cache::tags( self::$cacheKey )->remember('accessories',60*60*24,function(){
-        return self::selectItemDataWithImages()
-        ->selectPrice()
-        ->selectStock()
+        return self::selectShopItem()
         ->where('category_id',3)
-        ->havePrice()
-        ->haveStock()
+        ->available()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -222,12 +224,9 @@ public function getAccessories(){
 
 public function getDesktopComponents(){
     return Cache::tags( self::$cacheKey )->remember('desktop_components',60*60*24,function(){
-        return self::selectItemDataWithImages()
-        ->selectPrice()
-        ->selectStock()
+        return self::selectShopItem()
         ->where('category_id',7)
-        ->havePrice()
-        ->haveStock()
+        ->available()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -236,12 +235,9 @@ public function getDesktopComponents(){
 
 public function getGamingLaptops(){
     return Cache::tags( self::$cacheKey )->remember('desktop_components',60*60*24,function(){
-        return self::selectItemDataWithImages()
-        ->selectPrice()
-        ->selectStock()
+        return self::selectShopItem()
         ->where('subcategory_id',46)
-        ->havePrice()
-        ->haveStock()
+        ->available()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -250,12 +246,9 @@ public function getGamingLaptops(){
 
 public function getGamingMouses(){
     return Cache::tags( self::$cacheKey )->remember('gaming_mouses',60*60*24,function(){
-        return self::selectItemDataWithImages()
-        ->selectPrice()
-        ->selectStock()
+        return self::selectShopItem()
         ->where('subcategory_id',48)
-        ->havePrice()
-        ->haveStock()
+        ->available()
         ->latest('id')
         ->limit(7)
         ->get(); 
@@ -264,12 +257,9 @@ public function getGamingMouses(){
 
 public function getGamingKeyboards(){
     return Cache::tags( self::$cacheKey )->remember('gaming_keyboards',60*60*24,function(){
-        return self::selectItemDataWithImages()
-        ->selectPrice()
-        ->selectStock()
+        return self::selectShopItem()
         ->where('subcategory_id',49)
-        ->havePrice()
-        ->haveStock()
+        ->available()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -278,12 +268,9 @@ public function getGamingKeyboards(){
 
 public function getGamingHeadphones(){
     return Cache::tags( self::$cacheKey )->remember('gaming_headphones',60*60*24,function(){
-        return self::selectItemDataWithImages()
-        ->selectPrice()
-        ->selectStock()
+        return self::selectShopItem()
         ->where('subcategory_id',50)
-        ->havePrice()
-        ->haveStock()
+        ->available()
         ->latest('id')
         ->limit(7)
         ->get();
@@ -292,11 +279,8 @@ public function getGamingHeadphones(){
 
 public function getFeatureProducts(){
     return Cache::tags( self::$cacheKey )->remember('feature_products',60*60*24,function(){
-        return self::selectItemDataWithImages()
-        ->selectPrice()
-        ->selectStock()
-        ->havePrice()
-        ->haveStock()
+        return self::selectShopItem()
+        ->available()
         ->latest('id')
         ->limit(15)
         ->get();
@@ -304,11 +288,8 @@ public function getFeatureProducts(){
 }
 public function getAll(){
     return Cache::tags( self::$cacheKey )->remember('all-items',60*60*24,function(){
-        return self::selectItemDataWithImages()
-        ->selectPrice()
-        ->selectStock()
-        ->havePrice()
-        ->haveStock()
+        return self::selectShopItem()
+        ->available()
         ->latest('id')
         ->get();
     });

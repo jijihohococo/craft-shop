@@ -14,12 +14,19 @@ class ItemController extends Controller
 
     public $item;
 
+    public $acceptArray=[
+        'All',
+        'category',
+        'subcategory',
+        'brand'
+    ];
+
     public function __construct(ItemRepositoryInterface $item){
         $this->item=$item;
     }
 
     public function shop(Request $request,$content,$contentId=null){
-        $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),$this->item->getFilterContents());
+        $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),$this->acceptArray );
         if($validator->fails()){
             return $this->makeErrorMessage($validator);
         }

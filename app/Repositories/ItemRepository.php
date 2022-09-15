@@ -6,9 +6,8 @@ use App\Models\Item;
 class ItemRepository implements ItemRepositoryInterface{
 
 	public function searchByContent($content,$id,$searchData){
-		return $this->getAll()
-            ->where($content.'_id',$id)
-            ->searchData($searchData);
+        return $this->getByContent($content,$id)
+        ->searchData($searchData);
 	}
 
 
@@ -18,17 +17,8 @@ class ItemRepository implements ItemRepositoryInterface{
     }
 
     public function getAll(){
-        return Item::selectItemDataWithImages()
-        ->selectPrice();
-    }
-
-    public function getFilterContents(){
-        return [
-            'All',
-            'category',
-            'subcategory',
-            'brand'
-        ];
+        return Item::selectShopItem()
+        ->available();
     }
 
 }
