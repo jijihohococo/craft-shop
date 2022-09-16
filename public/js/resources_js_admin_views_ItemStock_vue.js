@@ -289,6 +289,45 @@ __webpack_require__.r(__webpack_exports__);
         "delete": ''
       }
     };
+  },
+  methods: {
+    checkAuthorizeActions: function checkAuthorizeActions(actions) {
+      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_7__.checkActions)(actions);
+    },
+    checkUnauthorizeActions: function checkUnauthorizeActions(actions) {
+      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_7__.unauthorizedActions)(actions);
+    },
+    searchItemStocks: function searchItemStocks(page) {
+      var _this = this;
+
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_7__.makeRoute)(this, page, 'item_variant_stocks/' + this.$route.params.item_varaint_id, 'search') + page).then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_7__.showSwalLoading)(_this);
+        } else {
+          _this.item_stocks = response.data.item_stocks;
+          _this.actions.read = true;
+        }
+      });
+    },
+    getItemStocks: function getItemStocks(page) {
+      var _this2 = this;
+
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_7__.makeRoute)(this, page, 'item_variant_stocks/' + this.$route.params.item_varaint_id) + page).then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_7__.showSwalLoading)(_this2);
+        } else {
+          _this2.item_stocks = response.data.item_stocks;
+          _this2.actions.read = true;
+        }
+      })["catch"](function (error) {
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_7__.errorResponse)(error, _this2, 'read');
+      });
+    }
+  },
+  created: function created() {
+    this.getItemStocks(1);
+    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_7__.checkContentPermission)(this.content, 'create', this);
+    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_7__.checkContentPermission)(this.content, 'update', this);
   }
 });
 
@@ -957,16 +996,101 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  "class": "content"
+};
+var _hoisted_2 = {
+  "class": "container-fluid"
+};
+var _hoisted_3 = {
+  key: 0,
+  "class": "row"
+};
+var _hoisted_4 = {
+  "class": "col-12"
+};
+var _hoisted_5 = {
+  "class": "card"
+};
+var _hoisted_6 = {
+  "class": "card-header row"
+};
+var _hoisted_7 = {
+  "class": "card-body table-responsive p-0"
+};
+var _hoisted_8 = {
+  "class": "table table-hover text-nowrap"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr")], -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "card-footer clearfix"
+};
+var _hoisted_11 = {
+  "class": "card card-default"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ContentHeader = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ContentHeader");
 
   var _component_Loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Loading");
 
+  var _component_Search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Search");
+
+  var _component_CreateButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CreateButton");
+
+  var _component_Pagination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Pagination");
+
+  var _component_Error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Error");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContentHeader, {
     header: $data.content
   }, null, 8
   /* PROPS */
-  , ["header"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Loading)], 64
+  , ["header"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Loading), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), $options.checkAuthorizeActions($data.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Search, {
+    read: $data.actions.read,
+    ref: "searchModal",
+    onSearchData: _ctx.searchCurrencies
+  }, null, 8
+  /* PROPS */
+  , ["read", "onSearchData"]), $data.actions.create ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CreateButton, {
+    key: 0,
+    content: $data.content,
+    link: "/admin/currency/create"
+  }, null, 8
+  /* PROPS */
+  , ["content"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 0
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.item_stocks.data, function (stock) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: _ctx.currency.id
+    });
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
+    page: $data.currentPage,
+    lastPage: $data.item_stocks.last_page,
+    onGetData: $options.getItemStocks,
+    onSearchData: $options.searchItemStocks,
+    search: $data.search,
+    from: $data.item_stocks.from,
+    to: $data.item_stocks.to,
+    total: $data.item_stocks.total
+  }, null, 8
+  /* PROPS */
+  , ["page", "lastPage", "onGetData", "onSearchData", "search", "from", "to", "total"])])], 64
+  /* STABLE_FRAGMENT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")])])) : $options.checkUnauthorizeActions($data.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 1
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
+    httpStatus: 403,
+    title: "Permission Denied",
+    description: "You are not allowed to do any permissions for Item Stock"
+  })])], 2112
+  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 64
   /* STABLE_FRAGMENT */
   );
 }

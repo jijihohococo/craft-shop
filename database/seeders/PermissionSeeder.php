@@ -26,7 +26,7 @@ class PermissionSeeder extends Seeder
                 'create' => TRUE ,
                 'read' => TRUE ,
                 'update' => TRUE ,
-                'delete' => TRUE ,
+                'delete' => in_array($model, Permission::getExceptModels()) ? FALSE : TRUE ,
                 'created_at' => NOW() ,
                 'updated_at' => NOW()
             ]);

@@ -36,14 +36,23 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('get_items','User\ItemController@get');
 	//--------------ITEM----------------//
 
+	//--------------ITEM VARIANT----------------//
+	Route::get('item_variants/{id}','Admin\ItemVariantController@find');
+	//--------------ITEM VARIANT----------------//
 
+	//--------------ITEM STOCK----------------//
+	Route::get('item_variant_stocks/{id}','Admin\ItemQuantityController@index');
+	Route::get('item_variant_stocks_search/{id}','Admin\ItemQuantityController@search');
+	Route::post('save_item_variant_stocks/{id}','Admin\ItemQuantityController@save');
+	Route::post('update_item_variant_stocks/{id}','Admin\ItemQuantityController@update');
+	//--------------ITEM STOCK----------------//
+
+	//--------------ITEM IMAGE----------------//
 	Route::get('item_variant_images/{id}','Admin\ItemVariantImageController@index');
 	Route::post('upload_item_variant_images/{id}','Admin\ItemVariantImageController@upload');
 	Route::delete('delete_item_images/{id}','Admin\ItemVariantImageController@deleteItemImages');
 	Route::post('item_image_delete/{id}','Admin\ItemVariantImageController@imageDelete');
-
-
-	Route::get('item_variants/{id}','Admin\ItemVariantController@find');
+	//--------------ITEM IMAGE----------------//
 
 	//--------------ADMIN----------------//
 	adminResourceApi('admin','admins','AdminController');

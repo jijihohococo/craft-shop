@@ -4,9 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ItemQuantity;
-class ItemQuantityController extends Controller
+use App\Models\ItemStock;
+class ItemStockController extends Controller
 {
+
+    public $model = 'ItemStock';
+
+    public function __construct(){
+        $this->middleware('rolePermission:'.$this->model.',read')->only(['index','search']);
+        $this->middleware('rolePermission:'.$this->model.',create')->only(['create']);
+        $this->middleware('rolePermission:'.$this->model.',update')->only([
+            'edit','update'
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,14 +26,14 @@ class ItemQuantityController extends Controller
     {
         //
         return response()->json([
-            'item_quantities' => ItemQuantity::ofItemVariant($itemVariantId)->latest('id')->paginate(10)
+            'item_stocks' => ItemStock::ofItemVariant($itemVariantId)->latest('id')->paginate(10)
         ]);
     }
 
     public function search(Request $request,$itemVariantId){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'item_quantities' => ItemQuantity::ofItemVariant($itemVariantId)
+            'item_stocks' => ItemStock::ofItemVariant($itemVariantId)
             ->where('qty','like',$searchData)
             ->orWhere('stock','like',$searchData)
             ->orWhere('available_stock','like',$searchData)
@@ -74,7 +84,7 @@ class ItemQuantityController extends Controller
     {
         //
         return response()->json([
-            'item_quantity' => ItemQuantity::findOrFail($id)
+            'item_quantity' => ItemStock::findOrFail($id)
         ]);
     }
 

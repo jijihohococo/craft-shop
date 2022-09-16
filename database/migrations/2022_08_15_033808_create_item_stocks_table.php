@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemQuantitiesTable extends Migration
+class CreateItemStocksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateItemQuantitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_quantities', function (Blueprint $table) {
+        Schema::create('item_stocks', function (Blueprint $table) {
             $table->id();
             $table->integer('item_variant_id');
             $table->integer('qty');

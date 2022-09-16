@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Traits\ItemVariantTrait;
-class ItemQuantity extends TransactionModel
+class ItemStock extends TransactionModel
 {
     use ItemVariantTrait;
 

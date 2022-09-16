@@ -83,14 +83,12 @@
 	
 	import File from '../components/File'
 	import ContentHeader from '../components/ContentHeader'
-	import CreateEditItemVariantImage from './CreateEditItemVariantImage'
 	import { errorResponse , checkContentPermission , showSwalLoading } from '../helpers/check.js';
 
 	export default {
 		components: {
 			File,
-			ContentHeader,
-			CreateEditItemVariantImage
+			ContentHeader
 		},
 		data(){
 			return {
@@ -106,6 +104,11 @@
 		mounted : function(){
 			let vm=this;
 			let id=this.$route.params.id;
+			$('.item-stock').click(function(){
+				vm.$router.push({
+					path : '/admin/item_stock/'+id
+				})
+			})
 			$('.item-image').click(function(){
 				$("#itemImageModal").modal("show");
 				window.axios.get( 'item_variant_images/' + id ).then(( response ) =>  {
@@ -116,6 +119,9 @@
 			})
 		},
 		methods : {
+			goToItemStock(){
+				this.$router.push({path: '/admin/item_stock/'+this.$route.params.id })
+			},
 			async getItemWithColor(){
 				window.axios.get('item_variants/'+this.$route.params.id).then((response) => {
 					if(response.data.message=='Loading'){

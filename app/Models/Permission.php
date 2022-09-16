@@ -28,6 +28,7 @@ class Permission extends TransactionModel
             'Subcategory',
             'Brand',
             'Item',
+            'ItemStock',
             'Role',
             'Target',
             'User',
@@ -37,6 +38,12 @@ class Permission extends TransactionModel
             'Color',
             'Country',
             'Order'
+        ];
+    }
+
+    public static function getExceptModels(){
+        return [
+            'ItemStock'
         ];
     }
 
