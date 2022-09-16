@@ -44,7 +44,7 @@ Route::get('feature_products','User\ItemController@showFeatureProducts');
 
 //------------------------------SHOP-----------------------------//
 //----items----//
-Route::get('shop/{content}/{contentId?}','User\Shop\AppItemController@shop');
+Route::get('shop/{content}/{contentId?}','User\Shop\ItemController@shop');
 //----items----//
 
 //----attributes----//
