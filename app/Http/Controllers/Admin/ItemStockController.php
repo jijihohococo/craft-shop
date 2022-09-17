@@ -59,6 +59,10 @@ class ItemStockController extends ItemVariantCommonController
         ]);
     }
 
+    public function create($itemVariantId){
+        return $this->createEditPage($itemVariantId);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -68,9 +72,8 @@ class ItemStockController extends ItemVariantCommonController
     public function edit($id)
     {
         //
-        return response()->json([
-            'item_stock' => ItemStock::findOrFail($id)
-        ]);
+        $itemStock=ItemStock::findOrFail($id);
+        return $this->createEditPage($itemStock->item_variant_id,$itemStock);
     }
 
     /**

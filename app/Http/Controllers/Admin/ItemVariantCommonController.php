@@ -26,7 +26,7 @@ abstract class ItemVariantCommonController extends Controller
         ]);
     }
 
-    public function createEditPage($data,$itemVariantId){
+    public function createEditPage($itemVariantId,$data=NULL){
         return response()->json([
             $this->createEdit => $data ,
             'item_variant' => $this->getItemVariant($itemVariantId)
