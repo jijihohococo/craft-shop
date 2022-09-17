@@ -46,6 +46,17 @@ class ItemStockController extends ItemVariantCommonController
     public function store(Request $request,$itemVariantId)
     {
         //
+        $opening=ItemStock::where( 'item_variant_id' , $itemVariantId )->latest('id')->first();
+        $qty=$opening==null ? $request->qty : $opening->stock+ $request->qty;
+        ItemStock::sharedLock()->create([
+            'item_variant_id' => $itemVariantId , 
+            'qty' => $request->qty , 
+            'stock' => $qty ,
+            'available_stock' => $request->available_stock  
+        ]);
+        return response()->jso([
+            'message' => "Item Stock is created successfully"
+        ]);
     }
 
     /**
@@ -72,5 +83,16 @@ class ItemStockController extends ItemVariantCommonController
     public function update(Request $request, $id)
     {
         //
-    }
+       $openingItem=ItemStock::lockForUpdate()->findOrFail($id);
+       $updatedStock=($openingItem->stock-$openingItem->qty)+$request->qty;
+       $openingItem->update([
+        'stock' => $updatedStock ,
+        'available_stock' => $request->available_stock,
+        'qty' => $request->qty
+       ]);
+
+       return response()->json([
+        'message' => "Item Stock is updated successfully"
+       ]);
+   }
 }

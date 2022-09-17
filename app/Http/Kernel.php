@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'rolePermission' => \App\Http\Middleware\RolePermissionMiddleware::class ,
         'shoppingCartDelete'  => \App\Http\Middleware\ShoppingCartDelete::class,
         'wishListDelete' => \App\Http\Middleware\WishListDelete::class ,
-        'checkAdmin' => \App\Http\Middleware\CheckAdmin::class
+        'checkAdmin' => \App\Http\Middleware\CheckAdmin::class ,
+        'updateLastData' => \App\Http\Middleware\UpdateLastDataMiddleware::class
     ];
 }
