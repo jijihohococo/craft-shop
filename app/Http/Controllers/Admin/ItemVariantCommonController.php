@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\ItemVariant;
 abstract class ItemVariantCommonController extends Controller
 {
@@ -24,6 +23,10 @@ abstract class ItemVariantCommonController extends Controller
             $this->content => $data ,
             'item_variant' => $this->getItemVariant($itemVariantId)
         ]);
+    }
+
+    public function create($itemVariantId){
+        return $this->createEditPage($itemVariantId);
     }
 
     public function createEditPage($itemVariantId,$data=NULL){

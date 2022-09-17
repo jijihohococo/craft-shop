@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ItemStock;
 class ItemStockController extends ItemVariantCommonController
@@ -57,10 +56,6 @@ class ItemStockController extends ItemVariantCommonController
         return response()->jso([
             'message' => "Item Stock is created successfully"
         ]);
-    }
-
-    public function create($itemVariantId){
-        return $this->createEditPage($itemVariantId);
     }
 
     /**

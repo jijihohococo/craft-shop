@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ItemPrice;
-class ItemPriceController extends Controller
+class ItemPriceController extends ItemVariantCommonController
 {
+
+    public $model = 'ItemPrice';
+
+    public $content = 'item_prices';
+
+    public $createEdit = 'item_price';
     /**
      * Display a listing of the resource.
      *
@@ -15,36 +20,26 @@ class ItemPriceController extends Controller
     public function index($itemVariantId)
     {
         //
-        return response()->json([
-            'item_prices' => ItemPrice::selectCurrency()
+        return $this->indexPage(
+            ItemPrice::selectCurrency()
             ->selectTax()
             ->ofItemVariant($itemVariantId)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     public function search(Request $request,$itemVariantId){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'item_prices' => ItemPrice::selectCurrency()
+        return $this->indexPage(
+            ItemPrice::selectCurrency()
             ->selectTax()
             ->ofItemVariant($itemVariantId)
             ->where('price','like',$searchData)
             ->searchWithCurrency($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);   
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        );
     }
 
     /**
@@ -78,9 +73,8 @@ class ItemPriceController extends Controller
     public function edit($id)
     {
         //
-        return response()->json([
-            'item_price' => ItemPrice::findOrFail($id)
-        ]);
+        $itemPrice=ItemPrice::findOrFail($id);
+        return $this->createEditPage($itemPrice->item_variant_id,$itemPrice);
     }
 
     /**
@@ -91,17 +85,6 @@ class ItemPriceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
     {
         //
     }
