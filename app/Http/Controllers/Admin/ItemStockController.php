@@ -59,19 +59,6 @@ class ItemStockController extends ItemVariantCommonController
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-        $itemStock=ItemStock::findOrFail($id);
-        return $this->createEditPage($itemStock->item_variant_id,$itemStock);
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

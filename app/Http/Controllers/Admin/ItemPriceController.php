@@ -64,17 +64,8 @@ class ItemPriceController extends ItemVariantCommonController
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-        $itemPrice=ItemPrice::findOrFail($id);
-        return $this->createEditPage($itemPrice->item_variant_id,$itemPrice);
+    public function getEditData($id){
+        return ItemPrice::findOrFail($id);
     }
 
     /**
