@@ -128,7 +128,7 @@
 
 						showSwalLoading(this);
 					}else{
-						this.itemColor=response.data.item + "'s " + response.data.color;
+						this.itemColor=response.data.item_variant.item_name + "'s " + response.data.item_variant.color_name;
 					}
 				} )
 			},

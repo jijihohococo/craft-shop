@@ -92,7 +92,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'permission': "Permission"
       },
       processRoutes: {
-        'item_stock': "Item Stock",
         'order': "Order"
       }
     };

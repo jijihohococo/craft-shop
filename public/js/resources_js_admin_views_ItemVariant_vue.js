@@ -312,7 +312,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   if (response.data.message == 'Loading') {
                     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this3);
                   } else {
-                    _this3.itemColor = response.data.item + "'s " + response.data.color;
+                    _this3.itemColor = response.data.item_variant.item_name + "'s " + response.data.item_variant.color_name;
                   }
                 });
 

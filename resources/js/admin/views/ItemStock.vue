@@ -1,5 +1,5 @@
 <template>
-	<ContentHeader :header="content" />
+	<ContentHeader :header="itemColor" />
 	<Loading />
 	<section class="content">
 		<div class="container-fluid">
@@ -56,6 +56,8 @@
 
 		import EditButton from '../components/EditButton';
 
+		import Search from '../components/Search';
+
 		import Error from '../components/Error';
 
 		import Loading from '../components/Loading';
@@ -70,19 +72,20 @@
 				CreateButton,
 				EditButton,
 				Error,
-				Loading
+				Loading,
+				Search
 			},
 			data () {
 				return {
 					content : 'Item Stock',
 					item_stocks : {},
+					itemColor : null ,
 					search : null ,
 					currentPage : 1 ,
 					actions : {
 						create : '' ,
 						read : '' ,
-						update : '' ,
-						delete : ''
+						update : ''
 					}
 				}
 			},
@@ -93,24 +96,27 @@
 				checkUnauthorizeActions(actions){
 					return unauthorizedActions(actions);
 				},
+				getData(responseData){
+					this.item_stocks=responseData.item_stocks
+					this.itemColor=responseData.item_variant.item_name + "'s " + responseData.item_variant.color_name + ' Stock';
+					this.actions.read=true
+				},
 				searchItemStocks(page){
-					window.axios.get(makeRoute(this,page,'item_variant_stocks/'+this.$route.params.item_varaint_id,'search')+page).then((response)=>{
+					window.axios.get('search_item_variant_stocks/'+this.$route.params.item_varaint_id + '?page=' + page).then((response)=>{
 						if(response.data.message=='Loading'){
 							showSwalLoading(this);
 						}else{
-							this.item_stocks=response.data.item_stocks
-							this.actions.read=true
+							this.getData(response.data)
 						}
 					})
 				},
 				getItemStocks(page){
-					window.axios.get(makeRoute(this,page,'item_variant_stocks/'+this.$route.params.item_varaint_id) + page ).then(( response ) =>  {
+					window.axios.get( 'item_variant_stocks/'+this.$route.params.item_varaint_id + '?page=' + page ).then(( response ) =>  {
 						if(response.data.message=='Loading'){
 
 							showSwalLoading(this);
 						}else{
-							this.item_stocks=response.data.item_stocks
-							this.actions.read=true
+							this.getData(response.data)
 						}
 					} ).catch( (error) => {
 						errorResponse(error,this,'read')
@@ -119,8 +125,8 @@
 			},
 			created(){
 				this.getItemStocks(1);
-				checkContentPermission(this.content,'create',this);
-				checkContentPermission(this.content,'update',this);
+				checkContentPermission('ItemStock','create',this);
+				checkContentPermission('ItemStock','update',this);
 			},
 		}
 	</script>

@@ -85,7 +85,6 @@
       'permission' : "Permission"
     },
     processRoutes : {
-     'item_stock' : "Item Stock",
      'order' : "Order",
    }
  }

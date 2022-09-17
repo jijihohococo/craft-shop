@@ -5,51 +5,36 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ItemStock;
-class ItemStockController extends Controller
+class ItemStockController extends ItemVariantCommonController
 {
 
     public $model = 'ItemStock';
 
-    public function __construct(){
-        $this->middleware('rolePermission:'.$this->model.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.$this->model.',create')->only(['create']);
-        $this->middleware('rolePermission:'.$this->model.',update')->only([
-            'edit','update'
-        ]);
-    }
+    public $content = 'item_stocks';
+
+    public $createEdit = 'item_stock';
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index($itemVariantId)
     {
         //
-        return response()->json([
-            'item_stocks' => ItemStock::ofItemVariant($itemVariantId)->latest('id')->paginate(10)
-        ]);
+        return $this->indexPage(ItemStock::ofItemVariant($itemVariantId)->latest('id')->paginate(10),$itemVariantId);
     }
 
     public function search(Request $request,$itemVariantId){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'item_stocks' => ItemStock::ofItemVariant($itemVariantId)
+        return $this->indexPage(
+            ItemStock::ofItemVariant($itemVariantId)
             ->where('qty','like',$searchData)
             ->orWhere('stock','like',$searchData)
             ->orWhere('available_stock','like',$searchData)
             ->latest('id')
-            ->paginate(10)
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+            ->paginate(10) , $itemVariantId
+        );
     }
 
     /**
@@ -64,17 +49,6 @@ class ItemStockController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -84,7 +58,7 @@ class ItemStockController extends Controller
     {
         //
         return response()->json([
-            'item_quantity' => ItemStock::findOrFail($id)
+            'item_stock' => ItemStock::findOrFail($id)
         ]);
     }
 
@@ -96,17 +70,6 @@ class ItemStockController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
     {
         //
     }

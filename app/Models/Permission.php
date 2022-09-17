@@ -29,6 +29,7 @@ class Permission extends TransactionModel
             'Brand',
             'Item',
             'ItemStock',
+            'ItemPrice',
             'Role',
             'Target',
             'User',
@@ -43,7 +44,8 @@ class Permission extends TransactionModel
 
     public static function getExceptModels(){
         return [
-            'ItemStock'
+            'ItemStock',
+            'ItemPrice'
         ];
     }
 
