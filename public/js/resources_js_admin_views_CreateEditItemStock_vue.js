@@ -183,7 +183,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           _this2.$swal('Success', response.data.message, 'success');
 
           _this2.$router.push({
-            path: '/admin/item_stock/' + _this2.itemVariant.id
+            path: '/admin/item/stock/' + _this2.itemVariant.id
           });
         }
       })["catch"](function (error) {
@@ -204,7 +204,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           _this3.$swal('Success', response.data.message, 'success');
 
           _this3.$router.push({
-            path: '/admin/item_stock/' + _this3.itemVariant.id
+            path: '/admin/item/stock/' + _this3.itemVariant.id
           });
         }
       })["catch"](function (error) {
@@ -223,10 +223,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                window.axios.get('item_variants/' + itemVariantId).then(function (response) {
+                window.axios.get('create_item_variant_stocks/' + itemVariantId).then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this4);
                   } else {
+                    _this4.fields.stock = response.data.item_stock.stock;
                     _this4.itemVariant = response.data.item_variant;
                     _this4.itemColor = (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.getItemColor)(response.data);
                     _this4.stock = _this4.itemColor + "'s Stock";
@@ -562,7 +563,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       'route': '/admin/item/variant/' + $data.itemVariant.id,
       'title': $data.itemColor
     }, {
-      'route': '/admin/item_stock/' + $data.itemVariant.id,
+      'route': '/admin/item/stock/' + $data.itemVariant.id,
       'title': $data.stock
     }]
   }, null, 8

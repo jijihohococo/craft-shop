@@ -20146,17 +20146,17 @@ var CreateEditItemStock = function CreateEditItemStock() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
-  path: 'item_stock/:item_varaint_id',
+  path: 'item/stock/:item_varaint_id',
   component: ItemStock,
-  name: 'item_stock'
+  name: 'item.stock'
 }, {
-  path: 'item_stock/create/:item_varaint_id',
+  path: 'item/stock/create/:item_varaint_id',
   component: CreateEditItemStock,
-  name: 'item_stock.create'
+  name: 'item.stock.create'
 }, {
-  path: 'item_stock/edit/:id',
+  path: 'item/stock/edit/:id',
   component: CreateEditItemStock,
-  name: 'item_stock.edit'
+  name: 'item.stock.edit'
 }]);
 
 /***/ }),

@@ -60,6 +60,13 @@ class ItemStockController extends ItemVariantCommonController
         ]);
     }
 
+    public function create($itemVariantId){
+        return response()->json([
+            $this->createEdit => ItemStock::where('item_variant_id',$itemVariantId)->latest('id')->first() ,
+            'item_variant' => $this->getItemVariant($itemVariantId)
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *

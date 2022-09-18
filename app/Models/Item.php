@@ -122,11 +122,11 @@ class Item extends TransactionModel
   public function scopeSelectStock($query){
     return  $query->addSelect([
         $this->stock => function($query){
-            $query->select('item_quantities.available_stock')
-            ->from('item_quantities')
-            ->whereIn('item_quantities.item_variant_id',function($query) {
+            $query->select('item_stocks.available_stock')
+            ->from('item_stocks')
+            ->whereIn('item_stocks.item_variant_id',function($query) {
                 self::selectWithItemVariant($query);
-            } )->orderBy('item_quantities.id','DESC')
+            } )->orderBy('item_stocks.id','DESC')
             ->limit(1);
         }
     ]);
@@ -289,7 +289,7 @@ public function getFeatureProducts(){
 public function getAll(){
     return Cache::tags( self::$cacheKey )->remember('all-items',60*60*24,function(){
         return self::selectShopItem()
-        ->available()
+        //->available()
         ->latest('id')
         ->get();
     });

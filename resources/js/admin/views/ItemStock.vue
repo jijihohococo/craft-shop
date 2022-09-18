@@ -17,7 +17,7 @@
 							ref="searchModal"
 							@searchData="searchItemStocks"
 							/>
-							<CreateButton v-if="actions.create" :content="content" :link="'/admin/item_stock/create/'+this.$route.params.item_varaint_id" />
+							<CreateButton v-if="actions.create" :content="content" :link="'/admin/item/stock/create/'+this.$route.params.item_varaint_id" />
 						</div>
 						<!-- /.card-header -->
 						<template v-if="actions.read">
@@ -25,18 +25,18 @@
 								<table class="table table-hover text-nowrap">
 									<thead>
 										<tr>
-											<th>Quantity</th>
 											<th>Stock</th>
 											<th>Available Stock</th>
+											<th>Quantity</th>
 											<th>Operation</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr v-for="stock in item_stocks.data" :key="stock.id">
-											<td>{{ stock.qty }}</td>
+										<tr v-for="(stock,key) in item_stocks.data">
 											<td>{{ stock.stock }}</td>
 											<td>{{ stock.available_stock }}</td>
-											<td><EditButton v-if="actions.update" :content="content" link="item_stock.edit" :dataId="stock.id" /></td>
+											<td>{{ stock.qty }}</td>
+											<td><EditButton v-if="actions.update && key==0" :content="content" link="item.stock.edit" :dataId="stock.id" /></td>
 											</tr>
 										</tbody>
 									</table>

@@ -9,7 +9,8 @@ abstract class ItemVariantCommonController extends Controller
     //
     public function __construct(){
         $this->middleware('rolePermission:'.$this->model.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.$this->model.',create')->only(['store']);
+        $this->middleware('rolePermission:'.$this->model.',create')->only([
+            'create','store']);
         $this->middleware('rolePermission:'.$this->model.',update')->only([
             'edit','update'
         ]);
@@ -25,10 +26,6 @@ abstract class ItemVariantCommonController extends Controller
         ]);
     }
 
-    public function create($itemVariantId){
-        return $this->createEditPage($itemVariantId);
-    }
-
     public function edit($id)
     {
         //
@@ -40,7 +37,7 @@ abstract class ItemVariantCommonController extends Controller
         ]);
     }
 
-    private function getItemVariant($itemVariantId){
+    protected function getItemVariant($itemVariantId){
         return ItemVariant::selectItem()->
         selectColor()->findOrFail($itemVariantId);
     }

@@ -109,7 +109,7 @@
 			let id=this.$route.params.id;
 			$('.item-stock').click(function(){
 				vm.$router.push({
-					path : '/admin/item_stock/'+id
+					path : '/admin/item/stock/'+id
 				})
 			})
 			$('.item-image').click(function(){

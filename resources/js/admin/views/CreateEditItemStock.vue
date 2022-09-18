@@ -3,7 +3,7 @@
 	:back_links="[
 	{ 'route' : '/admin/item' , 'title' : 'Item' },
 	{ 'route' : '/admin/item/variant/'+itemVariant.id , 'title' : itemColor } ,
-	{ 'route' : '/admin/item_stock/'+itemVariant.id , 'title' : stock }
+	{ 'route' : '/admin/item/stock/'+itemVariant.id , 'title' : stock }
 	]" />
 	<Loading />
 	<section class="content">
@@ -99,7 +99,7 @@
 						this.$swal( 'Success' ,
 							response.data.message ,
 							'success')
-						this.$router.push({path: '/admin/item_stock/'+ this.itemVariant.id })
+						this.$router.push({path: '/admin/item/stock/'+ this.itemVariant.id })
 					}
 				} ).catch( (error) => {
 					if(error.response.status==422){
@@ -118,7 +118,7 @@
 						this.$swal( 'Success' ,
 							response.data.message ,
 							'success'  );
-						this.$router.push({path: '/admin/item_stock/'+ this.itemVariant.id })
+						this.$router.push({path: '/admin/item/stock/'+ this.itemVariant.id })
 					}
 				}).catch( (error) => {
 					if(error.response.status==422){
@@ -129,10 +129,11 @@
 				} )
 			},
 			async getItemVariant(itemVariantId){
-				window.axios.get('item_variants/'+itemVariantId).then( (response) => {
+				window.axios.get('create_item_variant_stocks/'+itemVariantId).then( (response) => {
 					if(response.data.message=='Loading'){
 						showSwalLoading(this);
 					}else{
+						this.fields.stock=response.data.item_stock.stock
 						this.itemVariant=response.data.item_variant
 						this.itemColor=getItemColor(response.data)
 						this.stock=this.itemColor + "'s Stock"
