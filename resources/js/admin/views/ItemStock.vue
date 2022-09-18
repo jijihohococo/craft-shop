@@ -1,5 +1,5 @@
 <template>
-	<ContentHeader :header="getContent(itemColor)" 
+	<ContentHeader :header="content" 
 	:back_links="[
 	{ 'route' : '/admin/item' , 'title' : 'Item' },
 	{ 'route' : '/admin/item/variant/'+this.$route.params.item_varaint_id , 'title' : itemColor }
@@ -25,10 +25,18 @@
 								<table class="table table-hover text-nowrap">
 									<thead>
 										<tr>
+											<th>Quantity</th>
+											<th>Stock</th>
+											<th>Available Stock</th>
+											<th>Operation</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr v-for="stock in item_stocks.data" :key="stock.id">
+											<td>{{ stock.qty }}</td>
+											<td>{{ stock.stock }}</td>
+											<td>{{ stock.available_stock }}</td>
+											<td><EditButton v-if="actions.update" :content="content" link="item_stock.edit" :dataId="stock.id" /></td>
 											</tr>
 										</tbody>
 									</table>
@@ -81,7 +89,7 @@
 			},
 			data () {
 				return {
-					content : 'Item Stock',
+					content : null,
 					item_stocks : {},
 					itemColor : null ,
 					search : null ,
@@ -106,6 +114,7 @@
 				getData(responseData){
 					this.item_stocks=responseData.item_stocks
 					this.itemColor=getItemColor(responseData);
+					this.content=this.getContent(this.itemColor)
 					this.actions.read=true
 				},
 				searchItemStocks(page){

@@ -9,7 +9,7 @@ abstract class ItemVariantCommonController extends Controller
     //
     public function __construct(){
         $this->middleware('rolePermission:'.$this->model.',read')->only(['index','search']);
-        $this->middleware('rolePermission:'.$this->model.',create')->only(['create']);
+        $this->middleware('rolePermission:'.$this->model.',create')->only(['store']);
         $this->middleware('rolePermission:'.$this->model.',update')->only([
             'edit','update'
         ]);
@@ -32,7 +32,8 @@ abstract class ItemVariantCommonController extends Controller
     public function edit($id)
     {
         //
-        $data=$this->model::findOrFail($id);
+        $model='App\Models\\'.$this->model;
+        $data=$model::findOrFail($id);
         return response()->json([
             $this->createEdit => $data ,
             'item_variant' => $this->getItemVariant($data->item_variant_id)

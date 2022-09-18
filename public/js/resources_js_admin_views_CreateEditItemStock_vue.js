@@ -118,6 +118,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       header: null,
       stock: null,
       fields: {
+        stock: 0,
         qty: '',
         available_stock: ''
       },
@@ -172,9 +173,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getContentStock: function getContentStock(data) {
       return data + "'s Stock";
     },
-    createItemStock: function createItemStock() {},
-    getItemVariant: function getItemVariant(itemVariantId) {
+    updateItemStock: function updateItemStock() {
       var _this2 = this;
+
+      window.axios.post('update_item_variant_stocks/' + this.$route.params.id, this.fields).then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this2);
+        } else {
+          _this2.$swal('Success', response.data.message, 'success');
+
+          _this2.$router.push({
+            path: '/admin/item_stock/' + _this2.itemVariant.id
+          });
+        }
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this2.errors = error.response.data.errors;
+        } else {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.errorResponse)(error, _this2, 'update');
+        }
+      });
+    },
+    createItemStock: function createItemStock() {
+      var _this3 = this;
+
+      window.axios.post("save_item_variant_stocks/" + this.itemVariant.id, this.fields).then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this3);
+        } else {
+          _this3.$swal('Success', response.data.message, 'success');
+
+          _this3.$router.push({
+            path: '/admin/item_stock/' + _this3.itemVariant.id
+          });
+        }
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this3.errors = error.response.data.errors;
+        } else {
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.errorResponse)(error, _this3, 'create');
+        }
+      });
+    },
+    getItemVariant: function getItemVariant(itemVariantId) {
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
@@ -183,12 +225,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 window.axios.get('item_variants/' + itemVariantId).then(function (response) {
                   if (response.data.message == 'Loading') {
-                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this2);
+                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this4);
                   } else {
-                    _this2.itemVariant = response.data.item_variant;
-                    _this2.itemColor = (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.getItemColor)(response.data);
-                    _this2.stock = _this2.itemColor + "'s Stock";
-                    _this2.header = "Create " + _this2.stock;
+                    _this4.itemVariant = response.data.item_variant;
+                    _this4.itemColor = (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.getItemColor)(response.data);
+                    _this4.stock = _this4.itemColor + "'s Stock";
+                    _this4.header = "Create " + _this4.stock;
                   }
                 });
 
@@ -201,7 +243,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     getItemStockData: function getItemStockData(itemStockId) {
-      var _this3 = this;
+      var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
@@ -210,16 +252,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 window.axios.get('item_variant_stocks/' + itemStockId + '/edit').then(function (response) {
                   if (response.data.message == 'Loading') {
-                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this3);
+                    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this5);
                   } else {
-                    _this3.fields = response.data.item_stock;
-                    _this3.itemVariant = response.data.item_variant;
-                    _this3.itemColor = (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.getItemColor)(response.data);
-                    _this3.stock = _this3.itemColor + "'s Stock";
-                    _this3.header = "Update " + _this3.stock;
+                    _this5.fields = response.data.item_stock;
+                    _this5.itemVariant = response.data.item_variant;
+                    _this5.itemColor = (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.getItemColor)(response.data);
+                    _this5.stock = _this5.itemColor + "'s Stock";
+                    _this5.header = "Update " + _this5.stock;
                   }
                 })["catch"](function (error) {
-                  (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.errorResponse)(error, _this3, 'update');
+                  (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.errorResponse)(error, _this5, 'update');
                 });
 
               case 1:
@@ -472,7 +514,10 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_11 = {
   key: 0,
-  "class": "invalid-feedback"
+  "class": "invalid-feedback",
+  style: {
+    "display": "block!important"
+  }
 };
 var _hoisted_12 = {
   "class": "form-group"
@@ -484,7 +529,10 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_14 = {
   key: 0,
-  "class": "invalid-feedback"
+  "class": "invalid-feedback",
+  style: {
+    "display": "block!important"
+  }
 };
 
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -497,8 +545,7 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _this = this,
-      _$data$itemVariant$st;
+  var _this = this;
 
   var _component_ContentHeader = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ContentHeader");
 
@@ -531,9 +578,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 1,
     enctype: "multipart/form-data",
     onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return !isNaN(_this.$route.params.id) ? _ctx.updateItemStock() : $options.createItemStock();
+      return !isNaN(_this.$route.params.id) ? $options.updateItemStock() : $options.createItemStock();
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$data$itemVariant$st = $data.itemVariant.stock) !== null && _$data$itemVariant$st !== void 0 ? _$data$itemVariant$st : 0), 1
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.fields.stock), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",

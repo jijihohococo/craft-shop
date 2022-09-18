@@ -55,7 +55,7 @@ class ItemStockController extends ItemVariantCommonController
             'stock' => $qty ,
             'available_stock' => $request->available_stock  
         ]);
-        return response()->jso([
+        return response()->json([
             'message' => "Item Stock is created successfully"
         ]);
     }
@@ -73,6 +73,14 @@ class ItemStockController extends ItemVariantCommonController
        $openingItem=ItemStock::lockForUpdate()->findOrFail($id);
        $request->validate($this->validateData($openingItem->item_variant_id,$id));
        $updatedStock=($openingItem->stock-$openingItem->qty)+$request->qty;
+       if($request->available_stock>$updatedStock){
+        return response()->json([
+                'message' => 'The given data was invalid.',
+                'errors'  => [
+                    'available_stock' => ['The available stock is more than stock']
+                ]
+            ],422);
+       }
        $openingItem->update([
         'stock' => $updatedStock ,
         'available_stock' => $request->available_stock,

@@ -16,17 +16,17 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label>Stock</label>
-									<p>{{ itemVariant.stock ?? 0 }}</p>
+									<p>{{ fields.stock }}</p>
 								</div>
 								<div class="form-group">
 									<label>Quantity</label>
 									<input type="text" :class="[errors && errors.qty ? 'form-control is-invalid' : 'form-control']" placeholder="Quantity" v-model="fields.qty">
-									<strong v-if="errors && errors.qty" class="invalid-feedback">{{ errors.qty[0] }}</strong>
+									<strong v-if="errors && errors.qty" class="invalid-feedback" style="display:block!important;">{{ errors.qty[0] }}</strong>
 								</div>
 								<div class="form-group">
 									<label>Available Stock</label>
 									<input type="text" :class="[errors && errors.available_stock ? 'form-control is-invalid' : 'form-control']" placeholder="Available Stock" v-model="fields.available_stock">
-									<strong v-if="errors && errors.available_stock" class="invalid-feedback">{{ errors.available_stock[0] }}</strong>
+									<strong v-if="errors && errors.available_stock" class="invalid-feedback" style="display:block!important;">{{ errors.available_stock[0] }}</strong>
 								</div>
 							</div>
 						</div>
@@ -62,6 +62,7 @@
 				header : null ,
 				stock : null ,
 				fields : {
+					stock : 0 ,
 					qty : '',
 					available_stock : ''
 				},
@@ -90,8 +91,42 @@
 			getContentStock(data){
 				return data + "'s Stock"
 			},
+			updateItemStock(){
+				window.axios.post('update_item_variant_stocks/'+this.$route.params.id,this.fields).then( (response) => {
+					if(response.data.message=='Loading'){
+						showSwalLoading(this);
+					}else{
+						this.$swal( 'Success' ,
+							response.data.message ,
+							'success')
+						this.$router.push({path: '/admin/item_stock/'+ this.itemVariant.id })
+					}
+				} ).catch( (error) => {
+					if(error.response.status==422){
+						this.errors= error.response.data.errors
+					}else{
+						errorResponse(error,this,'update')
+					}
+				} )
+			},
 			createItemStock(){
+				window.axios.post("save_item_variant_stocks/"+this.itemVariant.id,this.fields ).then( (response) => {
+					if(response.data.message=='Loading'){
 
+						showSwalLoading(this);
+					}else{
+						this.$swal( 'Success' ,
+							response.data.message ,
+							'success'  );
+						this.$router.push({path: '/admin/item_stock/'+ this.itemVariant.id })
+					}
+				}).catch( (error) => {
+					if(error.response.status==422){
+						this.errors= error.response.data.errors
+					}else{
+						errorResponse(error,this,'create')
+					}
+				} )
 			},
 			async getItemVariant(itemVariantId){
 				window.axios.get('item_variants/'+itemVariantId).then( (response) => {

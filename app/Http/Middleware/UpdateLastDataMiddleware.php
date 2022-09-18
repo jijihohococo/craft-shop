@@ -16,6 +16,7 @@ class UpdateLastDataMiddleware
      */
     public function handle(Request $request, Closure $next,$model)
     {
+        $model='App\Models\\'.$model;
         $last=$model::orderBy('id','DESC')->first();
         return $last!==NULL && $request->route('id')==$last->id ? $next($request) : unauthorized();
     }
