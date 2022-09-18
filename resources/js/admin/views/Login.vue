@@ -1,7 +1,7 @@
 <template>
 	<div class="login-box">
 		<div class="login-logo">
-			<a><b>Craft Shop</b></a>
+			<a><b>{{ shop.data.name }}</b></a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="card">
@@ -53,9 +53,11 @@
 </template>
 
 <script>
+	import { shop } from '../../store';
 	export default {
 		data(){
 			return {
+				shop,
 				password : 'fas fa-eye-slash',
 				fields : {
 					email : '',
