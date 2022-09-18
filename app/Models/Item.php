@@ -289,7 +289,7 @@ public function getFeatureProducts(){
 public function getAll(){
     return Cache::tags( self::$cacheKey )->remember('all-items',60*60*24,function(){
         return self::selectShopItem()
-        //->available()
+        ->available()
         ->latest('id')
         ->get();
     });
