@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\ItemStock;
+use App\Rules\StockValidation;
 class ItemStockController extends ItemVariantCommonController
 {
 
@@ -45,6 +46,7 @@ class ItemStockController extends ItemVariantCommonController
     public function store(Request $request,$itemVariantId)
     {
         //
+        $request->validate($this->validateData($itemVariantId));
         $opening=ItemStock::where( 'item_variant_id' , $itemVariantId )->latest('id')->first();
         $qty=$opening==null ? $request->qty : $opening->stock+ $request->qty;
         ItemStock::sharedLock()->create([
@@ -69,6 +71,7 @@ class ItemStockController extends ItemVariantCommonController
     {
         //
        $openingItem=ItemStock::lockForUpdate()->findOrFail($id);
+       $request->validate($this->validateData($openingItem->item_variant_id,$id));
        $updatedStock=($openingItem->stock-$openingItem->qty)+$request->qty;
        $openingItem->update([
         'stock' => $updatedStock ,
@@ -79,5 +82,12 @@ class ItemStockController extends ItemVariantCommonController
        return response()->json([
         'message' => "Item Stock is updated successfully"
        ]);
+   }
+
+   private function validateData($itemVariantId,$id=NULL){
+    return [
+        'qty' => ['required','integer'],
+        'available_stock' => ['required','integer', new StockValidation($itemVariantId)]
+    ];
    }
 }

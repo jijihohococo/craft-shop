@@ -1,3 +1,6 @@
+export function getItemColor(responseData) {
+    return responseData.item_variant.item_name + "'s " + responseData.item_variant.color_name
+}
 export function mergeArray(inputArray){
     let array = [];
     if(inputArray.length>0){

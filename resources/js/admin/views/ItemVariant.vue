@@ -13,7 +13,10 @@
 			display: none !important;
 		}
 	</component>
-	<ContentHeader :header="itemColor" />
+	<ContentHeader :header="itemColor" 
+	:back_links="[
+	{ 'route' : '/admin/item' , 'title' : 'Item' }
+	]"  />
 	<section class="content">
 		<div class="container-fluid">
 			<!-- Small boxes (Stat box) -->

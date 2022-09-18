@@ -1,5 +1,9 @@
 <template>
-	<ContentHeader :header="itemColor" />
+	<ContentHeader :header="getContent(itemColor)" 
+	:back_links="[
+	{ 'route' : '/admin/item' , 'title' : 'Item' },
+	{ 'route' : '/admin/item/variant/'+this.$route.params.item_varaint_id , 'title' : itemColor }
+	]" />
 	<Loading />
 	<section class="content">
 		<div class="container-fluid">
@@ -11,9 +15,9 @@
 							<Search 
 							:read="actions.read"
 							ref="searchModal"
-							@searchData="searchCurrencies"
+							@searchData="searchItemStocks"
 							/>
-							<CreateButton v-if="actions.create" :content="content" link="/admin/currency/create" />
+							<CreateButton v-if="actions.create" :content="content" :link="'/admin/item_stock/create/'+this.$route.params.item_varaint_id" />
 						</div>
 						<!-- /.card-header -->
 						<template v-if="actions.read">
@@ -24,7 +28,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr v-for="stock in item_stocks.data" :key="currency.id">
+										<tr v-for="stock in item_stocks.data" :key="stock.id">
 											</tr>
 										</tbody>
 									</table>
@@ -62,7 +66,7 @@
 
 		import Loading from '../components/Loading';
 
-		import { errorResponse , checkContentPermission , showSwalLoading , makeRoute , checkActions , unauthorizedActions , showPageNumber } from '../helpers/check.js';
+		import { errorResponse , checkContentPermission , showSwalLoading , makeRoute , checkActions , unauthorizedActions , showPageNumber , getItemColor } from '../helpers/check.js';
 
 		export default {
 			components: {
@@ -90,6 +94,9 @@
 				}
 			},
 			methods : {
+				getContent(data){
+					return data + "'s Stock"
+				},
 				checkAuthorizeActions(actions){
 					return checkActions(actions);
 				},
@@ -98,7 +105,7 @@
 				},
 				getData(responseData){
 					this.item_stocks=responseData.item_stocks
-					this.itemColor=responseData.item_variant.item_name + "'s " + responseData.item_variant.color_name + ' Stock';
+					this.itemColor=getItemColor(responseData);
 					this.actions.read=true
 				},
 				searchItemStocks(page){

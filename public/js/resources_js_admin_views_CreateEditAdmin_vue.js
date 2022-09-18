@@ -753,6 +753,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "deleteFromArray": () => (/* binding */ deleteFromArray),
 /* harmony export */   "deleteMultipleData": () => (/* binding */ deleteMultipleData),
 /* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
+/* harmony export */   "getItemColor": () => (/* binding */ getItemColor),
 /* harmony export */   "getModel": () => (/* binding */ getModel),
 /* harmony export */   "makeRoute": () => (/* binding */ makeRoute),
 /* harmony export */   "makeSelect": () => (/* binding */ makeSelect),
@@ -762,6 +763,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions)
 /* harmony export */ });
+function getItemColor(responseData) {
+  return responseData.item_variant.item_name + "'s " + responseData.item_variant.color_name;
+}
 function mergeArray(inputArray) {
   var array = [];
 

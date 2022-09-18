@@ -1,5 +1,9 @@
 <template>
-	<ContentHeader :header="content" :back_link="getLink(this.$route.params.model)" :back_title="this.$route.params.model" />
+	<ContentHeader :header="content"
+	:back_links="[
+	{'route':getLink(this.$route.params.model),'title':this.$route.params.model}
+	]"
+	 />
 	<Loading />
 	<section class="content">
 		<div class="container-fluid">

@@ -41,9 +41,10 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	//--------------ITEM VARIANT----------------//
 
 	//--------------ITEM STOCK----------------//
-	Route::get('item_variant_stocks/{id}','Admin\ItemStockController@index');
-	Route::get('item_variant_stocks_search/{id}','Admin\ItemStockController@search');
-	Route::post('save_item_variant_stocks/{id}','Admin\ItemStockController@save');
+	Route::get('item_variant_stocks/{itemVariantId}','Admin\ItemStockController@index');
+	Route::get('item_variant_stocks_search/{itemVariantId}','Admin\ItemStockController@search');
+	Route::post('save_item_variant_stocks/{itemVariantId}','Admin\ItemStockController@save');
+	Route::get('item_variant_stocks/{id}/edit','Admin\ItemStockController@edit');
 	Route::post('update_item_variant_stocks/{id}','Admin\ItemStockController@update');
 	//--------------ITEM STOCK----------------//
 

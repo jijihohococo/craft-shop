@@ -20150,7 +20150,7 @@ var CreateEditItemStock = function CreateEditItemStock() {
   component: ItemStock,
   name: 'item_stock'
 }, {
-  path: 'item_stock/create',
+  path: 'item_stock/create/:item_varaint_id',
   component: CreateEditItemStock,
   name: 'item_stock.create'
 }, {
