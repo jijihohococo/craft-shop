@@ -153,7 +153,7 @@ class AdminController extends CommonController
     }
 
     public function get(){
-        $admin=auth('admin_api')->user();
+        $admin=auth(Admin::API)->user();
         return $admin!==NULL ? response()->json([
             'admin' => $admin
         ]) : unauthenticated() ;

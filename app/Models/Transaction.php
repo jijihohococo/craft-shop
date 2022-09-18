@@ -35,7 +35,7 @@ class Transaction extends Model
 
 
     public function scopeSelectAdminModel($query,$model,$model_id){
-        return $query->where('guard','admin_api')
+        return $query->where('guard',Admin::API)
             ->where('model',$model)
             ->where('model_id',$model_id);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 use DB;
+use App\Models\Admin;
 trait DataInsertSeeder{
 
 
@@ -12,7 +13,7 @@ trait DataInsertSeeder{
 			$d=$d+['created_at'=>NOW() , 'updated_at' => NOW() ];
 			array_push($data,$d);
             array_push($transactions,[
-                'guard' => 'admin_api',
+                'guard' => Admin::API,
                 'user_id' => 1,
                 'model' => $model,
                 'model_id' => $key + 1,

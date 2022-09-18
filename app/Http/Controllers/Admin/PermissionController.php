@@ -151,7 +151,7 @@ public function trashSearch(Request $request){
 
 public function checkPermission(string $model,string $action){
 
-    $admin=auth('admin_api')->user();
+    $admin=auth(Admin::API)->user();
 
     if($admin==NULL){
         return unauthenticated();
