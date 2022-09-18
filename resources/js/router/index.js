@@ -18,6 +18,7 @@ import orderRoutes from './admin/order';
 import targetRoutes from './admin/target';
 import currencyRoutes from './admin/currency';
 import itemStockRoutes from './admin/item_stock';
+import itemPriceRoutes from './admin/item_price';
 import transactionRoutes from './admin/transaction';
 import taxRoutes from './admin/tax';
 import colorRoutes from './admin/color';
@@ -68,6 +69,7 @@ const router = createRouter({
     ...targetRoutes,
     ...currencyRoutes,
     ...itemStockRoutes,
+    ...itemPriceRoutes,
     ...transactionRoutes,
     ...taxRoutes,
     ...colorRoutes

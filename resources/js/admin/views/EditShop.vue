@@ -4,14 +4,15 @@
 			display: none !important;
 		}
 	</component>
-	<CreateEditHeader :header="content" />
+	<ContentHeader 
+	header="Update Shop" 
+	:back_links="[
+	{ 'route' : '/admin/shop' , 'title' : content }
+	]"   />
 	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div class="card card-default">
-				<div class="card-header">
-					<h3 class="card-title">Update Shop</h3>
-				</div>
 				<Error v-if="actions[current]==false" :httpStatus="errors.error_status" :title="errors.error_title" :description="errors.error_description" />
 				<form v-else-if="actions[current]" 
 				enctype="multipart/form-data" 
@@ -59,7 +60,7 @@
 	
 </template>
 <script >
-	import CreateEditHeader from '../components/CreateEditHeader';
+	import ContentHeader from '../components/ContentHeader';
 
 	import { errorResponse , checkContentPermission , showSwalLoading } from '../helpers/check.js';
 
@@ -73,7 +74,7 @@
 
 	export default {
 		components: {
-			CreateEditHeader,
+			ContentHeader,
 			Error,
 			File,
 			Loading

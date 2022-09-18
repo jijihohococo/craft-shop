@@ -58,9 +58,9 @@
 			return {
 				content : 'ItemStock',
 				itemVariant : {},
-				itemColor : null ,
-				header : null ,
-				stock : null ,
+				itemColor : '' ,
+				header : '' ,
+				stock : '' ,
 				fields : {
 					stock : 0 ,
 					qty : '',

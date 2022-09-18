@@ -5,14 +5,17 @@
 			color : white !important;
 		}
 	</component>
-	<CreateEditHeader :header="content" />
+	<ContentHeader
+	:header="isNaN(this.$route.params.id) ? 
+	'Create '+content : 'Update '+content" 
+	:back_links="[
+	{ 'route' : '/admin/role' , 'title' : content }
+	]"
+	 />
 	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div class="card card-default">
-				<div class="card-header">
-					<h3 class="card-title">{{ isNaN(this.$route.params.id) ? "Create Role" : "Update Role" }}</h3>
-				</div>
 				<Error v-if="actions[current]==false" :httpStatus="errors.error_status" :title="errors.error_title" :description="errors.error_description" />
 				<form v-else-if="actions[current]" @submit.prevent=" !isNaN(this.$route.params.id) ? updateRole() : createRole()">
 					<div class="card-body">
@@ -44,7 +47,7 @@
 </template>
 <script >
 
-	import CreateEditHeader from '../components/CreateEditHeader';
+	import ContentHeader from '../components/ContentHeader';
 
 	import { errorResponse , checkContentPermission , showSwalLoading , mergeArray } from '../helpers/check.js';
 
@@ -56,7 +59,7 @@
 	
 	export default {
 		components: {
-			CreateEditHeader,
+			ContentHeader,
 			Error,
 			Loading,
 			SelectMultiple

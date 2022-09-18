@@ -114,9 +114,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       content: 'ItemStock',
       itemVariant: {},
-      itemColor: null,
-      header: null,
-      stock: null,
+      itemColor: '',
+      header: '',
+      stock: '',
       fields: {
         stock: 0,
         qty: '',
