@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Order,OrderDetail};
+use App\Models\{Order,OrderDetail,User};
 use App\Repositories\OrderRepositoryInterface;
 class OrderController extends Controller
 {
@@ -12,7 +12,7 @@ class OrderController extends Controller
     private $user , $order;
 
     public function __construct(OrderRepositoryInterface $order){
-        $this->user=auth('user_api')->user();
+        $this->user=auth(User::API)->user();
         $this->order=$order;
     }
 

@@ -26,12 +26,7 @@ abstract class LoginController extends Controller
             'refresh_token' => $this->refreshToken  ],$token,'Login Success');
 
         }catch(\Throwable $e){
-            return response()->json([
-                'message' => 'The given data was invalid.',
-                'errors' => [
-                    'account' => ['Login Failed']
-                ]
-            ],401);
+            return loginFailed();
         }
     }
 }

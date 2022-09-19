@@ -2,6 +2,14 @@
 
 use App\Models\{PassportDate,TokenRefresh};
 use Illuminate\Support\Facades\Route;
+function loginFailed(){
+	return response()->json([
+		'message' => 'The given data was invalid.',
+		'errors' => [
+			'account' => ['Login Failed']
+		]
+	],401);
+}
 function stockWarning(){
 	return 'The available stock is more than actual stock';
 }
