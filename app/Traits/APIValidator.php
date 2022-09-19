@@ -20,12 +20,5 @@ trait APIValidator{
         ]);
     }
 
-    public function makeErrorMessage($validator){
-    	return response()->json([
-                'message' => 'The given data was invalid.',
-                'errors'  => $validator->errors()
-            ],422);
-    }
-
 
 }

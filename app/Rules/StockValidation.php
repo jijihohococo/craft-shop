@@ -39,6 +39,6 @@ class StockValidation implements Rule
      */
     public function message()
     {
-        return 'The available stock is more than stock';
+        return stockWarning();
     }
 }

@@ -2,14 +2,23 @@
 
 use App\Models\{PassportDate,TokenRefresh};
 use Illuminate\Support\Facades\Route;
+function stockWarning(){
+	return 'The available stock is more than actual stock';
+}
+function makeErrorMessage($errors){
+	return response()->json([
+		'message' => 'The given data was invalid.',
+		'errors'  => $errors
+	],422);
+}
 function getLastData($field){
 	return " SUBSTRING_INDEX( GROUP_CONCAT(".$field.") ,',',1) ";
 }
 function getToken(array $data,$token,$message){
 	return response()->json([
-                'message' => $message
-            ])->withCookie( cookie($data['access_token'], $token->original['access_token'], changeDaysToMinutes(PassportDate::ACCESS_TOKEN_EXPIRE_DAY), null, null, true) )
-            ->withCookie( cookie($data['refresh_token'],$token->original['refresh_token'],changeDaysToMinutes(PassportDate::REFRESH_TOKEN_EXPIRE_DAY),null,null,true) );
+		'message' => $message
+	])->withCookie( cookie($data['access_token'], $token->original['access_token'], changeDaysToMinutes(PassportDate::ACCESS_TOKEN_EXPIRE_DAY), null, null, true) )
+	->withCookie( cookie($data['refresh_token'],$token->original['refresh_token'],changeDaysToMinutes(PassportDate::REFRESH_TOKEN_EXPIRE_DAY),null,null,true) );
 }
 
 function setTokenData(array $data,$next,$request){
@@ -21,6 +30,14 @@ function setTokenData(array $data,$next,$request){
 	$tokenRefresh->setGuardName($data['api']);
 	$tokenRefresh->setClientId($data['client_id']);
 	return $tokenRefresh;
+}
+
+function adminItemVariantResourceApi($plural,$controller){
+	Route::get('item_variant_'.$plural.'/{itemVariantId}','Admin\\'.$controller.'@index');
+	Route::get('item_variant_'.$plural.'_search/{itemVariantId}','Admin\\'.$controller.'@search');
+	Route::post('save_item_variant_'.$plural.'/{itemVariantId}','Admin\\'.$controller.'@store');
+	Route::get('item_variant_'.$plural.'/{id}/edit','Admin\\'.$controller.'@edit');
+	Route::post('update_item_variant_'.$plural.'/{id}','Admin\\'.$controller.'@update');
 }
 
 function adminResourceApi($content,$plural,$controller){

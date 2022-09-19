@@ -227,7 +227,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   if (response.data.message == 'Loading') {
                     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this4);
                   } else {
-                    _this4.fields.stock = response.data.item_stock.stock;
+                    if (response.data.item_stock !== null) {
+                      _this4.fields.stock = response.data.item_stock.stock;
+                    }
+
                     _this4.itemVariant = response.data.item_variant;
                     _this4.itemColor = (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.getItemColor)(response.data);
                     _this4.stock = _this4.itemColor + "'s Stock";

@@ -28,7 +28,7 @@ class ItemController extends Controller
     public function shop(Request $request,$content,$contentId=null){
         $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),$this->acceptArray );
         if($validator->fails()){
-            return $this->makeErrorMessage($validator);
+            return makeErrorMessage($validator->errors());
         }
         $items=[];
 

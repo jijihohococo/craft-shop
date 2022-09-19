@@ -77,32 +77,29 @@ class ItemStockController extends ItemVariantCommonController
     public function update(Request $request, $id)
     {
         //
-       $openingItem=ItemStock::lockForUpdate()->findOrFail($id);
-       $request->validate($this->validateData($openingItem->item_variant_id,$id));
-       $updatedStock=($openingItem->stock-$openingItem->qty)+$request->qty;
-       if($request->available_stock>$updatedStock){
-        return response()->json([
-                'message' => 'The given data was invalid.',
-                'errors'  => [
-                    'available_stock' => ['The available stock is more than stock']
-                ]
-            ],422);
-       }
-       $openingItem->update([
+     $openingItem=ItemStock::lockForUpdate()->findOrFail($id);
+     $request->validate($this->validateData($openingItem->item_variant_id,$id));
+     $updatedStock=($openingItem->stock-$openingItem->qty)+$request->qty;
+     if($request->available_stock>$updatedStock){
+        return makeErrorMessage([
+            'available_stock' => [stockWarning()]
+        ]);
+    }
+    $openingItem->update([
         'stock' => $updatedStock ,
         'available_stock' => $request->available_stock,
         'qty' => $request->qty
-       ]);
+    ]);
 
-       return response()->json([
+    return response()->json([
         'message' => "Item Stock is updated successfully"
-       ]);
-   }
+    ]);
+}
 
-   private function validateData($itemVariantId,$id=NULL){
+private function validateData($itemVariantId,$id=NULL){
     return [
         'qty' => ['required','integer'],
         'available_stock' => ['required','integer', new StockValidation($itemVariantId)]
     ];
-   }
+}
 }

@@ -133,7 +133,9 @@
 					if(response.data.message=='Loading'){
 						showSwalLoading(this);
 					}else{
-						this.fields.stock=response.data.item_stock.stock
+						if(response.data.item_stock!==null){
+							this.fields.stock=response.data.item_stock.stock
+						}
 						this.itemVariant=response.data.item_variant
 						this.itemColor=getItemColor(response.data)
 						this.stock=this.itemColor + "'s Stock"

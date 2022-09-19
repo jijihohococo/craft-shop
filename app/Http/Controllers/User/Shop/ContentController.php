@@ -34,7 +34,7 @@ abstract class ContentController extends Controller
     public function getDataByContent(Request $request,$content,$contentId=NULL){
         $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),$this->acceptArray);
         if($validator->fails()){
-            return $this->makeErrorMessage($validator);
+            return makeErrorMessage($validator->errors());
         }
         return $this->getContent($content,$contentId,$this->makeSearch($request->search));
     }

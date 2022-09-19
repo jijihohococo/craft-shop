@@ -42,6 +42,15 @@ class ItemPriceController extends ItemVariantCommonController
         );
     }
 
+    private function getData($request,$itemVariantId){
+        return [
+            'currency_id' => $request->currency_id ,
+            'tax_id' => $request->tax_id ,
+            'item_variant_id' => $itemVariantId,
+            'price' => $request->price
+        ];
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -51,6 +60,11 @@ class ItemPriceController extends ItemVariantCommonController
     public function store(Request $request,$itemVariantId)
     {
         //
+        $request->validate($this->validateData());
+        ItemPrice::create($this->getData($request,$itemVariantId));
+        return response()->json([
+            'message' => 'Item Price is created successfully'
+        ]);
     }
 
     /**
@@ -64,10 +78,6 @@ class ItemPriceController extends ItemVariantCommonController
         //
     }
 
-    public function getEditData($id){
-        return ItemPrice::findOrFail($id);
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -78,5 +88,19 @@ class ItemPriceController extends ItemVariantCommonController
     public function update(Request $request, $id)
     {
         //
+        $request->validate($this->validateData());
+        $itemPrice=ItemPrice::findOrFail($id);
+        $itemPrice->update($request,$itemPrice->item_variant_id);
+        return response()->json([
+            'message' => 'Item Price is updated successfully'
+        ]);
+    }
+
+    private function validateData(){
+        return [
+            'currency_id' => ['required','integer'],
+            'tax_id' => ['required','integer'],
+            'price' => requiredDouble()
+        ];
     }
 }
