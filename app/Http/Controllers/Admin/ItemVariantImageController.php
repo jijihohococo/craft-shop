@@ -24,10 +24,14 @@ class ItemVariantImageController extends Controller
 
     public function index($id){
         return response()->json([
-            'images' => ItemImage::where('item_variant_id',$id)
-            ->latest('id')
-            ->get()
+            'images' => $this->getImages($id)
         ]);
+    }
+
+    public function getImages($id){
+        return ItemImage::where('item_variant_id',$id)
+            ->latest('id')
+            ->get();
     }
 
     public function upload(Request $request,$id){
@@ -36,7 +40,8 @@ class ItemVariantImageController extends Controller
         ]);
         $this->insertImage($id);
         return response()->json([
-            'message' => "Item Images are uploaded"
+            'message' => "Item Images are uploaded",
+            'images' => $this->getImages($id)
         ]);
     }
 
