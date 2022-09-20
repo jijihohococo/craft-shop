@@ -22,8 +22,6 @@ Route::view('/admin/{any}','admin.index')->where('any','.*')->middleware('checkA
 //----------------USER FRONTEND ROUTES----------------//
 $userRoutes=[
 	null,
-	'register',
-	'login',
 	'privacy_policy',
 	'contact_us',
 	'about_us',
@@ -43,7 +41,7 @@ $userRoutes=[
 //----------------USER FRONTEND ROUTES----------------//
 
 
-	//----------------SOCIAL LOGIN----------------//
+	//----------------LOGIN & REGISTER----------------//
 	Route::group(['middleware' => [ 'checkUserCookie'] ], function () {
 		Route::get('/redirect/{social}',
 			'User\Auth\SocialLoginController@redirect');
@@ -51,6 +49,9 @@ $userRoutes=[
 			'User\Auth\SocialLoginController@fbCallBack');
 		Route::get('/googleCallBack',
 			'User\Auth\SocialLoginController@googleCallBack');
+		Route::view('/register','user.index');
+		Route::view('/login','user.index');
+		Route::view('/forgot_password','user.index');
 	});
 	//----------------SOCIAL LOGIN----------------//
 
