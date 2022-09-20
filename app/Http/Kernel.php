@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'shop' => \App\Http\Middleware\ShopMiddleware::class ,
         'checkAdminCookie' => \App\Http\Middleware\CheckAdminCookieMiddleware::class,
+        'checkUserCookie' => \App\Http\Middleware\CheckUserCookieMiddleware::class,
         'admin_auth' => \App\Http\Middleware\AdminAuthMiddleware::class,
         'user_auth' => \App\Http\Middleware\UserAuthMiddleware::class,
         'rolePermission' => \App\Http\Middleware\RolePermissionMiddleware::class ,

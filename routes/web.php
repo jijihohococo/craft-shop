@@ -13,15 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// ADMIN ROUTES //
+//----------------ADMIN FRONTEND ROUTES----------------//
 Route::view('/admin/{any}','admin.index')->where('any','.*')->middleware('checkAdminCookie');
-// ADMIN ROUTES //
+//----------------ADMIN FRONTEND ROUTES----------------//
 
-// USER FRONTEND ROUTES //
+
+
+//----------------USER FRONTEND ROUTES----------------//
 $userRoutes=[
 	null,
 	'register',
@@ -42,6 +40,21 @@ $userRoutes=[
 	foreach($userRoutes as $userRoute){
 		Route::view('/'.$userRoute,'user.index');
 	}
+//----------------USER FRONTEND ROUTES----------------//
 
-	Route::get('/image/{folder}/{imageUrl}','ImageCacheController@cacheImage');
-// USER FRONTEND ROUTES //
+
+	//----------------SOCIAL LOGIN----------------//
+	Route::group(['middleware' => [ 'checkUserCookie'] ], function () {
+		Route::get('/redirect/{social}',
+			'User\Auth\SocialLoginController@redirect');
+		Route::get('/callback',
+			'User\Auth\SocialLoginController@fbCallBack');
+		Route::get('/googleCallBack',
+			'User\Auth\SocialLoginController@googleCallBack');
+	});
+	//----------------SOCIAL LOGIN----------------//
+
+	//----------------ALL IMAGE ROUTES----------------//
+	Route::get('/image/{folder}/{imageUrl}',
+		'ImageCacheController@cacheImage');
+	//----------------ALL IMAGE ROUTES----------------//
