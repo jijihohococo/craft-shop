@@ -60,8 +60,6 @@
 	<script >
 		import Pagination from '../components/Pagination';
 
-		import Delete from '../components/Delete';
-
 		import ContentHeader from '../components/ContentHeader';
 
 		import CreateButton from '../components/CreateButton';
@@ -80,7 +78,6 @@
 			components: {
 				Pagination,
 				ContentHeader,
-				Delete,
 				CreateButton,
 				EditButton,
 				Error,
