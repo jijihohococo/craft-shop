@@ -24,9 +24,9 @@ class AttributeController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'attributes' => Attribute::latest('id')->paginate(10)
-        ]);
+        return $this->indexPage(
+            Attribute::latest('id')->paginate(10)
+        );
     }
 
     /**
@@ -111,23 +111,23 @@ class AttributeController extends CommonController
 
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'attributes' => Attribute::searchWithName($searchData)
+        return $this->indexPage(
+            Attribute::searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'attributes' => Attribute::onlyTrashed()
+        return $this->indexPage(
+            Attribute::onlyTrashed()
             ->searchWithName($searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     private function addAttributeSets($sets,$id,$update=null){
