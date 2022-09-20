@@ -143,9 +143,9 @@ class AttributeController extends CommonController
     }
 
     public function get(){
-        return response()->json([
-            'attributes' => (new Attribute)->getAll()
-        ]);
+        return $this->indexPage(
+            (new Attribute)->getAll()
+        );
     }
 
     public function getAtrributeSets($attributeId){
@@ -161,8 +161,8 @@ class AttributeController extends CommonController
     }
 
     public function trash(){
-        return response()->json([
-            'attributes' => Attribute::onlyTrashed()->latest('id')->paginate(10)
-        ]);
+        return $this->indexPage(
+            Attribute::onlyTrashed()->latest('id')->paginate(10)
+        );
     }
 }
