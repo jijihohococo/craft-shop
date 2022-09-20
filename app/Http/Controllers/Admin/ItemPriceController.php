@@ -25,7 +25,7 @@ class ItemPriceController extends ItemVariantCommonController
             ->selectTax()
             ->ofItemVariant($itemVariantId)
             ->latest('id')
-            ->paginate(10)
+            ->paginate(10),$itemVariantId
         );
     }
 
@@ -38,7 +38,7 @@ class ItemPriceController extends ItemVariantCommonController
             ->where('price','like',$searchData)
             ->searchWithCurrency($searchData)
             ->latest('id')
-            ->paginate(10)
+            ->paginate(10),$itemVariantId
         );
     }
 
