@@ -20318,6 +20318,45 @@ var CreateEditPermission = function CreateEditPermission() {
 
 /***/ }),
 
+/***/ "./resources/js/router/admin/promotion.js":
+/*!************************************************!*\
+  !*** ./resources/js/router/admin/promotion.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var Promotion = function Promotion() {
+  return __webpack_require__.e(/*! import() */ "resources_js_admin_views_Promotion_vue").then(__webpack_require__.bind(__webpack_require__, /*! Admin/Views/Promotion */ "./resources/js/admin/views/Promotion.vue"));
+};
+
+var CreateEditPromotion = function CreateEditPromotion() {
+  return __webpack_require__.e(/*! import() */ "resources_js_admin_views_CreateEditPromotion_vue").then(__webpack_require__.bind(__webpack_require__, /*! Admin/Views/CreateEditPromotion */ "./resources/js/admin/views/CreateEditPromotion.vue"));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
+  path: 'promotion',
+  component: Promotion,
+  name: 'promotion'
+}, {
+  path: 'promotion/create',
+  component: CreateEditPromotion,
+  name: 'promotion.create'
+}, {
+  path: 'promotion/edit/:id',
+  component: CreateEditPromotion,
+  name: 'promotion.edit'
+}, {
+  path: 'promotion_bin',
+  component: Promotion,
+  name: 'promotion_bin'
+}]);
+
+/***/ }),
+
 /***/ "./resources/js/router/admin/role.js":
 /*!*******************************************!*\
   !*** ./resources/js/router/admin/role.js ***!
@@ -20562,7 +20601,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
 /* harmony import */ var _admin_user__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./admin/user */ "./resources/js/router/admin/user.js");
 /* harmony import */ var _admin_shop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./admin/shop */ "./resources/js/router/admin/shop.js");
 /* harmony import */ var _admin_admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin/admin */ "./resources/js/router/admin/admin.js");
@@ -20585,8 +20624,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_tax__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./admin/tax */ "./resources/js/router/admin/tax.js");
 /* harmony import */ var _admin_color__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./admin/color */ "./resources/js/router/admin/color.js");
 /* harmony import */ var _admin_subcategory__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./admin/subcategory */ "./resources/js/router/admin/subcategory.js");
-/* harmony import */ var _user_page__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./user/page */ "./resources/js/router/user/page.js");
-/* harmony import */ var _user_usernotfound__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./user/usernotfound */ "./resources/js/router/user/usernotfound.js");
+/* harmony import */ var _admin_promotion__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./admin/promotion */ "./resources/js/router/admin/promotion.js");
+/* harmony import */ var _user_page__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./user/page */ "./resources/js/router/user/page.js");
+/* harmony import */ var _user_usernotfound__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./user/usernotfound */ "./resources/js/router/user/usernotfound.js");
 /* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -20623,6 +20663,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
  //------ADMIN ROUTES------//
 //------User ROUTES------//
 
@@ -20637,17 +20678,17 @@ var UserPage = function UserPage() {
   return __webpack_require__.e(/*! import() */ "resources_js_UserPage_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../UserPage.vue */ "./resources/js/UserPage.vue"));
 };
 
-var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_24__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_24__.createWebHistory)(process.env.BASE_URL),
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_25__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_25__.createWebHistory)(process.env.BASE_URL),
   //mode : 'history',
   routes: [{
     path: '/',
     component: UserPage,
-    children: [].concat(_toConsumableArray(_user_page__WEBPACK_IMPORTED_MODULE_22__["default"]), _toConsumableArray(_user_usernotfound__WEBPACK_IMPORTED_MODULE_23__["default"]))
+    children: [].concat(_toConsumableArray(_user_page__WEBPACK_IMPORTED_MODULE_23__["default"]), _toConsumableArray(_user_usernotfound__WEBPACK_IMPORTED_MODULE_24__["default"]))
   }, {
     path: '/admin',
     component: AdminPage,
-    children: [].concat(_toConsumableArray(_admin_login__WEBPACK_IMPORTED_MODULE_9__["default"]), _toConsumableArray(_admin_user__WEBPACK_IMPORTED_MODULE_0__["default"]), _toConsumableArray(_admin_shop__WEBPACK_IMPORTED_MODULE_1__["default"]), _toConsumableArray(_admin_admin__WEBPACK_IMPORTED_MODULE_2__["default"]), _toConsumableArray(_admin_dashboard__WEBPACK_IMPORTED_MODULE_5__["default"]), _toConsumableArray(_admin_banner__WEBPACK_IMPORTED_MODULE_4__["default"]), _toConsumableArray(_admin_brand__WEBPACK_IMPORTED_MODULE_3__["default"]), _toConsumableArray(_admin_category__WEBPACK_IMPORTED_MODULE_8__["default"]), _toConsumableArray(_admin_subcategory__WEBPACK_IMPORTED_MODULE_21__["default"]), _toConsumableArray(_admin_item__WEBPACK_IMPORTED_MODULE_7__["default"]), _toConsumableArray(_admin_attribute__WEBPACK_IMPORTED_MODULE_6__["default"]), _toConsumableArray(_admin_notfound__WEBPACK_IMPORTED_MODULE_10__["default"]), _toConsumableArray(_admin_role__WEBPACK_IMPORTED_MODULE_11__["default"]), _toConsumableArray(_admin_permission__WEBPACK_IMPORTED_MODULE_12__["default"]), _toConsumableArray(_admin_order__WEBPACK_IMPORTED_MODULE_13__["default"]), _toConsumableArray(_admin_target__WEBPACK_IMPORTED_MODULE_14__["default"]), _toConsumableArray(_admin_currency__WEBPACK_IMPORTED_MODULE_15__["default"]), _toConsumableArray(_admin_item_stock__WEBPACK_IMPORTED_MODULE_16__["default"]), _toConsumableArray(_admin_item_price__WEBPACK_IMPORTED_MODULE_17__["default"]), _toConsumableArray(_admin_transaction__WEBPACK_IMPORTED_MODULE_18__["default"]), _toConsumableArray(_admin_tax__WEBPACK_IMPORTED_MODULE_19__["default"]), _toConsumableArray(_admin_color__WEBPACK_IMPORTED_MODULE_20__["default"]))
+    children: [].concat(_toConsumableArray(_admin_login__WEBPACK_IMPORTED_MODULE_9__["default"]), _toConsumableArray(_admin_user__WEBPACK_IMPORTED_MODULE_0__["default"]), _toConsumableArray(_admin_shop__WEBPACK_IMPORTED_MODULE_1__["default"]), _toConsumableArray(_admin_admin__WEBPACK_IMPORTED_MODULE_2__["default"]), _toConsumableArray(_admin_dashboard__WEBPACK_IMPORTED_MODULE_5__["default"]), _toConsumableArray(_admin_banner__WEBPACK_IMPORTED_MODULE_4__["default"]), _toConsumableArray(_admin_brand__WEBPACK_IMPORTED_MODULE_3__["default"]), _toConsumableArray(_admin_category__WEBPACK_IMPORTED_MODULE_8__["default"]), _toConsumableArray(_admin_subcategory__WEBPACK_IMPORTED_MODULE_21__["default"]), _toConsumableArray(_admin_item__WEBPACK_IMPORTED_MODULE_7__["default"]), _toConsumableArray(_admin_attribute__WEBPACK_IMPORTED_MODULE_6__["default"]), _toConsumableArray(_admin_notfound__WEBPACK_IMPORTED_MODULE_10__["default"]), _toConsumableArray(_admin_role__WEBPACK_IMPORTED_MODULE_11__["default"]), _toConsumableArray(_admin_permission__WEBPACK_IMPORTED_MODULE_12__["default"]), _toConsumableArray(_admin_order__WEBPACK_IMPORTED_MODULE_13__["default"]), _toConsumableArray(_admin_target__WEBPACK_IMPORTED_MODULE_14__["default"]), _toConsumableArray(_admin_currency__WEBPACK_IMPORTED_MODULE_15__["default"]), _toConsumableArray(_admin_item_stock__WEBPACK_IMPORTED_MODULE_16__["default"]), _toConsumableArray(_admin_item_price__WEBPACK_IMPORTED_MODULE_17__["default"]), _toConsumableArray(_admin_transaction__WEBPACK_IMPORTED_MODULE_18__["default"]), _toConsumableArray(_admin_tax__WEBPACK_IMPORTED_MODULE_19__["default"]), _toConsumableArray(_admin_color__WEBPACK_IMPORTED_MODULE_20__["default"]), _toConsumableArray(_admin_promotion__WEBPACK_IMPORTED_MODULE_22__["default"]))
   }]
 }); // router.beforeEach((to,from,next) => {
 //   if(to.matched.some(r => r.meta.requireAdmin) && getCookie('admin_auth')==null  ){
@@ -42775,7 +42816,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/var/www/html/craft-shop
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_AdminPage_vue":1,"resources_js_UserPage_vue":1,"resources_js_admin_views_User_vue":1,"resources_js_admin_views_Shop_vue":1,"resources_js_admin_views_EditShop_vue":1,"resources_js_admin_views_Admin_vue":1,"resources_js_admin_views_CreateEditAdmin_vue":1,"resources_js_admin_views_Brand_vue":1,"resources_js_admin_views_CreateEditBrand_vue":1,"resources_js_admin_views_Banner_vue":1,"resources_js_admin_views_CreateEditBanner_vue":1,"resources_js_admin_views_Dashboard_vue":1,"resources_js_admin_views_Attribute_vue":1,"resources_js_admin_views_CreateEditAttribute_vue":1,"resources_js_admin_views_Item_vue":1,"resources_js_admin_views_CreateEditItem_vue":1,"resources_js_admin_views_ItemVariant_vue":1,"resources_js_admin_views_Category_vue":1,"resources_js_admin_views_CreateEditCategory_vue":1,"resources_js_admin_views_Login_vue":1,"resources_js_admin_views_NotFound_vue":1,"resources_js_admin_views_Role_vue":1,"resources_js_admin_views_CreateEditRole_vue":1,"resources_js_admin_views_Permission_vue":1,"resources_js_admin_views_CreateEditPermission_vue":1,"resources_js_admin_views_Order_vue":1,"resources_js_admin_views_EditOrder_vue":1,"resources_js_admin_views_Target_vue":1,"resources_js_admin_views_CreateEditTarget_vue":1,"resources_js_admin_views_Currency_vue":1,"resources_js_admin_views_CreateEditCurrency_vue":1,"resources_js_admin_views_ItemStock_vue":1,"resources_js_admin_views_CreateEditItemStock_vue":1,"resources_js_admin_views_ItemPrice_vue":1,"resources_js_admin_views_CreateEditItemPrice_vue":1,"resources_js_admin_views_Transaction_vue":1,"resources_js_admin_views_Tax_vue":1,"resources_js_admin_views_CreateEditTax_vue":1,"resources_js_admin_views_Color_vue":1,"resources_js_admin_views_CreateEditColor_vue":1,"resources_js_admin_views_Subcategory_vue":1,"resources_js_admin_views_CreateEditSubcategory_vue":1,"resources_js_user_views_PrivacyPolicy_vue":1,"resources_js_user_views_ContactUs_vue":1,"resources_js_user_views_AboutUs_vue":1,"resources_js_user_views_FAQ_vue":1,"resources_js_user_views_ReturnPolicy_vue":1,"resources_js_user_views_TermsAndConditions_vue":1,"resources_js_user_views_Home_vue":1,"resources_js_user_views_ShoppingCart_vue":1,"resources_js_user_views_WishList_vue":1,"resources_js_user_views_Shop_vue":1,"resources_js_user_views_Register_vue":1,"resources_js_user_views_Login_vue":1,"resources_js_user_views_NotFound_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_AdminPage_vue":1,"resources_js_UserPage_vue":1,"resources_js_admin_views_User_vue":1,"resources_js_admin_views_Shop_vue":1,"resources_js_admin_views_EditShop_vue":1,"resources_js_admin_views_Admin_vue":1,"resources_js_admin_views_CreateEditAdmin_vue":1,"resources_js_admin_views_Brand_vue":1,"resources_js_admin_views_CreateEditBrand_vue":1,"resources_js_admin_views_Banner_vue":1,"resources_js_admin_views_CreateEditBanner_vue":1,"resources_js_admin_views_Dashboard_vue":1,"resources_js_admin_views_Attribute_vue":1,"resources_js_admin_views_CreateEditAttribute_vue":1,"resources_js_admin_views_Item_vue":1,"resources_js_admin_views_CreateEditItem_vue":1,"resources_js_admin_views_ItemVariant_vue":1,"resources_js_admin_views_Category_vue":1,"resources_js_admin_views_CreateEditCategory_vue":1,"resources_js_admin_views_Login_vue":1,"resources_js_admin_views_NotFound_vue":1,"resources_js_admin_views_Role_vue":1,"resources_js_admin_views_CreateEditRole_vue":1,"resources_js_admin_views_Permission_vue":1,"resources_js_admin_views_CreateEditPermission_vue":1,"resources_js_admin_views_Order_vue":1,"resources_js_admin_views_EditOrder_vue":1,"resources_js_admin_views_Target_vue":1,"resources_js_admin_views_CreateEditTarget_vue":1,"resources_js_admin_views_Currency_vue":1,"resources_js_admin_views_CreateEditCurrency_vue":1,"resources_js_admin_views_ItemStock_vue":1,"resources_js_admin_views_CreateEditItemStock_vue":1,"resources_js_admin_views_ItemPrice_vue":1,"resources_js_admin_views_CreateEditItemPrice_vue":1,"resources_js_admin_views_Transaction_vue":1,"resources_js_admin_views_Tax_vue":1,"resources_js_admin_views_CreateEditTax_vue":1,"resources_js_admin_views_Color_vue":1,"resources_js_admin_views_CreateEditColor_vue":1,"resources_js_admin_views_Subcategory_vue":1,"resources_js_admin_views_CreateEditSubcategory_vue":1,"resources_js_admin_views_Promotion_vue":1,"resources_js_admin_views_CreateEditPromotion_vue":1,"resources_js_user_views_PrivacyPolicy_vue":1,"resources_js_user_views_ContactUs_vue":1,"resources_js_user_views_AboutUs_vue":1,"resources_js_user_views_FAQ_vue":1,"resources_js_user_views_ReturnPolicy_vue":1,"resources_js_user_views_TermsAndConditions_vue":1,"resources_js_user_views_Home_vue":1,"resources_js_user_views_ShoppingCart_vue":1,"resources_js_user_views_WishList_vue":1,"resources_js_user_views_Shop_vue":1,"resources_js_user_views_Register_vue":1,"resources_js_user_views_Login_vue":1,"resources_js_user_views_NotFound_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

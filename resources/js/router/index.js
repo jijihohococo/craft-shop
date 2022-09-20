@@ -23,6 +23,7 @@ import transactionRoutes from './admin/transaction';
 import taxRoutes from './admin/tax';
 import colorRoutes from './admin/color';
 import subcategoryRoutes from './admin/subcategory';
+import promotionRoutes from './admin/promotion';
 //------ADMIN ROUTES------//
 
 
@@ -72,7 +73,8 @@ const router = createRouter({
     ...itemPriceRoutes,
     ...transactionRoutes,
     ...taxRoutes,
-    ...colorRoutes
+    ...colorRoutes,
+    ...promotionRoutes
     ]
   }
   ]
