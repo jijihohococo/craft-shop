@@ -19,17 +19,17 @@ class CurrencyController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'currencies' => Currency::latest('id')->paginate(10)
-        ]);
+        return $this->indexPage(
+            Currency::latest('id')->paginate(10)
+        );
     }
 
     public function trash(){
-        return response()->json([
-            'currencies' => Currency::onlyTrashed()
+        return $this->indexPage(
+            Currency::onlyTrashed()
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     /**
@@ -109,24 +109,24 @@ class CurrencyController extends CommonController
 
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'currencies' => Currency::searchWithName($searchData)
+        return $this->indexPage(
+            Currency::searchWithName($searchData)
             ->orWhere('price','like',$searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'currencies' => Currency::onlyTrashed()
+        return $this->indexPage(
+            Currency::onlyTrashed()
             ->searchWithName($searchData)
             ->orWhere('price','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 }

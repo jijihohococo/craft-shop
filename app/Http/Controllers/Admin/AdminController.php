@@ -27,17 +27,13 @@ class AdminController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'admins' => Admin::latest('id')->paginate(10)
-        ]);
+        return $this->indexPage(Admin::latest('id')->paginate(10));
     }
 
     public function trash(){
-        return response()->json([
-            'admins' => Admin::onlyTrashed()
+        return $this->indexPage(Admin::onlyTrashed()
             ->latest('id')
-            ->paginate(10)
-        ]);
+            ->paginate(10));
     }
 
     /**
@@ -161,24 +157,20 @@ class AdminController extends CommonController
 
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'admins' => Admin::searchWithName($searchData)
+        return $this->indexPage(Admin::searchWithName($searchData)
             ->searchWithEmail($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
-            ->paginate(10)
-        ]);
+            ->paginate(10));
     }
 
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'admins' => Admin::onlyTrashed()
+        return $this->indexPage(Admin::onlyTrashed()
             ->searchWithName($searchData)
             ->searchWithEmail($searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10)
-        ]);
+            ->paginate(10));
     }
 }

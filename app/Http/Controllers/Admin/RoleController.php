@@ -21,17 +21,17 @@ class RoleController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'roles' => Role::latest('id')->paginate(10)
-        ]);
+        return $this->indexPage(
+            Role::latest('id')->paginate(10)
+        );
     }
 
     public function trash(){
-        return response()->json([
-            'roles' => Role::onlyTrashed()
+        return $this->indexPage(
+            Role::onlyTrashed()
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     /**
@@ -139,27 +139,27 @@ class RoleController extends CommonController
 
 public function search(Request $request){
     $searchData='%'.$request->search.'%';
-    return response()->json([
-        'roles' => Role::searchWithName($searchData)
+    return $this->indexPage(
+        Role::searchWithName($searchData)
         ->searchCreateAndUpdate($searchData)
         ->latest('id')
         ->paginate(10)
-    ]);
+    );
 }
 
 public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
-    return response()->json([
+    return $this->indexPage(
         'roles' => Role::onlyTrashed()
         ->searchWithName($searchData)
         ->searchDelete($searchData)
         ->latest('id')->paginate(10)
-    ]);
+    );
 }
 
 public function get(){
-    return response()->json([
-        'roles' => (new Role)->getAll()
-    ]);
+    return $this->indexPage(
+        (new Role)->getAll()
+    );
 }
 }

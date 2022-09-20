@@ -24,20 +24,20 @@ class ItemController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'items' => Item::selectItemData()
+        return $this->indexPage(
+            Item::selectItemData()
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     public function trash(){
-        return response()->json([
-            'items' => Item::onlyTrashed()
+        return $this->indexPage(
+            Item::onlyTrashed()
             ->selectItemData()
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     /**
@@ -285,25 +285,25 @@ class ItemController extends CommonController
 
 public function search(Request $request){
     $searchData='%'.$request->search.'%';
-    return response()->json([
-        'items' => Item::selectItemData()
+    return $this->indexPage(
+        Item::selectItemData()
         ->searchData($searchData)
         ->searchCreateAndUpdate($searchData)
         ->latest('id')
         ->paginate(10)
-    ]);
+    );
 }
 
 public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
-    return response()->json([
-        'items' => Item::onlyTrashed()
+    return $this->indexPage(
+        Item::onlyTrashed()
         ->selectItemData()
         ->searchData($searchData)
         ->searchDelete($searchData)
         ->latest('id')
         ->paginate(10)
-    ]);
+    );
 }
 
 public function getTotal(){

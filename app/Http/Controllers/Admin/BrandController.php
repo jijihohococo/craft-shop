@@ -18,17 +18,17 @@ class BrandController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'brands' => Brand::latest('id')->paginate(10)
-        ]);
+        return $this->indexPage(
+            Brand::latest('id')->paginate(10)
+        );
     }
 
     public function trash(){
-        return response()->json([
-            'brands' => Brand::onlyTrashed()
+        return $this->indexPage(
+            Brand::onlyTrashed()
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     /**
@@ -123,22 +123,22 @@ class BrandController extends CommonController
 
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'brands' => Brand::searchWithName($searchData)
+        return $this->indexPage(
+            Brand::searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'brands' => Brand::onlyTrashed()
+        return $this->indexPage(
+            Brand::onlyTrashed()
             ->searchWithName($searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 }

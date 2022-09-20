@@ -12,7 +12,9 @@ class AttributeController extends CommonController
 
     public $model = 'Attribute';
 
-    public $content = 'data_attributes';
+    public $content = 'attributes';
+
+    public $multipleContent = 'data_attributes';
 
     /**
      * Display a listing of the resource.

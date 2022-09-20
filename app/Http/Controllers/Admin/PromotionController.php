@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\Tax;
-class TaxController extends CommonController
+use App\Models\Promotion;
+class PromotionController extends CommonController
 {
-    
-    public $model = 'Tax';
 
-    public $content = 'taxes';
+    public $model = 'Promotion';
+
+    public $content = 'promotions';
     /**
      * Display a listing of the resource.
      *
@@ -19,26 +19,20 @@ class TaxController extends CommonController
     {
         //
         return $this->indexPage(
-            Tax::latest('id')->paginate(10)
+            Promotion::latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
-            Tax::onlyTrashed()
+            Promotion::onlyTrashed()
             ->latest('id')
             ->paginate(10)
         );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create(){
+        
     }
 
     /**
@@ -48,22 +42,6 @@ class TaxController extends CommonController
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-        $request->validate($this->validateData());
-        Tax::create($request->all());
-        return response()->json([
-            'message' => $request->name .' Tax is created successfully'
-        ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
     {
         //
     }
@@ -78,7 +56,7 @@ class TaxController extends CommonController
     {
         //
         return response()->json([
-            'tax' => Tax::findOrFail($id)
+            'promotion' => Promotion::findOrFail($id)
         ]);
     }
 
@@ -92,18 +70,12 @@ class TaxController extends CommonController
     public function update(Request $request, $id)
     {
         //
-        $request->validate($this->validateData($id));
-        Tax::findOrFail($id)->update($request->all());
-        return response()->json([
-            'message' => $request->name .' Tax is updated successfully'
-        ]);
     }
 
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Tax::searchWithName($searchData)
-            ->orWhere('rate','like',$searchData)
+            Promotion::searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -113,25 +85,11 @@ class TaxController extends CommonController
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Tax::onlyTrashed()
+            Promotion::onlyTrashed()
             ->searchWithName($searchData)
-            ->orWhere('rate','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
         );
-    }
-
-    public function get(Request $request){
-        return $this->indexPage(
-            (new Tax)->getAll()
-        );
-    }
-
-    private function validateData($id=NULL){
-        return [
-            'name' => ['required', 'string', 'max:100', $id==null ? 'unique:taxes' : 'unique:taxes,name,'.$id ] ,
-            'rate' => requiredDouble()
-        ];
     }
 }

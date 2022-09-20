@@ -18,17 +18,17 @@ class ColorController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'colors' => Color::latest('id')->paginate(10)
-        ]);
+        return $this->indexPage(
+            Color::latest('id')->paginate(10)
+        );
     }
 
     public function trash(){
-        return response()->json([
-            'colors' => Color::onlyTrashed()
+        return $this->indexPage(
+            Color::onlyTrashed()
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     /**
@@ -107,24 +107,24 @@ class ColorController extends CommonController
 
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'colors' => Color::searchWithName($searchData)
+        return $this->indexPage(
+            Color::searchWithName($searchData)
             ->orWhere('color_code','like',$searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'colors' => Color::onlyTrashed()
+        return $this->indexPage(
+            Color::onlyTrashed()
             ->searchWithName($searchData)
             ->orWhere('color_code','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 }

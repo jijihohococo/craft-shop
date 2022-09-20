@@ -23,17 +23,17 @@ class PermissionController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'permissions' => Permission::latest('id')->paginate(10)
-        ]);
+        return $this->indexPage(
+            Permission::latest('id')->paginate(10)
+        );
     }
 
     public function trash(){
-        return response()->json([
-            'permissions' => Permission::onlyTrashed()
+        return $this->indexPage(
+            Permission::onlyTrashed()
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     /**
@@ -129,24 +129,24 @@ class PermissionController extends CommonController
 
 public function search(Request $request){
     $searchData='%'.$request->search.'%';
-    return response()->json([
-        'permissions' => Permission::searchWithName($searchData)
+    return $this->indexPage(
+        Permission::searchWithName($searchData)
         ->orWhere('model','like', $searchData )
         ->searchCreateAndUpdate($searchData)
         ->latest('id')->paginate(10)
-    ]);
+    );
 }
 
 public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
-    return response()->json([
-        'permissions' => Permission::onlyTrashed()
+    return $this->indexPage(
+        Permission::onlyTrashed()
         ->searchWithName($searchData)
         ->orWhere('model','like',$searchData)
         ->searchDelete($searchData)
         ->latest('id')
         ->paginate(10)
-    ]);
+    );
 }
 
 public function checkPermission(string $model,string $action){

@@ -21,27 +21,15 @@ class BannerController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'banners' => Banner::latest('id')->paginate(10) 
-        ]);
+        return $this->indexPage(Banner::latest('id')->paginate(10));
     }
 
     public function trash(){
-        return response()->json([
-            'banners' => Banner::onlyTrashed()
-            ->latest('id')
-            ->paginate(10)
-        ]);
+        return $this->indexPage(Banner::onlyTrashed()->latest('id')->paginate(10));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create(){
+        
     }
 
     /**
@@ -131,22 +119,18 @@ class BannerController extends CommonController
 
 public function search(Request $request){
     $searchData='%'.$request->search.'%';
-    return response()->json([
-        'banners' => Banner::where('title','like',$searchData)
+    return $this->indexPage(Banner::where('title','like',$searchData)
         ->searchCreateAndUpdate($searchData)
         ->latest('id')
-        ->paginate(10)
-    ]);
+        ->paginate(10));
 }
 
 public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
-    return response()->json([
-        'banners' => Banner::onlyTrashed()
+    return $this->indexPage(Banner::onlyTrashed()
         ->where('title','like',$searchData)
         ->searchDelete($searchData)
         ->latest('id')
-        ->paginate(10)
-    ]);
+        ->paginate(10));
 }
 }

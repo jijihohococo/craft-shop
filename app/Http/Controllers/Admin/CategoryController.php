@@ -18,27 +18,21 @@ class CategoryController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'categories' => Category::latest('id')->paginate(10)
-        ]);
+        return $this->indexPage(
+            Category::latest('id')->paginate(10)
+        );
     }
 
     public function trash(){
-        return response()->json([
-            'categories' => Category::onlyTrashed()
+        return $this->indexPage(
+            Category::onlyTrashed()
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create(){
+        
     }
 
     /**
@@ -107,22 +101,22 @@ class CategoryController extends CommonController
 
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'categories' => Category::searchWithName($searchData)
+        return $this->indexPage(
+            Category::searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'categories' => Category::onlyTrashed()
+        return $this->indexPage(
+            Category::onlyTrashed()
             ->searchWithName($searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 }

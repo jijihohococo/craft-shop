@@ -38,7 +38,8 @@ class Permission extends TransactionModel
             'Attribute',
             'Color',
             'Country',
-            'Order'
+            'Order',
+            'Promotion'
         ];
     }
 

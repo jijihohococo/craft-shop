@@ -10,15 +10,28 @@ abstract class CommonController extends Controller
     //
     use AdminRolePermission;
 
+    public $multipleContent;
+
     public $mainData = 'name';
 
     public function __construct(){
         $this->authorized($this->model);
     }
 
+    public function indexPage($data){
+        return response()->json([
+            $this->content => $data
+        ]);
+    }
+
+    private function getContent(){
+        return $this->multipleContent ?? $this->content;
+    }
+
     public function deleteMultiple(Request $request){
+        $content=$this->getContent();
         $request->validate([
-            $this->content => ['required','string']
+            $content => ['required','string']
         ]);
         $list=explode(',', $request->{$this->content});
         $model='App\Models\\'.$this->model;
@@ -29,8 +42,9 @@ abstract class CommonController extends Controller
     }
 
     public function restoreMultiple(Request $request){
+        $content=$this->getContent();
         $request->validate([
-            $this->content => ['required','string']
+            $content => ['required','string']
         ]);
         $list=explode(',', $request->{$this->content});
         $model='App\Models\\'.$this->model;

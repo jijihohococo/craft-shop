@@ -18,20 +18,20 @@ class SubcategoryController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'subcategories' => Subcategory::latest('id')
+        return $this->indexPage(
+            Subcategory::latest('id')
             ->selectCategory()
             ->paginate(10)
-        ]);
+        );
     }
 
     public function trash(){
-        return response()->json([
-            'subcategories' => Subcategory::onlyTrashed()
+        return $this->indexPage(
+            Subcategory::onlyTrashed()
             ->selectCategory()
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     /**
@@ -110,38 +110,38 @@ class SubcategoryController extends CommonController
 
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'subcategories' => Subcategory::selectCategory()
+        return $this->indexPage(
+            Subcategory::selectCategory()
             ->searchWithName($searchData)
             ->searchWithCategory($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'subcategories' => Subcategory::onlyTrashed()
+        return $this->indexPage(
+            Subcategory::onlyTrashed()
             ->selectCategory()
             ->searchWithName($searchData)
             ->searchWithCategory($searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     public function get($categoryId){
-        return response()->json([
-            'subcategories' => (new Subcategory)->getByCategoryId($categoryId)
-        ]);
+        return $this->indexPage(
+            (new Subcategory)->getByCategoryId($categoryId)
+        );
     }
 
     public function getAll(){
-        return response()->json([
-            'subcategories' => (new Subcategory)->getAll()
-        ]);
+        return $this->indexPage(
+            (new Subcategory)->getAll()
+        );
     }
 }
