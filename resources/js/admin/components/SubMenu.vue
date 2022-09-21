@@ -16,6 +16,9 @@
 		(route+'.stock'==currentRoute) ||
 		(route+'.stock.create'==currentRoute) ||
 		(route+'.stock.edit'==currentRoute) ||
+		(route+'.price'==currentRoute) ||
+		(route+'.price.create'==currentRoute) ||
+		(route+'.price.edit'==currentRoute) ||
 		(route+'.edit'==currentRoute) || (route+'.create'==currentRoute) || (this.$route.params.model!==null && this.$route.params.model==dataRoute)  ? 'nav-link active' : 'nav-link' ]" >
 		<p>{{ dataRoute }}</p>
 	</router-link>
@@ -62,6 +65,9 @@
 				(route.replace('.stock','') in this.$props.dataRoutes ) || 
 				(route.replace('.stock.create','') in this.$props.dataRoutes ) ||
 				(route.replace('.stock.edit','') in this.$props.dataRoutes ) ||
+				(route.replace('.price','') in this.$props.dataRoutes ) || 
+				(route.replace('.price.create','') in this.$props.dataRoutes ) ||
+				(route.replace('.price.edit','') in this.$props.dataRoutes ) ||
 				(route=='transaction' && this.$route.params.model!==null && 
 				(getModel(this.$route.params.model) in this.$props.dataRoutes) );
 			}

@@ -78,7 +78,8 @@
       'banner' : "Banner",
       'tax' : "Tax",
       'target' : "Target",
-      'currency' : "Currency"
+      'currency' : "Currency",
+      'promotion' : "Promotion"
     },
     roleAndPermissionRoutes : {
       'role':"Role",

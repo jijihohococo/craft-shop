@@ -150,7 +150,7 @@ public function search(Request $request){
 public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
     return $this->indexPage(
-        'roles' => Role::onlyTrashed()
+        Role::onlyTrashed()
         ->searchWithName($searchData)
         ->searchDelete($searchData)
         ->latest('id')->paginate(10)
