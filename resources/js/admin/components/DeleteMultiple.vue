@@ -1,11 +1,20 @@
 <template>
-	<a v-if="deleteArrayData.length>0" :class="[ routeName.includes('_bin') ? 'btn btn-warning ml-3' : 'btn btn-danger ml-3']" v-on:click="deleteManyData()" >{{ routeName.includes('_bin') ? 'Restore' : 'Delete' }}</a>
+	<a v-if="deleteArrayData.length>0" :class="[ routeName.includes('_bin') ? 'btn btn-warning ml-3' : 'btn btn-danger ml-3']" v-on:click="deleteManyData()" @keyup.delete="deleteManyData()" >{{ routeName.includes('_bin') ? 'Restore' : 'Delete' }}</a>
 </template>
 <script >
 	import { deleteMultipleData , deleteFromArray , errorResponse } from '../helpers/check.js';
 	export default {
 		props : ['deleteArrayData','objectArrayData','routeName','request','mainData'],
 		emits : ['freshData'],
+		mounted(){
+			let self = this; 
+
+			window.addEventListener('keyup', function(ev) {
+				if(ev.code=='Delete'){
+					self.deleteManyData()
+				}
+   });
+		},
 		methods : {
 			deleteManyData(){
 				let route=this.$props.routeName.includes('_bin') ?

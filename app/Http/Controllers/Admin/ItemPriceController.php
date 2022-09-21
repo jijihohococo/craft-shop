@@ -45,7 +45,6 @@ class ItemPriceController extends ItemVariantCommonController
     private function getData($request,$itemVariantId){
         return [
             'currency_id' => $request->currency_id ,
-            'tax_id' => $request->tax_id ,
             'item_variant_id' => $itemVariantId,
             'price' => $request->price
         ];
@@ -99,7 +98,6 @@ class ItemPriceController extends ItemVariantCommonController
     private function validateData(){
         return [
             'currency_id' => ['required','integer'],
-            'tax_id' => ['required','integer'],
             'price' => requiredDouble()
         ];
     }

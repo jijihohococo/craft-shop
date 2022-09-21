@@ -190,6 +190,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['deleteArrayData', 'objectArrayData', 'routeName', 'request', 'mainData'],
   emits: ['freshData'],
+  mounted: function mounted() {
+    var self = this;
+    window.addEventListener('keyup', function (ev) {
+      if (ev.code == 'Delete') {
+        self.deleteManyData();
+      }
+    });
+  },
   methods: {
     deleteManyData: function deleteManyData() {
       var _this = this;
@@ -858,9 +866,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$props.routeName.includes('_bin') ? 'btn btn-warning ml-3' : 'btn btn-danger ml-3']),
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.deleteManyData();
-    })
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.routeName.includes('_bin') ? 'Restore' : 'Delete'), 3
-  /* TEXT, CLASS */
+    }),
+    onKeyup: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(function ($event) {
+      return $options.deleteManyData();
+    }, ["delete"]))
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.routeName.includes('_bin') ? 'Restore' : 'Delete'), 35
+  /* TEXT, CLASS, HYDRATE_EVENTS */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
