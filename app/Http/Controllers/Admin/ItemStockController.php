@@ -19,13 +19,13 @@ class ItemStockController extends ItemVariantCommonController
      * @return \Illuminate\Http\Response
      */
 
-    public function index($itemVariantId)
+    public function index(int $itemVariantId)
     {
         //
         return $this->indexPage(ItemStock::ofItemVariant($itemVariantId)->latest('id')->paginate(10),$itemVariantId);
     }
 
-    public function search(Request $request,$itemVariantId){
+    public function search(Request $request,int $itemVariantId){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             ItemStock::ofItemVariant($itemVariantId)
@@ -43,7 +43,7 @@ class ItemStockController extends ItemVariantCommonController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$itemVariantId)
+    public function store(Request $request,int $itemVariantId)
     {
         //
         $request->validate($this->validateData($itemVariantId));
@@ -60,7 +60,7 @@ class ItemStockController extends ItemVariantCommonController
         ]);
     }
 
-    public function create($itemVariantId){
+    public function create(int $itemVariantId){
         return response()->json([
             $this->createEdit => ItemStock::where('item_variant_id',$itemVariantId)->latest('id')->first() ,
             'item_variant' => $this->getItemVariant($itemVariantId)
@@ -74,7 +74,7 @@ class ItemStockController extends ItemVariantCommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
         //
      $openingItem=ItemStock::lockForUpdate()->findOrFail($id);
@@ -96,7 +96,7 @@ class ItemStockController extends ItemVariantCommonController
     ]);
 }
 
-private function validateData($itemVariantId,$id=NULL){
+private function validateData(int $itemVariantId,$id=NULL){
     return [
         'qty' => ['required','integer'],
         'available_stock' => ['required','integer', new StockValidation($itemVariantId)]

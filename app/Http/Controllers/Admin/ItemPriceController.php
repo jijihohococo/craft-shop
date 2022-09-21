@@ -17,7 +17,7 @@ class ItemPriceController extends ItemVariantCommonController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($itemVariantId)
+    public function index(int $itemVariantId)
     {
         //
         return $this->indexPage(
@@ -29,7 +29,7 @@ class ItemPriceController extends ItemVariantCommonController
         );
     }
 
-    public function search(Request $request,$itemVariantId){
+    public function search(Request $request,int $itemVariantId){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             ItemPrice::selectCurrency()
@@ -42,7 +42,7 @@ class ItemPriceController extends ItemVariantCommonController
         );
     }
 
-    private function getData($request,$itemVariantId){
+    private function getData($request,int $itemVariantId){
         return [
             'currency_id' => $request->currency_id ,
             'item_variant_id' => $itemVariantId,
@@ -56,7 +56,7 @@ class ItemPriceController extends ItemVariantCommonController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$itemVariantId)
+    public function store(Request $request,int $itemVariantId)
     {
         //
         $request->validate($this->validateData());
