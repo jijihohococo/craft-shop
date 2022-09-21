@@ -69,6 +69,14 @@
 									</SelectMultiple>
 								</div>
 								<strong v-if="errors && errors.colors" class="invalid-feedback" style="display:block!important;">{{ errors.colors[0] }}</strong>
+								<div class="form-group">
+									<label>Taxes</label>
+									<SelectMultiple
+									placeholder="Select Taxes"
+									:value="fields.taxes" @input="setTaxes" >
+									<option :value="tax.id" v-for="tax in taxes">{{ tax.name }}</option>
+								</SelectMultiple>
+								</div>
 								<!-- <div class="form-group">
 									<label>File</label>
 									<File @change="setPic" :pics="fields.pics" @removed="removePics" :multiple="true"
@@ -130,6 +138,7 @@
 				brands : {},
 				attributes : {},
 				colors : {} ,
+				taxes : {} ,
 				numberOfAttributes : 0 ,
 				fields : {
 					name : '',
@@ -138,6 +147,7 @@
 					brand_id : '',
 					//pics : [],
 					colors : [],
+					taxes : [],
 					description : '' ,
 					attributes : []
 				},
@@ -162,6 +172,7 @@
 			await this.getBrands()
 			await this.getAttributes()
 			await this.getColors()
+			await this.getTaxes()
 			if(this.current=='update'){
 				await this.getItemData(this.$route.params.id);
 			}
@@ -246,8 +257,22 @@
 					errorResponse(error,this,'read')
 				} )
 			},
+			async getTaxes(){
+				window.axios.get('get_taxes').then( (response) => {
+					if(response.data.message=='Loading'){
+						showSwalLoading(this);
+					}else{
+						this.taxes=response.data.taxes
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')
+				} )
+			},
 			setColors(val){
 				this.fields.colors=val
+			},
+			setTaxes(val){
+				this.fields.taxes=val
 			},
 			setCategoryId(categoryId){
 				this.fields.category_id=categoryId
@@ -281,6 +306,11 @@
 				if(this.fields.colors.length>0){
 					this.fields.colors.map( (data,index) => {
 						this.formData.set( 'colors['+index+']' , data  )
+					} )
+				}
+				if(this.fields.taxes.length>0){
+					this.fields.taxes.map( (data,index) => {
+						this.formData.set( 'taxes['+index+']' ,data )
 					} )
 				}
 				this.formData.set('description',description);
@@ -347,6 +377,7 @@
 					 	this.fields.attributes=response.data.attributes;
 					 }
 					this.fields.colors=response.data.colors;
+					this.fields.taxes=response.data.taxes;
 				}
 			} ).catch( (error) => {
 				errorResponse(error,this,'update')

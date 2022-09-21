@@ -28,6 +28,10 @@ class Item extends TransactionModel
 
     private $stock='available_stock';
 
+    public function taxes(){
+        return $this->hasMany('App\Models\ItemTax');
+    }
+
     public function category(){
         return $this->belongsTo('App\Models\Category')->withDefault()->withTrashed();
     }

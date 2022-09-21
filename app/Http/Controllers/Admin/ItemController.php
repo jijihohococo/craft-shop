@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\{Item,ItemImage,ItemAttribute,ItemAttributeSet,ItemVariant};
+use App\Models\{Item,ItemImage,ItemAttribute,ItemAttributeSet,ItemVariant,ItemTax};
 use DB,File;
 class ItemController extends CommonController
 {
@@ -11,6 +11,8 @@ class ItemController extends CommonController
     public $model = 'Item';
 
     public $content = 'items';
+
+    private $taxes=[];
 
     public function __construct(){
         parent::__construct();
@@ -177,6 +179,18 @@ class ItemController extends CommonController
     }
 }
 
+    private function insertItemTaxes($taxes,$itemId,$update=NULL){
+        add_high_light([
+            'col'=>$taxes,
+            'old_col' => $this->taxes ,
+            'obj' => 'App\Models\ItemTax',
+            'parent_id'=>'item_id',
+            'parent_data'=>$itemId,
+            'child_col'=>'tax_id',
+            'update'=> $update
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -191,6 +205,7 @@ class ItemController extends CommonController
         $item=Item::create($request->all());
         $this->addAttributes($item->id,request('attributes'));
         $this->insertColors($request->colors,$item->id);
+        $this->insertItemTaxes($request->taxes,$item->id);
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Item is created successfully'
@@ -220,7 +235,8 @@ class ItemController extends CommonController
         return response()->json([
             'item' => Item::findOrFail($id) ,
             'attributes' => ItemAttribute::where('item_id',$id)->get(),
-            'colors' => ItemVariant::select('color_id')->where('item_id',$id)->get()->pluck('color_id')
+            'colors' => ItemVariant::select('color_id')->where('item_id',$id)->get()->pluck('color_id') ,
+            'taxes' => ItemTax::select('tax_id')->where('item_id',$id)->get()->pluck('tax_id')
         ]);
     }
 
@@ -236,9 +252,12 @@ class ItemController extends CommonController
         //
         $request->validate($this->validateData($id));
         DB::beginTransaction();
-        Item::findOrFail($id)->update($request->all());
+        $item=Item::findOrFail($id);
+        $item->update($request->all());
         $this->addAttributes($id,request('attributes'),'yes');
         $this->insertColors($request->colors,$id,'yes');
+        $this->taxes=$item->taxes->pluck('tax_id')->toArray();
+        $this->insertItemTaxes($request->taxes,$id,'yes');
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Item is updated successfully'
