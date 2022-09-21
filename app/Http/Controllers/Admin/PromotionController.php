@@ -44,6 +44,10 @@ class PromotionController extends CommonController
     public function store(Request $request)
     {
         //
+        Promotion::create($request->all());
+        return response()->json([
+            'message' => $request->name . ' Promotion is created successfully'
+        ]);
     }
 
     /**
@@ -70,6 +74,11 @@ class PromotionController extends CommonController
     public function update(Request $request, $id)
     {
         //
+        Promotion::findOrFail($id)->update($request->all());
+        return response()->json([
+            'message' => $request->name . ' Promotion is updated successfully'
+        ]);
+
     }
 
     public function search(Request $request){
@@ -90,6 +99,12 @@ class PromotionController extends CommonController
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
+        );
+    }
+
+    public function get(){
+        return $this->indexPage(
+            (new Promotion)->getAll()
         );
     }
 }

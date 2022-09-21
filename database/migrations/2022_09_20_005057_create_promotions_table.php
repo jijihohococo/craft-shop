@@ -15,6 +15,10 @@ class CreatePromotionsTable extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
+            $table->string('promotion_start_time');
+            $table->string('promotion_end_time');
+            $table->integer('banner_id')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -76,6 +76,12 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::delete('delete_targets','Admin\TargetController@deleteMultiple');
 	Route::delete('restore_targets','Admin\TargetController@restoreMultiple');
 
+
+	//--------------PROMOTION----------------//
+	adminResourceApi('promotion','promotions','PromotionController');
+	Route::get('get_promotions','PromotionController@get');
+	//--------------PROMOTION----------------//
+
 	//--------------CURRENCY----------------//
 	adminResourceApi('currency','currencies','CurrencyController');
 	Route::get('get_currencies','CurrencyController@get');

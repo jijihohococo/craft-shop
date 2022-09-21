@@ -15,7 +15,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<label>Name {{ fields.model }}</label>
+									<label>Name</label>
 									<input type="text" :class="[errors && errors.name ? 'form-control is-invalid' : 'form-control']" placeholder="Name" v-model="fields.name">
 								</div>
 								<div class="form-group">
@@ -90,6 +90,8 @@
 				'Subcategory',
 				'Brand',
 				'Item',
+				'ItemStock',
+				'ItemPrice',
 				'Role',
 				'Target',
 				'User',
@@ -98,7 +100,8 @@
 				'Attribute',
 				'Color',
 				'Country',
-				'Order'
+				'Order',
+				'Promotion'
 				],
 				permissions: [
 				'create',
