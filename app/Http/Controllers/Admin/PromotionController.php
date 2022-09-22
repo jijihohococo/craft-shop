@@ -44,6 +44,7 @@ class PromotionController extends CommonController
     public function store(Request $request)
     {
         //
+        $request->validate($this->validateData());
         Promotion::create($request->all());
         return response()->json([
             'message' => $request->name . ' Promotion is created successfully'
@@ -74,6 +75,7 @@ class PromotionController extends CommonController
     public function update(Request $request, $id)
     {
         //
+        $request->validate($this->validateData($id));
         Promotion::findOrFail($id)->update($request->all());
         return response()->json([
             'message' => $request->name . ' Promotion is updated successfully'
@@ -85,6 +87,7 @@ class PromotionController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Promotion::searchWithName($searchData)
+            ->orWhere('promo_code','like',$searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -96,6 +99,7 @@ class PromotionController extends CommonController
         return $this->indexPage(
             Promotion::onlyTrashed()
             ->searchWithName($searchData)
+            ->orWhere('promo_code','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
@@ -106,5 +110,15 @@ class PromotionController extends CommonController
         return $this->indexPage(
             (new Promotion)->getAll()
         );
+    }
+
+    private function validateData($id=NULL){
+        return [
+            'name' => ['required', 'string', 'max:100', $id==null ? 'unique:promotions' : 'unique:promotions,name,'.$id ] ,
+            'promo_code' => ['nullable','max:100'],
+            'banner_id' => ['nullable','integer'],
+            'promotion_start_time' => ['required'],
+            'promotion_end_time' => ['required']
+        ];
     }
 }

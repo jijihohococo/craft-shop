@@ -48,6 +48,7 @@
 												/>
 											</th>
 											<th>Name</th>
+											<th>Promo Code</th>
 											<th>Promotion Start Time</th>
 											<th>Promotion End Time</th>
 											<th>Deleted At</th>
@@ -64,6 +65,7 @@
 												ref="deleteCheck"
 												/></td>
 												<td>{{ promotion.name }}</td>
+												<td>{{ promotion.promo_code }}</td>
 												<td>{{ promotion.promotion_start_time }}</td>
 												<td>
 													{{ promotion.promotion_end_time }}

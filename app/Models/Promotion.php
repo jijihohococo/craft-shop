@@ -12,6 +12,7 @@ class Promotion extends TransactionModel
 
     protected $fillable = [
         'name',
+        'promo_code',
         'promotion_start_time',
         'promotion_end_time',
         'banner_id'];
