@@ -28,7 +28,7 @@
 									<label>Picture</label>
 									<File @change="setPic" :pics="this.fields.pics" @removed="removePic"
 									storage_path='image/brand_images/'
-									delete_path='admin_api/brand_image_delete/'  />
+									  />
 									<strong v-if="errors && errors.pic" class="invalid-feedback" style="display:block!important;" >{{ errors.pic[0] }}</strong>
 								</div>
 							</div>

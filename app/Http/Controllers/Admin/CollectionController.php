@@ -51,6 +51,18 @@ class CollectionController extends CommonController
     public function store(Request $request)
     {
         //
+        $request->validate($this->validateData());
+        $collection=new Collection($request->all() );
+        oneFileUpload(['file' => 'pic',
+            'name'=> cutSpeicialChar(rand() . $request->name) ,
+            'path'=>'collection_images',
+            'old_file'=>null , 
+            'width'  => 138 , 
+            'height' => 80 ],$request,$collection );
+        $collection->save( $collection->getAttributes() );
+        return response()->json([
+            'message' => $collection->name . ' Collection is created successfully'
+        ]);
     }
 
     /**

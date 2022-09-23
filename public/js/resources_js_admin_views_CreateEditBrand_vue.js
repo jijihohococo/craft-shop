@@ -788,8 +788,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: $options.setPic,
     pics: this.fields.pics,
     onRemoved: $options.removePic,
-    storage_path: "image/brand_images/",
-    delete_path: "admin_api/brand_image_delete/"
+    storage_path: "image/brand_images/"
   }, null, 8
   /* PROPS */
   , ["onChange", "pics", "onRemoved"]), $data.errors && $data.errors.pic ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.pic[0]), 1
