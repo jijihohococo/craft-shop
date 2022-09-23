@@ -49,7 +49,7 @@
 
 	import ContentHeader from '../components/ContentHeader';
 
-	import { errorResponse , checkContentPermission , showSwalLoading } from '../helpers/check.js';
+	import { errorResponse , checkContentPermission , showSwalLoading , dateFormat } from '../helpers/check.js';
 
 	import Error from '../components/Error'
 
@@ -67,11 +67,9 @@
 
         // For demo purposes assign range from the current date
         onMounted(() => {
-        	//if(this.$route.params.id==null){
         		const startDate = new Date();
         		const endDate = new Date(new Date().setDate(startDate.getDate() + 1));
         		date.value = [startDate, endDate];
-        	//}
         })
         
         return {
@@ -113,8 +111,8 @@
     },
     methods : {
     	setPromotionTime(){
-    		this.fields.promotion_start_time=this.date[0].toString()
-    		this.fields.promotion_end_time=this.date[1].toString();
+    		this.fields.promotion_start_time=dateFormat(this.date[0])
+    		this.fields.promotion_end_time=dateFormat(this.date[1])
     	},
     	createPromotion(){
     		this.setPromotionTime()

@@ -1664,6 +1664,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "checkContentPermission": () => (/* binding */ checkContentPermission),
 /* harmony export */   "checkCreateEditPermission": () => (/* binding */ checkCreateEditPermission),
 /* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
+/* harmony export */   "dateFormat": () => (/* binding */ dateFormat),
 /* harmony export */   "deleteFromArray": () => (/* binding */ deleteFromArray),
 /* harmony export */   "deleteMultipleData": () => (/* binding */ deleteMultipleData),
 /* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
@@ -1677,6 +1678,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions)
 /* harmony export */ });
+function dateFormat(date) {
+  return date.getFullYear() + '-' + twoDigits(date.getMonth() + 1) + '-' + twoDigits(date.getDate()) + ' ' + twoDigits(date.getHours()) + ':' + twoDigits(date.getMinutes()) + ':00';
+}
+
+function twoDigits(number) {
+  return (number < 10 ? '0' : '') + number;
+}
+
 function getItemColor(responseData) {
   return responseData.item_variant.item_name + "'s " + responseData.item_variant.color_name;
 }

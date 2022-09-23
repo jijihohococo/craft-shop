@@ -123,10 +123,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var date = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(); // For demo purposes assign range from the current date
 
     (0,vue__WEBPACK_IMPORTED_MODULE_2__.onMounted)(function () {
-      //if(this.$route.params.id==null){
       var startDate = new Date();
       var endDate = new Date(new Date().setDate(startDate.getDate() + 1));
-      date.value = [startDate, endDate]; //}
+      date.value = [startDate, endDate];
     });
     return {
       date: date
@@ -187,8 +186,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     setPromotionTime: function setPromotionTime() {
-      this.fields.promotion_start_time = this.date[0].toString();
-      this.fields.promotion_end_time = this.date[1].toString();
+      this.fields.promotion_start_time = (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_4__.dateFormat)(this.date[0]);
+      this.fields.promotion_end_time = (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_4__.dateFormat)(this.date[1]);
     },
     createPromotion: function createPromotion() {
       var _this2 = this;
@@ -614,6 +613,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "checkContentPermission": () => (/* binding */ checkContentPermission),
 /* harmony export */   "checkCreateEditPermission": () => (/* binding */ checkCreateEditPermission),
 /* harmony export */   "checkToDelete": () => (/* binding */ checkToDelete),
+/* harmony export */   "dateFormat": () => (/* binding */ dateFormat),
 /* harmony export */   "deleteFromArray": () => (/* binding */ deleteFromArray),
 /* harmony export */   "deleteMultipleData": () => (/* binding */ deleteMultipleData),
 /* harmony export */   "errorResponse": () => (/* binding */ errorResponse),
@@ -627,6 +627,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions)
 /* harmony export */ });
+function dateFormat(date) {
+  return date.getFullYear() + '-' + twoDigits(date.getMonth() + 1) + '-' + twoDigits(date.getDate()) + ' ' + twoDigits(date.getHours()) + ':' + twoDigits(date.getMinutes()) + ':00';
+}
+
+function twoDigits(number) {
+  return (number < 10 ? '0' : '') + number;
+}
+
 function getItemColor(responseData) {
   return responseData.item_variant.item_name + "'s " + responseData.item_variant.color_name;
 }

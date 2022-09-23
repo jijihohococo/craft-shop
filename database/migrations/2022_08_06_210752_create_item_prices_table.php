@@ -18,6 +18,7 @@ class CreateItemPricesTable extends Migration
             $table->integer('currency_id');
             $table->integer('item_variant_id');
             $table->decimal('price', 13, 4);
+            $table->integer('promotion_id')->nullable();
             $table->string('promotion_type')->nullable();
             $table->decimal('promotion_price',13,4)->nullable();
             $table->string('promotion_start_time')->nullable();

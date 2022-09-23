@@ -11,6 +11,7 @@ class ItemPrice extends TransactionModel
         'currency_id',
         'item_variant_id',
         'price',
+        'promotion_id',
         'promotion_type',
         'promotion_price',
         'promotion_start_time',

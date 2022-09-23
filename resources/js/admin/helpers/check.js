@@ -1,3 +1,14 @@
+export function dateFormat(date) {
+    return date.getFullYear() + 
+    '-' + twoDigits(date.getMonth()+1) +
+    '-' + twoDigits(date.getDate()) +
+    ' ' + twoDigits(date.getHours()) +
+    ':' + twoDigits(date.getMinutes()) +
+    ':00'; 
+}
+function twoDigits(number){
+    return (number<10?'0':'') + number
+}
 export function getItemColor(responseData) {
     return responseData.item_variant.item_name + "'s " + responseData.item_variant.color_name
 }
