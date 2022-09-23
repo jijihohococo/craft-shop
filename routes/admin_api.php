@@ -33,8 +33,13 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	//--------------ITEM----------------//
 	adminResourceApi('item','items','ItemController');
 	Route::get('total_items','Admin\ItemController@getTotal');
-	Route::get('get_items','User\ItemController@get');
+	Route::get('get_items','ItemController@get');
 	//--------------ITEM----------------//
+
+
+	//--------------COLLECTION----------------//
+	adminResourceApi('collection','collections','CollectionController');
+	//--------------COLLECTION----------------//
 
 	//--------------ITEM VARIANT----------------//
 	Route::get('item_variants/{id}','Admin\ItemVariantController@find');
@@ -79,7 +84,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	//--------------PROMOTION----------------//
 	adminResourceApi('promotion','promotions','PromotionController');
-	Route::get('get_promotions','PromotionController@get');
+	Route::get('get_promotions','Admin\PromotionController@get');
 	//--------------PROMOTION----------------//
 
 	//--------------CURRENCY----------------//

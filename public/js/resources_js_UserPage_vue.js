@@ -63,7 +63,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       categories: {},
-      currencies: {},
       number_of_wish: 0,
       shopping_cart_items: {}
     };
@@ -89,7 +88,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    getCurrencies: function getCurrencies() {
+    getShoppingCart: function getShoppingCart() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
@@ -97,8 +96,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                window.axios.get('currencies').then(function (response) {
-                  _this2.currencies = response.data.currencies;
+                window.axios.get('shopping_cart').then(function (response) {
+                  _this2.shopping_cart_items = response.data.shopping_cart_items;
                 });
 
               case 1:
@@ -109,7 +108,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    getShoppingCart: function getShoppingCart() {
+    getNumberOfWish: function getNumberOfWish() {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
@@ -117,8 +116,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                window.axios.get('shopping_cart').then(function (response) {
-                  _this3.shopping_cart_items = response.data.shopping_cart_items;
+                window.axios.get('get_wish_number').then(function (response) {
+                  _this3.number_of_wish = response.data.number_of_wish;
                 });
 
               case 1:
@@ -128,57 +127,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee3);
       }))();
-    },
-    getNumberOfWish: function getNumberOfWish() {
-      var _this4 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                window.axios.get('get_wish_number').then(function (response) {
-                  _this4.number_of_wish = response.data.number_of_wish;
-                });
-
-              case 1:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4);
-      }))();
     }
   },
   created: function created() {
-    var _this5 = this;
+    var _this4 = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
-      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) {
-          switch (_context5.prev = _context5.next) {
+          switch (_context4.prev = _context4.next) {
             case 0:
-              _context5.next = 2;
-              return _this5.getCategories();
+              _context4.next = 2;
+              return _this4.getCategories();
 
             case 2:
-              _context5.next = 4;
-              return _this5.getCurrencies();
+              _context4.next = 4;
+              return _this4.getShoppingCart();
 
             case 4:
-              _context5.next = 6;
-              return _this5.getShoppingCart();
+              _context4.next = 6;
+              return _this4.getNumberOfWish();
 
             case 6:
-              _context5.next = 8;
-              return _this5.getNumberOfWish();
-
-            case 8:
             case "end":
-              return _context5.stop();
+              return _context4.stop();
           }
         }
-      }, _callee5);
+      }, _callee4);
     }))();
   }
 });
@@ -306,58 +281,32 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "header_wrap"
 };
-var _hoisted_2 = {
-  "class": "top-header d-none d-md-block"
-};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"top-header d-none d-md-block\"><div class=\"container\"><div class=\"row align-items-center\"><div class=\"col-lg-6 col-md-8\"><div class=\"header_topbar_info\"><div class=\"header_offer\"><span>Free Ground Shipping Over $250</span></div><div class=\"download_wrap\"><span class=\"mr-3\">Download App</span><ul class=\"icon_list text-center text-lg-left\"><li><a href=\"#\"><i class=\"fab fa-apple\"></i></a></li><li><a href=\"#\"><i class=\"fab fa-android\"></i></a></li><li><a href=\"#\"><i class=\"fab fa-windows\"></i></a></li></ul></div></div></div><div class=\"col-lg-6 col-md-4\"><div class=\"d-flex align-items-center justify-content-center justify-content-md-end\"><div class=\"lng_dropdown\"><select name=\"countries\" class=\"custome_select\"><option value=\"en\" data-image=\"https://bestwebcreator.com/shopwise/demo/assets/images/eng.png\" data-title=\"English\">English</option><option value=\"fn\" data-image=\"https://bestwebcreator.com/shopwise/demo/assets/images/fn.png\" data-title=\"France\">France</option><option value=\"us\" data-image=\"https://bestwebcreator.com/shopwise/demo/assets/images/us.png\" data-title=\"United States\">United States</option></select></div></div></div></div></div></div>", 1);
+
 var _hoisted_3 = {
-  "class": "container"
-};
-var _hoisted_4 = {
-  "class": "row align-items-center"
-};
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-lg-6 col-md-8\"><div class=\"header_topbar_info\"><div class=\"header_offer\"><span>Free Ground Shipping Over $250</span></div><div class=\"download_wrap\"><span class=\"mr-3\">Download App</span><ul class=\"icon_list text-center text-lg-left\"><li><a href=\"#\"><i class=\"fab fa-apple\"></i></a></li><li><a href=\"#\"><i class=\"fab fa-android\"></i></a></li><li><a href=\"#\"><i class=\"fab fa-windows\"></i></a></li></ul></div></div></div>", 1);
-
-var _hoisted_6 = {
-  "class": "col-lg-6 col-md-4"
-};
-var _hoisted_7 = {
-  "class": "d-flex align-items-center justify-content-center justify-content-md-end"
-};
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"lng_dropdown\"><select name=\"countries\" class=\"custome_select\"><option value=\"en\" data-image=\"https://bestwebcreator.com/shopwise/demo/assets/images/eng.png\" data-title=\"English\">English</option><option value=\"fn\" data-image=\"https://bestwebcreator.com/shopwise/demo/assets/images/fn.png\" data-title=\"France\">France</option><option value=\"us\" data-image=\"https://bestwebcreator.com/shopwise/demo/assets/images/us.png\" data-title=\"United States\">United States</option></select></div>", 1);
-
-var _hoisted_9 = {
-  "class": "ml-3"
-};
-var _hoisted_10 = {
-  name: "countries",
-  "class": "custome_select"
-};
-var _hoisted_11 = ["value", "data-title"];
-var _hoisted_12 = {
   "class": "bottom_header light_skin main_menu_uppercase bg_dark mb-4"
 };
-var _hoisted_13 = {
+var _hoisted_4 = {
   "class": "container"
 };
-var _hoisted_14 = {
+var _hoisted_5 = {
   "class": "row"
 };
-var _hoisted_15 = {
+var _hoisted_6 = {
   "class": "col-lg-9 col-md-8 col-sm-6 col-9"
 };
-var _hoisted_16 = {
+var _hoisted_7 = {
   "class": "navbar navbar-expand-lg"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<button class=\"navbar-toggler side_navbar_toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSidetoggle\" aria-expanded=\"false\"><span class=\"ion-android-menu\"></span></button><div class=\"collapse navbar-collapse mobile_side_menu\" id=\"navbarSidetoggle\"><ul class=\"navbar-nav\"><li class=\"dropdown\"><a data-toggle=\"dropdown\" class=\"nav-link dropdown-toggle active\" href=\"#\">Home</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"index.html\">Fashion 1</a></li><li><a class=\"dropdown-item nav-link nav_item active\" href=\"index-2.html\">Fashion 2</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"index-3.html\">Furniture 1</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"index-4.html\">Furniture 2</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"index-5.html\">Electronics 1</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"index-6.html\">Electronics 2</a></li></ul></div></li><li class=\"dropdown\"><a class=\"dropdown-toggle nav-link\" href=\"#\" data-toggle=\"dropdown\">Pages</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"about.html\">About Us</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"contact.html\">Contact Us</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"faq.html\">Faq</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"404.html\">404 Error Page</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"login.html\">Login</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"signup.html\">Register</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"term-condition.html\">Terms and Conditions</a></li></ul></div></li><li class=\"dropdown dropdown-mega-menu\"><a class=\"dropdown-toggle nav-link\" href=\"#\" data-toggle=\"dropdown\">Products</a><div class=\"dropdown-menu\"><ul class=\"mega-menu d-lg-flex\"><li class=\"mega-menu-col col-lg-3\"><ul><li class=\"dropdown-header\">Woman&#39;s</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-three-columns.html\">Vestibulum sed</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-four-columns.html\">Donec porttitor</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-grid-view.html\">Donec vitae facilisis</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-list-view.html\">Curabitur tempus</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-left-sidebar.html\">Vivamus in tortor</a></li></ul></li><li class=\"mega-menu-col col-lg-3\"><ul><li class=\"dropdown-header\">Men&#39;s</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-cart.html\">Donec vitae ante ante</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"checkout.html\">Etiam ac rutrum</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"wishlist.html\">Quisque condimentum</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"compare.html\">Curabitur laoreet</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"order-completed.html\">Vivamus in tortor</a></li></ul></li><li class=\"mega-menu-col col-lg-3\"><ul><li class=\"dropdown-header\">Kid&#39;s</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail.html\">Donec vitae facilisis</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-left-sidebar.html\">Quisque condimentum</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-right-sidebar.html\">Etiam ac rutrum</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-thumbnails-left.html\">Donec vitae ante ante</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-accordion-style.html\">Donec porttitor</a></li></ul></li><li class=\"mega-menu-col col-lg-3\"><ul><li class=\"dropdown-header\">Accessories</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail.html\">Curabitur tempus</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-left-sidebar.html\">Quisque condimentum</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-right-sidebar.html\">Vivamus in tortor</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-thumbnails-left.html\">Donec vitae facilisis</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-accordion-style.html\">Donec porttitor</a></li></ul></li></ul><div class=\"d-lg-flex menu_banners\"><div class=\"col-lg-6\"><div class=\"header-banner\"><img src=\"https://bestwebcreator.com/shopwise/demo/assets/images/menu_banner1.jpg\" alt=\"menu_banner1\"><div class=\"banne_info\"><h6>10% Off</h6><h4>New Arrival</h4><a href=\"#\">Shop now</a></div></div></div><div class=\"col-lg-6\"><div class=\"header-banner\"><img src=\"https://bestwebcreator.com/shopwise/demo/assets/images/menu_banner2.jpg\" alt=\"menu_banner2\"><div class=\"banne_info\"><h6>15% Off</h6><h4>Men&#39;s Fashion</h4><a href=\"#\">Shop now</a></div></div></div></div></div></li><li class=\"dropdown\"><a class=\"dropdown-toggle nav-link\" href=\"#\" data-toggle=\"dropdown\">Blog</a><div class=\"dropdown-menu dropdown-reverse\"><ul><li><a class=\"dropdown-item menu-link dropdown-toggler\" href=\"#\">Grids</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-three-columns.html\">3 columns</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-four-columns.html\">4 columns</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-left-sidebar.html\">Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-right-sidebar.html\">right Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-standard-left-sidebar.html\">Standard Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-standard-right-sidebar.html\">Standard right Sidebar</a></li></ul></div></li><li><a class=\"dropdown-item menu-link dropdown-toggler\" href=\"#\">Masonry</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-masonry-three-columns.html\">3 columns</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-masonry-four-columns.html\">4 columns</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-masonry-left-sidebar.html\">Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-masonry-right-sidebar.html\">right Sidebar</a></li></ul></div></li><li><a class=\"dropdown-item menu-link dropdown-toggler\" href=\"#\">Single Post</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-single.html\">Default</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-single-left-sidebar.html\">left sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-single-slider.html\">slider post</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-single-video.html\">video post</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-single-audio.html\">audio post</a></li></ul></div></li><li><a class=\"dropdown-item menu-link dropdown-toggler\" href=\"#\">List</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-list-left-sidebar.html\">left sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-list-right-sidebar.html\">right sidebar</a></li></ul></div></li></ul></div></li><li class=\"dropdown dropdown-mega-menu\"><a class=\"dropdown-toggle nav-link\" href=\"#\" data-toggle=\"dropdown\">Shop</a><div class=\"dropdown-menu\"><ul class=\"mega-menu d-lg-flex\"><li class=\"mega-menu-col col-lg-9\"><ul class=\"d-lg-flex\"><li class=\"mega-menu-col col-lg-4\"><ul><li class=\"dropdown-header\">Shop Page Layout</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-list.html\">shop List view</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-list-left-sidebar.html\">shop List Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-list-right-sidebar.html\">shop List Right Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-left-sidebar.html\">Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-right-sidebar.html\">Right Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-load-more.html\">Shop Load More</a></li></ul></li><li class=\"mega-menu-col col-lg-4\"><ul><li class=\"dropdown-header\">Other Pages</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-cart.html\">Cart</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"checkout.html\">Checkout</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"my-account.html\">My Account</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"wishlist.html\">Wishlist</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"compare.html\">compare</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"order-completed.html\">Order Completed</a></li></ul></li><li class=\"mega-menu-col col-lg-4\"><ul><li class=\"dropdown-header\">Product Pages</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail.html\">Default</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-left-sidebar.html\">Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-right-sidebar.html\">Right Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-thumbnails-left.html\">Thumbnails Left</a></li></ul></li></ul></li><li class=\"mega-menu-col col-lg-3\"><div class=\"header_banner\"><div class=\"header_banner_content\"><div class=\"shop_banner\"><div class=\"banner_img overlay_bg_40\"><img src=\"https://bestwebcreator.com/shopwise/demo/assets/images/shop_banner2.jpg\" alt=\"shop_banner2\"></div><div class=\"shop_bn_content\"><h6 class=\"text-uppercase shop_subtitle\">New Collection</h6><h5 class=\"text-uppercase shop_title\">Sale 30% Off</h5><a href=\"#\" class=\"btn btn-white rounded-0 btn-xs text-uppercase\">Shop Now</a></div></div></div></div></li></ul></div></li><li><a class=\"nav-link nav_item\" href=\"contact.html\">Contact Us</a></li></ul></div>", 2);
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<button class=\"navbar-toggler side_navbar_toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSidetoggle\" aria-expanded=\"false\"><span class=\"ion-android-menu\"></span></button><div class=\"collapse navbar-collapse mobile_side_menu\" id=\"navbarSidetoggle\"><ul class=\"navbar-nav\"><li class=\"dropdown\"><a data-toggle=\"dropdown\" class=\"nav-link dropdown-toggle active\" href=\"#\">Home</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"index.html\">Fashion 1</a></li><li><a class=\"dropdown-item nav-link nav_item active\" href=\"index-2.html\">Fashion 2</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"index-3.html\">Furniture 1</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"index-4.html\">Furniture 2</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"index-5.html\">Electronics 1</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"index-6.html\">Electronics 2</a></li></ul></div></li><li class=\"dropdown\"><a class=\"dropdown-toggle nav-link\" href=\"#\" data-toggle=\"dropdown\">Pages</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"about.html\">About Us</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"contact.html\">Contact Us</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"faq.html\">Faq</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"404.html\">404 Error Page</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"login.html\">Login</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"signup.html\">Register</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"term-condition.html\">Terms and Conditions</a></li></ul></div></li><li class=\"dropdown dropdown-mega-menu\"><a class=\"dropdown-toggle nav-link\" href=\"#\" data-toggle=\"dropdown\">Products</a><div class=\"dropdown-menu\"><ul class=\"mega-menu d-lg-flex\"><li class=\"mega-menu-col col-lg-3\"><ul><li class=\"dropdown-header\">Woman&#39;s</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-three-columns.html\">Vestibulum sed</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-four-columns.html\">Donec porttitor</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-grid-view.html\">Donec vitae facilisis</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-list-view.html\">Curabitur tempus</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-left-sidebar.html\">Vivamus in tortor</a></li></ul></li><li class=\"mega-menu-col col-lg-3\"><ul><li class=\"dropdown-header\">Men&#39;s</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-cart.html\">Donec vitae ante ante</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"checkout.html\">Etiam ac rutrum</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"wishlist.html\">Quisque condimentum</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"compare.html\">Curabitur laoreet</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"order-completed.html\">Vivamus in tortor</a></li></ul></li><li class=\"mega-menu-col col-lg-3\"><ul><li class=\"dropdown-header\">Kid&#39;s</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail.html\">Donec vitae facilisis</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-left-sidebar.html\">Quisque condimentum</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-right-sidebar.html\">Etiam ac rutrum</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-thumbnails-left.html\">Donec vitae ante ante</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-accordion-style.html\">Donec porttitor</a></li></ul></li><li class=\"mega-menu-col col-lg-3\"><ul><li class=\"dropdown-header\">Accessories</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail.html\">Curabitur tempus</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-left-sidebar.html\">Quisque condimentum</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-right-sidebar.html\">Vivamus in tortor</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-thumbnails-left.html\">Donec vitae facilisis</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-accordion-style.html\">Donec porttitor</a></li></ul></li></ul><div class=\"d-lg-flex menu_banners\"><div class=\"col-lg-6\"><div class=\"header-banner\"><img src=\"https://bestwebcreator.com/shopwise/demo/assets/images/menu_banner1.jpg\" alt=\"menu_banner1\"><div class=\"banne_info\"><h6>10% Off</h6><h4>New Arrival</h4><a href=\"#\">Shop now</a></div></div></div><div class=\"col-lg-6\"><div class=\"header-banner\"><img src=\"https://bestwebcreator.com/shopwise/demo/assets/images/menu_banner2.jpg\" alt=\"menu_banner2\"><div class=\"banne_info\"><h6>15% Off</h6><h4>Men&#39;s Fashion</h4><a href=\"#\">Shop now</a></div></div></div></div></div></li><li class=\"dropdown\"><a class=\"dropdown-toggle nav-link\" href=\"#\" data-toggle=\"dropdown\">Blog</a><div class=\"dropdown-menu dropdown-reverse\"><ul><li><a class=\"dropdown-item menu-link dropdown-toggler\" href=\"#\">Grids</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-three-columns.html\">3 columns</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-four-columns.html\">4 columns</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-left-sidebar.html\">Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-right-sidebar.html\">right Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-standard-left-sidebar.html\">Standard Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-standard-right-sidebar.html\">Standard right Sidebar</a></li></ul></div></li><li><a class=\"dropdown-item menu-link dropdown-toggler\" href=\"#\">Masonry</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-masonry-three-columns.html\">3 columns</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-masonry-four-columns.html\">4 columns</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-masonry-left-sidebar.html\">Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-masonry-right-sidebar.html\">right Sidebar</a></li></ul></div></li><li><a class=\"dropdown-item menu-link dropdown-toggler\" href=\"#\">Single Post</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-single.html\">Default</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-single-left-sidebar.html\">left sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-single-slider.html\">slider post</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-single-video.html\">video post</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-single-audio.html\">audio post</a></li></ul></div></li><li><a class=\"dropdown-item menu-link dropdown-toggler\" href=\"#\">List</a><div class=\"dropdown-menu\"><ul><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-list-left-sidebar.html\">left sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"blog-list-right-sidebar.html\">right sidebar</a></li></ul></div></li></ul></div></li><li class=\"dropdown dropdown-mega-menu\"><a class=\"dropdown-toggle nav-link\" href=\"#\" data-toggle=\"dropdown\">Shop</a><div class=\"dropdown-menu\"><ul class=\"mega-menu d-lg-flex\"><li class=\"mega-menu-col col-lg-9\"><ul class=\"d-lg-flex\"><li class=\"mega-menu-col col-lg-4\"><ul><li class=\"dropdown-header\">Shop Page Layout</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-list.html\">shop List view</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-list-left-sidebar.html\">shop List Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-list-right-sidebar.html\">shop List Right Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-left-sidebar.html\">Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-right-sidebar.html\">Right Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-load-more.html\">Shop Load More</a></li></ul></li><li class=\"mega-menu-col col-lg-4\"><ul><li class=\"dropdown-header\">Other Pages</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-cart.html\">Cart</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"checkout.html\">Checkout</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"my-account.html\">My Account</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"wishlist.html\">Wishlist</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"compare.html\">compare</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"order-completed.html\">Order Completed</a></li></ul></li><li class=\"mega-menu-col col-lg-4\"><ul><li class=\"dropdown-header\">Product Pages</li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail.html\">Default</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-left-sidebar.html\">Left Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-right-sidebar.html\">Right Sidebar</a></li><li><a class=\"dropdown-item nav-link nav_item\" href=\"shop-product-detail-thumbnails-left.html\">Thumbnails Left</a></li></ul></li></ul></li><li class=\"mega-menu-col col-lg-3\"><div class=\"header_banner\"><div class=\"header_banner_content\"><div class=\"shop_banner\"><div class=\"banner_img overlay_bg_40\"><img src=\"https://bestwebcreator.com/shopwise/demo/assets/images/shop_banner2.jpg\" alt=\"shop_banner2\"></div><div class=\"shop_bn_content\"><h6 class=\"text-uppercase shop_subtitle\">New Collection</h6><h5 class=\"text-uppercase shop_title\">Sale 30% Off</h5><a href=\"#\" class=\"btn btn-white rounded-0 btn-xs text-uppercase\">Shop Now</a></div></div></div></div></li></ul></div></li><li><a class=\"nav-link nav_item\" href=\"contact.html\">Contact Us</a></li></ul></div>", 2);
 
-var _hoisted_19 = {
+var _hoisted_10 = {
   "class": "navbar-nav attr-nav align-items-center"
 };
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "#",
   "class": "nav-link"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
@@ -366,42 +315,42 @@ var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_21 = {
+var _hoisted_12 = {
   href: "#",
   "class": "nav-link"
 };
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "linearicons-heart"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_23 = {
+var _hoisted_14 = {
   "class": "wishlist_count"
 };
-var _hoisted_24 = {
+var _hoisted_15 = {
   "class": "dropdown cart_dropdown"
 };
-var _hoisted_25 = {
+var _hoisted_16 = {
   "class": "nav-link cart_trigger",
   href: "#",
   "data-toggle": "dropdown"
 };
 
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "linearicons-cart"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_27 = {
+var _hoisted_18 = {
   "class": "cart_count"
 };
 
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"cart_box dropdown-menu dropdown-menu-right\"><ul class=\"cart_list\"><li><a href=\"#\" class=\"item_remove\"><i class=\"ion-close\"></i></a><a href=\"#\"><img src=\"https://bestwebcreator.com/shopwise/demo/assets/images/cart_thamb1.jpg\" alt=\"cart_thumb1\">Variable product 001</a><span class=\"cart_quantity\"> 1 x <span class=\"cart_amount\"><span class=\"price_symbole\">$</span></span>78.00</span></li><li><a href=\"#\" class=\"item_remove\"><i class=\"ion-close\"></i></a><a href=\"#\"><img src=\"https://bestwebcreator.com/shopwise/demo/assets/images/cart_thamb2.jpg\" alt=\"cart_thumb2\">Ornare sed consequat</a><span class=\"cart_quantity\"> 1 x <span class=\"cart_amount\"><span class=\"price_symbole\">$</span></span>81.00</span></li></ul><div class=\"cart_footer\"><p class=\"cart_total\"><strong>Subtotal:</strong> <span class=\"cart_price\"><span class=\"price_symbole\">$</span></span>159.00</p><p class=\"cart_buttons\"><a href=\"#\" class=\"btn btn-fill-line view-cart\">View Cart</a><a href=\"#\" class=\"btn btn-fill-out checkout\">Checkout</a></p></div></div>", 1);
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"cart_box dropdown-menu dropdown-menu-right\"><ul class=\"cart_list\"><li><a href=\"#\" class=\"item_remove\"><i class=\"ion-close\"></i></a><a href=\"#\"><img src=\"https://bestwebcreator.com/shopwise/demo/assets/images/cart_thamb1.jpg\" alt=\"cart_thumb1\">Variable product 001</a><span class=\"cart_quantity\"> 1 x <span class=\"cart_amount\"><span class=\"price_symbole\">$</span></span>78.00</span></li><li><a href=\"#\" class=\"item_remove\"><i class=\"ion-close\"></i></a><a href=\"#\"><img src=\"https://bestwebcreator.com/shopwise/demo/assets/images/cart_thamb2.jpg\" alt=\"cart_thumb2\">Ornare sed consequat</a><span class=\"cart_quantity\"> 1 x <span class=\"cart_amount\"><span class=\"price_symbole\">$</span></span>81.00</span></li></ul><div class=\"cart_footer\"><p class=\"cart_total\"><strong>Subtotal:</strong> <span class=\"cart_price\"><span class=\"price_symbole\">$</span></span>159.00</p><p class=\"cart_buttons\"><a href=\"#\" class=\"btn btn-fill-line view-cart\">View Cart</a><a href=\"#\" class=\"btn btn-fill-out checkout\">Checkout</a></p></div></div>", 1);
 
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "pr_search_icon"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "javascript:void(0);",
@@ -417,28 +366,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_Menu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Menu");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" START HEADER "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", _hoisted_10, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.currencies, function (currency) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-      value: currency.name,
-      "data-title": currency.name
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(currency.name), 9
-    /* TEXT, PROPS */
-    , _hoisted_11);
-  }), 256
-  /* UNKEYED_FRAGMENT */
-  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <option value='EUR' data-title=\"EUR\">EUR</option>\n\t\t\t\t\t\t\t\t\t<option value='GBR' data-title=\"GBR\">GBR</option> ")])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Search, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" START HEADER "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Search, {
     categories: $data.categories
   }, null, 8
   /* PROPS */
-  , ["categories"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Menu, {
+  , ["categories"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Menu, {
     categories: $data.categories
   }, null, 8
   /* PROPS */
-  , ["categories"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.number_of_wish), 1
+  , ["categories"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.number_of_wish), 1
   /* TEXT */
-  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.shopping_cart_items.length), 1
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.shopping_cart_items.length), 1
   /* TEXT */
-  )]), _hoisted_28])]), _hoisted_29])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" END HEADER "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("script"), {
+  )]), _hoisted_19])]), _hoisted_20])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" END HEADER "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("script"), {
     src: "user/js/scripts.js"
   }))], 64
   /* STABLE_FRAGMENT */

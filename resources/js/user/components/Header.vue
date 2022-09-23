@@ -28,17 +28,6 @@
 									<option value='us' data-image="https://bestwebcreator.com/shopwise/demo/assets/images/us.png" data-title="United States">United States</option>
 								</select>
 							</div>
-							<div class="ml-3">
-								<select name="countries" class="custome_select">
-									<option v-for="currency in currencies" 
-									:value='currency.name' 
-									:data-title="currency.name">
-										{{ currency.name }}
-									</option>
-									<!-- <option value='EUR' data-title="EUR">EUR</option>
-									<option value='GBR' data-title="GBR">GBR</option> -->
-								</select>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -312,7 +301,6 @@
 		data(){
 			return {
 				categories : {},
-				currencies : {},
 				number_of_wish : 0 ,
 				shopping_cart_items : {}
 			}
@@ -321,11 +309,6 @@
 			async getCategories(){
 				window.axios.get( 'categories' ).then( (response) => {
 					this.categories=response.data.categories
-				} )
-			},
-			async getCurrencies(){
-				window.axios.get( 'currencies' ).then( (response) => {
-					this.currencies=response.data.currencies
 				} )
 			},
 			async getShoppingCart(){
@@ -341,7 +324,6 @@
 		},
 		async created(){
 			await this.getCategories()
-			await this.getCurrencies()
 			await this.getShoppingCart()
 			await this.getNumberOfWish()
 		},
