@@ -22,13 +22,17 @@
 				</div>
 				<div class="product_info">
 					<h6 class="product_title"><a href="shop-product-detail.html">{{ item.name }}</a></h6>
-					<div class="product_price">
-						<span class="price">{{ item.sale_price }}MMK</span>
+					<ItemPrice
+					:normal_price="item.normal_price"
+					:sale_price="item.sale_price"
+					/>
+					<!-- <div class="product_price">
+						<span class="price">{{ showPrice(item.sale_price) }}MMK</span>
 						<del>$55.25</del>
 						<div class="on_sale">
 							<span>35% Off</span>
 						</div>
-					</div>
+					</div> -->
 					<div class="rating_wrap">
 						<div class="rating">
 							<div class="product_rate" style="width:80%"></div>
@@ -53,13 +57,13 @@
 <component is="script" src="user/js/scripts.js" />
 </template>
 <script >
+	import ItemPrice from './ItemPrice'
+
 	export default {
-		// metaInfo: {
-		// 	script: [
-		// 	{ src: 'user/js/scripts.js', async: true, defer: true }
-		// 	],
-		// },
 		name : 'SliderDetail' ,
+		components : {
+			ItemPrice
+		},
 		props : {
 			content : {
 				type : String
@@ -69,6 +73,11 @@
 			},
 			items : {
 				type : Array
+			}
+		},
+		methods : {
+			showPrice(price){
+				return parseInt(price).toString()
 			}
 		}
 	}
