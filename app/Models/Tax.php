@@ -23,11 +23,11 @@ class Tax extends TransactionModel
         });
     }
 
-    public static function getTaxFromItemPrice($query){
-        return $query->select('rate')
-        ->from('taxes')
-        ->whereColumn('item_prices.tax_id','taxes.id')
-        ->limit(1);
-    }
+    // public static function getTaxFromItemPrice($query){
+    //     return $query->select('rate')
+    //     ->from('taxes')
+    //     ->whereColumn('item_prices.tax_id','taxes.id')
+    //     ->limit(1);
+    // }
     
 }
