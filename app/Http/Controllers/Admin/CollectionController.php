@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\Collection;
+use App\Models\{Collection,ItemCollection};
 use DB;
 class CollectionController extends CommonController
 {
@@ -103,7 +103,8 @@ class CollectionController extends CommonController
     {
         //
         return response()->json([
-            'collection' => Collection::findOrFail($id)
+            'collection' => Collection::findOrFail($id) ,
+            'items' => ItemCollection::where('collection_id',$id)->get()
         ]);
     }
 

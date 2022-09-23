@@ -3,6 +3,10 @@
 		.fileinput-upload-button, .kv-file-upload, .fileinput-remove, .kv-file-remove{
 			display: none !important;
 		}
+		.select2-selection__choice{
+			background-color: #800080 !important;
+			color : white !important;
+		}
 	</component>
 	<ContentHeader 
 	:header="isNaN(this.$route.params.id) ? 
@@ -30,6 +34,17 @@
 									storage_path='image/collection_images/'  />
 									<strong v-if="errors && errors.pic" class="invalid-feedback" style="display:block!important;" >{{ errors.pic[0] }}</strong>
 								</div>
+								<div class="form-group">
+									<label>Items</label>
+									<SelectMultiple
+									placeholder="Select Items"
+									:value="fields.items"
+									@input="setItems" >
+									<option :value="item.id"
+									v-for="item in items">{{ item.name }}</option>
+								</SelectMultiple>
+								<strong v-if="errors && errors.items" class="invalid-feedback" style="display:block!important;">{{ errors.items[0] }}</strong>
+							</div>
 							</div>
 						</div>
 					</div>
@@ -45,7 +60,7 @@
 <script >
 	import ContentHeader from '../components/ContentHeader';
 
-	import { errorResponse , checkContentPermission , showSwalLoading } from '../helpers/check.js';
+	import { errorResponse , checkContentPermission , showSwalLoading , mergeArray } from '../helpers/check.js';
 
 	import Error from '../components/Error'
 
@@ -53,18 +68,23 @@
 
 	import File from '../components/File'
 
+	import SelectMultiple from '../components/SelectMultiple';
+
 	export default {
 		components: {
 			ContentHeader,
 			Error,
 			File,
-			Loading
+			Loading,
+			SelectMultiple
 		},
 		data(){
 			return {
 				content : 'Collection',
+				items : {},
 				fields : {
 					name : '',
+					items : [],
 					pic : '',
 					pics : [] ,
 					count : 0
@@ -85,11 +105,15 @@
 		async created(){
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
+			await this.getItems()
 			if(this.current=='update'){
 				await this.getCollectionData(this.$route.params.id);
 			}
 		},
 		methods : {
+			setItems(val){
+				this.fields.items=val
+			},
 			removePic(){
 				this.fields.pic='';
 			},
@@ -104,6 +128,11 @@
 				let pic=typeof this.fields.pic == 'string' && !isNaN(this.$route.params.id) ? '' : this.fields.pic;
 				this.formData.set('name',this.fields.name )
 				this.formData.set('pic',pic)
+				if(this.fields.items.length>0){
+					this.fields.items.map( (data,index) => {
+						this.formData.set( 'items['+index+']' , data  )
+					} )
+				}
 				if(update!==null){this.formData.append('_method', 'PATCH');}
 				return this.formData
 			},
@@ -153,11 +182,24 @@
 					}else{
 						this.fields=response.data.collection;
 						this.fields.pics=[{'filename':this.fields.pic,'id': !isNaN(this.$route.params.id) ? this.$route.params.id : null }]
+						this.fields.items=mergeArray(response.data.items);
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'update')
 				} )
-			}
+			},
+			async getItems(){
+				window.axios.get('get_items').then( (response) => {
+					if(response.data.message=='Loading'){
+
+						showSwalLoading(this);
+					}else{
+						this.items=response.data.items
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')
+				} )
+			},
 		}
 
 	}

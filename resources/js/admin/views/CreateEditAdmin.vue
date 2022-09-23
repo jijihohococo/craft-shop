@@ -110,7 +110,7 @@
 		async created(){
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
-			this.getRoles()
+			await this.getRoles()
 			if(this.current=='update'){
 				await this.getAdminData(this.$route.params.id);
 			}

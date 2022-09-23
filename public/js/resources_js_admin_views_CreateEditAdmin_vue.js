@@ -210,18 +210,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _this.current = isNaN(_this.$route.params.id) ? 'create' : 'update';
               (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_1__.checkContentPermission)(_this.content, _this.current, _this);
+              _context.next = 4;
+              return _this.getRoles();
 
-              _this.getRoles();
-
+            case 4:
               if (!(_this.current == 'update')) {
-                _context.next = 6;
+                _context.next = 7;
                 break;
               }
 
-              _context.next = 6;
+              _context.next = 7;
               return _this.getAdminData(_this.$route.params.id);
 
-            case 6:
+            case 7:
             case "end":
               return _context.stop();
           }
