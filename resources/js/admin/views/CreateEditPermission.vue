@@ -101,7 +101,8 @@
 				'Color',
 				'Country',
 				'Order',
-				'Promotion'
+				'Promotion',
+				'Collection'
 				],
 				permissions: [
 				'create',
