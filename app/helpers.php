@@ -2,6 +2,9 @@
 
 use App\Models\{PassportDate,TokenRefresh};
 use Illuminate\Support\Facades\Route;
+function uniqueColumn($table,$id,$column='name'){
+	return ['required', 'string', 'max:100', $id==null ? 'unique:'.$table : 'unique:'.$table.','.$column.','.$id ];
+}
 function loginFailed(){
 	return response()->json([
 		'message' => 'The given data was invalid.',

@@ -107,7 +107,7 @@ class BannerController extends CommonController
 
    private function validateData($id=NULL){
     return [
-        'title' => ['required', 'string', 'max:100', $id==null ? 'unique:banners' : 'unique:banners,title,'.$id ] ,
+        'title' => uniqueColumn($this->content,$id,$this->mainData) ,
         'pic' => $id==null ? requiredImage() : nullableImage() ,
         'content' => [
         'nullable',

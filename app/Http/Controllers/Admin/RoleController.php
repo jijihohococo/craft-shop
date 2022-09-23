@@ -132,7 +132,7 @@ class RoleController extends CommonController
 
  private function validateData($id=NULL){
     return [
-        'name' => ['required', 'string', 'max:100', $id==null ? 'unique:roles' : 'unique:roles,name,'.$id ],
+        'name' => uniqueColumn($this->content,$id),
         'permissions' => ['required','array']
     ];
 }

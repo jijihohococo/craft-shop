@@ -52,7 +52,7 @@ class SubcategoryController extends CommonController
      */
     private function validateData($id=NULL){
         return [
-            'name' => ['required', 'string', 'max:100', $id==null ? 'unique:subcategories' : 'unique:subcategories,name,'.$id ] ,
+            'name' => uniqueColumn($this->content,$id) ,
             'category_id' => ["required","integer"]
         ];
     }

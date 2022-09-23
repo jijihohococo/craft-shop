@@ -104,7 +104,7 @@ class AttributeController extends CommonController
 
     private function validateData($id=NULL){
         return [
-            'name' => ['required', 'string', 'max:100', $id==null ? 'unique:attributes' : 'unique:attributes,name,'.$id ] ,
+            'name' => uniqueColumn($this->content,$id) ,
             'set' => ['array']
         ];
     }

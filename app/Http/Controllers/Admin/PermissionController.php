@@ -108,7 +108,7 @@ class PermissionController extends CommonController
 
    private function validateData($id=NULL){
     return [
-        'name' => ['required', 'string', 'max:100', $id==null ? 'unique:permissions' : 'unique:permissions,name,'.$id ],
+        'name' => uniqueColumn($this->content,$id),
         'model' => [
             'in:'.implode(',', Permission::getModels())
         ],

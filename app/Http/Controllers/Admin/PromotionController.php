@@ -115,7 +115,7 @@ class PromotionController extends CommonController
 
     private function validateData($id=NULL){
         return [
-            'name' => ['required', 'string', 'max:100', $id==null ? 'unique:promotions' : 'unique:promotions,name,'.$id ] ,
+            'name' => uniqueColumn($this->content,$id) ,
             'promo_code' => ['nullable','max:100'],
             'banner_id' => ['nullable','integer'],
             'promotion_start_time' => ['required'],

@@ -102,7 +102,7 @@ class CurrencyController extends CommonController
 
     private function validateData($id=NULL){
         return [
-            'name' => ['required', 'string', 'max:100', $id==null ? 'unique:currencies' : 'unique:currencies,name,'.$id ],
+            'name' => uniqueColumn($this->content,$id),
             'price' => requiredDouble()
         ];
     }

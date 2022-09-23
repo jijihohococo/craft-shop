@@ -294,7 +294,7 @@ class ItemController extends CommonController
 
  private function validateData($id=NULL){
     return [
-        'name' => ['required', 'string', 'max:100', $id==null ? 'unique:items' : 'unique:items,name,'.$id ] ,
+        'name' => uniqueColumn($this->content,$id) ,
         'category_id' => ['required','integer'],
         'subcategory_id' => ['required','integer'],
         'brand_id' => ['required','integer'],

@@ -116,7 +116,7 @@ class BrandController extends CommonController
 
     private function validateData($id=NULL){
         return [
-            'name' => ['required', 'string', 'max:100', $id==null ? 'unique:brands' : 'unique:brands,name,'.$id ] ,
+            'name' => uniqueColumn($this->content,$id) ,
             'pic' => $id==null ? requiredImage() : nullableImage()
         ];
     }
