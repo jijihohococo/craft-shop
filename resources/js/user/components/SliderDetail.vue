@@ -9,7 +9,7 @@
 			<div class="product">
 				<div class="product_img">
 					<a href="shop-product-detail.html">
-						<img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img1.jpg" alt="product_img1">
+						<img :src="'/image/item_images/'+item.image" :alt="item.name">
 					</a>
 					<div class="product_action_box">
 						<ul class="list_none pr_action_btn">
