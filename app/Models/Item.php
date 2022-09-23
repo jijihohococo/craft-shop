@@ -159,7 +159,17 @@ class Item extends TransactionModel
             self::selectWithItemVariant($newQuery);
         })->orderBy('item_prices.id','DESC')
         ->limit(1);
-    }
+    },
+ //    'tax' => function($query){
+ //     $query->selectSub(function($query){
+ //        Tax::getTaxFromItemPrice($query);
+ //    },'tax')
+ //     ->from('item_prices')
+ //     ->whereIn('item_prices.item_variant_id',function($newQuery){
+ //         self::selectWithItemVariant($newQuery);
+ //     })->orderBy('item_prices.id','DESC')
+ //     ->limit(1);
+ // }
 ]);
 }
 
