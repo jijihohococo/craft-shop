@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Collection;
+use DB;
 class CollectionController extends CommonController
 {
 
@@ -109,5 +110,12 @@ class CollectionController extends CommonController
             ->latest('id')
             ->paginate(10)
         );
+    }
+
+    private function validateData($id=NULL){
+        return [
+            'name' => uniqueColumn($this->content,$id) ,
+            'pic' => $id==null ? requiredImage() : nullableImage()
+        ];
     }
 }

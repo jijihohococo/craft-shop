@@ -75,6 +75,7 @@
       'brand' : "Brand" ,
       'color' : "Color",
       'item' : "Item" ,
+      'collection' : "Collection",
       'banner' : "Banner",
       'tax' : "Tax",
       'target' : "Target",

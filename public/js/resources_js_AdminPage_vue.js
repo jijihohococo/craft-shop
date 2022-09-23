@@ -82,6 +82,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'brand': "Brand",
         'color': "Color",
         'item': "Item",
+        'collection': "Collection",
         'banner': "Banner",
         'tax': "Tax",
         'target': "Target",

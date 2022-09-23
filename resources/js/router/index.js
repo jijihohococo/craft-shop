@@ -24,6 +24,7 @@ import taxRoutes from './admin/tax';
 import colorRoutes from './admin/color';
 import subcategoryRoutes from './admin/subcategory';
 import promotionRoutes from './admin/promotion';
+import collectionRoutes from './admin/collection';
 //------ADMIN ROUTES------//
 
 
@@ -74,7 +75,8 @@ const router = createRouter({
     ...transactionRoutes,
     ...taxRoutes,
     ...colorRoutes,
-    ...promotionRoutes
+    ...promotionRoutes,
+    ...collectionRoutes
     ]
   }
   ]
