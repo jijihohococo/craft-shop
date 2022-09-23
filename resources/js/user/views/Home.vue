@@ -342,7 +342,7 @@
 </div>
 <!-- END SECTION BANNER --> 
 
-<FeatureProduct />
+<FeatureProducts />
 
 <!-- START SECTION CLIENT LOGO -->
 <Brand />
@@ -361,7 +361,7 @@
     import Brand from '../components/Brand';
     import Footer from '../components/Footer';
     import ItemSlider from '../components/ItemSlider';
-    import FeatureProduct from '../components/FeatureProduct';
+    import FeatureProducts from '../components/FeatureProducts';
     import Subscribe from '../components/Subscribe';
     export default {
       components : {
@@ -369,7 +369,7 @@
        Brand,
        Footer,
        ItemSlider,
-       FeatureProduct,
+       FeatureProducts,
        Subscribe
    },
    created(){
