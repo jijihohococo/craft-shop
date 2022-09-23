@@ -22,5 +22,9 @@ class Collection extends TransactionModel
             return self::orderBy('id')->get();
         });
     }
+
+    public function items(){
+        return $this->hasMany('App\Models\ItemCollection');
+    }
     
 }
