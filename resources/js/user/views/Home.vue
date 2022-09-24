@@ -58,7 +58,7 @@
                     <h2>Deal Of The Days</h2>
                 </div>
                 <div class="deal_timer">
-                  <div class="countdown_time countdown_style1" data-time="2021/09/28 13:22:15"></div>
+                  <div class="countdown_time countdown_style1" data-time="2018/09/28 13:22:15"></div>
               </div>
           </div>
       </div>
@@ -286,36 +286,6 @@
 </div>
 </div>
 <!-- END SECTION SHOP -->
-
-<!-- START SECTION BANNER --> 
-<div class="section pb_20 small_pt">
-  <div class="container-fluid px-2">
-      <div class="row no-gutters">
-          <div class="col-md-4">
-              <div class="sale_banner">
-                  <a class="hover_effect1" href="#">
-                    <img src="https://bestwebcreator.com/shopwise/demo/assets/images/shop_banner_img3.jpg" alt="shop_banner_img3">
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4">
-          <div class="sale_banner">
-              <a class="hover_effect1" href="#">
-                <img src="https://bestwebcreator.com/shopwise/demo/assets/images/shop_banner_img4.jpg" alt="shop_banner_img4">
-            </a>
-        </div>
-    </div>
-    <div class="col-md-4">
-      <div class="sale_banner">
-          <a class="hover_effect1" href="#">
-            <img src="https://bestwebcreator.com/shopwise/demo/assets/images/shop_banner_img5.jpg" alt="shop_banner_img5">
-        </a>
-    </div>
-</div>
-</div>
-</div>
-</div>
-<!-- END SECTION BANNER --> 
 
 <FeatureProducts />
 
