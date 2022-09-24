@@ -73,13 +73,9 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('user_search','Admin\UserController@search');
 	//--------------USER----------------//
 
-	Route::resource('targets','Admin\TargetController');
-	Route::get('target_search','Admin\TargetController@search');
-	Route::get('target_trash_search','Admin\TargetController@trashSearch');
-	Route::delete('target_restore/{id}','Admin\TargetController@restore');
-	Route::get('trash_targets','Admin\TargetController@trash');
-	Route::delete('delete_targets','Admin\TargetController@deleteMultiple');
-	Route::delete('restore_targets','Admin\TargetController@restoreMultiple');
+	//--------------TARGET----------------//
+	adminResourceApi('target','targets','TargetController');
+	//--------------TARGET----------------//
 
 
 	//--------------PROMOTION----------------//

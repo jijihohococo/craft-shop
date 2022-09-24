@@ -109,9 +109,11 @@ class TargetController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search .'%';
         return $this->indexPage(
-            Target::where('name','like',$searchData)
+            Target::searchWithName($searchData)
+            ->searchCreateAndUpdate($searchData)
             ->orWhere('duration','like',$searchData)
-            ->latest('id')->paginate(10)
+            ->latest('id')
+            ->paginate(10)
         );
     }
 
@@ -119,9 +121,11 @@ class TargetController extends CommonController
         $searchData='%'.$request->search .'%';
         return $this->indexPage(
             Target::onlyTrashed()
-            ->where('name','like',$searchData)
+            ->searchWithName($searchData)
+            ->searchDelete($searchData)
             ->orWhere('duration','like',$searchData)
-            ->latest('id')->paginate(10)
+            ->latest('id')
+            ->paginate(10)
         );
     }
 }
