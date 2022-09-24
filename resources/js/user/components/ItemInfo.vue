@@ -7,7 +7,9 @@
 		/>
 		<div class="rating_wrap">
 			<div class="rating">
-				<div class="product_rate" style="width:80%"></div>
+				<div class="product_rate"
+				:style="{ 'width': getAveragePercent(item.reviews) }"
+				 ></div>
 			</div>
 			<span class="rating_num">(21)</span>
 		</div>
@@ -25,10 +27,16 @@
 </template>
 <script >
 	import ItemPrice from './ItemPrice'
+	import { showAveragePercent } from '../helpers/general.js';
 	export default {
 		components : {
 			ItemPrice
 		},
-		props : ['item']
+		props : ['item'],
+		methods : {
+			getAveragePercent(data){
+				return showAveragePercent(data.split(',')) + '%';
+			}
+		}
 	}
 </script>

@@ -136,6 +136,17 @@ class Item extends TransactionModel
     ]);
   }
 
+  public function scopeSelectReviews($query){
+    return $query->addSelect([
+        'reviews' => function($query){
+            $query->select(
+                \DB::raw('GROUP_CONCAT(item_reviews.rate)')
+            )->from('item_reviews')
+            ->whereColumn('items.id','item_reviews.item_id');
+        }
+    ]);
+  }
+
   public function scopeSelectPrice($query){
     return $query->addSelect([$this->salePrice => function($query){
         $query->select(
@@ -184,6 +195,7 @@ public function scopeHaveStock($query){
 
 public function scopeSelectShopItem($query){
     return $query->selectItemDataWithImages()
+        ->selectReviews()
         ->selectPrice()
         ->selectStock();
 }

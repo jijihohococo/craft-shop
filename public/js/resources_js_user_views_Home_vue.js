@@ -368,12 +368,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _ItemPrice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ItemPrice */ "./resources/js/user/components/ItemPrice.vue");
+/* harmony import */ var _helpers_general_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/general.js */ "./resources/js/user/helpers/general.js");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     ItemPrice: _ItemPrice__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ['item']
+  props: ['item'],
+  methods: {
+    getAveragePercent: function getAveragePercent(data) {
+      return (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_1__.showAveragePercent)(data.split(',')) + '%';
+    }
+  }
 });
 
 /***/ }),
@@ -1086,8 +1093,20 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   href: "shop-product-detail.html"
 };
+var _hoisted_4 = {
+  "class": "rating_wrap"
+};
+var _hoisted_5 = {
+  "class": "rating"
+};
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"rating_wrap\"><div class=\"rating\"><div class=\"product_rate\" style=\"width:80%;\"></div></div><span class=\"rating_num\">(21)</span></div><div class=\"pr_desc\"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p></div><div class=\"pr_switch_wrap\"><div class=\"product_color_switch\"><span class=\"active\" data-color=\"#87554B\"></span><span data-color=\"#333333\"></span><span data-color=\"#DA323F\"></span></div></div>", 3);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "rating_num"
+}, "(21)", -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"pr_desc\"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p></div><div class=\"pr_switch_wrap\"><div class=\"product_color_switch\"><span class=\"active\" data-color=\"#87554B\"></span><span data-color=\"#333333\"></span><span data-color=\"#DA323F\"></span></div></div>", 2);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ItemPrice = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ItemPrice");
@@ -1099,7 +1118,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     sale_price: $props.item.sale_price
   }, null, 8
   /* PROPS */
-  , ["normal_price", "sale_price"]), _hoisted_4]);
+  , ["normal_price", "sale_price"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "product_rate",
+    style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)({
+      'width': $options.getAveragePercent($props.item.reviews)
+    })
+  }, null, 4
+  /* STYLE */
+  )]), _hoisted_6]), _hoisted_7]);
 }
 
 /***/ }),
@@ -1467,9 +1493,15 @@ var currentYear = new Date().getFullYear();
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "showAveragePercent": () => (/* binding */ showAveragePercent),
 /* harmony export */   "showPrice": () => (/* binding */ showPrice),
 /* harmony export */   "showPromotionPercentage": () => (/* binding */ showPromotionPercentage)
 /* harmony export */ });
+function showAveragePercent(arr) {
+  return arr.reduce(function (a, b) {
+    return a + b;
+  }, 0) / arr.length / 5 * 100;
+}
 function showPrice(price) {
   return parseInt(price).toString();
 }
