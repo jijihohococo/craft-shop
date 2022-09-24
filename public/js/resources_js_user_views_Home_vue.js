@@ -378,7 +378,8 @@ __webpack_require__.r(__webpack_exports__);
   props: ['item'],
   methods: {
     getAveragePercent: function getAveragePercent(data) {
-      return (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_1__.showAveragePercent)(data.split(',')) + '%';
+      var result = data !== null ? (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_1__.showAveragePercent)(data.split(',')) : 0;
+      return result + '%';
     }
   }
 });

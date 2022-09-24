@@ -35,7 +35,9 @@
 		props : ['item'],
 		methods : {
 			getAveragePercent(data){
-				return showAveragePercent(data.split(',')) + '%';
+				var result= data!==null ?
+				showAveragePercent(data.split(',')) : 0;
+				return result + '%';
 			}
 		}
 	}
