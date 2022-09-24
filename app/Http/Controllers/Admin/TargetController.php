@@ -9,7 +9,7 @@ class TargetController extends CommonController
 
     public $model = 'Target';
 
-    public $contents='targets';
+    public $content='targets';
     /**
      * Display a listing of the resource.
      *
