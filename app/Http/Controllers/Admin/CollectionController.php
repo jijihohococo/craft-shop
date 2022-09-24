@@ -72,8 +72,8 @@ class CollectionController extends CommonController
             'name'=> cutSpeicialChar(rand() . $request->name) ,
             'path'=>'collection_images',
             'old_file'=>null , 
-            'width'  => 138 , 
-            'height' => 80 ],$request,$collection );
+            'width'  => 540 , 
+            'height' => 300 ],$request,$collection );
         $collection->save( $collection->getAttributes() );
         $this->insertItemCollections($request->items,$collection->id);
         DB::commit();
@@ -126,8 +126,8 @@ class CollectionController extends CommonController
             'name'=> cutSpeicialChar(rand() . $request->name) ,
             'path'=>'collection_images',
             'old_file'=> $collection->pic , 
-            'width'  => 138 , 
-            'height' => 80 ],$request,$newCollection );
+            'width'  => 540 , 
+            'height' => 300 ],$request,$newCollection );
         $collection->update($newCollection->getAttributes());
         $this->items=$collection->items->pluck('item_id')->toArray();
         $this->insertItemCollections($request->items,$id,'yes');

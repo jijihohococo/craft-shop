@@ -246,9 +246,11 @@ function oneFileUpload(array $array,$request,$data){
 
 		if($array['width']!==null && $array['height']!==null){
 
-			$requestFile=\Image::make($requestFile)->resize($array['width'],$array['height'] , function($imageSize) {
-				$imageSize->aspectRatio();
-			})->encode( $extension );
+			// $requestFile=\Image::make($requestFile)->resize($array['width'],$array['height'] , function($imageSize) {
+			// 	$imageSize->aspectRatio();
+			// })->encode( $extension );
+			$requestFile=\Image::make($requestFile)->resize($array['width'],$array['height'])->encode($extension);
+
 		// //make folder in storage app public before run this code//
 			// Storage::disk('public')->put( $array['path'] .'/'. $fileName , $requestFile );
 		}
