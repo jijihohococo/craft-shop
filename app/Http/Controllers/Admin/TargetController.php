@@ -18,17 +18,17 @@ class TargetController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'targets' => Target::latest('id')->paginate(10)
-        ]);
+        return $this->indexPage(
+            Target::latest('id')->paginate(10)
+        );
     }
 
     public function trash(){
-        return response()->json([
-            'targets' => Target::onlyTrashed()
+        return $this->indexPage(
+            Target::onlyTrashed()
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     /**
@@ -101,27 +101,27 @@ class TargetController extends CommonController
 
     private function validateData($id=NULL){
         return [
-            'name' => ['required', 'string', 'max:100', $id==null ? 'unique:targets' : 'unique:targets,name,'.$id ],
+            'name' => uniqueColumn($this->content,$id),
             'duration' => ['required','string','max:100']
         ];
     }
 
     public function search(Request $request){
         $searchData='%'.$request->search .'%';
-        return response()->json([
-            'targets' => Target::where('name','like',$searchData)
+        return $this->indexPage(
+            Target::where('name','like',$searchData)
             ->orWhere('duration','like',$searchData)
             ->latest('id')->paginate(10)
-        ]);
+        );
     }
 
     public function trashSearch(Request $request){
         $searchData='%'.$request->search .'%';
-        return response()->json([
-            'targets' => Target::onlyTrashed()
+        return $this->indexPage(
+            Target::onlyTrashed()
             ->where('name','like',$searchData)
             ->orWhere('duration','like',$searchData)
             ->latest('id')->paginate(10)
-        ]);
+        );
     }
 }
