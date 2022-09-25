@@ -195,6 +195,7 @@ public function scopeHaveStock($query){
 
 public function scopeSelectShopItem($query){
     return $query->selectItemDataWithImages()
+        ->selectItemVariants()
         ->selectReviews()
         ->selectPrice()
         ->selectStock();

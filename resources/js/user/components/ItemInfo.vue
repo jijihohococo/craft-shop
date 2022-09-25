@@ -9,28 +9,25 @@
 			<div class="rating">
 				<div class="product_rate"
 				:style="{ 'width': getAveragePercent(item.reviews) }"
-				 ></div>
+				></div>
 			</div>
-			<span class="rating_num">(21)</span>
+			<span class="rating_num">{{ item.review==null ? '0' : item.reviews.split(',').length }}</span>
 		</div>
 		<div class="pr_desc">
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
 		</div>
-		<div class="pr_switch_wrap">
-			<div class="product_color_switch">
-				<span class="active" data-color="#87554B"></span>
-				<span data-color="#333333"></span>
-				<span data-color="#DA323F"></span>
-			</div>
-		</div>
+		<ItemColor v-if="item.colorCodes!==null"
+		:colors="item.colorCodes.split(',')" />
 	</div>
 </template>
 <script >
 	import ItemPrice from './ItemPrice'
+	import ItemColor from './ItemColor'
 	import { showAveragePercent } from '../helpers/general.js';
 	export default {
 		components : {
-			ItemPrice
+			ItemPrice,
+			ItemColor
 		},
 		props : ['item'],
 		methods : {
