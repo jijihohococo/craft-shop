@@ -17,7 +17,7 @@
                         <div class="input-group-prepend">
                             <div class="custom_select">
                                 <select class="first_null">
-                                    <option value="">All Category </option>
+                                    <option value="">{{ translateLang("Categories") }} </option>
                                     <option :value="category.id" v-for="category in categories">{{ category.name }} </option>
                                 </select>
                             </div>
@@ -34,10 +34,16 @@
 </template>
 <script >
     import { shop } from '../../store';
-	export default {
+    import { translate } from '../../helpers/general.js'
+    export default {
         data(){
             return {
                 shop
+            }
+        },
+        methods : {
+            translateLang(data){
+                return  translate(data);
             }
         },
         props : {

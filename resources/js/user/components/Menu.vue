@@ -2,10 +2,10 @@
     <div class="col-lg-3 col-md-4 col-sm-6 col-3">
       <div class="categories_wrap">
         <button v-if="mobile==false" type="button" data-toggle="collapse" data-target="#navCatContent" aria-expanded="false" class="categories_btn" v-on:click="changeShow()">
-            <i class="linearicons-menu"></i><span>All Categories </span>
+            <i class="linearicons-menu"></i><span>{{ translateLang('Categories') }}</span>
         </button>
         <button v-else type="button" data-toggle="collapse" data-target="#navCatContent" aria-expanded="false" class="categories_btn" >
-            <i class="linearicons-menu"></i><span>All Categories </span>
+            <i class="linearicons-menu"></i><span>{{ translateLang('Categories') }}</span>
         </button>
         <div id="navCatContent" class="nav_cat navbar collapse" v-if="show" >
             <ul> 
@@ -40,6 +40,7 @@
 <component is="script" src="user/js/scripts.js" />
 </template>
 <script >
+    import { translate } from '../../helpers/general.js'
     export default {
         props : {
             categories : {
@@ -64,6 +65,9 @@
                 true : false
         },
         methods : {
+            translateLang(data){
+                return  translate(data);
+            },
             changeShow(){
               this.show = ! this.show 
           }

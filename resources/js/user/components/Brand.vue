@@ -5,7 +5,7 @@
 				<div class="col-md-12">
 					<div class="heading_tab_header">
 						<div class="heading_s2">
-							<h2>Our Brands</h2>
+							<h2>{{ translateLang('Brands') }}</h2>
 						</div>
 					</div>
 				</div>
@@ -27,6 +27,7 @@
 	<component is="script" src="user/js/scripts.js" />
 </template>
 <script >
+	import { translate } from '../../helpers/general.js'
 	export default {
 		data(){
 			return {
@@ -34,6 +35,9 @@
 			}
 		},
 		methods :{
+			translateLang(data){
+				return  translate(data);
+			},
 			async getBrands(){
 				window.axios.get( 'brands' ).then(( response ) =>  {
 					this.brands=response.data.brands

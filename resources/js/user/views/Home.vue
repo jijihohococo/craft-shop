@@ -21,7 +21,7 @@
     <div class="section small_pb">
       <div class="container">
         <ItemSlider
-        main_title="Best Seller Products"
+        :main_title="translateLang('Best')"
         :titles='[
         { name : "Laptop" , link :"laptop" },
         { name : "Desktop" , link : "desktop" },
@@ -31,7 +31,7 @@
         api="best_sellers"
         />
         <ItemSlider 
-        main_title="Gaming Products"
+        :main_title="translateLang('Gaming')"
         :titles='[
         { name : "Gaming Laptop" , link : "gaming_laptop" },
         { name : "Gaming Mouse" , link : "gaming_mouse" },
@@ -309,19 +309,25 @@
     import FeatureProducts from '../components/FeatureProducts';
     import Subscribe from '../components/Subscribe';
     import Collections from '../components/Collections';
+    import { translate } from '../../helpers/general.js'
     export default {
       components : {
-       Banner,
-       Brand,
-       Footer,
-       ItemSlider,
-       FeatureProducts,
-       Subscribe,
-       Collections
-   },
-   created(){
-    window.scrollTo(0, 0);
-   }
+         Banner,
+         Brand,
+         Footer,
+         ItemSlider,
+         FeatureProducts,
+         Subscribe,
+         Collections
+     },
+     created(){
+        window.scrollTo(0, 0);
+    },
+    methods : {
+        translateLang(data){
+            return  translate(data);
+        }
+    }
      // data(){
      //    return {
      //        categories : {}

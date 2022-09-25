@@ -8,6 +8,11 @@
 			<span>{{ showItemPrice(showItemPromotionPercentage(normal_price,sale_price)) }}% Off</span>
 		</div>
 	</div>
+	<div v-else class="product_price">
+		<span class="price">
+			{{ showItemPrice(sale_price) }} MMK
+		</span>
+	</div>
 </template>
 
 <script >

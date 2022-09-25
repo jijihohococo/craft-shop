@@ -21,13 +21,7 @@
 					</div>
 					<div class="col-lg-6 col-md-4">
 						<div class="d-flex align-items-center justify-content-center justify-content-md-end">
-							<div class="lng_dropdown">
-								<select name="countries" class="custome_select">
-									<option value='en' data-image="https://bestwebcreator.com/shopwise/demo/assets/images/eng.png" data-title="English">English</option>
-									<option value='fn' data-image="https://bestwebcreator.com/shopwise/demo/assets/images/fn.png" data-title="France">France</option>
-									<option value='us' data-image="https://bestwebcreator.com/shopwise/demo/assets/images/us.png" data-title="United States">United States</option>
-								</select>
-							</div>
+							<Language />
 						</div>
 					</div>
 				</div>
@@ -293,10 +287,12 @@
 <script >
 	import Search from './Search'
 	import Menu from './Menu'
+	import Language from './Language'
 	export default {
 		components: {
 			Search,
-			Menu
+			Menu,
+			Language
 		},
 		data(){
 			return {

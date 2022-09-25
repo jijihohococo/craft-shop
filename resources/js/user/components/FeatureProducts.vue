@@ -6,7 +6,7 @@
 				<div class="col-md-12">
 					<div class="heading_tab_header">
 						<div class="heading_s2">
-							<h2>Featured Products</h2>
+							<h2>{{ translateLang('Feature') }}</h2>
 						</div>
 					</div>
 				</div>
@@ -30,6 +30,7 @@
 <script >
 	
 	import FeatureProduct from './FeatureProduct'
+	import { translate } from '../../helpers/general.js'
 
 	export default {
 		components : {
@@ -50,6 +51,9 @@
 			await this.getData()
 		},
 		methods : {
+			translateLang(data){
+                return  translate(data);
+            },
 			makeArray(arrayData,newArray){
 				arrayData.forEach( (key) => {
 					if(Object.values(this.feature_products)[key]!==undefined ){
