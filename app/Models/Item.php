@@ -305,7 +305,9 @@ public function getFeatureProducts(){
 }
 public function getAll(){
     return Cache::tags( self::$cacheKey )->remember('all-items',60*60*24,function(){
-        return self::selectShopItem()
+        return self::select(['id','name'])
+        ->selectPrice()
+        ->selectStock()
         ->available()
         ->latest('id')
         ->get();
