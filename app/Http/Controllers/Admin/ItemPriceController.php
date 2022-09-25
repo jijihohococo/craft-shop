@@ -89,7 +89,7 @@ class ItemPriceController extends ItemVariantCommonController
         //
         $request->validate($this->validateData());
         $itemPrice=ItemPrice::findOrFail($id);
-        $itemPrice->update($request,$itemPrice->item_variant_id);
+        $itemPrice->update($this->getData($request,$itemPrice->item_variant_id));
         return response()->json([
             'message' => 'Item Price is updated successfully'
         ]);

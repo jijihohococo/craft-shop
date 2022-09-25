@@ -10,6 +10,7 @@ const WishList = () => import('User/Views/WishList')
 const Shop = () => import('User/Views/Shop')
 const Register = () => import('User/Views/Register')
 const Login = () => import('User/Views/Login')
+const ItemDetail = () => import('User/Views/ItemDetail')
 export default [
 {
 	path : '',
@@ -73,5 +74,10 @@ export default [
 	path : 'wish_list',
 	component : WishList ,
 	name : 'wish_list'
+},
+{
+	path  : 'items/:id',
+	component : ItemDetail ,
+	name : 'items.detail'
 }
 ]
