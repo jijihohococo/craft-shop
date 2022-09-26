@@ -29,6 +29,10 @@
 				{
 					'val' : 'jp',
 					'title' : "Japanese"
+				},
+				{
+					'val' : 'mm',
+					'title' : "Myanmar"
 				}
 				]
 			}

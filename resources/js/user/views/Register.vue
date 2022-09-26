@@ -1,6 +1,6 @@
 <template>
 	<div class="main_content">
-		<PageTitle title="Register" />
+		<PageTitle :title="translateLang('Register')" />
 		<!-- START LOGIN SECTION -->
 		<div class="login_register_wrap section">
 			<div class="container">
@@ -9,20 +9,21 @@
 						<div class="login_wrap">
 							<div class="padding_eight_all bg-white">
 								<div class="heading_s1">
-									<h3>Create an Account</h3>
+									<h3>{{ translateLang("Create Account") }}</h3>
 								</div>
 								<form method="post">
 									<div class="form-group">
-										<input type="text" required="" class="form-control" name="name" placeholder="Enter Your Name">
+										<input type="text" required="" class="form-control" name="name" 
+										:placeholder="translateLang('Placeholder Name')">
 									</div>
 									<div class="form-group">
-										<input type="text" required="" class="form-control" name="email" placeholder="Enter Your Email">
+										<input type="text" required="" class="form-control" name="email" :placeholder="translateLang('Placeholder Email')">
 									</div>
 									<div class="form-group">
-										<input class="form-control" required="" type="password" name="password" placeholder="Password">
+										<input class="form-control" required="" type="password" name="password" :placeholder="translateLang('Placeholder Password')">
 									</div>
 									<div class="form-group">
-										<input class="form-control" required="" type="password" name="password" placeholder="Confirm Password">
+										<input class="form-control" required="" type="password" name="password" :placeholder="translateLang('Placeholder Confirm')">
 									</div>
 									<div class="login_footer form-group">
 										<div class="chek-form">
@@ -33,7 +34,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<button type="submit" class="btn btn-fill-out btn-block" name="register">Register</button>
+										<button type="submit" class="btn btn-fill-out btn-block" name="register">{{ translateLang('Register') }}</button>
 									</div>
 								</form>
 								<div class="different_login">
@@ -55,6 +56,7 @@
 </template>
 <script >
 	import PageTitle from '../components/PageTitle'
+	import { translate } from '../../helpers/general.js'
 	export default {
 		components : {
 			PageTitle
@@ -74,6 +76,9 @@
 				window.axios.post('register',this.fields).then( (response) => {
 					
 				} )
+			},
+			translateLang(data){
+				return  translate(data);
 			}
 		}
 

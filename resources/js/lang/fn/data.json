@@ -3,5 +3,12 @@
 	"Feature" : "Produits populaires",
 	"Gaming" : "Produits de jeu",
 	"Best" : "Produits les plus vendus",
-	"Brands" : "Nos marques"
+	"Brands" : "Nos marques",
+	"Subscribe" : "Abonnez-vous à notre newsletter",
+	"Register" : "S'inscrire",
+	"Create Account" : "Créer un compte",
+	"Placeholder Name" : "Entrez votre nom",
+	"Placeholder Email" : "Entrer votre Email",
+	"Placeholder Password" : "Mot de passe",
+	"Placeholder Confirm" : "Confirmez le mot de passe"
 }

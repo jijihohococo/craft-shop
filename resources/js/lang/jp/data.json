@@ -3,5 +3,12 @@
 	"Feature" : "おすすめ商品",
 	"Gaming" : "ゲーム製品",
 	"Best" : "ベストセラー商品",
-	"Brands" : "我々のブランド"
+	"Brands" : "我々のブランド",
+	"Subscribe" : "ニュースレターを購読する",
+	"Register" : "登録",
+	"Create Account" : "アカウントを作成する",
+	"Placeholder Name" : "あなたの名前を入力してください",
+	"Placeholder Email" : "メールアドレスを入力",
+	"Placeholder Password" : "パスワード",
+	"Placeholder Confirm" : "パスワードを認証する"
 }

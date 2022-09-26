@@ -190,6 +190,9 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         'val': 'jp',
         'title': "Japanese"
+      }, {
+        'val': 'mm',
+        'title': "Myanmar"
       }]
     };
   },
@@ -1281,7 +1284,8 @@ __webpack_require__.r(__webpack_exports__);
 var map = {
 	"./en/data.json": "./resources/js/lang/en/data.json",
 	"./fn/data.json": "./resources/js/lang/fn/data.json",
-	"./jp/data.json": "./resources/js/lang/jp/data.json"
+	"./jp/data.json": "./resources/js/lang/jp/data.json",
+	"./mm/data.json": "./resources/js/lang/mm/data.json"
 };
 
 
@@ -1313,7 +1317,7 @@ webpackContext.id = "./resources/js/lang sync recursive ^\\.\\/.*\\/data\\.json$
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"Categories":"All Categories","Feature":"Featured Products","Gaming":"Gaming Products","Best":"Best Seller Products","Brands":"Our Brands"}');
+module.exports = JSON.parse('{"Categories":"All Categories","Feature":"Featured Products","Gaming":"Gaming Products","Best":"Best Seller Products","Brands":"Our Brands","Subscribe":"Subscribe Our Newsletter","Register":"Register","Create Account":"Create Account","Placeholder Name":"Enter Your Name","Placeholder Email":"Enter Your Email","Placeholder Password":"Password","Placeholder Confirm":"Confirm Password"}');
 
 /***/ }),
 
@@ -1324,7 +1328,7 @@ module.exports = JSON.parse('{"Categories":"All Categories","Feature":"Featured 
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"Categories":"Toutes Catégories","Feature":"Produits populaires","Gaming":"Produits de jeu","Best":"Produits les plus vendus","Brands":"Nos marques"}');
+module.exports = JSON.parse('{"Categories":"Toutes Catégories","Feature":"Produits populaires","Gaming":"Produits de jeu","Best":"Produits les plus vendus","Brands":"Nos marques","Subscribe":"Abonnez-vous à notre newsletter","Register":"S\'inscrire","Create Account":"Créer un compte","Placeholder Name":"Entrez votre nom","Placeholder Email":"Entrer votre Email","Placeholder Password":"Mot de passe","Placeholder Confirm":"Confirmez le mot de passe"}');
 
 /***/ }),
 
@@ -1335,7 +1339,18 @@ module.exports = JSON.parse('{"Categories":"Toutes Catégories","Feature":"Produ
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"Categories":"すべてのカテゴリ","Feature":"おすすめ商品","Gaming":"ゲーム製品","Best":"ベストセラー商品","Brands":"我々のブランド"}');
+module.exports = JSON.parse('{"Categories":"すべてのカテゴリ","Feature":"おすすめ商品","Gaming":"ゲーム製品","Best":"ベストセラー商品","Brands":"我々のブランド","Subscribe":"ニュースレターを購読する","Register":"登録","Create Account":"アカウントを作成する","Placeholder Name":"あなたの名前を入力してください","Placeholder Email":"メールアドレスを入力","Placeholder Password":"パスワード","Placeholder Confirm":"パスワードを認証する"}');
+
+/***/ }),
+
+/***/ "./resources/js/lang/mm/data.json":
+/*!****************************************!*\
+  !*** ./resources/js/lang/mm/data.json ***!
+  \****************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"Categories":"အမျိုးအစားအားလုံး","Feature":"အထူးအသားပေး ထုတ်ကုန်များ","Gaming":"ဂိမ်းထုတ်ကုန်များ","Best":"ရောင်းအားအကောင်းဆုံး ထုတ်ကုန်များ","Brands":"ကျွန်ုပ်တို့၏အမှတ်တံဆိပ်များ","Subscribe":"ကျွန်ုပ်တို့၏သတင်းလွှာကို စာရင်းသွင်းပါ။","Register":"မှတ်ပုံတင်ပါ။","Create Account":"အကောင့်ပြုလုပ်ပါ","Placeholder Name":"သင့်အမည်ကို ထည့်သွင်းပါ","Placeholder Email":"သင့်၏အီးမေးလ်လိပ်စာထည့်ပါ","Placeholder Password":"စကားဝှက်","Placeholder Confirm":"စကားဝှက်အတည်ပြုပါ"}');
 
 /***/ })
 

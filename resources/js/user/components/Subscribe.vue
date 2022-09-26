@@ -5,7 +5,7 @@
       <div class="row align-items-center">  
         <div class="col-md-6">
             <div class="heading_s1 mb-md-0 heading_light">
-                <h3>Subscribe Our Newsletter</h3>
+                <h3>{{ translateLang("Subscribe") }}</h3>
             </div>
         </div>
         <div class="col-md-6">
@@ -23,5 +23,12 @@
 <component is="script" src="user/js/scripts.js" />
 </template>
 <script >
-	export default {}
+    import { translate } from '../../helpers/general.js'
+	export default {
+        methods : {
+        translateLang(data){
+            return  translate(data);
+        }
+    }
+    }
 </script>
