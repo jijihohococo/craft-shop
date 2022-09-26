@@ -195,12 +195,10 @@ public function scopeHaveStock($query){
 
 public function scopeInWish($query){
     return $query->addSelect(['in_wish' => function($query){
-        $userId=UserData::getId();
-        $newUserId= $userId==null ? (string) getUserId( authId() ) : $userId ;
         return $query->select('id')
         ->from('wish_lists')
         ->whereColumn('items.id','wish_lists.item_id')
-        ->where('wish_lists.user_id',$newUserId);
+        ->where('wish_lists.user_id', (string) getUserId( authId() ) );
     } ]);
 }
 
