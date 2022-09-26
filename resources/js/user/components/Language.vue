@@ -1,6 +1,6 @@
 <template>
 	<div class="lng_dropdown">
-		<select v-model="selectedLang" @change="onChange($event)">
+		<select v-model="userLang.data" @change="onChange($event)">
 			<option
 			v-for="lang in langs"
 			:value="lang.val"
@@ -12,10 +12,11 @@
 </div>
 </template>
 <script >
+	import { userLang } from '../../store';
 	export default {
 		data(){
 			return {
-				selectedLang : '',
+				userLang,
 				langs : [
 				{
 					'val' : 'en',
@@ -32,15 +33,11 @@
 				]
 			}
 		},
-		created(){
-			this.selectedLang=window.cookies.get('lang') ? window.cookies.get('lang') : 'en'
-		},
 		methods : {
 			onChange(event) {
 				if(event.target.value!==null){
-					window.cookies.set("lang",event.target.value,"1D", null, null, null, "Lax");
+					this.userLang.changeData(event.target.value)
 				}
-				window.location.href="/"
 			}
 		}
 	}

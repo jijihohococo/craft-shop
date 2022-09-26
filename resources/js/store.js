@@ -10,6 +10,14 @@ function getShop(shop){
 
 }
 
+export const userLang=reactive({
+  data : window.cookies.get('lang') ? window.cookies.get('lang') : 'en',
+  changeData(data){
+    this.data=data;
+    window.cookies.set("lang",data,"1D", null, null, null, "Lax");
+  }
+})
+
 export const shop = reactive( {
   data : window.shop ,
   changeData(data) {

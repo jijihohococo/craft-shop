@@ -1100,7 +1100,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "admin": () => (/* binding */ admin),
 /* harmony export */   "currentYear": () => (/* binding */ currentYear),
 /* harmony export */   "shop": () => (/* binding */ shop),
-/* harmony export */   "user": () => (/* binding */ user)
+/* harmony export */   "user": () => (/* binding */ user),
+/* harmony export */   "userLang": () => (/* binding */ userLang)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -1113,6 +1114,13 @@ function getShop(shop) {
   });
 }
 
+var userLang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  data: window.cookies.get('lang') ? window.cookies.get('lang') : 'en',
+  changeData: function changeData(data) {
+    this.data = data;
+    window.cookies.set("lang", data, "1D", null, null, null, "Lax");
+  }
+});
 var shop = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   data: window.shop,
   changeData: function changeData(data) {

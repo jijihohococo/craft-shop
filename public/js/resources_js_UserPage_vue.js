@@ -175,10 +175,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store */ "./resources/js/store.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      selectedLang: '',
+      userLang: _store__WEBPACK_IMPORTED_MODULE_0__.userLang,
       langs: [{
         'val': 'en',
         'title': "English"
@@ -191,16 +193,11 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
-  created: function created() {
-    this.selectedLang = window.cookies.get('lang') ? window.cookies.get('lang') : 'en';
-  },
   methods: {
     onChange: function onChange(event) {
       if (event.target.value !== null) {
-        window.cookies.set("lang", event.target.value, "1D", null, null, null, "Lax");
+        this.userLang.changeData(event.target.value);
       }
-
-      window.location.href = "/";
     }
   }
 });
@@ -488,7 +485,7 @@ var _hoisted_2 = ["value", "data-title"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $data.selectedLang = $event;
+      return $data.userLang.data = $event;
     }),
     onChange: _cache[1] || (_cache[1] = function ($event) {
       return $options.onChange($event);
@@ -504,7 +501,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* UNKEYED_FRAGMENT */
   ))], 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.selectedLang]])]);
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userLang.data]])]);
 }
 
 /***/ }),
@@ -850,10 +847,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "translate": () => (/* binding */ translate)
 /* harmony export */ });
-function translate(data) {
-  var lang = window.cookies.get('lang') ? window.cookies.get('lang') : 'en';
+/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store.js */ "./resources/js/store.js");
 
-  var file = __webpack_require__("./resources/js/lang sync recursive ^\\.\\/.*\\/data\\.json$")("./" + lang + "/data.json");
+function translate(data) {
+  var file = __webpack_require__("./resources/js/lang sync recursive ^\\.\\/.*\\/data\\.json$")("./" + _store_js__WEBPACK_IMPORTED_MODULE_0__.userLang.data + "/data.json");
 
   return file[data];
 }
@@ -872,7 +869,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "admin": () => (/* binding */ admin),
 /* harmony export */   "currentYear": () => (/* binding */ currentYear),
 /* harmony export */   "shop": () => (/* binding */ shop),
-/* harmony export */   "user": () => (/* binding */ user)
+/* harmony export */   "user": () => (/* binding */ user),
+/* harmony export */   "userLang": () => (/* binding */ userLang)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -885,6 +883,13 @@ function getShop(shop) {
   });
 }
 
+var userLang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  data: window.cookies.get('lang') ? window.cookies.get('lang') : 'en',
+  changeData: function changeData(data) {
+    this.data = data;
+    window.cookies.set("lang", data, "1D", null, null, null, "Lax");
+  }
+});
 var shop = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   data: window.shop,
   changeData: function changeData(data) {

@@ -1,7 +1,7 @@
 
+import { userLang } from '../store.js';
 
 export function translate(data) {
-	var lang=window.cookies.get('lang') ? window.cookies.get('lang') : 'en' ;
-	var file=require('../lang/'+lang+'/data.json')
+	var file=require('../lang/'+userLang.data+'/data.json')
 	return file[data]
 }
