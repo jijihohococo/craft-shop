@@ -36,7 +36,7 @@
 			</div>
 		</div>
 	</div>
-	<component is="script" src="user/js/scripts.js" />
+	<!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
 	import SliderDetail from './SliderDetail'

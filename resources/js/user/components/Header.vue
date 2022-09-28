@@ -282,7 +282,7 @@
 		</div>
 	</header>
 	<!-- END HEADER -->
-	<component is="script" src="user/js/scripts.js" />
+	<!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
 	import Search from './Search'

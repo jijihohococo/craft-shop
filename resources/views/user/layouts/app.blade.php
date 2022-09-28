@@ -78,8 +78,7 @@
 <script src="{{ asset('user/js/slick.min.js') }}"></script>
 <!-- elevatezoom js -->
 <script src="{{ asset('user/js/jquery.elevatezoom.js') }}"></script>
-<!-- scripts js --> 
-<!-- <script src="{{ asset('user/js/scripts.js') }}"></script> -->
+<!-- scripts js -->
 <script >
   window.shop={!! json_encode($shop) !!};
 

@@ -10,5 +10,7 @@
 	"Placeholder Name" : "あなたの名前を入力してください",
 	"Placeholder Email" : "メールアドレスを入力",
 	"Placeholder Password" : "パスワード",
-	"Placeholder Confirm" : "パスワードを認証する"
+	"Placeholder Confirm" : "パスワードを認証する",
+	"Agree Policy" : "規約とポリシーに同意します。",
+	"Have Account" : "すでにアカウントをお持ちですか？"
 }

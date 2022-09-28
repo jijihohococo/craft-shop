@@ -20,7 +20,7 @@
 </div>
 </div>
 <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-<component is="script" src="user/js/scripts.js" />
+<!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
     import { translate } from '../../helpers/general.js'

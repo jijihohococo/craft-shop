@@ -29,7 +29,7 @@
 										<div class="chek-form">
 											<div class="custome-checkbox">
 												<input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="">
-												<label class="form-check-label" for="exampleCheckbox2"><span>I agree to terms &amp; Policy.</span></label>
+												<label class="form-check-label" for="exampleCheckbox2"><span>{{ translateLang("Agree Policy") }}</span></label>
 											</div>
 										</div>
 									</div>
@@ -44,7 +44,8 @@
 									<li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>
 									<li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
 								</ul>
-								<div class="form-note text-center">Already have an account? <a href="login.html">Log in</a></div>
+								<div class="form-note text-center">{{ translateLang("Have Account") }}
+									<router-link to="/login">Log in</router-link></div>
 							</div>
 						</div>
 					</div>
@@ -53,6 +54,7 @@
 		</div>
 		<!-- END LOGIN SECTION -->
 	</div>
+	<!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
 	import PageTitle from '../components/PageTitle'

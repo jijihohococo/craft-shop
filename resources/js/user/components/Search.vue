@@ -3,7 +3,6 @@
       <div class="container">
           <div class="nav_block">
             <router-link class="navbar-brand" :to="{name:'home'}">
-                <!-- <img class="logo_light" src="https://bestwebcreator.com/shopwise/demo/assets/images/logo_light.png" alt="logo" /> -->
                 <img class="logo_dark" 
                 :src="'/image/shop_images/'+shop.data.pic" alt="logo" />
             </router-link>
@@ -30,7 +29,7 @@
         </div>
     </div>
 </div>
-<component is="script" src="user/js/scripts.js" />
+<!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
     import { shop } from '../../store';

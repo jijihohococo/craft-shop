@@ -25,7 +25,7 @@
 		</div>
 	</div>
 	<!-- END SECTION SHOP -->
-	<component is="script" src="user/js/scripts.js" />
+	<!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
 	

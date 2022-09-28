@@ -10,5 +10,7 @@
 	"Placeholder Name" : "Entrez votre nom",
 	"Placeholder Email" : "Entrer votre Email",
 	"Placeholder Password" : "Mot de passe",
-	"Placeholder Confirm" : "Confirmez le mot de passe"
+	"Placeholder Confirm" : "Confirmez le mot de passe",
+	"Agree Policy" : "J'accepte les termes et la politique.",
+	"Have Account" : "Vous avez déjà un compte?"
 }

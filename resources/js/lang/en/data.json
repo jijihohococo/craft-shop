@@ -10,5 +10,7 @@
 	"Placeholder Name" : "Enter Your Name",
 	"Placeholder Email" : "Enter Your Email",
 	"Placeholder Password" : "Password",
-	"Placeholder Confirm" : "Confirm Password"
+	"Placeholder Confirm" : "Confirm Password",
+	"Agree Policy" : "I agree to terms & Policy.",
+	"Have Account" : "Already have an account?"
 }
