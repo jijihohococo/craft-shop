@@ -26,8 +26,14 @@ class ItemPrice extends TransactionModel
 
     WHEN (((item_prices.promotion_start_time <=CURRENT_TIMESTAMP) ||
     (item_prices.promotion_end_time >=CURRENT_TIMESTAMP))&&
-    item_prices.promotion_type='Percent') THEN (
-        (item_prices.price-item_prices.price*(item_prices.promotion_price/100))*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)-item_prices.promotion_price )
+    item_prices.promotion_type='Percent') THEN
+
+        (item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)-
+        (item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id))*
+        (item_prices.promotion_price/100)
+        )
+
+
 
     ELSE item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) END ) ,',',1)";
 

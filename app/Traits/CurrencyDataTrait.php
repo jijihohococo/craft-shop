@@ -11,6 +11,12 @@ trait CurrencyDataTrait{
             ->from('currencies')
             ->whereColumn('currency_id','currencies.id')
             ->limit(1);
+        } , 
+        'currency_price' => function($query){
+            $query->select('currencies.price')
+            ->from('currencies')
+            ->whereColumn('currency_id','currencies.id')
+            ->limit(1);
         } ]);
     }
 

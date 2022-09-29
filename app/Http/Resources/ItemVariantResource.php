@@ -14,13 +14,13 @@ class ItemVariantResource extends JsonResource
      */
     public function toArray($request)
     {
-        $itemPrice=ItemPrice::where('item_variant_id',$this->id)
-        ->orderBy('id','DESC')->limit(1)->first();
         return [
             'id' => $this->id ,
             'color_id' => $this->color_id ,
             'color' => $this->color ,
-            'images' => $this->images
+            'images' => $this->images ,
+            'sale_price' => $this->sale_price ,
+            'normal_price' => $this->normal_price
         ];
     }
 }
