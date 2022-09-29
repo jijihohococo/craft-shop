@@ -22,7 +22,6 @@ class ItemPriceController extends ItemVariantCommonController
         //
         return $this->indexPage(
             ItemPrice::selectCurrency()
-            ->selectTax()
             ->ofItemVariant($itemVariantId)
             ->latest('id')
             ->paginate(10),$itemVariantId
@@ -33,7 +32,6 @@ class ItemPriceController extends ItemVariantCommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             ItemPrice::selectCurrency()
-            ->selectTax()
             ->ofItemVariant($itemVariantId)
             ->where('price','like',$searchData)
             ->searchWithCurrency($searchData)

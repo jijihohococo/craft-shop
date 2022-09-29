@@ -27,8 +27,6 @@
 										<tr>
 											<th>Price</th>
 											<th>Currency</th>
-											<th>Tax Name</th>
-											<th>Tax Rate</th>
 											<th>Operation</th>
 										</tr>
 									</thead>
@@ -36,8 +34,6 @@
 										<tr v-for="(item_price,key) in item_prices.data">
 											<td>{{ item_price.price }}</td>
 											<td>{{ item_price.currency_name }}</td>
-											<td>{{ item_price.tax_name }}</td>
-											<td>{{ item_price.tax_rate }}</td>
 											<td>
 												<EditButton v-if="actions.update && key==0" :content="content" link="item.price.edit" :dataId="item_price.id" />
 											</td>
