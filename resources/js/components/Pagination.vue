@@ -2,7 +2,7 @@
 	
 	
 	<nav aria-label="Page navigation">
-		<ul class="pagination pagination-sm pg-blue">
+		<ul :class="ulClass">
 			<!-- First Page & Previous -->
 				<!-- <li  class="page-item">
 					<a class="page-link" v-on:click="updateValue(1)"> First </a>	
@@ -105,6 +105,10 @@ export default{
 	name : 'Pagination',
 	emits : ['getData','searchData'],
 	props : {
+		ulClass : {
+			type : String ,
+			default : 'pagination pagination-sm pg-blue'
+		},
 		lastPage : {
 			type : Number
 		},
