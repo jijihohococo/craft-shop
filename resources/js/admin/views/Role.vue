@@ -90,7 +90,7 @@
 </template>
 <script >
 
-    import Pagination from '../components/Pagination';
+    import Pagination from '../../components/Pagination';
 
     import Delete from '../components/Delete';
 
