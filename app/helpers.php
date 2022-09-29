@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\{PassportDate,TokenRefresh};
+use App\Models\{PassportDate,TokenRefresh,User};
 use Illuminate\Support\Facades\Route;
 function uniqueColumn($table,$id,$column='name'){
 	return ['required', 'string', 'max:100', $id==null ? 'unique:'.$table : 'unique:'.$table.','.$column.','.$id ];
@@ -81,7 +81,7 @@ function unauthenticated(){
 }
 
 function authId(){
-	$user=auth('user_api')->user();
+	$user=auth(User::API)->user();
 	return $user==NULL ? NULL : $user->id; 
 }
 

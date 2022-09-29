@@ -13,7 +13,9 @@
   <title>{{ $shop->name }}</title>
   <!-- Favicon Icon -->
   <link rel="shortcut icon" type="image/x-icon" 
-  href="{{ asset('storage/shop_images/'.$shop->pic) }}">
+  href="{{ $shop->pic=='logo_dark.png' ? 
+  asset('images/logo_dark.png') :
+  asset('storage/shop_images/'.$shop->pic) }}">
   <!-- Animation CSS -->
   <link rel="stylesheet" href="{{ asset('user/css/animate.css') }}">  
   <!-- Latest Bootstrap min CSS -->

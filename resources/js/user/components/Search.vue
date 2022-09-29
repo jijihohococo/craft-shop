@@ -2,10 +2,7 @@
 	<div class="middle-header dark_skin">
       <div class="container">
           <div class="nav_block">
-            <router-link class="navbar-brand" :to="{name:'home'}">
-                <img class="logo_dark" 
-                :src="'/image/shop_images/'+shop.data.pic" alt="logo" />
-            </router-link>
+            <ShopImage :pic="shop.data.pic" />
             <div class="contact_phone order-md-last">
                 <i class="linearicons-phone-wave"></i>
                 <span>{{ shop.data.phone }}</span>
@@ -32,9 +29,13 @@
 <!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
+    import ShopImage from './ShopImage';
     import { shop } from '../../store';
     import { translate } from '../../helpers/general.js'
     export default {
+        components : {
+            ShopImage
+        },
         data(){
             return {
                 shop

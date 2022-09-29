@@ -7,9 +7,7 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="widget">
                 <div class="footer_logo">
-                    <a href="#">
-                    <img :src="'/image/shop_images/'+shop.data.pic" alt="logo"/>
-                </a>
+                    <ShopImage :pic="shop.data.pic" />
                 </div>
                 <p class="mb-3">If you are going to use of Lorem Ipsum need to be sure there isn't anything hidden of text</p>
                 <ul class="contact_info">
@@ -32,8 +30,8 @@
           <div class="widget">
             <h6 class="widget_title">Useful Links</h6>
             <ul class="widget_links">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><router-link to="/about_us">About Us</router-link></li>
+                <li><router-link to="/faq" >FAQ</router-link></li>
                 <li><a href="#">Location</a></li>
                 <li><a href="#">Affiliates</a></li>
                 <li><a href="#">Contact</a></li>
@@ -149,8 +147,12 @@
 <!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
+    import ShopImage from './ShopImage'
 	import { shop , currentYear } from '../../store';
 	export default {
+        components  : {
+            ShopImage
+        },
 		data(){
             return {
                 shop,
