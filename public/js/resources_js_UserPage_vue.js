@@ -266,17 +266,29 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth; // we will use hide and show category menu UI feature if it is not mobile screen
-
-    this.mobile = width > 991 ? false : true;
+    // we will use hide and show category menu UI feature if it is not mobile screen
+    this.mobile = this.checkMobile() ? false : true;
     this.show = this.$route.name == 'home' || this.$route.name !== 'home' && this.mobile == true ? true : false;
   },
   methods: {
+    checkMobile: function checkMobile() {
+      return (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 991;
+    },
     translateLang: function translateLang(data) {
       return (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_0__.translate)(data);
     },
     changeShow: function changeShow() {
       this.show = !this.show;
+    },
+    goToContent: function goToContent(content, contentId) {
+      //this.changeShow()
+      if (!this.checkMobile() && this.$route.name == 'home') {
+        this.show = false;
+      }
+
+      this.$router.push({
+        path: '/shop/' + content + '/' + contentId
+      });
     }
   }
 });
@@ -784,7 +796,6 @@ var _hoisted_7 = {
 };
 var _hoisted_8 = {
   "class": "dropdown-item nav-link dropdown-toggler",
-  href: "#",
   "data-toggle": "dropdown"
 };
 var _hoisted_9 = {
@@ -805,10 +816,7 @@ var _hoisted_13 = {
 var _hoisted_14 = {
   key: 0
 };
-var _hoisted_15 = {
-  "class": "dropdown-item nav-link nav_item",
-  href: "#"
-};
+var _hoisted_15 = ["onClick"];
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "mega-menu-col col-lg-5"
@@ -837,9 +845,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.name), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_13, [category.subcategories !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_14, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(category.subcategories.split(','), function (subcategory, key) {
-      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(subcategory), 1
-      /* TEXT */
-      )]);
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+        onClick: function onClick($event) {
+          return $options.goToContent('subcategory', category.subcategory_ids.split(',')[key]);
+        },
+        "class": "dropdown-item nav-link nav_item"
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(subcategory), 9
+      /* TEXT, PROPS */
+      , _hoisted_15)]);
     }), 256
     /* UNKEYED_FRAGMENT */
     ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), _hoisted_16])])]);

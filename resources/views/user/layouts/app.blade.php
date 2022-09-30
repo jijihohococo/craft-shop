@@ -56,6 +56,9 @@
 <!-- Latest jQuery --> 
 <script src="{{ asset('user/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ asset('user/js/jquery-migrate-3.0.0.min.js') }}"></script>
+
+<!-- jquery-ui --> 
+<script src="{{ asset('user/js/jquery-ui.js') }}"></script>
 <!-- popper min js -->
 <script src="{{ asset('user/js/popper.min.js') }}"></script>
 <!-- Latest compiled and minified Bootstrap --> 

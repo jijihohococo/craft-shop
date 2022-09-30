@@ -25,7 +25,15 @@ class Category extends TransactionModel
                 ->whereColumn('categories.id','subcategories.category_id')
                 ->where('deleted_at',NULL)
                 ->groupBy('subcategories.category_id');
-            } ])
+            } ,
+            'subcategory_ids' => function($query){
+                $query->select(\DB::raw('GROUP_CONCAT(subcategories.id)'))
+                ->from('subcategories')
+                ->whereColumn('categories.id','subcategories.category_id')
+                ->where('deleted_at',NULL)
+                ->groupBy('subcategories.category_id');
+            }
+              ])
             ->orderBy('name')
             ->get();
         });

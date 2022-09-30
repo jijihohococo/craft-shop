@@ -34,7 +34,7 @@ $userRoutes=[
 	'orders',
 	'orders/{id}',
 	'promotions/{id}',
-	'shop'];
+	'shop/{content}/{contentId}'];
 	foreach($userRoutes as $userRoute){
 		Route::view('/'.$userRoute,'user.index');
 	}

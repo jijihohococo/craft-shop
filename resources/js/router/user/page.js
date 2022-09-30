@@ -28,7 +28,7 @@ export default [
 	name : 'login_page'
 },
 {
-	path : 'shop',
+	path : 'shop/:content/:content_id',
 	component : Shop ,
 	name : 'shop_page'
 },
