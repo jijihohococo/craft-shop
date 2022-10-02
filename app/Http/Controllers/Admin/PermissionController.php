@@ -163,8 +163,8 @@ public function checkPermission(string $model,string $action){
 }
 
 public function get(){
-    return response()->json([
-        'permissions' => (new Permission)->getAll()
-    ]);
+    return $this->indexPage(
+        (new Permission)->getAll()
+    );
 }
 }
