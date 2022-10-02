@@ -66,8 +66,8 @@ class ItemController extends Controller
         }
         return response()->json([
             'items' => empty($items) ? $items : $items->latest('id')->paginate(10) ,
-            'max_price' => $this->item->getMaxPrice([]) ,
-            'min_price' => $this->item->getMinPrice([])
+            'max_price' => $this->item->getMaxPrice($itemIds) ,
+            'min_price' => $this->item->getMinPrice($itemIds)
         ]);
     }
 }
