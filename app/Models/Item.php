@@ -193,6 +193,11 @@ public function scopeHaveStock($query){
     return $query->having($this->stock,'>',0);
 }
 
+public function scopeBetweenPrice($query,$minPrice,$maxPrice){
+    return $query->having($this->normalPrice,'>=',$minPrice)
+    ->having($this->normalPrice,'<=',$maxPrice);
+}
+
 public function scopeInWish($query){
     return $query->addSelect(['in_wish' => function($query){
         return $query->select('id')

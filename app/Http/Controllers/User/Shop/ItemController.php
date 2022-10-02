@@ -56,6 +56,11 @@ class ItemController extends Controller
         if(!empty($items) && $request->sets!==NULL){
             $items=$items->whereInAttributeSets($request->sets);
         }
+
+        if(!empty($items) && $request->min_price!==NULL && $request->max_price!==NULL ){
+            $items=$items->betweenPrice($request->min_price,$request->max_price);
+        }
+
         if(!empty($items)){
             $itemIds=$items->get()->pluck('id')->toArray();
         }
