@@ -12,8 +12,7 @@ class ShoppingCartController extends Controller
     private $userId , $shoppingCart;
 
     public function __construct(ShoppingCartRepositoryInterface $shoppingCart){
-        $userId=UserData::getId();
-        $this->userId= $userId ?? (string) getUserId( authId() ) ;
+        $this->userId= UserData::getId() ?? (string) getUserId( authId() ) ;
         $this->shoppingCart=$shoppingCart;
     }
 

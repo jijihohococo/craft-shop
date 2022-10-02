@@ -13,8 +13,7 @@ class WishlistController extends Controller
     private $userId;
 
     public function __construct(){
-        $userId=UserData::getId();
-        $this->userId= $userId ?? (string) getUserId( authId() ) ;
+        $this->userId= UserData::getId() ?? (string) getUserId( authId() ) ;
     }
 
     public function getCount(Request $request){
