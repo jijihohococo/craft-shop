@@ -56,9 +56,11 @@ class ItemController extends Controller
         if(!empty($items) && $request->sets!==NULL){
             $items=$items->whereInAttributeSets($request->sets);
         }
-
+        $itemIds=$items->get()->pluck('id')->toArray();
         return response()->json([
-            'items' => empty($items) ? $items : $items->latest('id')->paginate(10)
+            'items' => empty($items) ? $items : $items->latest('id')->paginate(10) ,
+            'max_price' => $this->item->getMaxPrice($itemIds) ,
+            'min_price' => $this->item->getMinPrice($itemIds)
         ]);
     }
 }

@@ -11,7 +11,7 @@
             <ul> 
                 <li class="dropdown dropdown-mega-menu" v-for="category in categories">
                     <a class="dropdown-item nav-link dropdown-toggler" data-toggle="dropdown">
-                        {{ category.name }}
+                      <span v-on:click="goToContent('category',category.id)">  {{ category.name }}</span>
                     </a>
                     <div class="dropdown-menu">
                         <ul class="mega-menu d-lg-flex">
@@ -77,7 +77,7 @@
           },
           goToContent(content,contentId){
             //this.changeShow()
-            if(!this.checkMobile() && this.$route.name=='home' ){
+            if(this.checkMobile() && this.$route.name=='home' ){
                 this.show=false
             }
             this.$router.push({path: '/shop/'+content + '/' + contentId })

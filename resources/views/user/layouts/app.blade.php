@@ -36,6 +36,8 @@
   <link rel="stylesheet" href="{{ asset('user/owlcarousel/css/owl.theme.default.min.css') }}">
   <!-- Magnific Popup CSS -->
   <link rel="stylesheet" href="{{ asset('user/css/magnific-popup.css') }}">
+  <!-- jquery-ui CSS -->
+  <link rel="stylesheet" href="{{ asset('user/css/jquery-ui.css') }}">
   <!-- Slick CSS -->
   <link rel="stylesheet" href="{{ asset('user/css/slick.css') }}">
   <link rel="stylesheet" href="{{ asset('user/css/slick-theme.css') }}">
@@ -66,7 +68,7 @@
 <!-- owl-carousel min js  --> 
 <script src="{{ asset('user/owlcarousel/js/owl.carousel.min.js') }}"></script> 
 <!-- magnific-popup min js  --> 
-<script src="{{ asset('user/js/magnific-popup.min.js') }}"></script> 
+<script src="{{ asset('user/js/magnific-popup.min.js') }}"></script>
 <!-- waypoints min js  --> 
 <script src="{{ asset('user/js/waypoints.min.js') }}"></script> 
 <!-- parallax js  --> 
