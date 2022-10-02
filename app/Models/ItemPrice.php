@@ -40,7 +40,7 @@ class ItemPrice extends TransactionModel
     public const NORMAL_PRICE_SQL="SUBSTRING_INDEX( GROUP_CONCAT(
     item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) ) ,',',1)";
 
-    public const MAX_PRICE_SQL="item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)";
+    public const PRICE_SQL="item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)";
 
     public function currency(){
         return $this->belongsTo('App\Models\Currency')->withDefault()->withTrashed();
