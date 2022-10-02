@@ -41,6 +41,15 @@ class BrandController extends CommonController
         //
     }
 
+    private function uploadPic($request,$brand,$oldFile=NULL){
+        oneFileUpload(['file' => 'pic',
+            'name'=> cutSpeicialChar(rand() . $request->name) ,
+            'path'=>'brand_images',
+            'old_file'=> $oldFile , 
+            'width'  => 138 , 
+            'height' => 80 ],$request,$brand );
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -52,12 +61,7 @@ class BrandController extends CommonController
         //
         $request->validate($this->validateData());
         $brand=new Brand($request->all() );
-        oneFileUpload(['file' => 'pic',
-            'name'=> cutSpeicialChar(rand() . $request->name) ,
-            'path'=>'brand_images',
-            'old_file'=>null , 
-            'width'  => 138 , 
-            'height' => 80 ],$request,$brand );
+        $this->uploadPic($request,$brand);
         $brand->save( $brand->getAttributes() );
         return response()->json([
             'message' => $brand->name . ' Brand is created successfully'
@@ -102,12 +106,7 @@ class BrandController extends CommonController
         $request->validate($this->validateData($id));
         $brand = Brand::findOrFail($id);
         $newBrand=new Brand($request->all());
-        oneFileUpload(['file' => 'pic',
-            'name'=> cutSpeicialChar(rand() . $request->name) ,
-            'path'=>'brand_images',
-            'old_file'=> $brand->pic , 
-            'width'  => 138 , 
-            'height' => 80 ],$request,$newBrand );
+        $this->uploadPic($request,$newBrand,$brand->pic);
         $brand->update($newBrand->getAttributes());
         return response()->json([
             'message' => $request->name . ' Brand is updated successfully'

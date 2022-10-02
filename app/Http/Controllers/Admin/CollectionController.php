@@ -56,6 +56,15 @@ class CollectionController extends CommonController
         ]);
     }
 
+    private function uploadPic($request,$collection,$oldFile=NULL){
+        oneFileUpload(['file' => 'pic',
+            'name'=> cutSpeicialChar(rand() . $request->name) ,
+            'path'=>'collection_images',
+            'old_file'=> $oldFile ,
+            'width'  => 540 , 
+            'height' => 300 ],$request,$collection );
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -68,12 +77,7 @@ class CollectionController extends CommonController
         $request->validate($this->validateData());
         DB::beginTransaction();
         $collection=new Collection($request->all() );
-        oneFileUpload(['file' => 'pic',
-            'name'=> cutSpeicialChar(rand() . $request->name) ,
-            'path'=>'collection_images',
-            'old_file'=>null , 
-            'width'  => 540 , 
-            'height' => 300 ],$request,$collection );
+        $this->uploadPic($request,$collection);
         $collection->save( $collection->getAttributes() );
         $this->insertItemCollections($request->items,$collection->id);
         DB::commit();
@@ -122,12 +126,7 @@ class CollectionController extends CommonController
         DB::beginTransaction();
         $collection = Collection::findOrFail($id);
         $newCollection=new Collection($request->all());
-        oneFileUpload(['file' => 'pic',
-            'name'=> cutSpeicialChar(rand() . $request->name) ,
-            'path'=>'collection_images',
-            'old_file'=> $collection->pic , 
-            'width'  => 540 , 
-            'height' => 300 ],$request,$newCollection );
+        $this->uploadPic($request,$newCollection,$collection->pic);
         $collection->update($newCollection->getAttributes());
         $this->items=$collection->items->pluck('item_id')->toArray();
         $this->insertItemCollections($request->items,$id,'yes');

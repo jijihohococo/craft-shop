@@ -32,6 +32,15 @@ class BannerController extends CommonController
         
     }
 
+    private function uploadPic($request,$banner,$oldFile=NULL){
+        oneFileUpload(['file' => 'pic',
+            'name'=> cutSpeicialChar(rand() . $request->title) ,
+            'path'=>'banner_images',
+            'old_file'=>$oldFile , 
+            'width'  => 920 , 
+            'height' => 480 ],$request,$banner );
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,12 +52,7 @@ class BannerController extends CommonController
         //
         $request->validate($this->validateData());
         $banner=new Banner($request->all() );
-        oneFileUpload(['file' => 'pic',
-            'name'=> cutSpeicialChar(rand() . $request->title) ,
-            'path'=>'banner_images',
-            'old_file'=>null , 
-            'width'  => 920 , 
-            'height' => 480 ],$request,$banner );
+        $this->uploadPic($request,$banner);
         $banner->save( $banner->getAttributes() );
         return response()->json([
             'message' => $banner->title . ' Banner is created successfully'
@@ -93,12 +97,7 @@ class BannerController extends CommonController
         $request->validate($this->validateData($id));
         $banner = Banner::findOrFail($id);
         $newBanner=new Banner($request->all());
-        oneFileUpload(['file' => 'pic',
-            'name'=> cutSpeicialChar(rand() . $request->title) ,
-            'path'=>'banner_images',
-            'old_file'=> $banner->pic , 
-            'width'  => 920 , 
-            'height' => 480 ],$request,$newBanner );
+        $this->uploadPic($request,$newBanner,$banner->pic);
         $banner->update($newBanner->getAttributes());
         return response()->json([
             'message' => $request->title . ' Banner is updated successfully'
