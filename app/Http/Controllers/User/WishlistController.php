@@ -14,7 +14,7 @@ class WishlistController extends Controller
 
     public function __construct(){
         $userId=UserData::getId();
-        $this->userId= $userId==null ? (string) getUserId( authId() ) : $userId ;
+        $this->userId= $userId ?? (string) getUserId( authId() ) ;
     }
 
     public function getCount(Request $request){
