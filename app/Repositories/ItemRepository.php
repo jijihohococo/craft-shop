@@ -36,7 +36,7 @@ class ItemRepository implements ItemRepositoryInterface{
         ->max(
             \DB::raw(ItemPrice::PRICE_SQL)
         );
-        return $this->maxPrice;
+        return $this->maxPrice==NULL ? "0" : $this->maxPrice;
     }
 
     public function getMinPrice($itemIds){

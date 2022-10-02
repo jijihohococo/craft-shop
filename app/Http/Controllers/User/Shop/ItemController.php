@@ -30,7 +30,7 @@ class ItemController extends Controller
         if($validator->fails()){
             return makeErrorMessage($validator->errors());
         }
-        $items=[];
+        $items=$itemIds=[];
 
         if($content!=='All'){
             $items=$request->search==NULL ? $this->item->getByContent($content,$contentId) : $this->item->searchByContent($content,$contentId,'%'.$request->search.'%');
@@ -56,7 +56,9 @@ class ItemController extends Controller
         if(!empty($items) && $request->sets!==NULL){
             $items=$items->whereInAttributeSets($request->sets);
         }
-        $itemIds=$items->get()->pluck('id')->toArray();
+        if(!empty($items)){
+            $itemIds=$items->get()->pluck('id')->toArray();
+        }
         return response()->json([
             'items' => empty($items) ? $items : $items->latest('id')->paginate(10) ,
             'max_price' => $this->item->getMaxPrice($itemIds) ,
