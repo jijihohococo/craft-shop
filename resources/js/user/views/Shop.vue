@@ -499,16 +499,16 @@
 						<div class="row">
 							<div class="col-12">
 								<nav aria-label="Page navigation">
-								<ul class="pagination mt-3 justify-content-center pagination_style1">
-									<li class="page-item active"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">
-										<span aria-hidden="true">&raquo;</span>
-						<span class="sr-only">Next</span>
-									</a></li>
-								</ul>
-							</nav>
+									<ul class="pagination mt-3 justify-content-center pagination_style1">
+										<li class="page-item active"><a class="page-link" href="#">1</a></li>
+										<li class="page-item"><a class="page-link" href="#">2</a></li>
+										<li class="page-item"><a class="page-link" href="#">3</a></li>
+										<li class="page-item"><a class="page-link" href="#">
+											<span aria-hidden="true">&raquo;</span>
+											<span class="sr-only">Next</span>
+										</a></li>
+									</ul>
+								</nav>
 							</div>
 						</div>
 					</div>
@@ -535,41 +535,14 @@
 									</div>
 								</div>
 							</div>
-							<div class="widget">
-								<h5 class="widget_title">Brand</h5>	
-								<ul class="list_brand">
-									<li>
-										<div class="custome-checkbox">
-											<input class="form-check-input" type="checkbox" name="checkbox" id="Arrivals" value="">
-											<label class="form-check-label" for="Arrivals"><span>New Arrivals</span></label>
-										</div>
-									</li>
-									<li>
-										<div class="custome-checkbox">
-											<input class="form-check-input" type="checkbox" name="checkbox" id="Lighting" value="">
-											<label class="form-check-label" for="Lighting"><span>Lighting</span></label>
-										</div>
-									</li>
-									<li>
-										<div class="custome-checkbox">
-											<input class="form-check-input" type="checkbox" name="checkbox" id="Tables" value="">
-											<label class="form-check-label" for="Tables"><span>Tables</span></label>
-										</div>
-									</li>
-									<li>
-										<div class="custome-checkbox">
-											<input class="form-check-input" type="checkbox" name="checkbox" id="Chairs" value="">
-											<label class="form-check-label" for="Chairs"><span>Chairs</span></label>
-										</div>
-									</li>
-									<li>
-										<div class="custome-checkbox">
-											<input class="form-check-input" type="checkbox" name="checkbox" id="Accessories" value="">
-											<label class="form-check-label" for="Accessories"><span>Accessories</span></label>
-										</div>
-									</li>
-								</ul>
-							</div>
+							<List title="Brands" 
+							:list="brands"
+							ref="brand_list"
+							/>
+							<List title="Colors" 
+							:list="colors"
+							ref="color_list"
+							/>
 							<div class="widget">
 								<h5 class="widget_title">Size</h5>
 								<div class="product_size_switch">
@@ -616,5 +589,56 @@
 	<component is="script" src="/user/js/scripts.js" />
 </template>
 <script >
-	export default {}
-</script>
+	import List from '../components/List'
+	export default {
+		components : {
+			List
+		},
+		watch : {
+			$route : {
+				deep : true ,
+				handler(){
+					this.getContent('brands')
+					this.getContent('colors')
+					this.getContent('attributes')
+				}
+			}
+		},
+		data(){
+			return {
+				brands : {} ,
+				colors : {} ,
+				attributes : {} ,
+				items : {} ,
+				max_price : 0 ,
+				min_price : 0
+			}
+		},
+		created(){
+			this.getContent('brands')
+			this.getContent('colors')
+			this.getContent('attributes')
+			this.getItems()
+		},
+		methods : {
+			getItems(){
+				window.axios.get('shop/'+
+					this.$route.params.content+'/'+
+					this.$route.params.content_id).then( (response) => {
+						this.items=response.data.items
+						this.max_price=response.data.max_price
+						this.min_price=response.data.min_price
+					} )
+				},
+				getContent(content){
+					window.axios.get('get_' +
+						content + 
+						'_by_content' +'/'+
+						this.$route.params.content+'/'+
+						this.$route.params.content_id).then( (response) => {
+							this[content]=response.data[content]
+						} )
+					}
+				}
+			}
+		</script>
