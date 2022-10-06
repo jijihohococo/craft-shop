@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\Shop;
 
 use App\Repositories\ColorRepositoryInterface;
+
 class ColorController extends ContentController
 {
     //
