@@ -9,14 +9,9 @@ class BrandController extends ContentController
     
     public $brand;
 
-    public $acceptArray=[
-        'All',
-        'category',
-        'subcategory'
-    ];
+    public $content='brand';
 
     public function __construct(BrandRepositoryInterface $brand){
         $this->brand=$brand;
-        $this->content='brand';
     }
 }

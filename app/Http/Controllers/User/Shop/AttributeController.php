@@ -9,15 +9,9 @@ class AttributeController extends ContentController
 
     public $attribute;
 
-    public $acceptArray=[
-        'All',
-        'category',
-        'subcategory',
-        'brand'
-    ];
+    public $content='attribute';
 
     public function __construct(AttributeRepositoryInterface $attribute){
         $this->attribute=$attribute;
-        $this->content='attribute';
     }
 }

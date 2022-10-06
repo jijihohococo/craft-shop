@@ -17,7 +17,8 @@ class ItemController extends Controller
     public $acceptArray=[
         'All',
         'category',
-        'subcategory'
+        'subcategory',
+        'brand'
     ];
 
     public function __construct(ItemRepositoryInterface $item){

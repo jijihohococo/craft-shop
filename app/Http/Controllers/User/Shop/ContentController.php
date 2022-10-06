@@ -12,6 +12,13 @@ abstract class ContentController extends Controller
 
     public $content;
 
+    public $acceptArray=[
+        'All',
+        'category',
+        'subcategory',
+        'brand'
+    ];
+
     public function getContent($content,$id,$searchData=null){
         return response()->json([
             $this->content .'s' => $this->getContentData($content,$id,$searchData)

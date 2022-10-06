@@ -9,15 +9,9 @@ class ColorController extends ContentController
 
     public $color;
 
-    public $acceptArray=[
-        'All',
-        'category',
-        'subcategory',
-        'brand'
-    ];
+    public $content='color';
 
     public function __construct(ColorRepositoryInterface $color){
         $this->color=$color;
-        $this->content='color';
     }
 }
