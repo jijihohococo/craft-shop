@@ -18,7 +18,7 @@ Route::view('/admin/{any}','admin.index')->where('any','.*')->middleware('checkA
 //----------------ADMIN FRONTEND ROUTES----------------//
 
 
-
+$userPage='user.index';
 //----------------USER FRONTEND ROUTES----------------//
 $userRoutes=[
 	null,
@@ -33,25 +33,29 @@ $userRoutes=[
 	'items/{id}',
 	'orders',
 	'orders/{id}',
-	'promotions/{id}',
-	'shop/{content}/{contentId}'];
+	'promotions/{id}'];
 	foreach($userRoutes as $userRoute){
-		Route::view('/'.$userRoute,'user.index');
+		Route::view('/'.$userRoute,$userPage);
+	}
+	foreach(['category',
+		'subcategory',
+		'brand'] as $content){
+		Route::view('/shop/'.$content.'/{contentId}',$userPage);
 	}
 //----------------USER FRONTEND ROUTES----------------//
 
 
 	//----------------LOGIN & REGISTER----------------//
-	Route::group(['middleware' => [ 'checkUserCookie'] ], function () {
+	Route::group(['middleware' => [ 'checkUserCookie'] ], function () use ($userPage)  {
 		Route::get('/redirect/{social}',
 			'User\Auth\SocialLoginController@redirect');
 		Route::get('/callback',
 			'User\Auth\SocialLoginController@fbCallBack');
 		Route::get('/googleCallBack',
 			'User\Auth\SocialLoginController@googleCallBack');
-		Route::view('/register','user.index');
-		Route::view('/login','user.index');
-		Route::view('/forgot_password','user.index');
+		Route::view('/register',$userPage);
+		Route::view('/login',$userPage);
+		Route::view('/forgot_password',$userPage);
 	});
 	//----------------SOCIAL LOGIN----------------//
 

@@ -66,16 +66,25 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
+    // if(!this.available_contents.includes(
+    // 	this.$route.params.content
+    // 	)){
+    // 	this.$router.push({path:'/404'})
+    // }
     this.getContent('brands');
     this.getContent('colors');
     this.getContent('attributes');
     this.getItems();
   },
   methods: {
+    getRouteName: function getRouteName(name) {
+      return name.replace('shop_', '');
+    },
     getItems: function getItems() {
       var _this = this;
 
-      window.axios.get('shop/' + this.$route.params.content + '/' + this.$route.params.content_id).then(function (response) {
+      var routeName = this.getRouteName(this.$route.name);
+      window.axios.get('shop/' + routeName + '/' + this.$route.params.content_id).then(function (response) {
         _this.items = response.data.items;
         _this.max_price = response.data.max_price;
         _this.min_price = response.data.min_price;
@@ -84,7 +93,8 @@ __webpack_require__.r(__webpack_exports__);
     getContent: function getContent(content) {
       var _this2 = this;
 
-      window.axios.get('get_' + content + '_by_content' + '/' + this.$route.params.content + '/' + this.$route.params.content_id).then(function (response) {
+      var routeName = this.getRouteName(this.$route.name);
+      window.axios.get('get_' + content + '_by_content' + '/' + routeName + '/' + this.$route.params.content_id).then(function (response) {
         _this2[content] = response.data[content];
       });
     }

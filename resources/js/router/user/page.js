@@ -28,17 +28,27 @@ export default [
 	name : 'login_page'
 },
 {
-	path : 'shop/:content/:content_id',
+	path : 'shop/category/:content_id',
 	component : Shop ,
-	name : 'shop_page'
+	name : 'shop_category'
+},
+{
+	path : 'shop/subcategory/:content_id',
+	component : Shop ,
+	name : 'shop_subcategory'
+},
+{
+	path : 'shop/brand/:content_id',
+	component : Shop ,
+	name : 'shop_brand'
 },
 {
 	path : 'privacy_policy',
 	component : PrivacyPolicy ,
 	name : 'privacy_policy',
 	meta: {
-          title: 'Nested - About Page - Example App'
-        }
+		title: 'Nested - About Page - Example App'
+	}
 },
 {
 	path : 'contact_us',

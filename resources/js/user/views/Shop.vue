@@ -615,15 +615,24 @@
 			}
 		},
 		created(){
+			// if(!this.available_contents.includes(
+			// 	this.$route.params.content
+			// 	)){
+			// 	this.$router.push({path:'/404'})
+			// }
 			this.getContent('brands')
 			this.getContent('colors')
 			this.getContent('attributes')
 			this.getItems()
 		},
 		methods : {
+			getRouteName(name){
+				return name.replace('shop_','')
+			},
 			getItems(){
+				let routeName=this.getRouteName(this.$route.name);
 				window.axios.get('shop/'+
-					this.$route.params.content+'/'+
+					routeName +'/'+
 					this.$route.params.content_id).then( (response) => {
 						this.items=response.data.items
 						this.max_price=response.data.max_price
@@ -631,10 +640,11 @@
 					} )
 				},
 				getContent(content){
+					let routeName=this.getRouteName(this.$route.name)
 					window.axios.get('get_' +
 						content + 
 						'_by_content' +'/'+
-						this.$route.params.content+'/'+
+						routeName +'/'+
 						this.$route.params.content_id).then( (response) => {
 							this[content]=response.data[content]
 						} )
