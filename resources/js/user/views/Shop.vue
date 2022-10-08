@@ -637,7 +637,7 @@
 			getCurrentBrands(){
 				return this.currentRoute=='brand' &&
 				this.$route.params.content_id!==null ?
-				this.$route.params.content_id : this.getCurrentFilters('brands') 
+				[this.$route.params.content_id] : this.getCurrentFilters('brands') 
 			},
 			getCurrentFilters(data){
 				if(this.$route.query.hasOwnProperty(data) ){
@@ -667,54 +667,27 @@
 						} )
 					},
 					updatePageData(data,selectedList){
-						let brands='';
-						let colors='';
+						let brands=this.currentBrands.length===0 ? '' : this.currentBrands.toString();
+						let colors= this.currentColors.length===0 ? '' : this.currentColors.toString() ;
 						let pathData='/shop/'+
-							this.currentRoute
-						 + '/' + this.$route.params.content_id;
+						this.currentRoute
+						+ '/' + this.$route.params.content_id;
 						switch(data){
 							case 'brands':
 							brands=selectedList.toString();
-							if(this.currentColors.length===0){
-								this.$router.push({
-									path : pathData ,
-									query : {
-										'brands' : brands
-									}
-								})
-							}else{
-								colors=this.currentColors.toString()
-								this.$router.push({
-									path : pathData ,
-									query : {
-										'brands' : brands ,
-										'colors' : colors
-									}
-								})
-							}
 							break;
 
 							case 'colors':
 							colors=selectedList.toString();
-							if(this.currentBrands.length===0){
-								this.$router.push({
-									path : pathData ,
-									query : {
-										'colors' : colors
-									}
-								})
-							}else{
-								brands=this.currentBrands.toString()
-								this.$router.push({
-									path : pathData ,
-									query : {
-										'brands' : brands ,
-										'colors' : colors
-									}
-								})
-							}
 							break;
 						}
+						this.$router.push({
+							path : pathData ,
+							query : {
+								'brands' : brands ,
+								'colors' : colors
+							}
+						})
 					}
 				}
 			}

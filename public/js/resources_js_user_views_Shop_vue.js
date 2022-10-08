@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getItems();
     },
     getCurrentBrands: function getCurrentBrands() {
-      return this.currentRoute == 'brand' && this.$route.params.content_id !== null ? this.$route.params.content_id : this.getCurrentFilters('brands');
+      return this.currentRoute == 'brand' && this.$route.params.content_id !== null ? [this.$route.params.content_id] : this.getCurrentFilters('brands');
     },
     getCurrentFilters: function getCurrentFilters(data) {
       if (this.$route.query.hasOwnProperty(data)) {
@@ -123,57 +123,27 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updatePageData: function updatePageData(data, selectedList) {
-      var brands = '';
-      var colors = '';
+      var brands = this.currentBrands.length === 0 ? '' : this.currentBrands.toString();
+      var colors = this.currentColors.length === 0 ? '' : this.currentColors.toString();
       var pathData = '/shop/' + this.currentRoute + '/' + this.$route.params.content_id;
 
       switch (data) {
         case 'brands':
           brands = selectedList.toString();
-
-          if (this.currentColors.length === 0) {
-            this.$router.push({
-              path: pathData,
-              query: {
-                'brands': brands
-              }
-            });
-          } else {
-            colors = this.currentColors.toString();
-            this.$router.push({
-              path: pathData,
-              query: {
-                'brands': brands,
-                'colors': colors
-              }
-            });
-          }
-
           break;
 
         case 'colors':
           colors = selectedList.toString();
-
-          if (this.currentBrands.length === 0) {
-            this.$router.push({
-              path: pathData,
-              query: {
-                'colors': colors
-              }
-            });
-          } else {
-            brands = this.currentBrands.toString();
-            this.$router.push({
-              path: pathData,
-              query: {
-                'brands': brands,
-                'colors': colors
-              }
-            });
-          }
-
           break;
       }
+
+      this.$router.push({
+        path: pathData,
+        query: {
+          'brands': brands,
+          'colors': colors
+        }
+      });
     }
   }
 });
