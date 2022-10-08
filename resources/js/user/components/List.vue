@@ -4,7 +4,7 @@
 		<ul class="list_brand">
 			<li v-for="data in list">
 				<div class="custome-checkbox">
-					<input class="form-check-input" type="checkbox" name="checkbox" :id="data.name" :value="data.id" v-model="selected_list">
+					<input class="form-check-input" type="checkbox" :id="data.name" :value="data.id" v-model="selected_list" v-on:change="changeData()">
 					<label class="form-check-label" :for="data.name">
 						<span>{{ data.name }}</span>
 					</label>
@@ -20,12 +20,26 @@
 				selected_list: []
 			}
 		},
+		created(){
+			this.selected_list=this.$props.select_list
+		},
 		props : {
+			select_list : {
+				type : Array
+			},
 			title : {
 				type : String
 			},
 			list : {
 				type : Object
+			},
+			route_query : {
+				type : String
+			}
+		},
+		methods : {
+			changeData(){
+				this.$emit( 'updatePage', this.$props.route_query , this.selected_list);
 			}
 		}
 	}

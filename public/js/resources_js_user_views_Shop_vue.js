@@ -17,12 +17,26 @@ __webpack_require__.r(__webpack_exports__);
       selected_list: []
     };
   },
+  created: function created() {
+    this.selected_list = this.$props.select_list;
+  },
   props: {
+    select_list: {
+      type: Array
+    },
     title: {
       type: String
     },
     list: {
       type: Object
+    },
+    route_query: {
+      type: String
+    }
+  },
+  methods: {
+    changeData: function changeData() {
+      this.$emit('updatePage', this.$props.route_query, this.selected_list);
     }
   }
 });
@@ -49,14 +63,15 @@ __webpack_require__.r(__webpack_exports__);
     $route: {
       deep: true,
       handler: function handler() {
-        this.getContent('brands');
-        this.getContent('colors');
-        this.getContent('attributes');
+        this.main();
       }
     }
   },
   data: function data() {
     return {
+      currentRoute: null,
+      currentBrands: [],
+      currentColors: [],
       brands: {},
       colors: {},
       attributes: {},
@@ -66,25 +81,35 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    // if(!this.available_contents.includes(
-    // 	this.$route.params.content
-    // 	)){
-    // 	this.$router.push({path:'/404'})
-    // }
-    this.getContent('brands');
-    this.getContent('colors');
-    this.getContent('attributes');
-    this.getItems();
+    this.main();
   },
   methods: {
+    main: function main() {
+      this.currentRoute = this.getRouteName(this.$route.name);
+      this.currentBrands = this.getCurrentBrands();
+      this.currentColors = this.getCurrentFilters('colors');
+      this.getContent('brands');
+      this.getContent('colors');
+      this.getContent('attributes');
+      this.getItems();
+    },
+    getCurrentBrands: function getCurrentBrands() {
+      return this.currentRoute == 'brand' && this.$route.params.content_id !== null ? this.$route.params.content_id : this.getCurrentFilters('brands');
+    },
+    getCurrentFilters: function getCurrentFilters(data) {
+      if (this.$route.query.hasOwnProperty(data)) {
+        return this.$route.query[data].split(',');
+      }
+
+      return [];
+    },
     getRouteName: function getRouteName(name) {
       return name.replace('shop_', '');
     },
     getItems: function getItems() {
       var _this = this;
 
-      var routeName = this.getRouteName(this.$route.name);
-      window.axios.get('shop/' + routeName + '/' + this.$route.params.content_id).then(function (response) {
+      window.axios.get('shop/' + this.currentRoute + '/' + this.$route.params.content_id).then(function (response) {
         _this.items = response.data.items;
         _this.max_price = response.data.max_price;
         _this.min_price = response.data.min_price;
@@ -93,10 +118,62 @@ __webpack_require__.r(__webpack_exports__);
     getContent: function getContent(content) {
       var _this2 = this;
 
-      var routeName = this.getRouteName(this.$route.name);
-      window.axios.get('get_' + content + '_by_content' + '/' + routeName + '/' + this.$route.params.content_id).then(function (response) {
+      window.axios.get('get_' + content + '_by_content' + '/' + this.currentRoute + '/' + this.$route.params.content_id).then(function (response) {
         _this2[content] = response.data[content];
       });
+    },
+    updatePageData: function updatePageData(data, selectedList) {
+      var brands = '';
+      var colors = '';
+      var pathData = '/shop/' + this.currentRoute + '/' + this.$route.params.content_id;
+
+      switch (data) {
+        case 'brands':
+          brands = selectedList.toString();
+
+          if (this.currentColors.length === 0) {
+            this.$router.push({
+              path: pathData,
+              query: {
+                'brands': brands
+              }
+            });
+          } else {
+            colors = this.currentColors.toString();
+            this.$router.push({
+              path: pathData,
+              query: {
+                'brands': brands,
+                'colors': colors
+              }
+            });
+          }
+
+          break;
+
+        case 'colors':
+          colors = selectedList.toString();
+
+          if (this.currentBrands.length === 0) {
+            this.$router.push({
+              path: pathData,
+              query: {
+                'colors': colors
+              }
+            });
+          } else {
+            brands = this.currentBrands.toString();
+            this.$router.push({
+              path: pathData,
+              query: {
+                'brands': brands,
+                'colors': colors
+              }
+            });
+          }
+
+          break;
+      }
     }
   }
 });
@@ -136,14 +213,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       "class": "form-check-input",
       type: "checkbox",
-      name: "checkbox",
       id: data.name,
       value: data.id,
       "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
         return $data.selected_list = $event;
+      }),
+      onChange: _cache[1] || (_cache[1] = function ($event) {
+        return $options.changeData();
       })
-    }, null, 8
-    /* PROPS */
+    }, null, 40
+    /* PROPS, HYDRATE_EVENTS */
     , _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.selected_list]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
       "class": "form-check-label",
       "for": data.name
@@ -203,16 +282,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_List, {
     title: "Brands",
     list: $data.brands,
-    ref: "brand_list"
+    ref: "brand_list",
+    select_list: $data.currentBrands,
+    route_query: "brands",
+    onUpdatePage: $options.updatePageData
   }, null, 8
   /* PROPS */
-  , ["list"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_List, {
+  , ["list", "select_list", "onUpdatePage"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_List, {
     title: "Colors",
     list: $data.colors,
-    ref: "color_list"
+    ref: "color_list",
+    select_list: $data.currentColors,
+    route_query: "colors",
+    onUpdatePage: $options.updatePageData
   }, null, 8
   /* PROPS */
-  , ["list"]), _hoisted_10])])])])])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("script"), {
+  , ["list", "select_list", "onUpdatePage"]), _hoisted_10])])])])])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("script"), {
     src: "/user/js/scripts.js"
   }))], 64
   /* STABLE_FRAGMENT */
