@@ -128,9 +128,11 @@ function cosineSimilarity($x,$y){
 	$xPow=[];
 	$yPow=[];
 	foreach($x as $key => $d1){
-		$result[]= $d1*$y[$key];
-		$xPow[]=pow($d1, 2);
-		$yPow[]=pow($y[$key],2);
+		if(isset($y[$key]) ){
+			$result[]= $d1*$y[$key];
+			$xPow[]=pow($d1, 2);
+			$yPow[]=pow($y[$key],2);
+		}
 	}
 	$divisor=sqrt(array_sum($xPow))*sqrt(array_sum($yPow));
 	$total=array_sum($result);

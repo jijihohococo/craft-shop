@@ -30,9 +30,9 @@ class UserRateFiltering extends CollaborativeFiltering{
 				$newItemRates=array_combine($newItems,$newRates);
 				$itemRates=$itemRates+$newItemRates;
 			}
-			$max=(int)max($itemRates);
-			$min=(int)min($itemRates);
-			$dd=$max-$min;
+			//$max=(int)max($itemRates);
+			//$min=(int)min($itemRates);
+			//$dd=$max-$min;
 		 	//$mean=mean($itemRates);
 
 
@@ -45,13 +45,16 @@ class UserRateFiltering extends CollaborativeFiltering{
 				$itemReviews[$key][]=$rate;
 			}
 		}
+		//dd($itemReviews);
 		$consineSimilarities=[];
-		
+		//dd($itemReviews);
 		foreach ($itemReviews as $i => $xValue) {
 			$newItemReviews=$itemReviews;
 			unset($newItemReviews[$i]);
 			foreach($newItemReviews as $j => $yValue){
-				$consineSimilarities[$i][$j]=cosineSimilarity($xValue,$yValue);
+				$consineSimilarities[$i][$j]=isset($consineSimilarities[$j][$i]) ?
+				$consineSimilarities[$j][$i] :
+				cosineSimilarity($xValue,$yValue);
 			}
 		}
 		return $consineSimilarities;
