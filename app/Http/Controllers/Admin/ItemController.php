@@ -179,17 +179,17 @@ class ItemController extends CommonController
     }
 }
 
-    private function insertItemTaxes($taxes,$itemId,$update=NULL){
-        add_high_light([
-            'col'=>$taxes,
-            'old_col' => $this->taxes ,
-            'obj' => 'App\Models\ItemTax',
-            'parent_id'=>'item_id',
-            'parent_data'=>$itemId,
-            'child_col'=>'tax_id',
-            'update'=> $update
-        ]);
-    }
+private function insertItemTaxes($taxes,$itemId,$update=NULL){
+    add_high_light([
+        'col'=>$taxes,
+        'old_col' => $this->taxes ,
+        'obj' => 'App\Models\ItemTax',
+        'parent_id'=>'item_id',
+        'parent_data'=>$itemId,
+        'child_col'=>'tax_id',
+        'update'=> $update
+    ]);
+}
 
     /**
      * Store a newly created resource in storage.
@@ -276,12 +276,13 @@ class ItemController extends CommonController
         }
         if(is_array($attributes)){
             foreach($attributes as $attribute){
-                if(isset($attribute['id']) && is_int($attribute['id'])){
+                if(isset($attribute['id']) && is_int((integer)$attribute['id'])){
                     $itemAttribute=ItemAttribute::create([
                         'item_id' => $id ,
                         'attribute_id' => $attribute['id']
                     ]);
                     foreach(explode(',',$attribute['set']) as $set){
+                     if(is_int((integer) $set )){
                         ItemAttributeSet::create([
                             'item_attribute_id' => $itemAttribute->id ,
                             'set_id'  => $set
@@ -291,8 +292,9 @@ class ItemController extends CommonController
             }
         }
     }
+}
 
- private function validateData($id=NULL){
+private function validateData($id=NULL){
     return [
         'name' => uniqueColumn($this->content,$id) ,
         'category_id' => ['required','integer'],

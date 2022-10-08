@@ -537,16 +537,22 @@
 							</div>
 							<List title="Brands" 
 							:list="brands"
-							ref="brand_list"
 							:select_list="currentBrands"
 							route_query="brands"
 							@updatePage="updatePageData"
 							/>
 							<List title="Colors" 
 							:list="colors"
-							ref="color_list"
 							:select_list="currentColors"
 							route_query="colors"
+							@updatePage="updatePageData"
+							/>
+							<List v-for="attribute in attributes"
+							:title="attribute.name"
+							:list="attribute.sets"
+							:select_list="currentSets"
+							route_query="sets"
+							column="set"
 							@updatePage="updatePageData"
 							/>
 							<div class="widget">
@@ -613,6 +619,7 @@
 				currentRoute: null ,
 				currentBrands : [] ,
 				currentColors : [] ,
+				currentSets : [] ,
 				brands : {} ,
 				colors : {} ,
 				attributes : {} ,
@@ -629,6 +636,7 @@
 				this.currentRoute=this.getRouteName(this.$route.name);
 				this.currentBrands=this.getCurrentBrands();
 				this.currentColors=this.getCurrentFilters('colors');
+				this.currentSets=this.getCurrentFilters('sets');
 				this.getContent('brands')
 				this.getContent('colors')
 				this.getContent('attributes')
@@ -640,10 +648,9 @@
 				[this.$route.params.content_id] : this.getCurrentFilters('brands') 
 			},
 			getCurrentFilters(data){
-				if(this.$route.query.hasOwnProperty(data) ){
-					return this.$route.query[data].split(',');
-				}
-				return []
+				return this.$route.query.hasOwnProperty(data) ?
+				this.$route.query[data].split(',') :
+				[]
 			},
 			getRouteName(name){
 				return name.replace('shop_','')
@@ -667,8 +674,10 @@
 						} )
 					},
 					updatePageData(data,selectedList){
+						
 						let brands=this.currentBrands.length===0 ? '' : this.currentBrands.toString();
 						let colors= this.currentColors.length===0 ? '' : this.currentColors.toString() ;
+						let sets=this.currentSets.length===0 ? '' : this.currentSets.toString() ;
 						let pathData='/shop/'+
 						this.currentRoute
 						+ '/' + this.$route.params.content_id;
@@ -680,12 +689,17 @@
 							case 'colors':
 							colors=selectedList.toString();
 							break;
+
+							case 'sets':
+							sets=selectedList.toString();
+							break;
 						}
 						this.$router.push({
 							path : pathData ,
 							query : {
 								'brands' : brands ,
-								'colors' : colors
+								'colors' : colors ,
+								'sets' : sets
 							}
 						})
 					}

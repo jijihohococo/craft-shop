@@ -21,6 +21,10 @@ __webpack_require__.r(__webpack_exports__);
     this.selected_list = this.$props.select_list;
   },
   props: {
+    column: {
+      type: String,
+      "default": 'name'
+    },
     select_list: {
       type: Array
     },
@@ -72,6 +76,7 @@ __webpack_require__.r(__webpack_exports__);
       currentRoute: null,
       currentBrands: [],
       currentColors: [],
+      currentSets: [],
       brands: {},
       colors: {},
       attributes: {},
@@ -88,6 +93,7 @@ __webpack_require__.r(__webpack_exports__);
       this.currentRoute = this.getRouteName(this.$route.name);
       this.currentBrands = this.getCurrentBrands();
       this.currentColors = this.getCurrentFilters('colors');
+      this.currentSets = this.getCurrentFilters('sets');
       this.getContent('brands');
       this.getContent('colors');
       this.getContent('attributes');
@@ -97,11 +103,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.currentRoute == 'brand' && this.$route.params.content_id !== null ? [this.$route.params.content_id] : this.getCurrentFilters('brands');
     },
     getCurrentFilters: function getCurrentFilters(data) {
-      if (this.$route.query.hasOwnProperty(data)) {
-        return this.$route.query[data].split(',');
-      }
-
-      return [];
+      return this.$route.query.hasOwnProperty(data) ? this.$route.query[data].split(',') : [];
     },
     getRouteName: function getRouteName(name) {
       return name.replace('shop_', '');
@@ -125,6 +127,7 @@ __webpack_require__.r(__webpack_exports__);
     updatePageData: function updatePageData(data, selectedList) {
       var brands = this.currentBrands.length === 0 ? '' : this.currentBrands.toString();
       var colors = this.currentColors.length === 0 ? '' : this.currentColors.toString();
+      var sets = this.currentSets.length === 0 ? '' : this.currentSets.toString();
       var pathData = '/shop/' + this.currentRoute + '/' + this.$route.params.content_id;
 
       switch (data) {
@@ -135,13 +138,18 @@ __webpack_require__.r(__webpack_exports__);
         case 'colors':
           colors = selectedList.toString();
           break;
+
+        case 'sets':
+          sets = selectedList.toString();
+          break;
       }
 
       this.$router.push({
         path: pathData,
         query: {
           'brands': brands,
-          'colors': colors
+          'colors': colors,
+          'sets': sets
         }
       });
     }
@@ -183,7 +191,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       "class": "form-check-input",
       type: "checkbox",
-      id: data.name,
+      id: data[$props.column],
       value: data.id,
       "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
         return $data.selected_list = $event;
@@ -195,8 +203,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.selected_list]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
       "class": "form-check-label",
-      "for": data.name
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.name), 1
+      "for": data[$props.column]
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data[$props.column]), 1
     /* TEXT */
     )], 8
     /* PROPS */
@@ -252,7 +260,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_List, {
     title: "Brands",
     list: $data.brands,
-    ref: "brand_list",
     select_list: $data.currentBrands,
     route_query: "brands",
     onUpdatePage: $options.updatePageData
@@ -261,13 +268,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["list", "select_list", "onUpdatePage"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_List, {
     title: "Colors",
     list: $data.colors,
-    ref: "color_list",
     select_list: $data.currentColors,
     route_query: "colors",
     onUpdatePage: $options.updatePageData
   }, null, 8
   /* PROPS */
-  , ["list", "select_list", "onUpdatePage"]), _hoisted_10])])])])])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("script"), {
+  , ["list", "select_list", "onUpdatePage"]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.attributes, function (attribute) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_List, {
+      title: attribute.name,
+      list: attribute.sets,
+      select_list: $data.currentSets,
+      route_query: "sets",
+      column: "set",
+      onUpdatePage: $options.updatePageData
+    }, null, 8
+    /* PROPS */
+    , ["title", "list", "select_list", "onUpdatePage"]);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  )), _hoisted_10])])])])])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("script"), {
     src: "/user/js/scripts.js"
   }))], 64
   /* STABLE_FRAGMENT */
