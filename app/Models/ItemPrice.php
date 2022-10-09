@@ -17,8 +17,9 @@ class ItemPrice extends TransactionModel
         'promotion_end_time'
     ];
     
-    public const SALE_PRICE_SQL="SUBSTRING_INDEX( GROUP_CONCAT(
-    CASE
+    // public const SALE_PRICE_SQL="SUBSTRING_INDEX( GROUP_CONCAT(
+    //  ) ,',',1)";
+    public const SALE_PRICE_SQL="DISTINCT CASE
     
     WHEN (((item_prices.promotion_start_time <=CURRENT_TIMESTAMP) ||
     (item_prices.promotion_end_time >=CURRENT_TIMESTAMP))&&
@@ -35,10 +36,7 @@ class ItemPrice extends TransactionModel
 
 
 
-    ELSE item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) END ) ,',',1)";
-
-    public const NORMAL_PRICE_SQL="SUBSTRING_INDEX( GROUP_CONCAT(
-    item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) ) ,',',1)";
+    ELSE item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id) END";
 
     public const PRICE_SQL="item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)";
 

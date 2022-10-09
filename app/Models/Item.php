@@ -162,7 +162,7 @@ class Item extends TransactionModel
     return $query->addSelect([$this->salePrice => function($query){
         $query->select(
             \DB::raw(
-                ItemPrice::SALE_PRICE_SQL
+                ItemPrice::PRICE_SQL
             )
         )
         ->from('item_prices')
@@ -174,7 +174,7 @@ class Item extends TransactionModel
     $this->normalPrice => function($query){
         $query->select(
             \DB::raw(
-                ItemPrice::NORMAL_PRICE_SQL
+                ItemPrice::PRICE_SQL
             )
         )->from('item_prices')
         ->whereIn('item_prices.item_variant_id',function($newQuery){

@@ -16,7 +16,8 @@
 					ref="carouselSlider">
 						<div class="item" v-for="brand in brands">
 							<div class="cl_logo">
-								<img :src="'/image/brand_images/'+brand.pic" alt="cl_logo"/>
+								<img :src="'/image/brand_images/'+brand.pic" 
+								:alt="brand.name"/>
 							</div>
 						</div>
 						

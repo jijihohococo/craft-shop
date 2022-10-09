@@ -45,7 +45,7 @@ class ShoppingCart extends Model
                 'normal_price' => function($query){
                     $query->select(
                         \DB::raw(
-                            ItemPrice::NORMAL_PRICE_SQL
+                            ItemPrice::PRICE_SQL
                         )
                     )->from('item_prices')
                     ->whereColumn('item_prices.item_variant_id','shopping_carts.item_variant_id')
