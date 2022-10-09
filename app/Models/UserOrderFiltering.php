@@ -13,7 +13,7 @@ class UserOrderFiltering extends CollaborativeFiltering{
 				GROUP_CONCAT(item_id) AS review_items,
 				(SELECT GROUP_CONCAT(id) FROM items) AS items'
 			))
-			->groupBy('order_id')
+			->groupBy('item_id')
 			->get() ,
 			'quantities',
 			'item_id'
