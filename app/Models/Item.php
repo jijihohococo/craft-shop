@@ -162,7 +162,7 @@ class Item extends TransactionModel
     return $query->addSelect([$this->salePrice => function($query){
         $query->select(
             \DB::raw(
-                ItemPrice::PRICE_SQL
+                ItemPrice::SALE_PRICE_SQL
             )
         )
         ->from('item_prices')
