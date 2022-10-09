@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::get('/test',function(){
+	dd((new App\Models\UserRateFiltering)->showReviewFilter() );
+});
 Route::get('items/{id}','User\ItemController@show');
 
 
