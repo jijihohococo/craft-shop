@@ -535,13 +535,13 @@
 									</div>
 								</div>
 							</div>
-							<List title="Brands" 
+							<List :title="translateLang('Brands')" 
 							:list="brands"
 							:select_list="currentBrands"
 							route_query="brands"
 							@updatePage="updatePageData"
 							/>
-							<List title="Colors" 
+							<List :title="translateLang('Colors')"
 							:list="colors"
 							:select_list="currentColors"
 							route_query="colors"
@@ -602,6 +602,7 @@
 </template>
 <script >
 	import List from '../components/List'
+	import { translate } from '../../helpers/general.js'
 	export default {
 		components : {
 			List
@@ -633,6 +634,9 @@
 			this.main()
 		},
 		methods : {
+			translateLang(data){
+				return  translate(data);
+			},
 			main(){
 				this.contentId=this.$route.params.content_id==undefined ? this.contentId :
 				this.$router.params.content_id;
