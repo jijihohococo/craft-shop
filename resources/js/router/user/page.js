@@ -43,6 +43,11 @@ export default [
 	name : 'shop_brand'
 },
 {
+	path : 'shop/all',
+	component : Shop ,
+	name : 'shop_All'
+},
+{
 	path : 'privacy_policy',
 	component : PrivacyPolicy ,
 	name : 'privacy_policy',

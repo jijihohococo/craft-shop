@@ -33,11 +33,13 @@ $userRoutes=[
 	'items/{id}',
 	'orders',
 	'orders/{id}',
-	'promotions/{id}'];
+	'promotions/{id}',
+	'shop/all'];
 	foreach($userRoutes as $userRoute){
 		Route::view('/'.$userRoute,$userPage);
 	}
-	foreach(['category',
+	foreach([
+		'category',
 		'subcategory',
 		'brand'] as $content){
 		Route::view('/shop/'.$content.'/{contentId}',$userPage);

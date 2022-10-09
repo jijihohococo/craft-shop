@@ -73,6 +73,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      contentId: '',
       currentRoute: null,
       currentBrands: [],
       currentColors: [],
@@ -90,6 +91,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     main: function main() {
+      this.contentId = this.$route.params.content_id == undefined ? this.contentId : this.$router.params.content_id;
       this.currentRoute = this.getRouteName(this.$route.name);
       this.currentBrands = this.getCurrentBrands();
       this.currentColors = this.getCurrentFilters('colors');
@@ -100,7 +102,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getItems();
     },
     getCurrentBrands: function getCurrentBrands() {
-      return this.currentRoute == 'brand' && this.$route.params.content_id !== null ? [this.$route.params.content_id] : this.getCurrentFilters('brands');
+      return this.currentRoute == 'brand' && this.contentId !== null ? [this.contentId] : this.getCurrentFilters('brands');
     },
     getCurrentFilters: function getCurrentFilters(data) {
       return this.$route.query.hasOwnProperty(data) ? this.$route.query[data].split(',') : [];
@@ -111,7 +113,7 @@ __webpack_require__.r(__webpack_exports__);
     getItems: function getItems() {
       var _this = this;
 
-      window.axios.get('shop/' + this.currentRoute + '/' + this.$route.params.content_id).then(function (response) {
+      window.axios.get('shop/' + this.currentRoute + '/' + this.contentId).then(function (response) {
         _this.items = response.data.items;
         _this.max_price = response.data.max_price;
         _this.min_price = response.data.min_price;
@@ -120,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
     getContent: function getContent(content) {
       var _this2 = this;
 
-      window.axios.get('get_' + content + '_by_content' + '/' + this.currentRoute + '/' + this.$route.params.content_id).then(function (response) {
+      window.axios.get('get_' + content + '_by_content' + '/' + this.currentRoute + '/' + this.contentId).then(function (response) {
         _this2[content] = response.data[content];
       });
     },
@@ -128,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
       var brands = this.currentBrands.length === 0 ? '' : this.currentBrands.toString();
       var colors = this.currentColors.length === 0 ? '' : this.currentColors.toString();
       var sets = this.currentSets.length === 0 ? '' : this.currentSets.toString();
-      var pathData = '/shop/' + this.currentRoute + '/' + this.$route.params.content_id;
+      var pathData = '/shop/' + this.currentRoute + '/' + this.contentId;
 
       switch (data) {
         case 'brands':

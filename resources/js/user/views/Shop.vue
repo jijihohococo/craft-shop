@@ -616,6 +616,7 @@
 		},
 		data(){
 			return {
+				contentId : '' ,
 				currentRoute: null ,
 				currentBrands : [] ,
 				currentColors : [] ,
@@ -633,6 +634,8 @@
 		},
 		methods : {
 			main(){
+				this.contentId=this.$route.params.content_id==undefined ? this.contentId :
+				this.$router.params.content_id;
 				this.currentRoute=this.getRouteName(this.$route.name);
 				this.currentBrands=this.getCurrentBrands();
 				this.currentColors=this.getCurrentFilters('colors');
@@ -644,8 +647,8 @@
 			},
 			getCurrentBrands(){
 				return this.currentRoute=='brand' &&
-				this.$route.params.content_id!==null ?
-				[this.$route.params.content_id] : this.getCurrentFilters('brands') 
+				this.contentId!==null ?
+				[this.contentId] : this.getCurrentFilters('brands') 
 			},
 			getCurrentFilters(data){
 				return this.$route.query.hasOwnProperty(data) ?
@@ -658,7 +661,7 @@
 			getItems(){
 				window.axios.get('shop/'+
 					this.currentRoute +'/'+
-					this.$route.params.content_id).then( (response) => {
+					this.contentId).then( (response) => {
 						this.items=response.data.items
 						this.max_price=response.data.max_price
 						this.min_price=response.data.min_price
@@ -669,7 +672,7 @@
 						content + 
 						'_by_content' +'/'+
 						this.currentRoute +'/'+
-						this.$route.params.content_id).then( (response) => {
+						this.contentId).then( (response) => {
 							this[content]=response.data[content]
 						} )
 					},
@@ -680,7 +683,7 @@
 						let sets=this.currentSets.length===0 ? '' : this.currentSets.toString() ;
 						let pathData='/shop/'+
 						this.currentRoute
-						+ '/' + this.$route.params.content_id;
+						+ '/' + this.contentId;
 						switch(data){
 							case 'brands':
 							brands=selectedList.toString();
