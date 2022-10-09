@@ -25,6 +25,30 @@ class ItemController extends Controller
         $this->item=$item;
     }
 
+    public function getItems($items,$sorting){
+        switch ($sorting) {
+            case 'id':
+            return $items->latest('id')->paginate(10);
+            break;
+
+            case 'price_high':
+            return $items->orderBy('normal_price','DESC')->paginate(10);
+            break;
+
+            case 'price_low':
+            return $items->orderBy('normal_price','AESC')->paginate(10);
+            break;
+
+            case 'user_review':
+            return  $items->orderBy('average_reviews','DESC')->paginate(10);
+            break;
+            
+            default:
+            return $items->latest('id')->paginate(10);
+            break;
+        }
+    }
+
     public function shop(Request $request,$content,$contentId=null){
         $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),$this->acceptArray );
         if($validator->fails()){
@@ -63,9 +87,10 @@ class ItemController extends Controller
 
         if(!empty($items)){
             $itemIds=$items->get()->pluck('id')->toArray();
+            $items=$this->getItems($items,$request->sorting);
         }
         return response()->json([
-            'items' => empty($items) ? $items : $items->latest('id')->paginate(10) ,
+            'items' => $items ,
             'max_price' => $this->item->getMaxPrice($itemIds) ,
             'min_price' => $this->item->getMinPrice($itemIds)
         ]);

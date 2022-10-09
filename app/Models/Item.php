@@ -147,6 +147,17 @@ class Item extends TransactionModel
     ]);
   }
 
+  public function scopeSelectAverageReviews($query){
+    return $query->addSelect([
+        'average_reviews' => function($query){
+            $query->select(
+                \DB::raw('AVG(item_reviews.rate)')
+            )->from('item_reviews')
+            ->whereColumn('items.id','item_reviews.item_id');
+        }
+    ]);
+  }
+
   public function scopeSelectPrice($query){
     return $query->addSelect([$this->salePrice => function($query){
         $query->select(

@@ -20,6 +20,7 @@ class ItemRepository implements ItemRepositoryInterface{
 
     public function getAll(){
         return Item::selectShopItem()
+        ->selectAverageReviews()
         ->available();
     }
 
