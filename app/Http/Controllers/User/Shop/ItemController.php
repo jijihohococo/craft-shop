@@ -15,7 +15,7 @@ class ItemController extends Controller
     public $item;
 
     public $acceptArray=[
-        'All',
+        'all',
         'category',
         'subcategory',
         'brand'
@@ -56,11 +56,11 @@ class ItemController extends Controller
         }
         $items=$itemIds=[];
 
-        if($content!=='All'){
+        if($content!=='all'){
             $items=$request->search==NULL ? $this->item->getByContent($content,$contentId) : $this->item->searchByContent($content,$contentId,'%'.$request->search.'%');
         }
 
-        if($content=='All'){
+        if($content=='all'){
             $items=$this->item->getAll();
             if($request->search!==NULL){
                 $items=$items->searchData( '%' . $request->search . '%' );
