@@ -13,7 +13,7 @@ abstract class ContentController extends Controller
     public $content;
 
     public $acceptArray=[
-        'All',
+        'all',
         'category',
         'subcategory',
         'brand'
@@ -26,7 +26,7 @@ abstract class ContentController extends Controller
     }
 
     public function getContentData($content,$id,$searchData=null){
-        if($content=='All'){
+        if($content=='all'){
             return $this->{$this->content}->getAll();
         }else{
             return $searchData==NULL ? $this->{$this->content}->getByContent($content,$id) :

@@ -45,7 +45,7 @@ export default [
 {
 	path : 'shop/all',
 	component : Shop ,
-	name : 'shop_All'
+	name : 'shop_all'
 },
 {
 	path : 'privacy_policy',
