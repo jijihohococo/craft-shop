@@ -1,6 +1,6 @@
 <template>
 	<div 
-	:class="tab_class" 
+	:class="['horizContainer '+tab_class]" 
 	:id="content"
 	role="tabpanel"
 	:aria-labelledby="content+'-tab'">
@@ -9,10 +9,12 @@
 			<div class="product">
 				<div class="product_img">
 					<a href="shop-product-detail.html">
-						<Image 
-						path="/image/item_images"
-						:pic="item.image"
-						:alt_name="item.name" />
+						<img 
+						:data-src="
+						[ item.image==null ? '/images/logo_dark.png' :  '/image/item_images/' + item.image]"
+						class="lazy" 
+						:alt="item.name" 
+						>
 					</a>
 					<div class="product_action_box">
 						<ul class="list_none pr_action_btn">
@@ -32,12 +34,11 @@
 </template>
 <script >
 	import ItemInfo from './ItemInfo'
-	import Image from '../../components/Image';
+	import LazyLoad from  'vanilla-lazyload'
 	export default {
 		name : 'SliderDetail' ,
 		components : {
-			ItemInfo,
-			Image
+			ItemInfo
 		},
 		props : {
 			content : {
@@ -49,6 +50,28 @@
 			items : {
 				type : Array
 			}
-		}
-	}
+		},
+		mounted : function(){
+			var lazyLoadInstances = [];
+
+			var initOneLazyLoad = function (horizContainerElement) {
+  // When the .horizContainer element enters the viewport,
+  // instantiate a new LazyLoad on the horizContainerElement
+  var oneLL = new LazyLoad({
+  	container: horizContainerElement
+  });
+  // Optionally push it in the lazyLoadInstances
+  // array to keep track of the instances
+  lazyLoadInstances.push(oneLL);
+};
+
+// The "lazyLazy" instance of lazyload is used to check
+// when the .horizContainer divs enter the viewport
+var lazyLazy = new LazyLoad({
+	elements_selector: ".horizContainer",
+	callback_enter: initOneLazyLoad,
+  unobserve_entered: true // Stop observing .horizContainer(s) after they entered
+});
+}
+}
 </script>

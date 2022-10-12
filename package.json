@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@vuepic/vue-datepicker": "^3.4.8",
+    "vanilla-lazyload": "^17.8.3",
     "vue": "^3.2.37",
     "vue-cookies": "^1.8.1",
     "vue-meta": "^2.4.0",

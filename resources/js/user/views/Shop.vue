@@ -623,7 +623,15 @@
 			$route : {
 				deep : true ,
 				handler(){
-					this.main()
+					var routes=[
+						'shop_category',
+						'shop_subcategory',
+						'shop_brand',
+						'shop_all'
+						];
+					if(routes.includes(this.$route.name)){
+						this.main()
+					}
 				}
 			},
 			current_sorting : {

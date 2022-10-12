@@ -13,7 +13,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<div class="product_slider product_list carousel_slider owl-carousel owl-theme nav_style3" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "767":{"items": "2"}, "991":{"items": "3"}, "1199":{"items": "3"}}' v-if="feature_products && feature_products.length>0">
+					<div class="product_slider product_list carousel_slider owl-carousel owl-theme nav_style3 horizContainer" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "767":{"items": "2"}, "991":{"items": "3"}, "1199":{"items": "3"}}' v-if="feature_products && feature_products.length>0">
 						<FeatureProduct :feature_products="one_feature_products" />
 						<FeatureProduct :feature_products="two_feature_products" />
 						<FeatureProduct :feature_products="three_feature_products" />
@@ -31,6 +31,7 @@
 	
 	import FeatureProduct from './FeatureProduct'
 	import { translate } from '../../helpers/general.js'
+	
 
 	export default {
 		components : {

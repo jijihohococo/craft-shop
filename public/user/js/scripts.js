@@ -99,7 +99,8 @@ PAGE JS
 						animateOut: $carousel.data("animate-out"),
 						autoplayTimeout : $carousel.data("autoplay-timeout"),
 						smartSpeed: $carousel.data("smart-speed"),
-						responsive: $carousel.data("responsive")
+						responsive: $carousel.data("responsive") ,
+						lazyLoad: true
 					});	
 				});
 			}
