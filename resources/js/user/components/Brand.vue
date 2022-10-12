@@ -14,24 +14,29 @@
 				<div class="col-12">
 					<div class="client_logo carousel_slider owl-carousel owl-theme nav_style3" data-dots="false" data-nav="true" data-margin="30" data-loop="true" data-autoplay="true" data-responsive='{"0":{"items": "2"}, "480":{"items": "3"}, "767":{"items": "4"}, "991":{"items": "5"}}' 
 					ref="carouselSlider">
-						<div class="item" v-for="brand in brands">
-							<div class="cl_logo">
-								<img :src="'/image/brand_images/'+brand.pic" 
-								:alt="brand.name"/>
-							</div>
+					<div class="item" v-for="brand in brands">
+						<div class="cl_logo">
+							<Image 
+							path="/image/brand_images"
+							:pic="brand.pic"
+							:alt_name="brand.name" />
 						</div>
-						
 					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 <!-- 	<component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
 	import { translate } from '../../helpers/general.js'
-	//import carouselInit from './carousel.js';
+	import Image from '../../components/Image';
 	export default {
+		components : {
+			Image
+		},
 		data(){
 			return {
 				brands : {}
@@ -49,9 +54,6 @@
 		},
 		created(){
 			this.getBrands()
-		},
-		// mounted : function(){
-		// 	 carouselInit(this.$refs.carouselSlider);
-		// }
+		}
 	}
 </script>

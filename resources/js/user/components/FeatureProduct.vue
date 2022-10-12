@@ -3,7 +3,10 @@
 		<div class="product" v-for="item in feature_products">
 			<div class="product_img">
 				<a href="shop-product-detail.html">
-					<img :src="'/image/item_images/'+item.image" :alt="item.name">
+					<Image 
+						path="/image/item_images"
+						:pic="item.image"
+						:alt_name="item.name" />
 				</a>
 			</div>
 			<ItemInfo :item="item" />
@@ -13,11 +16,13 @@
 <script >
 
 	import ItemInfo from './ItemInfo'
+	import Image from '../../components/Image';
 
 	export default {
 		name : 'FeatureProduct',
 		components : {
-			ItemInfo
+			ItemInfo,
+			Image
 		},
 		props : ['feature_products']
 	}

@@ -9,7 +9,10 @@
 			<div class="product">
 				<div class="product_img">
 					<a href="shop-product-detail.html">
-						<img :src="'/image/item_images/'+item.image" :alt="item.name">
+						<Image 
+						path="/image/item_images"
+						:pic="item.image"
+						:alt_name="item.name" />
 					</a>
 					<div class="product_action_box">
 						<ul class="list_none pr_action_btn">
@@ -29,11 +32,12 @@
 </template>
 <script >
 	import ItemInfo from './ItemInfo'
-
+	import Image from '../../components/Image';
 	export default {
 		name : 'SliderDetail' ,
 		components : {
-			ItemInfo
+			ItemInfo,
+			Image
 		},
 		props : {
 			content : {

@@ -5,7 +5,10 @@
 			<div class="row">
 				<div class="col-md-6" v-for="collection in collections" >
 					<div class="single_banner">
-						<img :src="'/image/collection_images/'+collection.pic">
+						<Image 
+							path="/image/collection_images"
+							:pic="collection.pic"
+							:alt_name="collection.name" />
 						<div class="single_banner_info">
 							<h3 class="single_bn_title">{{ collection.name }}</h3>
 							<a href="shop-left-sidebar.html" class="single_bn_link">Shop Now</a>
@@ -18,7 +21,11 @@
 	<!-- END SECTION BANNER -->
 </template>
 <script >
+	import Image from '../../components/Image';
 	export default {
+		components : {
+			Image
+		},
 		data(){
 			return {
 				collections : {}
