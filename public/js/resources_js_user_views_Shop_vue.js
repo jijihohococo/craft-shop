@@ -146,9 +146,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     current_sorting: {
-      handler: function handler(newValue, oldValue) {
-        console.log(newValue);
-      }
+      handler: function handler(newValue, oldValue) {}
     },
     current_showing: {
       handler: function handler(newValue, oldValue) {}
@@ -159,7 +157,7 @@ __webpack_require__.r(__webpack_exports__);
       return (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_2__.translate)(data);
     },
     main: function main() {
-      this.contentId = this.$route.params.content_id == undefined ? this.contentId : this.$router.params.content_id;
+      this.contentId = this.$route.params.content_id == undefined ? this.contentId : this.$route.params.content_id;
       this.currentRoute = this.getRouteName(this.$route.name);
       this.currentBrands = this.getCurrentBrands();
       this.currentColors = this.getCurrentFilters('colors');

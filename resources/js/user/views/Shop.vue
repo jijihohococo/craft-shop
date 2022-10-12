@@ -628,7 +628,7 @@
 			},
 			current_sorting : {
 				handler(newValue,oldValue){
-					console.log(newValue)
+					
 				}
 			},
 			current_showing : {
@@ -642,8 +642,10 @@
 				return  translate(data);
 			},
 			main(){
-				this.contentId=this.$route.params.content_id==undefined ? this.contentId :
-				this.$router.params.content_id;
+				this.contentId=this.$route.params.content_id==undefined ?
+				this.contentId :
+				this.$route.params.content_id;
+				
 				this.currentRoute=this.getRouteName(this.$route.name);
 				this.currentBrands=this.getCurrentBrands();
 				this.currentColors=this.getCurrentFilters('colors');
