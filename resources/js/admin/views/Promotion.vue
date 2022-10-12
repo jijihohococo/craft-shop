@@ -210,7 +210,7 @@
 					} )
 				}
 			},
-			created(){
+			mounted : function(){
 				this.getPromotions(1);
 				checkContentPermission(this.content,'create',this);
 				checkContentPermission(this.content,'update',this);

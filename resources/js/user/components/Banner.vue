@@ -40,7 +40,7 @@
 				} )
 			}
 		},
-		async created(){
+		async mounted() {
 			await this.getBanners()
 		}
 	}

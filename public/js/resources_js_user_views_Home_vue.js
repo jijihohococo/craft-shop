@@ -92,7 +92,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     }
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this2 = this;
 
     return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
@@ -580,8 +580,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _ItemInfo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ItemInfo */ "./resources/js/user/components/ItemInfo.vue");
-/* harmony import */ var vanilla_lazyload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vanilla-lazyload */ "./node_modules/vanilla-lazyload/dist/lazyload.min.js");
-/* harmony import */ var vanilla_lazyload__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vanilla_lazyload__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_general_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/general.js */ "./resources/js/helpers/general.js");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -601,27 +600,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var lazyLoadInstances = [];
-
-    var initOneLazyLoad = function initOneLazyLoad(horizContainerElement) {
-      // When the .horizContainer element enters the viewport,
-      // instantiate a new LazyLoad on the horizContainerElement
-      var oneLL = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_1___default())({
-        container: horizContainerElement
-      }); // Optionally push it in the lazyLoadInstances
-      // array to keep track of the instances
-
-      lazyLoadInstances.push(oneLL);
-    }; // The "lazyLazy" instance of lazyload is used to check
-    // when the .horizContainer divs enter the viewport
-
-
-    var lazyLazy = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_1___default())({
-      elements_selector: ".horizContainer",
-      callback_enter: initOneLazyLoad,
-      unobserve_entered: true // Stop observing .horizContainer(s) after they entered
-
-    });
+    (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_1__.horizontalImageCache)();
   }
 });
 

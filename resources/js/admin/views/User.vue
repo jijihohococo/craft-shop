@@ -79,7 +79,7 @@
 				}
 			}
 		},
-		created(){
+		mounted : function(){
 			this.getUsers(1);
 		},
 		methods : {

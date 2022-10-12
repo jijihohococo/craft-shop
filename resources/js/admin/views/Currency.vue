@@ -202,7 +202,7 @@
 } )
 }
 },
-created(){
+mounted : function(){
    this.getCurrencies(1);
    checkContentPermission(this.content,'create',this);
    checkContentPermission(this.content,'update',this);

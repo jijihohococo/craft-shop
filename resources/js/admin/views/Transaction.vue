@@ -84,7 +84,7 @@
 				}
 			}
 		},
-		created(){
+		mounted : function(){
 			this.getTransactions(1);
 		},
 		methods :{

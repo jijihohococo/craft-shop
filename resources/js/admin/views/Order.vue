@@ -89,7 +89,7 @@
 				}
 			}
 		},
-		created(){
+		mounted : function(){
 			this.getOrders(1);
 		},
 		methods : {

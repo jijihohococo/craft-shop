@@ -206,7 +206,7 @@
 } )
 }
 },
-created(){
+mounted : function(){
    this.getSubcategories(1);
    checkContentPermission(this.content,'create',this);
    checkContentPermission(this.content,'update',this);

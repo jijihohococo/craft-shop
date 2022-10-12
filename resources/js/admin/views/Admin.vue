@@ -204,7 +204,7 @@
 } )
 }
 },
-created(){
+mounted : function(){
    this.getAdmins(1);
    checkContentPermission(this.content,'create',this);
    checkContentPermission(this.content,'update',this);

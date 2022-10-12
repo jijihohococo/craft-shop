@@ -175,7 +175,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     this.getUsers(1);
   },
   methods: {
