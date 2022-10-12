@@ -15,11 +15,9 @@
       }
     },
     mounted() {
-     window.addEventListener('load', () => {
      setTimeout(() => {
-      $(this.$el).delay(100).fadeOut(700).addClass('loaded');
+      $(this.$el).delay(700).fadeOut(700).addClass('loaded');
     }, 2500)
-   })
    },
  }
 </script>

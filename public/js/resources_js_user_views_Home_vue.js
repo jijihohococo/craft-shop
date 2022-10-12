@@ -559,11 +559,9 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        $(_this.$el).delay(100).fadeOut(700).addClass('loaded');
-      }, 2500);
-    });
+    setTimeout(function () {
+      $(_this.$el).delay(700).fadeOut(700).addClass('loaded');
+    }, 2500);
   }
 });
 
