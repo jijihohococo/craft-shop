@@ -19,7 +19,9 @@ class ItemVariantImageController extends Controller
               'id'=>'item_variant_id',
               'data_id'=>$id,
               'obj'=>'App\Models\ItemImage',
-              'file'=>'filename'] );
+              'file'=>'filename',
+              'width'=>540,
+              'height'=>600] );
     }
 
     public function index($id){

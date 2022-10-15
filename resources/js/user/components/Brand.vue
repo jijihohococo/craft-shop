@@ -12,33 +12,55 @@
 			</div>
 			<div class="row">
 				<div class="col-12">
-					<div class="client_logo carousel_slider owl-carousel owl-theme nav_style3 horizContainer" data-dots="false" data-nav="true" data-margin="30" data-loop="true" data-autoplay="true" data-responsive='{"0":{"items": "2"}, "480":{"items": "3"}, "767":{"items": "4"}, "991":{"items": "5"}}' 
-					ref="carouselSlider">
-					<div class="item" v-for="brand in brands">
-						<div class="cl_logo">
-							<img 
-							:data-src="
-							[ brand.pic==null ? '/images/logo_dark.png' :  '/image/brand_images/' + brand.pic]"
-							class="lazy" 
-							:alt="brand.name" 
-							>
-						</div>
-					</div>
-
+					<div class="client_logo carousel_slider nav_style3">
+						<Carousel
+						v-if="brands!=={}"
+						:items-to-show="3"
+						:wrapAround="true"
+						:breakpoints="breakpoints"
+						snap-align="center">
+						<Slide class="item" v-for="brand in brands" :key="brand.id">
+							<div class="cl_logo">
+								<v-lazy-image 
+								:src="showImage(brand.pic)"
+								:alt="brand.name" />
+							</div>
+						</Slide>
+					</Carousel>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- 	<component is="script" src="user/js/scripts.js" /> -->
+
 </template>
 <script >
 	import { translate } from '../../helpers/general.js'
-	import {horizontalImageCache} from '../../helpers/general.js';
+	import { Carousel, Slide } from 'vue3-carousel'
+	import VLazyImage from "v-lazy-image"
 	export default {
+		components : {
+			Carousel,
+			Slide,
+			VLazyImage
+		},
 		data(){
 			return {
-				brands : {}
+				brands : {},
+				breakpoints : {
+					0: {
+						itemsToShow: 2
+					},
+					480: {
+						itemsToShow: 3
+					},
+					767: {
+						itemsToShow:4
+					},
+					991: {
+						itemsToShow:5
+					}
+				}
 			}
 		},
 		methods :{
@@ -49,13 +71,13 @@
 				window.axios.get( 'brands' ).then(( response ) =>  {
 					this.brands=response.data.brands
 				} )
+			},
+			showImage(image){
+				return image==null ? '/images/logo_dark.png' :  '/image/brand_images/' + image
 			}
 		},
 		created(){
 			this.getBrands()
-		},
-		mounted : function(){
-			horizontalImageCache()
-}
-}
+		}
+	}
 </script>

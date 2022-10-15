@@ -12,13 +12,7 @@ window.cookies=require('vue-cookies')
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.baseURL = window.Urls.baseURL;
 
-// window.LazyLoad = require('vanilla-lazyload')
-// window.LazyLoadInstance = new LazyLoad({
-//     class_loading : 'lazy-loading',
-//     class_loaded  : 'lazy-loaded',
-//     class_error   : 'lazy-error',
-//     class_initial : 'lazy-initial',
-// });
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

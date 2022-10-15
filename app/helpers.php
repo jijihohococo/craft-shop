@@ -232,21 +232,9 @@ function blockFile($file){
 }
 }
 
-function oneFileUpload(array $array,$request,$data){
-	$oldFile='old_file';
-	$requestFile=$request->file($array['file']);
-	if ($request->hasFile( $array['file'] ) && checkExtension($request->file($array['file'])->getClientOriginalName()) &&
-		blockFile($requestFile ) ) {
-			//check if the update function is called this function //
-		
-		if($array[$oldFile]!==null){
-			\File::delete(storage_path('app/public/'.$array['path'].'/'.$array[ $oldFile ]));
-		}
-		$extension='webp';
-
-		$fileName=str_replace('/', '',$array['name']. '.' .$extension );
-
-		if($array['width']!==null && $array['height']!==null){
+function fileUpload($array,$requestFile,$fileName){
+	$extension='webp';
+	if($array['width']!==null && $array['height']!==null){
 
 			// $requestFile=\Image::make($requestFile)->resize($array['width'],$array['height'] , function($imageSize) {
 			// 	$imageSize->aspectRatio();
@@ -264,6 +252,21 @@ function oneFileUpload(array $array,$request,$data){
 		}
 
 		Storage::disk('public')->put( $array['path'] .'/'. $fileName , $requestFile );
+}
+function oneFileUpload(array $array,$request,$data){
+	$oldFile='old_file';
+	$requestFile=$request->file($array['file']);
+	if ($request->hasFile( $array['file'] ) && checkExtension($request->file($array['file'])->getClientOriginalName()) &&
+		blockFile($requestFile ) ) {
+			//check if the update function is called this function //
+		$extension='webp';
+		if($array[$oldFile]!==null){
+			\File::delete(storage_path('app/public/'.$array['path'].'/'.$array[ $oldFile ]));
+		}
+
+		$fileName=str_replace('/', '',$array['name']. '.' .$extension );
+
+		fileUpload($array,$requestFile,$fileName);
 
 		$data[$array['file']]=$fileName;
 	}
@@ -286,11 +289,13 @@ function upload_document($request,array $array){
 					$array['file'] => $fileName , 
 					'created_at' => NOW()
 				]);
-				
-				$requestFile=\Image::make($file )->encode($extension);
 
-				Storage::disk('public')->put( $array['path'] . '/' . $fileName , $requestFile );
-				//$file->move(storage_path('app/public/'.$array['path'] ), $fileName ); 
+				fileUpload($array,$file,$fileName);
+				
+				// $requestFile=\Image::make($file )->encode($extension);
+
+				// Storage::disk('public')->put( $array['path'] . '/' . $fileName , $requestFile );
+				//$file->move(storage_path('app/public/'.$array['path'] ), $fileName );
 			}
 		}
 		$array['obj']::insert($documentData); 

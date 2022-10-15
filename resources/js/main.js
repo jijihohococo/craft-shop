@@ -18,7 +18,6 @@ window.axios.defaults.headers.common = {
 const app=createApp(App);
 app.use(router);
 app.use(VueSweetalert2);
-
 app.component('Datepicker', Datepicker);
 app.mount('#app');
 

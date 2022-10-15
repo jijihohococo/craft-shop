@@ -83,6 +83,7 @@ PAGE JS
 				$('.carousel_slider').map( function(key,c) {
 					var $carousel = $(c);
 					$carousel.owlCarousel({
+						 lazyLoad : true,
 						dots : $carousel.data("dots"),
 						loop : $carousel.data("loop"),
 						items: $carousel.data("items"),
@@ -99,8 +100,7 @@ PAGE JS
 						animateOut: $carousel.data("animate-out"),
 						autoplayTimeout : $carousel.data("autoplay-timeout"),
 						smartSpeed: $carousel.data("smart-speed"),
-						responsive: $carousel.data("responsive") ,
-						lazyLoad: true
+						responsive: $carousel.data("responsive")
 					});	
 				});
 			}
@@ -138,7 +138,7 @@ PAGE JS
 				$(".header_wrap").before('<div class="header_sticky_bar d-none"></div>');
 			}
 
-			carousel_slider();
+			//carousel_slider();
 			slick_slider();
 
 		});
@@ -587,15 +587,15 @@ PAGE JS
 		});
 	});
 	
-	$('.popup-ajax').magnificPopup({
-		type: 'ajax',
-		callbacks: {
-			ajaxContentAdded: function() {
-				carousel_slider();
-				slick_slider();
-			}
-		}
-	});
+	// $('.popup-ajax').magnificPopup({
+	// 	type: 'ajax',
+	// 	callbacks: {
+	// 		ajaxContentAdded: function() {
+	// 			carousel_slider();
+	// 			slick_slider();
+	// 		}
+	// 	}
+	// });
 	
 	$('.video_popup, .iframe_popup').magnificPopup({
 		type: 'iframe',

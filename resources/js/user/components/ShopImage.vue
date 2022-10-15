@@ -1,10 +1,25 @@
 <template>
 	<router-link to="/">
-		<img :src="[ pic=='logo_dark.png' ? '/images/logo_dark.png' : '/image/shop_images/'+pic]" alt="logo"/>
+		<v-lazy-image :src="showImage()" alt="logo"/>
 	</router-link>
 </template>
 <script >
+	import VLazyImage from "v-lazy-image"
 	export default {
-		props  : ['pic']
+		components : {
+			VLazyImage
+		},
+		props  : {
+			pic : {
+				type : String
+			}
+		},
+		methods : {
+			showImage(){
+				return this.$props.pic=='logo_dark.png' ? 
+				'/images/logo_dark.png' : 
+				'/image/shop_images/'+this.$props.pic
+			}
+		}
 	}
 </script>

@@ -47,7 +47,8 @@
 		},
 		data(){
 			return {
-				items : {}
+				items : {} ,
+				loading : false ,
 			}
 		},
 		props : {
@@ -69,14 +70,15 @@
 			getItems(items,key){
 				return Object.values(items)[key]
 			},
-			async getData(){
+			getData(){
 				window.axios.get( this.$props.api ).then( (response) => {
 					this.items=response.data
 				} )
 			}
 		},
-		async created(){
-			await this.getData();
+		mounted : function(){
+			this.getData()
+			//$('.carousel_slider').map( function(key,c) {
+			}
 		}
-	}
-</script>
+	</script>

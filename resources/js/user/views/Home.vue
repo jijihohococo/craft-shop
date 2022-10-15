@@ -6,7 +6,7 @@
         <span></span>
     </div>
 </div>  -->
-<Preloader />
+
 <!-- START SECTION BANNER -->
 <Banner />
 <!-- END SECTION BANNER -->
@@ -56,7 +56,7 @@
 </div>
 <!-- END MAIN CONTENT -->
 
-    <component is="script" src="user/js/scripts.js" />
+    <!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
     import Preloader from '../components/Preloader';
@@ -85,29 +85,5 @@
             return  translate(data);
         }
     }
-     // data(){
-     //    return {
-     //        categories : {}
-     //    }
-     // },
-     // methods : {
-     //    getCategories(){
-     //            window.axios.get( 'categories' ).then( (response) => {
-     //                this.categories=response.data.categories
-     //            } )
-     //    }
-     // },
-     // created(){
-     //   this.getCategories() 
-     // },
-    //  mounted() {
-    //     const plugin = document.createElement("script");
-    //     plugin.setAttribute(
-    //       "src",
-    //       "/user/js/scripts.js"
-    //       );
-    //     plugin.async = true;
-    //     document.head.appendChild(plugin);
-    // }
 }
 </script>

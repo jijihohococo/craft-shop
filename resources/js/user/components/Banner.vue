@@ -24,7 +24,6 @@
         </div>
     </div>
 </div>
-<!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
 	export default {
@@ -40,7 +39,7 @@
 				} )
 			}
 		},
-		async mounted() {
+		async created(){
 			await this.getBanners()
 		}
 	}

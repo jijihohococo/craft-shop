@@ -13,29 +13,66 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<div class="product_slider product_list carousel_slider owl-carousel owl-theme nav_style3 horizContainer" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "767":{"items": "2"}, "991":{"items": "3"}, "1199":{"items": "3"}}' v-if="feature_products && feature_products.length>0">
-						<FeatureProduct :feature_products="one_feature_products" />
-						<FeatureProduct :feature_products="two_feature_products" />
-						<FeatureProduct :feature_products="three_feature_products" />
-						<FeatureProduct :feature_products="four_feature_products" />
-						<FeatureProduct :feature_products="five_feature_products" />
-					</div>
+					<div class="product_slider product_list carousel_slider nav_style3">
+						<Carousel
+						v-if="feature_products && feature_products.length>0"
+						:items-to-show="3"
+						:wrapAround="true"
+						:breakpoints="breakpoints"
+						snap-align="center">
+						<Slide v-for="item in one_feature_products"
+						:key="item.id">
+							<div class="item">
+								<FeatureProduct
+								:item="item" />
+							</div>
+						</Slide>
+						<Slide v-for="item in two_feature_products"
+						:key="item.id">
+							<div class="item">
+								<FeatureProduct
+								:item="item" />
+							</div>
+						</Slide>
+						<Slide v-for="item in three_feature_products"
+						:key="item.id">
+							<div class="item">
+								<FeatureProduct
+								:item="item" />
+							</div>
+						</Slide>
+						<Slide v-for="item in four_feature_products"
+						:key="item.id">
+							<div class="item">
+								<FeatureProduct
+								:item="item" />
+							</div>
+						</Slide>
+						<Slide v-for="item in five_feature_products"
+						:key="item.id">
+							<div class="item">
+								<FeatureProduct
+								:item="item" />
+							</div>
+						</Slide>
+					</Carousel>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- END SECTION SHOP -->
-	<!-- <component is="script" src="user/js/scripts.js" /> -->
+</div>
+<!-- END SECTION SHOP -->
 </template>
 <script >
 	
 	import FeatureProduct from './FeatureProduct'
 	import { translate } from '../../helpers/general.js'
-	
-
+	import { Carousel,Slide } from 'vue3-carousel'
 	export default {
 		components : {
-			FeatureProduct
+			FeatureProduct,
+			Carousel,
+			Slide
 		},
 		name : 'FeatureProducts' ,
 		data () {
@@ -45,7 +82,21 @@
 				two_feature_products : [] ,
 				three_feature_products : [],
 				four_feature_products : [],
-				five_feature_products : []
+				five_feature_products : [],
+				breakpoints : {
+					0: {
+						itemsToShow: 1
+					},
+					767: {
+						itemsToShow:2
+					},
+					991: {
+						itemsToShow:3
+					},
+					1199: {
+						itemsToShow:3
+					}
+				}
 			}
 		},
 		async created(){
@@ -53,8 +104,8 @@
 		},
 		methods : {
 			translateLang(data){
-                return  translate(data);
-            },
+				return  translate(data);
+			},
 			makeArray(arrayData,newArray){
 				arrayData.forEach( (key) => {
 					if(Object.values(this.feature_products)[key]!==undefined ){
