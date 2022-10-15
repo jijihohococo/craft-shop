@@ -40,7 +40,8 @@ class Permission extends TransactionModel
             'Country',
             'Order',
             'Promotion',
-            'Collection'
+            'Collection',
+            'SocialMedia'
         ];
     }
 

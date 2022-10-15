@@ -128,6 +128,11 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('get_countries','CountryController@get');
 	//--------------COUNTRY----------------//
 
+	//--------------SOCIAL MEDIA----------------//
+	adminResourceApi('social_media','social_medias','SocialMediaController');
+	Route::get('get_social_medias','SocialMediaController@get');
+	//--------------SOCIAL MEDIA----------------//
+
 	//--------------ORDER----------------//
 	Route::get('orders','Admin\OrderController@index');
 	Route::get('today_total_orders','Admin\OrderController@getTodayTotal');

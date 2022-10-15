@@ -130,7 +130,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-lg-4">
+        <!-- <div class="col-lg-4">
             <ul class="footer_payment text-center text-lg-right">
                 <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/visa.png" alt="visa"></a></li>
                 <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/discover.png" alt="discover"></a></li>
@@ -138,7 +138,7 @@
                 <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/paypal.png" alt="paypal"></a></li>
                 <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/amarican_express.png" alt="amarican_express"></a></li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </div>
 </div>

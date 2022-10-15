@@ -136,9 +136,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       content: 'Dashboard',
-      totalUsers: 0,
-      totalItems: 0,
-      todayTotalOrders: 0
+      totalUsers: '0',
+      totalItems: '0',
+      todayTotalOrders: '0'
     };
   },
   methods: {
@@ -169,7 +169,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   if (response.data.message == 'Loading') {
                     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this);
                   } else {
-                    _this.totalUsers = response.data.total_users;
+                    _this.totalUsers = response.data.total_users.toString();
                   }
                 })["catch"](function (error) {
                   (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.errorResponse)(error, _this, 'read');
@@ -195,7 +195,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   if (response.data.message == 'Loading') {
                     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this2);
                   } else {
-                    _this2.totalItems = response.data.total_items;
+                    _this2.totalItems = response.data.total_items.toString();
                   }
                 })["catch"](function (error) {
                   (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.errorResponse)(error, _this2, 'read');
@@ -221,7 +221,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   if (response.data.message == 'Loading') {
                     (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.showSwalLoading)(_this3);
                   } else {
-                    _this3.todayTotalOrders = response.data.today_total_orders;
+                    _this3.todayTotalOrders = response.data.today_total_orders.toString();
                   }
                 })["catch"](function (error) {
                   (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.errorResponse)(error, _this3, 'read');

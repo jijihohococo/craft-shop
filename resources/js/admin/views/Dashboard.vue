@@ -57,9 +57,9 @@
 		data(){
 			return {
 				content : 'Dashboard',
-				totalUsers : 0 ,
-				totalItems : 0 ,
-				todayTotalOrders : 0
+				totalUsers : '0' ,
+				totalItems : '0' ,
+				todayTotalOrders : '0'
 			}
 		},
 		methods : {
@@ -78,7 +78,7 @@
 
 						showSwalLoading(this);
 					}else{
-						this.totalUsers=response.data.total_users
+						this.totalUsers=response.data.total_users.toString()
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'read')				
@@ -90,7 +90,7 @@
 
 						showSwalLoading(this);
 					}else{
-						this.totalItems=response.data.total_items
+						this.totalItems=response.data.total_items.toString()
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'read')				
@@ -102,7 +102,7 @@
 
 						showSwalLoading(this);
 					}else{
-						this.todayTotalOrders=response.data.today_total_orders
+						this.todayTotalOrders=response.data.today_total_orders.toString()
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'read')				

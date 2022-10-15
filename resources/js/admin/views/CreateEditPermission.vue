@@ -102,7 +102,8 @@
 				'Country',
 				'Order',
 				'Promotion',
-				'Collection'
+				'Collection',
+				'SocialMedia'
 				],
 				permissions: [
 				'create',
