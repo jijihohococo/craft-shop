@@ -92,7 +92,7 @@ class TargetController extends CommonController
     public function update(Request $request, Target $target)
     {
         //
-        $request->validate($this->validateData($id));
+        $request->validate($this->validateData($target->id));
         $target->update($request->all());
         return response()->json([
             'message' => $request->name . ' Target is updated successfully'
