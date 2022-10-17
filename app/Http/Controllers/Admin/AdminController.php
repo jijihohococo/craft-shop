@@ -125,7 +125,7 @@ class AdminController extends CommonController
         DB::beginTransaction();
         $admin->update($request->all());
         $this->roles=$admin->roles->pluck('role_id')->toArray();
-        $this->insertAdminRoles($request->roles,$id,'yes');
+        $this->insertAdminRoles($request->roles,$admin->id,'yes');
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Admin is updated successfully' 

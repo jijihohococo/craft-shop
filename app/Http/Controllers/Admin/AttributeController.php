@@ -95,7 +95,7 @@ class AttributeController extends CommonController
         $request->validate($this->validateData($attribute->id));
         $attribute->update($request->all());
         $this->sets=$attribute->sets->pluck('set')->toArray();
-        $this->addAttributeSets($request->sets , $id,'yes');
+        $this->addAttributeSets($request->sets , $attribute->id,'yes');
         return response()->json([
             'message' => $request->name . ' Attribute is updated successfully'
         ]);
