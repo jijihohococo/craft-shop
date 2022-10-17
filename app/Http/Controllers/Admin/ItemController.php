@@ -247,7 +247,7 @@ private function insertItemTaxes($taxes,$itemId,$update=NULL){
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Item $id)
+    public function update(Request $request,Item $item)
     {
         //
         $request->validate($this->validateData($item->id));
