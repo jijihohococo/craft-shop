@@ -61,7 +61,7 @@
                                         ref="deleteCheck"
                                         /></td>
                                         <td>{{ brand.name }}</td>
-                                        <td><img :src="'/image/brand_images/'+brand.pic"></td>
+                                        <td><v-lazy-image :src="'/image/brand_images/'+brand.pic" /></td>
                                         <td>{{ brand.deleted_at }}</td>
                                         <td class="text-left">
                                             <ViewButton :data_name="brand.name" :data_model="content" :data_id="brand.id" />
@@ -116,6 +116,8 @@
 
     import Search from '../components/Search';
 
+    import VLazyImage from "v-lazy-image"
+
     import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions , showPageNumber } from '../helpers/check.js';
 
     export default {
@@ -132,7 +134,8 @@
             DeleteCheck,
             Trash,
             DeleteMultiple,
-            DeleteAllCheck
+            DeleteAllCheck,
+            VLazyImage
         },
         data () {
            return {

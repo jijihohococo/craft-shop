@@ -65,7 +65,11 @@
                                     />
                                 </td>
                                 <td>{{ banner.title }}</td>
-                                <td><img class="img-fluid" :src="'/image/banner_images/'+banner.pic"></td>
+                                <td>
+                                    <v-lazy-image 
+                                    class="img-fluid"
+                                    :src="'/image/banner_images/'+banner.pic"/>
+                                </td>
                                 <td>{{ banner.deleted_at }}</td>
                                 <td class="text-left">
                                     <ViewButton :data_name="banner.title" :data_model="content" :data_id="banner.id" />
@@ -87,7 +91,7 @@
 </div>
 <!-- /.row -->
 <div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
- <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Banner" />
+   <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Banner" />
 </div>
 </div>
 </section>
@@ -120,6 +124,8 @@
 
     import Search from '../components/Search';
 
+    import VLazyImage from "v-lazy-image"
+
     import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions , showPageNumber } from '../helpers/check.js';
 
     export default {
@@ -136,10 +142,11 @@
             DeleteCheck,
             Trash,
             DeleteMultiple,
-            DeleteAllCheck
+            DeleteAllCheck,
+            VLazyImage
         },
         data () {
-           return {
+         return {
             content : 'Banner' ,
             deleteData : [],
             multipleData : [] ,
@@ -183,32 +190,32 @@
 
                     showSwalLoading(this);
                 }else{
-                   this.banners=response.data.banners
-                   this.actions.read=true;
-               }
-           } ).catch( (error) => {
+                 this.banners=response.data.banners
+                 this.actions.read=true;
+             }
+         } ).catch( (error) => {
             errorResponse(error,this,'read')
         } );
-       },
-       searchBanners(page){
+     },
+     searchBanners(page){
         window.axios.get(makeRoute(this,page,'banner','search') + this.search + '&page=' + page ).then( (response) => {
             if(response.data.message=='Loading'){
 
                 showSwalLoading(this);
             }else{
-             this.banners=response.data.banners
-             this.actions.read=true;
-         }
-     } ).catch( (error) => {
+               this.banners=response.data.banners
+               this.actions.read=true;
+           }
+       } ).catch( (error) => {
         errorResponse(error,this,'read')
     } )
- }
+   }
 },
 mounted : function(){
-   this.getBanners(1);
-   checkContentPermission(this.content,'create',this);
-   checkContentPermission(this.content,'update',this);
-   checkContentPermission(this.content,'delete',this);
+ this.getBanners(1);
+ checkContentPermission(this.content,'create',this);
+ checkContentPermission(this.content,'update',this);
+ checkContentPermission(this.content,'delete',this);
 }
 }
 </script>
