@@ -89,11 +89,11 @@ class TaxController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Tax $tax)
     {
         //
-        $request->validate($this->validateData($id));
-        Tax::findOrFail($id)->update($request->all());
+        $request->validate($this->validateData($tax->id));
+        $tax->update($request->all());
         return response()->json([
             'message' => $request->name .' Tax is updated successfully'
         ]);

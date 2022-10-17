@@ -89,11 +89,11 @@ class ColorController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Color $color)
     {
         //
-        $request->validate($this->validateData($id));
-        Color::findOrFail($id)->update($request->all());
+        $request->validate($this->validateData($color->id));
+        $color->update($request->all());
         return response()->json([
             'message' => $request->name . ' Color is updated successfully'
         ]);

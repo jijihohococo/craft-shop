@@ -90,11 +90,11 @@ class CountryController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Country $country)
     {
         //
-        $request->validate($this->validateData($id));
-        Country::findOrFail($id)->update($request->all());
+        $request->validate($this->validateData($country->id));
+        $country->update($request->all());
         return response()->json([
             'message' => $request->name . ' Country is updated successfully'
         ]);

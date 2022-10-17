@@ -117,13 +117,12 @@ class AdminController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Admin $admin)
     {
         //
-        $request->validate($this->validateData($id));
+        $request->validate($this->validateData($admin->id));
         $this->makePassword($request);
         DB::beginTransaction();
-        $admin=Admin::findOrFail($id);
         $admin->update($request->all());
         $this->roles=$admin->roles->pluck('role_id')->toArray();
         $this->insertAdminRoles($request->roles,$id,'yes');

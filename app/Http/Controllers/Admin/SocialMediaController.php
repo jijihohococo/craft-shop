@@ -94,11 +94,10 @@ class SocialMediaController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,SocialMedia $socialMedia)
     {
         //
-        $request->validate($this->validateData($id));
-        $socialMedia = SocialMedia::findOrFail($id);
+        $request->validate($this->validateData($socialMedia->id));
         $newSocialMedia=new SocialMedia($request->all());
         $this->uploadPic($request,$newSocialMedia,$socialMedia->pic);
         $socialMedia->update($newSocialMedia->getAttributes());

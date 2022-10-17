@@ -100,11 +100,10 @@ class BrandController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Brand $brand)
     {
         //
-        $request->validate($this->validateData($id));
-        $brand = Brand::findOrFail($id);
+        $request->validate($this->validateData($brand->id));
         $newBrand=new Brand($request->all());
         $this->uploadPic($request,$newBrand,$brand->pic);
         $brand->update($newBrand->getAttributes());

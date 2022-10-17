@@ -98,11 +98,11 @@ class SubcategoryController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Subcategory $subcategory)
     {
         //
-        $request->validate($this->validateData($id));
-        Subcategory::findOrFail($id)->update($request->all());
+        $request->validate($this->validateData($subcategory->id));
+        $subcategory->update($request->all());
         return response()->json([
             'message' => $request->name . ' Subcategory is updated successfully'
         ]);

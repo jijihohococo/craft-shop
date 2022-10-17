@@ -115,12 +115,11 @@ class RoleController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Role $role)
     {
         //
-        $request->validate($this->validateData($id));
+        $request->validate($this->validateData($role->id));
         DB::beginTransaction();
-        $role=Role::findOrFail($id);
         $role->update($request->all());
         $this->permissions=$role->permissions->pluck('permission_id')->toArray();
         $this->insertRolePermissions($request->permissions,$role->id,'yes');

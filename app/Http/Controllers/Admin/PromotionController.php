@@ -73,11 +73,11 @@ class PromotionController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Promotion $promotion)
     {
         //
-        $request->validate($this->validateData($id));
-        Promotion::findOrFail($id)->update($request->all());
+        $request->validate($this->validateData($promotion->id));
+        $promotion->update($request->all());
         return response()->json([
             'message' => $request->name . ' Promotion is updated successfully'
         ]);

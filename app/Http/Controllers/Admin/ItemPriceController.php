@@ -82,11 +82,10 @@ class ItemPriceController extends ItemVariantCommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,ItemPrice $itemPrice)
     {
         //
         $request->validate($this->validateData());
-        $itemPrice=ItemPrice::findOrFail($id);
         $itemPrice->update($this->getData($request,$itemPrice->item_variant_id));
         return response()->json([
             'message' => 'Item Price is updated successfully'

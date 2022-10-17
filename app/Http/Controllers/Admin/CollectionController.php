@@ -119,17 +119,16 @@ class CollectionController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Collection $collection)
     {
         //
-        $request->validate($this->validateData($id));
+        $request->validate($this->validateData($collection->id));
         DB::beginTransaction();
-        $collection = Collection::findOrFail($id);
         $newCollection=new Collection($request->all());
         $this->uploadPic($request,$newCollection,$collection->pic);
         $collection->update($newCollection->getAttributes());
         $this->items=$collection->items->pluck('item_id')->toArray();
-        $this->insertItemCollections($request->items,$id,'yes');
+        $this->insertItemCollections($request->items,$collection->id,'yes');
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Item is updated successfully'

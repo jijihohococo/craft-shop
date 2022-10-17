@@ -78,11 +78,10 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Shop $shop)
     {
         //
-        $request->validate($this->validateData($id));
-        $shop = Shop::findOrFail($id);
+        $request->validate($this->validateData($shop->id));
         $newShop=new Shop($request->all());
         oneFileUpload(['file' => 'pic',
             'name'=> cutSpeicialChar(rand() . $request->name) ,

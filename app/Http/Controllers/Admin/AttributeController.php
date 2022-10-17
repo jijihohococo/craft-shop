@@ -89,11 +89,10 @@ class AttributeController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Attribute $attribute)
     {
         //
-        $request->validate($this->validateData($id));
-        $attribute=Attribute::findOrFail($id);
+        $request->validate($this->validateData($attribute->id));
         $attribute->update($request->all());
         $this->sets=$attribute->sets->pluck('set')->toArray();
         $this->addAttributeSets($request->sets , $id,'yes');

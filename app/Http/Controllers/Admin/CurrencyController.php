@@ -90,11 +90,11 @@ class CurrencyController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Currency $currency)
     {
         //
-        $request->validate($this->validateData($id));
-        Currency::findOrFail($id)->update($request->all());
+        $request->validate($this->validateData($currency->id));
+        $currency->update($request->all());
         return response()->json([
             'message' => $request->name . ' Currency is updated successfully' 
         ]);

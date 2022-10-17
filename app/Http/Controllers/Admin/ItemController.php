@@ -247,17 +247,16 @@ private function insertItemTaxes($taxes,$itemId,$update=NULL){
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Item $id)
     {
         //
-        $request->validate($this->validateData($id));
+        $request->validate($this->validateData($item->id));
         DB::beginTransaction();
-        $item=Item::findOrFail($id);
         $item->update($request->all());
-        $this->addAttributes($id,request('attributes'),'yes');
-        $this->insertColors($request->colors,$id,'yes');
+        $this->addAttributes($item->id,request('attributes'),'yes');
+        $this->insertColors($request->colors,$item->id,'yes');
         $this->taxes=$item->taxes->pluck('tax_id')->toArray();
-        $this->insertItemTaxes($request->taxes,$id,'yes');
+        $this->insertItemTaxes($request->taxes,$item->id,'yes');
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Item is updated successfully'

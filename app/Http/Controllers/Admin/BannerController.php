@@ -91,11 +91,10 @@ class BannerController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Banner $banner)
     {
         //
-        $request->validate($this->validateData($id));
-        $banner = Banner::findOrFail($id);
+        $request->validate($this->validateData($banner->id));
         $newBanner=new Banner($request->all());
         $this->uploadPic($request,$newBanner,$banner->pic);
         $banner->update($newBanner->getAttributes());
