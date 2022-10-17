@@ -74,11 +74,11 @@ class TargetController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Target $target)
     {
         //
         return response()->json([
-            'target' => Target::findOrFail($id)
+            'target' => $target
         ]);
     }
 
@@ -89,11 +89,11 @@ class TargetController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Target $target)
     {
         //
         $request->validate($this->validateData($id));
-        Target::findOrFail($id)->update($request->all());
+        $target->update($request->all());
         return response()->json([
             'message' => $request->name . ' Target is updated successfully'
         ]);

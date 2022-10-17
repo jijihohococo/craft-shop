@@ -75,11 +75,11 @@ class CountryController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Country $country)
     {
         //
         return response()->json([
-            'country' => Country::findOrFail($id)
+            'country' => $country
         ]);
     }
 

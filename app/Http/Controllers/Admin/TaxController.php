@@ -74,11 +74,11 @@ class TaxController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tax $tax)
     {
         //
         return response()->json([
-            'tax' => Tax::findOrFail($id)
+            'tax' => $tax
         ]);
     }
 

@@ -73,12 +73,12 @@ class AttributeController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Attribute $attribute)
     {
         //
         return response()->json([
-            'attribute' => Attribute::findOrFail($id) ,
-            'sets' => AttributeSet::select('set')->where('attribute_id',$id)->get()->pluck('set')
+            'attribute' => $attribute ,
+            'sets' => $attribute->sets->pluck('set')
         ]);
     }
 

@@ -103,12 +103,12 @@ class CollectionController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Collection $collection)
     {
         //
         return response()->json([
-            'collection' => Collection::findOrFail($id) ,
-            'items' => ItemCollection::where('collection_id',$id)->get()
+            'collection' => $collection ,
+            'items' => $collection->items
         ]);
     }
 

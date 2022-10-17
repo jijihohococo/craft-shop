@@ -80,11 +80,11 @@ class PermissionController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permission)
     {
         //
         return response()->json([
-            'permission' => Permission::findOrFail($id)
+            'permission' => $permission
         ]);
     }
 

@@ -79,11 +79,11 @@ class SocialMediaController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SocialMedia $socialMedia)
     {
         //
         return response()->json([
-            'social_media' => SocialMedia::findOrFail($id)
+            'social_media' => $socialMedia
         ]);
     }
 

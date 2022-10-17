@@ -83,11 +83,11 @@ class SubcategoryController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subcategory $subcategory)
     {
         //
         return response()->json([
-            'subcategory' => Subcategory::findOrFail($id)
+            'subcategory' => $subcategory
         ]);
     }
 

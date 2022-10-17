@@ -93,11 +93,11 @@ class RoleController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
         //
         return response()->json([
-            'role' => Role::findOrFail($id) ,
+            'role' => $role ,
             'permissions' => DB::table('permissions')
             ->select('id')->whereIn('id',function($query) use ($id){
                 $query->select('permission_id')

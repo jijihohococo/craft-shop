@@ -229,14 +229,14 @@ private function insertItemTaxes($taxes,$itemId,$update=NULL){
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Item $item)
     {
         //
         return response()->json([
-            'item' => Item::findOrFail($id) ,
-            'attributes' => ItemAttribute::where('item_id',$id)->get(),
-            'colors' => ItemVariant::select('color_id')->where('item_id',$id)->get()->pluck('color_id') ,
-            'taxes' => ItemTax::select('tax_id')->where('item_id',$id)->get()->pluck('tax_id')
+            'item' => $item ,
+            'attributes' => $item->attributes,
+            'colors' => $item->itemVariants->pluck('color_id')  ,
+            'taxes' => $item->taxes->pluck('tax_id')
         ]);
     }
 

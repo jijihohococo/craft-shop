@@ -44,6 +44,10 @@ class Item extends TransactionModel
         return $this->hasMany('App\Models\ItemVariant');
     }
 
+    public function attributes(){
+        return $this->hasMany('App\Models\ItemAttribute');
+    }
+
     public function scopeSearchData($query,$searchData){
         return $query->searchWithName( $searchData )
         ->searchWithCategory($searchData)

@@ -74,11 +74,11 @@ class ColorController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Color $color)
     {
         //
         return response()->json([
-            'color' => Color::findOrFail($id)
+            'color' => $color
         ]);
     }
 

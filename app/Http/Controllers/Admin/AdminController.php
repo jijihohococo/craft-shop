@@ -95,16 +95,16 @@ class AdminController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Admin $admin)
     {
         //
         return response()->json([
-            'admin' => Admin::findOrFail($id) ,
+            'admin' => $admin ,
             'roles' => DB::table('roles')
-            ->select('id')->whereIn('id',function($query) use ($id){
+            ->select('id')->whereIn('id',function($query) use ($admin){
                 $query->select('role_id')
                 ->from('admin_roles')
-                ->where('admin_roles.admin_id',$id);
+                ->where('admin_roles.admin_id',$admin->id);
             })->where('roles.deleted_at',null)
             ->get()
         ]);

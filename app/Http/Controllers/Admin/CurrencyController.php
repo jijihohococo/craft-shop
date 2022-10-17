@@ -75,11 +75,11 @@ class CurrencyController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Currency $currency)
     {
         //
         return response()->json([
-            'currency' => Currency::findOrFail($id)
+            'currency' => $currency
         ]);
     }
 

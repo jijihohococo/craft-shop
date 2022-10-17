@@ -58,11 +58,11 @@ class PromotionController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Promotion $promotion)
     {
         //
         return response()->json([
-            'promotion' => Promotion::findOrFail($id)
+            'promotion' => $promotion
         ]);
     }
 

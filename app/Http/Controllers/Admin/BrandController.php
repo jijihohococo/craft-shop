@@ -85,11 +85,11 @@ class BrandController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Brand $brand)
     {
         //
         return response()->json([
-            'brand' => Brand::findOrFail($id)
+            'brand' => $brand
         ]);
     }
 

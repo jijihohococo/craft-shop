@@ -76,11 +76,11 @@ class BannerController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Banner $banner)
     {
         //
         return response()->json([
-            'banner' => Banner::findOrFail($id)
+            'banner' => $banner
         ]);
     }
 
