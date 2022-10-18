@@ -79,4 +79,8 @@ class ShoppingCartRepository implements ShoppingCartRepositoryInterface{
 		]);
 	}
 
+	public function logOutUpdate($userId,$table='App\Models\ShoppingCart'){
+		$this->outUpdate($userId,$table);
+	}
+
 }
