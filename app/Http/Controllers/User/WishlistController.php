@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{WishList,UserData};
 use App\Rules\WishListValidation;
+use App\Repositories\WishListRepositoryInterface;
 use Validator;
 class WishlistController extends Controller
 {
     //
-    private $userId;
+    private $userId , $wishList;
 
-    public function __construct(){
+    public function __construct(WishListRepositoryInterface $wishList){
         $this->userId= UserData::getId() ?? (string) getUserId( authId() ) ;
+        $this->wishList=$wishList;
     }
 
     public function getCount(Request $request){
@@ -25,11 +27,7 @@ class WishlistController extends Controller
 
     public function get(Request $request){
         return response()->json([
-            'wish_list_items' => WishList::selectUser()
-            ->selectItem()
-            ->ofUser($this->userId)
-            ->latest('id')
-            ->get()
+            'wish_list_items' => $this->wishList->get( $this->userId )
         ]);
     }
 
