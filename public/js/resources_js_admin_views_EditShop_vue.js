@@ -321,6 +321,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }))();
   },
   methods: {
+    showStorage: function showStorage() {
+      return this.fields.pic === "logo_dark.png" ? "images/" : "image/shop_images/";
+    },
     removePic: function removePic() {
       this.fields.pic = '';
     },
@@ -749,11 +752,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: $options.setPic,
     pics: this.fields.pics,
     onRemoved: $options.removePic,
-    storage_path: "image/shop_images/",
+    storage_path: $options.showStorage(),
     delete_path: "admin_api/shop_image_delete/"
   }, null, 8
   /* PROPS */
-  , ["onChange", "pics", "onRemoved"]), $data.errors && $data.errors.pic ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.pic[0]), 1
+  , ["onChange", "pics", "onRemoved", "storage_path"]), $data.errors && $data.errors.pic ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.pic[0]), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]), _hoisted_23], 32
   /* HYDRATE_EVENTS */

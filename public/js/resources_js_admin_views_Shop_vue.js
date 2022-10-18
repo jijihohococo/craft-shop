@@ -117,8 +117,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_EditButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/EditButton */ "./resources/js/admin/components/EditButton.vue");
 /* harmony import */ var _components_ViewButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/ViewButton */ "./resources/js/admin/components/ViewButton.vue");
 /* harmony import */ var _components_Error__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Error */ "./resources/js/admin/components/Error.vue");
-/* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../store */ "./resources/js/store.js");
+/* harmony import */ var v_lazy_image__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! v-lazy-image */ "./node_modules/v-lazy-image/dist/v-lazy-image.mjs");
+/* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../store */ "./resources/js/store.js");
+
 
 
 
@@ -130,11 +132,12 @@ __webpack_require__.r(__webpack_exports__);
     ContentHeader: _components_ContentHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
     EditButton: _components_EditButton__WEBPACK_IMPORTED_MODULE_1__["default"],
     ViewButton: _components_ViewButton__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Error: _components_Error__WEBPACK_IMPORTED_MODULE_3__["default"]
+    Error: _components_Error__WEBPACK_IMPORTED_MODULE_3__["default"],
+    VLazyImage: v_lazy_image__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
-      shop: _store__WEBPACK_IMPORTED_MODULE_5__.shop,
+      shop: _store__WEBPACK_IMPORTED_MODULE_6__.shop,
       content: 'Shop',
       actions: {
         read: '',
@@ -143,31 +146,33 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    getPic: function getPic() {},
+    showImage: function showImage() {
+      return this.shop.data.pic == 'logo_dark.png' ? '/images/logo_dark.png' : '/image/shop_images/' + this.shop.data.pic;
+    },
     checkAuthorizeActions: function checkAuthorizeActions(actions) {
-      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_4__.checkActions)(actions);
+      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_5__.checkActions)(actions);
     },
     checkUnauthorizeActions: function checkUnauthorizeActions(actions) {
-      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_4__.unauthorizedActions)(actions);
+      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_5__.unauthorizedActions)(actions);
     },
     getShops: function getShops() {
       var _this = this;
 
       window.axios.get('shops').then(function (response) {
         if (response.data.message == 'Loading') {
-          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_4__.showSwalLoading)(_this);
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_5__.showSwalLoading)(_this);
         } else {
           // this.shops=response.data.shops
           _this.actions.read = true;
         }
       })["catch"](function (error) {
-        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_4__.errorResponse)(error, _this, 'read');
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_5__.errorResponse)(error, _this, 'read');
       });
     }
   },
   created: function created() {
     this.getShops();
-    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_4__.checkContentPermission)(this.content, 'update', this);
+    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_5__.checkContentPermission)(this.content, 'update', this);
   }
 });
 
@@ -434,15 +439,16 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_9 = ["src"];
-var _hoisted_10 = {
+var _hoisted_9 = {
   "class": "text-left"
 };
-var _hoisted_11 = {
+var _hoisted_10 = {
   "class": "card card-default"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ContentHeader = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ContentHeader");
+
+  var _component_v_lazy_image = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-lazy-image");
 
   var _component_ViewButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ViewButton");
 
@@ -458,11 +464,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 0
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.shop.data.name), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: '/image/shop_images/' + $data.shop.data.pic
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_lazy_image, {
+    src: $options.showImage()
   }, null, 8
   /* PROPS */
-  , _hoisted_9)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
+  , ["src"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
     data_name: $data.shop.data.name,
     data_model: $data.content,
     data_id: $data.shop.data.id
@@ -479,7 +485,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* STABLE_FRAGMENT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")])])) : $options.checkUnauthorizeActions($data.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
     httpStatus: 403,
     title: "Permission Denied",
     description: "You are not allowed to do any permissions for Brand"
@@ -1059,6 +1065,117 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Shop_vue_vue_type_template_id_7673fc56__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Shop_vue_vue_type_template_id_7673fc56__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Shop.vue?vue&type=template&id=7673fc56 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/admin/views/Shop.vue?vue&type=template&id=7673fc56");
+
+
+/***/ }),
+
+/***/ "./node_modules/v-lazy-image/dist/v-lazy-image.mjs":
+/*!*********************************************************!*\
+  !*** ./node_modules/v-lazy-image/dist/v-lazy-image.mjs ***!
+  \*********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ index)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+
+var index = {
+  props: {
+    src: {
+      type: String,
+      required: true
+    },
+    srcPlaceholder: {
+      type: String,
+      default: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+    },
+    srcset: {
+      type: String
+    },
+    intersectionOptions: {
+      type: Object,
+      default: () => ({})
+    },
+    usePicture: {
+      type: Boolean,
+      default: false
+    }
+  },
+  inheritAttrs: false,
+  setup(props, { attrs, slots, emit }) {
+    const root = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    const state = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+      observer: null,
+      intersected: false,
+      loaded: false
+    });
+    const srcImage = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => state.intersected && props.src ? props.src : props.srcPlaceholder);
+    const srcsetImage = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => state.intersected && props.srcset ? props.srcset : false);
+    const load = () => {
+      if (root.value && root.value.getAttribute("src") !== props.srcPlaceholder) {
+        state.loaded = true;
+        emit("load", root.value);
+      }
+    };
+    const error = () => emit("error", root.value);
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
+      if ("IntersectionObserver" in window) {
+        state.observer = new IntersectionObserver((entries) => {
+          const image = entries[0];
+          if (image.isIntersecting) {
+            state.intersected = true;
+            state.observer.disconnect();
+            emit("intersect");
+          }
+        }, props.intersectionOptions);
+        state.observer.observe(root.value);
+      }
+    });
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUnmount)(() => {
+      if ("IntersectionObserver" in window && state.observer) {
+        state.observer.disconnect();
+      }
+    });
+    return () => {
+      const img = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)("img", __spreadProps(__spreadValues({
+        ref: root,
+        src: srcImage.value,
+        srcset: srcsetImage.value || null
+      }, attrs), {
+        class: [
+          attrs.class,
+          "v-lazy-image",
+          { "v-lazy-image-loaded": state.loaded }
+        ],
+        onLoad: load,
+        onError: error
+      }));
+      return props.usePicture ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)("picture", { ref: root, onLoad: load }, state.intersected ? [slots.default, img] : [img]) : img;
+    };
+  }
+};
+
 
 
 /***/ })

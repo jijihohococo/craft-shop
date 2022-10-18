@@ -20,7 +20,9 @@
                             <tbody>
                                 <tr >
                                     <td>{{ shop.data.name }}</td>
-                                    <td><img :src="'/image/shop_images/'+shop.data.pic"></td>
+                                    <td>
+                                        <v-lazy-image :src="showImage()" />
+                                    </td>
                                     <td class="text-left">
                                         <ViewButton 
                                         :data_name="shop.data.name" 
@@ -59,6 +61,8 @@
 
     import Error from '../components/Error';
 
+    import VLazyImage from "v-lazy-image";
+
     import { errorResponse , checkContentPermission , showSwalLoading , checkActions , unauthorizedActions } from '../helpers/check.js';
 
     import { shop } from '../../store';
@@ -68,7 +72,8 @@
             ContentHeader,
             EditButton,
             ViewButton,
-            Error
+            Error,
+            VLazyImage
         },
         data () {
            return {
@@ -81,8 +86,10 @@
         }
     },
     methods :{
-        getPic(){
-            
+        showImage(){
+            return this.shop.data.pic=='logo_dark.png' ?
+            '/images/logo_dark.png' :
+            '/image/shop_images/'+this.shop.data.pic
         },
         checkAuthorizeActions(actions){
             return checkActions(actions);

@@ -42,7 +42,7 @@
 								<div class="form-group">
 									<label>Picture</label>
 									<File @change="setPic" :pics="this.fields.pics" @removed="removePic"
-									storage_path='image/shop_images/'
+									:storage_path='showStorage()'
 									delete_path='admin_api/shop_image_delete/'  />
 									<strong v-if="errors && errors.pic" class="invalid-feedback" style="display:block!important;" >{{ errors.pic[0] }}</strong>
 								</div>
@@ -106,6 +106,11 @@
 			await this.getShopData(this.$route.params.id);
 		},
 		methods : {
+			showStorage(){
+				return this.fields.pic==="logo_dark.png" ? 
+					"images/" :
+					"image/shop_images/"
+			},
 			removePic(){
 				this.fields.pic='';
 			},
