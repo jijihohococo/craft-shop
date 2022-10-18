@@ -83,4 +83,8 @@ class ShoppingCartRepository implements ShoppingCartRepositoryInterface{
 		$this->outUpdate($userId,$table);
 	}
 
+	public function delete($userId,$table='App\Models\ShoppingCart'){
+		$table::ofUser( $userId )->delete();
+	}
+
 }
