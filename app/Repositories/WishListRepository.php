@@ -31,6 +31,9 @@ class WishListRepository implements WishListRepositoryInterface{
 	}
 
 	public function get($userId){
-		return WishList::with(['user','item'])->ofUser( $userId )->get();
+		return WishList::selectUser()
+		->selectItem()
+		->ofUser( $userId )
+		->get();
 	}
 }

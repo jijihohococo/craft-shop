@@ -12,4 +12,6 @@ interface ShoppingCartRepositoryInterface{
 
 	public function logOutUpdate($userId,$table='App\Models\ShoppingCart');
 
+	public function delete($userId,$table='App\Models\ShoppingCart');
+
 }
