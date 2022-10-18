@@ -19,16 +19,15 @@ class ShoppingCartRepository implements ShoppingCartRepositoryInterface{
 		foreach($userShoppingCart as $key => $data ){
 			if(isset($items[$data->item_id])){
 				$updateShop=$items[$data->item_id];
-					// $updateShop->update([
-					// 	'qty' => $updateShop->qty + $data->qty
-					// ]);
 				if(isset($updateQty[$data->item_id])){
 					$updateQty[$data->item_id]=$updateQty[$data->item_id]+$data->qty;
 				}else{
 					$updateQty[$data->item_id]=$updateShop->qty + $data->qty;
 				}
 					// duplicate items //
-				$shoppings[]=$data->id;
+				if(!isset($shoppings[$data->id])){
+					$shoppings[$data->id]=$key;
+				}
 			}else{
 			// store in object //
 				$items[$data->item_id]=$data;
@@ -49,7 +48,7 @@ class ShoppingCartRepository implements ShoppingCartRepositoryInterface{
 			$query->bindValue(1,$userID, \PDO::PARAM_STR );
 			$query->execute();
 
-			$table->ofUser($userId)->whereIn('id',$shoppings)->delete();
+			$table->ofUser($userId)->whereIn('id',array_keys($shoppings))->delete();
 		}
 	}
 
