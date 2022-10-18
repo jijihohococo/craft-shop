@@ -5,7 +5,6 @@
 	:back_links="[
 	{ 'route' : '/admin/promotion' , 'title' : content }
 	]"   />
-	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div class="card card-default">
@@ -53,12 +52,9 @@
 
 	import Error from '../components/Error'
 
-	import Loading from '../components/Loading'
-
 	export default {
 		components: { 
 			ContentHeader,
-			Loading,
 			Error,
 			Datepicker
 		},

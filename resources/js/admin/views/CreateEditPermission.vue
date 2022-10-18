@@ -5,7 +5,6 @@
 	:back_links="[
 	{ 'route' : '/admin/permission' , 'title' : content }
 	]"   />
-	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div class="card card-default">
@@ -49,15 +48,13 @@
 	import ContentHeader from '../components/ContentHeader';
 	import Select from '../components/Select';
 	import Error from '../components/Error';
-	import Loading from '../components/Loading';
 	import { errorResponse , checkContentPermission , showSwalLoading } from '../helpers/check.js';
 
 	export default {
 		components: {
 			ContentHeader,
 			Select,
-			Error,
-			Loading
+			Error
 		},
 		data(){
 			return {

@@ -4,7 +4,6 @@
 	{'route':getLink(this.$route.params.model),'title':this.$route.params.model}
 	]"
 	 />
-	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div v-if="actions.read==true" class="row">
@@ -62,16 +61,13 @@
 
 	import Error from '../components/Error';
 
-	import Loading from '../components/Loading';
-
 	import { errorResponse , checkContentPermission , showSwalLoading , getModel } from '../helpers/check.js';
 
 	export default {
 		components: {
 			Pagination,
 			ContentHeader,
-			Error,
-			Loading
+			Error
 		},
 		data(){
 			return {

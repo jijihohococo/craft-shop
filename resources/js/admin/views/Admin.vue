@@ -1,6 +1,5 @@
 <template>
     <ContentHeader :header="content" />
-    <Loading />
     <section class="content">
         <div class="container-fluid">
             <!-- /.row -->
@@ -86,8 +85,8 @@
     </div>
     <!-- /.row -->
     <div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
-        <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for admin" />
- </div>
+        <!-- <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for admin" />
+ --> </div>
 </div>
 </section>
 </template>
@@ -109,8 +108,6 @@
 
     import Error from '../components/Error';
 
-    import Loading from '../components/Loading';
-
     import DeleteCheck from '../components/DeleteCheck';
 
     import Trash from '../components/Trash';
@@ -131,7 +128,6 @@
             EditButton,
             ViewButton,
             Error,
-            Loading,
             DeleteCheck,
             Trash,
             DeleteMultiple,

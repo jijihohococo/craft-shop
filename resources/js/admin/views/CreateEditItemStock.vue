@@ -5,7 +5,6 @@
 	{ 'route' : '/admin/item/variant/'+itemVariant.id , 'title' : itemColor } ,
 	{ 'route' : '/admin/item/stock/'+itemVariant.id , 'title' : stock }
 	]" />
-	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div class="card card-default">
@@ -42,8 +41,6 @@
 <script >
 	import Error from '../components/Error'
 
-	import Loading from '../components/Loading'
-
 	import ContentHeader from '../components/ContentHeader'
 
 	import { errorResponse , checkContentPermission , showSwalLoading , getItemColor } from '../helpers/check.js';
@@ -51,8 +48,7 @@
 	export default {
 		components: {
 			ContentHeader,
-			Error,
-			Loading
+			Error
 		},
 		data(){
 			return {

@@ -1,6 +1,5 @@
 <template>
 	<ContentHeader :header="content" />
-	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div v-if="checkAuthorizeActions(actions)" class="row">
@@ -63,8 +62,6 @@
 
 	import Error from '../components/Error';
 
-	import Loading from '../components/Loading';
-
 	import Search from '../components/Search';
 
 	import { errorResponse , showSwalLoading , makeRoute ,  checkActions, unauthorizedActions } from '../helpers/check.js';
@@ -75,7 +72,6 @@
 			ContentHeader ,
 			ViewButton ,
 			Error ,
-			Loading ,
 			Search
 		},
 		data(){

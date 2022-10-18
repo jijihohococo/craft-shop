@@ -95,16 +95,16 @@ class AdminController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit($id)
     {
         //
         return response()->json([
-            'admin' => $admin ,
+            'admin' => Admin::findOrFail($id) ,
             'roles' => DB::table('roles')
-            ->select('id')->whereIn('id',function($query) use ($admin){
+            ->select('id')->whereIn('id',function($query) use ($id){
                 $query->select('role_id')
                 ->from('admin_roles')
-                ->where('admin_roles.admin_id',$admin->id);
+                ->where('admin_roles.admin_id',$id);
             })->where('roles.deleted_at',null)
             ->get()
         ]);
@@ -117,12 +117,13 @@ class AdminController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Admin $admin)
+    public function update(Request $request,$id)
     {
         //
-        $request->validate($this->validateData($admin->id));
+        $request->validate($this->validateData($id));
         $this->makePassword($request);
         DB::beginTransaction();
+        $admin=Admin::findOrFail($id);
         $admin->update($request->all());
         $this->roles=$admin->roles->pluck('role_id')->toArray();
         $this->insertAdminRoles($request->roles,$admin->id,'yes');

@@ -14,6 +14,17 @@
         isloaded: false
       }
     },
+    watch : {
+      $route : {
+        deep : true ,
+        handler(){
+          this.isloaded=false
+          setTimeout( () => {
+            this.isloaded=true
+          } , 1500 )
+        }
+      }
+    },
     mounted() {
      setTimeout(() => {
       this.isloaded = true;

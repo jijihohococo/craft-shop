@@ -5,7 +5,6 @@
 	:back_links="[
 	{ 'route' : '/admin/category' , 'title' : content }
 	]"   />
-	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div class="card card-default">
@@ -37,14 +36,11 @@
 	import { errorResponse , checkContentPermission , showSwalLoading } from '../helpers/check.js';
 
 	import Error from '../components/Error'
-
-	import Loading from '../components/Loading'
 	
 	export default {
 		components: {
 			ContentHeader,
-			Error,
-			Loading
+			Error
 		},
 		data(){
 			return {

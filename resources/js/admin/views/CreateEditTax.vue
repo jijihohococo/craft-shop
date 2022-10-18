@@ -5,7 +5,6 @@
 	:back_links="[
 	{ 'route' : '/admin/tax' , 'title' : content }
 	]"   />
-	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div class="card card-default">
@@ -42,14 +41,11 @@
 	import { checkContentPermission , errorResponse , showSwalLoading } from '../helpers/check.js';
 
 	import Error from '../components/Error'
-
-	import Loading from '../components/Loading'
 	
 	export default {
 		components: {
 			ContentHeader,
-			Error,
-			Loading
+			Error
 		},
 		data(){
 			return {

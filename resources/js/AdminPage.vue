@@ -11,6 +11,7 @@
 			<Navigation />
 			<Menu />
 			<div class="content-wrapper">
+				<Loading />
 				<router-view />
 			</div>
 			<footer class="main-footer">
@@ -23,6 +24,7 @@
 <script >
 	import Navigation from './admin/components/Navigation';
 	import Menu from './admin/components/Menu';
+	import Loading from './admin/components/Loading';
 	import { currentYear , shop } from './store.js'
 	export default {
 		data(){
@@ -33,7 +35,8 @@
 		},
 		components: {
 			Navigation,
-			Menu
+			Menu,
+			Loading
 		},
 		computed : {
 			checkValue : function() {

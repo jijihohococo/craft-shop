@@ -14,7 +14,6 @@
 	:back_links="[
 	{ 'route' : '/admin/item' , 'title' : content }
 	]"   />
-	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div class="card card-default">
@@ -110,8 +109,6 @@
 
 	import Error from '../components/Error'
 
-	import Loading from '../components/Loading'
-
 	//import File from '../components/File'
 
 	import SelectMultiple from '../components/SelectMultiple';
@@ -127,7 +124,6 @@
 			//File,
 			SelectMultiple,
 			Select,
-			Loading,
 			AddRemoveDependentSelect
 		},
 		data(){

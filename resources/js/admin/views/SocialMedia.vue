@@ -1,6 +1,5 @@
 <template>
     <ContentHeader :header="content" />
-    <Loading />
     <section class="content">
         <div class="container-fluid">
             <!-- /.row -->
@@ -110,8 +109,6 @@
 
     import Error from '../components/Error';
 
-    import Loading from '../components/Loading';
-
     import DeleteCheck from '../components/DeleteCheck';
 
     import Trash from '../components/Trash';
@@ -132,7 +129,6 @@
             EditButton,
             ViewButton,
             Error,
-            Loading,
             DeleteCheck,
             Trash,
             DeleteMultiple,

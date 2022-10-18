@@ -9,7 +9,6 @@
 	:back_links="[
 	{ 'route' : '/admin/shop' , 'title' : content }
 	]"   />
-	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div class="card card-default">
@@ -66,8 +65,6 @@
 
 	import Error from '../components/Error'
 
-	import Loading from '../components/Loading'
-
 	import File from '../components/File'
 
 	import { shop } from '../../store';
@@ -76,8 +73,7 @@
 		components: {
 			ContentHeader,
 			Error,
-			File,
-			Loading
+			File
 		},
 		data(){
 			return {

@@ -5,7 +5,6 @@
 	:back_links="[
 	{ 'route' : '/admin/subcategory' , 'title' : content }
 	]"   />
-	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<div class="card card-default">
@@ -46,15 +45,12 @@
 
 	import Error from '../components/Error'
 
-	import Loading from '../components/Loading'
-
 	import Select from '../components/Select'
 	
 	export default {
 		components: {
 			ContentHeader,
 			Error,
-			Loading,
 			Select
 		},
 		data(){

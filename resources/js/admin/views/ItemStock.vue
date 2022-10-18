@@ -4,7 +4,6 @@
 	{ 'route' : '/admin/item' , 'title' : 'Item' },
 	{ 'route' : '/admin/item/variant/'+this.$route.params.item_varaint_id , 'title' : itemColor }
 	]" />
-	<Loading />
 	<section class="content">
 		<div class="container-fluid">
 			<!-- /.row -->
@@ -70,8 +69,6 @@
 
 		import Error from '../components/Error';
 
-		import Loading from '../components/Loading';
-
 		import { errorResponse , checkContentPermission , showSwalLoading , makeRoute , checkActions , unauthorizedActions , showPageNumber , getItemColor } from '../helpers/check.js';
 
 		export default {
@@ -81,7 +78,6 @@
 				CreateButton,
 				EditButton,
 				Error,
-				Loading,
 				Search
 			},
 			data () {
