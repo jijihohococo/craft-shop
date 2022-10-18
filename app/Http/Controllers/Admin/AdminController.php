@@ -144,7 +144,7 @@ class AdminController extends CommonController
             'name' => 'required|string|max:100',
             'email' => ['required', 'email' , 'max:100', $id==null ? 'unique:admins' : 'unique:admins,email,'.$id ] ,
             'roles' => ['required','array'] ,
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            'password' => ['nullable', 'string', 'min:8', 'confirmed']
         ];
     }
 

@@ -85,8 +85,8 @@
     </div>
     <!-- /.row -->
     <div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
-        <!-- <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for admin" />
- --> </div>
+        <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for admin" />
+ </div>
 </div>
 </section>
 </template>
