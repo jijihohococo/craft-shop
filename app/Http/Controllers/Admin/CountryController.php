@@ -19,17 +19,17 @@ class CountryController extends CommonController
     public function index()
     {
         //
-        return response()->json([
-            'countries' => Country::latest('id')->paginate(10)
-        ]);
+        return  $this->indexPage(
+            Country::latest('id')->paginate(10)
+        );
     }
 
     public function trash(){
-        return response()->json([
-            'countries' => Country::onlyTrashed()
+        return $this->indexPage(
+             Country::onlyTrashed()
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     /**
@@ -109,24 +109,24 @@ class CountryController extends CommonController
 
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'countries' => Country::searchWithName($searchData)
+        return $this->indexPage(
+             Country::searchWithName($searchData)
             ->orWhere('code','like',$searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'countries' => Country::onlyTrashed()
+        return $this->indexPage(
+             Country::onlyTrashed()
             ->searchWithName($searchData)
             ->orWhere('code','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
-        ]);
+        );
     }
 }
