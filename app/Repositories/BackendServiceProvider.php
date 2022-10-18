@@ -38,6 +38,11 @@ class BackendServiceProvider extends ServiceProvider{
 			'App\Repositories\OrderRepository'
 		);
 
+		$this->app->bind(
+			'App\Repositories\WishListRepositoryInterface',
+			'App\Repositories\WishListRepository'
+		);
+
 	}
 
 
