@@ -85,7 +85,8 @@
 		},
 		methods :{
 			getLink(model){
-				return '/admin/' +getModel(model);
+				return '/admin/' +getModel(model).
+				replace(/([A-Z])/g,'_$1').trim().toLowerCase();
 			},
 			getTransactions(page=1){
 				this.currentPage=page;

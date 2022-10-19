@@ -117,6 +117,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       admin: _store__WEBPACK_IMPORTED_MODULE_2__.admin,
       dataRoutes: {
         'shop': "Shop",
+        'social_media': "Social Media",
         'admin': "Admin",
         'user': "User",
         'attribute': "Attribute",

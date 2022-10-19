@@ -67,6 +67,7 @@
     admin ,
     dataRoutes : {
       'shop' : "Shop",
+      'social_media' : "Social Media",
       'admin' : "Admin",
       'user'  : "User",
       'attribute' : "Attribute",

@@ -91,7 +91,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getLink: function getLink(model) {
-      return '/admin/' + (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.getModel)(model);
+      return '/admin/' + (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_3__.getModel)(model).replace(/([A-Z])/g, '_$1').trim().toLowerCase();
     },
     getTransactions: function getTransactions() {
       var _this = this;
