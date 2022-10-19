@@ -114,7 +114,7 @@ class SocialMediaController extends CommonController
      */
     private function validateData($id=NULL){
         return [
-            'name' => uniqueColumn($this->content,$id) ,
+            'name' => uniqueColumn('social_media',$id) ,
             'link' => ['required','max:200'],
             'pic' => $id==null ? requiredImage() : nullableImage()
         ];

@@ -63,8 +63,9 @@
                                     ref="deleteCheck"
                                     />
                                 </td>
-                                <td>{{ social_media.title }}</td>
-                                <td><img class="img-fluid" :src="'/image/social_media_images/'+social_media.pic"></td>
+                                <td>{{ social_media.name }}</td>
+                                <td><v-lazy-image class="img-fluid" 
+                                    :src="'/image/social_media_images/'+social_media.pic" /></td>
                                 <td>{{ social_media.deleted_at }}</td>
                                 <td class="text-left">
                                     <ViewButton :data_name="social_media.name" :data_model="content" :data_id="social_media.id" />
@@ -117,6 +118,8 @@
 
     import Search from '../components/Search';
 
+    import VLazyImage from "v-lazy-image";
+
     import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions , showPageNumber } from '../helpers/check.js';
 
     export default {
@@ -132,7 +135,8 @@
             DeleteCheck,
             Trash,
             DeleteMultiple,
-            DeleteAllCheck
+            DeleteAllCheck,
+            VLazyImage
         },
         data () {
            return {

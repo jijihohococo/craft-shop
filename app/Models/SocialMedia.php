@@ -14,6 +14,8 @@ class SocialMedia extends TransactionModel
         'link',
         'pic'];
 
+    protected $table = 'social_media';
+
     protected $dates = ['deleted_at'];
 
     public static $cacheKey='social_media_cache';

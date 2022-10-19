@@ -377,7 +377,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Trash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Trash */ "./resources/js/admin/components/Trash.vue");
 /* harmony import */ var _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/DeleteMultiple */ "./resources/js/admin/components/DeleteMultiple.vue");
 /* harmony import */ var _components_Search__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/Search */ "./resources/js/admin/components/Search.vue");
-/* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
+/* harmony import */ var v_lazy_image__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! v-lazy-image */ "./node_modules/v-lazy-image/dist/v-lazy-image.mjs");
+/* harmony import */ var _helpers_check_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../helpers/check.js */ "./resources/js/admin/helpers/check.js");
+
 
 
 
@@ -404,7 +406,8 @@ __webpack_require__.r(__webpack_exports__);
     DeleteCheck: _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_8__["default"],
     Trash: _components_Trash__WEBPACK_IMPORTED_MODULE_9__["default"],
     DeleteMultiple: _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_10__["default"],
-    DeleteAllCheck: _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_2__["default"]
+    DeleteAllCheck: _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_2__["default"],
+    VLazyImage: v_lazy_image__WEBPACK_IMPORTED_MODULE_12__["default"]
   },
   data: function data() {
     return {
@@ -424,61 +427,61 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     freshPage: function freshPage() {
-      this.getSocialMedias((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.showPageNumber)(this.currentPage));
+      this.getSocialMedias((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showPageNumber)(this.currentPage));
     },
     checkAuthorizeActions: function checkAuthorizeActions(actions) {
-      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.checkActions)(actions);
+      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.checkActions)(actions);
     },
     checkUnauthorizeActions: function checkUnauthorizeActions(actions) {
-      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.unauthorizedActions)(actions);
+      return (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.unauthorizedActions)(actions);
     },
     selectChecks: function selectChecks() {
       if (this.$refs.deleteCheck !== undefined) {
-        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.makeSelect)(this.$refs.deleteCheck, true);
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeSelect)(this.$refs.deleteCheck, true);
       }
     },
     cancelChecks: function cancelChecks() {
       if (this.$refs.deleteCheck !== undefined) {
-        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.makeSelect)(this.$refs.deleteCheck, false);
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeSelect)(this.$refs.deleteCheck, false);
       }
     },
     updateData: function updateData(object) {
-      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.deleteFromArray)(this.social_medias.data, object);
+      (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.deleteFromArray)(this.social_medias.data, object);
     },
     getSocialMedias: function getSocialMedias(page) {
       var _this = this;
 
-      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.makeRoute)(this, page, 'social_media') + page).then(function (response) {
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'social_media') + page).then(function (response) {
         if (response.data.message == 'Loading') {
-          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.showSwalLoading)(_this);
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this);
         } else {
           _this.social_medias = response.data.social_medias;
           _this.actions.read = true;
         }
       })["catch"](function (error) {
-        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.errorResponse)(error, _this, 'read');
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.errorResponse)(error, _this, 'read');
       });
     },
     searchSocialMedias: function searchSocialMedias(page) {
       var _this2 = this;
 
-      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.makeRoute)(this, page, 'social_media', 'search') + this.search + '&page=' + page).then(function (response) {
+      window.axios.get((0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.makeRoute)(this, page, 'social_media', 'search') + this.search + '&page=' + page).then(function (response) {
         if (response.data.message == 'Loading') {
-          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.showSwalLoading)(_this2);
+          (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this2);
         } else {
           _this2.social_medias = response.data.social_medias;
           _this2.actions.read = true;
         }
       })["catch"](function (error) {
-        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.errorResponse)(error, _this2, 'read');
+        (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.errorResponse)(error, _this2, 'read');
       });
     }
   },
   mounted: function mounted() {
     this.getSocialMedias(1);
-    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.checkContentPermission)(this.content, 'create', this);
-    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.checkContentPermission)(this.content, 'update', this);
-    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_12__.checkContentPermission)(this.content, 'delete', this);
+    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.checkContentPermission)(this.content, 'create', this);
+    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.checkContentPermission)(this.content, 'update', this);
+    (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_13__.checkContentPermission)(this.content, 'delete', this);
   }
 });
 
@@ -1127,14 +1130,13 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_14 = ["src"];
-var _hoisted_15 = {
+var _hoisted_14 = {
   "class": "text-left"
 };
-var _hoisted_16 = {
+var _hoisted_15 = {
   "class": "card-footer clearfix"
 };
-var _hoisted_17 = {
+var _hoisted_16 = {
   "class": "card card-default"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -1151,6 +1153,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_DeleteAllCheck = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DeleteAllCheck");
 
   var _component_DeleteCheck = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DeleteCheck");
+
+  var _component_v_lazy_image = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-lazy-image");
 
   var _component_ViewButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ViewButton");
 
@@ -1220,16 +1224,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ref: "deleteCheck"
     }, null, 8
     /* PROPS */
-    , ["objectData", "deleteArrayData", "objectArrayData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(social_media.title), 1
+    , ["objectData", "deleteArrayData", "objectArrayData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(social_media.name), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_lazy_image, {
       "class": "img-fluid",
       src: '/image/social_media_images/' + social_media.pic
     }, null, 8
     /* PROPS */
-    , _hoisted_14)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(social_media.deleted_at), 1
+    , ["src"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(social_media.deleted_at), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
       data_name: social_media.name,
       data_model: $data.content,
       data_id: social_media.id
@@ -1256,7 +1260,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["content", "deleteAt", "deleteLink", "restoreLink", "id", "objectData", "onUpdate"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
+  ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
     page: $data.currentPage,
     lastPage: $data.social_medias.last_page,
     onGetData: $options.getSocialMedias,
@@ -1271,7 +1275,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* STABLE_FRAGMENT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")])])) : $options.checkUnauthorizeActions($data.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
     httpStatus: 403,
     title: "Permission Denied",
     description: "You are not allowed to do any permissions for Social Media"
@@ -2520,6 +2524,117 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Pagination_vue_vue_type_template_id_d7acf176__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Pagination_vue_vue_type_template_id_d7acf176__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Pagination.vue?vue&type=template&id=d7acf176 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Pagination.vue?vue&type=template&id=d7acf176");
+
+
+/***/ }),
+
+/***/ "./node_modules/v-lazy-image/dist/v-lazy-image.mjs":
+/*!*********************************************************!*\
+  !*** ./node_modules/v-lazy-image/dist/v-lazy-image.mjs ***!
+  \*********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ index)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+
+var index = {
+  props: {
+    src: {
+      type: String,
+      required: true
+    },
+    srcPlaceholder: {
+      type: String,
+      default: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+    },
+    srcset: {
+      type: String
+    },
+    intersectionOptions: {
+      type: Object,
+      default: () => ({})
+    },
+    usePicture: {
+      type: Boolean,
+      default: false
+    }
+  },
+  inheritAttrs: false,
+  setup(props, { attrs, slots, emit }) {
+    const root = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    const state = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+      observer: null,
+      intersected: false,
+      loaded: false
+    });
+    const srcImage = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => state.intersected && props.src ? props.src : props.srcPlaceholder);
+    const srcsetImage = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => state.intersected && props.srcset ? props.srcset : false);
+    const load = () => {
+      if (root.value && root.value.getAttribute("src") !== props.srcPlaceholder) {
+        state.loaded = true;
+        emit("load", root.value);
+      }
+    };
+    const error = () => emit("error", root.value);
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
+      if ("IntersectionObserver" in window) {
+        state.observer = new IntersectionObserver((entries) => {
+          const image = entries[0];
+          if (image.isIntersecting) {
+            state.intersected = true;
+            state.observer.disconnect();
+            emit("intersect");
+          }
+        }, props.intersectionOptions);
+        state.observer.observe(root.value);
+      }
+    });
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUnmount)(() => {
+      if ("IntersectionObserver" in window && state.observer) {
+        state.observer.disconnect();
+      }
+    });
+    return () => {
+      const img = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)("img", __spreadProps(__spreadValues({
+        ref: root,
+        src: srcImage.value,
+        srcset: srcsetImage.value || null
+      }, attrs), {
+        class: [
+          attrs.class,
+          "v-lazy-image",
+          { "v-lazy-image-loaded": state.loaded }
+        ],
+        onLoad: load,
+        onError: error
+      }));
+      return props.usePicture ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)("picture", { ref: root, onLoad: load }, state.intersected ? [slots.default, img] : [img]) : img;
+    };
+  }
+};
+
 
 
 /***/ })
