@@ -11,7 +11,7 @@ class RegisterController extends Controller
 {
     //
 
-    private $shoppingCart , $wishList ;
+    protected $shoppingCart , $wishList ;
 
     public function __construct(ShoppingCartRepositoryInterface $shoppingCart,WishListRepositoryInterface $wishList){
         $this->shoppingCart=$shoppingCart;

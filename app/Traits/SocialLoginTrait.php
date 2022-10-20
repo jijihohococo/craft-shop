@@ -11,12 +11,15 @@ trait SocialLoginTrait{
 			$user=Socialite::driver($social)->stateless()->user();
 			$realUser=User::where('email',$user->email)->first();
 			DB::beginTransaction();
-			$token=User::updateOrCreate([
+			$loginUser=User::updateOrCreate([
 				'email' => $user->email
 			],[
 				'name' => $user->name ,
 				'password' => $realUser->password ?? rand()
-			])->passportToken();
+			]);
+			$token=$loginUser->passportToken();
+			$this->shoppingCart->update( (string) $loginUser->id );
+			$this->wishList->update( (string) $loginUser->id );
 			DB::commit();
 			return getToken(['access_token' => User::ACCESS_TOKEN ,
 				'refresh_token' => User::REFRESH_TOKEN  ],$token,'Login is Success');

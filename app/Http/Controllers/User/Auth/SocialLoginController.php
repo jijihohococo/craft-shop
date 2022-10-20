@@ -6,12 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Socialite;
 use App\Traits\SocialLoginTrait;
+use App\Repositories\{ShoppingCartRepositoryInterface,WishListRepositoryInterface};
 class SocialLoginController extends Controller
 {
     //
     use SocialLoginTrait;
     
     public $socialArray=['facebook','google'];
+
+    protected $shoppingCart , $wishList;
+
+    public function __construct(ShoppingCartRepositoryInterface $shoppingCart,WishListRepositoryInterface $wishList){
+        $this->shoppingCart=$shoppingCart;
+        $this->wishList=$wishList;
+    }
 
     public function redirect($social)
     {
