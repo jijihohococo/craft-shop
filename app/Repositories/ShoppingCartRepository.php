@@ -35,9 +35,10 @@ class ShoppingCartRepository implements ShoppingCartRepositoryInterface{
 			}
 		}
 		if(!empty($shoppings) && !empty($updateQty) ){
+			$tableName=$table::TABLE_NAME;
 			$pdo=DB::getPdo();
 
-			$sql="UPDATE shopping_carts SET qty = CASE";
+			$sql="UPDATE ".$tableName." SET qty = CASE";
 			
 			foreach($updateQty as $itemId => $qty){
 				$sql .=" WHEN item_id = ".$itemId." THEN ".$qty;
@@ -55,6 +56,8 @@ class ShoppingCartRepository implements ShoppingCartRepositoryInterface{
 	public function get($userId){
 		return ShoppingCart::selectUser()
 		->selectItem()
+		->selectItemPrice()
+		->selectItemQty()
 		->selectItemColorCode()
 		->ofUser($userId)
 		->latest('id')

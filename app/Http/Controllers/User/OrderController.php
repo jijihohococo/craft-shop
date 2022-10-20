@@ -5,35 +5,38 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Order,OrderDetail,User};
-use App\Repositories\OrderRepositoryInterface;
+use App\Repositories\{OrderRepositoryInterface,ShoppingCartRepositoryInterface};
 class OrderController extends Controller
 {
     //
-    private $user , $order;
+    protected $order , $shoppingCart;
 
-    public function __construct(OrderRepositoryInterface $order){
-        $this->user=auth(User::API)->user();
+    public function __construct(OrderRepositoryInterface $order,
+        ShoppingCartRepositoryInterface $shoppingCart){
         $this->order=$order;
+        $this->shoppingCart=$shoppingCart;
     }
 
     public function make(Request $request){
-
+        $userId= (string) getUserId( authId() );
     }
 
     public function get(){
-        return $this->user!==NULL ? response()->json([
+        $user=auth(User::API)->user();
+        return $user!==NULL ? response()->json([
             'orders' => Order::selectUser()
             ->getTotalQtyAndPrice()
-            ->ofUser($this->user->id)
+            ->ofUser($user->id)
             ->latest('id')
             ->paginate(10)
         ]) : unauthenticated();
     }
 
-    public function show($id){
-        return $this->user!==NULL && ( $this->user->id == OrderDetail::findOrFail($id)->order->user_id )  ? response()->json([
+    public function show(Order $order){
+        $user=auth(User::API)->user();
+        return $user!==NULL && ( $user->id == $order->user_id )  ? response()->json([
             'order_details' => OrderDetail::
-            where('order_id',$id)
+            where('order_id',$order->id)
             ->selectItem()
             ->selectCurrency()
             ->latest('id')

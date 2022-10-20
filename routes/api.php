@@ -64,6 +64,7 @@ Route::get('get_colors_by_content/{content}/{contentId?}','User\Shop\ColorContro
 Route::group(['middleware' => [ 'user_auth'] ], function () {
 
 Route::get('orders','User\OrderController@get');
+Route::get('orders/{order}','User\OrderController@show');
 Route::post('logout','User\Auth\LoginController@logOut');
 
 });

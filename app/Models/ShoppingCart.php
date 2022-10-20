@@ -10,6 +10,8 @@ class ShoppingCart extends Model
 {
     use HasFactory,UserDataTrait,ItemDataTrait;
 
+    public const TABLE_NAME='shopping_carts';
+
     protected $fillable=[
         'user_id',
         'item_id',
