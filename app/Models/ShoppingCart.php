@@ -70,9 +70,9 @@ class ShoppingCart extends Model
             return $query->addSelect([
                 'qty' => function($query){
                     $query->select('available_stock')
-                    ->from('item_quantities')
-                    ->whereColumn('item_quantities.item_variant_id','shopping_carts.item_variant_id')
-                    ->orderBy('item_quantities.id','DESC')
+                    ->from('item_stocks')
+                    ->whereColumn('item_stocks.item_variant_id','shopping_carts.item_variant_id')
+                    ->orderBy('item_stocks.id','DESC')
                     ->limit(1);
                 }
             ]);
