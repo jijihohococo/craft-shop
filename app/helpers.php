@@ -147,9 +147,9 @@ function mean(array $array){
 	return array_sum($array) / count($array);
 }
 
-function saveCookie(string $key,$value,$time,$httpOnly=true){
+function saveCookie(string $key,$value,$day,$httpOnly=true){
 	setcookie($key, $value, [
-		'expires' =>  time() + (86400 * $time),
+		'expires' =>  time() + changeDaysToSeconds($day),
 		'path' => '/',
 		'domain' => 'localhost',
 		'secure' => true,
@@ -239,19 +239,19 @@ function fileUpload($array,$requestFile,$fileName){
 			// $requestFile=\Image::make($requestFile)->resize($array['width'],$array['height'] , function($imageSize) {
 			// 	$imageSize->aspectRatio();
 			// })->encode( $extension );
-			$requestFile=\Image::make($requestFile)->resize($array['width'],$array['height'])->encode($extension);
+		$requestFile=\Image::make($requestFile)->resize($array['width'],$array['height'])->encode($extension);
 
 		// //make folder in storage app public before run this code//
 			// Storage::disk('public')->put( $array['path'] .'/'. $fileName , $requestFile );
-		}
-		
-		if($array['width']==null && $array['height']==null){
+	}
+	
+	if($array['width']==null && $array['height']==null){
 
 			// $requestFile->move(storage_path( 'app/public/' . $array['path']),$fileName  );
-			$requestFile=\Image::make($requestFile)->encode( $extension );
-		}
+		$requestFile=\Image::make($requestFile)->encode( $extension );
+	}
 
-		Storage::disk('public')->put( $array['path'] .'/'. $fileName , $requestFile );
+	Storage::disk('public')->put( $array['path'] .'/'. $fileName , $requestFile );
 }
 function oneFileUpload(array $array,$request,$data){
 	$oldFile='old_file';
@@ -260,19 +260,19 @@ function oneFileUpload(array $array,$request,$data){
 		blockFile($requestFile ) ) {
 			//check if the update function is called this function //
 		$extension='webp';
-		if($array[$oldFile]!==null){
-			\File::delete(storage_path('app/public/'.$array['path'].'/'.$array[ $oldFile ]));
-		}
-
-		$fileName=str_replace('/', '',$array['name']. '.' .$extension );
-
-		fileUpload($array,$requestFile,$fileName);
-
-		$data[$array['file']]=$fileName;
+	if($array[$oldFile]!==null){
+		\File::delete(storage_path('app/public/'.$array['path'].'/'.$array[ $oldFile ]));
 	}
-	if(!$request->hasFile( $array['file']) && $array[ $oldFile ]!==null ){
-		$data[$array['file']]=$array[ $oldFile ];
-	}
+
+	$fileName=str_replace('/', '',$array['name']. '.' .$extension );
+
+	fileUpload($array,$requestFile,$fileName);
+
+	$data[$array['file']]=$fileName;
+}
+if(!$request->hasFile( $array['file']) && $array[ $oldFile ]!==null ){
+	$data[$array['file']]=$array[ $oldFile ];
+}
 
 }
 
@@ -324,4 +324,8 @@ function changeDaysToMinutes(int $days){
 
 function changeDaysToSeconds(int $days){
 	return $days * 86400;
+}
+
+function regexForName(){
+	return	'regex:/^[A-Za-z_ ]+$/';
 }
