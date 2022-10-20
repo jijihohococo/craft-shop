@@ -5,11 +5,14 @@ namespace App\Traits;
 use Laravel\Passport\{Token,RefreshToken};
 trait Logout{
 
+	protected $user;
+
 	public function revoke(){
 		$cookie = \Cookie::forget($this->accessToken);
 		$refreshCookie=\Cookie::forget($this->refreshToken);
-		$user=auth($this->authAPI)->user()->token();
-		$tokens=$user->get()->pluck('id');
+		$this->user=auth($this->authAPI)->user();
+		$userToken=$this->user->token();
+		$tokens=$userToken->get()->pluck('id');
 		Token::whereIn('id', $tokens)
 		->update(['revoked' => true]);
 
