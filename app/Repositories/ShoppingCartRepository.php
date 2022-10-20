@@ -17,12 +17,12 @@ class ShoppingCartRepository implements ShoppingCartRepositoryInterface{
 		$shoppings=[];
 		$updateQty=[];
 		foreach($userShoppingCart as $key => $data ){
-			if(isset($items[$data->item_id])){
-				$updateShop=$items[$data->item_id];
-				if(isset($updateQty[$data->item_id])){
-					$updateQty[$data->item_id]=$updateQty[$data->item_id]+$data->qty;
+			if(isset($items[$data->item_variant_id])){
+				$updateShop=$items[$data->item_variant_id];
+				if(isset($updateQty[$data->item_variant_id])){
+					$updateQty[$data->item_variant_id]=$updateQty[$data->item_variant_id]+$data->qty;
 				}else{
-					$updateQty[$data->item_id]=$updateShop->qty + $data->qty;
+					$updateQty[$data->item_variant_id]=$updateShop->qty + $data->qty;
 				}
 					// duplicate items //
 				if(!isset($shoppings[$data->id])){
@@ -30,7 +30,7 @@ class ShoppingCartRepository implements ShoppingCartRepositoryInterface{
 				}
 			}else{
 			// store in object //
-				$items[$data->item_id]=$data;
+				$items[$data->item_variant_id]=$data;
 
 			}
 		}
@@ -40,8 +40,8 @@ class ShoppingCartRepository implements ShoppingCartRepositoryInterface{
 
 			$sql="UPDATE ".$tableName." SET qty = CASE";
 			
-			foreach($updateQty as $itemId => $qty){
-				$sql .=" WHEN item_id = ".$itemId." THEN ".$qty;
+			foreach($updateQty as $itemVariantId => $qty){
+				$sql .=" WHEN item_variant_id = ".$itemVariantId." THEN ".$qty;
 			}
 			$sql .=" END WHERE user_id = ?";
 
