@@ -23,7 +23,7 @@ class ShoppingCartController extends Controller
     }
 
     public function addSimpleItem(Request $request,$itemVariantId){
-        $this->shoppingCart->updateOrCreate(['varientID' => ItemVariant::findOrFail($itemVariantId)->id ,
+        $this->shoppingCart->updateOrCreate(['variantID' => ItemVariant::findOrFail($itemVariantId)->id ,
                 'userID' => $this->userId ,
                 'qty' => 1 ,
                 'qtyCheck' => "simple" ]);
@@ -33,7 +33,7 @@ class ShoppingCartController extends Controller
     }
 
     public function addDetailItem(Request $request,$itemVariantId){
-        $this->shoppingCart->updateOrCreate(['varientID' => ItemVariant::findOrFail($itemVariantId)->id ,
+        $this->shoppingCart->updateOrCreate(['variantID' => ItemVariant::findOrFail($itemVariantId)->id ,
                 'userID' => $this->userId ,
                 'qty' => $request->qty ,
                 'qtyCheck' => "multiple" ]);

@@ -13,24 +13,7 @@
 	:breakpoints="breakpoints"
 	snap-align="center">
 	<Slide v-for="(item,key) in items" :key="item.id">
-		<div class="product">
-			<div class="product_img">
-				<a href="shop-product-detail.html">
-					<v-lazy-image 
-					:src="showImage(item.image)"
-					:alt="item.name" />
-				</a>
-				<div class="product_action_box">
-					<ul class="list_none pr_action_btn">
-						<li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-						<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-						<li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-						<li><a href="#"><i class="icon-heart"></i></a></li>
-					</ul>
-				</div>
-			</div>
-			<ItemInfo :item="item" />
-		</div>
+		<SliderItem :item="item" />
 	</Slide>
 
 
@@ -56,18 +39,17 @@
 </component>
 </template>
 <script >
-	import ItemInfo from './ItemInfo'
+	
+	import SliderItem from './SliderItem'
 	import { Carousel, Slide } from 'vue3-carousel'
 
 	import 'vue3-carousel/dist/carousel.css'
-	import VLazyImage from "v-lazy-image"
 	export default {
 		name : 'SliderDetail' ,
 		components : {
-			ItemInfo,
+			SliderItem,
 			Carousel,
-			Slide,
-			VLazyImage
+			Slide
 		},
 		data(){
 			return {
@@ -98,12 +80,6 @@
 			items : {
 				type : Array,
 				default : []
-			}
-		},
-		methods : {
-			showImage(image){
-				return image==null ? '/images/logo_dark.png' :
-				'/image/item_images/' + image
 			}
 		}
 	}

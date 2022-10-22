@@ -17,7 +17,8 @@
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
 		</div>
 		<ItemColor v-if="item.colorCodes!==null"
-		:colors="item.colorCodes.split(',')" />
+		:colors="item.colorCodes.split(',')"
+		@getData="getColor" />
 	</div>
 </template>
 <script >
@@ -39,6 +40,9 @@
 				var result= data!==null ?
 				showAveragePercent(data.split(',')) : 0;
 				return result + '%';
+			},
+			getColor(key){
+				this.$emit('getData',key)
 			}
 		}
 	}
