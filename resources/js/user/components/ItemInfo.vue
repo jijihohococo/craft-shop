@@ -29,7 +29,11 @@
 			ItemPrice,
 			ItemColor
 		},
-		props : ['item'],
+		props : {
+			item  : {
+				type : Object
+			}
+		},
 		methods : {
 			getAveragePercent(data){
 				var result= data!==null ?

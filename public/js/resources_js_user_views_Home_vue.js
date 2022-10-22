@@ -429,7 +429,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['colors']
+  props: {
+    colors: {
+      type: Array
+    }
+  }
 });
 
 /***/ }),
@@ -456,7 +460,11 @@ __webpack_require__.r(__webpack_exports__);
     ItemPrice: _ItemPrice__WEBPACK_IMPORTED_MODULE_0__["default"],
     ItemColor: _ItemColor__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: ['item'],
+  props: {
+    item: {
+      type: Object
+    }
+  },
   methods: {
     getAveragePercent: function getAveragePercent(data) {
       var result = data !== null ? (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_2__.showAveragePercent)(data.split(',')) : 0;

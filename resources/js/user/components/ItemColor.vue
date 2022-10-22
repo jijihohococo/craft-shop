@@ -7,6 +7,10 @@
 </template>
 <script >
 	export default {
-		props : ['colors']
+		props : {
+			colors : {
+				type : Array
+			}
+		}
 	}
 </script>
