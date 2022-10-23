@@ -52,7 +52,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     register: function register() {
-      window.axios.post('register', this.fields).then(function (response) {});
+      window.axios.post('user_register', this.fields).then(function (response) {
+        console.log(response.data.message);
+      });
     },
     translateLang: function translateLang(data) {
       return (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_1__.translate)(data);
@@ -168,35 +170,32 @@ var _hoisted_8 = {
   "class": "heading_s1"
 };
 var _hoisted_9 = {
-  method: "post"
-};
-var _hoisted_10 = {
   "class": "form-group"
 };
-var _hoisted_11 = ["placeholder"];
-var _hoisted_12 = {
+var _hoisted_10 = ["placeholder"];
+var _hoisted_11 = {
   "class": "form-group"
 };
-var _hoisted_13 = ["placeholder"];
-var _hoisted_14 = {
+var _hoisted_12 = ["placeholder"];
+var _hoisted_13 = {
   "class": "form-group"
 };
-var _hoisted_15 = ["placeholder"];
-var _hoisted_16 = {
+var _hoisted_14 = ["placeholder"];
+var _hoisted_15 = {
   "class": "form-group"
 };
-var _hoisted_17 = ["placeholder"];
-var _hoisted_18 = {
+var _hoisted_16 = ["placeholder"];
+var _hoisted_17 = {
   "class": "login_footer form-group"
 };
-var _hoisted_19 = {
+var _hoisted_18 = {
   "class": "chek-form"
 };
-var _hoisted_20 = {
+var _hoisted_19 = {
   "class": "custome-checkbox"
 };
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   "class": "form-check-input",
   type: "checkbox",
   name: "checkbox",
@@ -206,26 +205,26 @@ var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_22 = {
+var _hoisted_21 = {
   "class": "form-check-label",
   "for": "exampleCheckbox2"
 };
-var _hoisted_23 = {
+var _hoisted_22 = {
   "class": "form-group"
 };
-var _hoisted_24 = {
+var _hoisted_23 = {
   type: "submit",
   "class": "btn btn-fill-out btn-block",
   name: "register"
 };
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"different_login\"><span> or</span></div><ul class=\"btn-login list_none text-center\"><li><a href=\"#\" class=\"btn btn-facebook\"><i class=\"ion-social-facebook\"></i>Facebook</a></li><li><a href=\"#\" class=\"btn btn-google\"><i class=\"ion-social-googleplus\"></i>Google</a></li></ul>", 2);
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"different_login\"><span> or</span></div><ul class=\"btn-login list_none text-center\"><li><a href=\"#\" class=\"btn btn-facebook\"><i class=\"ion-social-facebook\"></i>Facebook</a></li><li><a href=\"#\" class=\"btn btn-google\"><i class=\"ion-social-googleplus\"></i>Google</a></li></ul>", 2);
 
-var _hoisted_27 = {
+var _hoisted_26 = {
   "class": "form-note text-center"
 };
 
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Log in");
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Log in");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_PageTitle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PageTitle");
@@ -238,49 +237,59 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["title"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" START LOGIN SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.translateLang("Create Account")), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $options.register();
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
-    required: "",
     "class": "form-control",
-    name: "name",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.fields.name = $event;
+    }),
     placeholder: $options.translateLang('Placeholder Name')
   }, null, 8
   /* PROPS */
-  , _hoisted_11)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  , _hoisted_10), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
-    required: "",
     "class": "form-control",
-    name: "email",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.fields.email = $event;
+    }),
     placeholder: $options.translateLang('Placeholder Email')
   }, null, 8
   /* PROPS */
-  , _hoisted_13)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  , _hoisted_12), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "form-control",
-    required: "",
     type: "password",
-    name: "password",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.fields.password = $event;
+    }),
     placeholder: $options.translateLang('Placeholder Password')
   }, null, 8
   /* PROPS */
-  , _hoisted_15)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  , _hoisted_14), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "form-control",
-    required: "",
     type: "password",
-    name: "password",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.fields.password_confirmation = $event;
+    }),
     placeholder: $options.translateLang('Placeholder Confirm')
   }, null, 8
   /* PROPS */
-  , _hoisted_17)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.translateLang("Agree Policy")), 1
+  , _hoisted_16), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.password_confirmation]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.translateLang("Agree Policy")), 1
   /* TEXT */
-  )])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.translateLang('Register')), 1
+  )])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.translateLang('Register')), 1
   /* TEXT */
-  )])]), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.translateLang("Have Account")) + " ", 1
+  )])], 32
+  /* HYDRATE_EVENTS */
+  ), _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.translateLang("Have Account")) + " ", 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/login"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_28];
+      return [_hoisted_27];
     }),
     _: 1
     /* STABLE */

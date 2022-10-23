@@ -11,19 +11,26 @@
 								<div class="heading_s1">
 									<h3>{{ translateLang("Create Account") }}</h3>
 								</div>
-								<form method="post">
+								<form @submit.prevent="register()" >
 									<div class="form-group">
-										<input type="text" required="" class="form-control" name="name" 
+										<input type="text" class="form-control" v-model="fields.name" 
 										:placeholder="translateLang('Placeholder Name')">
 									</div>
 									<div class="form-group">
-										<input type="text" required="" class="form-control" name="email" :placeholder="translateLang('Placeholder Email')">
+										<input type="text" class="form-control" v-model="fields.email" 
+										:placeholder="translateLang('Placeholder Email')">
 									</div>
 									<div class="form-group">
-										<input class="form-control" required="" type="password" name="password" :placeholder="translateLang('Placeholder Password')">
+										<input class="form-control" 
+										type="password"
+										v-model="fields.password"
+										:placeholder="translateLang('Placeholder Password')">
 									</div>
 									<div class="form-group">
-										<input class="form-control" required="" type="password" name="password" :placeholder="translateLang('Placeholder Confirm')">
+										<input class="form-control" 
+										type="password"
+										v-model="fields.password_confirmation"
+										:placeholder="translateLang('Placeholder Confirm')">
 									</div>
 									<div class="login_footer form-group">
 										<div class="chek-form">
@@ -75,8 +82,8 @@
 		},
 		methods : {
 			register(){
-				window.axios.post('register',this.fields).then( (response) => {
-					
+				window.axios.post('user_register',this.fields).then( (response) => {
+					console.log(response.data.message)
 				} )
 			},
 			translateLang(data){

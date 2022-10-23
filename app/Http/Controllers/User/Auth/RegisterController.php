@@ -27,10 +27,14 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request){
+        $request->validate($this->validateData());
         try{
-            $request->validate($this->validateData());
             DB::beginTransaction();
-            $user=User::create( $request->all() );
+            $user=User::create( [
+                'name' => $request->name  ,
+                'email' => $request->email,
+                'password' => \Hash::make($request->password)
+            ] );
             $token=$user->passportToken();
             $this->shoppingCart->update( (string) $user->id);
             $this->wishList->update( (string) $user->id );

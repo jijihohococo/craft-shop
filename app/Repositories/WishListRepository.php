@@ -11,7 +11,7 @@ class WishListRepository implements WishListRepositoryInterface{
 	public $model='App\Models\WishList';
 
 	public function update($userId){
-		$this->inUpdate($userID,$this->model);
+		$this->inUpdate($userId,$this->model);
 		$items=[];
 		$duplicateWishes=[];
 		foreach(WishList::where('user_id',$userId)->latest()->get() as $key => $wish){
