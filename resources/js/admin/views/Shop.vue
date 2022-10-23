@@ -63,7 +63,9 @@
 
     import VLazyImage from "v-lazy-image";
 
-    import { errorResponse , checkContentPermission , showSwalLoading , checkActions , unauthorizedActions } from '../helpers/check.js';
+    import { errorResponse , checkContentPermission , checkActions , unauthorizedActions } from '../helpers/check';
+
+    import { showSwalLoading } from  '../../helpers/general'
 
     import { shop } from '../../store';
 

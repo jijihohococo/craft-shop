@@ -124,7 +124,10 @@
 
 		import Search from '../components/Search';
 
-		import { errorResponse , checkContentPermission , showSwalLoading , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions , showPageNumber } from '../helpers/check.js';
+		import { errorResponse , checkContentPermission , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions , showPageNumber } from '../helpers/check';
+
+		import { showSwalLoading } from  '../../helpers/general'
+		
 		export default {
 			components: {
 				Search,

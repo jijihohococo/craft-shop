@@ -48,7 +48,9 @@
 
 	import ContentHeader from '../components/ContentHeader';
 
-	import { errorResponse , checkContentPermission , showSwalLoading , dateFormat } from '../helpers/check.js';
+	import { errorResponse , checkContentPermission , dateFormat } from '../helpers/check';
+
+	import { showSwalLoading } from  '../../helpers/general'
 
 	import Error from '../components/Error'
 

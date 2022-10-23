@@ -61,7 +61,9 @@
 
 	import Error from '../components/Error';
 
-	import { errorResponse , checkContentPermission , showSwalLoading , getModel } from '../helpers/check.js';
+	import { errorResponse , checkContentPermission , getModel } from '../helpers/check';
+
+	import { showSwalLoading } from  '../../helpers/general'
 
 	export default {
 		components: {

@@ -30,9 +30,14 @@
 	
 	//import File from '../components/File'
 	import ImageUpload from '../components/ImageUpload'
+
 	import ContentHeader from '../components/ContentHeader'
+	
 	import ContentButton from '../components/ContentButton'
-	import { errorResponse , checkContentPermission , showSwalLoading } from '../helpers/check.js';
+	
+	import { errorResponse , checkContentPermission } from '../helpers/check';
+
+	import { showSwalLoading } from  '../../helpers/general'
 
 	export default {
 		components: {

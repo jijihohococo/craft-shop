@@ -54,7 +54,10 @@
 <script >
  import SubMenu from './SubMenu.vue';
 
- import { errorResponse , showSwalLoading } from '../helpers/check.js';
+ import { errorResponse } from '../helpers/check';
+
+ import { showSwalLoading } from  '../../helpers/general'
+ 
  import { shop , admin } from '../../store';
 
  export default {

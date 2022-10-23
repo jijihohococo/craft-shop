@@ -43,7 +43,9 @@
 
 	import ContentHeader from '../components/ContentHeader'
 
-	import { errorResponse , checkContentPermission , showSwalLoading , getItemColor } from '../helpers/check.js';
+	import { errorResponse , checkContentPermission , getItemColor } from '../helpers/check';
+
+	import { showSwalLoading } from  '../../helpers/general'
 
 	export default {
 		components: {

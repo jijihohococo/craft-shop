@@ -64,7 +64,9 @@
 
 	import Search from '../components/Search';
 
-	import { errorResponse , showSwalLoading , makeRoute ,  checkActions, unauthorizedActions } from '../helpers/check.js';
+	import { errorResponse , makeRoute ,  checkActions, unauthorizedActions } from '../helpers/check';
+
+	import { showSwalLoading } from  '../../helpers/general'
 
 	export default {
 		components : {

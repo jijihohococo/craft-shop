@@ -20,9 +20,9 @@ class RegisterController extends Controller
 
     private function validateData(){
         return [
-            'name' => ['required', 'string', 'max:100', 'unique:users' ] ,
+            'name' => ['required', 'string', 'max:100', regexForName() ] ,
             'email' => ['required', 'email' , 'max:100', 'unique:users' ] ,
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            'password' => ['required', 'string', 'min:8', 'max:100' , 'confirmed']
         ];
     }
 

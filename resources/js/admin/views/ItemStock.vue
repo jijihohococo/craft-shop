@@ -69,7 +69,9 @@
 
 		import Error from '../components/Error';
 
-		import { errorResponse , checkContentPermission , showSwalLoading , makeRoute , checkActions , unauthorizedActions , showPageNumber , getItemColor } from '../helpers/check.js';
+		import { errorResponse , checkContentPermission , makeRoute , checkActions , unauthorizedActions , showPageNumber , getItemColor } from '../helpers/check';
+
+		import { showSwalLoading } from  '../../helpers/general'
 
 		export default {
 			components: {

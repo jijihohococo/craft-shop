@@ -32,7 +32,8 @@
 <script >
 	import Select from './Select';
 	import SelectMultiple from './SelectMultiple';
-	import { errorResponse , showSwalLoading  } from '../helpers/check.js';
+	import { errorResponse  } from '../helpers/check';
+	import { showSwalLoading } from  '../../helpers/general'
 
 	export default {
 		components: {

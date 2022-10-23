@@ -180,26 +180,6 @@ export function checkCreateEditPermission(object){
     object.current=checkStage
 }
 
-export function showSwalLoading(object) {
-    object.$swal({
-        title: 'Now loading',
-        html: '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>',
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        timer: 2000,
-        onOpen: () => {
-          swal.showLoading();
-      }
-  }).then(
-  () => {},
-  (dismiss) => {
-      if (dismiss === 'timer') {
-        object.$swal.close;
-    }
-} )
-  location.reload();
-}
-
 export function getModel(model){
     return model[0].toLowerCase()+model.substring(1)
 }

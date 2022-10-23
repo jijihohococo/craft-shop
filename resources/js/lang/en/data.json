@@ -13,5 +13,6 @@
 	"Placeholder Password" : "Password",
 	"Placeholder Confirm" : "Confirm Password",
 	"Agree Policy" : "I agree to terms & Policy.",
-	"Have Account" : "Already have an account?"
+	"Have Account" : "Already have an account?",
+	"Login"  : "Login"
 }

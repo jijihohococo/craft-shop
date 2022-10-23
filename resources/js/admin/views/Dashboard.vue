@@ -46,7 +46,9 @@
 
 	import CalendarCard from '../components/CalendarCard';
 
-	import { errorResponse , showSwalLoading } from '../helpers/check.js';
+	import { errorResponse } from '../helpers/check.js';
+
+	import { showSwalLoading } from  '../../helpers/general'
 	
 	export default {
 		components: {

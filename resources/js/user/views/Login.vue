@@ -9,29 +9,30 @@
 						<div class="login_wrap">
 							<div class="padding_eight_all bg-white">
 								<div class="heading_s1">
-									<h3>Login Account</h3>
+									<h3>{{ translateLang("Login") }}</h3>
 								</div>
 								<form @submit.prevent="login()" >
 									<div class="form-group">
-										<input type="text" class="form-control" v-model="fields.email" 
+										<input type="text"
+										v-model="fields.email"
+										:class="[errors && errors.email ? 'form-control is-invalid' : 'form-control']" 
 										:placeholder="translateLang('Placeholder Email')">
+										<strong style="display:block"
+										v-if="errors && errors.email" class="invalid-feedback">{{ errors.email[0] }}</strong>
 									</div>
 									<div class="form-group">
-										<input class="form-control" 
+										<input
 										type="password"
 										v-model="fields.password"
+										:class="[errors && errors.password ? 'form-control is-invalid' : 'form-control']"
 										:placeholder="translateLang('Placeholder Password')">
-									</div>
-									<div class="login_footer form-group">
-										<div class="chek-form">
-											<div class="custome-checkbox">
-												<input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="">
-												<label class="form-check-label" for="exampleCheckbox2"><span>{{ translateLang("Agree Policy") }}</span></label>
-											</div>
-										</div>
+										<strong style="display:block"
+										v-if="errors && errors.password" class="invalid-feedback">{{ errors.password[0] }}</strong>
+										<strong style="display:block"
+										v-if="errors && errors.account" class="invalid-feedback">{{ errors.account[0] }}</strong>
 									</div>
 									<div class="form-group">
-										<button type="submit" class="btn btn-fill-out btn-block" name="register">{{ translateLang('Register') }}</button>
+										<button type="submit" class="btn btn-fill-out btn-block" name="register">{{ translateLang('Login') }}</button>
 									</div>
 								</form>
 								<div class="different_login">
@@ -65,13 +66,18 @@
 				fields : {
 					email : '',
 					password : '',
-				}
+				},
+				errors : {}
 			}
 		},
 		methods : {
 			login(){
 				window.axios.post('login',this.fields).then( (response) => {
-					console.log(response.data.message)
+					window.location.href='/'
+				} ).catch( (error) => {
+					if(error.response.status==422 || error.response.status==401 ){
+						this.errors= error.response.data.errors
+					}
 				} )
 			},
 			translateLang(data){

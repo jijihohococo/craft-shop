@@ -13,22 +13,34 @@
 								</div>
 								<form @submit.prevent="register()" >
 									<div class="form-group">
-										<input type="text" class="form-control" v-model="fields.name" 
+										<input type="text"
+										v-model="fields.name"
+										:class="[errors && errors.name ? 'form-control is-invalid' : 'form-control']"
 										:placeholder="translateLang('Placeholder Name')">
+										<strong style="display:block"
+										v-if="errors && errors.name" class="invalid-feedback">{{ errors.name[0] }}</strong>
 									</div>
 									<div class="form-group">
-										<input type="text" class="form-control" v-model="fields.email" 
+										<input type="text"
+										v-model="fields.email"
+										:class="[errors && errors.email ? 'form-control is-invalid' : 'form-control']"
 										:placeholder="translateLang('Placeholder Email')">
+										<strong style="display:block"
+										v-if="errors && errors.email" class="invalid-feedback">{{ errors.email[0] }}</strong>
 									</div>
 									<div class="form-group">
-										<input class="form-control" 
-										type="password"
+										<input type="password"
 										v-model="fields.password"
+										:class="[errors && errors.password ? 'form-control is-invalid' : 'form-control']"
 										:placeholder="translateLang('Placeholder Password')">
+										<strong style="display:block"
+										v-if="errors && errors.password" class="invalid-feedback">{{ errors.password[0] }}</strong>
+										<strong v-if="errors && errors.account" class="invalid-feedback">{{ errors.account[0] }}</strong>
 									</div>
 									<div class="form-group">
-										<input class="form-control" 
+										<input
 										type="password"
+										:class="[errors && errors.password ? 'form-control is-invalid' : 'form-control']"
 										v-model="fields.password_confirmation"
 										:placeholder="translateLang('Placeholder Confirm')">
 									</div>
@@ -77,13 +89,18 @@
 					email : '',
 					password : '',
 					password_confirmation : ''
-				}
+				},
+				errors : {}
 			}
 		},
 		methods : {
 			register(){
 				window.axios.post('register',this.fields).then( (response) => {
-					console.log(response.data.message)
+					window.location.href='/'
+				} ).catch( (error) => {
+					if(error.response.status==422 || error.response.status==401 ){
+						this.errors= error.response.data.errors
+					}
 				} )
 			},
 			translateLang(data){
