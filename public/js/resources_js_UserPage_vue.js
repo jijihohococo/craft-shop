@@ -595,10 +595,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "header_wrap"
+  "class": "header_wrap fixed-top header_with_topbar"
 };
 var _hoisted_2 = {
-  "class": "top-header d-none d-md-block"
+  "class": "top-header"
 };
 var _hoisted_3 = {
   "class": "container"
@@ -606,15 +606,15 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "row align-items-center"
 };
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-lg-6 col-md-8\"><div class=\"header_topbar_info\"><div class=\"header_offer\"><span>Free Ground Shipping Over $250</span></div><div class=\"download_wrap\"><span class=\"mr-3\">Download App</span><ul class=\"icon_list text-center text-lg-left\"><li><a href=\"#\"><i class=\"fab fa-apple\"></i></a></li><li><a href=\"#\"><i class=\"fab fa-android\"></i></a></li><li><a href=\"#\"><i class=\"fab fa-windows\"></i></a></li></ul></div></div></div>", 1);
-
+var _hoisted_5 = {
+  "class": "col-md-6"
+};
 var _hoisted_6 = {
-  "class": "col-lg-6 col-md-4"
+  "class": "d-flex align-items-center justify-content-center justify-content-md-start"
 };
-var _hoisted_7 = {
-  "class": "d-flex align-items-center justify-content-center justify-content-md-end"
-};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-md-6\"><div class=\"text-center text-md-right\"><ul class=\"header_list\"><li><a href=\"compare.html\"><i class=\"ti-control-shuffle\"></i><span>Compare</span></a></li><li><a href=\"wishlist.html\"><i class=\"ti-heart\"></i><span>Wishlist</span></a></li><li><a href=\"login.html\"><i class=\"ti-user\"></i><span>Login</span></a></li></ul></div></div>", 1);
+
 var _hoisted_8 = {
   "class": "bottom_header light_skin main_menu_uppercase bg_dark mb-4"
 };
@@ -699,7 +699,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_Menu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Menu");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" START HEADER "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Language)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Search, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" START HEADER "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Language)])]), _hoisted_7])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Search, {
     categories: $data.categories
   }, null, 8
   /* PROPS */
@@ -711,7 +711,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.shopping_cart_items.length), 1
   /* TEXT */
-  )]), _hoisted_24])]), _hoisted_25])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" END HEADER "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <component is=\"script\" src=\"user/js/scripts.js\" /> ")], 2112
+  )]), _hoisted_24])]), _hoisted_25])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" END HEADER "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" END HEADER "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <component is=\"script\" src=\"user/js/scripts.js\" /> ")], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   );
 }
@@ -732,7 +732,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "lng_dropdown"
+  "class": "lng_dropdown mr-2"
 };
 var _hoisted_2 = ["value", "data-title"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {

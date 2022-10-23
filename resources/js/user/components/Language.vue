@@ -1,5 +1,5 @@
 <template>
-	<div class="lng_dropdown">
+	<div class="lng_dropdown mr-2">
 		<select v-model="userLang.data" @change="onChange($event)">
 			<option
 			v-for="lang in langs"

@@ -1,27 +1,21 @@
 <template>
 	<!-- START HEADER -->
-	<header class="header_wrap">
-		<div class="top-header d-none d-md-block">
+	<header class="header_wrap fixed-top header_with_topbar">
+		<div class="top-header">
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-lg-6 col-md-8">
-						<div class="header_topbar_info">
-							<div class="header_offer">
-								<span>Free Ground Shipping Over $250</span>
-							</div>
-							<div class="download_wrap">
-								<span class="mr-3">Download App</span>
-								<ul class="icon_list text-center text-lg-left">
-									<li><a href="#"><i class="fab fa-apple"></i></a></li>
-									<li><a href="#"><i class="fab fa-android"></i></a></li>
-									<li><a href="#"><i class="fab fa-windows"></i></a></li>
-								</ul>
-							</div>
+					<div class="col-md-6">
+						<div class="d-flex align-items-center justify-content-center justify-content-md-start">
+							<Language />
 						</div>
 					</div>
-					<div class="col-lg-6 col-md-4">
-						<div class="d-flex align-items-center justify-content-center justify-content-md-end">
-							<Language />
+					<div class="col-md-6">
+						<div class="text-center text-md-right">
+							<ul class="header_list">
+								<li><a href="compare.html"><i class="ti-control-shuffle"></i><span>Compare</span></a></li>
+								<li><a href="wishlist.html"><i class="ti-heart"></i><span>Wishlist</span></a></li>
+								<li><a href="login.html"><i class="ti-user"></i><span>Login</span></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -282,12 +276,16 @@
 		</div>
 	</header>
 	<!-- END HEADER -->
+	<!-- END HEADER -->
 	<!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
 	import Search from './Search'
+
 	import Menu from './Menu'
+
 	import Language from './Language'
+
 	export default {
 		components: {
 			Search,
