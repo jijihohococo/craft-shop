@@ -82,7 +82,7 @@
 		},
 		methods : {
 			register(){
-				window.axios.post('user_register',this.fields).then( (response) => {
+				window.axios.post('register',this.fields).then( (response) => {
 					console.log(response.data.message)
 				} )
 			},

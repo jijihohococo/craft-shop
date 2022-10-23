@@ -52,7 +52,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     register: function register() {
-      window.axios.post('user_register', this.fields).then(function (response) {
+      window.axios.post('register', this.fields).then(function (response) {
         console.log(response.data.message);
       });
     },
