@@ -57,7 +57,7 @@
 </template>
 <script >
 	import PageTitle from '../components/PageTitle'
-	import { translate } from '../../helpers/general.js'
+	import { translate } from '../../helpers/general'
 	export default {
 		components : {
 			PageTitle

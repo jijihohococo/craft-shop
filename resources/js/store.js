@@ -10,6 +10,10 @@ function getShop(shop){
 
 }
 
+export const userLogin=reactive({
+  data : window.cookies.get('access_token') ? true : false
+})
+
 export const userLang=reactive({
   data : window.cookies.get('lang') ? window.cookies.get('lang') : 'en',
   changeData(data){
