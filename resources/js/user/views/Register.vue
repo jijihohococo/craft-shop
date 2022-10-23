@@ -64,7 +64,7 @@
 									<li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
 								</ul>
 								<div class="form-note text-center">{{ translateLang("Have Account") }}
-									<router-link to="/login">Log in</router-link></div>
+									<router-link to="/login">{{ translateLang("Login") }}</router-link></div>
 							</div>
 						</div>
 					</div>
