@@ -42,8 +42,9 @@
 									<li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>
 									<li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
 								</ul>
-								<div class="form-note text-center">{{ translateLang("Have Account") }}
-									<router-link to="/login">Log in</router-link></div>
+								<div class="form-note text-center">{{ translateLang("No Account") }}
+									<router-link to="/register">
+									{{ translateLang("Register") }}</router-link></div>
 							</div>
 						</div>
 					</div>
