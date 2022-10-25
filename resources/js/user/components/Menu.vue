@@ -42,7 +42,7 @@
 <!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
-    import { translate } from '../../helpers/general.js'
+    import { common_mixin } from '../../common/'
     export default {
         props : {
             categories : {
@@ -56,6 +56,7 @@
                 mobile : false
             }
         },
+        mixins: [common_mixin],
         created(){
             // we will use hide and show category menu UI feature if it is not mobile screen
             this.mobile=this.checkMobile() ? false : true
@@ -68,9 +69,6 @@
                 return (window.innerWidth
             || document.documentElement.clientWidth
             || document.body.clientWidth)>991;
-            },
-            translateLang(data){
-                return  translate(data);
             },
             changeShow(){
               this.show = ! this.show 

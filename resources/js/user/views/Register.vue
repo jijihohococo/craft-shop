@@ -76,12 +76,16 @@
 	<!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
+
 	import PageTitle from '../components/PageTitle'
-	import { translate } from '../../helpers/general'
+	
+	import { common_mixin } from '../../common/'
+	
 	export default {
 		components : {
 			PageTitle
 		},
+		mixins: [common_mixin],
 		data(){
 			return {
 				fields : {
@@ -102,9 +106,6 @@
 						this.errors= error.response.data.errors
 					}
 				} )
-			},
-			translateLang(data){
-				return  translate(data);
 			}
 		}
 

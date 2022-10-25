@@ -66,7 +66,7 @@
 <script >
 	
 	import FeatureProduct from './FeatureProduct'
-	import { translate } from '../../helpers/general.js'
+	import { common_mixin } from '../../common/'
 	import { Carousel,Slide } from 'vue3-carousel'
 	export default {
 		components : {
@@ -99,13 +99,11 @@
 				}
 			}
 		},
+		mixins: [common_mixin],
 		async created(){
 			await this.getData()
 		},
 		methods : {
-			translateLang(data){
-				return  translate(data);
-			},
 			makeArray(arrayData,newArray){
 				arrayData.forEach( (key) => {
 					if(Object.values(this.feature_products)[key]!==undefined ){

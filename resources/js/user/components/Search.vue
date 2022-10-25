@@ -31,7 +31,7 @@
 <script >
     import ShopImage from './ShopImage';
     import { shop } from '../../store';
-    import { translate } from '../../helpers/general.js'
+    import { common_mixin } from '../../common/'
     export default {
         components : {
             ShopImage
@@ -41,11 +41,7 @@
                 shop
             }
         },
-        methods : {
-            translateLang(data){
-                return  translate(data);
-            }
-        },
+        mixins: [common_mixin],
         props : {
             categories : {
                 type : Object ,

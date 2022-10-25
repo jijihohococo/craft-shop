@@ -574,7 +574,7 @@
 <script >
 	import List from '../components/List'
 	import PriceFilter from '../components/PriceFilter'
-	import { translate } from '../../helpers/general.js'
+	import { common_mixin } from '../../common/'
 	export default {
 		components : {
 			List,
@@ -619,6 +619,7 @@
 		created(){
 			this.main()
 		},
+		mixins: [common_mixin],
 		watch : {
 			$route : {
 				deep : true ,
@@ -646,9 +647,6 @@
 			}
 		},
 		methods : {
-			translateLang(data){
-				return  translate(data);
-			},
 			main(){
 				this.contentId=this.$route.params.content_id==undefined ?
 				this.contentId :

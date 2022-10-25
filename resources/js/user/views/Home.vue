@@ -65,7 +65,7 @@
     import FeatureProducts from '../components/FeatureProducts';
     import Subscribe from '../components/Subscribe';
     import Collections from '../components/Collections';
-    import { translate } from '../../helpers/general.js'
+    import { common_mixin } from '../../common/'
     export default {
       components : {
          Banner,
@@ -75,13 +75,9 @@
          Subscribe,
          Collections
      },
+     mixins: [common_mixin],
      created(){
         window.scrollTo(0, 0);
-    },
-    methods : {
-        translateLang(data){
-            return  translate(data);
-        }
     }
 }
 </script>

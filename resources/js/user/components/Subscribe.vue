@@ -23,12 +23,8 @@
 <!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
-    import { translate } from '../../helpers/general.js'
+    import { common_mixin } from '../../common/'
 	export default {
-        methods : {
-        translateLang(data){
-            return  translate(data);
-        }
-    }
+        mixins: [common_mixin]
     }
 </script>

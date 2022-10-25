@@ -57,7 +57,9 @@
 </template>
 <script >
 	import PageTitle from '../components/PageTitle'
-	import { translate } from '../../helpers/general'
+
+	import { common_mixin } from '../../common/'
+
 	export default {
 		components : {
 			PageTitle
@@ -71,6 +73,7 @@
 				errors : {}
 			}
 		},
+		mixins: [common_mixin],
 		methods : {
 			login(){
 				window.axios.post('login',this.fields).then( (response) => {
@@ -80,9 +83,6 @@
 						this.errors= error.response.data.errors
 					}
 				} )
-			},
-			translateLang(data){
-				return  translate(data);
 			}
 		}
 

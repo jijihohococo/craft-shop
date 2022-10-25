@@ -87,7 +87,7 @@
 
 	import { userLogin } from '../../store';
 
-	import { translate } from '../../helpers/general'
+	import { common_mixin } from '../../common/'
 
 	export default {
 		components: {
@@ -103,6 +103,7 @@
 				shopping_cart_items : {}
 			}
 		},
+		mixins: [common_mixin],
 		methods : {
 			async getCategories(){
 				window.axios.get( 'categories' ).then( (response) => {
@@ -118,9 +119,6 @@
 				window.axios.get('get_wish_number').then( (response) => {
 					this.number_of_wish=response.data.number_of_wish
 				} )
-			},
-			translateLang(data){
-				return  translate(data);
 			}
 		},
 		async created(){

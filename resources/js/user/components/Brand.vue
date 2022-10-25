@@ -38,6 +38,7 @@
 	import { translate } from '../../helpers/general.js'
 	import { Carousel, Slide } from 'vue3-carousel'
 	import VLazyImage from "v-lazy-image"
+	import { common_mixin } from '../../common/'
 	export default {
 		components : {
 			Carousel,
@@ -63,10 +64,8 @@
 				}
 			}
 		},
+		mixins: [common_mixin],
 		methods :{
-			translateLang(data){
-				return  translate(data);
-			},
 			getBrands(){
 				window.axios.get( 'brands' ).then(( response ) =>  {
 					this.brands=response.data.brands
