@@ -36,36 +36,21 @@
 </template>
 <script >
 
-	import ContentHeader from '../components/ContentHeader';
-
 	import { checkContentPermission , errorResponse } from '../helpers/check';
 
 	import { showSwalLoading } from  '../../helpers/general'
 
-	import Error from '../components/Error'
+	import { mixin } from '../common/'
 	
 	export default {
-		components: {
-			ContentHeader,
-			Error
-		},
+		mixins: [mixin],
 		data(){
 			return {
 				content : 'Tax',
 				fields : {
 					name : '',
 					rate : ''
-				},
-				errors : {
-					error_status : 0 ,
-					error_title : '',
-					error_description : ''
-				},
-				actions : {
-					create : '',
-					update : ''
-				},
-				current : null
+				}
 			}
 		},
 		async created(){

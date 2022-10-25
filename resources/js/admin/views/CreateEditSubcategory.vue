@@ -39,22 +39,19 @@
 </template>
 <script >
 
-	import ContentHeader from '../components/ContentHeader';
-
 	import { errorResponse , checkContentPermission } from '../helpers/check';
 
 	import { showSwalLoading } from  '../../helpers/general'
 
-	import Error from '../components/Error'
-
 	import Select from '../components/Select'
+
+	import { mixin } from '../common/'
 	
 	export default {
 		components: {
-			ContentHeader,
-			Error,
 			Select
 		},
+		mixins: [mixin],
 		data(){
 			return {
 				content : 'Subcategory',
@@ -62,17 +59,7 @@
 				fields : {
 					name : '',
 					category_id : ''
-				},
-				errors : {
-					error_status : 0 ,
-					error_title : '',
-					error_description : ''
-				},
-				actions : {
-					create : '',
-					update : ''
-				},
-				current : null
+				}
 			}
 		},
 		async created(){

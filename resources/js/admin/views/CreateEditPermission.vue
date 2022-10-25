@@ -45,18 +45,17 @@
 </template>
 <script >
 
-	import ContentHeader from '../components/ContentHeader';
 	import Select from '../components/Select';
-	import Error from '../components/Error';
+	
 	import { errorResponse , checkContentPermission } from '../helpers/check';
 	import { showSwalLoading } from  '../../helpers/general'
+	import { mixin } from '../common/'
 
 	export default {
 		components: {
-			ContentHeader,
-			Select,
-			Error
+			Select
 		},
+		mixins: [mixin],
 		data(){
 			return {
 				content : 'Permission',
@@ -69,16 +68,6 @@
 					update : false ,
 					delete : false ,
 				},
-				errors : {
-					error_status : 0 ,
-					error_title : '',
-					error_description : ''
-				},
-				actions : {
-					create : '',
-					update : ''
-				},
-				current : null,
 				contents : [
 				'Permission',
 				'Shop',

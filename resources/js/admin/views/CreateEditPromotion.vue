@@ -46,18 +46,14 @@
 
 	import { ref, onMounted } from 'vue';
 
-	import ContentHeader from '../components/ContentHeader';
-
 	import { errorResponse , checkContentPermission , dateFormat } from '../helpers/check';
 
 	import { showSwalLoading } from  '../../helpers/general'
 
-	import Error from '../components/Error'
+	import { mixin } from '../common/'
 
 	export default {
-		components: { 
-			ContentHeader,
-			Error,
+		components: {
 			Datepicker
 		},
 		setup() {
@@ -74,6 +70,7 @@
         	date,
         }
     },
+    mixins: [mixin],
     data() {
     	return {
     		content : 'Promotion',
@@ -83,21 +80,7 @@
     			promotion_start_time : null,
     			promotion_end_time : null ,
     			promo_code : ''
-    		},
-    		errors : {
-    			error_status : 0 ,
-    			error_title : '',
-    			error_description : ''
-    		},
-    		actions : {
-    			create : '',
-    			update : ''
-    		},
-    		actions : {
-    			create : '',
-    			update : ''
-    		},
-    		current : null
+    		}
     	}
     },
     async created(){

@@ -62,24 +62,21 @@
 </template>
 <script >
 
-	import ContentHeader from '../components/ContentHeader';
-
 	import { errorResponse , checkContentPermission , mergeArray } from '../helpers/check';
 
 	import { showSwalLoading } from  '../../helpers/general'
 
-	import Error from '../components/Error'
-
 	import SelectMultiple from '../components/SelectMultiple';
 
 	import { admin } from '../../store';
+
+	import { mixin } from '../common/'
 	
 	export default {
 		components: {
-			ContentHeader,
-			Error,
 			SelectMultiple
 		},
+		mixins: [mixin],
 		data(){
 			return {
 				admin ,
@@ -93,16 +90,6 @@
 					password_confirmation : '',
 					roles : []
 				},
-				errors : {
-					error_status : 0 ,
-					error_title : '',
-					error_description : ''
-				},
-				actions : {
-					create : '',
-					update : ''
-				},
-				current : null
 			}
 		},
 		async created(){

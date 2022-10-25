@@ -31,35 +31,20 @@
 </template>
 <script >
 
-	import ContentHeader from '../components/ContentHeader';
-
 	import { errorResponse , checkContentPermission } from '../helpers/check';
 
 	import { showSwalLoading } from  '../../helpers/general'
 
-	import Error from '../components/Error'
+	import { mixin } from '../common/'
 	
 	export default {
-		components: {
-			ContentHeader,
-			Error
-		},
+		mixins: [mixin],
 		data(){
 			return {
 				content : 'Category',
 				fields : {
 					name : ''
-				},
-				errors : {
-					error_status : 0 ,
-					error_title : '',
-					error_description : ''
-				},
-				actions : {
-					create : '',
-					update : ''
-				},
-				current : null
+				}
 			}
 		},
 		async created(){

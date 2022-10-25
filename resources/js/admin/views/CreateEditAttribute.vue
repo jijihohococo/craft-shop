@@ -48,6 +48,8 @@
 	import Error from '../components/Error'
 
 	import AttributeSet from '../components/AttributeSet'
+
+	import { mixin } from '../common/'
 	
 	export default {
 		components: {
@@ -55,6 +57,7 @@
 			Error,
 			AttributeSet
 		},
+		mixins: [mixin],
 		data(){
 			return {
 				content : 'Attribute',
@@ -62,17 +65,7 @@
 					name : '',
 					sets : []
 				},
-				formData : new FormData ,
-				errors : {
-					error_status : 0 ,
-					error_title : '',
-					error_description : ''
-				},
-				actions : {
-					create : '',
-					update : ''
-				},
-				current : null
+				formData : new FormData
 			}
 		},
 		async created(){

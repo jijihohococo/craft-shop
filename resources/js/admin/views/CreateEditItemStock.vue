@@ -39,19 +39,15 @@
 	</section>
 </template>
 <script >
-	import Error from '../components/Error'
-
-	import ContentHeader from '../components/ContentHeader'
 
 	import { errorResponse , checkContentPermission , getItemColor } from '../helpers/check';
 
 	import { showSwalLoading } from  '../../helpers/general'
 
+	import { mixin } from '../common/'
+
 	export default {
-		components: {
-			ContentHeader,
-			Error
-		},
+		mixins: [mixin],
 		data(){
 			return {
 				content : 'ItemStock',
@@ -63,17 +59,7 @@
 					stock : 0 ,
 					qty : '',
 					available_stock : ''
-				},
-				errors : {
-					error_status : 0 ,
-					error_title : '',
-					error_description : ''
-				},
-				actions : {
-					create : '',
-					update : ''
-				},
-				current : null
+				}
 			}
 		},
 		async created(){

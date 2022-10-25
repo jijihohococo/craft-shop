@@ -57,25 +57,23 @@
 	
 </template>
 <script >
-	import ContentHeader from '../components/ContentHeader';
 
 	import { errorResponse , checkContentPermission , mergeArray } from '../helpers/check';
 
 	import { showSwalLoading } from  '../../helpers/general'
 
-	import Error from '../components/Error'
-
 	import File from '../components/File'
 
 	import SelectMultiple from '../components/SelectMultiple';
 
+	import { mixin } from '../common/'
+
 	export default {
 		components: {
-			ContentHeader,
-			Error,
 			File,
 			SelectMultiple
 		},
+		mixins: [mixin],
 		data(){
 			return {
 				content : 'Collection',
@@ -87,17 +85,7 @@
 					pics : [] ,
 					count : 0
 				},
-				formData : new FormData ,
-				errors : {
-					error_status : 0 ,
-					error_title : '',
-					error_description : ''
-				},
-				actions : {
-					create : '',
-					update : ''
-				},
-				current : null
+				formData : new FormData
 			}
 		},
 		async created(){

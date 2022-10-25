@@ -93,87 +93,23 @@
 </template>
 <script >
 
-    import Pagination from '../../components/Pagination';
-
-    import Delete from '../components/Delete';
-
-    import DeleteAllCheck from '../components/DeleteAllCheck';
-
-    import ContentHeader from '../components/ContentHeader';
-
-    import CreateButton from '../components/CreateButton';
-
-    import EditButton from '../components/EditButton';
-
-    import ViewButton from '../components/ViewButton';
-
-    import Error from '../components/Error';
-
-    import DeleteCheck from '../components/DeleteCheck';
-
-    import Trash from '../components/Trash';
-
-    import DeleteMultiple from '../components/DeleteMultiple';
-
-    import Search from '../components/Search';
-
-    import { errorResponse , checkContentPermission , makeSelect , makeRoute , checkActions , deleteFromArray , unauthorizedActions , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
 
     import { showSwalLoading } from  '../../helpers/general'
 
+    import { mixin } from '../common/data_list';
+
     export default {
-        components: {
-            Search,
-            Pagination,
-            ContentHeader,
-            Delete,
-            CreateButton,
-            EditButton,
-            ViewButton,
-            Error,
-            DeleteCheck,
-            Trash,
-            DeleteMultiple,
-            DeleteAllCheck
-        },
         data () {
            return {
             content : 'Category',
-            deleteData : [],
-            multipleData : [] ,
-            categories : {},
-            currentPage : 1 ,
-            search : null ,
-            actions : {
-                create : '' ,
-                read : '' ,
-                update : '' ,
-                delete : ''
-            }
+            categories : {}
         }
     },
+    mixins: [mixin],
     methods :{
         freshPage(){
             this.getCategories( showPageNumber(this.currentPage) )
-        },
-        checkAuthorizeActions(actions){
-            return checkActions(actions);
-        },
-        checkUnauthorizeActions(actions){
-            return unauthorizedActions(actions);
-        },
-        selectChecks(){
-            if(this.$refs.deleteCheck!==undefined){
-                makeSelect(this.$refs.deleteCheck,true)
-            }
-        },
-        cancelChecks(){
-            if(this.$refs.deleteCheck!==undefined){
-                makeSelect(this.$refs.deleteCheck,false)
-            }
-        },
-        updateData(object){
-            deleteFromArray(this.categories.data,object)
         },
         getCategories(page){
             window.axios.get(makeRoute(this,page,'category') + page ).then(( response ) =>  {

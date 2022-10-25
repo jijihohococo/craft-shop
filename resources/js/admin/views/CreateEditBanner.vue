@@ -59,25 +59,23 @@
 	
 </template>
 <script >
-	import ContentHeader from '../components/ContentHeader';
 
 	import { errorResponse , checkContentPermission } from '../helpers/check';
 
 	import { showSwalLoading } from  '../../helpers/general'
 
-	import Error from '../components/Error'
-
 	import File from '../components/File'
 
 	import Select from '../components/Select'
 
+	import { mixin } from '../common/'
+
 	export default {
 		components: {
-			ContentHeader,
-			Error,
 			File,
 			Select
 		},
+		mixins: [mixin],
 		data(){
 			return {
 				content : 'Banner',
@@ -91,16 +89,6 @@
 					content_id : null
 				},
 				formData : new FormData ,
-				errors : {
-					error_status : 0 ,
-					error_title : '',
-					error_description : ''
-				},
-				actions : {
-					create : '',
-					update : ''
-				},
-				current : null,
 				contents : [
 				'Category',
 				'Subcategory',

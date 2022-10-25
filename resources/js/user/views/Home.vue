@@ -59,7 +59,6 @@
     <!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
-    import Preloader from '../components/Preloader';
 	import Banner from '../components/Banner';
     import Brand from '../components/Brand';
     import ItemSlider from '../components/ItemSlider';
@@ -69,7 +68,6 @@
     import { translate } from '../../helpers/general.js'
     export default {
       components : {
-         Preloader,
          Banner,
          Brand,
          ItemSlider,

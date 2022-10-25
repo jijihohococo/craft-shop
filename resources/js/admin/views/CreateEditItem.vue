@@ -103,13 +103,9 @@
 </template>
 <script >
 
-	import ContentHeader from '../components/ContentHeader';
-
 	import { errorResponse , checkContentPermission } from '../helpers/check';
 
 	import { showSwalLoading } from  '../../helpers/general'
-
-	import Error from '../components/Error'
 
 	//import File from '../components/File'
 
@@ -119,15 +115,16 @@
 
 	import AddRemoveDependentSelect from '../components/AddRemoveDependentSelect';
 
+	import { mixin } from '../common/'
+
 	export default {
 		components: {
-			ContentHeader,
-			Error,
 			//File,
 			SelectMultiple,
 			Select,
 			AddRemoveDependentSelect
 		},
+		mixins: [mixin],
 		data(){
 			return {
 				content : 'Item',
@@ -150,16 +147,6 @@
 					attributes : []
 				},
 				formData : new FormData ,
-				errors : {
-					error_status : 0 ,
-					error_title : '',
-					error_description : ''
-				},
-				actions : {
-					create : '',
-					update : ''
-				},
-				current : null ,
 				old_subcategory_id : '' 
 			}
 		},

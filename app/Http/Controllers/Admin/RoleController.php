@@ -99,10 +99,10 @@ class RoleController extends CommonController
         return response()->json([
             'role' => $role ,
             'permissions' => DB::table('permissions')
-            ->select('id')->whereIn('id',function($query) use ($id){
+            ->select('id')->whereIn('id',function($query) use ($role){
                 $query->select('permission_id')
                 ->from('role_permissions')
-                ->where('role_permissions.role_id',$id);
+                ->where('role_permissions.role_id',$role->id);
             })->where('permissions.deleted_at',null)
             ->get()
         ]);

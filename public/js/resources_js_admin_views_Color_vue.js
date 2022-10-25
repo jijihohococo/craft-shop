@@ -376,122 +376,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_Pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/Pagination */ "./resources/js/components/Pagination.vue");
-/* harmony import */ var _components_Delete__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Delete */ "./resources/js/admin/components/Delete.vue");
-/* harmony import */ var _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/DeleteAllCheck */ "./resources/js/admin/components/DeleteAllCheck.vue");
-/* harmony import */ var _components_ContentHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/ContentHeader */ "./resources/js/admin/components/ContentHeader.vue");
-/* harmony import */ var _components_CreateButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/CreateButton */ "./resources/js/admin/components/CreateButton.vue");
-/* harmony import */ var _components_EditButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/EditButton */ "./resources/js/admin/components/EditButton.vue");
-/* harmony import */ var _components_ViewButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/ViewButton */ "./resources/js/admin/components/ViewButton.vue");
-/* harmony import */ var _components_Error__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Error */ "./resources/js/admin/components/Error.vue");
-/* harmony import */ var _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/DeleteCheck */ "./resources/js/admin/components/DeleteCheck.vue");
-/* harmony import */ var _components_Trash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Trash */ "./resources/js/admin/components/Trash.vue");
-/* harmony import */ var _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/DeleteMultiple */ "./resources/js/admin/components/DeleteMultiple.vue");
-/* harmony import */ var _components_Search__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/Search */ "./resources/js/admin/components/Search.vue");
-/* harmony import */ var _helpers_check__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../helpers/check */ "./resources/js/admin/helpers/check.js");
-/* harmony import */ var _helpers_general__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../helpers/general */ "./resources/js/helpers/general.js");
-
-
-
-
-
-
-
-
-
-
-
+/* harmony import */ var _helpers_check__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/check */ "./resources/js/admin/helpers/check.js");
+/* harmony import */ var _helpers_general__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/general */ "./resources/js/helpers/general.js");
+/* harmony import */ var _common_data_list__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/data_list */ "./resources/js/admin/common/data_list.js");
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    Search: _components_Search__WEBPACK_IMPORTED_MODULE_11__["default"],
-    Pagination: _components_Pagination__WEBPACK_IMPORTED_MODULE_0__["default"],
-    ContentHeader: _components_ContentHeader__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Delete: _components_Delete__WEBPACK_IMPORTED_MODULE_1__["default"],
-    CreateButton: _components_CreateButton__WEBPACK_IMPORTED_MODULE_4__["default"],
-    EditButton: _components_EditButton__WEBPACK_IMPORTED_MODULE_5__["default"],
-    ViewButton: _components_ViewButton__WEBPACK_IMPORTED_MODULE_6__["default"],
-    Error: _components_Error__WEBPACK_IMPORTED_MODULE_7__["default"],
-    DeleteCheck: _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_8__["default"],
-    Trash: _components_Trash__WEBPACK_IMPORTED_MODULE_9__["default"],
-    DeleteMultiple: _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_10__["default"],
-    DeleteAllCheck: _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_2__["default"]
-  },
   data: function data() {
     return {
       content: 'Color',
-      deleteData: [],
-      multipleData: [],
-      colors: {},
-      search: null,
-      currentPage: 1,
-      actions: {
-        create: '',
-        read: '',
-        update: '',
-        "delete": ''
-      }
+      colors: {}
     };
   },
+  mixins: [_common_data_list__WEBPACK_IMPORTED_MODULE_2__.mixin],
   methods: {
     freshPage: function freshPage() {
-      this.getColors((0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.showPageNumber)(this.currentPage));
-    },
-    checkAuthorizeActions: function checkAuthorizeActions(actions) {
-      return (0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.checkActions)(actions);
-    },
-    checkUnauthorizeActions: function checkUnauthorizeActions(actions) {
-      return (0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.unauthorizedActions)(actions);
-    },
-    selectChecks: function selectChecks() {
-      if (this.$refs.deleteCheck !== undefined) {
-        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.makeSelect)(this.$refs.deleteCheck, true);
-      }
-    },
-    cancelChecks: function cancelChecks() {
-      if (this.$refs.deleteCheck !== undefined) {
-        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.makeSelect)(this.$refs.deleteCheck, false);
-      }
-    },
-    updateData: function updateData(object) {
-      (0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.deleteFromArray)(this.colors.data, object);
+      this.getColors((0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.showPageNumber)(this.currentPage));
     },
     getColors: function getColors(page) {
       var _this = this;
 
-      window.axios.get((0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.makeRoute)(this, page, 'color') + page).then(function (response) {
+      window.axios.get((0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.makeRoute)(this, page, 'color') + page).then(function (response) {
         if (response.data.message == 'Loading') {
-          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this);
+          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this);
         } else {
           _this.colors = response.data.colors;
           _this.actions.read = true;
         }
       })["catch"](function (error) {
-        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.errorResponse)(error, _this, 'read');
+        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this, 'read');
       });
     },
     searchColors: function searchColors(page) {
       var _this2 = this;
 
-      window.axios.get((0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.makeRoute)(this, page, 'color', 'search') + this.search + '&page=' + page).then(function (response) {
+      window.axios.get((0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.makeRoute)(this, page, 'color', 'search') + this.search + '&page=' + page).then(function (response) {
         if (response.data.message == 'Loading') {
-          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_13__.showSwalLoading)(_this2);
+          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this2);
         } else {
           _this2.colors = response.data.colors;
           _this2.actions.read = true;
         }
       })["catch"](function (error) {
-        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.errorResponse)(error, _this2, 'read');
+        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this2, 'read');
       });
     }
   },
   mounted: function mounted() {
     this.getColors(1);
-    (0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.checkContentPermission)(this.content, 'create', this);
-    (0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.checkContentPermission)(this.content, 'update', this);
-    (0,_helpers_check__WEBPACK_IMPORTED_MODULE_12__.checkContentPermission)(this.content, 'delete', this);
+    (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.checkContentPermission)(this.content, 'create', this);
+    (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.checkContentPermission)(this.content, 'update', this);
+    (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.checkContentPermission)(this.content, 'delete', this);
   }
 });
 
@@ -1192,13 +1128,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     header: $data.content
   }, null, 8
   /* PROPS */
-  , ["header"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), $options.checkAuthorizeActions($data.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Search, {
-    read: $data.actions.read,
+  , ["header"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), _ctx.checkAuthorizeActions(_ctx.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Search, {
+    read: _ctx.actions.read,
     ref: "searchModal",
     onSearchData: $options.searchColors
   }, null, 8
   /* PROPS */
-  , ["read", "onSearchData"]), $data.actions.create ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CreateButton, {
+  , ["read", "onSearchData"]), _ctx.actions.create ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CreateButton, {
     key: 0,
     content: $data.content,
     link: "/admin/color/create"
@@ -1208,28 +1144,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     route: this.$route,
     router: this.$router,
     content: "color",
-    deleteArrayData: $data.deleteData,
-    objectArrayData: $data.multipleData,
+    deleteArrayData: _ctx.deleteData,
+    objectArrayData: _ctx.multipleData,
     onGetData: $options.getColors
   }, null, 8
   /* PROPS */
-  , ["route", "router", "deleteArrayData", "objectArrayData", "onGetData"]), $data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteMultiple, {
+  , ["route", "router", "deleteArrayData", "objectArrayData", "onGetData"]), _ctx.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteMultiple, {
     key: 0,
-    deleteArrayData: $data.deleteData,
-    objectArrayData: $data.multipleData,
+    deleteArrayData: _ctx.deleteData,
+    objectArrayData: _ctx.multipleData,
     routeName: this.$route.name,
     mainData: $data.colors.data,
     request: "colors",
     onFreshData: $options.freshPage
   }, null, 8
   /* PROPS */
-  , ["deleteArrayData", "objectArrayData", "routeName", "mainData", "onFreshData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), $data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  , ["deleteArrayData", "objectArrayData", "routeName", "mainData", "onFreshData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), _ctx.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [$data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteAllCheck, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [_ctx.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteAllCheck, {
     key: 0,
-    deleteArrayData: $data.deleteData,
-    onSelectAll: $options.selectChecks,
-    onCancelAll: $options.cancelChecks,
+    deleteArrayData: _ctx.deleteData,
+    onSelectAll: _ctx.selectChecks,
+    onCancelAll: _ctx.cancelChecks,
     lengthData: $data.colors.data.length,
     ref: "deleteAll"
   }, null, 8
@@ -1237,11 +1173,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["deleteArrayData", "onSelectAll", "onCancelAll", "lengthData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.colors.data, function (color) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: color.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [$data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteCheck, {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [_ctx.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteCheck, {
       key: 0,
       objectData: color,
-      deleteArrayData: $data.deleteData,
-      objectArrayData: $data.multipleData,
+      deleteArrayData: _ctx.deleteData,
+      objectArrayData: _ctx.multipleData,
       ref_for: true,
       ref: "deleteCheck"
     }, null, 8
@@ -1264,14 +1200,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       data_id: color.id
     }, null, 8
     /* PROPS */
-    , ["data_name", "data_model", "data_id"]), $data.actions.update && color.deleted_at == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_EditButton, {
+    , ["data_name", "data_model", "data_id"]), _ctx.actions.update && color.deleted_at == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_EditButton, {
       key: 0,
       content: $data.content,
       link: "color.edit",
       dataId: color.id
     }, null, 8
     /* PROPS */
-    , ["content", "dataId"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Delete, {
+    , ["content", "dataId"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Delete, {
       key: 1,
       content: $data.content,
       deleteAt: color.deleted_at,
@@ -1279,18 +1215,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       restoreLink: 'color_restore/' + color.id,
       id: color.id,
       objectData: color,
-      onUpdate: $options.updateData
+      onUpdate: _ctx.updateData
     }, null, 8
     /* PROPS */
     , ["content", "deleteAt", "deleteLink", "restoreLink", "id", "objectData", "onUpdate"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
-    page: $data.currentPage,
+    page: _ctx.currentPage,
     lastPage: $data.colors.last_page,
     onGetData: $options.getColors,
     onSearchData: $options.searchColors,
-    search: $data.search,
+    search: _ctx.search,
     from: $data.colors.from,
     to: $data.colors.to,
     total: $data.colors.total
@@ -1298,7 +1234,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["page", "lastPage", "onGetData", "onSearchData", "search", "from", "to", "total"])])], 64
   /* STABLE_FRAGMENT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")])])) : $options.checkUnauthorizeActions($data.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")])])) : _ctx.checkUnauthorizeActions(_ctx.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
     httpStatus: 403,
@@ -1578,6 +1514,118 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* CLASS */
   )]);
 }
+
+/***/ }),
+
+/***/ "./resources/js/admin/common/data_list.js":
+/*!************************************************!*\
+  !*** ./resources/js/admin/common/data_list.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "mixin": () => (/* binding */ mixin)
+/* harmony export */ });
+/* harmony import */ var _helpers_check__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/check */ "./resources/js/admin/helpers/check.js");
+/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main */ "./resources/js/admin/common/main.js");
+/* harmony import */ var _components_Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Pagination */ "./resources/js/components/Pagination.vue");
+/* harmony import */ var _components_Delete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Delete */ "./resources/js/admin/components/Delete.vue");
+/* harmony import */ var _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/DeleteAllCheck */ "./resources/js/admin/components/DeleteAllCheck.vue");
+/* harmony import */ var _components_CreateButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/CreateButton */ "./resources/js/admin/components/CreateButton.vue");
+/* harmony import */ var _components_EditButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/EditButton */ "./resources/js/admin/components/EditButton.vue");
+/* harmony import */ var _components_ViewButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/ViewButton */ "./resources/js/admin/components/ViewButton.vue");
+/* harmony import */ var _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/DeleteCheck */ "./resources/js/admin/components/DeleteCheck.vue");
+/* harmony import */ var _components_Trash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Trash */ "./resources/js/admin/components/Trash.vue");
+/* harmony import */ var _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/DeleteMultiple */ "./resources/js/admin/components/DeleteMultiple.vue");
+/* harmony import */ var _components_Search__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/Search */ "./resources/js/admin/components/Search.vue");
+
+
+
+
+
+
+
+
+
+
+
+
+var mixin = {
+  mixins: [_main__WEBPACK_IMPORTED_MODULE_1__.mainMixinData],
+  components: {
+    Search: _components_Search__WEBPACK_IMPORTED_MODULE_11__["default"],
+    Pagination: _components_Pagination__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Delete: _components_Delete__WEBPACK_IMPORTED_MODULE_3__["default"],
+    CreateButton: _components_CreateButton__WEBPACK_IMPORTED_MODULE_5__["default"],
+    EditButton: _components_EditButton__WEBPACK_IMPORTED_MODULE_6__["default"],
+    ViewButton: _components_ViewButton__WEBPACK_IMPORTED_MODULE_7__["default"],
+    DeleteCheck: _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_8__["default"],
+    Trash: _components_Trash__WEBPACK_IMPORTED_MODULE_9__["default"],
+    DeleteMultiple: _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_10__["default"],
+    DeleteAllCheck: _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_4__["default"]
+  },
+  data: function data() {
+    return {
+      deleteData: [],
+      multipleData: [],
+      search: null,
+      currentPage: 1,
+      actions: {
+        create: '',
+        read: '',
+        update: '',
+        "delete": ''
+      }
+    };
+  },
+  methods: {
+    checkAuthorizeActions: function checkAuthorizeActions(actions) {
+      return (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.checkActions)(actions);
+    },
+    checkUnauthorizeActions: function checkUnauthorizeActions(actions) {
+      return (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.unauthorizedActions)(actions);
+    },
+    selectChecks: function selectChecks() {
+      if (this.$refs.deleteCheck !== undefined) {
+        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.makeSelect)(this.$refs.deleteCheck, true);
+      }
+    },
+    cancelChecks: function cancelChecks() {
+      if (this.$refs.deleteCheck !== undefined) {
+        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.makeSelect)(this.$refs.deleteCheck, false);
+      }
+    },
+    updateData: function updateData(object) {
+      (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.deleteFromArray)(this.admins.data, object);
+    }
+  }
+};
+
+/***/ }),
+
+/***/ "./resources/js/admin/common/main.js":
+/*!*******************************************!*\
+  !*** ./resources/js/admin/common/main.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "mainMixinData": () => (/* binding */ mainMixinData)
+/* harmony export */ });
+/* harmony import */ var _components_ContentHeader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/ContentHeader */ "./resources/js/admin/components/ContentHeader.vue");
+/* harmony import */ var _components_Error__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Error */ "./resources/js/admin/components/Error.vue");
+
+
+var mainMixinData = {
+  components: {
+    ContentHeader: _components_ContentHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Error: _components_Error__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }
+};
 
 /***/ }),
 
