@@ -1,24 +1,26 @@
 <template>
 	<div v-if="normal_price!==sale_price" class="product_price">
 		<span class="price">
-			{{ showItemPrice(sale_price) }} MMK
+			{{ thousandSeprator(showItemPrice(sale_price)) }} MMK
 		</span>
-		<del>{{ showItemPrice(normal_price) }} MMK</del>
+		<del>{{ thousandSeprator(showItemPrice(normal_price)) }} MMK</del>
 		<div class="on_sale">
 			<span>{{ showItemPrice(showItemPromotionPercentage(normal_price,sale_price)) }}% Off</span>
 		</div>
 	</div>
 	<div v-else class="product_price">
 		<span class="price">
-			{{ showItemPrice(sale_price) }} MMK
+			{{ thousandSeprator(showItemPrice(sale_price)) }} MMK
 		</span>
 	</div>
 </template>
 
 <script >
 	import { showPrice,showPromotionPercentage } from '../helpers/general.js';
+	import { common_mixin } from '../../common/'
 	export default {
 		props : ['normal_price','sale_price'] ,
+		mixins: [common_mixin],
 		methods : {
 			showItemPrice(price){
 				return showPrice(price)

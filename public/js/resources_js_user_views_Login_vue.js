@@ -289,57 +289,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "common_mixin": () => (/* binding */ common_mixin)
 /* harmony export */ });
-/* harmony import */ var _helpers_general_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/general.js */ "./resources/js/helpers/general.js");
+/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store.js */ "./resources/js/store.js");
 
 var common_mixin = {
+  data: function data() {
+    return {
+      userLang: _store_js__WEBPACK_IMPORTED_MODULE_0__.userLang
+    };
+  },
   methods: {
     translateLang: function translateLang(data) {
-      return (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_0__.translate)(data);
+      var file = __webpack_require__("./resources/js/lang sync recursive ^\\.\\/.*\\/data\\.json$")("./" + this.userLang.data + "/data.json");
+
+      return file[data];
+    },
+    thousandSeprator: function thousandSeprator(x) {
+      return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
   }
 };
-
-/***/ }),
-
-/***/ "./resources/js/helpers/general.js":
-/*!*****************************************!*\
-  !*** ./resources/js/helpers/general.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
-/* harmony export */   "thousandSeprator": () => (/* binding */ thousandSeprator),
-/* harmony export */   "translate": () => (/* binding */ translate)
-/* harmony export */ });
-/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store.js */ "./resources/js/store.js");
-
-function thousandSeprator(x) {
-  return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-function translate(data) {
-  var file = __webpack_require__("./resources/js/lang sync recursive ^\\.\\/.*\\/data\\.json$")("./" + _store_js__WEBPACK_IMPORTED_MODULE_0__.userLang.data + "/data.json");
-
-  return file[data];
-}
-function showSwalLoading(object) {
-  object.$swal({
-    title: 'Now loading',
-    html: '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>',
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    timer: 2000,
-    onOpen: function onOpen() {
-      swal.showLoading();
-    }
-  }).then(function () {}, function (dismiss) {
-    if (dismiss === 'timer') {
-      object.$swal.close;
-    }
-  });
-}
 
 /***/ }),
 
