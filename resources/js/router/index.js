@@ -26,6 +26,9 @@ import subcategoryRoutes from './admin/subcategory';
 import promotionRoutes from './admin/promotion';
 import collectionRoutes from './admin/collection';
 import socialMediaRoutes from './admin/social_media';
+import countryRoutes from './admin/country';
+import stateRoutes from './admin/state';
+import cityRoutes from './admin/city';
 //------ADMIN ROUTES------//
 
 
@@ -78,7 +81,10 @@ const router = createRouter({
     ...colorRoutes,
     ...promotionRoutes,
     ...collectionRoutes,
-    ...socialMediaRoutes
+    ...socialMediaRoutes,
+    ...countryRoutes,
+    ...stateRoutes,
+    ...cityRoutes
     ]
   }
   ]

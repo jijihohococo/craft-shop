@@ -87,6 +87,8 @@
 				'Attribute',
 				'Color',
 				'Country',
+				'State',
+				'City',
 				'Order',
 				'Promotion',
 				'Collection',

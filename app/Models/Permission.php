@@ -38,6 +38,8 @@ class Permission extends TransactionModel
             'Attribute',
             'Color',
             'Country',
+            'State',
+            'City',
             'Order',
             'Promotion',
             'Collection',

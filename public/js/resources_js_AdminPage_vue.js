@@ -127,12 +127,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'subcategory': "Subcategory",
         'brand': "Brand",
         'color': "Color",
-        'item': "Item",
-        'collection': "Collection",
-        'banner': "Banner",
         'tax': "Tax",
         'target': "Target",
-        'currency': "Currency",
+        'currency': "Currency"
+      },
+      countryAndStateRoutes: {
+        'country': "Country",
+        'state': "State",
+        'city': "City"
+      },
+      productRoutes: {
+        'item': 'Item',
+        'collection': "Collection",
+        'banner': "Banner",
         'promotion': "Promotion"
       },
       roleAndPermissionRoutes: {
@@ -523,6 +530,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     currentRoute: $options.currentRoute,
     dataRoutes: $data.dataRoutes,
     title: "Data"
+  }, null, 8
+  /* PROPS */
+  , ["currentRoute", "dataRoutes"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SubMenu, {
+    currentRoute: $options.currentRoute,
+    dataRoutes: $data.countryAndStateRoutes,
+    title: "Countries And States"
+  }, null, 8
+  /* PROPS */
+  , ["currentRoute", "dataRoutes"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SubMenu, {
+    currentRoute: $options.currentRoute,
+    dataRoutes: $data.productRoutes,
+    title: "Product"
   }, null, 8
   /* PROPS */
   , ["currentRoute", "dataRoutes"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SubMenu, {

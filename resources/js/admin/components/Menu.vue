@@ -33,6 +33,10 @@
           	with font-awesome or any other icon font library -->
           	<SubMenu :currentRoute="currentRoute"  :dataRoutes="dataRoutes" title="Data"  />
 
+            <SubMenu :currentRoute="currentRoute"  :dataRoutes="countryAndStateRoutes" title="Countries And States"  />            
+
+            <SubMenu :currentRoute="currentRoute" :dataRoutes="productRoutes" title="Product" />
+
             <SubMenu :currentRoute="currentRoute"  :dataRoutes="roleAndPermissionRoutes" title="Role And Permission"  />
 
             <SubMenu :currentRoute="currentRoute"  :dataRoutes="processRoutes" title="Process"  />
@@ -78,12 +82,19 @@
       'subcategory' : "Subcategory",
       'brand' : "Brand" ,
       'color' : "Color",
-      'item' : "Item" ,
-      'collection' : "Collection",
-      'banner' : "Banner",
       'tax' : "Tax",
       'target' : "Target",
-      'currency' : "Currency",
+      'currency' : "Currency"
+    },
+    countryAndStateRoutes : {
+      'country' : "Country",
+      'state'  : "State",
+      'city' : "City"
+    },
+    productRoutes : {
+      'item' : 'Item',
+      'collection' : "Collection",
+      'banner' : "Banner",
       'promotion' : "Promotion"
     },
     roleAndPermissionRoutes : {
