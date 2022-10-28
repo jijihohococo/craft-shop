@@ -592,6 +592,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions)
 /* harmony export */ });
+/* harmony import */ var _helpers_general__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/general */ "./resources/js/helpers/general.js");
+
 function dateFormat(date) {
   return date.getFullYear() + '-' + twoDigits(date.getMonth() + 1) + '-' + twoDigits(date.getDate()) + ' ' + twoDigits(date.getHours()) + ':' + twoDigits(date.getMinutes()) + ':00';
 }
@@ -707,7 +709,7 @@ function deleteFromArray(array, value) {
 function checkContentPermission(content, permission, object) {
   window.axios.get('check_permission/' + content + '/' + permission).then(function (response) {
     if (response.data.message == 'Loading') {
-      showSwalLoading(object);
+      (0,_helpers_general__WEBPACK_IMPORTED_MODULE_0__.showSwalLoading)(object);
     } else {
       object.actions[permission] = true;
     }

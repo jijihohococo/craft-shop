@@ -18,6 +18,8 @@ class CreateCitiesTable extends Migration
             $table->integer('state_id');
             $table->integer('country_id');
             $table->string('name');
+            $table->integer('currency_id');
+            $table->decimal('delivery_price',13,2);
             $table->softDeletes();
             $table->timestamps();
         });

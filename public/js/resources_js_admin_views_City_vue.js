@@ -366,33 +366,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _helpers_check__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/check */ "./resources/js/admin/helpers/check.js");
-/* harmony import */ var _helpers_general__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/general */ "./resources/js/helpers/general.js");
-/* harmony import */ var _common_data_list__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/data_list */ "./resources/js/admin/common/data_list.js");
-
+/* harmony import */ var _common_data_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/data_list */ "./resources/js/admin/common/data_list.js");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       content: 'City',
+      mainData: 'cities',
+      getMethod: 'getCities',
       cities: {}
     };
   },
-  mixins: [_common_data_list__WEBPACK_IMPORTED_MODULE_2__.mixin],
+  mixins: [_common_data_list__WEBPACK_IMPORTED_MODULE_1__.mixin],
   methods: {
-    freshPage: function freshPage() {
-      this.getCities((0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.showPageNumber)(this.currentPage));
-    },
     getCities: function getCities(page) {
       var _this = this;
 
       window.axios.get((0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.makeRoute)(this, page, 'city') + page).then(function (response) {
-        if (response.data.message == 'Loading') {
-          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this);
-        } else {
-          _this.cities = response.data.cities;
-          _this.actions.read = true;
-        }
+        _this.getMainData(response);
       })["catch"](function (error) {
         (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this, 'read');
       });
@@ -401,12 +393,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       window.axios.get((0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.makeRoute)(this, page, 'city', 'search') + this.search + '&page=' + page).then(function (response) {
-        if (response.data.message == 'Loading') {
-          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this2);
-        } else {
-          _this2.cities = response.data.cities;
-          _this2.actions.read = true;
-        }
+        _this2.getMainData(response);
       })["catch"](function (error) {
         (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this2, 'read');
       });
@@ -1057,21 +1044,25 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Deleted At", -1
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Country", -1
 /* HOISTED */
 );
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Operation", -1
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Deleted At", -1
 /* HOISTED */
 );
 
-var _hoisted_14 = {
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Operation", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
   "class": "text-left"
 };
-var _hoisted_15 = {
+var _hoisted_16 = {
   "class": "card-footer clearfix"
 };
-var _hoisted_16 = {
+var _hoisted_17 = {
   "class": "card card-default"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -1131,7 +1122,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     routeName: this.$route.name,
     mainData: $data.cities.data,
     request: "cities",
-    onFreshData: $options.freshPage
+    onFreshData: _ctx.freshPage
   }, null, 8
   /* PROPS */
   , ["deleteArrayData", "objectArrayData", "routeName", "mainData", "onFreshData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-header "), _ctx.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
@@ -1145,7 +1136,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ref: "deleteAll"
   }, null, 8
   /* PROPS */
-  , ["deleteArrayData", "onSelectAll", "onCancelAll", "lengthData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.cities.data, function (city) {
+  , ["deleteArrayData", "onSelectAll", "onCancelAll", "lengthData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13, _hoisted_14])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.cities.data, function (city) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: city.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [_ctx.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DeleteCheck, {
@@ -1161,9 +1152,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(city.state_name), 1
     /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(city.country_name), 1
+    /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(city.deleted_at), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
       data_name: city.name,
       data_model: $data.content,
       data_id: city.id
@@ -1190,7 +1183,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["content", "deleteAt", "deleteLink", "restoreLink", "id", "objectData", "onUpdate"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
+  ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card-body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
     page: _ctx.currentPage,
     lastPage: $data.cities.last_page,
     onGetData: $options.getCities,
@@ -1205,7 +1198,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* STABLE_FRAGMENT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.card ")])])) : _ctx.checkUnauthorizeActions(_ctx.actions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Error, {
     httpStatus: 403,
     title: "Permission Denied",
     description: "You are not allowed to do any permissions for city"
@@ -1496,17 +1489,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "mixin": () => (/* binding */ mixin)
 /* harmony export */ });
 /* harmony import */ var _helpers_check__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/check */ "./resources/js/admin/helpers/check.js");
-/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main */ "./resources/js/admin/common/main.js");
-/* harmony import */ var _components_Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Pagination */ "./resources/js/components/Pagination.vue");
-/* harmony import */ var _components_Delete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Delete */ "./resources/js/admin/components/Delete.vue");
-/* harmony import */ var _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/DeleteAllCheck */ "./resources/js/admin/components/DeleteAllCheck.vue");
-/* harmony import */ var _components_CreateButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/CreateButton */ "./resources/js/admin/components/CreateButton.vue");
-/* harmony import */ var _components_EditButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/EditButton */ "./resources/js/admin/components/EditButton.vue");
-/* harmony import */ var _components_ViewButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/ViewButton */ "./resources/js/admin/components/ViewButton.vue");
-/* harmony import */ var _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/DeleteCheck */ "./resources/js/admin/components/DeleteCheck.vue");
-/* harmony import */ var _components_Trash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Trash */ "./resources/js/admin/components/Trash.vue");
-/* harmony import */ var _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/DeleteMultiple */ "./resources/js/admin/components/DeleteMultiple.vue");
-/* harmony import */ var _components_Search__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/Search */ "./resources/js/admin/components/Search.vue");
+/* harmony import */ var _helpers_general__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/general */ "./resources/js/helpers/general.js");
+/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main */ "./resources/js/admin/common/main.js");
+/* harmony import */ var _components_Pagination__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Pagination */ "./resources/js/components/Pagination.vue");
+/* harmony import */ var _components_Delete__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Delete */ "./resources/js/admin/components/Delete.vue");
+/* harmony import */ var _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/DeleteAllCheck */ "./resources/js/admin/components/DeleteAllCheck.vue");
+/* harmony import */ var _components_CreateButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/CreateButton */ "./resources/js/admin/components/CreateButton.vue");
+/* harmony import */ var _components_EditButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/EditButton */ "./resources/js/admin/components/EditButton.vue");
+/* harmony import */ var _components_ViewButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ViewButton */ "./resources/js/admin/components/ViewButton.vue");
+/* harmony import */ var _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/DeleteCheck */ "./resources/js/admin/components/DeleteCheck.vue");
+/* harmony import */ var _components_Trash__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/Trash */ "./resources/js/admin/components/Trash.vue");
+/* harmony import */ var _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/DeleteMultiple */ "./resources/js/admin/components/DeleteMultiple.vue");
+/* harmony import */ var _components_Search__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/Search */ "./resources/js/admin/components/Search.vue");
+
 
 
 
@@ -1520,21 +1515,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mixin = {
-  mixins: [_main__WEBPACK_IMPORTED_MODULE_1__.mainMixinData],
+  mixins: [_main__WEBPACK_IMPORTED_MODULE_2__.mainMixinData],
   components: {
-    Search: _components_Search__WEBPACK_IMPORTED_MODULE_11__["default"],
-    Pagination: _components_Pagination__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Delete: _components_Delete__WEBPACK_IMPORTED_MODULE_3__["default"],
-    CreateButton: _components_CreateButton__WEBPACK_IMPORTED_MODULE_5__["default"],
-    EditButton: _components_EditButton__WEBPACK_IMPORTED_MODULE_6__["default"],
-    ViewButton: _components_ViewButton__WEBPACK_IMPORTED_MODULE_7__["default"],
-    DeleteCheck: _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_8__["default"],
-    Trash: _components_Trash__WEBPACK_IMPORTED_MODULE_9__["default"],
-    DeleteMultiple: _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_10__["default"],
-    DeleteAllCheck: _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_4__["default"]
+    Search: _components_Search__WEBPACK_IMPORTED_MODULE_12__["default"],
+    Pagination: _components_Pagination__WEBPACK_IMPORTED_MODULE_3__["default"],
+    Delete: _components_Delete__WEBPACK_IMPORTED_MODULE_4__["default"],
+    CreateButton: _components_CreateButton__WEBPACK_IMPORTED_MODULE_6__["default"],
+    EditButton: _components_EditButton__WEBPACK_IMPORTED_MODULE_7__["default"],
+    ViewButton: _components_ViewButton__WEBPACK_IMPORTED_MODULE_8__["default"],
+    DeleteCheck: _components_DeleteCheck__WEBPACK_IMPORTED_MODULE_9__["default"],
+    Trash: _components_Trash__WEBPACK_IMPORTED_MODULE_10__["default"],
+    DeleteMultiple: _components_DeleteMultiple__WEBPACK_IMPORTED_MODULE_11__["default"],
+    DeleteAllCheck: _components_DeleteAllCheck__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   data: function data() {
     return {
+      mainData: '',
+      getMethod: '',
       deleteData: [],
       multipleData: [],
       search: null,
@@ -1564,8 +1561,22 @@ var mixin = {
         (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.makeSelect)(this.$refs.deleteCheck, false);
       }
     },
+    freshPage: function freshPage() {
+      var t = this;
+      t[this.getMethod](showPageNumber(this.currentPage));
+    },
     updateData: function updateData(object) {
-      (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.deleteFromArray)(this.admins.data, object);
+      var t = this;
+      (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.deleteFromArray)(t[this.mainData]['data'], object);
+    },
+    getMainData: function getMainData(response) {
+      if (response.data.message == 'Loading') {
+        (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(this);
+      } else {
+        var t = this;
+        t[this.mainData] = response.data[this.mainData];
+        this.actions.read = true;
+      }
     }
   }
 };
@@ -1621,6 +1632,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showTrashPage": () => (/* binding */ showTrashPage),
 /* harmony export */   "unauthorizedActions": () => (/* binding */ unauthorizedActions)
 /* harmony export */ });
+/* harmony import */ var _helpers_general__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/general */ "./resources/js/helpers/general.js");
+
 function dateFormat(date) {
   return date.getFullYear() + '-' + twoDigits(date.getMonth() + 1) + '-' + twoDigits(date.getDate()) + ' ' + twoDigits(date.getHours()) + ':' + twoDigits(date.getMinutes()) + ':00';
 }
@@ -1736,7 +1749,7 @@ function deleteFromArray(array, value) {
 function checkContentPermission(content, permission, object) {
   window.axios.get('check_permission/' + content + '/' + permission).then(function (response) {
     if (response.data.message == 'Loading') {
-      showSwalLoading(object);
+      (0,_helpers_general__WEBPACK_IMPORTED_MODULE_0__.showSwalLoading)(object);
     } else {
       object.actions[permission] = true;
     }

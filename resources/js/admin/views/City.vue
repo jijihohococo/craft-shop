@@ -29,7 +29,7 @@
                     :mainData="cities.data"
                     request="cities"
                     @freshData="freshPage"
-                     />
+                    />
                 </div>
                 <!-- /.card-header -->
                 <template v-if="actions.read">
@@ -49,29 +49,31 @@
                                 </th>
                                 <th>Name</th>
                                 <th>State</th>
+                                <th>Country</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="city in cities.data" :key="city.id">
-                                    <td>
-                                        <DeleteCheck v-if="actions.delete"
-                                        :objectData="city"
-                                        :deleteArrayData="deleteData"
-                                        :objectArrayData="multipleData"
-                                        ref="deleteCheck"
-                                        />
-                                    </td>
-                                    <td>{{ city.name }}</td>
-                                    <td>{{ city.state_name }}</td>
-                                    <td>{{ city.deleted_at }}</td>
-                                    <td class="text-left">
-                                        <ViewButton :data_name="city.name" :data_model="content" :data_id="city.id" />
-                                        <EditButton v-if="actions.update && city.deleted_at==null" :content="content" link="city.edit" :dataId="city.id" />
-                                        <Delete v-if="actions.delete" :content="content" :deleteAt="city.deleted_at" :deleteLink="'cities/'+city.id" :restoreLink="'city_restore/'+city.id"
-                                        :id="city.id" :objectData="city" @update="updateData" />
-                                    </td>
+                                <td>
+                                    <DeleteCheck v-if="actions.delete"
+                                    :objectData="city"
+                                    :deleteArrayData="deleteData"
+                                    :objectArrayData="multipleData"
+                                    ref="deleteCheck"
+                                    />
+                                </td>
+                                <td>{{ city.name }}</td>
+                                <td>{{ city.state_name }}</td>
+                                <td>{{ city.country_name }}</td>
+                                <td>{{ city.deleted_at }}</td>
+                                <td class="text-left">
+                                    <ViewButton :data_name="city.name" :data_model="content" :data_id="city.id" />
+                                    <EditButton v-if="actions.update && city.deleted_at==null" :content="content" link="city.edit" :dataId="city.id" />
+                                    <Delete v-if="actions.delete" :content="content" :deleteAt="city.deleted_at" :deleteLink="'cities/'+city.id" :restoreLink="'city_restore/'+city.id"
+                                    :id="city.id" :objectData="city" @update="updateData" />
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -88,63 +90,48 @@
 </div>
 <!-- /.row -->
 <div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
- <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for city" />
+   <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for city" />
 </div>
 </div>
 </section>
 </template>
 <script >
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
-
-    import { showSwalLoading } from  '../../helpers/general'
+    import { errorResponse , checkContentPermission , makeRoute , showPageNumber , deleteFromArray } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 
     export default {
         data () {
-           return {
+         return {
             content : 'City',
+            mainData : 'cities',
+            getMethod : 'getCities',
             cities : {}
         }
     },
     mixins: [mixin],
     methods :{
-        freshPage(){
-            this.getCities( showPageNumber(this.currentPage) )
-        },
         getCities(page){
             window.axios.get(makeRoute(this,page,'city') + page ).then(( response ) =>  {
-                if(response.data.message=='Loading'){
-
-                    showSwalLoading(this);
-                }else{
-                 this.cities=response.data.cities
-                 this.actions.read=true;
-             }
-         } ).catch( (error) => {
+                this.getMainData(response)
+           } ).catch( (error) => {
             errorResponse(error,this,'read')
         } );
-     },
-     searchCities(page){
+       },
+       searchCities(page){
         window.axios.get(makeRoute(this,page,'city','search') + this.search + '&page=' + page ).then( (response) => {
-         if(response.data.message=='Loading'){
-
-            showSwalLoading(this);
-        }else{
-         this.cities=response.data.cities
-         this.actions.read=true;
-     }
- } ).catch( (error) => {
+           this.getMainData(response)
+   } ).catch( (error) => {
     errorResponse(error,this,'read');
 } )
 }
 },
 mounted : function(){
-   this.getCities(1);
-   checkContentPermission(this.content,'create',this);
-   checkContentPermission(this.content,'update',this);
-   checkContentPermission(this.content,'delete',this);
+ this.getCities(1);
+ checkContentPermission(this.content,'create',this);
+ checkContentPermission(this.content,'update',this);
+ checkContentPermission(this.content,'delete',this);
 },
 }
 </script>

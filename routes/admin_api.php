@@ -131,7 +131,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	//--------------STATE----------------//
 	adminResourceApi('state','states','StateController');
-	Route::get('get_states/{countryId}','Admin\StateController@get');
+	Route::get('get_states/{countryId}','StateController@get');
 	//--------------STATE----------------//
 
 	//--------------CITY----------------//

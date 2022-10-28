@@ -1,5 +1,7 @@
 import { checkActions , unauthorizedActions , makeSelect , deleteFromArray } from '../helpers/check';
 
+import { showSwalLoading } from  '../../helpers/general'
+
 import { mainMixinData } from './main';
 
 import Pagination from '../../components/Pagination';
@@ -38,37 +40,54 @@ export var mixin = {
     },
     data(){
       return {
-         deleteData : [],
-         multipleData : [] ,
-         search : null ,
-         currentPage : 1 ,
-         actions : {
-            create : '' ,
-            read : '' ,
-            update : '' ,
-            delete : ''
-        }
+       mainData : '',
+       getMethod : '',
+       deleteData : [],
+       multipleData : [] ,
+       search : null ,
+       currentPage : 1 ,
+       actions : {
+        create : '' ,
+        read : '' ,
+        update : '' ,
+        delete : ''
     }
+}
 },
 methods: {
-  checkAuthorizeActions(actions){
-    return checkActions(actions);
-},
-checkUnauthorizeActions(actions){
-    return unauthorizedActions(actions);
-},
-selectChecks(){
-    if(this.$refs.deleteCheck!==undefined){
-        makeSelect(this.$refs.deleteCheck,true)
+    checkAuthorizeActions(actions){
+        return checkActions(actions);
+    },
+    checkUnauthorizeActions(actions){
+        return unauthorizedActions(actions);
+    },
+    selectChecks(){
+        if(this.$refs.deleteCheck!==undefined){
+            makeSelect(this.$refs.deleteCheck,true)
+        }
+    },
+    cancelChecks(){
+        if(this.$refs.deleteCheck!==undefined){
+            makeSelect(this.$refs.deleteCheck,false)
+        }
+    },
+    freshPage(){
+        var t=this
+        t[this.getMethod]( showPageNumber(this.currentPage) )
+    },
+    updateData(object){
+        var t=this
+        deleteFromArray(t[this.mainData]['data'],object)
+    },
+    getMainData(response){
+        if(response.data.message=='Loading'){
+
+            showSwalLoading(this);
+        }else{
+            var t=this;
+            t[this.mainData]=response.data[this.mainData]
+            this.actions.read=true;
+        }
     }
-},
-cancelChecks(){
-    if(this.$refs.deleteCheck!==undefined){
-        makeSelect(this.$refs.deleteCheck,false)
-    }
-},
-updateData(object){
-    deleteFromArray(this.admins.data,object)
-},
 }
 }

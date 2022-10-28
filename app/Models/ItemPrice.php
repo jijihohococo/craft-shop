@@ -25,30 +25,28 @@ class ItemPrice extends TransactionModel
     (item_prices.promotion_end_time >=CURRENT_TIMESTAMP))&&
     item_prices.promotion_type='Price')  THEN 
 
-    REPLACE(FORMAT(
+
     (item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)-item_prices.promotion_price )
-    , 4), ',', '')
 
 
     WHEN (((item_prices.promotion_start_time <=CURRENT_TIMESTAMP) ||
     (item_prices.promotion_end_time >=CURRENT_TIMESTAMP))&&
     item_prices.promotion_type='Percent') THEN
 
-    REPLACE(FORMAT(
+    
         (item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)-
         (item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id))*
         (item_prices.promotion_price/100)
         )
-     , 4), ',', '')
-
-     
-    ELSE REPLACE(FORMAT(item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id), 4), ',', '')
+    ELSE
+    
+    item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)
  END";
 
     // public const NORMAL_PRICE_SQL="SUBSTRING_INDEX( GROUP_CONCAT(
     // item_prices.price ) ,',',1)";
 
-    public const PRICE_SQL="REPLACE(FORMAT(item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id), 4), ',', '')";
+    public const PRICE_SQL="item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)";
 
     public function currency(){
         return $this->belongsTo('App\Models\Currency')->withDefault()->withTrashed();

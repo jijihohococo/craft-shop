@@ -101,8 +101,6 @@
 
     import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
 
-    import { showSwalLoading } from  '../../helpers/general'
-
     import { mixin } from '../common/data_list';
 
     export default {
@@ -113,35 +111,22 @@
         data () {
          return {
             content : 'Banner' ,
+            mainData : 'banners',
+            getMethod : 'getBanners',
             banners : {},
         }
     },
     methods :{
-        freshPage(){
-            this.getBanners( showPageNumber(this.currentPage) )
-        },
         getBanners(page){
             window.axios.get(makeRoute(this,page,'banner') + page ).then(( response ) =>  {
-                if(response.data.message=='Loading'){
-
-                    showSwalLoading(this);
-                }else{
-                 this.banners=response.data.banners
-                 this.actions.read=true;
-             }
+                this.getMainData(response)
          } ).catch( (error) => {
             errorResponse(error,this,'read')
         } );
      },
      searchBanners(page){
         window.axios.get(makeRoute(this,page,'banner','search') + this.search + '&page=' + page ).then( (response) => {
-            if(response.data.message=='Loading'){
-
-                showSwalLoading(this);
-            }else{
-               this.banners=response.data.banners
-               this.actions.read=true;
-           }
+            this.getMainData(response)
        } ).catch( (error) => {
         errorResponse(error,this,'read')
     } )

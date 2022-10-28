@@ -96,8 +96,6 @@
 
     import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
 
-    import { showSwalLoading } from  '../../helpers/general'
-
     import { mixin } from '../common/data_list';
 
     import VLazyImage from "v-lazy-image";
@@ -109,36 +107,23 @@
         data () {
            return {
             content : 'SocialMedia' ,
+            mainData : 'social_medias',
+            getMethod : 'getSocialMedias',
             social_medias : {},
         }
     },
     mixins: [mixin],
     methods :{
-        freshPage(){
-            this.getSocialMedias( showPageNumber(this.currentPage) )
-        },
         getSocialMedias(page){
             window.axios.get(makeRoute(this,page,'social_media') + page ).then(( response ) =>  {
-                if(response.data.message=='Loading'){
-
-                    showSwalLoading(this);
-                }else{
-                   this.social_medias=response.data.social_medias
-                   this.actions.read=true;
-               }
+                this.getMainData(response)
            } ).catch( (error) => {
             errorResponse(error,this,'read')
         } );
        },
        searchSocialMedias(page){
         window.axios.get(makeRoute(this,page,'social_media','search') + this.search + '&page=' + page ).then( (response) => {
-            if(response.data.message=='Loading'){
-
-                showSwalLoading(this);
-            }else{
-             this.social_medias=response.data.social_medias
-             this.actions.read=true;
-         }
+            this.getMainData(response)
      } ).catch( (error) => {
         errorResponse(error,this,'read')
     } )

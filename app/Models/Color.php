@@ -19,7 +19,7 @@ class Color extends TransactionModel
 
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-colors',60*60*24,function(){
-            return self::latest('name')->get();
+            return self::orderBy('name','ASC')->get();
         });
     }
 

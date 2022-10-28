@@ -20,13 +20,14 @@ class CityController extends CommonController
     {
         //
         return $this->indexPage(
-            City::selectState()->latest('id')->paginate(10)
+            City::selectCountry()->selectState()->latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             City::onlyTrashed()
+            ->selectCountry()
             ->selectState()
             ->latest('id')
             ->paginate(10)
@@ -106,6 +107,7 @@ class CityController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             City::selectState()
+            ->selectCountry()
             ->searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
@@ -118,6 +120,7 @@ class CityController extends CommonController
         return $this->indexPage(
             City::onlyTrashed()
             ->selectState()
+            ->selectCountry()
             ->searchWithName($searchData)
             ->searchDelete($searchData)
             ->latest('id')

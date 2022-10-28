@@ -8,8 +8,8 @@ class StateController extends Controller
 {
     //
     public function get($countryId){
-        return $this->indexPage(
-            (new State)->getByCountryId($countryId)
-        );
+        return response()->json([
+            'states' => (new State)->getByCountryId($countryId)
+        ]);
     }
 }

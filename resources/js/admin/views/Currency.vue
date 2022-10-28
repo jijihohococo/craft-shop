@@ -93,44 +93,29 @@
 
     import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
 
-    import { showSwalLoading } from  '../../helpers/general'
-
     import { mixin } from '../common/data_list';
 
     export default {
         data () {
            return {
             content : 'Currency',
+            mainData : 'currencies',
+            getMethod : 'getCurrencies',
             currencies : {},
         }
     },
     mixins: [mixin],
     methods :{
-        freshPage(){
-            this.getCurrencies( showPageNumber(this.currentPage) )
-        },
         getCurrencies(page){
             window.axios.get(makeRoute(this,page,'currency') + page ).then(( response ) =>  {
-                if(response.data.message=='Loading'){
-
-                    showSwalLoading(this);
-                }else{
-                 this.currencies=response.data.currencies
-                 this.actions.read=true;
-             }
+                this.getMainData(response)
          } ).catch( (error) => {
             errorResponse(error,this,'read')
         } );
      },
      searchCurrencies(page){
         window.axios.get( makeRoute(this,page,'currency','search') + this.search + '&page=' + page ).then( (response) => {
-         if(response.data.message=='Loading'){
-
-            showSwalLoading(this);
-        }else{
-         this.currencies=response.data.currencies
-         this.action.read=true
-     }
+         this.getMainData(response)
  } ).catch( (error) => {
     errorResponse(error,this,'read');
 } )

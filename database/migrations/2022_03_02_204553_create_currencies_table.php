@@ -16,7 +16,7 @@ class CreateCurrenciesTable extends Migration
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('price', 13, 4);
+            $table->decimal('price', 13, 2);
             $table->softDeletes();
             $table->timestamps();
         });

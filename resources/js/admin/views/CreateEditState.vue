@@ -14,17 +14,17 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<label>Name</label>
-									<input type="text" :class="[errors && errors.name ? 'form-control is-invalid' : 'form-control']" placeholder="Name" v-model="fields.name">
-									<strong v-if="errors && errors.name" class="invalid-feedback">{{ errors.name[0] }}</strong>
-								</div>
-								<div class="form-group">
 									<label>Country</label>
 									<Select :value="fields.country_id" @input="setCountryId">
 										<option value="" disabled >Select Country</option>
 										<option v-for="country in countries" :value="country.id">{{ country.name }}</option>
 									</Select>
 									<strong v-if="errors && errors.country_id" class="invalid-feedback" style="display:block!important;">{{ errors.country_id[0] }}</strong>
+								</div>
+								<div class="form-group">
+									<label>Name</label>
+									<input type="text" :class="[errors && errors.name ? 'form-control is-invalid' : 'form-control']" placeholder="Name" v-model="fields.name">
+									<strong v-if="errors && errors.name" class="invalid-feedback">{{ errors.name[0] }}</strong>
 								</div>
 							</div>
 						</div>

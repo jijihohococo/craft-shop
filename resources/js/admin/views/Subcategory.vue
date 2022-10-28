@@ -97,44 +97,29 @@
 
     import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
 
-    import { showSwalLoading } from  '../../helpers/general'
-
     import { mixin } from '../common/data_list';
 
     export default {
         data () {
            return {
             content : 'Subcategory',
+            mainData : 'subcategories',
+            getMethod : 'getSubcategories',
             subcategories : {}
         }
     },
     mixins: [mixin],
     methods :{
-        freshPage(){
-            this.getSubcategories( showPageNumber(this.currentPage) )
-        },
         getSubcategories(page){
             window.axios.get(makeRoute(this,page,'subcategory') + page ).then(( response ) =>  {
-                if(response.data.message=='Loading'){
-
-                    showSwalLoading(this);
-                }else{
-                 this.subcategories=response.data.subcategories
-                 this.actions.read=true;
-             }
+                this.getMainData(response)
          } ).catch( (error) => {
             errorResponse(error,this,'read')
         } );
      },
      searchSubcategories(page){
         window.axios.get(makeRoute(this,page,'subcategory','search') + this.search + '&page=' + page ).then( (response) => {
-         if(response.data.message=='Loading'){
-
-            showSwalLoading(this);
-        }else{
-         this.subcategories=response.data.subcategories
-         this.actions.read=true;
-     }
+         this.getMainData(response)
  } ).catch( (error) => {
     errorResponse(error,this,'read');
 } )

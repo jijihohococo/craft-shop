@@ -93,44 +93,29 @@
 
     import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
 
-    import { showSwalLoading } from  '../../helpers/general'
-
     import { mixin } from '../common/data_list';
 
     export default {
         data () {
            return {
             content : 'Target',
+            mainData : 'targets',
+            getMethod : 'getTargets',
             targets : {}
         }
     },
     mixins: [mixin],
     methods :{
-        freshPage(){
-            this.getTargets( showPageNumber(this.currentPage) )
-        },
         getTargets(page){
             window.axios.get(makeRoute(this,page,'target') + page ).then(( response ) =>  {
-                if(response.data.message=='Loading'){
-
-                    showSwalLoading(this);
-                }else{
-                 this.targets=response.data.targets
-                 this.actions.read=true;
-             }
+                this.getMainData(response)
          } ).catch( (error) => {
             errorResponse(error,this,'read')
         } );
      },
      searchTargets(page){
         window.axios.get(makeRoute(this,page,'target','search') + this.search + '&page=' + page ).then( (response) => {
-            if(response.data.message=='Loading'){
-
-                showSwalLoading(this);
-            }else{
-             this.targets=response.data.targets
-             this.actions.read=true;
-         }
+            this.getMainData(response)
      } ).catch( (error) => {
         errorResponse(error,this,'read')
     } )

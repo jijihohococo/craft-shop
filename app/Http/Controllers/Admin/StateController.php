@@ -130,10 +130,4 @@ class StateController extends CommonController
             'country_id' => 'required|integer'
         ];
     }
-
-    public function get($countryId){
-        return $this->indexPage(
-            (new State)->getByCountryId($countryId)
-        );
-    }
 }
