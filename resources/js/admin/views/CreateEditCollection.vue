@@ -89,13 +89,15 @@
 				formData : new FormData
 			}
 		},
+		async mounted(){
+			if(this.current=='update'){
+				await this.getCollectionData(this.$route.params.id);
+			}
+		},
 		async created(){
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
 			await this.getItems()
-			if(this.current=='update'){
-				await this.getCollectionData(this.$route.params.id);
-			}
 		},
 		methods : {
 			setItems(val){
@@ -146,7 +148,7 @@
 				} )
 			},
 			async getCollectionData(collectionId){
-				window.axios.get('collections/'+collectionId + '/edit' ).then((response) => {
+				await window.axios.get('collections/'+collectionId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -160,7 +162,7 @@
 				} )
 			},
 			async getItems(){
-				window.axios.get('get_items').then( (response) => {
+				await window.axios.get('get_items').then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

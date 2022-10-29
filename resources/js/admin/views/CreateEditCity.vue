@@ -34,6 +34,19 @@
 									<input type="text" :class="[errors && errors.name ? 'form-control is-invalid' : 'form-control']" placeholder="Name" v-model="fields.name">
 									<strong v-if="errors && errors.name" class="invalid-feedback">{{ errors.name[0] }}</strong>
 								</div>
+								<div class="form-group">
+									<label>Currency</label>
+									<Select :value="fields.currency_id" @input="setCurrencyId">
+										<option value="" disabled >Select Currency</option>
+										<option v-for="currency in currencies" :value="currency.id">{{ currency.name }}</option>
+									</Select>
+									<strong v-if="errors && errors.currency_id" class="invalid-feedback" style="display:block;">{{ errors.currency_id[0] }}</strong>
+								</div>
+								<div class="form-group">
+									<label>Delivery Price</label>
+									<input type="text" :class="[errors && errors.delivery_price ? 'form-control is-invalid' : 'form-control']" placeholder="Rate" v-model="fields.delivery_price">
+									<strong v-if="errors && errors.delivery_price" class="invalid-feedback">{{ errors.delivery_price[0] }}</strong>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -64,24 +77,30 @@
 			return {
 				content : 'City',
 				return_link : 'city',
+				currencies : {},
 				countries : {},
 				states : {},
 				country_id  : '',
 				fields : {
 					name : '',
 					state_id : '',
-					country_id : ''
+					country_id : '',
+					currency_id : '',
+					delivery_price : ''
 				},
 				old_state_id : ''
+			}
+		},
+		async mounted(){
+			await this.getCurrencies()
+			if(this.current=='update'){
+				await this.getCityData(this.$route.params.id);
 			}
 		},
 		async created(){
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
 			await this.getCountries()
-			if(this.current=='update'){
-				await this.getCityData(this.$route.params.id);
-			}
 		},
 		methods : {
 			setCountryId(countryId){
@@ -91,6 +110,9 @@
 			},
 			setStateId(stateId){
 				this.fields.state_id=stateId
+			},
+			setCurrencyId(currencyId){
+				this.fields.currency_id=currencyId
 			},
 			createCity(){
 
@@ -116,21 +138,24 @@
 				} )
 			},
 			async getCityData( cityId ){
-				window.axios.get('cities/'+cityId + '/edit' ).then((response) => {
+				await window.axios.get('cities/'+cityId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
 					}else{
 						this.old_state_id=response.data.city.state_id
 						this.fields.name=response.data.city.name
+						this.fields.currency_id=response.data.city.currency_id
 						this.fields.country_id=response.data.city.country_id;
+						// this.fields.currency_id=response.data.city.currency_id
+						//console.log(response.data.city)
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'update')
 				} )
 			},
 			async getCountries(){
-				window.axios.get('get_countries').then( (response) => {
+				await window.axios.get('get_countries').then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -141,8 +166,20 @@
 					errorResponse(error,this,'read')
 				} )
 			},
+			async getCurrencies(){
+				await window.axios.get('get_currencies').then( (response) => {
+					if(response.data.message=='Loading'){
+
+						showSwalLoading(this);
+					}else{
+						this.currencies=response.data.currencies
+					}
+				} ).catch( (error) => {
+					errorResponse(error,this,'read')
+				} )
+			},
 			async getStates(countryId,stateId){
-				window.axios.get('get_states/'+countryId).then( (response) => {
+				await window.axios.get('get_states/'+countryId).then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

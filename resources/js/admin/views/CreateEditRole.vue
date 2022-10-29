@@ -71,13 +71,15 @@
 				}
 			}
 		},
+		async mounted(){
+			if(this.current=='update'){
+				await this.getRoleData(this.$route.params.id);
+			}
+		},
 		async created(){
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
 			await this.getPermissions()
-			if(this.current=='update'){
-				await this.getRoleData(this.$route.params.id);
-			}
 		},
 		methods : {
 			setPermissions(val){
@@ -106,7 +108,7 @@
 				} )
 			},
 			async getRoleData( roleId ){
-				window.axios.get('roles/'+roleId + '/edit' ).then((response) => {
+				await window.axios.get('roles/'+roleId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -119,7 +121,7 @@
 				} )
 			},
 			async getPermissions(){
-				window.axios.get('get_permissions').then( (response) => {
+				await window.axios.get('get_permissions').then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

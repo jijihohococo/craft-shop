@@ -142,7 +142,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -150,21 +150,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _this.current = isNaN(_this.$route.params.id) ? 'create' : 'update';
-              (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.checkContentPermission)(_this.content, _this.current, _this);
-              _context.next = 4;
-              return _this.getCountries();
-
-            case 4:
               if (!(_this.current == 'update')) {
-                _context.next = 7;
+                _context.next = 3;
                 break;
               }
 
-              _context.next = 7;
+              _context.next = 3;
               return _this.getStateData(_this.$route.params.id);
 
-            case 7:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -172,63 +166,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee);
     }))();
   },
+  created: function created() {
+    var _this2 = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _this2.current = isNaN(_this2.$route.params.id) ? 'create' : 'update';
+              (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.checkContentPermission)(_this2.content, _this2.current, _this2);
+              _context2.next = 4;
+              return _this2.getCountries();
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
+  },
   methods: {
     setCountryId: function setCountryId(countryId) {
       this.fields.country_id = countryId;
     },
     createState: function createState() {
-      var _this2 = this;
-
-      window.axios.post("states", this.fields).then(function (response) {
-        _this2.returnBack(response);
-      })["catch"](function (error) {
-        if (error.response.status == 422) {
-          _this2.errors = error.response.data.errors;
-        } else {
-          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this2, 'create');
-        }
-      });
-    },
-    updateState: function updateState() {
       var _this3 = this;
 
-      window.axios.put("states/".concat(this.$route.params.id), this.fields).then(function (response) {
+      window.axios.post("states", this.fields).then(function (response) {
         _this3.returnBack(response);
       })["catch"](function (error) {
         if (error.response.status == 422) {
           _this3.errors = error.response.data.errors;
         } else {
-          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this3, 'update');
+          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this3, 'create');
+        }
+      });
+    },
+    updateState: function updateState() {
+      var _this4 = this;
+
+      window.axios.put("states/".concat(this.$route.params.id), this.fields).then(function (response) {
+        _this4.returnBack(response);
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this4.errors = error.response.data.errors;
+        } else {
+          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this4, 'update');
         }
       });
     },
     getStateData: function getStateData(stateId) {
-      var _this4 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                window.axios.get('states/' + stateId + '/edit').then(function (response) {
-                  if (response.data.message == 'Loading') {
-                    (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this4);
-                  } else {
-                    _this4.fields = response.data.state;
-                  }
-                })["catch"](function (error) {
-                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this4, 'update');
-                });
-
-              case 1:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
-    },
-    getCountries: function getCountries() {
       var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
@@ -236,22 +225,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                window.axios.get('get_countries').then(function (response) {
+                _context3.next = 2;
+                return window.axios.get('states/' + stateId + '/edit').then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this5);
                   } else {
-                    _this5.countries = response.data.countries;
+                    _this5.fields = response.data.state;
                   }
                 })["catch"](function (error) {
-                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this5, 'read');
+                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this5, 'update');
                 });
 
-              case 1:
+              case 2:
               case "end":
                 return _context3.stop();
             }
           }
         }, _callee3);
+      }))();
+    },
+    getCountries: function getCountries() {
+      var _this6 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return window.axios.get('get_countries').then(function (response) {
+                  if (response.data.message == 'Loading') {
+                    (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this6);
+                  } else {
+                    _this6.countries = response.data.countries;
+                  }
+                })["catch"](function (error) {
+                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this6, 'read');
+                });
+
+              case 2:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
       }))();
     }
   }

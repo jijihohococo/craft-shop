@@ -93,13 +93,15 @@
 				},
 			}
 		},
+		async mounted(){
+			if(this.current=='update'){
+				await this.getAdminData(this.$route.params.id);
+			}
+		},
 		async created(){
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
 			await this.getRoles()
-			if(this.current=='update'){
-				await this.getAdminData(this.$route.params.id);
-			}
 		},
 		methods : {
 			setRoles(val){
@@ -138,8 +140,8 @@
 					}
 				} )
 			},
-			getAdminData( adminId ){
-				window.axios.get('admins/'+adminId + '/edit' ).then((response) => {
+			async getAdminData( adminId ){
+				await window.axios.get('admins/'+adminId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -154,7 +156,7 @@
 				} )
 			},
 			async getRoles(){
-				window.axios.get('get_roles').then( (response) => {
+				await window.axios.get('get_roles').then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

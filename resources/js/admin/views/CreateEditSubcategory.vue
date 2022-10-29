@@ -63,13 +63,15 @@
 				}
 			}
 		},
+		async mounted(){
+			if(this.current=='update'){
+				await this.getSubcategoryData(this.$route.params.id);
+			}
+		},
 		async created(){
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
 			await this.getCategories()
-			if(this.current=='update'){
-				await this.getSubcategoryData(this.$route.params.id);
-			}
 		},
 		methods : {
 			setCategoryId(categoryId){
@@ -99,7 +101,7 @@
 				} )
 			},
 			async getSubcategoryData( subcategoryId ){
-				window.axios.get('subcategories/'+subcategoryId + '/edit' ).then((response) => {
+				await window.axios.get('subcategories/'+subcategoryId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -111,7 +113,7 @@
 				} )
 			},
 			async getCategories(){
-				window.axios.get('get_categories').then( (response) => {
+				await window.axios.get('get_categories').then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

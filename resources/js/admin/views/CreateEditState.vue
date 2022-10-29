@@ -63,13 +63,15 @@
 				}
 			}
 		},
+		async mounted(){
+			if(this.current=='update'){
+				await this.getStateData(this.$route.params.id);
+			}
+		},
 		async created(){
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
 			await this.getCountries()
-			if(this.current=='update'){
-				await this.getStateData(this.$route.params.id);
-			}
 		},
 		methods : {
 			setCountryId(countryId){
@@ -99,7 +101,7 @@
 				} )
 			},
 			async getStateData( stateId ){
-				window.axios.get('states/'+stateId + '/edit' ).then((response) => {
+				await window.axios.get('states/'+stateId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -111,7 +113,7 @@
 				} )
 			},
 			async getCountries(){
-				window.axios.get('get_countries').then( (response) => {
+				await window.axios.get('get_countries').then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
