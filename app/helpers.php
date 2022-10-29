@@ -315,7 +315,7 @@ function nullableImage(){
 }
 
 function requiredDouble(){
-	return 'required|numeric|between:0.000,999999999.9999';
+	return 'required|numeric|between:0.000,999999999.99';
 }
 
 function changeDaysToMinutes(int $days){

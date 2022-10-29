@@ -12,7 +12,9 @@ class City extends TransactionModel
     protected $fillable=[
         'name',
         'state_id',
-        'country_id'
+        'country_id',
+        'currency_id',
+        'delivery_price'
     ];
 
     public static $cacheKey='cities_cache';

@@ -17,7 +17,7 @@
     <!-- START SECTION SHOP -->
     <div class="section small_pb">
       <div class="container">
-        <ItemSlider
+        <NewItemSlider
         :main_title="translateLang('Best')"
         :titles='[
         { name : "Laptop" , link :"laptop" },
@@ -27,7 +27,7 @@
         ]'
         api="best_sellers"
         />
-        <ItemSlider 
+        <NewItemSlider 
         :main_title="translateLang('Gaming')"
         :titles='[
         { name : "Gaming Laptop" , link : "gaming_laptop" },
@@ -61,7 +61,7 @@
 <script >
 	import Banner from '../components/Banner';
     import Brand from '../components/Brand';
-    import ItemSlider from '../components/ItemSlider';
+    import NewItemSlider from '../components/NewItemSlider';
     import FeatureProducts from '../components/FeatureProducts';
     import Subscribe from '../components/Subscribe';
     import Collections from '../components/Collections';
@@ -70,7 +70,7 @@
       components : {
          Banner,
          Brand,
-         ItemSlider,
+         NewItemSlider,
          FeatureProducts,
          Subscribe,
          Collections

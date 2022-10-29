@@ -39,7 +39,11 @@
 	<!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
 <script >
-	import SliderDetail from './SliderDetail'
+	
+	import { defineAsyncComponent, ref } from "vue";
+
+	const SliderDetail = defineAsyncComponent(()=>import("./SliderDetail"));
+
 	export default {
 		name : 'ItemSlider' ,
 		components : {
@@ -76,9 +80,10 @@
 				} )
 			}
 		},
-		mounted : function(){
-			this.getData()
-			//$('.carousel_slider').map( function(key,c) {
-			}
+		async created(){
+			const response = await window.axios.get(this.$props.api)
+			this.items=response.data
 		}
-	</script>
+
+	}
+</script>

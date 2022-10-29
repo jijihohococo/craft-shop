@@ -194,7 +194,7 @@
 				} )
 			},
 			async getCategories(){
-				window.axios.get('get_categories').then( (response) => {
+				await window.axios.get('get_categories').then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

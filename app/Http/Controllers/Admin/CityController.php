@@ -132,7 +132,9 @@ class CityController extends CommonController
         return [
             'name' => uniqueColumn($this->content,$id),
             'state_id' => 'required|integer',
-            'country_id' => 'required|integer'
+            'country_id' => 'required|integer',
+            'currency_id' => 'required|integer',
+            'delivery_price' => requiredDouble()
         ];
     }
 }

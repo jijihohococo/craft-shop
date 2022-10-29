@@ -441,7 +441,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                window.axios.get('get_categories').then(function (response) {
+                _context3.next = 2;
+                return window.axios.get('get_categories').then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this4);
                   } else {
@@ -451,7 +452,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this4, 'read');
                 });
 
-              case 1:
+              case 2:
               case "end":
                 return _context3.stop();
             }
