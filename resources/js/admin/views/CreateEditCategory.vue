@@ -80,7 +80,7 @@
 				} )
 			},
 			async getCategoryData( categoryId ){
-				window.axios.get('categories/'+categoryId + '/edit' ).then((response) => {
+				await window.axios.get('categories/'+categoryId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

@@ -85,7 +85,7 @@
 				} )
 			},
 			async getCurrencyData( currencyId ){
-				window.axios.get('currencies/'+currencyId + '/edit' ).then((response) => {
+				await window.axios.get('currencies/'+currencyId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

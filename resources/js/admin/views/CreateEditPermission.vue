@@ -107,7 +107,7 @@
 			this.current=isNaN(this.$route.params.id) ? 'create' : 'update';
 			checkContentPermission(this.content,this.current,this);
 			if(this.current=='update'){
-				await	this.getPermissionData(this.$route.params.id);
+				await this.getPermissionData(this.$route.params.id);
 			}
 		},
 		methods : {
@@ -144,7 +144,7 @@
 				} )
 			},
 			async getPermissionData( permissionId ){
-				window.axios.get('permissions/'+permissionId + '/edit' ).then((response) => {
+				await window.axios.get('permissions/'+permissionId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

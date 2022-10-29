@@ -85,7 +85,7 @@
 				} )
 			},
 			async getTaxData( taxId ){
-				window.axios.get('taxes/'+taxId + '/edit' ).then((response) => {
+				await window.axios.get('taxes/'+taxId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

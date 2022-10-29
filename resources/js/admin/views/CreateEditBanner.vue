@@ -192,7 +192,7 @@
 				} )
 			},
 			async getBannerData(bannerId){
-				window.axios.get('banners/'+bannerId + '/edit' ).then((response) => {
+				await window.axios.get('banners/'+bannerId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

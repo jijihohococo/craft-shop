@@ -83,7 +83,7 @@
 				} )
 			},
 			async getColorData( colorId ){
-				window.axios.get('colors/'+colorId + '/edit' ).then((response) => {
+				await window.axios.get('colors/'+colorId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

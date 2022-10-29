@@ -86,7 +86,7 @@
 				} )
 			},
 			async getCountryData( countryId ){
-				window.axios.get('countries/'+countryId + '/edit' ).then((response) => {
+				await window.axios.get('countries/'+countryId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

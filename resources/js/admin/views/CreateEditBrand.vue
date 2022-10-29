@@ -118,7 +118,7 @@
 				} )
 			},
 			async getBrandData(brandId){
-				window.axios.get('brands/'+brandId + '/edit' ).then((response) => {
+				await window.axios.get('brands/'+brandId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

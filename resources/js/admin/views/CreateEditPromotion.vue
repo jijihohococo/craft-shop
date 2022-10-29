@@ -121,7 +121,7 @@
     		} )
     	},
     	async getPromotionData(promotionId){
-    		window.axios.get('promotions/'+promotionId + '/edit' ).then((response) => {
+    		await window.axios.get('promotions/'+promotionId + '/edit' ).then((response) => {
     			if(response.data.message=='Loading'){
 
     				showSwalLoading(this);

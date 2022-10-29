@@ -106,7 +106,7 @@
 				} )
 			},
 			async getAttributeData( attributeId ){
-				window.axios.get('attributes/'+attributeId + '/edit' ).then((response) => {
+				await window.axios.get('attributes/'+attributeId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

@@ -125,7 +125,7 @@
 				} )
 			},
 			async getSocialMediaData(brandId){
-				window.axios.get('social_medias/'+brandId + '/edit' ).then((response) => {
+				await window.axios.get('social_medias/'+brandId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
