@@ -74,15 +74,16 @@
 			getItems(items,key){
 				return Object.values(items)[key]
 			},
-			getData(){
-				window.axios.get( this.$props.api ).then( (response) => {
+			async getData(){
+				await window.axios.get( this.$props.api ).then( (response) => {
 					this.items=response.data
 				} )
 			}
 		},
 		async created(){
-			const response = await window.axios.get(this.$props.api)
-			this.items=response.data
+			await this.getData()
+			// const response = await window.axios.get(this.$props.api)
+			// this.items=response.data
 		}
 
 	}

@@ -573,33 +573,42 @@ var SliderDetail = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineAsyncComponent)(fun
     getData: function getData() {
       var _this = this;
 
-      window.axios.get(this.$props.api).then(function (response) {
-        _this.items = response.data;
-      });
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return window.axios.get(_this.$props.api).then(function (response) {
+                  _this.items = response.data;
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     }
   },
   created: function created() {
     var _this2 = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var response;
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context.prev = _context.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
-              _context.next = 2;
-              return window.axios.get(_this2.$props.api);
+              _context2.next = 2;
+              return _this2.getData();
 
             case 2:
-              response = _context.sent;
-              _this2.items = response.data;
-
-            case 4:
             case "end":
-              return _context.stop();
+              return _context2.stop();
           }
         }
-      }, _callee);
+      }, _callee2);
     }))();
   }
 });
