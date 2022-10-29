@@ -59,6 +59,7 @@
 		data(){
 			return {
 				content : 'Permission',
+				return_link : 'permission',
 				checkedAction : [],
 				fields : {
 					name : '',
@@ -121,15 +122,7 @@
 			createPermission(){
 				this.mergeAction();	
 				window.axios.post("permissions",this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/permission' })
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -141,15 +134,7 @@
 			updatePermission(){
 				this.mergeAction();
 				window.axios.put(`permissions/${this.$route.params.id}`,this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/permission'})
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

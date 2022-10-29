@@ -55,6 +55,7 @@
 		data(){
 			return {
 				content : 'Subcategory',
+				return_link  : 'subcategory',
 				categories : {},
 				fields : {
 					name : '',
@@ -77,15 +78,7 @@
 			createSubcategory(){
 
 				window.axios.post("subcategories",this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/subcategory' })
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -96,15 +89,7 @@
 			},
 			updateSubcategory(){
 				window.axios.put(`subcategories/${this.$route.params.id}`,this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/subcategory'})
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

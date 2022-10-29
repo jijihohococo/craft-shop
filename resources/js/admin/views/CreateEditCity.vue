@@ -63,6 +63,7 @@
 		data(){
 			return {
 				content : 'City',
+				return_link : 'city',
 				countries : {},
 				states : {},
 				country_id  : '',
@@ -94,15 +95,7 @@
 			createCity(){
 
 				window.axios.post("cities",this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/city' })
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -113,15 +106,7 @@
 			},
 			updateCity(){
 				window.axios.put(`cities/${this.$route.params.id}`,this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/city'})
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

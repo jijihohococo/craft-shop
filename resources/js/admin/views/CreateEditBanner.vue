@@ -79,6 +79,7 @@
 		data(){
 			return {
 				content : 'Banner',
+				return_link : 'banner',
 				contentSelected : false ,
 				fields : {
 					title : '',
@@ -170,15 +171,7 @@
 			},
 			createBanner(){
 				window.axios.post("banners",this.getFormData() ).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/banner' })
-					}
+					this.returnBack(response)
 				}).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -189,15 +182,7 @@
 			},
 			updateBanner(){
 				window.axios.post(`banners/${this.$route.params.id}`,this.getFormData('update')).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/banner'})
-					}
+					this.returnBack(response)
 				}).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

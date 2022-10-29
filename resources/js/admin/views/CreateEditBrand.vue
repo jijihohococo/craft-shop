@@ -60,6 +60,7 @@
 		data(){
 			return {
 				content : 'Brand',
+				return_link : 'brand',
 				fields : {
 					name : '',
 					pic : '',
@@ -96,15 +97,7 @@
 			},
 			createBrand(){
 				window.axios.post("brands",this.getFormData() ).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/brand' })
-					}
+					this.returnBack(response)
 				}).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -115,15 +108,7 @@
 			},
 			updateBrand(){
 				window.axios.post(`brands/${this.$route.params.id}`,this.getFormData('update')).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/brand'})
-					}
+					this.returnBack(response)
 				}).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

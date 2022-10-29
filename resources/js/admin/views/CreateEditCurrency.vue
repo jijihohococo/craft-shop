@@ -47,6 +47,7 @@
 		data(){
 			return {
 				content : 'Currency',
+				return_link  : 'currency',
 				fields : {
 					name : '',
 					price : ''
@@ -63,15 +64,7 @@
 		methods : {
 			createCurrency(){
 				window.axios.post("currencies",this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/currency' })
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -82,15 +75,7 @@
 			},
 			updateCurrency(){
 				window.axios.put(`currencies/${this.$route.params.id}`,this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/currency'})
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

@@ -140,6 +140,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       content: 'Attribute',
+      return_link: 'attribute',
       fields: {
         name: '',
         sets: []
@@ -183,15 +184,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.getAttributeSets();
       window.axios.post("attributes", this.fields).then(function (response) {
-        if (response.data.message == 'Loading') {
-          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this2);
-        } else {
-          _this2.$swal('Success', response.data.message, 'success');
-
-          _this2.$router.push({
-            path: '/admin/attribute'
-          });
-        }
+        _this2.returnBack(response);
       })["catch"](function (error) {
         if (error.response.status == 422) {
           _this2.errors = error.response.data.errors;
@@ -205,15 +198,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.getAttributeSets();
       window.axios.put("attributes/".concat(this.$route.params.id), this.fields).then(function (response) {
-        if (response.data.message == 'Loading') {
-          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this3);
-        } else {
-          _this3.$swal('Success', response.data.message, 'success');
-
-          _this3.$router.push({
-            path: '/admin/attribute'
-          });
-        }
+        _this3.returnBack(response);
       })["catch"](function (error) {
         if (error.response.status == 422) {
           _this3.errors = error.response.data.errors;
@@ -574,11 +559,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "mixin": () => (/* binding */ mixin)
 /* harmony export */ });
 /* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main */ "./resources/js/admin/common/main.js");
+/* harmony import */ var _helpers_general__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/general */ "./resources/js/helpers/general.js");
+
 
 var mixin = {
   mixins: [_main__WEBPACK_IMPORTED_MODULE_0__.mainMixinData],
   data: function data() {
     return {
+      return_link: '',
       errors: {
         error_status: 0,
         error_title: '',
@@ -590,6 +578,18 @@ var mixin = {
       },
       current: null
     };
+  },
+  methods: {
+    returnBack: function returnBack(response) {
+      if (response.data.message == 'Loading') {
+        (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(this);
+      } else {
+        this.$swal('Success', response.data.message, 'success');
+        this.$router.push({
+          path: '/admin/' + this.return_link
+        });
+      }
+    }
   }
 };
 

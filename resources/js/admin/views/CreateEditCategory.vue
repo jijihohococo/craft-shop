@@ -42,6 +42,7 @@
 		data(){
 			return {
 				content : 'Category',
+				return_link : 'category',
 				fields : {
 					name : ''
 				}
@@ -58,15 +59,7 @@
 			createCategory(){
 
 				window.axios.post("categories",this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/category' })
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -77,15 +70,7 @@
 			},
 			updateCategory(){
 				window.axios.put(`categories/${this.$route.params.id}`,this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/category'})
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

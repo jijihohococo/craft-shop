@@ -62,6 +62,7 @@
 		data(){
 			return {
 				content : 'Role',
+				return_link : 'role',
 				attached_permissions : {}, 
 				permissions : {},
 				fields : {
@@ -84,15 +85,7 @@
 			},
 			createRole(){
 				window.axios.post("roles",this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/role' })
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -103,15 +96,7 @@
 			},
 			updateRole(){
 				window.axios.put(`roles/${this.$route.params.id}`,this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/role'})
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

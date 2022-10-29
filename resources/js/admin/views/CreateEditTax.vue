@@ -47,6 +47,7 @@
 		data(){
 			return {
 				content : 'Tax',
+				return_link  : 'tax',
 				fields : {
 					name : '',
 					rate : ''
@@ -63,15 +64,7 @@
 		methods : {
 			createTax(){
 				window.axios.post("taxes",this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/tax' })
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -82,15 +75,7 @@
 			},
 			updateTax(){
 				window.axios.put(`taxes/${this.$route.params.id}`,this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/tax'})
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

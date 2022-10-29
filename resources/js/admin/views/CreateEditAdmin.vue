@@ -82,6 +82,7 @@
 				admin ,
 				header : '',
 				content : 'Admin',
+				return_link : 'admin',
 				roles : {},
 				fields : {
 					name : '',
@@ -106,15 +107,7 @@
 			},
 			createAdmin(){
 				window.axios.post("admins",this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/admin' })
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

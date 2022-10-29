@@ -128,6 +128,7 @@
 		data(){
 			return {
 				content : 'Item',
+				return_link : 'item',
 				categories : {},
 				subcategories : {},
 				brands : {},
@@ -306,15 +307,7 @@
 			},
 			createItem(){
 				window.axios.post("items",this.getFormData() ).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/item' })
-					}
+					this.returnBack(response)
 				}).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -325,15 +318,7 @@
 			},
 			updateItem(){
 				window.axios.post(`items/${this.$route.params.id}`,this.getFormData('update')).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/item'})
-					}
+					this.returnBack(response)
 				}).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

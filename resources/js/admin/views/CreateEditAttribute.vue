@@ -61,6 +61,7 @@
 		data(){
 			return {
 				content : 'Attribute',
+				return_link : 'attribute',
 				fields : {
 					name : '',
 					sets : []
@@ -83,15 +84,7 @@
 			createAttribute(){
 				this.getAttributeSets();
 				window.axios.post("attributes",this.fields ).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/attribute' })
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -103,15 +96,7 @@
 			updateAttribute(){
 				this.getAttributeSets();
 				window.axios.put(`attributes/${this.$route.params.id}`,this.fields ).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/attribute'})
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

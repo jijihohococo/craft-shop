@@ -77,6 +77,7 @@
 		data(){
 			return {
 				content : 'Collection',
+				return_link : 'collection',
 				items : {},
 				fields : {
 					name : '',
@@ -124,15 +125,7 @@
 			},
 			createCollection(){
 				window.axios.post("collections",this.getFormData() ).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/collection' })
-					}
+					this.returnBack(response)
 				}).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -143,15 +136,7 @@
 			},
 			updateCollection(){
 				window.axios.post(`collections/${this.$route.params.id}`,this.getFormData('update')).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/collection'})
-					}
+					this.returnBack(response)
 				}).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

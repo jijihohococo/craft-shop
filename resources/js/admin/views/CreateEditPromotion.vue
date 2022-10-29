@@ -74,6 +74,7 @@
     data() {
     	return {
     		content : 'Promotion',
+    		return_link  : 'promotion',
     		fields : {
     			name : '',
     			banner_id : '',
@@ -98,15 +99,7 @@
     	createPromotion(){
     		this.setPromotionTime()
     		window.axios.post("promotions",this.fields).then( (response) => {
-    			if(response.data.message=='Loading'){
-
-    				showSwalLoading(this);
-    			}else{
-    				this.$swal( 'Success' ,
-    					response.data.message ,
-    					'success'  );
-    				this.$router.push({path: '/admin/promotion' })
-    			}
+    			this.returnBack(response)
     		} ).catch( (error) => {
     			if(error.response.status==422){
     				this.errors= error.response.data.errors
@@ -118,15 +111,7 @@
     	updatePromotion(){
     		this.setPromotionTime()
     		window.axios.put(`promotions/${this.$route.params.id}`,this.fields).then( (response) => {
-    			if(response.data.message=='Loading'){
-
-    				showSwalLoading(this);
-    			}else{
-    				this.$swal('Success',
-    					response.data.message,
-    					'success');
-    				this.$router.push({path:'/admin/promotion'})
-    			}
+    			this.returnBack(response)
     		} ).catch( (error) => {
     			if(error.response.status==422){
     				this.errors= error.response.data.errors

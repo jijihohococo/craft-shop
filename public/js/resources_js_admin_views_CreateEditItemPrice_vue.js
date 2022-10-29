@@ -260,11 +260,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "mixin": () => (/* binding */ mixin)
 /* harmony export */ });
 /* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main */ "./resources/js/admin/common/main.js");
+/* harmony import */ var _helpers_general__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/general */ "./resources/js/helpers/general.js");
+
 
 var mixin = {
   mixins: [_main__WEBPACK_IMPORTED_MODULE_0__.mainMixinData],
   data: function data() {
     return {
+      return_link: '',
       errors: {
         error_status: 0,
         error_title: '',
@@ -276,6 +279,18 @@ var mixin = {
       },
       current: null
     };
+  },
+  methods: {
+    returnBack: function returnBack(response) {
+      if (response.data.message == 'Loading') {
+        (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(this);
+      } else {
+        this.$swal('Success', response.data.message, 'success');
+        this.$router.push({
+          path: '/admin/' + this.return_link
+        });
+      }
+    }
   }
 };
 

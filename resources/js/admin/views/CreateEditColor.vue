@@ -45,6 +45,7 @@
 		data(){
 			return {
 				content : 'Color',
+				return_link  : 'color',
 				fields : {
 					name : '',
 					color_code : '#000000'
@@ -61,15 +62,7 @@
 		methods : {
 			createColor(){
 				window.axios.post("colors",this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/color' })
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -80,15 +73,7 @@
 			},
 			updateColor(){
 				window.axios.put(`colors/${this.$route.params.id}`,this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/color'})
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

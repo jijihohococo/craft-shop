@@ -47,6 +47,7 @@
 		data(){
 			return {
 				content : 'Country',
+				return_link : 'country',
 				fields : {
 					name : '',
 					code : ''
@@ -64,15 +65,7 @@
 			createCountry(){
 
 				window.axios.post("countries",this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/country' })
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -83,15 +76,7 @@
 			},
 			updateCountry(){
 				window.axios.put(`countries/${this.$route.params.id}`,this.fields).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/country'})
-					}
+					this.returnBack(response)
 				} ).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

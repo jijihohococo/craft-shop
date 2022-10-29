@@ -65,6 +65,7 @@
 		data(){
 			return {
 				content : 'SocialMedia',
+				return_link : 'social_media',
 				fields : {
 					name : '',
 					link : '',
@@ -103,15 +104,7 @@
 			},
 			createSocialMedia(){
 				window.axios.post("social_medias",this.getFormData() ).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.$router.push({path: '/admin/social_media' })
-					}
+					this.returnBack(response)
 				}).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors
@@ -122,15 +115,7 @@
 			},
 			updateSocialMedia(){
 				window.axios.post(`social_medias/${this.$route.params.id}`,this.getFormData('update')).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.$swal('Success',
-							response.data.message,
-							'success');
-						this.$router.push({path:'/admin/social_media'})
-					}
+					this.returnBack(response)
 				}).catch( (error) => {
 					if(error.response.status==422){
 						this.errors= error.response.data.errors

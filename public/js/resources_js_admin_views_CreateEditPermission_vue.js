@@ -134,6 +134,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       content: 'Permission',
+      return_link: 'permission',
       checkedAction: [],
       fields: {
         name: '',
@@ -190,15 +191,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.mergeAction();
       window.axios.post("permissions", this.fields).then(function (response) {
-        if (response.data.message == 'Loading') {
-          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this3);
-        } else {
-          _this3.$swal('Success', response.data.message, 'success');
-
-          _this3.$router.push({
-            path: '/admin/permission'
-          });
-        }
+        _this3.returnBack(response);
       })["catch"](function (error) {
         if (error.response.status == 422) {
           _this3.errors = error.response.data.errors;
@@ -212,15 +205,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.mergeAction();
       window.axios.put("permissions/".concat(this.$route.params.id), this.fields).then(function (response) {
-        if (response.data.message == 'Loading') {
-          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_2__.showSwalLoading)(_this4);
-        } else {
-          _this4.$swal('Success', response.data.message, 'success');
-
-          _this4.$router.push({
-            path: '/admin/permission'
-          });
-        }
+        _this4.returnBack(response);
       })["catch"](function (error) {
         if (error.response.status == 422) {
           _this4.errors = error.response.data.errors;
@@ -595,11 +580,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "mixin": () => (/* binding */ mixin)
 /* harmony export */ });
 /* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main */ "./resources/js/admin/common/main.js");
+/* harmony import */ var _helpers_general__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/general */ "./resources/js/helpers/general.js");
+
 
 var mixin = {
   mixins: [_main__WEBPACK_IMPORTED_MODULE_0__.mainMixinData],
   data: function data() {
     return {
+      return_link: '',
       errors: {
         error_status: 0,
         error_title: '',
@@ -611,6 +599,18 @@ var mixin = {
       },
       current: null
     };
+  },
+  methods: {
+    returnBack: function returnBack(response) {
+      if (response.data.message == 'Loading') {
+        (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(this);
+      } else {
+        this.$swal('Success', response.data.message, 'success');
+        this.$router.push({
+          path: '/admin/' + this.return_link
+        });
+      }
+    }
   }
 };
 
