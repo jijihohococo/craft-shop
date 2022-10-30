@@ -50,6 +50,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	//--------------ITEM PRICE----------------//
 	adminItemVariantResourceApi('prices','ItemPriceController');
+	Route::get('create_item_variant_prices/{itemVariantId}','Admin\ItemPriceController@create');
 	//--------------ITEM PRICE----------------//
 
 	//--------------ITEM IMAGE----------------//

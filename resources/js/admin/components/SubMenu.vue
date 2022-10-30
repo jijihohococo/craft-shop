@@ -19,7 +19,11 @@
 		(route+'.price'==currentRoute) ||
 		(route+'.price.create'==currentRoute) ||
 		(route+'.price.edit'==currentRoute) ||
-		(route+'.edit'==currentRoute) || (route+'.create'==currentRoute) || (this.$route.params.model!==null && this.$route.params.model==dataRoute)  ? 'nav-link active' : 'nav-link' ]" >
+		(route+'.edit'==currentRoute) ||
+		(route+'.create'==currentRoute) ||
+		(this.$route.params.model!==undefined && 
+		(this.$route.params.model==dataRoute || 
+		this.$route.params.model.substring(0,4)==dataRoute  ) )  ? 'nav-link active' : 'nav-link' ]" >
 		<p>{{ dataRoute }}</p>
 	</router-link>
 </li>
@@ -68,8 +72,9 @@
 				(route.replace('.price','') in this.$props.dataRoutes ) || 
 				(route.replace('.price.create','') in this.$props.dataRoutes ) ||
 				(route.replace('.price.edit','') in this.$props.dataRoutes ) ||
-				(route=='transaction' && this.$route.params.model!==null && 
-				(getModel(this.$route.params.model) in this.$props.dataRoutes) );
+				(route=='transaction' && this.$route.params.model!==undefined && 
+				((getModel(this.$route.params.model) in this.$props.dataRoutes) ||
+				(this.$route.params.model.toLowerCase().substring(0, 4) in this.$props.dataRoutes )) );
 			}
 		}
 	}

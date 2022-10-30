@@ -113,7 +113,7 @@
 				} )
 			},
 			async getItemVariant(itemVariantId){
-				window.axios.get('create_item_variant_stocks/'+itemVariantId).then( (response) => {
+				await window.axios.get('create_item_variant_stocks/'+itemVariantId).then( (response) => {
 					if(response.data.message=='Loading'){
 						showSwalLoading(this);
 					}else{
@@ -128,7 +128,7 @@
 				} )
 			},
 			async getItemStockData(itemStockId){
-				window.axios.get('item_variant_stocks/'+itemStockId + '/edit' ).then((response) => {
+				await window.axios.get('item_variant_stocks/'+itemStockId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

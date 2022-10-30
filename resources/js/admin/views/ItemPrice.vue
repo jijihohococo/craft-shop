@@ -34,6 +34,12 @@
 											<td>{{ item_price.price }}</td>
 											<td>{{ item_price.currency_name }}</td>
 											<td>
+												<ViewButton 
+												:data_name="itemColor" 
+												:data_model="mainContent" 
+												:data_id="item_price.id"
+												:variant_id="item_price.item_variant_id"
+												 />
 												<EditButton v-if="actions.update && key==0" :content="content" link="item.price.edit" :dataId="item_price.id" />
 											</td>
 										</tr>
@@ -69,6 +75,8 @@
 
 	import Error from '../components/Error';
 
+	import ViewButton from '../components/ViewButton';
+
 	import { errorResponse , checkContentPermission , makeRoute , checkActions , unauthorizedActions , showPageNumber , getItemColor } from '../helpers/check';
 
 	import { showSwalLoading } from  '../../helpers/general'
@@ -79,11 +87,13 @@
 			ContentHeader,
 			CreateButton,
 			EditButton,
+			ViewButton,
 			Error,
 			Search
 		},
 		data () {
 			return {
+				mainContent : "ItemPrice",
 				content : null,
 				item_prices : {},
 				itemColor : null ,

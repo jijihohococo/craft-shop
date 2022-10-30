@@ -35,7 +35,14 @@
 											<td>{{ stock.stock }}</td>
 											<td>{{ stock.available_stock }}</td>
 											<td>{{ stock.qty }}</td>
-											<td><EditButton v-if="actions.update && key==0" :content="content" link="item.stock.edit" :dataId="stock.id" /></td>
+											<td>
+												<ViewButton 
+												:data_name="itemColor" 
+												:data_model="mainContent" 
+												:data_id="stock.id"
+												:variant_id="stock.item_variant_id"
+												 />
+												<EditButton v-if="actions.update && key==0" :content="content" link="item.stock.edit" :dataId="stock.id" /></td>
 											</tr>
 										</tbody>
 									</table>
@@ -69,6 +76,8 @@
 
 		import Error from '../components/Error';
 
+		import ViewButton from '../components/ViewButton';
+
 		import { errorResponse , checkContentPermission , makeRoute , checkActions , unauthorizedActions , showPageNumber , getItemColor } from '../helpers/check';
 
 		import { showSwalLoading } from  '../../helpers/general'
@@ -79,11 +88,13 @@
 				ContentHeader,
 				CreateButton,
 				EditButton,
+				ViewButton,
 				Error,
 				Search
 			},
 			data () {
 				return {
+					mainContent : "ItemStock",
 					content : null,
 					item_stocks : {},
 					itemColor : null ,

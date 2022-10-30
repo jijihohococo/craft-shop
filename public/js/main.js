@@ -20755,7 +20755,7 @@ var Transaction = function Transaction() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
-  path: 'transaction/:name/:model/:model_id',
+  path: 'transaction/:name/:model/:model_id/:variant_id',
   component: Transaction,
   name: 'transaction'
 }]);
