@@ -34,7 +34,7 @@ class Category extends TransactionModel
                 ->groupBy('subcategories.category_id');
             }
               ])
-            ->orderBy('name')
+            ->orderBy('id')
             ->get();
         });
     }

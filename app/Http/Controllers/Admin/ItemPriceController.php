@@ -75,6 +75,12 @@ class ItemPriceController extends ItemVariantCommonController
         //
     }
 
+    public function create(int $itemVariantId){
+        return response()->json([
+            'item_variant' => $this->getItemVariant($itemVariantId)
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *

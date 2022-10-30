@@ -183,7 +183,7 @@
 				} )
 			},
 			async getAttributes(){
-				window.axios.get('get_attributes').then( (response) => {
+				await window.axios.get('get_attributes').then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -207,7 +207,7 @@
 				} )
 			},
 			async getSubcategories(categoryId,subcategoryId){
-				window.axios.get('get_subcategories/'+categoryId).then( (response) => {
+				await window.axios.get('get_subcategories/'+categoryId).then( (response) => {
 					if(response.data.message=='Loading'){
 						showSwalLoading(this);
 					}else{
@@ -221,7 +221,7 @@
 				} )
 			},
 			async getBrands(){
-				window.axios.get('get_brands').then( (response) => {
+				await window.axios.get('get_brands').then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
@@ -233,7 +233,7 @@
 				} )
 			},
 			async getColors(){
-				window.axios.get('get_colors').then( (response) => {
+				await window.axios.get('get_colors').then( (response) => {
 					if(response.data.message=='Loading'){
 						showSwalLoading(this);
 					}else{
@@ -244,7 +244,7 @@
 				} )
 			},
 			async getTaxes(){
-				window.axios.get('get_taxes').then( (response) => {
+				await window.axios.get('get_taxes').then( (response) => {
 					if(response.data.message=='Loading'){
 						showSwalLoading(this);
 					}else{
@@ -328,7 +328,7 @@
 				} )
 			},
 			async getItemData(itemId){
-				window.axios.get('items/'+itemId + '/edit' ).then((response) => {
+				await window.axios.get('items/'+itemId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

@@ -416,7 +416,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                window.axios.get('get_attributes').then(function (response) {
+                _context2.next = 2;
+                return window.axios.get('get_attributes').then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this3);
                   } else {
@@ -426,7 +427,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this3, 'read');
                 });
 
-              case 1:
+              case 2:
               case "end":
                 return _context2.stop();
             }
@@ -469,7 +470,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                window.axios.get('get_subcategories/' + categoryId).then(function (response) {
+                _context4.next = 2;
+                return window.axios.get('get_subcategories/' + categoryId).then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this5);
                   } else {
@@ -481,7 +483,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this5, 'read');
                 });
 
-              case 1:
+              case 2:
               case "end":
                 return _context4.stop();
             }
@@ -497,7 +499,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                window.axios.get('get_brands').then(function (response) {
+                _context5.next = 2;
+                return window.axios.get('get_brands').then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this6);
                   } else {
@@ -507,7 +510,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this6, 'read');
                 });
 
-              case 1:
+              case 2:
               case "end":
                 return _context5.stop();
             }
@@ -523,7 +526,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
-                window.axios.get('get_colors').then(function (response) {
+                _context6.next = 2;
+                return window.axios.get('get_colors').then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this7);
                   } else {
@@ -533,7 +537,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this7, 'read');
                 });
 
-              case 1:
+              case 2:
               case "end":
                 return _context6.stop();
             }
@@ -549,7 +553,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
-                window.axios.get('get_taxes').then(function (response) {
+                _context7.next = 2;
+                return window.axios.get('get_taxes').then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this8);
                   } else {
@@ -559,7 +564,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this8, 'read');
                 });
 
-              case 1:
+              case 2:
               case "end":
                 return _context7.stop();
             }
@@ -661,7 +666,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
-                window.axios.get('items/' + itemId + '/edit').then(function (response) {
+                _context8.next = 2;
+                return window.axios.get('items/' + itemId + '/edit').then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this12);
                   } else {
@@ -687,7 +693,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this12, 'update');
                 });
 
-              case 1:
+              case 2:
               case "end":
                 return _context8.stop();
             }

@@ -46,7 +46,7 @@ class Admin extends Authenticatable
     ];
 
     //----- Need to assign clientId and tokenName class's variables to access customized Passport function -----//
-    public static $clientId=1;
+    public static $clientId=3;
 
     public $tokenName='Admin';
 

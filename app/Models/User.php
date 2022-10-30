@@ -43,7 +43,7 @@ class User extends Authenticatable
     ];
 
     //----- Need to assign clientId and tokenName class's variables to access customized Passport function -----//
-    public static $clientId=2;
+    public static $clientId=4;
 
     public $tokenName='User';
 
