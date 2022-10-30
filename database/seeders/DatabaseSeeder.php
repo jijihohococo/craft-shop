@@ -25,7 +25,10 @@ class DatabaseSeeder extends Seeder
             ColorSeeder::class ,
             TaxSeeder::class , 
             CategorySeeder::class ,
-            SubcategorySeeder::class
+            SubcategorySeeder::class,
+            CountrySeeder::class,
+            StateSeeder::class,
+            CitySeeder::class
         ]);
         DB::commit();
         // \App\Models\User::factory(10)->create();

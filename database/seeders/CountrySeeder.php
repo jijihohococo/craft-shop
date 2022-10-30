@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Traits\DataInsertSeeder;
-class CurrencySeeder extends Seeder
-{
 
+class CountrySeeder extends Seeder
+{
     use DataInsertSeeder;
     /**
      * Run the database seeds.
@@ -15,9 +15,9 @@ class CurrencySeeder extends Seeder
      */
     public function run()
     {
+        //
         $this->insertSeed([
-            ['name' => 'USD','price' => 2050],
-            ['name' => 'MMK','price'=> 1]
-        ],'Currency','currencies');
+            ['name' =>    'Myanmar' , 'code' => 'mm']
+        ],'Country','countries');
     }
 }
