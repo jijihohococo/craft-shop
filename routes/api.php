@@ -36,8 +36,9 @@ Route::get('banners','BannerController@get');
 Route::get('colors','ColorController@get');
 Route::get('currencies','CurrencyController@get');
 Route::get('countries','CountryController@get');
+Route::get('states/{countryId}','StateController@get');
+Route::get('cities/{stateId}/{countryId}','CityController@get');
 Route::get('collections','CollectionController@get');
-
 Route::get('best_sellers','User\ItemController@showBestSeller');
 Route::get('gamings','User\ItemController@showGaming');
 Route::get('feature_products','User\ItemController@showFeatureProducts');
