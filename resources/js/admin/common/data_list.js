@@ -60,7 +60,7 @@ methods: {
             return string
         }
         let checkString=string.toLowerCase()
-        let span='<span style="background-color:red">'
+        let span='<span class="text-primary">'
         let endSpan='</span>'
         if(this.search!==null){
             let search=this.search

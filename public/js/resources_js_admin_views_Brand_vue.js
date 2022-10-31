@@ -1595,7 +1595,7 @@ var mixin = {
       }
 
       var checkString = string.toLowerCase();
-      var span = '<span style="background-color:red">';
+      var span = '<span class="text-primary">';
       var endSpan = '</span>';
 
       if (this.search !== null) {
