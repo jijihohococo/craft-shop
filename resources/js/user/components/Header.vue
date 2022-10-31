@@ -12,7 +12,7 @@
 					<div class="col-md-6">
 						<div class="text-center text-md-right">
 							<ul class="header_list">
-								<li><a href="compare.html"><i class="ti-control-shuffle"></i><span>Compare</span></a></li>
+								<li><a href="compare.html"><i class="ti-control-shuffle"></i><span>{{ translateLang("Compare") }}</span></a></li>
 								<li v-if="!userLogin.data">
 									<router-link to="/login">
 										<i class="ti-user"></i>
