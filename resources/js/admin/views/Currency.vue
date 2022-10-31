@@ -61,9 +61,12 @@
                                     :objectArrayData="multipleData"
                                     ref="deleteCheck"
                                     /></td>
-                                    <td>{{ currency.name }}</td>
-                                    <td>{{ currency.price }}</td>
-                                    <td>{{ currency.deleted_at }}</td>
+                                    <td><div v-html="checkString(currency.name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(currency.price)">
+                                    </div></td>
+                                    <td><div v-html="checkString(currency.deleted_at)">
+                                    </div></td>
                                     <td class="text-left">
                                         <ViewButton :data_name="currency.name" :data_model="content" :data_id="currency.id" />
                                         <EditButton v-if="actions.update && currency.deleted_at==null" :content="content" link="currency.edit" :dataId="currency.id" />
@@ -91,7 +94,7 @@
 </template>
 <script >
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 

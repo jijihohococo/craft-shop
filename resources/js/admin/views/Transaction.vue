@@ -88,7 +88,7 @@
 		methods :{
 			getLink(model){
 				let newModel=getModel(model)
-				return this.$route.params.variant_id!==null ?
+				return this.$route.params.variant_id!=='0' ?
 				'/admin/'+newModel.replace(/([A-Z])/g,'/$1').trim().toLowerCase() + '/'+this.$route.params.variant_id :
 				'/admin/' +newModel.
 				replace(/([A-Z])/g,'_$1').trim().toLowerCase();

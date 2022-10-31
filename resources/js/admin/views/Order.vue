@@ -28,12 +28,15 @@
 									</thead>
 									<tbody v-for="order in orders.data" :key="order.id">
 										<tr>
-											<td>{{ order.user_name }}</td>
-											<td>{{ order.user_email }}</td>
-											<td>{{ order.delivery_price }}</td>
-											<td>{{ order.address }}</td>
-											<td>{{ order.status }}</td>
-											<td>{{ order.created_at }}</td>
+											<td><div v-html="checkString(order.user_name)">
+											</div></td>
+											<td><div v-html="checkString(order.user_email)">
+											</div></td>
+											<td><div v-html="checkString(order.delivery_price)">
+											</div></td>
+											<td><div v-html="checkString(order.address)"></div></td>
+											<td><div v-html="checkString(order.status)"></div></td>
+											<td><div v-html="checkString(order.created_at)"></div></td>
 											<td></td>
 										</tr>
 									</tbody>
@@ -54,28 +57,11 @@
 </template>
 <script >
 
-	import Pagination from '../../components/Pagination';
+	import { errorResponse , makeRoute , checkContentPermission } from '../helpers/check';
 
-	import ContentHeader from '../components/ContentHeader';
-
-	import ViewButton from '../components/ViewButton';
-
-	import Error from '../components/Error';
-
-	import Search from '../components/Search';
-
-	import { errorResponse , makeRoute ,  checkActions, unauthorizedActions } from '../helpers/check';
-
-	import { showSwalLoading } from  '../../helpers/general'
+	import { mixin } from '../common/data_list';
 
 	export default {
-		components : {
-			Pagination ,
-			ContentHeader ,
-			ViewButton ,
-			Error ,
-			Search
-		},
 		data(){
 			return {
 				content : 'Order',
@@ -83,42 +69,29 @@
 				search : null ,
 				currentPage : 1 ,
 				actions : {
-					read : ''
-				}
+					read : '',
+					update : ''
+				},
+				mainData  : 'orders',
+				getMethod : 'getOrders',
 			}
 		},
+		mixins : [mixin],
 		mounted : function(){
 			this.getOrders(1);
+			checkContentPermission(this.content,'update',this);
 		},
 		methods : {
-			checkAuthorizeActions(actions){
-				return checkActions(actions);
-			},
-			checkUnauthorizeActions(actions){
-				return unauthorizedActions(actions);
-			},
 			searchOrders(page){
 				window.axios.get(makeRoute(this,page,'order','search')+ this.search + '&page=' + page).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.orders=response.data.orders
-						this.actions.read=true;
-					}
+					this.getMainData(response)
 				} ).catch( (error) => {
 					errorResponse(error,this,'read')
 				} );
 			},
 			getOrders(page){
 				window.axios.get(makeRoute(this,page,'order') + page ).then(( response ) =>  {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.orders=response.data.orders
-						this.actions.read=true;
-					}
+					this.getMainData(response)
 				} ).catch( (error) => {
 					errorResponse(error,this,'read')
 				} );

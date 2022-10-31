@@ -63,10 +63,12 @@
                                     ref="deleteCheck"
                                     />
                                 </td>
-                                <td>{{ social_media.name }}</td>
+                                <td><div v-html="checkString(social_media.name)">
+                                    </div></td>
                                 <td><v-lazy-image class="img-fluid" 
                                     :src="'/image/social_media_images/'+social_media.pic" /></td>
-                                <td>{{ social_media.deleted_at }}</td>
+                                <td><div v-html="checkString(social_media.deleted_at)">
+                                    </div></td>
                                 <td class="text-left">
                                     <ViewButton :data_name="social_media.name" :data_model="content" :data_id="social_media.id" />
                                     <EditButton v-if="actions.update && social_media.deleted_at==null" :content="content" link="social_media.edit" :dataId="social_media.id" />
@@ -94,7 +96,7 @@
 </template>
 <script >
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 

@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\Country;
 trait CountryDataTrait{
 
 	public function scopeSelectCountry($query){
@@ -11,6 +12,11 @@ trait CountryDataTrait{
             ->whereColumn('country_id','countries.id')
             ->limit(1);
         } ]);
+    }
+
+    public function scopeSearchWithCountry($query,$searchData){
+        return $query->orWherein('country_id',Country::select('id')
+        ->searchWithName($searchData)->getQuery() );
     }
 	
 }

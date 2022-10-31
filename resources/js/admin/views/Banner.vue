@@ -63,13 +63,15 @@
                                     ref="deleteCheck"
                                     />
                                 </td>
-                                <td>{{ banner.title }}</td>
+                                <td><div v-html="checkString(banner.title)">
+                                    </div></td>
                                 <td>
                                     <v-lazy-image 
                                     class="img-fluid"
                                     :src="'/image/banner_images/'+banner.pic"/>
                                 </td>
-                                <td>{{ banner.deleted_at }}</td>
+                                <td><div v-html="checkString(banner.deleted_at)">
+                                    </div></td>
                                 <td class="text-left">
                                     <ViewButton :data_name="banner.title" :data_model="content" :data_id="banner.id" />
                                     <EditButton v-if="actions.update && banner.deleted_at==null" :content="content" link="banner.edit" :dataId="banner.id" />
@@ -99,7 +101,7 @@
 
     import VLazyImage from "v-lazy-image"
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 

@@ -62,8 +62,10 @@
                                         ref="deleteCheck"
                                         />
                                     </td>
-                                    <td>{{ category.name }}</td>
-                                    <td>{{ category.deleted_at }}</td>
+                                    <td><div v-html="checkString(category.name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(category.deleted_at)">
+                                    </div></td>
                                     <td class="text-left">
                                         <ViewButton :data_name="category.name" :data_model="content" :data_id="category.id" />
                                         <EditButton v-if="actions.update && category.deleted_at==null" :content="content" link="category.edit" :dataId="category.id" />
@@ -93,7 +95,7 @@
 </template>
 <script >
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 

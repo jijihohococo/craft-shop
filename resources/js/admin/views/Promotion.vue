@@ -63,13 +63,18 @@
 												:objectArrayData="multipleData"
 												ref="deleteCheck"
 												/></td>
-												<td>{{ promotion.name }}</td>
-												<td>{{ promotion.promo_code }}</td>
-												<td>{{ promotion.promotion_start_time }}</td>
+												<td><div v-html="checkString(promotion.name)">
+												</div></td>
+												<td><div v-html="checkString(promotion.promo_code)">
+												</div></td>
+												<td><div v-html="checkString(promotion.promotion_start_time)">
+												</div></td>
 												<td>
-													{{ promotion.promotion_end_time }}
+													<div v-html="checkString(promotion.promotion_end_time)">
+													</div>
 												</td>
-												<td>{{ promotion.deleted_at }}</td>
+												<td><div v-html="checkString(promotion.deleted_at)">
+												</div></td>
 												<td class="text-left">
 													<ViewButton :data_name="promotion.name" 
 													:data_model="content" :data_id="promotion.id" />
@@ -100,7 +105,7 @@
 		</section>
 	</template>
 	<script >
-		import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+		import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
 		import { mixin } from '../common/data_list';
 		

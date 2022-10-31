@@ -59,11 +59,14 @@
                                         :objectArrayData="multipleData"
                                         ref="deleteCheck"
                                         /></td>
-                                        <td>{{ color.name }}</td>
+                                        <td><div v-html="checkString(color.name)">
+                                    </div></td>
                                         <td>
                                             <input type="color" :value="color.color_code" disabled>
-                                        {{ color.color_code }}</td>
-                                        <td>{{ color.deleted_at }}</td>
+                                        <div v-html="checkString(color.color_code)">
+                                    </div></td>
+                                        <td><div v-html="checkString(color.deleted_at)">
+                                    </div></td>
                                         <td class="text-left">
                                             <ViewButton :data_name="color.name" :data_model="content" :data_id="color.id" />
                                             <EditButton v-if="actions.update && color.deleted_at==null" :content="content" link="color.edit" :dataId="color.id" />
@@ -92,7 +95,7 @@
 </template>
 <script >
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 

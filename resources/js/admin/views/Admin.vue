@@ -61,9 +61,12 @@
                                     :objectArrayData="multipleData"
                                     ref="deleteCheck"
                                     /></td>
-                                    <td>{{ ad.name }}</td>
-                                    <td>{{ ad.email }}</td>
-                                    <td>{{ ad.deleted_at }}</td>
+                                    <td><div v-html="checkString(ad.name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(ad.email)">
+                                    </div></td>
+                                    <td><div v-html="checkString(ad.deleted_at)">
+                                    </div></td>
                                     <td class="text-left">
                                         <ViewButton :data_name="ad.name" :data_model="content" :data_id="ad.id" />
                                         <EditButton v-if="admin.data!=={} && admin.data.id==ad.id && actions.update && ad.deleted_at==null" :content="content" link="admin.edit" :dataId="ad.id" />
@@ -92,7 +95,7 @@
 </template>
 <script >
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { admin } from '../../store';
 

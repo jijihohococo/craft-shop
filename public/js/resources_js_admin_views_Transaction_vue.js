@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getLink: function getLink(model) {
       var newModel = (0,_helpers_check__WEBPACK_IMPORTED_MODULE_3__.getModel)(model);
-      return this.$route.params.variant_id !== null ? '/admin/' + newModel.replace(/([A-Z])/g, '/$1').trim().toLowerCase() + '/' + this.$route.params.variant_id : '/admin/' + newModel.replace(/([A-Z])/g, '_$1').trim().toLowerCase();
+      return this.$route.params.variant_id !== '0' ? '/admin/' + newModel.replace(/([A-Z])/g, '/$1').trim().toLowerCase() + '/' + this.$route.params.variant_id : '/admin/' + newModel.replace(/([A-Z])/g, '_$1').trim().toLowerCase();
     },
     getTransactions: function getTransactions() {
       var _this = this;

@@ -59,9 +59,11 @@
                                         :objectArrayData="multipleData"
                                         ref="deleteCheck"
                                         /></td>
-                                        <td>{{ brand.name }}</td>
+                                        <td><div v-html="checkString(brand.name)">
+                                    </div></td>
                                         <td><v-lazy-image :src="'/image/brand_images/'+brand.pic" /></td>
-                                        <td>{{ brand.deleted_at }}</td>
+                                        <td><div v-html="checkString(brand.deleted_at)">
+                                    </div></td>
                                         <td class="text-left">
                                             <ViewButton :data_name="brand.name" :data_model="content" :data_id="brand.id" />
                                             <EditButton v-if="actions.update && brand.deleted_at==null" :content="content" link="brand.edit" :dataId="brand.id" />
@@ -91,7 +93,7 @@
 
     import VLazyImage from "v-lazy-image"
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 

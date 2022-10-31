@@ -64,10 +64,15 @@
                                     ref="deleteCheck"
                                     />
                                 </td>
-                                <td>{{ city.name }}</td>
-                                <td>{{ city.state_name }}</td>
-                                <td>{{ city.country_name }}</td>
-                                <td>{{ city.deleted_at }}</td>
+                                <td>
+                                    <div v-html="checkString(city.name)">
+                                    </div></td>
+                                <td><div v-html="checkString(city.state_name)">
+                                    </div></td>
+                                <td><div v-html="checkString(city.country_name)">
+                                    </div></td>
+                                <td><div v-html="checkString(city.deleted_at)">
+                                    </div></td>
                                 <td class="text-left">
                                     <ViewButton :data_name="city.name" :data_model="content" :data_id="city.id" />
                                     <EditButton v-if="actions.update && city.deleted_at==null" :content="content" link="city.edit" :dataId="city.id" />
@@ -90,20 +95,20 @@
 </div>
 <!-- /.row -->
 <div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
-   <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for city" />
+ <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for city" />
 </div>
 </div>
 </section>
 </template>
 <script >
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber , deleteFromArray } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 
     export default {
         data () {
-         return {
+           return {
             content : 'City',
             mainData : 'cities',
             getMethod : 'getCities',
@@ -115,23 +120,23 @@
         getCities(page){
             window.axios.get(makeRoute(this,page,'city') + page ).then(( response ) =>  {
                 this.getMainData(response)
-           } ).catch( (error) => {
-            errorResponse(error,this,'read')
-        } );
-       },
-       searchCities(page){
-        window.axios.get(makeRoute(this,page,'city','search') + this.search + '&page=' + page ).then( (response) => {
-           this.getMainData(response)
-   } ).catch( (error) => {
-    errorResponse(error,this,'read');
-} )
-}
-},
-mounted : function(){
- this.getCities(1);
- checkContentPermission(this.content,'create',this);
- checkContentPermission(this.content,'update',this);
- checkContentPermission(this.content,'delete',this);
+            } ).catch( (error) => {
+                errorResponse(error,this,'read')
+            } );
+        },
+        searchCities(page){
+            window.axios.get(makeRoute(this,page,'city','search') + this.search + '&page=' + page ).then( (response) => {
+             this.getMainData(response)
+         } ).catch( (error) => {
+            errorResponse(error,this,'read');
+        } )
+     }
+ },
+ mounted : function(){
+   this.getCities(1);
+   checkContentPermission(this.content,'create',this);
+   checkContentPermission(this.content,'update',this);
+   checkContentPermission(this.content,'delete',this);
 },
 }
 </script>

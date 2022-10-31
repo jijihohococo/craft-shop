@@ -106,6 +106,7 @@ class StateController extends CommonController
         return $this->indexPage(
             State::selectCountry()
             ->searchWithName($searchData)
+            ->searchWithCountry($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)

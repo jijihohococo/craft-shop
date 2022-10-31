@@ -59,13 +59,15 @@
                                         :objectArrayData="multipleData"
                                         ref="deleteCheck"
                                         /></td>
-                                        <td>{{ collection.name }}</td>
+                                        <td><div v-html="checkString(collection.name)">
+                                    </div></td>
                                         <td>
                                             <v-lazy-image
                                             class="img-fluid"
                                             :src="'/image/collection_images/'+collection.pic" />
                                         </td>
-                                        <td>{{ collection.deleted_at }}</td>
+                                        <td><div v-html="checkString(collection.deleted_at)">
+                                    </div></td>
                                         <td class="text-left">
                                             <ViewButton :data_name="collection.name" :data_model="content" :data_id="collection.id" />
                                             <EditButton v-if="actions.update && collection.deleted_at==null" :content="content" link="collection.edit" :dataId="collection.id" />
@@ -95,7 +97,7 @@
 
     import VLazyImage from "v-lazy-image"
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 

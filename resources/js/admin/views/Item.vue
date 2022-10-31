@@ -64,10 +64,14 @@
                                     :objectArrayData="multipleData"
                                     ref="deleteCheck"
                                     /></td>
-                                    <td>{{ item.name }}</td>
-                                    <td>{{ item.category_name }}</td>
-                                    <td>{{ item.subcategory_name }}</td>
-                                    <td>{{ item.brand_name }}</td>
+                                    <td><div v-html="checkString(item.name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(item.category_name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(item.subcategory_name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(item.brand_name)">
+                                    </div></td>
                                     <td >
                                         <div >
                                         <template v-if="item.variants!==null" >
@@ -79,7 +83,8 @@
                                     </template>
                                 </template>
                                 </div></td>
-                                    <td>{{ item.deleted_at }}</td>
+                                    <td><div v-html="checkString(item.deleted_at)">
+                                    </div></td>
                                     <td class="text-left">
                                         <ViewButton :data_name="item.name" :data_model="content" :data_id="item.id" />
                                         <EditButton v-if="actions.update && item.deleted_at==null" :content="content" link="item.edit" :dataId="item.id" />
@@ -108,7 +113,7 @@
 </template>
 <script >
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 

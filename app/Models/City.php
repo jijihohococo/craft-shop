@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
-use App\Traits\{SearchNameTrait,DeleteSearch,CountryDataTrait};
+use App\Traits\{SearchNameTrait,DeleteSearch,StateDataTrait,CountryDataTrait};
 class City extends TransactionModel
 {
-    use SoftDeletes,SearchNameTrait,DeleteSearch,CountryDataTrait;
+    use SoftDeletes,SearchNameTrait,DeleteSearch,StateDataTrait,CountryDataTrait;
 
     protected $fillable=[
         'name',
@@ -19,15 +19,6 @@ class City extends TransactionModel
 
     public static $cacheKey='cities_cache';
 
-    public function scopeSelectState($query){
-        return $query->addSelect(['state_name' => function($query) {
-            $query->select('name')
-            ->from('states')
-            ->whereColumn('state_id','states.id')
-            ->limit(1);
-        } ]);
-    }
-
     public function getByStateAndCountry($stateId,$countryId){
         return Cache::tags( self::$cacheKey )->remember(
             'cities-by-state-country',60*60*24,function() use ($stateId,
@@ -37,5 +28,11 @@ class City extends TransactionModel
             ->latest('name')
             ->get();
         });
+    }
+
+    public function scopeSearchData($query,$searchData){
+        return $query->searchWithName($searchData)
+        ->searchWithState($searchData)
+        ->searchWithCountry($searchData);
     }
 }

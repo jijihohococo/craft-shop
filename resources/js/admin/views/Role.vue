@@ -60,8 +60,10 @@
                                     :objectArrayData="multipleData"
                                     ref="deleteCheck"
                                     /></td>
-                                    <td>{{ role.name }}</td>
-                                    <td>{{ role.deleted_at }}</td>
+                                    <td><div v-html="checkString(role.name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(role.deleted_at)">
+                                    </div></td>
                                     <td class="text-left">
                                         <ViewButton :data_name="role.name" :data_model="content" :data_id="role.id" />
                                         <EditButton v-if="actions.update && role.deleted_at==null" :content="content" link="role.edit" :dataId="role.id" />
@@ -89,7 +91,7 @@
 </template>
 <script >
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 

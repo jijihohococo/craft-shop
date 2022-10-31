@@ -63,9 +63,12 @@
                                         ref="deleteCheck"
                                         />
                                     </td>
-                                    <td>{{ subcategory.name }}</td>
-                                    <td>{{ subcategory.category_name }}</td>
-                                    <td>{{ subcategory.deleted_at }}</td>
+                                    <td><div v-html="checkString(subcategory.name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(subcategory.category_name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(subcategory.deleted_at)">
+                                    </div></td>
                                     <td class="text-left">
                                         <ViewButton :data_name="subcategory.name" :data_model="content" :data_id="subcategory.id" />
                                         <EditButton v-if="actions.update && subcategory.deleted_at==null" :content="content" link="subcategory.edit" :dataId="subcategory.id" />
@@ -95,7 +98,7 @@
 </template>
 <script >
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 

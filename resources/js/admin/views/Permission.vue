@@ -62,8 +62,10 @@
                                     :objectArrayData="multipleData"
                                     ref="deleteCheck"
                                     /></td>
-                                    <td>{{ permission.name }}</td>
-                                    <td>{{ permission.model }}</td>
+                                    <td><div v-html="checkString(permission.name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(permission.model)">
+                                    </div></td>
                                     <td>
                                      <template v-for="access in ['create','update','read','delete']">
                                        <template v-if="permission[access]==true" >
@@ -71,7 +73,7 @@
                                     </template>
                                 </template>
                             </td>
-                            <td>{{ permission.deleted_at }}</td>
+                            <td><div v-html="checkString(permission.deleted_at)"></div></td>
                             <td class="text-left">
                                 <ViewButton :data_name="permission.name" :data_model="content" :data_id="permission.id" />
                                 <EditButton v-if="actions.update && permission.deleted_at==null" :content="content" link="permission.edit" :dataId="permission.id" />
@@ -100,7 +102,7 @@
 </template>
 <script >
 
-    import { errorResponse , checkContentPermission , makeRoute , showPageNumber } from '../helpers/check';
+    import { errorResponse , checkContentPermission , makeRoute } from '../helpers/check';
 
     import { mixin } from '../common/data_list';
 

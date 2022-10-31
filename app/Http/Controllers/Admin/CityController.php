@@ -108,7 +108,7 @@ class CityController extends CommonController
         return $this->indexPage(
             City::selectState()
             ->selectCountry()
-            ->searchWithName($searchData)
+            ->searchData($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -121,7 +121,7 @@ class CityController extends CommonController
             City::onlyTrashed()
             ->selectState()
             ->selectCountry()
-            ->searchWithName($searchData)
+            ->searchData($searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
