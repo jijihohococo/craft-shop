@@ -119,6 +119,7 @@ class StateController extends CommonController
             State::onlyTrashed()
             ->selectCountry()
             ->searchWithName($searchData)
+            ->searchWithCountry($searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
