@@ -66,11 +66,11 @@
 				}
 			}
 		},
-		async mounted(){
+		mounted(){
 			if(this.current=='update'){
-				await this.getItemPriceData(this.$route.params.id);
+				this.getItemPriceData(this.$route.params.id);
 			}else{
-				await this.getItemVariant(this.$route.params.item_varaint_id)
+				this.getItemVariant(this.$route.params.item_varaint_id)
 			}
 		},
 		async created(){
@@ -122,8 +122,8 @@
 					}
 				} )
 			},
-			async getItemVariant(itemVariantId){
-				await window.axios.get('create_item_variant_prices/'+itemVariantId).then( (response) => {
+			getItemVariant(itemVariantId){
+				window.axios.get('create_item_variant_prices/'+itemVariantId).then( (response) => {
 					if(response.data.message=='Loading'){
 						showSwalLoading(this);
 					}else{
@@ -135,8 +135,8 @@
 					}
 				} )
 			},
-			async getItemPriceData(itemPriceId){
-				await window.axios.get('item_variant_prices/'+itemPriceId + '/edit' ).then((response) => {
+			getItemPriceData(itemPriceId){
+				 window.axios.get('item_variant_prices/'+itemPriceId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

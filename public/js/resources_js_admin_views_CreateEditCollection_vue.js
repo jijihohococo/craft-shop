@@ -350,6 +350,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
+    if (this.current == 'update') {
+      this.getCollectionData(this.$route.params.id);
+    }
+  },
+  created: function created() {
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -357,41 +362,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (!(_this.current == 'update')) {
-                _context.next = 3;
-                break;
-              }
+              _this.current = isNaN(_this.$route.params.id) ? 'create' : 'update';
+              (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.checkContentPermission)(_this.content, _this.current, _this);
+              _context.next = 4;
+              return _this.getItems();
 
-              _context.next = 3;
-              return _this.getCollectionData(_this.$route.params.id);
-
-            case 3:
+            case 4:
             case "end":
               return _context.stop();
           }
         }
       }, _callee);
-    }))();
-  },
-  created: function created() {
-    var _this2 = this;
-
-    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _this2.current = isNaN(_this2.$route.params.id) ? 'create' : 'update';
-              (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.checkContentPermission)(_this2.content, _this2.current, _this2);
-              _context2.next = 4;
-              return _this2.getItems();
-
-            case 4:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
     }))();
   },
   methods: {
@@ -411,7 +392,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.count++;
     },
     getFormData: function getFormData() {
-      var _this3 = this;
+      var _this2 = this;
 
       var update = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
       var pic = typeof this.fields.pic == 'string' && !isNaN(this.$route.params.id) ? '' : this.fields.pic;
@@ -420,7 +401,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       if (this.fields.items.length > 0) {
         this.fields.items.map(function (data, index) {
-          _this3.formData.set('items[' + index + ']', data);
+          _this2.formData.set('items[' + index + ']', data);
         });
       }
 
@@ -431,88 +412,74 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.formData;
     },
     createCollection: function createCollection() {
-      var _this4 = this;
+      var _this3 = this;
 
       window.axios.post("collections", this.getFormData()).then(function (response) {
+        _this3.returnBack(response);
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this3.errors = error.response.data.errors;
+        } else {
+          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this3, 'create');
+        }
+      });
+    },
+    updateCollection: function updateCollection() {
+      var _this4 = this;
+
+      window.axios.post("collections/".concat(this.$route.params.id), this.getFormData('update')).then(function (response) {
         _this4.returnBack(response);
       })["catch"](function (error) {
         if (error.response.status == 422) {
           _this4.errors = error.response.data.errors;
         } else {
-          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this4, 'create');
-        }
-      });
-    },
-    updateCollection: function updateCollection() {
-      var _this5 = this;
-
-      window.axios.post("collections/".concat(this.$route.params.id), this.getFormData('update')).then(function (response) {
-        _this5.returnBack(response);
-      })["catch"](function (error) {
-        if (error.response.status == 422) {
-          _this5.errors = error.response.data.errors;
-        } else {
-          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this5, 'update');
+          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this4, 'update');
         }
       });
     },
     getCollectionData: function getCollectionData(collectionId) {
+      var _this5 = this;
+
+      window.axios.get('collections/' + collectionId + '/edit').then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this5);
+        } else {
+          _this5.fields = response.data.collection;
+          _this5.fields.pics = [{
+            'filename': _this5.fields.pic,
+            'id': !isNaN(_this5.$route.params.id) ? _this5.$route.params.id : null
+          }];
+          _this5.fields.items = (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.mergeArray)(response.data.items);
+        }
+      })["catch"](function (error) {
+        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this5, 'update');
+      });
+    },
+    getItems: function getItems() {
       var _this6 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context3.next = 2;
-                return window.axios.get('collections/' + collectionId + '/edit').then(function (response) {
+                _context2.next = 2;
+                return window.axios.get('get_items').then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this6);
                   } else {
-                    _this6.fields = response.data.collection;
-                    _this6.fields.pics = [{
-                      'filename': _this6.fields.pic,
-                      'id': !isNaN(_this6.$route.params.id) ? _this6.$route.params.id : null
-                    }];
-                    _this6.fields.items = (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.mergeArray)(response.data.items);
+                    _this6.items = response.data.items;
                   }
                 })["catch"](function (error) {
-                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this6, 'update');
+                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this6, 'read');
                 });
 
               case 2:
               case "end":
-                return _context3.stop();
+                return _context2.stop();
             }
           }
-        }, _callee3);
-      }))();
-    },
-    getItems: function getItems() {
-      var _this7 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.next = 2;
-                return window.axios.get('get_items').then(function (response) {
-                  if (response.data.message == 'Loading') {
-                    (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this7);
-                  } else {
-                    _this7.items = response.data.items;
-                  }
-                })["catch"](function (error) {
-                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this7, 'read');
-                });
-
-              case 2:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4);
+        }, _callee2);
       }))();
     }
   }
@@ -941,6 +908,39 @@ var mainMixinData = {
   components: {
     ContentHeader: _components_ContentHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
     Error: _components_Error__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    checkString: function checkString(string) {
+      if (string == null) {
+        return string;
+      }
+
+      var checkString = string.toLowerCase();
+      var span = '<span class="text-primary">';
+      var endSpan = '</span>';
+
+      if (this.search !== null) {
+        var search = this.search;
+        var lowerSearch = this.search.toLowerCase();
+
+        if (checkString == lowerSearch) {
+          return span + string.slice(0, search.length) + endSpan;
+        } else if (checkString.includes(lowerSearch)) {
+          var searchIndex = string.toLowerCase().indexOf(lowerSearch);
+          var htmlString = '';
+
+          if (searchIndex == 0) {
+            htmlString = span + string.slice(searchIndex, search.length) + endSpan + string.slice(searchIndex + search.length, string.length);
+          } else if (searchIndex + 1 <= string.length) {
+            htmlString = string.slice(0, searchIndex) + span + string.slice(searchIndex, searchIndex + search.length) + string.slice(searchIndex + search.length, search.length) + endSpan + string.slice(searchIndex + search.length, string.length);
+          }
+
+          return htmlString;
+        }
+      }
+
+      return string;
+    }
   }
 };
 

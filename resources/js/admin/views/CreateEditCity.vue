@@ -94,7 +94,7 @@
 		async mounted(){
 			await this.getCurrencies()
 			if(this.current=='update'){
-				await this.getCityData(this.$route.params.id);
+				this.getCityData(this.$route.params.id);
 			}
 		},
 		async created(){
@@ -137,8 +137,8 @@
 					}
 				} )
 			},
-			async getCityData( cityId ){
-				await window.axios.get('cities/'+cityId + '/edit' ).then((response) => {
+			getCityData( cityId ){
+				window.axios.get('cities/'+cityId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

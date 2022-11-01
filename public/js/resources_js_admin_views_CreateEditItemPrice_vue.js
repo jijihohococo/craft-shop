@@ -146,6 +146,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
+    if (this.current == 'update') {
+      this.getItemPriceData(this.$route.params.id);
+    } else {
+      this.getItemVariant(this.$route.params.item_varaint_id);
+    }
+  },
+  created: function created() {
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -153,49 +160,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (!(_this.current == 'update')) {
-                _context.next = 5;
-                break;
-              }
+              _this.current = isNaN(_this.$route.params.id) ? 'create' : 'update';
+              (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.checkContentPermission)(_this.content, _this.current, _this);
+              _context.next = 4;
+              return _this.getCurrencies();
 
-              _context.next = 3;
-              return _this.getItemPriceData(_this.$route.params.id);
-
-            case 3:
-              _context.next = 7;
-              break;
-
-            case 5:
-              _context.next = 7;
-              return _this.getItemVariant(_this.$route.params.item_varaint_id);
-
-            case 7:
+            case 4:
             case "end":
               return _context.stop();
           }
         }
       }, _callee);
-    }))();
-  },
-  created: function created() {
-    var _this2 = this;
-
-    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _this2.current = isNaN(_this2.$route.params.id) ? 'create' : 'update';
-              (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.checkContentPermission)(_this2.content, _this2.current, _this2);
-              _context2.next = 4;
-              return _this2.getCurrencies();
-
-            case 4:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
     }))();
   },
   methods: {
@@ -206,9 +181,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return data + "'s Stock";
     },
     updateItemPrice: function updateItemPrice() {
-      var _this3 = this;
+      var _this2 = this;
 
       window.axios.post('update_item_variant_prices/' + this.$route.params.id, this.fields).then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this2);
+        } else {
+          _this2.$swal('Success', response.data.message, 'success');
+
+          _this2.$router.push({
+            path: '/admin/item/price/' + _this2.itemVariant.id
+          });
+        }
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this2.errors = error.response.data.errors;
+        } else {
+          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this2, 'update');
+        }
+      });
+    },
+    createItemPrice: function createItemPrice() {
+      var _this3 = this;
+
+      window.axios.post("save_item_variant_prices/" + this.itemVariant.id, this.fields).then(function (response) {
         if (response.data.message == 'Loading') {
           (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this3);
         } else {
@@ -222,115 +218,66 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         if (error.response.status == 422) {
           _this3.errors = error.response.data.errors;
         } else {
-          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this3, 'update');
-        }
-      });
-    },
-    createItemPrice: function createItemPrice() {
-      var _this4 = this;
-
-      window.axios.post("save_item_variant_prices/" + this.itemVariant.id, this.fields).then(function (response) {
-        if (response.data.message == 'Loading') {
-          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this4);
-        } else {
-          _this4.$swal('Success', response.data.message, 'success');
-
-          _this4.$router.push({
-            path: '/admin/item/price/' + _this4.itemVariant.id
-          });
-        }
-      })["catch"](function (error) {
-        if (error.response.status == 422) {
-          _this4.errors = error.response.data.errors;
-        } else {
-          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this4, 'create');
+          (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this3, 'create');
         }
       });
     },
     getItemVariant: function getItemVariant(itemVariantId) {
-      var _this5 = this;
+      var _this4 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return window.axios.get('create_item_variant_prices/' + itemVariantId).then(function (response) {
-                  if (response.data.message == 'Loading') {
-                    (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this5);
-                  } else {
-                    _this5.itemVariant = response.data.item_variant;
-                    _this5.itemColor = (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.getItemColor)(response.data);
-                    _this5.price = _this5.itemColor + "'s Price";
-                    _this5.header = "Create " + _this5.price;
-                  }
-                });
-
-              case 2:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3);
-      }))();
+      window.axios.get('create_item_variant_prices/' + itemVariantId).then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this4);
+        } else {
+          _this4.itemVariant = response.data.item_variant;
+          _this4.itemColor = (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.getItemColor)(response.data);
+          _this4.price = _this4.itemColor + "'s Price";
+          _this4.header = "Create " + _this4.price;
+        }
+      });
     },
     getItemPriceData: function getItemPriceData(itemPriceId) {
+      var _this5 = this;
+
+      window.axios.get('item_variant_prices/' + itemPriceId + '/edit').then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this5);
+        } else {
+          _this5.fields = response.data.item_price;
+          _this5.itemVariant = response.data.item_variant;
+          _this5.itemColor = (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.getItemColor)(response.data);
+          _this5.price = _this5.itemColor + "'s Price";
+          _this5.header = "Update " + _this5.price;
+        }
+      })["catch"](function (error) {
+        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this5, 'update');
+      });
+    },
+    getCurrencies: function getCurrencies() {
       var _this6 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context4.next = 2;
-                return window.axios.get('item_variant_prices/' + itemPriceId + '/edit').then(function (response) {
+                _context2.next = 2;
+                return window.axios.get('get_currencies').then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this6);
                   } else {
-                    _this6.fields = response.data.item_price;
-                    _this6.itemVariant = response.data.item_variant;
-                    _this6.itemColor = (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.getItemColor)(response.data);
-                    _this6.price = _this6.itemColor + "'s Price";
-                    _this6.header = "Update " + _this6.price;
+                    _this6.currencies = response.data.currencies;
                   }
                 })["catch"](function (error) {
-                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this6, 'update');
+                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this6, 'read');
                 });
 
               case 2:
               case "end":
-                return _context4.stop();
+                return _context2.stop();
             }
           }
-        }, _callee4);
-      }))();
-    },
-    getCurrencies: function getCurrencies() {
-      var _this7 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
-        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _context5.next = 2;
-                return window.axios.get('get_currencies').then(function (response) {
-                  if (response.data.message == 'Loading') {
-                    (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this7);
-                  } else {
-                    _this7.currencies = response.data.currencies;
-                  }
-                })["catch"](function (error) {
-                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this7, 'read');
-                });
-
-              case 2:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
+        }, _callee2);
       }))();
     }
   }
@@ -708,6 +655,39 @@ var mainMixinData = {
   components: {
     ContentHeader: _components_ContentHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
     Error: _components_Error__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    checkString: function checkString(string) {
+      if (string == null) {
+        return string;
+      }
+
+      var checkString = string.toLowerCase();
+      var span = '<span class="text-primary">';
+      var endSpan = '</span>';
+
+      if (this.search !== null) {
+        var search = this.search;
+        var lowerSearch = this.search.toLowerCase();
+
+        if (checkString == lowerSearch) {
+          return span + string.slice(0, search.length) + endSpan;
+        } else if (checkString.includes(lowerSearch)) {
+          var searchIndex = string.toLowerCase().indexOf(lowerSearch);
+          var htmlString = '';
+
+          if (searchIndex == 0) {
+            htmlString = span + string.slice(searchIndex, search.length) + endSpan + string.slice(searchIndex + search.length, string.length);
+          } else if (searchIndex + 1 <= string.length) {
+            htmlString = string.slice(0, searchIndex) + span + string.slice(searchIndex, searchIndex + search.length) + string.slice(searchIndex + search.length, search.length) + endSpan + string.slice(searchIndex + search.length, string.length);
+          }
+
+          return htmlString;
+        }
+      }
+
+      return string;
+    }
   }
 };
 

@@ -160,7 +160,7 @@
 			await this.getColors()
 			await this.getTaxes()
 			if(this.current=='update'){
-				await this.getItemData(this.$route.params.id);
+				 this.getItemData(this.$route.params.id);
 			}
 		},
 		methods : {
@@ -327,8 +327,8 @@
 					}
 				} )
 			},
-			async getItemData(itemId){
-				await window.axios.get('items/'+itemId + '/edit' ).then((response) => {
+			 getItemData(itemId){
+				 window.axios.get('items/'+itemId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

@@ -63,9 +63,9 @@
 				}
 			}
 		},
-		async mounted(){
+		mounted(){
 			if(this.current=='update'){
-				await this.getSubcategoryData(this.$route.params.id);
+				this.getSubcategoryData(this.$route.params.id);
 			}
 		},
 		async created(){
@@ -100,8 +100,8 @@
 					}
 				} )
 			},
-			async getSubcategoryData( subcategoryId ){
-				await window.axios.get('subcategories/'+subcategoryId + '/edit' ).then((response) => {
+			getSubcategoryData( subcategoryId ){
+				window.axios.get('subcategories/'+subcategoryId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

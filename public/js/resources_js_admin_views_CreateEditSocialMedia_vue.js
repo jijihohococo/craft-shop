@@ -774,6 +774,39 @@ var mainMixinData = {
   components: {
     ContentHeader: _components_ContentHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
     Error: _components_Error__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    checkString: function checkString(string) {
+      if (string == null) {
+        return string;
+      }
+
+      var checkString = string.toLowerCase();
+      var span = '<span class="text-primary">';
+      var endSpan = '</span>';
+
+      if (this.search !== null) {
+        var search = this.search;
+        var lowerSearch = this.search.toLowerCase();
+
+        if (checkString == lowerSearch) {
+          return span + string.slice(0, search.length) + endSpan;
+        } else if (checkString.includes(lowerSearch)) {
+          var searchIndex = string.toLowerCase().indexOf(lowerSearch);
+          var htmlString = '';
+
+          if (searchIndex == 0) {
+            htmlString = span + string.slice(searchIndex, search.length) + endSpan + string.slice(searchIndex + search.length, string.length);
+          } else if (searchIndex + 1 <= string.length) {
+            htmlString = string.slice(0, searchIndex) + span + string.slice(searchIndex, searchIndex + search.length) + string.slice(searchIndex + search.length, search.length) + endSpan + string.slice(searchIndex + search.length, string.length);
+          }
+
+          return htmlString;
+        }
+      }
+
+      return string;
+    }
   }
 };
 

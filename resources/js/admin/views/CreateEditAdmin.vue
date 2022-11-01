@@ -93,9 +93,9 @@
 				},
 			}
 		},
-		async mounted(){
+		mounted(){
 			if(this.current=='update'){
-				await this.getAdminData(this.$route.params.id);
+				this.getAdminData(this.$route.params.id);
 			}
 		},
 		async created(){
@@ -140,8 +140,8 @@
 					}
 				} )
 			},
-			async getAdminData( adminId ){
-				await window.axios.get('admins/'+adminId + '/edit' ).then((response) => {
+			getAdminData( adminId ){
+				window.axios.get('admins/'+adminId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

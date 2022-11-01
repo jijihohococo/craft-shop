@@ -161,15 +161,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return _this.getCurrencies();
 
             case 2:
-              if (!(_this.current == 'update')) {
-                _context.next = 5;
-                break;
+              if (_this.current == 'update') {
+                _this.getCityData(_this.$route.params.id);
               }
 
-              _context.next = 5;
-              return _this.getCityData(_this.$route.params.id);
-
-            case 5:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -239,43 +235,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getCityData: function getCityData(cityId) {
       var _this5 = this;
 
+      window.axios.get('cities/' + cityId + '/edit').then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this5);
+        } else {
+          _this5.old_state_id = response.data.city.state_id;
+          _this5.fields.name = response.data.city.name;
+          _this5.fields.currency_id = response.data.city.currency_id;
+          _this5.fields.country_id = response.data.city.country_id; // this.fields.currency_id=response.data.city.currency_id
+          //console.log(response.data.city)
+        }
+      })["catch"](function (error) {
+        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this5, 'update');
+      });
+    },
+    getCountries: function getCountries() {
+      var _this6 = this;
+
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return window.axios.get('cities/' + cityId + '/edit').then(function (response) {
-                  if (response.data.message == 'Loading') {
-                    (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this5);
-                  } else {
-                    _this5.old_state_id = response.data.city.state_id;
-                    _this5.fields.name = response.data.city.name;
-                    _this5.fields.currency_id = response.data.city.currency_id;
-                    _this5.fields.country_id = response.data.city.country_id; // this.fields.currency_id=response.data.city.currency_id
-                    //console.log(response.data.city)
-                  }
-                })["catch"](function (error) {
-                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this5, 'update');
-                });
-
-              case 2:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3);
-      }))();
-    },
-    getCountries: function getCountries() {
-      var _this6 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.next = 2;
                 return window.axios.get('get_countries').then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this6);
@@ -288,21 +270,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
               case "end":
-                return _context4.stop();
+                return _context3.stop();
             }
           }
-        }, _callee4);
+        }, _callee3);
       }))();
     },
     getCurrencies: function getCurrencies() {
       var _this7 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
-        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                _context5.next = 2;
+                _context4.next = 2;
                 return window.axios.get('get_currencies').then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this7);
@@ -315,21 +297,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
               case "end":
-                return _context5.stop();
+                return _context4.stop();
             }
           }
-        }, _callee5);
+        }, _callee4);
       }))();
     },
     getStates: function getStates(countryId, stateId) {
       var _this8 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
-        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
-                _context6.next = 2;
+                _context5.next = 2;
                 return window.axios.get('get_states/' + countryId).then(function (response) {
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this8);
@@ -343,10 +325,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
               case "end":
-                return _context6.stop();
+                return _context5.stop();
             }
           }
-        }, _callee6);
+        }, _callee5);
       }))();
     }
   }
@@ -830,6 +812,39 @@ var mainMixinData = {
   components: {
     ContentHeader: _components_ContentHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
     Error: _components_Error__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    checkString: function checkString(string) {
+      if (string == null) {
+        return string;
+      }
+
+      var checkString = string.toLowerCase();
+      var span = '<span class="text-primary">';
+      var endSpan = '</span>';
+
+      if (this.search !== null) {
+        var search = this.search;
+        var lowerSearch = this.search.toLowerCase();
+
+        if (checkString == lowerSearch) {
+          return span + string.slice(0, search.length) + endSpan;
+        } else if (checkString.includes(lowerSearch)) {
+          var searchIndex = string.toLowerCase().indexOf(lowerSearch);
+          var htmlString = '';
+
+          if (searchIndex == 0) {
+            htmlString = span + string.slice(searchIndex, search.length) + endSpan + string.slice(searchIndex + search.length, string.length);
+          } else if (searchIndex + 1 <= string.length) {
+            htmlString = string.slice(0, searchIndex) + span + string.slice(searchIndex, searchIndex + search.length) + string.slice(searchIndex + search.length, search.length) + endSpan + string.slice(searchIndex + search.length, string.length);
+          }
+
+          return htmlString;
+        }
+      }
+
+      return string;
+    }
   }
 };
 

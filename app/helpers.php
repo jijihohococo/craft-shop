@@ -45,7 +45,7 @@ function setTokenData(array $data,$next,$request){
 
 function adminItemVariantResourceApi($plural,$controller){
 	Route::get('item_variant_'.$plural.'/{itemVariantId}','Admin\\'.$controller.'@index');
-	Route::get('item_variant_'.$plural.'_search/{itemVariantId}','Admin\\'.$controller.'@search');
+	Route::get('search_item_variant_'.$plural.'/{itemVariantId}','Admin\\'.$controller.'@search');
 	Route::post('save_item_variant_'.$plural.'/{itemVariantId}','Admin\\'.$controller.'@store');
 	Route::get('item_variant_'.$plural.'/{id}/edit','Admin\\'.$controller.'@edit');
 	Route::post('update_item_variant_'.$plural.'/{id}','Admin\\'.$controller.'@update');

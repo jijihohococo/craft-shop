@@ -63,9 +63,9 @@
 				}
 			}
 		},
-		async mounted(){
+		mounted(){
 			if(this.current=='update'){
-				await this.getStateData(this.$route.params.id);
+				this.getStateData(this.$route.params.id);
 			}
 		},
 		async created(){
@@ -100,8 +100,8 @@
 					}
 				} )
 			},
-			async getStateData( stateId ){
-				await window.axios.get('states/'+stateId + '/edit' ).then((response) => {
+			getStateData( stateId ){
+				window.axios.get('states/'+stateId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

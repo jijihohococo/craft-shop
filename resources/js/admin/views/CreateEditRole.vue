@@ -71,9 +71,9 @@
 				}
 			}
 		},
-		async mounted(){
+		mounted(){
 			if(this.current=='update'){
-				await this.getRoleData(this.$route.params.id);
+				this.getRoleData(this.$route.params.id);
 			}
 		},
 		async created(){
@@ -107,8 +107,8 @@
 					}
 				} )
 			},
-			async getRoleData( roleId ){
-				await window.axios.get('roles/'+roleId + '/edit' ).then((response) => {
+			getRoleData( roleId ){
+				window.axios.get('roles/'+roleId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

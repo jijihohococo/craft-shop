@@ -367,15 +367,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return _this.getTaxes();
 
             case 12:
-              if (!(_this.current == 'update')) {
-                _context.next = 15;
-                break;
+              if (_this.current == 'update') {
+                _this.getItemData(_this.$route.params.id);
               }
 
-              _context.next = 15;
-              return _this.getItemData(_this.$route.params.id);
-
-            case 15:
+            case 13:
             case "end":
               return _context.stop();
           }
@@ -661,45 +657,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getItemData: function getItemData(itemId) {
       var _this12 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
-        return _regeneratorRuntime().wrap(function _callee8$(_context8) {
-          while (1) {
-            switch (_context8.prev = _context8.next) {
-              case 0:
-                _context8.next = 2;
-                return window.axios.get('items/' + itemId + '/edit').then(function (response) {
-                  if (response.data.message == 'Loading') {
-                    (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this12);
-                  } else {
-                    //this.fields=response.data.item;
-                    //if(response.data.attributes!==[]){
-                    //this.fields.attributes=response.data.attributes;
-                    //}
-                    _this12.old_subcategory_id = response.data.item.subcategory_id;
-                    _this12.fields.name = response.data.item.name;
-                    _this12.fields.category_id = response.data.item.category_id; // this.fields.subcategory_id=response.data.item.subcategory_id;
+      window.axios.get('items/' + itemId + '/edit').then(function (response) {
+        if (response.data.message == 'Loading') {
+          (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this12);
+        } else {
+          //this.fields=response.data.item;
+          //if(response.data.attributes!==[]){
+          //this.fields.attributes=response.data.attributes;
+          //}
+          _this12.old_subcategory_id = response.data.item.subcategory_id;
+          _this12.fields.name = response.data.item.name;
+          _this12.fields.category_id = response.data.item.category_id; // this.fields.subcategory_id=response.data.item.subcategory_id;
 
-                    _this12.fields.brand_id = response.data.item.brand_id;
-                    _this12.fields.description = response.data.item.description;
+          _this12.fields.brand_id = response.data.item.brand_id;
+          _this12.fields.description = response.data.item.description;
 
-                    if (response.data.attributes.length > 0) {
-                      _this12.fields.attributes = response.data.attributes;
-                    }
-
-                    _this12.fields.colors = response.data.colors;
-                    _this12.fields.taxes = response.data.taxes;
-                  }
-                })["catch"](function (error) {
-                  (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this12, 'update');
-                });
-
-              case 2:
-              case "end":
-                return _context8.stop();
-            }
+          if (response.data.attributes.length > 0) {
+            _this12.fields.attributes = response.data.attributes;
           }
-        }, _callee8);
-      }))();
+
+          _this12.fields.colors = response.data.colors;
+          _this12.fields.taxes = response.data.taxes;
+        }
+      })["catch"](function (error) {
+        (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this12, 'update');
+      });
     }
   }
 });
@@ -1424,6 +1406,39 @@ var mainMixinData = {
   components: {
     ContentHeader: _components_ContentHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
     Error: _components_Error__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    checkString: function checkString(string) {
+      if (string == null) {
+        return string;
+      }
+
+      var checkString = string.toLowerCase();
+      var span = '<span class="text-primary">';
+      var endSpan = '</span>';
+
+      if (this.search !== null) {
+        var search = this.search;
+        var lowerSearch = this.search.toLowerCase();
+
+        if (checkString == lowerSearch) {
+          return span + string.slice(0, search.length) + endSpan;
+        } else if (checkString.includes(lowerSearch)) {
+          var searchIndex = string.toLowerCase().indexOf(lowerSearch);
+          var htmlString = '';
+
+          if (searchIndex == 0) {
+            htmlString = span + string.slice(searchIndex, search.length) + endSpan + string.slice(searchIndex + search.length, string.length);
+          } else if (searchIndex + 1 <= string.length) {
+            htmlString = string.slice(0, searchIndex) + span + string.slice(searchIndex, searchIndex + search.length) + string.slice(searchIndex + search.length, search.length) + endSpan + string.slice(searchIndex + search.length, string.length);
+          }
+
+          return htmlString;
+        }
+      }
+
+      return string;
+    }
   }
 };
 

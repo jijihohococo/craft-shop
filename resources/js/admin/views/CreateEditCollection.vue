@@ -89,9 +89,9 @@
 				formData : new FormData
 			}
 		},
-		async mounted(){
+		mounted(){
 			if(this.current=='update'){
-				await this.getCollectionData(this.$route.params.id);
+				this.getCollectionData(this.$route.params.id);
 			}
 		},
 		async created(){
@@ -147,8 +147,8 @@
 					}
 				} )
 			},
-			async getCollectionData(collectionId){
-				await window.axios.get('collections/'+collectionId + '/edit' ).then((response) => {
+			getCollectionData(collectionId){
+				window.axios.get('collections/'+collectionId + '/edit' ).then((response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);
