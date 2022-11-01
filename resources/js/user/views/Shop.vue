@@ -525,7 +525,7 @@
 							</ul>
 						</div>
 						<div class="widget">
-							<h5 class="widget_title">Filter</h5>
+							<h5 class="widget_title">{{ translateLang("Filter") }}</h5>
 							<PriceFilter 
 							v-if="max_price>0"
 							:min_val="min_price"
