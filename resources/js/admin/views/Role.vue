@@ -47,6 +47,7 @@
                                     />
                                 </th>
                                 <th>Name</th>
+                                <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -61,6 +62,8 @@
                                     ref="deleteCheck"
                                     /></td>
                                     <td><div v-html="checkString(role.name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(role.created_at)">
                                     </div></td>
                                     <td><div v-html="checkString(role.deleted_at)">
                                     </div></td>

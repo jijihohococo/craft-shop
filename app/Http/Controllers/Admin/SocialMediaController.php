@@ -131,11 +131,13 @@ class SocialMediaController extends CommonController
 
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
-        return $this->indexPage(SocialMedia::onlyTrashed()
+        return $this->indexPage(
+            SocialMedia::searchTrash(
+            SocialMedia::onlyTrashed()
             ->searchWithName($searchData)
             ->orWhere('link','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10));
+            ->paginate(10),$searchData) );
     }
 }

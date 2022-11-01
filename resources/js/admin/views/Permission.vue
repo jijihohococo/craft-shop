@@ -49,6 +49,7 @@
                                 <th>Name</th>
                                 <th>Content</th>
                                 <th>Access</th>
+                                <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -73,6 +74,7 @@
                                     </template>
                                 </template>
                             </td>
+                            <td><div v-html="checkString(permission.created_at)"></div></td>
                             <td><div v-html="checkString(permission.deleted_at)"></div></td>
                             <td class="text-left">
                                 <ViewButton :data_name="permission.name" :data_model="content" :data_id="permission.id" />

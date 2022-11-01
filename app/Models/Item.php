@@ -138,9 +138,9 @@ class Item extends TransactionModel
             ->limit(1);
         }
     ]);
-  }
+}
 
-  public function scopeSelectReviews($query){
+public function scopeSelectReviews($query){
     return $query->addSelect([
         'reviews' => function($query){
             $query->select(
@@ -149,9 +149,9 @@ class Item extends TransactionModel
             ->whereColumn('items.id','item_reviews.item_id');
         }
     ]);
-  }
+}
 
-  public function scopeSelectAverageReviews($query){
+public function scopeSelectAverageReviews($query){
     return $query->addSelect([
         'average_reviews' => function($query){
             $query->select(
@@ -160,9 +160,9 @@ class Item extends TransactionModel
             ->whereColumn('items.id','item_reviews.item_id');
         }
     ]);
-  }
+}
 
-  public function scopeSelectPrice($query){
+public function scopeSelectPrice($query){
     return $query->addSelect([$this->salePrice => function($query){
         $query->select(
             \DB::raw(
@@ -224,11 +224,11 @@ public function scopeInWish($query){
 
 public function scopeSelectShopItem($query){
     return $query->selectItemDataWithImages()
-        ->selectItemVariants()
-        ->selectReviews()
-        ->selectPrice()
-        ->selectStock()
-        ->inWish();
+    ->selectItemVariants()
+    ->selectReviews()
+    ->selectPrice()
+    ->selectStock()
+    ->inWish();
 }
 
 public function scopeAvailable($query){
@@ -342,5 +342,14 @@ public function getAll(){
         ->latest('id')
         ->get();
     });
+}
+
+public static function searchTrash($items,$searchData){
+    return !empty($items->items()) ? $items :
+    self::selectItemData()
+    ->onlyTrashed()
+    ->where('created_at','like',$searchData)
+    ->latest('id')
+    ->paginate(10);
 }
 }

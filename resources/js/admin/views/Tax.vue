@@ -48,6 +48,7 @@
                                 </th>
                                 <th>Name</th>
                                 <th>Rate</th>
+                                <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -64,6 +65,8 @@
                                     <td><div v-html="checkString(tax.name)">
                                     </div></td>
                                     <td><div v-html="checkString(tax.rate)">
+                                    </div></td>
+                                    <td><div v-html="checkString(tax.created_at)">
                                     </div></td>
                                     <td><div v-html="checkString(tax.deleted_at)">
                                     </div></td>

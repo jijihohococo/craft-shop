@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Events\{CreatedTransaction,UpdatedTransaction,DeletedTransaction,RestoredTransaction};
-use App\Traits\CreateAndUpdateSearch;
+use App\Traits\{CreateAndUpdateSearch,SearchTrashTrait};
 abstract class TransactionModel extends Model{
 
-	use HasFactory,CreateAndUpdateSearch;
+	use HasFactory,CreateAndUpdateSearch,SearchTrashTrait;
 	
 	protected $dispatchesEvents=[
 		'created' => CreatedTransaction::class,

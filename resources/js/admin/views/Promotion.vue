@@ -50,6 +50,7 @@
 											<th>Promo Code</th>
 											<th>Promotion Start Time</th>
 											<th>Promotion End Time</th>
+											<th>Created At</th>
 											<th>Deleted At</th>
 											<th>Operation</th>
 										</tr>
@@ -73,6 +74,8 @@
 													<div v-html="checkString(promotion.promotion_end_time)">
 													</div>
 												</td>
+												<td><div v-html="checkString(promotion.created_at)">
+												</div></td>
 												<td><div v-html="checkString(promotion.deleted_at)">
 												</div></td>
 												<td class="text-left">

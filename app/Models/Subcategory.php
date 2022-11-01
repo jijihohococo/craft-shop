@@ -31,4 +31,13 @@ class Subcategory extends TransactionModel
                 ->get();
             });
         }
+
+        public static function searchTrash($items,$searchData){
+            return !empty($items->items()) ? $items :
+            self::selectCategory()
+            ->onlyTrashed()
+            ->where('created_at','like',$searchData)
+            ->latest('id')
+            ->paginate(10);
+        }
     }

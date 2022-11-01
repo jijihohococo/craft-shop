@@ -103,32 +103,34 @@ class BannerController extends CommonController
         ]);
     }
 
-   private function validateData($id=NULL){
-    return [
-        'title' => uniqueColumn($this->content,$id,$this->mainData) ,
-        'pic' => $id==null ? requiredImage() : nullableImage() ,
-        'content' => [
-        'nullable',
-        'in:'.implode(',', Banner::getContents())
-         ],
-        'content_id' => ['nullable','string']
-    ];
-}
+    private function validateData($id=NULL){
+        return [
+            'title' => uniqueColumn($this->content,$id,$this->mainData) ,
+            'pic' => $id==null ? requiredImage() : nullableImage() ,
+            'content' => [
+                'nullable',
+                'in:'.implode(',', Banner::getContents())
+            ],
+            'content_id' => ['nullable','string']
+        ];
+    }
 
-public function search(Request $request){
-    $searchData='%'.$request->search.'%';
-    return $this->indexPage(Banner::where('title','like',$searchData)
-        ->searchCreateAndUpdate($searchData)
-        ->latest('id')
-        ->paginate(10));
-}
+    public function search(Request $request){
+        $searchData='%'.$request->search.'%';
+        return $this->indexPage(Banner::where('title','like',$searchData)
+            ->searchCreateAndUpdate($searchData)
+            ->latest('id')
+            ->paginate(10));
+    }
 
-public function trashSearch(Request $request){
-    $searchData='%'.$request->search.'%';
-    return $this->indexPage(Banner::onlyTrashed()
-        ->where('title','like',$searchData)
-        ->searchDelete($searchData)
-        ->latest('id')
-        ->paginate(10));
-}
+    public function trashSearch(Request $request){
+        $searchData='%'.$request->search.'%';
+        return $this->indexPage(
+            Banner::searchTrash(
+                Banner::onlyTrashed()
+                ->where('title','like',$searchData)
+                ->searchDelete($searchData)
+                ->latest('id')
+                ->paginate(10),$searchData) );
+    }
 }

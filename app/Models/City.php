@@ -22,17 +22,27 @@ class City extends TransactionModel
     public function getByStateAndCountry($stateId,$countryId){
         return Cache::tags( self::$cacheKey )->remember(
             'cities-by-state-country',60*60*24,function() use ($stateId,
-            $countryId) {
-            return self::where('country_id',$countryId)
-            ->where('state_id',$stateId)
-            ->latest('name')
-            ->get();
-        });
+                $countryId) {
+                return self::where('country_id',$countryId)
+                ->where('state_id',$stateId)
+                ->latest('name')
+                ->get();
+            });
     }
 
     public function scopeSearchData($query,$searchData){
         return $query->searchWithName($searchData)
         ->searchWithState($searchData)
         ->searchWithCountry($searchData);
+    }
+
+    public static function searchTrash($items,$searchData){
+        return !empty($items->items()) ? $items :
+        self::selectState()
+        ->selectCountry()
+        ->onlyTrashed()
+        ->where('created_at','like',$searchData)
+        ->latest('id')
+        ->paginate(10);
     }
 }

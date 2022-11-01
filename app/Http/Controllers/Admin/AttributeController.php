@@ -121,11 +121,11 @@ class AttributeController extends CommonController
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Attribute::onlyTrashed()
+           Attribute::searchTrash( Attribute::onlyTrashed()
             ->searchWithName($searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10)
+            ->paginate(10),$searchData)
         );
     }
 

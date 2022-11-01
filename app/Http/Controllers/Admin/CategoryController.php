@@ -112,11 +112,11 @@ class CategoryController extends CommonController
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Category::onlyTrashed()
+            Category::searchTrash(Category::onlyTrashed()
             ->searchWithName($searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10)
+            ->paginate(10),$searchData)
         );
     }
 }

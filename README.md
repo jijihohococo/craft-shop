@@ -23,7 +23,7 @@ composer install
 npm install
 
 ```
-Create new '.env' files under the project folder and add related database informations.
+Create new '.env' file under the project folder and add related database informations.
 
 ```php
 

@@ -110,8 +110,8 @@ class TargetController extends CommonController
         $searchData='%'.$request->search .'%';
         return $this->indexPage(
             Target::searchWithName($searchData)
-            ->searchCreateAndUpdate($searchData)
             ->orWhere('duration','like',$searchData)
+            ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
         );
@@ -122,8 +122,8 @@ class TargetController extends CommonController
         return $this->indexPage(
             Target::onlyTrashed()
             ->searchWithName($searchData)
-            ->searchDelete($searchData)
             ->orWhere('duration','like',$searchData)
+            ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
         );

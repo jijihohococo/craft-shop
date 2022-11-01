@@ -48,6 +48,7 @@
                                 </th>
                                 <th>Name</th>
                                 <th>Duration</th>
+                                <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -64,6 +65,8 @@
                                     <td><div v-html="checkString(target.name)">
                                     </div></td>
                                     <td><div v-html="checkString(target.duration)">
+                                    </div></td>
+                                    <td><div v-html="checkString(target.created_at)">
                                     </div></td>
                                     <td><div v-html="checkString(target.deleted_at)">
                                     </div></td>

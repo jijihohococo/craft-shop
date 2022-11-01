@@ -47,6 +47,7 @@
                                     />
                                 </th>
                                 <th>Name</th>
+                                <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -63,9 +64,11 @@
                                     />
                                 </td>
                                 <td><div v-html="checkString(attribute.name)">
-                                    </div></td>
+                                </div></td>
+                                <td><div v-html="checkString(attribute.created_at)">
+                                </div></td>
                                 <td><div v-html="checkString(attribute.deleted_at)">
-                                    </div></td>
+                                </div></td>
                                 <td class="text-left">
                                     <ViewButton :data_name="attribute.name" :data_model="content" :data_id="attribute.id" />
                                     <EditButton v-if="actions.update && attribute.deleted_at==null" :content="content" link="attribute.edit" :dataId="attribute.id" />
@@ -87,7 +90,7 @@
 </div>
 <!-- /.row -->
 <div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
- <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Attribute" />
+   <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Attribute" />
 </div>
 </div>
 </section>
@@ -101,7 +104,7 @@
     export default {
         mixins: [mixin],
         data () {
-           return {
+         return {
             content : 'Attribute',
             mainData : 'attributes',
             getMethod : 'getAttributes',
@@ -112,23 +115,23 @@
         getAttributes(page){
             window.axios.get(makeRoute(this,page,'attribute') + page ).then(( response ) =>  {
                 this.getMainData(response)
-         } ).catch( (error) => {
-            errorResponse(error,this,'read')
-        } );
-     },
-     searchAttributes(page){
-        window.axios.get(makeRoute(this,page,'attribute','search') + this.search + '&page=' + page ).then( (response) => {
-         this.getMainData(response)
- } ).catch( (error) => {
-    errorResponse(error,this,'read');
-} )
-}
-},
-mounted : function(){
-   this.getAttributes(1);
-   checkContentPermission(this.content,'create',this);
-   checkContentPermission(this.content,'update',this);
-   checkContentPermission(this.content,'delete',this);
-},
+            } ).catch( (error) => {
+                errorResponse(error,this,'read')
+            } );
+        },
+        searchAttributes(page){
+            window.axios.get(makeRoute(this,page,'attribute','search') + this.search + '&page=' + page ).then( (response) => {
+               this.getMainData(response)
+           } ).catch( (error) => {
+            errorResponse(error,this,'read');
+        } )
+       }
+   },
+   mounted : function(){
+     this.getAttributes(1);
+     checkContentPermission(this.content,'create',this);
+     checkContentPermission(this.content,'update',this);
+     checkContentPermission(this.content,'delete',this);
+ },
 }
 </script>

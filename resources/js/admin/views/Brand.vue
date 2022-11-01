@@ -46,6 +46,7 @@
                                     /></th>
                                     <th>Name</th>
                                     <th>Picture</th>
+                                    <th>Created At</th>
                                     <th>Deleted At</th>
                                     <th>Operation</th>
                                 </tr>
@@ -62,6 +63,8 @@
                                         <td><div v-html="checkString(brand.name)">
                                     </div></td>
                                         <td><v-lazy-image :src="'/image/brand_images/'+brand.pic" /></td>
+                                        <td><div v-html="checkString(brand.created_at)">
+                                    </div></td>
                                         <td><div v-html="checkString(brand.deleted_at)">
                                     </div></td>
                                         <td class="text-left">

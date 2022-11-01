@@ -47,9 +47,10 @@ class TransactionController extends Controller
             $newSearchResult=collect($newSearchResult->items());
             $ids=[];
             foreach($newSearchResult as $result){
-                if((is_numeric($request->search) && 
-                strpos($result->created_at, $request->search) !== false) || 
-                strpos($result->action, $request->search) !== false   ){
+                if(
+                    strpos($result->created_at, $request->search) !== false
+                    || 
+                    strpos($result->action, $request->search) !== false   ){
                     $ids[]=$result->id;
                 }
             }

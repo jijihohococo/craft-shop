@@ -46,6 +46,7 @@
                                     /></th>
                                     <th>Name</th>
                                     <th>Picture</th>
+                                    <th>Created At</th>
                                     <th>Deleted At</th>
                                     <th>Operation</th>
                                 </tr>
@@ -66,6 +67,8 @@
                                             class="img-fluid"
                                             :src="'/image/collection_images/'+collection.pic" />
                                         </td>
+                                        <td><div v-html="checkString(collection.created_at)">
+                                    </div></td>
                                         <td><div v-html="checkString(collection.deleted_at)">
                                     </div></td>
                                         <td class="text-left">

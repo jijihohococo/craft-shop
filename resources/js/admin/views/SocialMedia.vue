@@ -48,6 +48,7 @@
                                 </th>
                                 <th>Name</th>
                                 <th>Picture</th>
+                                <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -64,33 +65,35 @@
                                     />
                                 </td>
                                 <td><div v-html="checkString(social_media.name)">
-                                    </div></td>
+                                </div></td>
                                 <td><v-lazy-image class="img-fluid" 
                                     :src="'/image/social_media_images/'+social_media.pic" /></td>
-                                <td><div v-html="checkString(social_media.deleted_at)">
+                                    <td><div v-html="checkString(social_media.created_at)">
                                     </div></td>
-                                <td class="text-left">
-                                    <ViewButton :data_name="social_media.name" :data_model="content" :data_id="social_media.id" />
-                                    <EditButton v-if="actions.update && social_media.deleted_at==null" :content="content" link="social_media.edit" :dataId="social_media.id" />
-                                    <Delete v-if="actions.delete" :content="content" :deleteAt="social_media.deleted_at" :deleteLink="'social_medias/'+social_media.id" :restoreLink="'social_media_restore/'+social_media.id" :id="social_media.id" :objectData="social_media" @update="updateData" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer clearfix">
-                    <Pagination :page="currentPage" :lastPage="social_medias.last_page" @getData="getSocialMedias" @searchData="searchSocialMedias" :search="search" :from="social_medias.from" :to="social_medias.to" :total="social_medias.total" />
-                </div>
-            </template>
+                                    <td><div v-html="checkString(social_media.deleted_at)">
+                                    </div></td>
+                                    <td class="text-left">
+                                        <ViewButton :data_name="social_media.name" :data_model="content" :data_id="social_media.id" />
+                                        <EditButton v-if="actions.update && social_media.deleted_at==null" :content="content" link="social_media.edit" :dataId="social_media.id" />
+                                        <Delete v-if="actions.delete" :content="content" :deleteAt="social_media.deleted_at" :deleteLink="'social_medias/'+social_media.id" :restoreLink="'social_media_restore/'+social_media.id" :id="social_media.id" :objectData="social_media" @update="updateData" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <Pagination :page="currentPage" :lastPage="social_medias.last_page" @getData="getSocialMedias" @searchData="searchSocialMedias" :search="search" :from="social_medias.from" :to="social_medias.to" :total="social_medias.total" />
+                    </div>
+                </template>
+            </div>
+            <!-- /.card -->
         </div>
-        <!-- /.card -->
     </div>
-</div>
-<!-- /.row -->
-<div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
- <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Social Media" />
-</div>
+    <!-- /.row -->
+    <div v-else-if="checkUnauthorizeActions(actions)" class="card card-default">
+       <Error :httpStatus="403" title="Permission Denied" description="You are not allowed to do any permissions for Social Media" />
+   </div>
 </div>
 </section>
 </template>
@@ -107,7 +110,7 @@
             VLazyImage
         },
         data () {
-           return {
+         return {
             content : 'SocialMedia' ,
             mainData : 'social_medias',
             getMethod : 'getSocialMedias',
@@ -119,23 +122,23 @@
         getSocialMedias(page){
             window.axios.get(makeRoute(this,page,'social_media') + page ).then(( response ) =>  {
                 this.getMainData(response)
-           } ).catch( (error) => {
-            errorResponse(error,this,'read')
-        } );
-       },
-       searchSocialMedias(page){
-        window.axios.get(makeRoute(this,page,'social_media','search') + this.search + '&page=' + page ).then( (response) => {
-            this.getMainData(response)
-     } ).catch( (error) => {
-        errorResponse(error,this,'read')
-    } )
+            } ).catch( (error) => {
+                errorResponse(error,this,'read')
+            } );
+        },
+        searchSocialMedias(page){
+            window.axios.get(makeRoute(this,page,'social_media','search') + this.search + '&page=' + page ).then( (response) => {
+                this.getMainData(response)
+            } ).catch( (error) => {
+                errorResponse(error,this,'read')
+            } )
+        }
+    },
+    mounted : function(){
+     this.getSocialMedias(1);
+     checkContentPermission(this.content,'create',this);
+     checkContentPermission(this.content,'update',this);
+     checkContentPermission(this.content,'delete',this);
  }
-},
-mounted : function(){
-   this.getSocialMedias(1);
-   checkContentPermission(this.content,'create',this);
-   checkContentPermission(this.content,'update',this);
-   checkContentPermission(this.content,'delete',this);
-}
 }
 </script>

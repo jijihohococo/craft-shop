@@ -48,6 +48,7 @@
                                 </th>
                                 <th>Title</th>
                                 <th>Picture</th>
+                                <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -70,6 +71,8 @@
                                     class="img-fluid"
                                     :src="'/image/banner_images/'+banner.pic"/>
                                 </td>
+                                <td><div v-html="checkString(banner.created_at)">
+                                    </div></td>
                                 <td><div v-html="checkString(banner.deleted_at)">
                                     </div></td>
                                 <td class="text-left">

@@ -49,6 +49,7 @@
                                 </th>
                                 <th>Name</th>
                                 <th>Code</th>
+                                <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -66,6 +67,8 @@
                                     <td><div v-html="checkString(country.name)">
                                     </div></td>
                                     <td><div v-html="checkString(country.code)">
+                                    </div></td>
+                                    <td><div v-html="checkString(country.created_at)">
                                     </div></td>
                                     <td><div v-html="checkString(country.deleted_at)">
                                     </div></td>

@@ -317,12 +317,13 @@ public function search(Request $request){
 public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
     return $this->indexPage(
+        Item::searchTrash(
         Item::onlyTrashed()
         ->selectItemData()
         ->searchData($searchData)
         ->searchDelete($searchData)
         ->latest('id')
-        ->paginate(10)
+        ->paginate(10),$searchData)
     );
 }
 

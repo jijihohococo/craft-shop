@@ -132,11 +132,12 @@ class BrandController extends CommonController
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
+            Brand::searchTrash(
             Brand::onlyTrashed()
             ->searchWithName($searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10)
+            ->paginate(10),$searchData)
         );
     }
 }

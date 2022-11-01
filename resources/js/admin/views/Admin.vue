@@ -48,6 +48,7 @@
                                 </th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -64,6 +65,8 @@
                                     <td><div v-html="checkString(ad.name)">
                                     </div></td>
                                     <td><div v-html="checkString(ad.email)">
+                                    </div></td>
+                                    <td><div v-html="checkString(ad.created_at)">
                                     </div></td>
                                     <td><div v-html="checkString(ad.deleted_at)">
                                     </div></td>

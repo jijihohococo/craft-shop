@@ -25,4 +25,13 @@ class State extends TransactionModel
         });
     }
 
+    public static function searchTrash($items,$searchData){
+        return !empty($items->items()) ? $items :
+        self::selectCountry()
+        ->onlyTrashed()
+        ->where('created_at','like',$searchData)
+        ->latest('id')
+        ->paginate(10);
+    }
+
 }

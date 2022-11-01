@@ -49,6 +49,7 @@
                                 </th>
                                 <th>Name</th>
                                 <th>Category</th>
+                                <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -66,6 +67,8 @@
                                     <td><div v-html="checkString(subcategory.name)">
                                     </div></td>
                                     <td><div v-html="checkString(subcategory.category_name)">
+                                    </div></td>
+                                    <td><div v-html="checkString(subcategory.created_at)">
                                     </div></td>
                                     <td><div v-html="checkString(subcategory.deleted_at)">
                                     </div></td>

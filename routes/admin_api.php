@@ -115,6 +115,7 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('get_attribute_sets/{attributeId}','Admin\AttributeController@getAtrributeSets');
 	Route::get('get_item_attribute_sets/{itemAttributeId}','Admin\AttributeController@getItemAttributeSets');
 	Route::get('trash_attributes','Admin\AttributeController@trash');
+	Route::get('attribute_trash_search','Admin\AttributeController@trashSearch');
 	Route::delete('delete_data_attributes','Admin\AttributeController@deleteMultiple');
 	Route::delete('restore_data_attributes','Admin\AttributeController@restoreMultiple');
 	//--------------ATTRIBTE----------------//

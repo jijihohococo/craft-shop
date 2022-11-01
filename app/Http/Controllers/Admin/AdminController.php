@@ -166,11 +166,12 @@ class AdminController extends CommonController
 
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
-        return $this->indexPage(Admin::onlyTrashed()
+        return $this->indexPage(
+            Admin::searchTrash(Admin::onlyTrashed()
             ->searchWithName($searchData)
             ->searchWithEmail($searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10));
+            ->paginate(10),$searchData));
     }
 }

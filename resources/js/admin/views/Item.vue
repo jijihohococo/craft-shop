@@ -51,6 +51,7 @@
                                 <th>Subcategory</th>
                                 <th>Brand</th>
                                 <th>Variants</th>
+                                <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
                             </tr>
@@ -83,6 +84,8 @@
                                     </template>
                                 </template>
                                 </div></td>
+                                <td><div v-html="checkString(item.created_at)">
+                                    </div></td>
                                     <td><div v-html="checkString(item.deleted_at)">
                                     </div></td>
                                     <td class="text-left">
