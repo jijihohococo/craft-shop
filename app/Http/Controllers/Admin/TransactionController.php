@@ -24,17 +24,42 @@ class TransactionController extends Controller
 
     public function search(Request $request,$model,$model_id){
         $searchData='%'.$request->search.'%';
-        return response()->json([
-            'transactions' => Transaction::
-            selectAdmin()
-            ->selectAdminModel($model,$model_id)
-            ->whereIn('user_id',Admin::select('id')
-                ->searchWithName($searchData)
-                ->searchWithEmail($searchData)
-                ->getQuery()
-             )->orWhere('action','like',$searchData)
+        $searchResult=Transaction::
+        selectAdmin()
+        ->selectAdminModel($model,$model_id)
+        ->whereIn('user_id', 
+            Admin::select('id')
+            ->searchWithName($searchData)
+            ->searchWithEmail($searchData)
+            ->getQuery()
+        )
+        ->latest('id')
+        ->paginate(10);
+        if(!empty($searchResult->items())){
+            return response()->json([
+                'transactions' => $searchResult
+            ]);
+        }else{
+            $newSearchResult=Transaction::
+            selectAdminModel($model,$model_id)
             ->latest('id')
-            ->paginate(10)
-        ]);
+            ->paginate(10);
+            $newSearchResult=collect($newSearchResult->items());
+            $ids=[];
+            foreach($newSearchResult as $result){
+                if((is_numeric($request->search) && 
+                strpos($result->created_at, $request->search) !== false) || 
+                strpos($result->action, $request->search) !== false   ){
+                    $ids[]=$result->id;
+                }
+            }
+            return response()->json([
+                'transactions' => Transaction::selectAdmin()
+                ->whereIn('id',$ids)
+                ->latest('id')
+                ->paginate(10)
+            ]);
+        }
+        
     }
 }

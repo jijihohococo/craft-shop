@@ -9,7 +9,7 @@ export var mainMixinData={
 	},
 	methods: {
 		checkString(string){
-			if(string==null){
+			if(string==null || string.trim().length === 0 ){
 				return string
 			}
 			let checkString=string.toLowerCase()

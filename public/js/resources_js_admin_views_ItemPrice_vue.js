@@ -1079,7 +1079,7 @@ var mainMixinData = {
   },
   methods: {
     checkString: function checkString(string) {
-      if (string == null) {
+      if (string == null || string.trim().length === 0) {
         return string;
       }
 

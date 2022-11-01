@@ -17,7 +17,9 @@ trait DataInsertSeeder{
                 'user_id' => 1,
                 'model' => $model,
                 'model_id' => $key + 1,
-                'action' => 'create'
+                'action' => 'create',
+                'created_at' => NOW(),
+                'updated_at' => NOW()
             ]);
 		}
 		DB::table($table)->insert($data);

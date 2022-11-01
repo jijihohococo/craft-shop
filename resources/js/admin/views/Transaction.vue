@@ -3,7 +3,7 @@
 	:back_links="[
 	{'route':getLink(this.$route.params.model),'title':this.$route.params.model}
 	]"
-	 />
+	/>
 	<section class="content">
 		<div class="container-fluid">
 			<div v-if="actions.read==true" class="row">
@@ -28,16 +28,22 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>Action</th>
 										<th>Admin Name</th>
 										<th>Admin Email</th>
+										<th>Action</th>
+										<th>Created At</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr v-for="transaction in transactions.data" :key="transaction.id">
-										<td>{{ transaction.action }}</td>
-										<td>{{ transaction.admin_name }}</td>
-										<td>{{ transaction.admin_email }}</td>
+										<td><div v-html="checkString(transaction.admin_name)">
+										</div></td>
+										<td><div v-html="checkString(transaction.admin_email)">
+										</div></td>
+										<th><div v-html="checkString(transaction.action)">
+										</div></th>
+										<th><div v-html="checkString(transaction.created_at)">
+										</div></th>
 									</tr>
 								</tbody>
 							</table>
@@ -55,22 +61,12 @@
 	</section>
 </template>
 <script >
-	import Pagination from '../../components/Pagination';
-
-	import ContentHeader from '../components/ContentHeader';
-
-	import Error from '../components/Error';
 
 	import { errorResponse , checkContentPermission , getModel } from '../helpers/check';
 
-	import { showSwalLoading } from  '../../helpers/general'
+	import { mixin } from '../common/data_list';
 
 	export default {
-		components: {
-			Pagination,
-			ContentHeader,
-			Error
-		},
 		data(){
 			return {
 				content : 'Transactions of '+this.$route.params.name+' '+this.$route.params.model,
@@ -79,9 +75,11 @@
 				currentPage : 1 ,
 				actions : {
 					read : ''
-				}
+				},
+				mainData  : 'transactions',
 			}
 		},
+		mixins : [mixin],
 		mounted : function(){
 			this.getTransactions(1);
 		},
@@ -96,13 +94,7 @@
 			getTransactions(page=1){
 				this.currentPage=page;
 				window.axios.get("transactions/"+this.$route.params.model+"/"+this.$route.params.model_id+"?page=" + page ).then(( response ) =>  {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.transactions=response.data.transactions
-						this.actions.read=true;
-					}
+					this.getMainData(response)
 				} ).catch( (error) => {
 					errorResponse(error,this,'read')
 				} );
@@ -110,13 +102,7 @@
 			searchTransactions(page){
 				this.currentPage=page;
 				window.axios.get('transaction_search/'+this.$route.params.model+'/'+this.$route.params.model_id +'?search=' + this.search + '&page=' + page ).then( (response) => {
-					if(response.data.message=='Loading'){
-
-						showSwalLoading(this);
-					}else{
-						this.transactions=response.data.transactions
-						this.actions.read=true
-					}
+					this.getMainData(response)
 				} ).catch( (error) => {
 					errorResponse(error,this,'read');
 				} )

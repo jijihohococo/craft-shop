@@ -33,7 +33,9 @@ class TransactionListener
          'user_id' => UserData::getId(),
          'model' => $class ,
          'model_id' => $event->model->id,
-         'action' => $event->action
+         'action' => $event->action ,
+         'created_at' => NOW() ,
+         'updated_at' => NOW()
      ]);
         if(property_exists($event->model,'cacheKey')){
             Cache::tags($event->model::$cacheKey )->flush();

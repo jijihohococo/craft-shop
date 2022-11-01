@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Traits\CreateAndUpdateSearch;
 class Transaction extends Model
 {
-    use HasFactory;
+    use HasFactory,CreateAndUpdateSearch;
 
     protected $fillable =[
         'guard',
