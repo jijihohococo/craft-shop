@@ -43,8 +43,7 @@ class TransactionController extends Controller
             $newSearchResult=Transaction::
             selectAdminModel($model,$model_id)
             ->latest('id')
-            ->paginate(10);
-            $newSearchResult=collect($newSearchResult->items());
+            ->get();
             $ids=[];
             foreach($newSearchResult as $result){
                 if(
