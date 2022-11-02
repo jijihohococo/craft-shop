@@ -116,14 +116,14 @@ class StateController extends CommonController
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            State::searchTrash(
             State::onlyTrashed()
             ->selectCountry()
-            ->searchWithName($searchData)
+            ->searchWithCreate($searchData)
+            ->trashSearchWithName($searchData)
             ->searchWithCountry($searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10),$searchData)
+            ->paginate(10)
         );
     }
 

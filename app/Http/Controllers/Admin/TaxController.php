@@ -113,13 +113,13 @@ class TaxController extends CommonController
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Tax::searchTrash(
             Tax::onlyTrashed()
-            ->searchWithName($searchData)
+            ->searchWithCreate($searchData)
+            ->trashSearchWithName($searchData)
             ->orWhere('rate','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10),$searchData)
+            ->paginate(10)
         );
     }
 

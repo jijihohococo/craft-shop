@@ -121,13 +121,13 @@ class CurrencyController extends CommonController
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Currency::searchTrash(
             Currency::onlyTrashed()
-            ->searchWithName($searchData)
+            ->searchWithCreate($searchData)
+            ->trashSearchWithName($searchData)
             ->orWhere('price','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10),$searchData)
+            ->paginate(10)
         );
     }
 }

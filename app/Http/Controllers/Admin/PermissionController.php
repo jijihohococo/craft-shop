@@ -140,13 +140,13 @@ public function search(Request $request){
 public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
     return $this->indexPage(
-        Permission::searchTrash(
         Permission::onlyTrashed()
-        ->searchWithName($searchData)
+        ->searchWithCreate($searchData)
+        ->trashSearchWithName($searchData)
         ->orWhere('model','like',$searchData)
         ->searchDelete($searchData)
         ->latest('id')
-        ->paginate(10),$searchData)
+        ->paginate(10)
     );
 }
 

@@ -123,14 +123,14 @@ class SubcategoryController extends CommonController
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Subcategory::searchTrash(
             Subcategory::onlyTrashed()
             ->selectCategory()
-            ->searchWithName($searchData)
+            ->searchWithCreate($searchData)
+            ->trashSearchWithName($searchData)
             ->searchWithCategory($searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10),$searchData)
+            ->paginate(10)
         );
     }
 

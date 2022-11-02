@@ -149,11 +149,11 @@ public function search(Request $request){
 public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
     return $this->indexPage(
-        Role::searchTrash(
         Role::onlyTrashed()
-        ->searchWithName($searchData)
+        ->searchWithCreate($searchData)
+        ->trashSearchWithName($searchData)
         ->searchDelete($searchData)
-        ->latest('id')->paginate(10),$searchData)
+        ->latest('id')->paginate(10)
     );
 }
 

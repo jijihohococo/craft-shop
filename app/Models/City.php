@@ -36,13 +36,10 @@ class City extends TransactionModel
         ->searchWithCountry($searchData);
     }
 
-    public static function searchTrash($items,$searchData){
-        return !empty($items->items()) ? $items :
-        self::selectState()
-        ->selectCountry()
-        ->onlyTrashed()
-        ->where('created_at','like',$searchData)
-        ->latest('id')
-        ->paginate(10);
+    public function scopeTrashSearchData($query,$searchData){
+        return $query->searchWithCreate($searchData)
+        ->trashSearchWithName($searchData)
+        ->searchWithState($searchData)
+        ->searchWithCountry($searchData);
     }
 }

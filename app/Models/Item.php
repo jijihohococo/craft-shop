@@ -56,6 +56,15 @@ class Item extends TransactionModel
         ->searchWithColor($searchData);
     }
 
+    public function scopeTrashSearchData($query,$searchData){
+        return $query->searchWithCreate($searchData)
+        ->trashSearchWithName($searchData)
+        ->searchWithCategory($searchData)
+        ->searchWithSubcategory($searchData)
+        ->searchWithBrand($searchData)
+        ->searchWithColor($searchData);
+    }
+
     public function scopeSelectItemData($query){
         return $query->selectCategory()
         ->selectSubcategory()
@@ -342,14 +351,5 @@ public function getAll(){
         ->latest('id')
         ->get();
     });
-}
-
-public static function searchTrash($items,$searchData){
-    return !empty($items->items()) ? $items :
-    self::selectItemData()
-    ->onlyTrashed()
-    ->where('created_at','like',$searchData)
-    ->latest('id')
-    ->paginate(10);
 }
 }

@@ -10,4 +10,8 @@ trait CreateAndUpdateSearch{
 		return $query->orWhere('created_at','like',$searchData);
 	}
 
+	public function scopeSearchWithCreate($query,$searchData){
+		return $query->where('created_at','like',$searchData);
+	}
+
 }

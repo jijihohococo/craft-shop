@@ -119,13 +119,13 @@ class ColorController extends CommonController
     public function trashSearch(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Color::searchTrash(
             Color::onlyTrashed()
-            ->searchWithName($searchData)
+            ->searchWithCreate($searchData)
+            ->trashSearchWithName($searchData)
             ->orWhere('color_code','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10),$searchData)
+            ->paginate(10)
         );
     }
 }

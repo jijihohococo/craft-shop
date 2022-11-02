@@ -8,4 +8,8 @@ trait SearchNameTrait{
 		return $query->where('name','like',$searchData);
 	}
 
+	public function scopeTrashSearchWithName($query,$searchData){
+		return $query->orWhere('name','like',$searchData);
+	}
+
 }

@@ -120,13 +120,13 @@ class TargetController extends CommonController
     public function trashSearch(Request $request){
         $searchData='%'.$request->search .'%';
         return $this->indexPage(
-            Target::searchTrash(
             Target::onlyTrashed()
-            ->searchWithName($searchData)
+            ->searchWithCreate($searchData)
+            ->trashSearchWithName($searchData)
             ->orWhere('duration','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
-            ->paginate(10),$searchData)
+            ->paginate(10)
         );
     }
 }
