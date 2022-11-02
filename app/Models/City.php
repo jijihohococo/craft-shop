@@ -30,6 +30,10 @@ class City extends TransactionModel
             });
     }
 
+    public function scopeSelectCity($query){
+        return $query->selectCountry()->selectState();
+    }
+
     public function scopeSearchData($query,$searchData){
         return $query->searchWithName($searchData)
         ->searchWithState($searchData)
