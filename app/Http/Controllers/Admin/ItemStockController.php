@@ -27,13 +27,19 @@ class ItemStockController extends ItemVariantCommonController
 
     public function search(Request $request,int $itemVariantId){
         $searchData='%'.$request->search.'%';
+        $searchResult=ItemStock::ofItemVariant($itemVariantId)
+        ->where('qty','like',$searchData)
+        ->orWhere('stock','like',$searchData)
+        ->orWhere('available_stock','like',$searchData)
+        ->latest('id')
+        ->paginate(10);
         return $this->indexPage(
-            ItemStock::ofItemVariant($itemVariantId)
-            ->where('qty','like',$searchData)
-            ->orWhere('stock','like',$searchData)
-            ->orWhere('available_stock','like',$searchData)
+            !empty($searchResult->items()) ?
+            $searchResult :
+            ItemStock::whereIn('id',ItemStock::getIdsBySearchCreate($itemVariantId,$request->search) )
             ->latest('id')
-            ->paginate(10) , $itemVariantId
+            ->paginate(10)
+            ,$itemVariantId
         );
     }
 
@@ -77,10 +83,10 @@ class ItemStockController extends ItemVariantCommonController
     public function update(Request $request,$id)
     {
         //
-     $openingItem=ItemStock::lockForUpdate()->findOrFail($id);
-     $request->validate($this->validateData($openingItem->item_variant_id,$id));
-     $updatedStock=($openingItem->stock-$openingItem->qty)+$request->qty;
-     if($request->available_stock>$updatedStock){
+       $openingItem=ItemStock::lockForUpdate()->findOrFail($id);
+       $request->validate($this->validateData($openingItem->item_variant_id,$id));
+       $updatedStock=($openingItem->stock-$openingItem->qty)+$request->qty;
+       if($request->available_stock>$updatedStock){
         return makeErrorMessage([
             'available_stock' => [stockWarning()]
         ]);

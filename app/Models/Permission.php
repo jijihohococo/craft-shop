@@ -18,56 +18,73 @@ class Permission extends TransactionModel
         'update',
         'delete'];
 
-    public static function getModels(){
-        return [
-            'Permission',
-            'Shop',
-            'Admin',
-            'Banner',
-            'Category',
-            'Subcategory',
-            'Brand',
-            'Item',
-            'ItemStock',
-            'ItemPrice',
-            'Role',
-            'Target',
-            'User',
-            'Currency',
-            'Tax',
-            'Attribute',
-            'Color',
-            'Country',
-            'State',
-            'City',
-            'Order',
-            'Promotion',
-            'Collection',
-            'SocialMedia'
-        ];
-    }
+        public static function getModels(){
+            return [
+                'Permission',
+                'Shop',
+                'Admin',
+                'Banner',
+                'Category',
+                'Subcategory',
+                'Brand',
+                'Item',
+                'ItemStock',
+                'ItemPrice',
+                'Role',
+                'Target',
+                'User',
+                'Currency',
+                'Tax',
+                'Attribute',
+                'Color',
+                'Country',
+                'State',
+                'City',
+                'Order',
+                'Promotion',
+                'Collection',
+                'SocialMedia'
+            ];
+        }
 
-    public static function getExceptModels(){
-        return [
-            'ItemStock',
-            'ItemPrice'
-        ];
-    }
+        public static function getExceptModels(){
+            return [
+                'ItemStock',
+                'ItemPrice'
+            ];
+        }
 
-    public static function getActions(){
-        return [
-            'create',
-            'read',
-            'update',
-            'delete'
-        ];
-    }
+        public static function getActions(){
+            return [
+                'create',
+                'read',
+                'update',
+                'delete'
+            ];
+        }
 
-    public static $cacheKey='permissions_cache';
+        public static $cacheKey='permissions_cache';
 
-    public function getAll(){
-        return Cache::tags( self::$cacheKey )->remember('all-permissions',60*60*24,function(){
-            return self::latest('name')->get();
-        });
-    }
-}
+        public function getAll(){
+            return Cache::tags( self::$cacheKey )->remember('all-permissions',60*60*24,function(){
+                return self::latest('name')->get();
+            });
+        }
+
+        public static function searchByActions($search,$searchResult,$trash=FALSE){
+            foreach(self::getActions() as $action ){
+                if(strpos($action, $search)!==false){
+                  return $trash==FALSE ?
+                  self::where($action,TRUE)
+                  ->latest('id')
+                  ->paginate(10) :
+                  self::onlyTrashed()
+                  ->where($action,TRUE)
+                  ->latest('id')
+                  ->paginate(10);  
+              }
+          }
+          return $searchResult;
+          
+      }
+  }

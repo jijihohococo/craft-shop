@@ -608,11 +608,12 @@ var mainMixinData = {
     Error: _components_Error__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
-    checkString: function checkString(string) {
-      if (string == null || string.trim().length === 0) {
+    checkString: function checkString(str) {
+      if (str == null || /^\s*$/.test(str) === 0) {
         return string;
       }
 
+      var string = str.toString();
       var checkString = string.toLowerCase();
       var span = '<span class="text-primary">';
       var endSpan = '</span>';

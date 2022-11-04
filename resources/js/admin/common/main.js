@@ -8,10 +8,11 @@ export var mainMixinData={
 		Error
 	},
 	methods: {
-		checkString(string){
-			if(string==null || string.trim().length === 0 ){
+		checkString(str){
+			if(str==null || /^\s*$/.test(str) === 0 ){
 				return string
 			}
+			let string=str.toString()
 			let checkString=string.toLowerCase()
 			let span='<span class="text-primary">'
 			let endSpan='</span>'

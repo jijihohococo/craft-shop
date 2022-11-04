@@ -33,17 +33,21 @@
 									</thead>
 									<tbody>
 										<tr v-for="(stock,key) in item_stocks.data">
-											<td>{{ stock.stock }}</td>
-											<td>{{ stock.available_stock }}</td>
-											<td>{{ stock.qty }}</td>
-											<td>{{ stock.created_at }}</td>
+											<td><div v-html="checkString(stock.stock)">
+											</div></td>
+											<td><div v-html="checkString(stock.available_stock)">
+											</div></td>
+											<td><div v-html="checkString(stock.qty)">
+											</div></td>
+											<td><div v-html="checkString(stock.created_at)">
+											</div></td>
 											<td>
 												<ViewButton 
 												:data_name="itemColor" 
 												:data_model="mainContent" 
 												:data_id="stock.id"
 												:variant_id="stock.item_variant_id"
-												 />
+												/>
 												<EditButton v-if="actions.update && key==0" :content="content" link="item.stock.edit" :dataId="stock.id" /></td>
 											</tr>
 										</tbody>
@@ -84,6 +88,8 @@
 
 		import { showSwalLoading } from  '../../helpers/general'
 
+		import { mainMixinData } from '../common/main';
+
 		export default {
 			components: {
 				Pagination,
@@ -94,6 +100,7 @@
 				Error,
 				Search
 			},
+			mixins : [mainMixinData],
 			data () {
 				return {
 					mainContent : "ItemStock",
@@ -129,30 +136,30 @@
 					this.search=this.$refs.searchModal.searchData;
 					window.axios.get('search_item_variant_stocks/'+this.$route.params.item_varaint_id +
 						'?search=' + this.search +'&page=' + page).then((response)=>{
-						if(response.data.message=='Loading'){
-							showSwalLoading(this);
-						}else{
-							this.getData(response.data)
-						}
-					})
-				},
-				getItemStocks(page){
-					window.axios.get( 'item_variant_stocks/'+this.$route.params.item_varaint_id + '?page=' + page ).then(( response ) =>  {
-						if(response.data.message=='Loading'){
+							if(response.data.message=='Loading'){
+								showSwalLoading(this);
+							}else{
+								this.getData(response.data)
+							}
+						})
+					},
+					getItemStocks(page){
+						window.axios.get( 'item_variant_stocks/'+this.$route.params.item_varaint_id + '?page=' + page ).then(( response ) =>  {
+							if(response.data.message=='Loading'){
 
-							showSwalLoading(this);
-						}else{
-							this.getData(response.data)
-						}
-					} ).catch( (error) => {
-						errorResponse(error,this,'read')
-					} );
-				}
-			},
-			created(){
-				this.getItemStocks(1);
-				checkContentPermission('ItemStock','create',this);
-				checkContentPermission('ItemStock','update',this);
-			},
-		}
-	</script>
+								showSwalLoading(this);
+							}else{
+								this.getData(response.data)
+							}
+						} ).catch( (error) => {
+							errorResponse(error,this,'read')
+						} );
+					}
+				},
+				created(){
+					this.getItemStocks(1);
+					checkContentPermission('ItemStock','create',this);
+					checkContentPermission('ItemStock','update',this);
+				},
+			}
+		</script>

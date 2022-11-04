@@ -106,51 +106,57 @@ class PermissionController extends CommonController
 
     }
 
-   private function validateData($id=NULL){
-    return [
-        'name' => uniqueColumn($this->content,$id),
-        'model' => [
-            'in:'.implode(',', Permission::getModels())
-        ],
-        'create' => [
-            'required','boolean'
-        ],
-        'update' => [
-            'required' , 'boolean'
-        ],
-        'read' => [
-            'required','boolean'
-        ],
-        'delete' => [
-            'required','boolean'
-        ]
-    ];
-}
+    private function validateData($id=NULL){
+        return [
+            'name' => uniqueColumn($this->content,$id),
+            'model' => [
+                'in:'.implode(',', Permission::getModels())
+            ],
+            'create' => [
+                'required','boolean'
+            ],
+            'update' => [
+                'required' , 'boolean'
+            ],
+            'read' => [
+                'required','boolean'
+            ],
+            'delete' => [
+                'required','boolean'
+            ]
+        ];
+    }
 
-public function search(Request $request){
-    $searchData='%'.$request->search.'%';
-    return $this->indexPage(
-        Permission::searchWithName($searchData)
-        ->orWhere('model','like', $searchData )
-        ->searchCreateAndUpdate($searchData)
-        ->latest('id')->paginate(10)
-    );
-}
+    public function search(Request $request){
+        $searchData='%'.$request->search.'%';
+        $searchResult=Permission::searchWithName($searchData)
+            ->orWhere('model','like', $searchData )
+            ->searchCreateAndUpdate($searchData)
+            ->latest('id')->paginate(10);
+        return $this->indexPage(
+            !empty($searchResult->items()) ?
+            $searchResult :
+            Permission::searchByActions($request->search,$searchResult)
+        );
+    }
 
-public function trashSearch(Request $request){
-    $searchData='%'.$request->search.'%';
-    return $this->indexPage(
-        Permission::onlyTrashed()
+    public function trashSearch(Request $request){
+        $searchData='%'.$request->search.'%';
+        $searchResult=Permission::onlyTrashed()
         ->searchWithCreate($searchData)
         ->trashSearchWithName($searchData)
         ->orWhere('model','like',$searchData)
         ->searchDelete($searchData)
         ->latest('id')
-        ->paginate(10)
-    );
-}
+        ->paginate(10);
+        return $this->indexPage(
+            !empty($searchResult->items()) ?
+            $searchResult :
+            Permission::searchByActions($request->search,$searchResult,TRUE)
+        );
+  }
 
-public function checkPermission(string $model,string $action){
+  public function checkPermission(string $model,string $action){
 
     $admin=auth(Admin::API)->user();
 

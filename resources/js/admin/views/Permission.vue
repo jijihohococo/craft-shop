@@ -70,7 +70,7 @@
                                     <td>
                                      <template v-for="access in ['create','update','read','delete']">
                                        <template v-if="permission[access]==true" >
-                                        {{ access }},
+                                        <span v-html="checkString(access)"></span>,
                                     </template>
                                 </template>
                             </td>
