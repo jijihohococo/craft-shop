@@ -1,112 +1,29 @@
 <template>
-	<component is="style">
-		.modal-dialog-person {
-			width: 80% !important;
-			height: 100% !important;
-			padding: 0 !important;
-			max-width: none !important;
-		}
-		.fileinput-upload-button, .kv-file-upload{
-			display: none !important;
-		}
-	</component>
-	<div class="col-lg-3 col-6 item-image" style="cursor: pointer;">
-		<div class="small-box bg-warning">
-			<div class="inner">
-				<h3>Images</h3>
+	<div class="col-lg-3 col-6 item-image" style="cursor: pointer;"
+	@click="isFormVisible = true">
+	<div class="small-box bg-warning">
+		<div class="inner">
+			<h3>Images</h3>
 
-				<p>Upload</p>
-			</div>
-			<div class="icon">
-				<i class="ion ion-android-image"></i>
-			</div>
-			<a class="small-box-footer"></a>
+			<p>Upload</p>
 		</div>
-	</div>
-	<div class="modal fade" id="itemImageModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-dialog-person">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Images Upload</h4>
-				</div>
-				<!-- -->
-				<div class="modal-body">
-					<File
-					:changeData="fileChange"
-					@change="setPic"
-					:pics="pics" 
-					@removed="removePics" 
-					:multiple="true"
-					storage_path='image/item_images/'
-					delete_path='admin_api/item_image_delete/'
-					delete_all_path='delete_item_images/'
-					/>	
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" style="margin-right:50%;" v-on:click="uploadPics">
-						<i class="ion ion-upload"></i>
-					Upload</button>
-				</div>
-
-			</div>
+		<div class="icon">
+			<i class="ion ion-android-image"></i>
 		</div>
+		<a class="small-box-footer"></a>
 	</div>
+</div>
+<ItemImageDialog v-model="isFormVisible" />
 </template>
 <script >
-	import File from './File'
-	export default {
-		name : 'ImageUpload',
-		components : {
-			File
-		},
-		data(){
-			return {
-				pics : [] ,
-				formData : new FormData ,
-				fileChange : 0
-			}
-		},
-		mounted : function(){
-			let vm=this;
-			let id=this.$route.params.id;
-			$('.item-image').click(function(){
-				$("#itemImageModal").modal("show");
-				window.axios.get( 'item_variant_images/' + id ).then(( response ) =>  {
-					vm.pics=response.data.images
-				}).catch((error)=> {
-					errorResponse(error,this,'read')
-				})
-			})
-		},
-		methods : {
-			removePics(){
-				this.pics=[];
-			},
-			setPic(event){
-				if(this.formData.getAll('pics[]').length>0){
-					this.formData.delete('pics[]')
-				}
-				Array.from(event.target.files).forEach(file => {
-					this.formData.append('pics[]',file)
-				});
-			},
-			uploadPics(){
-				window.axios.post("upload_item_variant_images/"+this.$route.params.id,this.formData).then( (response) => {
-					if(response.data.message=='Loading'){
+	import ItemImageDialog from "./ItemImageDialog";
 
-						showSwalLoading(this);
-					}else{
-						this.$swal( 'Success' ,
-							response.data.message ,
-							'success'  );
-						this.pics=response.data.images
-						$('#itemImageModal').modal('hide')
-						this.fileChange++;
-					}
-				} ).catch((error)=> {
-					errorResponse(error,this,'read')
-				})
-			}
-		}
-	}
+	export default {
+		components: {
+			ItemImageDialog,
+		},
+		data: () => ({
+			isFormVisible: false,
+		}),
+	};
 </script>

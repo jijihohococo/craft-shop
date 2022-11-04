@@ -62,6 +62,10 @@ Route::get('get_colors_by_content/{content}/{contentId?}','User\Shop\ColorContro
 
 //------------------------------SHOP-----------------------------//
 
+//----notifications----//
+Route::get('notifications','User\NotificationController@index');
+Route::get('get_notifications','User\NotificationController@showShortList');
+//----notifications----//
 
 Route::group(['middleware' => [ 'checkUserCookie'] ], function (){
 

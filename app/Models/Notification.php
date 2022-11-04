@@ -4,15 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\{UserDataTrait,ItemDataTrait};
-class ItemReview extends Model
+
+class Notification extends Model
 {
-    use HasFactory,UserDataTrait,ItemDataTrait;
+    use HasFactory;
 
     protected $fillable=[
+        'name',
+        'guard',
         'user_id',
-        'item_id',
-        'rate',
-        'comment'
+        'model',
+        'model_id',
+        'read'
     ];
 }

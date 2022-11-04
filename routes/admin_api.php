@@ -150,6 +150,15 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::get('today_total_orders','Admin\OrderController@getTodayTotal');
 	//--------------ORDER----------------//
 
+
+	//--------------NOTIFICATION----------------//
+	Route::get('notifications','Admin\NotificationController@index');
+	Route::get('get_short_notifications','Admin\NotificationController@showShortList');
+	//--------------NOTIFICATION----------------//
+
+
+	Route::get('item_reviews/{itemId}','Admin\ItemReviewController@index');
+
 	Route::post('logout','Admin\Auth\LoginController@logOut');
 
 });
