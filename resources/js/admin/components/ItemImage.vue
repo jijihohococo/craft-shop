@@ -42,7 +42,6 @@
 	import File from './File'
 
 	export default {
-		name : 'ImageUpload',
 		components : {
 			File
 		},

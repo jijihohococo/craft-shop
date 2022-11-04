@@ -205,7 +205,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'ImageUpload',
   components: {
     File: _File__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
