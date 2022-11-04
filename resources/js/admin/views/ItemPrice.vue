@@ -26,6 +26,7 @@
 										<tr>
 											<th>Price</th>
 											<th>Currency</th>
+											<th>Created At</th>
 											<th>Operation</th>
 										</tr>
 									</thead>
@@ -34,6 +35,8 @@
 											<td><div v-html="checkString(item_price.price)">
 											</div></td>
 											<td><div v-html="checkString(item_price.currency_name)">
+											</div></td>
+											<td><div v-html="checkString(item_price.created_at)">
 											</div></td>
 											<td>
 												<ViewButton 
@@ -122,7 +125,9 @@
 				this.actions.read=true
 			},
 			searchItemPrices(page){
-				window.axios.get('search_item_variant_prices/'+this.$route.params.item_varaint_id + '?page=' + page).then((response)=>{
+				this.search=this.$refs.searchModal.searchData;
+				window.axios.get('search_item_variant_prices/'+this.$route.params.item_varaint_id + '?search='+
+					this.search +'&page=' + page).then((response)=>{
 					if(response.data.message=='Loading'){
 						showSwalLoading(this);
 					}else{

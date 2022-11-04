@@ -27,6 +27,7 @@
 											<th>Stock</th>
 											<th>Available Stock</th>
 											<th>Quantity</th>
+											<th>Created At</th>
 											<th>Operation</th>
 										</tr>
 									</thead>
@@ -35,6 +36,7 @@
 											<td>{{ stock.stock }}</td>
 											<td>{{ stock.available_stock }}</td>
 											<td>{{ stock.qty }}</td>
+											<td>{{ stock.created_at }}</td>
 											<td>
 												<ViewButton 
 												:data_name="itemColor" 
@@ -124,7 +126,9 @@
 					this.actions.read=true
 				},
 				searchItemStocks(page){
-					window.axios.get('search_item_variant_stocks/'+this.$route.params.item_varaint_id + '?page=' + page).then((response)=>{
+					this.search=this.$refs.searchModal.searchData;
+					window.axios.get('search_item_variant_stocks/'+this.$route.params.item_varaint_id +
+						'?search=' + this.search +'&page=' + page).then((response)=>{
 						if(response.data.message=='Loading'){
 							showSwalLoading(this);
 						}else{
