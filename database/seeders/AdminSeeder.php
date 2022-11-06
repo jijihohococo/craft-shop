@@ -17,8 +17,8 @@ class AdminSeeder extends Seeder
         //
         DB::table('admins')->insert([
             'name' => 'Admin' ,
-            'email' => 'admin@admin.com',
-            'password' => \Hash::make('password')
+            'email' => 'newadmin@admin.com',
+            'password' => \Hash::make('web_asann_tin_2022#')
         ]);
     }
 }
