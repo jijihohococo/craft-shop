@@ -42,12 +42,18 @@
 											<td><div v-html="checkString(stock.created_at)">
 											</div></td>
 											<td>
-												<ViewButton 
-												:data_name="itemColor" 
-												:data_model="mainContent" 
-												:data_id="stock.id"
-												:variant_id="stock.item_variant_id"
-												/>
+												<router-link class="btn btn-primary btn-sm mr-3"  
+												:to="{name: 
+													'item.transaction' ,params:{
+														name : itemColor ,
+														model : mainContent ,
+														model_id: stock.id ,
+														item_id : stock.item_id }
+													}">
+													<i class="fas fa-folder">
+													</i>
+													View
+												</router-link>
 												<EditButton v-if="actions.update && key==0" :content="content" link="item.stock.edit" :dataId="stock.id" /></td>
 											</tr>
 										</tbody>

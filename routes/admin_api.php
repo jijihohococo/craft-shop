@@ -85,7 +85,17 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	//--------------CURRENCY----------------//
 	adminResourceApi('currency','currencies','CurrencyController');
 	Route::get('get_currencies','CurrencyController@get');
+	Route::get('get_available_currencies','Admin\CurrencyController@getAvailableCurrencies');
+	Route::get('get_used_currencies/{currencyId}','Admin\CurrencyController@getCurrencies');
 	//--------------CURRENCY----------------//
+
+		//--------------CURRENCY RATE----------------//
+	Route::get('currency_rates/{currency}','Admin\CurrencyRateController@index');
+	Route::get('search_currency_rates/{currency}','Admin\CurrencyRateController@search');
+	Route::post('save_currency_rates/{currency}','Admin\CurrencyRateController@store');
+	Route::get('currency_rates/{id}/edit','Admin\CurrencyRateController@edit');
+	Route::post('update_currency_rates/{currencyRate}','Admin\CurrencyRateController@update');
+	//--------------CURRENCY RATE----------------//
 
 	//--------------ROLE----------------//
 	adminResourceApi('role','roles','RoleController');

@@ -22,6 +22,7 @@ class ItemPriceController extends ItemVariantCommonController
         //
         return $this->indexPage(
             ItemPrice::selectCurrency()
+            ->selectItem()
             ->ofItemVariant($itemVariantId)
             ->latest('id')
             ->paginate(10),$itemVariantId
@@ -31,6 +32,7 @@ class ItemPriceController extends ItemVariantCommonController
     public function search(Request $request,int $itemVariantId){
         $searchData='%'.$request->search.'%';
         $searchResult=ItemPrice::selectCurrency()
+        ->selectItem()
         ->ofItemVariant($itemVariantId)
         ->where('price','like',$searchData)
         ->searchWithCurrency($searchData)
@@ -40,6 +42,7 @@ class ItemPriceController extends ItemVariantCommonController
             !empty($searchResult->items()) ?
             $searchResult :
             ItemPrice::selectCurrency()
+            ->selectItem()
             ->whereIn('id',ItemPrice::getIdsBySearchCreate($itemVariantId,$request->search) )
             ->latest('id')
             ->paginate(10)

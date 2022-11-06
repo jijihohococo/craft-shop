@@ -26,7 +26,10 @@ class ItemPrice extends TransactionModel
     item_prices.promotion_type='Price')  THEN 
 
     REPLACE(FORMAT(
-    (item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)-item_prices.promotion_price )
+    (item_prices.price*
+    (SELECT currency_rates.rate FROM currency_rates WHERE used_currency_id=
+    ( SELECT currencies.id FROM currencies WHERE currencies.id=item_prices.currency_id LIMIT 1 ) AND main_currency_id=
+    ( SELECT currencies.id FROM currencies WHERE main = TRUE LIMIT 1 ) LIMIT 1 )-item_prices.promotion_price )
      , 2), ',', '')
 
 
@@ -36,8 +39,12 @@ class ItemPrice extends TransactionModel
 
     
     REPLACE(FORMAT(
-        (item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)-
-        (item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id))*
+        (item_prices.price*(SELECT currency_rates.rate FROM currency_rates WHERE used_currency_id=
+    ( SELECT currencies.id FROM currencies WHERE currencies.id=item_prices.currency_id LIMIT 1 ) AND main_currency_id=
+    ( SELECT currencies.id FROM currencies WHERE main = TRUE LIMIT 1 ) LIMIT 1 )-
+        (item_prices.price*(SELECT currency_rates.rate FROM currency_rates WHERE used_currency_id=
+    ( SELECT currencies.id FROM currencies WHERE currencies.id=item_prices.currency_id LIMIT 1 ) AND main_currency_id=
+    ( SELECT currencies.id FROM currencies WHERE main = TRUE LIMIT 1 ) LIMIT 1 ))*
         (item_prices.promotion_price/100)
         )
     , 2), ',', '')
@@ -45,7 +52,9 @@ class ItemPrice extends TransactionModel
     ELSE
     
     REPLACE(FORMAT(
-    item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)
+    item_prices.price*(SELECT currency_rates.rate FROM currency_rates WHERE used_currency_id=
+    ( SELECT currencies.id FROM currencies WHERE currencies.id=item_prices.currency_id LIMIT 1 ) AND main_currency_id=
+    ( SELECT currencies.id FROM currencies WHERE main = TRUE LIMIT 1 ) LIMIT 1 )
     , 2), ',', '')
  END";
 
@@ -53,7 +62,9 @@ class ItemPrice extends TransactionModel
     // item_prices.price ) ,',',1)";
 
     public const PRICE_SQL="REPLACE(FORMAT(
-    item_prices.price*(SELECT currencies.price FROM currencies WHERE currencies.id=item_prices.currency_id)
+    item_prices.price*(SELECT currency_rates.rate FROM currency_rates WHERE used_currency_id=
+    ( SELECT currencies.id FROM currencies WHERE currencies.id=item_prices.currency_id LIMIT 1 ) AND main_currency_id=
+    ( SELECT currencies.id FROM currencies WHERE main = TRUE LIMIT 1 ) LIMIT 1 )
     , 2), ',', '')
     ";
 

@@ -22,4 +22,15 @@ trait ItemVariantTrait{
 		return $ids;
 	}
 
+	public function scopeSelectItem($query){
+        return $query->addSelect([
+            'item_id' => function($query){
+                $query->select('item_id')
+                ->from('item_variants')
+                ->whereColumn('item_variant_id','item_variants.id')
+                ->limit(1);
+            }
+        ]);
+    }
+
 }

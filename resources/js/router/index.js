@@ -17,6 +17,7 @@ import permissionRoutes from './admin/permission';
 import orderRoutes from './admin/order';
 import targetRoutes from './admin/target';
 import currencyRoutes from './admin/currency';
+import currencyRateRoutes from './admin/currency_rate';
 import itemStockRoutes from './admin/item_stock';
 import itemPriceRoutes from './admin/item_price';
 import transactionRoutes from './admin/transaction';
@@ -74,6 +75,7 @@ const router = createRouter({
     ...orderRoutes,
     ...targetRoutes,
     ...currencyRoutes,
+    ...currencyRateRoutes,
     ...itemStockRoutes,
     ...itemPriceRoutes,
     ...transactionRoutes,

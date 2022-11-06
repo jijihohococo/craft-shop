@@ -17,7 +17,7 @@
 									<label>Currency</label>
 									<Select :value="fields.currency_id" @input="setCurrencyId">
 										<option value="" disabled >Select Currency</option>
-										<option v-for="currency in currencies" :value="currency.id">{{ currency.name }}</option>
+										<option v-for="currency in currencies" :value="currency.used_currency_id">{{ currency.used_currency }}</option>
 									</Select>
 									<strong v-if="errors && errors.currency_id" class="invalid-feedback" style="display:block;">{{ errors.currency_id[0] }}</strong>
 								</div>
@@ -152,7 +152,7 @@
 				} )
 			},
 			async getCurrencies(){
-				await window.axios.get('get_currencies').then( (response) => {
+				await window.axios.get('get_available_currencies').then( (response) => {
 					if(response.data.message=='Loading'){
 
 						showSwalLoading(this);

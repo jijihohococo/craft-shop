@@ -1075,7 +1075,7 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Rate", -1
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Main", -1
 /* HOISTED */
 );
 
@@ -1094,10 +1094,12 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_15 = ["innerHTML"];
 var _hoisted_16 = ["innerHTML"];
 var _hoisted_17 = ["innerHTML"];
-var _hoisted_18 = ["innerHTML"];
-var _hoisted_19 = {
+var _hoisted_18 = {
   "class": "text-left"
 };
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" View Exchange Rate ");
+
 var _hoisted_20 = {
   "class": "card-footer clearfix"
 };
@@ -1118,6 +1120,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_DeleteAllCheck = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DeleteAllCheck");
 
   var _component_DeleteCheck = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DeleteCheck");
+
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   var _component_ViewButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ViewButton");
 
@@ -1191,33 +1195,49 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       innerHTML: _ctx.checkString(currency.name)
     }, null, 8
     /* PROPS */
-    , _hoisted_15)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-      innerHTML: _ctx.checkString(currency.price)
-    }, null, 8
-    /* PROPS */
-    , _hoisted_16)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_15)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(currency.main == true ? 'Yes' : 'No'), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       innerHTML: _ctx.checkString(currency.created_at)
     }, null, 8
     /* PROPS */
-    , _hoisted_17)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_16)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       innerHTML: _ctx.checkString(currency.deleted_at)
     }, null, 8
     /* PROPS */
-    , _hoisted_18)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
+    , _hoisted_17)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_18, [currency.deleted_at == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
+      key: 0,
+      "class": "btn btn-success btn-sm mr-3",
+      to: {
+        name: 'currency.currency_rate',
+        params: {
+          currency_id: currency.id
+        }
+      }
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [_hoisted_19];
+      }),
+      _: 2
+      /* DYNAMIC */
+
+    }, 1032
+    /* PROPS, DYNAMIC_SLOTS */
+    , ["to"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ViewButton, {
       data_name: currency.name,
       data_model: $data.content,
       data_id: currency.id
     }, null, 8
     /* PROPS */
     , ["data_name", "data_model", "data_id"]), _ctx.actions.update && currency.deleted_at == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_EditButton, {
-      key: 0,
+      key: 1,
       content: $data.content,
       link: "currency.edit",
       dataId: currency.id
     }, null, 8
     /* PROPS */
     , ["content", "dataId"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.actions["delete"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Delete, {
-      key: 1,
+      key: 2,
       content: $data.content,
       deleteAt: currency.deleted_at,
       deleteLink: 'currencies/' + currency.id,

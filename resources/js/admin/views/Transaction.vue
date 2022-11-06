@@ -1,9 +1,25 @@
 <template>
 	<ContentHeader :header="content"
+	v-if="this.$route.params.model=='CurrencyRate'"
 	:back_links="[
-	{'route':getLink(this.$route.params.model),'title':this.$route.params.model}
+	{ 'route' : '/admin/currency' , 'title' : 'Currency' },
+	{ 'route' : '/admin/currency/currency_rate/'+this.$route.params.currency_id , 'title' : this.$route.params.main_content }
 	]"
 	/>
+	<ContentHeader :header="content"
+	v-else-if="this.$route.params.model=='ItemStock' || 
+	this.$route.params.model=='ItemPrice'"
+	:back_links="[
+	{ 'route' : '/admin/item' , 'title' : 'Item' },
+	{ 'route' : '/admin/item/variant/'+this.$route.params.item_id , 'title' : this.$route.params.name },
+	{ 'route' : getItemRelateRoute(this.$route.params.model)+this.$route.params.item_id , 'title' : getItemRelateData(this.$route.params.model,this.$route.params.name)  }
+	]"
+	/>
+	<ContentHeader :header="content"
+	v-else
+	:back_links="[
+	{'route':getLink(this.$route.params.model),'title':this.$route.params.model}
+	]" />
 	<section class="content">
 		<div class="container-fluid">
 			<div v-if="actions.read==true" class="row">
@@ -69,7 +85,7 @@
 	export default {
 		data(){
 			return {
-				content : 'Transactions of '+this.$route.params.name+' '+this.$route.params.model,
+				content : this.getContent(),
 				transactions : {},
 				search : null ,
 				currentPage : 1 ,
@@ -84,11 +100,40 @@
 			this.getTransactions(1);
 		},
 		methods :{
+			getItemRelateRoute(model){
+				switch(model){
+					case 'ItemPrice':
+					return '/admin/item/price/'
+					break;
+
+					case 'ItemStock':
+					return '/admin/item/stock/'
+					break;
+				}
+			},
+			getItemRelateData(model,name){
+				switch(model){
+					case 'ItemPrice':
+					return name +"'s Price";
+					break;
+
+					case 'ItemStock':
+					return name +"'s Stock";
+					break;
+				}
+			},
+			getContent(){
+				if(this.$route.params.model=='CurrencyRate' ||
+				this.$route.params.model=='ItemStock' ){
+					return 'Transactions of '+this.$route.params.name;
+				}else{
+					return 'Transactions of '+this.$route.params.name+' '+
+					this.$route.params.model;
+				}
+			},
 			getLink(model){
 				let newModel=getModel(model)
-				return this.$route.params.variant_id!=='0' ?
-				'/admin/'+newModel.replace(/([A-Z])/g,'/$1').trim().toLowerCase() + '/'+this.$route.params.variant_id :
-				'/admin/' +newModel.
+				return '/admin/' +newModel.
 				replace(/([A-Z])/g,'_$1').trim().toLowerCase();
 			},
 			getTransactions(page=1){

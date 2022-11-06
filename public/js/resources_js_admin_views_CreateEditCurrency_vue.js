@@ -83,7 +83,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return_link: 'currency',
       fields: {
         name: '',
-        price: ''
+        main: true
       }
     };
   },
@@ -154,7 +154,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   if (response.data.message == 'Loading') {
                     (0,_helpers_general__WEBPACK_IMPORTED_MODULE_1__.showSwalLoading)(_this4);
                   } else {
-                    _this4.fields = response.data.currency;
+                    _this4.fields.name = response.data.currency.name;
+                    _this4.fields.main = response.data.currency.main == 0 ? false : true;
                   }
                 })["catch"](function (error) {
                   (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this4, 'update');
@@ -347,13 +348,16 @@ var _hoisted_10 = {
   "class": "form-group"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Rate", -1
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Main Currency", -1
 /* HOISTED */
 );
 
 var _hoisted_12 = {
   key: 0,
-  "class": "invalid-feedback"
+  "class": "invalid-feedback",
+  style: {
+    "display": "block!important"
+  }
 };
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -404,15 +408,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.name]]), _ctx.errors && _ctx.errors.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.errors.name[0]), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([_ctx.errors && _ctx.errors.price ? 'form-control is-invalid' : 'form-control']),
-    placeholder: "Rate",
+    type: "checkbox",
+    id: "checkbox",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $data.fields.price = $event;
+      return $data.fields.main = $event;
     })
-  }, null, 2
-  /* CLASS */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.fields.price]]), _ctx.errors && _ctx.errors.price ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.errors.price[0]), 1
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.fields.main]]), _ctx.errors && _ctx.errors.main ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.errors.main[0]), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]), _hoisted_13], 32
   /* HYDRATE_EVENTS */

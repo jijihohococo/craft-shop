@@ -16,8 +16,19 @@ class CurrencySeeder extends Seeder
     public function run()
     {
         $this->insertSeed([
-            ['name' => 'USD','price' => 2050],
-            ['name' => 'MMK','price'=> 1]
+            ['name' => 'USD','main' => FALSE],
+            ['name' => 'MMK','main'=> TRUE]
         ],'Currency','currencies');
+
+        $this->insertSeed([
+            //------------------USD------------------//
+            ['main_currency_id' => 1, 'used_currency_id' => 1 , 'rate' => 1 ],
+            //------------------USD------------------//
+
+            //------------------MMK------------------//
+            ['main_currency_id' => 2, 'used_currency_id' => 2 , 'rate' => 1 ],
+            ['main_currency_id' => 2, 'used_currency_id' => 1 , 'rate' => 3050 ],
+            //------------------MMK------------------//
+        ],'CurrencyRate','currency_rates');
     }
 }

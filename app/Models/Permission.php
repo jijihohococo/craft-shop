@@ -34,6 +34,7 @@ class Permission extends TransactionModel
                 'Target',
                 'User',
                 'Currency',
+                'CurrencyRate',
                 'Tax',
                 'Attribute',
                 'Color',

@@ -144,7 +144,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         update: false,
         "delete": false
       },
-      contents: ['Permission', 'Shop', 'Admin', 'Banner', 'Category', 'Subcategory', 'Brand', 'Item', 'ItemStock', 'ItemPrice', 'Role', 'Target', 'User', 'Currency', 'Tax', 'Attribute', 'Color', 'Country', 'State', 'City', 'Order', 'Promotion', 'Collection', 'SocialMedia'],
+      contents: ['Permission', 'Shop', 'Admin', 'Banner', 'Category', 'Subcategory', 'Brand', 'Item', 'ItemStock', 'ItemPrice', 'Role', 'Target', 'User', 'Currency', 'CurrencyRate', 'Tax', 'Attribute', 'Color', 'Country', 'State', 'City', 'Order', 'Promotion', 'Collection', 'SocialMedia'],
       permissions: ['create', 'read', 'update', 'delete']
     };
   },

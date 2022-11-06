@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\Currency;
+use App\Models\{Currency,CurrencyRate};
+use App\Rules\CurrencyMainValidation;
+use DB;
 class CurrencyController extends CommonController
 {
 
@@ -52,7 +54,19 @@ class CurrencyController extends CommonController
     {
         //
         $request->validate($this->validateData());
-        Currency::create($request->all());
+        DB::beginTransaction();
+        if($request->main==TRUE){
+            Currency::where('main',TRUE)->update([
+                'main' => FALSE
+            ]);
+        }
+        $currency=Currency::create($request->all());
+        CurrencyRate::create([
+            'main_currency_id' => $currency->id ,
+            'used_currency_id' => $currency->id ,
+            'rate' => 1
+        ]);
+        DB::commit();
         return response()->json([
             'message' => $request->name .' Currency is created successfully'
         ]);
@@ -64,9 +78,16 @@ class CurrencyController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Currency $currency)
     {
         //
+        return $this->showCurrency($currency);
+    }
+
+    public function showCurrency($currency){
+        return response()->json([
+            'currency' => $currency
+        ]);
     }
 
     /**
@@ -78,9 +99,7 @@ class CurrencyController extends CommonController
     public function edit(Currency $currency)
     {
         //
-        return response()->json([
-            'currency' => $currency
-        ]);
+        return $this->showCurrency($currency);
     }
 
     /**
@@ -94,7 +113,16 @@ class CurrencyController extends CommonController
     {
         //
         $request->validate($this->validateData($currency->id));
+        DB::beginTransaction();
+        if($request->main==TRUE){
+            Currency::where('id','<>',$currency->id)
+            ->where('main',TRUE)
+            ->update([
+                'main' => FALSE
+            ]);
+        }
         $currency->update($request->all());
+        DB::commit();
         return response()->json([
             'message' => $request->name . ' Currency is updated successfully' 
         ]);
@@ -103,7 +131,7 @@ class CurrencyController extends CommonController
     private function validateData($id=NULL){
         return [
             'name' => uniqueColumn($this->content,$id),
-            'price' => requiredDouble()
+            'main' => ['boolean',new CurrencyMainValidation($id)]
         ];
     }
 
@@ -111,7 +139,6 @@ class CurrencyController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Currency::searchWithName($searchData)
-            ->orWhere('price','like',$searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -124,10 +151,31 @@ class CurrencyController extends CommonController
             Currency::onlyTrashed()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
-            ->orWhere('price','like',$searchData)
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10)
+        );
+    }
+
+    public function getCurrencies(int $currencyId){
+        $currencyIds=CurrencyRate::select('used_currency_id')
+            ->where('main_currency_id',$currencyId)->get()->pluck('used_currency_id');
+        $currencyIds[]=$currencyId;
+        return $this->indexPage(
+            Currency::whereNotIn('id',$currencyIds  )->get()
+        );
+    }
+
+    public function getAvailableCurrencies(){
+        $mainCurrency=Currency::where('main',TRUE)->first();
+        return $this->indexPage(
+            $mainCurrency!==NULL ?
+            CurrencyRate::select('used_currency_id')
+            ->selectCurrencies()
+            ->where('main_currency_id',$mainCurrency->id)
+            ->latest('id')
+            ->get() :
+            []
         );
     }
 }

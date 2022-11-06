@@ -377,7 +377,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      content: 'Transactions of ' + this.$route.params.name + ' ' + this.$route.params.model,
+      content: this.getContent(),
       transactions: {},
       search: null,
       currentPage: 1,
@@ -392,9 +392,38 @@ __webpack_require__.r(__webpack_exports__);
     this.getTransactions(1);
   },
   methods: {
+    getItemRelateRoute: function getItemRelateRoute(model) {
+      switch (model) {
+        case 'ItemPrice':
+          return '/admin/item/price/';
+          break;
+
+        case 'ItemStock':
+          return '/admin/item/stock/';
+          break;
+      }
+    },
+    getItemRelateData: function getItemRelateData(model, name) {
+      switch (model) {
+        case 'ItemPrice':
+          return name + "'s Price";
+          break;
+
+        case 'ItemStock':
+          return name + "'s Stock";
+          break;
+      }
+    },
+    getContent: function getContent() {
+      if (this.$route.params.model == 'CurrencyRate' || this.$route.params.model == 'ItemStock') {
+        return 'Transactions of ' + this.$route.params.name;
+      } else {
+        return 'Transactions of ' + this.$route.params.name + ' ' + this.$route.params.model;
+      }
+    },
     getLink: function getLink(model) {
       var newModel = (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.getModel)(model);
-      return this.$route.params.variant_id !== '0' ? '/admin/' + newModel.replace(/([A-Z])/g, '/$1').trim().toLowerCase() + '/' + this.$route.params.variant_id : '/admin/' + newModel.replace(/([A-Z])/g, '_$1').trim().toLowerCase();
+      return '/admin/' + newModel.replace(/([A-Z])/g, '_$1').trim().toLowerCase();
     },
     getTransactions: function getTransactions() {
       var _this = this;
@@ -1117,7 +1146,35 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_Error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Error");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContentHeader, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [this.$route.params.model == 'CurrencyRate' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ContentHeader, {
+    key: 0,
+    header: $data.content,
+    back_links: [{
+      'route': '/admin/currency',
+      'title': 'Currency'
+    }, {
+      'route': '/admin/currency/currency_rate/' + this.$route.params.currency_id,
+      'title': this.$route.params.main_content
+    }]
+  }, null, 8
+  /* PROPS */
+  , ["header", "back_links"])) : this.$route.params.model == 'ItemStock' || this.$route.params.model == 'ItemPrice' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ContentHeader, {
+    key: 1,
+    header: $data.content,
+    back_links: [{
+      'route': '/admin/item',
+      'title': 'Item'
+    }, {
+      'route': '/admin/item/variant/' + this.$route.params.item_id,
+      'title': this.$route.params.name
+    }, {
+      'route': $options.getItemRelateRoute(this.$route.params.model) + this.$route.params.item_id,
+      'title': $options.getItemRelateData(this.$route.params.model, this.$route.params.name)
+    }]
+  }, null, 8
+  /* PROPS */
+  , ["header", "back_links"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ContentHeader, {
+    key: 2,
     header: $data.content,
     back_links: [{
       'route': $options.getLink(this.$route.params.model),
@@ -1125,7 +1182,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }]
   }, null, 8
   /* PROPS */
-  , ["header", "back_links"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [$data.actions.read == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [$data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  , ["header", "back_links"])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [$data.actions.read == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [$data.actions.read ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.searchTransactions(1);
     }, ["prevent"]))

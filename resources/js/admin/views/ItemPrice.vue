@@ -39,12 +39,18 @@
 											<td><div v-html="checkString(item_price.created_at)">
 											</div></td>
 											<td>
-												<ViewButton 
-												:data_name="itemColor" 
-												:data_model="mainContent" 
-												:data_id="item_price.id"
-												:variant_id="item_price.item_variant_id"
-												/>
+												<router-link class="btn btn-primary btn-sm mr-3"  
+												:to="{name: 
+													'item.transaction' ,params:{
+														name : itemColor ,
+														model : mainContent ,
+														model_id: item_price.id ,
+														item_id : item_price.item_id }
+													}">
+													<i class="fas fa-folder">
+													</i>
+													View
+												</router-link>
 												<EditButton v-if="actions.update && key==0" :content="content" link="item.price.edit" :dataId="item_price.id" />
 											</td>
 										</tr>

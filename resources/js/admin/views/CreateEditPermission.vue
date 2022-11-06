@@ -84,6 +84,7 @@
 				'Target',
 				'User',
 				'Currency',
+				'CurrencyRate',
 				'Tax',
 				'Attribute',
 				'Color',

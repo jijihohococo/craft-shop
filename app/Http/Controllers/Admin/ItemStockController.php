@@ -22,12 +22,14 @@ class ItemStockController extends ItemVariantCommonController
     public function index(int $itemVariantId)
     {
         //
-        return $this->indexPage(ItemStock::ofItemVariant($itemVariantId)->latest('id')->paginate(10),$itemVariantId);
+        return $this->indexPage(ItemStock::selectItem()
+            ->ofItemVariant($itemVariantId)->latest('id')->paginate(10),$itemVariantId);
     }
 
     public function search(Request $request,int $itemVariantId){
         $searchData='%'.$request->search.'%';
-        $searchResult=ItemStock::ofItemVariant($itemVariantId)
+        $searchResult=ItemStock::selectItem()
+        ->ofItemVariant($itemVariantId)
         ->where('qty','like',$searchData)
         ->orWhere('stock','like',$searchData)
         ->orWhere('available_stock','like',$searchData)
@@ -36,7 +38,8 @@ class ItemStockController extends ItemVariantCommonController
         return $this->indexPage(
             !empty($searchResult->items()) ?
             $searchResult :
-            ItemStock::whereIn('id',ItemStock::getIdsBySearchCreate($itemVariantId,$request->search) )
+            ItemStock::selectItem()
+            ->whereIn('id',ItemStock::getIdsBySearchCreate($itemVariantId,$request->search) )
             ->latest('id')
             ->paginate(10)
             ,$itemVariantId

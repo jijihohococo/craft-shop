@@ -47,7 +47,7 @@
                                     />
                                 </th>
                                 <th>Name</th>
-                                <th>Rate</th>
+                                <th>Main</th>
                                 <th>Created At</th>
                                 <th>Deleted At</th>
                                 <th>Operation</th>
@@ -64,13 +64,20 @@
                                     /></td>
                                     <td><div v-html="checkString(currency.name)">
                                     </div></td>
-                                    <td><div v-html="checkString(currency.price)">
-                                    </div></td>
+                                    <td>{{ currency.main ==true ? 'Yes' : 'No' }}</td>
                                     <td><div v-html="checkString(currency.created_at)">
                                     </div></td>
                                     <td><div v-html="checkString(currency.deleted_at)">
                                     </div></td>
                                     <td class="text-left">
+                                        <router-link v-if="currency.deleted_at==null" class="btn btn-success btn-sm mr-3" :to="{
+                                            name : 'currency.currency_rate',
+                                            params : {
+                                                currency_id : currency.id
+                                            }
+                                        }">
+                                        View Exchange Rate
+                                        </router-link>
                                         <ViewButton :data_name="currency.name" :data_model="content" :data_id="currency.id" />
                                         <EditButton v-if="actions.update && currency.deleted_at==null" :content="content" link="currency.edit" :dataId="currency.id" />
                                         <Delete v-if="actions.delete" :content="content" :deleteAt="currency.deleted_at" :deleteLink="'currencies/'+currency.id" :restoreLink="'currency_restore/'+currency.id" :id="currency.id" :objectData="currency" @update="updateData" />

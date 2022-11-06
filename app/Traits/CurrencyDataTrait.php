@@ -13,9 +13,15 @@ trait CurrencyDataTrait{
             ->limit(1);
         } , 
         'currency_price' => function($query){
-            $query->select('currencies.price')
-            ->from('currencies')
-            ->whereColumn('currency_id','currencies.id')
+            $query->select('rate')
+            ->from('currency_rates')
+            ->whereColumn('currency_id','currency_rates.used_currency_id')
+            ->where('currency_rates.main_currency_id',function($query){
+                $query->select('id')
+                ->from('currencies')
+                ->where('main',TRUE)
+                ->limit(1);
+            })
             ->limit(1);
         } ]);
     }

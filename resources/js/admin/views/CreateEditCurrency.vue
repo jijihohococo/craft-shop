@@ -19,9 +19,10 @@
 									<strong v-if="errors && errors.name" class="invalid-feedback">{{ errors.name[0] }}</strong>
 								</div>
 								<div class="form-group">
-									<label>Rate</label>
-									<input type="text" :class="[errors && errors.price ? 'form-control is-invalid' : 'form-control']" placeholder="Rate" v-model="fields.price">
-									<strong v-if="errors && errors.price" class="invalid-feedback">{{ errors.price[0] }}</strong>
+									<label>Main Currency</label>
+									<input type="checkbox" id="checkbox" v-model="fields.main">
+									<strong v-if="errors && errors.main" class="invalid-feedback"
+									style="display:block!important">{{ errors.main[0] }}</strong>
 								</div>
 							</div>
 						</div>
@@ -50,7 +51,7 @@
 				return_link  : 'currency',
 				fields : {
 					name : '',
-					price : ''
+					main : true
 				}
 			}
 		},
@@ -90,7 +91,8 @@
 
 						showSwalLoading(this);
 					}else{
-						this.fields=response.data.currency;
+						this.fields.name=response.data.currency.name;
+						this.fields.main=response.data.currency.main==0 ? false : true
 					}
 				} ).catch( (error) => {
 					errorResponse(error,this,'update')

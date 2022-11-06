@@ -12,7 +12,7 @@ class Currency extends TransactionModel
 
     protected $fillable=[
         'name',
-        'price'
+        'main'
     ];
 
     public static $cacheKey='currencies_cache';
