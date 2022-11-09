@@ -7,6 +7,10 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::resource('shops','Admin\ShopController');
 	//--------------SHOP----------------//
 
+	//--------------BLOG----------------//
+	adminResourceApi('blog','blogs','BlogController');
+	//--------------BLOG----------------//
+
 	//--------------CATEGORY----------------//
 	Route::get('get_categories','CategoryController@get');
 	adminResourceApi('category','categories','CategoryController');

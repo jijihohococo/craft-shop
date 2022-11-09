@@ -94,7 +94,8 @@
 				'Order',
 				'Promotion',
 				'Collection',
-				'SocialMedia'
+				'SocialMedia',
+				'Blog'
 				],
 				permissions: [
 				'create',

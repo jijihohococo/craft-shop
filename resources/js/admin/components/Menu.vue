@@ -74,8 +74,9 @@
     admin ,
     dataRoutes : {
       'shop' : "Shop",
-      'social_media' : "Social Media",
       'admin' : "Admin",
+      'social_media' : "Social Media",
+      'blog' : "Blog",
       'user'  : "User",
       'attribute' : "Attribute",
       'category' : "Category" ,

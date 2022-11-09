@@ -30,6 +30,7 @@ import socialMediaRoutes from './admin/social_media';
 import countryRoutes from './admin/country';
 import stateRoutes from './admin/state';
 import cityRoutes from './admin/city';
+import blogRoutes from './admin/blog';
 //------ADMIN ROUTES------//
 
 
@@ -86,7 +87,8 @@ const router = createRouter({
     ...socialMediaRoutes,
     ...countryRoutes,
     ...stateRoutes,
-    ...cityRoutes
+    ...cityRoutes,
+    ...blogRoutes
     ]
   }
   ]

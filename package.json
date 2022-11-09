@@ -10,6 +10,7 @@
     "watch-poll": "mix watch -- --watch-options-poll=1000"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^4.0.7",
     "@vuepic/vue-datepicker": "^3.4.8",
     "v-lazy-image": "^2.1.1",
     "vue": "^3.2.37",
