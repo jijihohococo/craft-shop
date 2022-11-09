@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{CurrencyRate,Currency};
-use App\Rules\CurrencyRateValidation;
+use App\Rules\{CurrencyRateValidation,CurrencyExchangeValidation};
 use App\Traits\AdminRolePermission;
 class CurrencyRateController extends Controller
 {
@@ -114,9 +114,10 @@ class CurrencyRateController extends Controller
     public function edit($id)
     {
         //
-        return response()->json([
-            'currency_rate' => CurrencyRate::selectCurrencies()
-            ->findOrFail($id)
+        $currencyRate=CurrencyRate::selectCurrencies()
+            ->findOrFail($id);
+        return $currencyRate->main_currency_id==$currencyRate->used_currency_id ? unauthorized() : response()->json([
+            'currency_rate' => $currencyRate
         ]);
     }
 
@@ -130,7 +131,7 @@ class CurrencyRateController extends Controller
     public function update(Request $request,CurrencyRate $currencyRate)
     {
         //
-        $request->validate($this->validateData($currencyRate->mainCurrencyId,$currencyRate->id));
+        $request->validate($this->validateData($currencyRate->mainCurrencyId,$currencyRate));
         $currencyRate->update([
             'rate' => $request->rate
         ]);
@@ -150,9 +151,10 @@ class CurrencyRateController extends Controller
         //
     }
 
-    private function validateData($mainCurrencyId,$id=NULL){
+    private function validateData($mainCurrencyId,$currencyRate=NULL){
         return [
-            'used_currency_id' => $id==NULL ? ['required','integer',new CurrencyRateValidation($mainCurrencyId)] : 'nullable' ,
+            'used_currency_id' => $currencyRate==NULL ? ['required','integer',new CurrencyRateValidation($mainCurrencyId)] : 
+            ['nullable',new CurrencyExchangeValidation($currencyRate)] ,
             'rate' => requiredDouble()
         ];
     }

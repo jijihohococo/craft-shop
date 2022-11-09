@@ -3,20 +3,19 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use App\Models\CurrencyRate;
-class CurrencyRateValidation implements Rule
+
+class CurrencyExchangeValidation implements Rule
 {
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    private $mainCurrencyId;
-
-    public function __construct($mainCurrencyId)
+    private $currencyRate;
+    public function __construct($currencyRate)
     {
         //
-        $this->mainCurrencyId=$mainCurrencyId;
+        $this->currencyRate=$currencyRate;
     }
 
     /**
@@ -29,8 +28,8 @@ class CurrencyRateValidation implements Rule
     public function passes($attribute, $value)
     {
         //
-        return CurrencyRate::where('main_currency_id',$this->mainCurrencyId)->where('used_currency_id',$value)
-        ->count()==0;
+        return $this->currencyRate->main_currency_id!==
+        $this->currencyRate->used_currency_id;
     }
 
     /**
@@ -40,6 +39,6 @@ class CurrencyRateValidation implements Rule
      */
     public function message()
     {
-        return 'Duplicate Currency Exchange Rate';
+        return "You can't change your main currency value";
     }
 }

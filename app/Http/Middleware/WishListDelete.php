@@ -17,7 +17,7 @@ class WishListDelete
      */
     public function handle(Request $request, Closure $next)
     {
-        if( $this->checkDelete('App\Models\WishList') ){
+        if( $this->checkDelete($request,'App\Models\WishList') ){
             return unauthorized();
         }
         return $next($request);

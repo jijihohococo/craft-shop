@@ -55,7 +55,7 @@
 														View
 													</router-link>
 
-													<router-link class="btn btn-info btn-sm mr-3" 
+													<router-link v-if="currency_rate.main_currency_id!==currency_rate.used_currency_id" class="btn btn-info btn-sm mr-3" 
 													:to="{name: 
 														'currency.currency_rate.edit' ,params:{id: currency_rate.id ,currency_id:currency_rate.main_currency_id}}">
 														<i class="fas fa-pencil-alt">

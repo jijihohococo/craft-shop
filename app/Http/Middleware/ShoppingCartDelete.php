@@ -18,7 +18,7 @@ class ShoppingCartDelete
     public function handle(Request $request, Closure $next)
     {
         
-            if( $this->checkDelete('App\Models\ShoppingCart') ){
+            if( $this->checkDelete($request,'App\Models\ShoppingCart') ){
                 return unauthorized();
             }
         
