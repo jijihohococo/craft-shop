@@ -25,7 +25,7 @@ class BlogController extends CommonController
 
     public function trash(){
         return $this->indexPage(
-            Blog::withTrashed()
+            Blog::onlyTrashed()
             ->latest('id')
             ->paginate(10)
         );
