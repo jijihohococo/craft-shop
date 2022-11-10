@@ -26,7 +26,7 @@
 									v-model="fields.content"
 									:init="{height: 1000}"
 									/>
-									<strong v-if="errors && errors.content" class="invalid-feedback">{{ errors.content[0] }}</strong>
+									<strong v-if="errors && errors.content" class="invalid-feedback" style="display:block!important;">{{ errors.content[0] }}</strong>
 								</div>
 							</div>
 						</div>
