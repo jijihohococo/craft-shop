@@ -124,7 +124,7 @@ class BlogController extends CommonController
     private function validateData($id=NULL){
         return  [
             'name' => uniqueColumn($this->content,$id),
-            'content' => ['string']
+            'content' => ['string','max:4294967295']
         ];
     }
 }
