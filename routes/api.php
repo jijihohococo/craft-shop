@@ -42,6 +42,7 @@ Route::get('collections','CollectionController@get');
 Route::get('best_sellers','User\ItemController@showBestSeller');
 Route::get('gamings','User\ItemController@showGaming');
 Route::get('feature_products','User\ItemController@showFeatureProducts');
+Route::get('blogs','User\BlogController@index');
 
 //------------------------------SHOP-----------------------------//
 //----items----//
