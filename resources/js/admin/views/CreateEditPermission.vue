@@ -95,7 +95,9 @@
 				'Promotion',
 				'Collection',
 				'SocialMedia',
-				'Blog'
+				'Blog',
+				'Faq',
+				'Page'
 				],
 				permissions: [
 				'create',

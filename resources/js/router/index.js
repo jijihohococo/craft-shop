@@ -31,6 +31,8 @@ import countryRoutes from './admin/country';
 import stateRoutes from './admin/state';
 import cityRoutes from './admin/city';
 import blogRoutes from './admin/blog';
+import faqRoutes from './admin/faq';
+import adminPageRoutes from './admin/page';
 //------ADMIN ROUTES------//
 
 
@@ -88,7 +90,9 @@ const router = createRouter({
     ...countryRoutes,
     ...stateRoutes,
     ...cityRoutes,
-    ...blogRoutes
+    ...blogRoutes,
+    ...faqRoutes,
+    ...adminPageRoutes
     ]
   }
   ]

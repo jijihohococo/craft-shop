@@ -45,7 +45,9 @@ class Permission extends TransactionModel
                 'Promotion',
                 'Collection',
                 'SocialMedia',
-                'Blog'
+                'Blog',
+                'Faq',
+                'Page'
             ];
         }
 
