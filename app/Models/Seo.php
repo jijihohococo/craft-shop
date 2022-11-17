@@ -12,4 +12,12 @@ class Seo extends TransactionModel
         'model',
         'model_id'
     ];
+
+    public function properties(){
+        return $this->hasMany('App\Models\SeoProperty');
+    }
+
+    public function names(){
+        return $this->hasMany('App\Models\SeoName');
+    }
 }

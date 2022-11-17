@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Faq;
+use App\Models\{Faq,Transaction,UserData};
 use DB;
+use Illuminate\Support\Facades\Cache;
 class FaqController extends Controller
 {
     //
@@ -39,7 +40,7 @@ class FaqController extends Controller
     }
 
     public function edit(){
-        $faqs=Faq::get();
+        $faqs=(new Faq)->getAll();
         return response()->json([
             'questions' => $faqs->pluck('question'),
             'answers' => $faqs->pluck('answer')
@@ -49,12 +50,38 @@ class FaqController extends Controller
     public function update(Request $request)
     {
         //
+        $request->validate($this->validateData());
         DB::beginTransaction();
         Faq::truncate();
         $this->insertData($request);
+        $this->insertTransaction();
         DB::commit();
+        $this->cacheFlush();
         return response()->json([
             'message' => 'FAQ is updated successfully'
         ]);
+    }
+
+    private function insertTransaction(){
+        Transaction::create([
+         'guard' =>  UserData::getGuard(),
+         'user_id' => UserData::getId(),
+         'model' => $this->model ,
+         'model_id' => 1,
+         'action' => 'update' ,
+         'created_at' => NOW() ,
+         'updated_at' => NOW()
+     ]);
+    }
+
+    private function cacheFlush(){
+        Cache::tags(Faq::$cacheKey )->flush();
+    }
+
+    private function validateData(){
+        return [
+            'questions' => ['required','array','min:1'],
+            'answers' => ['required','array','min:1']
+        ];
     }
 }

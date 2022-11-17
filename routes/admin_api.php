@@ -7,6 +7,10 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	Route::resource('shops','Admin\ShopController');
 	//--------------SHOP----------------//
 
+	//--------------SEO----------------//
+	Route::put('seos','Admin\SeoController@update');
+	//--------------SEO----------------//	
+
 	//--------------FAQ----------------//
 	Route::get('faqs','Admin\FaqController@index');
 	Route::get('faqs/edit','Admin\FaqController@edit');
