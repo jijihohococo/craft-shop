@@ -72,7 +72,7 @@
                                     </div></td>
                                     <td class="text-left">
                                         <ViewButton :data_name="ad.name" :data_model="content" :data_id="ad.id" />
-                                        <EditButton v-if="admin.data!=={} && admin.data.id==ad.id && actions.update && ad.deleted_at==null" :content="content" link="admin.edit" :dataId="ad.id" />
+                                        <EditButton v-if="actions.update && ad.deleted_at==null" :content="content" link="admin.edit" :dataId="ad.id" />
                                         <Delete v-if="actions.delete" :content="content" :deleteAt="ad.deleted_at" :deleteLink="'admins/'+ad.id" :restoreLink="'admin_restore/'+ad.id"
                                         :id="ad.id" :objectData="ad" @update="updateData" />
                                     </td>

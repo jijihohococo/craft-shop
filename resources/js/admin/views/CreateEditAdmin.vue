@@ -38,6 +38,7 @@
 								</SelectMultiple>
 								<strong v-if="errors && errors.roles" class="invalid-feedback" style="display:block!important;">{{ errors.roles[0] }}</strong>
 							</div>
+							<template v-if="admin.data.id==this.$route.params.id">
 							<div class="form-group">
 								<label>Password</label>
 								<input type="password" :class="[ errors & errors.password ? 'form-control is-invalid' : 'form-control' ]" placeholder="Password" v-model="fields.password">
@@ -48,7 +49,7 @@
 								<input type="password" :class="[ errors & errors.password_confirmation ? 'form-control is-invalid' : 'form-control' ]" placeholder="Password" v-model="fields.password_confirmation">
 								<strong v-if="errors && errors.password_confirmation" class="invalid-feedback" style="display:block!important;">{{ errors.password_confirmation[0] }}</strong>
 							</div>
-							
+							</template>
 						</div>
 					</div>
 				</div>

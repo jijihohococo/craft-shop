@@ -1212,7 +1212,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       data_id: ad.id
     }, null, 8
     /* PROPS */
-    , ["data_name", "data_model", "data_id"]), $data.admin.data !== {} && $data.admin.data.id == ad.id && _ctx.actions.update && ad.deleted_at == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_EditButton, {
+    , ["data_name", "data_model", "data_id"]), _ctx.actions.update && ad.deleted_at == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_EditButton, {
       key: 0,
       content: $data.content,
       link: "admin.edit",
