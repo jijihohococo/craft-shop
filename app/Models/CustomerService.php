@@ -2,16 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use App\Traits\{HasApi,CreateAndUpdateSearch,DeleteSearch,SearchNameTrait,SearchEmailTrait};
+use App\Traits\DeleteSearch;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Events\{CreatedTransaction,UpdatedTransaction,DeletedTransaction,RestoredTransaction};
-class CustomerService extends Authenticatable
+class CustomerService extends Authenticated
 {
-    use HasApi, HasFactory , Notifiable , SoftDeletes , CreateAndUpdateSearch , DeleteSearch , SearchNameTrait,SearchEmailTrait;
+    use SoftDeletes , DeleteSearch;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +18,7 @@ class CustomerService extends Authenticatable
         'name',
         'email',
         'password',
+        'chat_available'
     ];
 
     protected $dates = ['deleted_at'];
@@ -66,5 +63,5 @@ class CustomerService extends Authenticatable
         'deleted' => DeletedTransaction::class,
         'restored' => RestoredTransaction::class
     ];
-
+    
 }

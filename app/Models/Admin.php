@@ -2,16 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use App\Traits\{HasApi,CreateAndUpdateSearch,DeleteSearch,SearchNameTrait,SearchEmailTrait};
+use App\Traits\DeleteSearch;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Events\{CreatedTransaction,UpdatedTransaction,DeletedTransaction,RestoredTransaction};
-class Admin extends Authenticatable
+class Admin extends Authenticated
 {
-    use HasApi, HasFactory , Notifiable , SoftDeletes , CreateAndUpdateSearch , DeleteSearch , SearchNameTrait,SearchEmailTrait;
+    use SoftDeletes , DeleteSearch;
 
     /**
      * The attributes that are mass assignable.
