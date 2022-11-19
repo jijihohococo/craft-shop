@@ -86,8 +86,30 @@ class CustomerServiceController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, CustomerService $customerService)
     {
         //
+        $request->validate($this->validateData($customerService->id));
+    }
+
+    public function search(Request $request){
+        $searchData='%'.$request->search.'%';
+        return $this->indexPage(CustomerService::searchWithName($searchData)
+            ->searchWithEmail($searchData)
+            ->searchCreateAndUpdate($searchData)
+            ->latest('id')
+            ->paginate(10));
+    }
+
+    public function trashSearch(Request $request){
+        $searchData='%'.$request->search.'%';
+        return $this->indexPage(
+            CustomerService::onlyTrashed()
+            ->searchWithCreate($searchData)
+            ->trashSearchWithName($searchData)
+            ->searchWithEmail($searchData)
+            ->searchDelete($searchData)
+            ->latest('id')
+            ->paginate(10) );
     }
 }

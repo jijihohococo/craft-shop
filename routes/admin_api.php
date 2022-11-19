@@ -84,6 +84,11 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 	//--------------ADMIN----------------//
 
 
+	//--------------CUSTOMER SERVICE----------------//
+	adminResourceApi('customer_service','customer_services','CustomerServiceController');
+	//--------------CUSTOMER SERVICE----------------//
+
+
 	//--------------USER----------------//
 	Route::get('users','Admin\UserController@index');
 	Route::get('total_users','Admin\UserController@getTotal');
