@@ -20,7 +20,7 @@ class NotificationController extends Controller
 
     public function index(){
         return response()->json([
-            'notifications' => Notification::where('guard',Admin::API)
+            'notifications' => Notification::where('guard',Admin::API)->
             latest('id')->paginate(10)
         ]);
     }

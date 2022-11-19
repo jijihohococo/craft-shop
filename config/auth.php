@@ -47,6 +47,10 @@ return [
         'admin_api' => [
             'driver' => 'passport',
             'provider' => 'admins',
+        ],
+        'customer_service_api' => [
+            'driver' => 'passport',
+            'provider' => 'customer_services'
         ]
     ],
 
@@ -75,6 +79,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class
+        ],
+        'customer_services' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\CustomerService::class
         ]
 
         // 'users' => [
