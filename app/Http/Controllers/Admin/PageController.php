@@ -117,7 +117,7 @@ class PageController extends CommonController
         $request->validate($this->validateData($page->id));
         $page->update($request->all());
         return response()->json([
-            'message' => $request->name . ' Color is updated successfully'
+            'message' => $request->name . ' Page is updated successfully'
         ]);
     }
 
