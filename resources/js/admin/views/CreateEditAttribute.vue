@@ -20,7 +20,6 @@
 								</div>
 								<div class="form-group">
 									<label>Sets</label>
-									{{ fields.sets }}
 									<AttributeSet :inputData="fields.sets" ref="attributeSet" />
 									<strong v-if="errors && errors.set" 
 									style="width: 100%;margin-top: .25rem;font-size: 80%;color: #dc3545;" >

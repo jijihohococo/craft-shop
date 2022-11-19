@@ -13,6 +13,10 @@ class Seo extends TransactionModel
         'model_id'
     ];
 
+    public function keywords(){
+        return $this->hasMany('App\Models\SeoKeyword');
+    }
+
     public function properties(){
         return $this->hasMany('App\Models\SeoProperty');
     }
