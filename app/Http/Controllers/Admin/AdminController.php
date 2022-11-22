@@ -68,7 +68,7 @@ class AdminController extends CommonController
     {
         //
         $request->validate($this->validateData());
-        $this->makePassword($request);
+        makePassword($request);
         DB::beginTransaction();
         $admin=Admin::create($request->all());
         $this->insertAdminRoles($request->roles,$admin->id);
@@ -117,16 +117,15 @@ class AdminController extends CommonController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request,Admin $admin)
     {
         //
         $loginAdminId=UserData::getId();
-        $request->validate($this->validateData($id));
+        $request->validate($this->validateData($admin->id));
         if($admin->id==$loginAdminId){
-            $this->makePassword($request);
+            makePassword($request);
         }
         DB::beginTransaction();
-        $admin=Admin::findOrFail($id);
         $admin->update( $admin->id==$loginAdminId ? 
             $request->all() : $request->except(['password']) );
         $this->roles=$admin->roles->pluck('role_id')->toArray();
@@ -134,12 +133,6 @@ class AdminController extends CommonController
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Admin is updated successfully' 
-        ]);
-    }
-
-    private function makePassword($request){
-        $request->merge([
-            'password' => \Hash::make($request->password)
         ]);
     }
 

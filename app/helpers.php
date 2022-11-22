@@ -2,6 +2,11 @@
 
 use App\Models\{PassportDate,TokenRefresh,User};
 use Illuminate\Support\Facades\Route;
+function makePassword($request){
+        $request->merge([
+            'password' => \Hash::make($request->password)
+        ]);
+    }
 function uniqueColumn($table,$id,$column='name'){
 	return ['required', 'string', 'max:100', $id==null ? 'unique:'.$table : 'unique:'.$table.','.$column.','.$id ];
 }
