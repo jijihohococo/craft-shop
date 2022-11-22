@@ -202,7 +202,7 @@ private function insertItemTaxes($taxes,$itemId,$update=NULL){
         //
         $request->validate($this->validateData());
         DB::beginTransaction();
-        $item=Item::create($request->all());
+        $item=Item::create($request->except(['store_id']));
         $this->addAttributes($item->id,request('attributes'));
         $this->insertColors($request->colors,$item->id);
         $this->insertItemTaxes($request->taxes,$item->id);
@@ -252,7 +252,7 @@ private function insertItemTaxes($taxes,$itemId,$update=NULL){
         //
         $request->validate($this->validateData($item->id));
         DB::beginTransaction();
-        $item->update($request->all());
+        $item->update($request->except(['store_id']));
         $this->addAttributes($item->id,request('attributes'),'yes');
         $this->insertColors($request->colors,$item->id,'yes');
         $this->taxes=$item->taxes->pluck('tax_id')->toArray();
