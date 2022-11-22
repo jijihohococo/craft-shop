@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function index(){
         return response()->json([
-            'users' => User::select(['name','email'])->latest('id')->paginate(10)
+            'users' => User::select(['name','email','created_at'])->latest('id')->paginate(10)
         ]);
     }
 
@@ -28,7 +28,8 @@ class UserController extends Controller
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return response()->json([
-            'users' => User::searchWithName($searchData)
+            'users' => User::select(['name','email','created_at'])
+            ->searchWithName($searchData)
             ->searchWithEmail($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
