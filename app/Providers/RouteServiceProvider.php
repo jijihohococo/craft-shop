@@ -48,6 +48,8 @@ class RouteServiceProvider extends ServiceProvider
             $this->prefixRoutes('admin_api');
 
             $this->prefixRoutes('customer_service_api');
+
+            $this->prefixRoutes('store_api');
         });
     }
 
