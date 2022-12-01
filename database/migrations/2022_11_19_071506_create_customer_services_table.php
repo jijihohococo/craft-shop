@@ -15,6 +15,12 @@ class CreateCustomerServicesTable extends Migration
     {
         Schema::create('customer_services', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('password');
+            $table->string('pic');
+            $table->boolean('chat_available')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

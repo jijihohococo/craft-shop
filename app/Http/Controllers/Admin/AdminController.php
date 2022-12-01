@@ -139,7 +139,7 @@ class AdminController extends CommonController
     private function validateData($id=NULL){
         return [
             'name' => 'required|string|max:100',
-            'email' => ['required', 'email' , 'max:100', $id==null ? 'unique:admins' : 'unique:admins,email,'.$id ] ,
+            'email' => ['required', 'email' , 'max:100', $id==null ? 'unique:'.$this->content : 'unique:'.$this->content.',email,'.$id ] ,
             'roles' => ['required','array'] ,
             'password' => ['nullable', 'string', 'min:8', 'confirmed']
         ];

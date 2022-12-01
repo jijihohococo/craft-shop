@@ -18,6 +18,7 @@ class CustomerService extends Authenticated
         'name',
         'email',
         'password',
+        'pic',
         'chat_available'
     ];
 

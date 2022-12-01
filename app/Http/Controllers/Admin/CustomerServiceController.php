@@ -43,6 +43,15 @@ class CustomerServiceController extends CommonController
         //
     }
 
+    private function uploadPic($request,$customerService,$oldFile=NULL){
+        oneFileUpload(['file' => 'pic',
+            'name'=> cutSpeicialChar(rand() . $request->name) ,
+            'path'=>'customer_service_images',
+            'old_file'=> $oldFile , 
+            'width'  => 138 , 
+            'height' => 80 ],$request,$customerService );
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -52,6 +61,13 @@ class CustomerServiceController extends CommonController
     public function store(Request $request)
     {
         //
+        $request->validate($this->validateData());
+        $customerService=new CustomerService($request->except(['chat_available']) );
+        $this->uploadPic($request,$customerService);
+        $customerService->save( $customerService->getAttributes() );
+        return response()->json([
+            'message' => $customerService->name . ' Customer Service is created successfully'
+        ]);
     }
 
     /**
@@ -90,6 +106,12 @@ class CustomerServiceController extends CommonController
     {
         //
         $request->validate($this->validateData($customerService->id));
+        $newCustomerService=new CustomerService($request->except(['chat_available']));
+        $this->uploadPic($request,$newCustomerService,$customerService->pic);
+        $customerService->update($newCustomerService->getAttributes());
+        return response()->json([
+            'message' => $request->name . ' Customer Service is updated successfully'
+        ]);
     }
 
     public function search(Request $request){
@@ -111,5 +133,14 @@ class CustomerServiceController extends CommonController
             ->searchDelete($searchData)
             ->latest('id')
             ->paginate(10) );
+    }
+
+    private function validateData($id=NULL){
+        return [
+            'name' => uniqueColumn($this->content,$id) ,
+            'email' => ['required', 'email' , 'max:100', $id==null ? 'unique:'.$this->content : 'unique:'.$this->content.',email,'.$id ],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'pic' => $id==null ? requiredImage() : nullableImage()
+        ];
     }
 }
