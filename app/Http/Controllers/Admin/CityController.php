@@ -29,8 +29,7 @@ class CityController extends CommonController
     public function trash(){
         return $this->indexPage(
             City::onlyTrashed()
-            ->selectCountry()
-            ->selectState()
+            ->selectCity()
             ->latest('id')
             ->paginate(10)
         );
