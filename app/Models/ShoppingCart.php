@@ -92,7 +92,7 @@ class ShoppingCart extends Model
 
         public function scopeSelectItemQty($query){
             return $query->addSelect([
-                'qty' => function($query){
+                'item_available_stock' => function($query){
                     $query->select('available_stock')
                     ->from('item_stocks')
                     ->whereColumn('item_stocks.item_variant_id','shopping_carts.item_variant_id')
