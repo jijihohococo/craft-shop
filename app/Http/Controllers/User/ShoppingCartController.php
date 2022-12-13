@@ -22,8 +22,8 @@ class ShoppingCartController extends Controller
         ]);
     }
 
-    public function addSimpleItem(Request $request,$itemVariantId){
-        $this->shoppingCart->updateOrCreate(['variantID' => ItemVariant::findOrFail($itemVariantId)->id ,
+    public function addSimpleItem(Request $request,ItemVariant $itemVariant){
+        $this->shoppingCart->updateOrCreate(['variantID' => $itemVariant->id ,
                 'userID' => $this->userId ,
                 'qty' => 1 ,
                 'qtyCheck' => "simple" ]);
@@ -32,8 +32,8 @@ class ShoppingCartController extends Controller
         ]);
     }
 
-    public function addDetailItem(Request $request,$itemVariantId){
-        $this->shoppingCart->updateOrCreate(['variantID' => ItemVariant::findOrFail($itemVariantId)->id ,
+    public function addDetailItem(Request $request,ItemVariant $itemVariant){
+        $this->shoppingCart->updateOrCreate(['variantID' => $itemVariant->id ,
                 'userID' => $this->userId ,
                 'qty' => $request->qty ,
                 'qtyCheck' => "multiple" ]);
