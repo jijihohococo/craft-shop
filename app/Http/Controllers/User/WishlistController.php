@@ -31,14 +31,14 @@ class WishlistController extends Controller
         ]);
     }
 
-    public function addItem(Request $request,$itemId){
+    public function addItem(Request $request,Item $item){
 
         $request->validate([
             'item_id' => ['integer',new WishListValidation($this->userId)]
         ]);
         WishList::create([
             'user_id' => $this->userId ,
-            'item_id' => $itemId ,
+            'item_id' => $item->id ,
             'created_at' => NOW()
         ]);
         return response()->json([

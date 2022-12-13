@@ -22,7 +22,7 @@ Route::get('items/{id}','User\ItemController@show');
 
 Route::get('wish_list','User\WishlistController@get');
 Route::get('get_wish_number','User\WishlistController@getCount');
-Route::post('add_item_to_wish_list/{itemId}','User\WishlistController@addItem');
+Route::post('add_item_to_wish_list/{item}','User\WishlistController@addItem');
 Route::post('remove_item_from_wish_list','User\WishlistController@removeItem')->middleware('wishListDelete');
 
 Route::get('shopping_cart','User\ShoppingCartController@get');
