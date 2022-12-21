@@ -176,6 +176,10 @@ function getCurrentURL(){
 	return parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 }
 
+function customerServiceLogin(){
+	return '/customer_service/login';
+}
+
 function adminLogin(){
 	return '/admin/login';
 }

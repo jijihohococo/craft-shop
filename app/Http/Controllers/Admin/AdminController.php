@@ -141,7 +141,9 @@ class AdminController extends CommonController
             'name' => 'required|string|max:100',
             'email' => ['required', 'email' , 'max:100', $id==null ? 'unique:'.$this->content : 'unique:'.$this->content.',email,'.$id ] ,
             'roles' => ['required','array'] ,
-            'password' => ['nullable', 'string', 'min:8', 'confirmed']
+            'password' => $id==NULL ? 
+            ['nullable', 'string', 'min:8', 'confirmed'] : 
+            ['string','min:8','confirmed']
         ];
     }
 

@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'shop' => \App\Http\Middleware\ShopMiddleware::class ,
         'checkAdminCookie' => \App\Http\Middleware\CheckAdminCookieMiddleware::class,
         'checkUserCookie' => \App\Http\Middleware\CheckUserCookieMiddleware::class,
+        'checkCustomerServiceCookie' => \App\Http\Middleware\CheckCustomerServiceCookieMiddleware::class,
         'admin_auth' => \App\Http\Middleware\AdminAuthMiddleware::class,
         'customer_service_auth' => \App\Http\Middleware\CustomerServiceAuthMiddleware::class,
         'user_auth' => \App\Http\Middleware\UserAuthMiddleware::class,
