@@ -18,7 +18,7 @@ class ItemController extends CommonController
     private $seo;
 
     public function __construct(SeoRepositoryInterface $seo){
-        parent::__construct();
+        parent::__construct($seo);
         $this->middleware('rolePermission:'.$this->model.',delete')->only(['deleteItemImages','imageDelete']);
         $this->seo=$seo;
     }

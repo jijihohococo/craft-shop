@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Traits\AdminRolePermission;
+use App\Repositories\SeoRepositoryInterface;
 abstract class CommonController extends Controller
 {
     //
@@ -14,8 +15,11 @@ abstract class CommonController extends Controller
 
     public $mainData = 'name';
 
-    public function __construct(){
+    private $seo;
+
+    public function __construct(SeoRepositoryInterface $seo){
         $this->authorized($this->model);
+        $this->seo=$seo;
     }
 
     public function indexPage($data){
