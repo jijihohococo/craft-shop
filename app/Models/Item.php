@@ -245,91 +245,60 @@ public function scopeAvailable($query){
     ->haveStock();
 }
 
-public function getLaptops(){
-    return Cache::tags( self::$cacheKey )->remember('laptops',60*60*24,function(){
-        return self::selectShopItem()
-        ->where('category_id',1)
+public static function availableItems(string $column,int $id){
+    return self::selectShopItem()
+        ->where($column,$id)
         ->available()
         ->latest('id')
         ->limit(7)
         ->get();
+}
+
+public function getLaptops(){
+    return Cache::tags( self::$cacheKey )->remember('laptops',60*60*24,function(){
+        return self::availableItems('category_id',1);
     });
 }
 
 public function getDesktops(){
     return Cache::tags( self::$cacheKey )->remember('desktops',60*60*24,function(){
-        return self::selectShopItem()
-        ->where('category_id',2)
-        ->available()
-        ->latest('id')
-        ->limit(7)
-        ->get();
+       return self::availableItems('category_id',2);
     });
 }
 
 public function getAccessories(){
     return Cache::tags( self::$cacheKey )->remember('accessories',60*60*24,function(){
-        return self::selectShopItem()
-        ->where('category_id',3)
-        ->available()
-        ->latest('id')
-        ->limit(7)
-        ->get();
+       return self::availableItems('category_id',3);
     });
 }
 
 public function getDesktopComponents(){
     return Cache::tags( self::$cacheKey )->remember('desktop_components',60*60*24,function(){
-        return self::selectShopItem()
-        ->where('category_id',7)
-        ->available()
-        ->latest('id')
-        ->limit(7)
-        ->get();
+        return self::availableItems('category_id',7);
     });
 }
 
 public function getGamingLaptops(){
     return Cache::tags( self::$cacheKey )->remember('desktop_components',60*60*24,function(){
-        return self::selectShopItem()
-        ->where('subcategory_id',46)
-        ->available()
-        ->latest('id')
-        ->limit(7)
-        ->get();
+        return self::availableItems('subcategory_id',46);
     });
 }
 
 public function getGamingMouses(){
     return Cache::tags( self::$cacheKey )->remember('gaming_mouses',60*60*24,function(){
-        return self::selectShopItem()
-        ->where('subcategory_id',48)
-        ->available()
-        ->latest('id')
-        ->limit(7)
-        ->get(); 
+        return self::availableItems('subcategory_id',48);
     });
 }
 
 public function getGamingKeyboards(){
     return Cache::tags( self::$cacheKey )->remember('gaming_keyboards',60*60*24,function(){
-        return self::selectShopItem()
-        ->where('subcategory_id',49)
-        ->available()
-        ->latest('id')
-        ->limit(7)
-        ->get();
+        return self::availableItems('subcategory_id',49);
     });
 }
 
 public function getGamingHeadphones(){
     return Cache::tags( self::$cacheKey )->remember('gaming_headphones',60*60*24,function(){
-        return self::selectShopItem()
-        ->where('subcategory_id',50)
-        ->available()
-        ->latest('id')
-        ->limit(7)
-        ->get();
+        return self::availableItems('subcategory_id',50);
     });
 }
 
