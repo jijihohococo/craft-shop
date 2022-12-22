@@ -9,6 +9,11 @@ class BackendServiceProvider extends ServiceProvider{
 	public function register()
 	{
 		$this->app->bind(
+			'App\Repositories\SeoRepositoryInterface',
+			'App\Repositories\SeoRepository'
+		);
+
+		$this->app->bind(
 			'App\Repositories\ShoppingCartRepositoryInterface',
 			'App\Repositories\ShoppingCartRepository'
 		);

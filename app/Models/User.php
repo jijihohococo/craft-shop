@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-
+use App\Traits\SeoTrait;
 class User extends Authenticated
 {
+    use SeoTrait;
 
     /**
      * The attributes that are mass assignable.

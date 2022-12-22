@@ -13,6 +13,10 @@ class Seo extends TransactionModel
         'model_id'
     ];
 
+    public function seoable(){
+        return $this->morphTo(__FUNCTION__, 'model', 'model_id');
+    }
+
     public function keywords(){
         return $this->hasMany('App\Models\SeoKeyword');
     }

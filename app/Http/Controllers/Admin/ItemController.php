@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\{Item,ItemImage,ItemAttribute,ItemAttributeSet,ItemVariant,ItemTax};
 use DB,File;
+use App\Repositories\SeoRepositoryInterface;
 class ItemController extends CommonController
 {
 
@@ -14,9 +15,12 @@ class ItemController extends CommonController
 
     private $taxes=[];
 
-    public function __construct(){
+    private $seo;
+
+    public function __construct(SeoRepositoryInterface $seo){
         parent::__construct();
         $this->middleware('rolePermission:'.$this->model.',delete')->only(['deleteItemImages','imageDelete']);
+        $this->seo=$seo;
     }
     /**
      * Display a listing of the resource.
