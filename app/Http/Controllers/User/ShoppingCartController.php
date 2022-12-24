@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{ItemVariant,ShoppingCart,UserData};
+use App\Models\{ItemVariant,ShoppingCart,UserData,DeleteData};
 use App\Repositories\ShoppingCartRepositoryInterface;
 class ShoppingCartController extends Controller
 {
@@ -28,7 +28,8 @@ class ShoppingCartController extends Controller
                 'qty' => 1 ,
                 'qtyCheck' => "simple" ]);
         return response()->json([
-            'message' => 'Add to shopping cart successfully'
+            'message' => 'Add to shopping cart successfully',
+            'shopping_cart_items' => $this->shoppingCart->get($this->userId)
         ]);
     }
 
@@ -38,14 +39,16 @@ class ShoppingCartController extends Controller
                 'qty' => $request->qty ,
                 'qtyCheck' => "multiple" ]);
         return response()->json([
-            'message' => 'Add to shopping cart successfully'
+            'message' => 'Add to shopping cart successfully',
+            'shopping_cart_items' => $this->shoppingCart->get($this->userId)
         ]);
     }
 
     public function removeItem(Request $request){
         DeleteData::get()->delete();
         return response()->json([
-            'message' => 'Remove from shopping cart successfully'
+            'message' => 'Remove from shopping cart successfully',
+            'shopping_cart_items' => $this->shoppingCart->get($this->userId)
         ]);
     }
 }

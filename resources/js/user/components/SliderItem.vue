@@ -1,4 +1,9 @@
 <template>
+	<component is="style">
+		.hand_cursor{
+			cursor:pointer;
+		}
+	</component>
 	<div class="product">
 		<div class="product_img">
 			<a href="shop-product-detail.html">
@@ -8,7 +13,7 @@
 			</a>
 			<div class="product_action_box">
 				<ul class="list_none pr_action_btn">
-					<li class="add-to-cart">
+					<li class="add-to-cart hand_cursor">
 						<a @click="addToCart()">
 							<i class="icon-basket-loaded"></i>
 						Add To Cart</a>
@@ -27,14 +32,18 @@
 
 	import ItemInfo from './ItemInfo'
 	import VLazyImage from "v-lazy-image"
+	import {shopping_cart_items} from '../store/';
+	import { mixin } from '../common/';
 
 	export default  {
 		components : {
 			ItemInfo,
 			VLazyImage
 		},
+		mixins: [mixin],
 		data(){
 			return {
+				shopping_cart_items,
 				currentItemVariant : 0
 			}
 		},
@@ -54,7 +63,10 @@
 			addToCart(){
 				let variantId=this.$props.item.variants.split(',')[this.currentItemVariant]
 				window.axios.post( 'add_item_to_shopping_cart/'+variantId ).then( (response) => {
-					console.log(response.data.message)
+					this.$swal( 'Success' ,
+						response.data.message ,
+						'success'  );
+					this.changeShoppingCart(response);
 				} )
 			}
 		}

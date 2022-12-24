@@ -46,6 +46,6 @@ class CurrencyMainValidation implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'You must add one currency to be main currency';
     }
 }
