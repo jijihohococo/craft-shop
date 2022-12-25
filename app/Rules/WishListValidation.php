@@ -30,7 +30,7 @@ class WishListValidation implements Rule
         //
         return WishList::ofUser( $this->userId )
         ->ofItem( $value )
-        ->count()==1;
+        ->count()==1 ? FALSE : TRUE;
     }
 
     /**

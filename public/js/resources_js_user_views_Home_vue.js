@@ -506,9 +506,6 @@ __webpack_require__.r(__webpack_exports__);
   props: ['normal_price', 'sale_price'],
   mixins: [_common___WEBPACK_IMPORTED_MODULE_1__.common_mixin],
   methods: {
-    showItemPrice: function showItemPrice(price) {
-      return (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_0__.showPrice)(price);
-    },
     showItemPromotionPercentage: function showItemPromotionPercentage(normalPrice, salePrice) {
       return (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_0__.showPromotionPercentage)(normalPrice, salePrice);
     }
@@ -1348,13 +1345,13 @@ var _hoisted_5 = {
   "class": "price"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return $props.normal_price !== $props.sale_price ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.thousandSeprator($options.showItemPrice($props.sale_price))) + " MMK ", 1
+  return $props.normal_price !== $props.sale_price ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.thousandSeprator(_ctx.showItemPrice($props.sale_price))) + " MMK ", 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("del", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.thousandSeprator($options.showItemPrice($props.normal_price))) + " MMK", 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("del", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.thousandSeprator(_ctx.showItemPrice($props.normal_price))) + " MMK", 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.showItemPrice($options.showItemPromotionPercentage($props.normal_price, $props.sale_price))) + "% Off", 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.showItemPrice($options.showItemPromotionPercentage($props.normal_price, $props.sale_price))) + "% Off", 1
   /* TEXT */
-  )])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.thousandSeprator($options.showItemPrice($props.sale_price))) + " MMK ", 1
+  )])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.thousandSeprator(_ctx.showItemPrice($props.sale_price))) + " MMK ", 1
   /* TEXT */
   )]));
 }
@@ -1658,6 +1655,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "common_mixin": () => (/* binding */ common_mixin)
 /* harmony export */ });
 /* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store.js */ "./resources/js/store.js");
+/* harmony import */ var _helpers_general_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/general.js */ "./resources/js/helpers/general.js");
+
 
 var common_mixin = {
   data: function data() {
@@ -1673,6 +1672,9 @@ var common_mixin = {
     },
     thousandSeprator: function thousandSeprator(x) {
       return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+    showItemPrice: function showItemPrice(price) {
+      return (0,_helpers_general_js__WEBPACK_IMPORTED_MODULE_1__.showPrice)(price);
     }
   }
 };
@@ -1688,9 +1690,13 @@ var common_mixin = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "showPrice": () => (/* binding */ showPrice),
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "thousandSeprator": () => (/* binding */ thousandSeprator)
 /* harmony export */ });
+function showPrice(price) {
+  return parseInt(price).toString();
+}
 function thousandSeprator(x) {
   return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -1782,7 +1788,6 @@ var currentYear = new Date().getFullYear();
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "showAveragePercent": () => (/* binding */ showAveragePercent),
-/* harmony export */   "showPrice": () => (/* binding */ showPrice),
 /* harmony export */   "showPromotionPercentage": () => (/* binding */ showPromotionPercentage)
 /* harmony export */ });
 function showAveragePercent(arr) {
@@ -1821,9 +1826,6 @@ function showAveragePercent(arr) {
   var fiveStarPercent = fiveStarCount / arr.length * 100;
   var averageStarData = oneStarPercent > 0 || twoStarPercent > 0 || threeStarPercent > 0 || fourStarPercent > 0 || fiveStarPercent > 0 ? (5 * fiveStarCount + 4 * fourStarCount + 3 * threeStarCount + 2 * twoStarCount + 1 * oneStarCount) / (fiveStarCount + fourStarCount + threeStarCount + twoStarCount + oneStarCount) : 0;
   return averageStarData / 5 * 100;
-}
-function showPrice(price) {
-  return parseInt(price).toString();
 }
 function showPromotionPercentage(normalPrice, salePrice) {
   return (normalPrice - salePrice) * 100 / normalPrice;

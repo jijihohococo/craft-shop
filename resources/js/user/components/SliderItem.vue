@@ -20,7 +20,7 @@
 					</li>
 					<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
 					<li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-					<li><a href="#"><i class="icon-heart"></i></a></li>
+					<li><a @click="addToWishlist(item.id)" href="#"><i class="icon-heart"></i></a></li>
 				</ul>
 			</div>
 		</div>
@@ -32,7 +32,6 @@
 
 	import ItemInfo from './ItemInfo'
 	import VLazyImage from "v-lazy-image"
-	import {shopping_cart_items} from '../store/';
 	import { mixin } from '../common/';
 
 	export default  {
@@ -43,7 +42,6 @@
 		mixins: [mixin],
 		data(){
 			return {
-				shopping_cart_items,
 				currentItemVariant : 0
 			}
 		},
@@ -53,10 +51,6 @@
 			}
 		},
 		methods : {
-			showImage(image){
-				return image==null ? '/images/logo_dark.png' :
-				'/image/item_images/' + image
-			},
 			getColorKey(key){
 				this.currentItemVariant=key
 			},

@@ -4,33 +4,36 @@
 			<ul class="cart_list">
 				<li v-for="shopping_cart_item in shopping_cart_items.data">
 					<a @click="removeFromCart(shopping_cart_item.id)" class="item_remove btn"><i class="ion-close"></i></a>
-					<a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/cart_thamb1.jpg" alt="cart_thumb1">{{ shopping_cart_item.name }}</a>
-					<span class="cart_quantity"> {{ shopping_cart_item.qty }} x 
-					{{ thousandSeprator(showItemPrice(shopping_cart_item.sale_price)) }}</span>
-				</li>
-			</ul>
-			<div class="cart_footer" v-if="shopping_total_qty.data>0" >
-				<p class="cart_total"><strong>Subtotal:</strong> <span class="cart_price"> </span>{{ thousandSeprator(showItemPrice(shopping_total_price.data*shopping_total_qty.data)) }}</p>
-				<p class="cart_buttons"><a href="#" class="btn btn-fill-line view-cart">View Cart</a><a href="#" class="btn btn-fill-out checkout">Checkout</a></p>
+					<a href="#">
+						<v-lazy-image 
+						:src="showImage(shopping_cart_item.item_image)"
+						:alt="shopping_cart_item.item_name" />
+						{{ shopping_cart_item.item_name }}</a>
+						<span class="cart_quantity"> {{ shopping_cart_item.qty }} x 
+						{{ thousandSeprator(showItemPrice(shopping_cart_item.sale_price)) }}</span>
+					</li>
+				</ul>
+				<div class="cart_footer" v-if="shopping_total_qty.data>0" >
+					<p class="cart_total"><strong>Subtotal:</strong> <span class="cart_price"> </span>{{ thousandSeprator(showItemPrice(shopping_total_price.data*shopping_total_qty.data)) }}</p>
+					<p class="cart_buttons"><a href="#" class="btn btn-fill-line view-cart">View Cart</a><a href="#" class="btn btn-fill-out checkout">Checkout</a></p>
+				</div>
 			</div>
-		</div>
-	</li>
-</template>
-<script >
-	import { showPrice,showPromotionPercentage } from '../helpers/general.js';
-	import { common_mixin } from '../../common/'
-	import { mixin } from '../common/';
+		</li>
+	</template>
+	<script >
 
-	export default {
-		name : 'ShoppingCartMenu',
-		mixins: [mixin,common_mixin],
-		async created(){
-			await this.getShoppingCartItems()
-		},
-		methods : {
-			showItemPrice(price){
-				return showPrice(price)
+		import { common_mixin } from '../../common/'
+		import { mixin } from '../common/';
+		import VLazyImage from "v-lazy-image"
+
+		export default {
+			name : 'ShoppingCartMenu',
+			mixins: [mixin,common_mixin],
+			components : {
+				VLazyImage
 			},
+			async created(){
+				await this.getShoppingCartItems()
+			}
 		}
-	}
-</script>
+	</script>

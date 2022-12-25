@@ -227,7 +227,8 @@ public function scopeInWish($query){
         return $query->select('id')
         ->from('wish_lists')
         ->whereColumn('items.id','wish_lists.item_id')
-        ->where('wish_lists.user_id', (string) getUserId( authId() ) );
+        ->where('wish_lists.user_id', (string) getUserId( authId() ) )
+        ->limit(1);
     } ]);
 }
 

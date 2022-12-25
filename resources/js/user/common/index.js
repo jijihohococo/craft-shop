@@ -1,14 +1,32 @@
-import {shopping_cart_items,shopping_total_qty,shopping_total_price} from '../store/';
+import {shopping_cart_items,shopping_total_qty,shopping_total_price,wishlist_items} from '../store/';
 
 export var mixin={
 	data(){
 		return {
 			shopping_cart_items,
 			shopping_total_qty,
-			shopping_total_price
+			shopping_total_price,
+			wishlist_items
 		}
 	},
 	methods : {
+		addToWishlist(itemId){
+			window.axios.post('add_item_to_wishlist?item_id='+itemId).then( (response) => {
+				this.$swal( 'Success' ,
+					response.data.message ,
+					'success'  );
+				this.wishlist_items.changeData(response.data.wishlist_items)
+			} )
+		},
+		removeFromWishlist(id){
+			window.axios.post('remove_item_from_wishlist?id='+id).then( (response) => {
+				this.wishlist_items.changeData(response.data.wishlist_items)
+			} )
+		},
+		showImage(image){
+			return image==null ? '/images/logo_dark.png' :
+			'/image/item_images/' + image
+		},
 		changeShoppingCart(response){
 			let totalQty=0;
 			let totalPrice=0;
@@ -22,11 +40,11 @@ export var mixin={
 			default:
 				this.shopping_cart_items.data.forEach((item)=>{
 					totalQty+=item.qty
-					totalPrice+=item.sale_price
+					totalPrice+=parseFloat(item.sale_price)
 				})
 				this.shopping_total_qty.changeData(totalQty)
 				this.shopping_total_price.changeData(totalPrice)
-				break;	
+				break;
 			}
 		},
 		removeFromCart(id){
@@ -37,6 +55,11 @@ export var mixin={
 		async getShoppingCartItems(){
 			window.axios.get('shopping_cart').then( (response) => {
 				this.changeShoppingCart(response)
+			} )
+		},
+		async getWishListItems(){
+			window.axios.get('wish_list').then( (response) => {
+				this.wishlist_items.changeData(response.data.wishlist_items)
 			} )
 		}
 	}

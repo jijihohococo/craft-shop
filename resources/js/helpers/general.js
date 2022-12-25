@@ -1,3 +1,6 @@
+export function showPrice(price){
+  return parseInt(price).toString()
+}
 
 export function thousandSeprator(x){
      return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");

@@ -43,7 +43,7 @@
 								</ul>
 							</div>
 							<ul class="navbar-nav attr-nav align-items-center">
-								<li><a href="#" class="nav-link"><i class="linearicons-heart"></i><span class="wishlist_count">{{ number_of_wish }}</span></a></li>
+								<li><a href="#" class="nav-link"><i class="linearicons-heart"></i><span class="wishlist_count">{{ wishlist_items.data.length }}</span></a></li>
 								<ShoppingCartMenu />
 							</ul>
 							<div class="pr_search_icon">
@@ -72,6 +72,8 @@
 
 	import { common_mixin } from '../../common/'
 
+	import {wishlist_items} from '../store/';
+
 	export default {
 		components: {
 			Search,
@@ -83,7 +85,7 @@
 			return {
 				userLogin,
 				categories : {},
-				number_of_wish : 0 ,
+				wishlist_items ,
 			}
 		},
 		mixins: [common_mixin],
@@ -93,15 +95,15 @@
 					this.categories=response.data.categories
 				} )
 			},
-			async getNumberOfWish(){
-				window.axios.get('get_wish_number').then( (response) => {
-					this.number_of_wish=response.data.number_of_wish
+			async getWishlist(){
+				window.axios.get('wishlist').then( (response) => {
+					this.wishlist_items.changeData(response.data.wishlist_items)
 				} )
 			}
 		},
 		async created(){
 			await this.getCategories()
-			await this.getNumberOfWish()
+			await this.getWishlist()
 		},
 	}
 </script>

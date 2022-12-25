@@ -16,15 +16,12 @@
 </template>
 
 <script >
-	import { showPrice,showPromotionPercentage } from '../helpers/general.js';
+	import { showPromotionPercentage } from '../helpers/general.js';
 	import { common_mixin } from '../../common/'
 	export default {
 		props : ['normal_price','sale_price'] ,
 		mixins: [common_mixin],
 		methods : {
-			showItemPrice(price){
-				return showPrice(price)
-			},
 			showItemPromotionPercentage(normalPrice,salePrice){
 				return showPromotionPercentage(normalPrice,salePrice)
 			}

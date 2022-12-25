@@ -1,5 +1,12 @@
 import { reactive } from 'vue'
 
+export const wishlist_items=reactive({
+  data : [] ,
+  changeData(data){
+    this.data=data;
+  }
+})
+
 export const shopping_cart_items=reactive ({
   data : [] ,
   changeData(data){

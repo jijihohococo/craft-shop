@@ -1918,9 +1918,13 @@ function getModel(model) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "showPrice": () => (/* binding */ showPrice),
 /* harmony export */   "showSwalLoading": () => (/* binding */ showSwalLoading),
 /* harmony export */   "thousandSeprator": () => (/* binding */ thousandSeprator)
 /* harmony export */ });
+function showPrice(price) {
+  return parseInt(price).toString();
+}
 function thousandSeprator(x) {
   return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

@@ -45,9 +45,6 @@ export function showAveragePercent(arr) {
 	return (averageStarData/5)*100
 
 }
-export function showPrice(price){
-	return parseInt(price).toString()
-}
 
 export function showPromotionPercentage(normalPrice,salePrice){
 	return ( normalPrice - salePrice )*100/normalPrice
