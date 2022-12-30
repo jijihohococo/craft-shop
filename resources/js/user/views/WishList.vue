@@ -15,35 +15,28 @@
 										<th class="product-thumbnail">&nbsp;</th>
 										<th class="product-name">Product</th>
 										<th class="product-price">Price</th>
-										<th class="product-stock-status">Stock Status</th>
 										<th class="product-add-to-cart"></th>
 										<th class="product-remove">Remove</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td class="product-thumbnail"><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img1.jpg" alt="product1"></a></td>
-										<td class="product-name" data-title="Product"><a href="#">Blue Dress For Woman</a></td>
-										<td class="product-price" data-title="Price">$45.00</td>
-										<td class="product-stock-status" data-title="Stock Status"><span class="badge badge-pill badge-success">In Stock</span></td>
+									<tr v-for="item in wishlist_items.data">
+										<td class="product-thumbnail">
+											<a href="#">
+												<v-lazy-image 
+												:src="showImage(item.item_image)"
+												:alt="item.item_name" />
+											</a>
+										</td>
+										<td class="product-name" data-title="Product">{{ item.item_name }}</td>
+										<td class="product-price" data-title="Price">
+											<ItemPrice
+											:normal_price="item.normal_price"
+											:sale_price="item.sale_price" />
+										</td>
 										<td class="product-add-to-cart"><a href="#" class="btn btn-fill-out"><i class="icon-basket-loaded"></i> Add to Cart</a></td>
-										<td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
-									</tr>
-									<tr>
-										<td class="product-thumbnail"><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img2.jpg" alt="product2"></a></td>
-										<td class="product-name" data-title="Product"><a href="#">Lether Gray Tuxedo</a></td>
-										<td class="product-price" data-title="Price">$55.00</td>
-										<td class="product-stock-status" data-title="Stock Status"><span class="badge badge-pill badge-success">In Stock</span></td>
-										<td class="product-add-to-cart"><a href="#" class="btn btn-fill-out"><i class="icon-basket-loaded"></i> Add to Cart</a></td>
-										<td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
-									</tr>
-									<tr>
-										<td class="product-thumbnail"><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/product_img3.jpg" alt="product3"></a></td>
-										<td class="product-name" data-title="Product"><a href="#">woman full sliv dress</a></td>
-										<td class="product-price" data-title="Price">$68.00</td>
-										<td class="product-stock-status" data-title="Stock Status"><span class="badge badge-pill badge-success">In Stock</span></td>
-										<td class="product-add-to-cart"><a href="#" class="btn btn-fill-out"><i class="icon-basket-loaded"></i> Add to Cart</a></td>
-										<td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
+										<td class="product-remove" data-title="Remove"><a 
+											@click="removeFromWishlist(item.id)"><i class="ti-close"></i></a></td>
 									</tr>
 								</tbody>
 							</table>
@@ -58,22 +51,27 @@
 </template>
 <script >
 	import PageTitle from '../components/PageTitle'
+	import ItemPrice from '../components/ItemPrice'
+	import {wishlist_items} from '../store/';
+	import { mixin } from '../common/';
+	import VLazyImage from "v-lazy-image"
+
 	export default {
 		components : {
-			PageTitle
+			PageTitle,
+			ItemPrice,
+			VLazyImage
 		},
+		mixins: [mixin],
 		data(){
 			return {
-				wish_list_items : {}
+				wishlist_items
 			}
 		},
-		async created(){
-			await this.getWishListItems()
-		},
 		methods : {
-			async getWishListItems(){
-				window.axios.get('wish_list').then( (response) => {
-					this.wish_list_items=response.data.wish_list_items
+			removeFromWishlist(id){
+				window.axios.post('remove_item_from_wishlist?id='+id).then( (response) => {
+					this.wishlist_items.changeData(response.data.wishlist_items)
 				} )
 			}
 		}

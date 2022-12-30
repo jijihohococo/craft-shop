@@ -117,9 +117,7 @@ class Item extends TransactionModel
             'item_images.filename'
             //\DB::raw(getLastData('item_images.filename'))
         )->from('item_images')
-        ->whereIn('item_variant_id',function($newQuery){
-            self::selectWithItemVariant($newQuery);
-        })->orderBy('item_images.id','DESC')
+        ->where('item_variant_id',self::selectWithItemVariant($query) )->orderBy('item_images.id','DESC')
         ->limit(1);
     }
 
@@ -130,20 +128,22 @@ class Item extends TransactionModel
     }
 
     public static function selectWithItemVariant($newQuery){
-      return  $newQuery->select('item_variants.id')
-      ->from('item_variants')
-      ->whereColumn('items.id','item_variants.item_id')
-      ->groupBy('item_variants.item_id');   
-  }
+        return  function($newQuery){
+        $newQuery->select('item_variants.id')
+        ->from('item_variants')
+        ->whereColumn('items.id','item_variants.item_id')
+        ->orderBy('item_variants.id','DESC')
+        ->limit(1);
+    };
+}
 
-  public function scopeSelectStock($query){
+public function scopeSelectStock($query){
     return  $query->addSelect([
         $this->stock => function($query){
             $query->select('item_stocks.available_stock')
             ->from('item_stocks')
-            ->whereIn('item_stocks.item_variant_id',function($query) {
-                self::selectWithItemVariant($query);
-            } )->orderBy('item_stocks.id','DESC')
+            ->where('item_stocks.item_variant_id',
+                self::selectWithItemVariant($query) )->orderBy('item_stocks.id','DESC')
             ->limit(1);
         }
     ]);
@@ -179,9 +179,8 @@ public function scopeSelectPrice($query){
             )
         )
         ->from('item_prices')
-        ->whereIn('item_prices.item_variant_id',function($newQuery){
-            self::selectWithItemVariant($newQuery);
-        })->orderBy('item_prices.id','DESC')
+        ->where('item_prices.item_variant_id',
+            self::selectWithItemVariant($query))->orderBy('item_prices.id','DESC')
         ->limit(1);
     } , 
     $this->normalPrice => function($query){
@@ -190,9 +189,7 @@ public function scopeSelectPrice($query){
                 ItemPrice::PRICE_SQL
             )
         )->from('item_prices')
-        ->whereIn('item_prices.item_variant_id',function($newQuery){
-            self::selectWithItemVariant($newQuery);
-        })->orderBy('item_prices.id','DESC')
+        ->where('item_prices.item_variant_id',self::selectWithItemVariant($query))->orderBy('item_prices.id','DESC')
         ->limit(1);
     },
  //    'tax' => function($query){
@@ -248,11 +245,11 @@ public function scopeAvailable($query){
 
 public static function availableItems(string $column,int $id){
     return self::selectShopItem()
-        ->where($column,$id)
-        ->available()
-        ->latest('id')
-        ->limit(7)
-        ->get();
+    ->where($column,$id)
+    ->available()
+    ->latest('id')
+    ->limit(7)
+    ->get();
 }
 
 public function getLaptops(){
@@ -263,14 +260,14 @@ public function getLaptops(){
 
 public function getDesktops(){
     return Cache::tags( self::$cacheKey )->remember('desktops',60*60*24,function(){
-       return self::availableItems('category_id',2);
-    });
+     return self::availableItems('category_id',2);
+ });
 }
 
 public function getAccessories(){
     return Cache::tags( self::$cacheKey )->remember('accessories',60*60*24,function(){
-       return self::availableItems('category_id',3);
-    });
+     return self::availableItems('category_id',3);
+ });
 }
 
 public function getDesktopComponents(){

@@ -33,6 +33,7 @@ class WishListRepository implements WishListRepositoryInterface{
 	public function get($userId){
 		return WishList::selectUser()
 		->selectItem()
+		->selectItemPrice()
 		->ofUser( $userId )
 		->get();
 	}

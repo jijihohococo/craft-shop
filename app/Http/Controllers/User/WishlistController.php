@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{WishList,UserData,Item};
+use App\Models\{WishList,UserData,Item,DeleteData};
 use App\Rules\WishListValidation;
 use App\Repositories\WishListRepositoryInterface;
 use Validator;

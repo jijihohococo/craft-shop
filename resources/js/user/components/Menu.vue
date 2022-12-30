@@ -75,7 +75,7 @@
           },
           goToContent(content,contentId){
             //this.changeShow()
-            if(this.checkMobile() && this.$route.name=='home' ){
+            if(this.checkMobile() ){
                 this.show=false
             }
             this.$router.push({path: '/shop/'+content + '/' + contentId })

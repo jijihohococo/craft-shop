@@ -266,7 +266,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     goToContent: function goToContent(content, contentId) {
       //this.changeShow()
-      if (this.checkMobile() && this.$route.name == 'home') {
+      if (this.checkMobile()) {
         this.show = false;
       }
 

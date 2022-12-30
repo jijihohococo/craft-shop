@@ -56,28 +56,24 @@ class ShoppingCart extends Model
             } ]);
         }
 
+        public static function selectPrice($priceSQL,$query){
+            return function($query) use($priceSQL) {
+                $query->select(
+                    \DB::raw(
+                        $priceSQL
+                    )
+                )->from('item_prices')
+                ->whereColumn('item_prices.item_variant_id','shopping_carts.item_variant_id')
+                ->orderBy('item_prices.id','DESC')
+                ->limit(1);
+            };
+        }
+
         public function scopeSelectItemPrice($query){
             return $query->addSelect([
-                'sale_price' => function($query){
-                    $query->select(
-                        \DB::raw(
-                            ItemPrice::SALE_PRICE_SQL
-                        )
-                    )->from('item_prices')
-                    ->whereColumn('item_prices.item_variant_id','shopping_carts.item_variant_id')
-                    ->orderBy('item_prices.id','DESC')
-                    ->limit(1);
-                } ,
-                'normal_price' => function($query){
-                    $query->select(
-                        \DB::raw(
-                            ItemPrice::PRICE_SQL
-                        )
-                    )->from('item_prices')
-                    ->whereColumn('item_prices.item_variant_id','shopping_carts.item_variant_id')
-                    ->orderBy('item_prices.id','DESC')
-                    ->limit(1);
-                } ,
+                'sale_price' => self::selectPrice(ItemPrice::SALE_PRICE_SQL,$query)
+             ,
+            'normal_price' => self::selectPrice(ItemPrice::PRICE_SQL,$query) ,
                 // 'tax' => function($query){
                 //     $query->selectSub(function($query){
                 //         Tax::getTaxFromItemPrice($query);
@@ -86,7 +82,7 @@ class ShoppingCart extends Model
                 //     ->orderBy('item_prices.id','DESC')
                 //     ->limit(1);
                 // }
-            ]);
+        ]);
         }
 
 
