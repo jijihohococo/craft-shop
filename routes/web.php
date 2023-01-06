@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/',function(){
+	dd(\Hash::make('password'));
+});
+
 //----------------ADMIN FRONTEND ROUTES----------------//
 Route::view('/admin/{any}','admin.index')->where('any','.*')->middleware('checkAdminCookie');
 //----------------ADMIN FRONTEND ROUTES----------------//
@@ -24,7 +28,7 @@ Route::view('/customer_service/{any}','customer_service.index')->where('any','.*
 $userPage='user.index';
 //----------------USER FRONTEND ROUTES----------------//
 $userRoutes=[
-	null,
+	//null,
 	'privacy_policy',
 	'contact_us',
 	'about_us',

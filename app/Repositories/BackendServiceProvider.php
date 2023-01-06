@@ -9,6 +9,11 @@ class BackendServiceProvider extends ServiceProvider{
 	public function register()
 	{
 		$this->app->bind(
+			'App\Repositories\LoginRepositoryInterface',
+			'App\Repositories\LoginRepository'
+		);
+
+		$this->app->bind(
 			'App\Repositories\SeoRepositoryInterface',
 			'App\Repositories\SeoRepository'
 		);
