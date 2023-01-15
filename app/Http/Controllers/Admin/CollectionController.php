@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\{Collection,ItemCollection};
+use App\Repositories\SeoRepositoryInterface;
 use DB;
 class CollectionController extends CommonController
 {
@@ -13,6 +14,13 @@ class CollectionController extends CommonController
     public $model = 'Collection';
 
     public $content = 'collections';
+
+    private $seo;
+
+    public function __construct(SeoRepositoryInterface $seo){
+        parent::__construct($seo);
+        $this->seo=$seo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,13 +30,14 @@ class CollectionController extends CommonController
     {
         //
         return $this->indexPage(
-            Collection::latest('id')->paginate(10)
+            Collection::selectSeo()->latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             Collection::onlyTrashed()
+            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -80,6 +89,13 @@ class CollectionController extends CommonController
         $this->uploadPic($request,$collection);
         $collection->save( $collection->getAttributes() );
         $this->insertItemCollections($request->items,$collection->id);
+        $this->seo->create([
+            'title' => $request->name ,
+            'description' => $request->name ,
+            'type' => $request->name,
+            'model' => $this->model,
+            'model_id' => $collection->id
+        ]);
         DB::commit();
         return response()->json([
             'message' => $collection->name . ' Collection is created successfully'
@@ -139,7 +155,8 @@ class CollectionController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Collection::searchWithName($searchData)
+            Collection::selectSeo()
+            ->searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -150,6 +167,7 @@ class CollectionController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Collection::onlyTrashed()
+            ->selectSeo()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
             ->searchDelete($searchData)

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Banner;
+use App\Repositories\SeoRepositoryInterface;
+use DB;
 class BannerController extends CommonController
 {
 
@@ -13,6 +15,13 @@ class BannerController extends CommonController
     public $content='banners';
 
     public $mainData='title';
+
+    private $seo;
+
+    public function __construct(SeoRepositoryInterface $seo){
+        parent::__construct($seo);
+        $this->seo=$seo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,11 +30,16 @@ class BannerController extends CommonController
     public function index()
     {
         //
-        return $this->indexPage(Banner::latest('id')->paginate(10));
+        return $this->indexPage(Banner::selectSeo()
+            ->latest('id')
+            ->paginate(10));
     }
 
     public function trash(){
-        return $this->indexPage(Banner::onlyTrashed()->latest('id')->paginate(10));
+        return $this->indexPage(Banner::onlyTrashed()
+            selectSeo()
+            ->latest('id')
+            ->paginate(10));
     }
 
     public function create(){
@@ -51,9 +65,18 @@ class BannerController extends CommonController
     {
         //
         $request->validate($this->validateData());
+        DB::beginTransaction();
         $banner=new Banner($request->all() );
         $this->uploadPic($request,$banner);
         $banner->save( $banner->getAttributes() );
+        $this->seo->create([
+            'title' => $request->title ,
+            'description' => $request->title ,
+            'type' => $request->title,
+            'model' => $this->model,
+            'model_id' => $banner->id
+        ]);
+        DB::commit();
         return response()->json([
             'message' => $banner->title . ' Banner is created successfully'
         ]);
@@ -117,7 +140,8 @@ class BannerController extends CommonController
 
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
-        return $this->indexPage(Banner::where('title','like',$searchData)
+        return $this->indexPage(Banner::selectSeo()
+            ->where('title','like',$searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10));
@@ -127,6 +151,7 @@ class BannerController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
                 Banner::onlyTrashed()
+                ->selectSeo()
                 ->searchWithCreate($searchData)
                 ->orWhere('title','like',$searchData)
                 ->searchDelete($searchData)

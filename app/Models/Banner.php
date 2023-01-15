@@ -5,10 +5,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
-use App\Traits\DeleteSearch;
+use App\Traits\{DeleteSearch,SeoTrait};
 class Banner extends TransactionModel
 {
-    use SoftDeletes,DeleteSearch;
+    use SoftDeletes,DeleteSearch,SeoTrait;
 
     protected $fillable =[
         'title',
