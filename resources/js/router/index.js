@@ -33,6 +33,7 @@ import cityRoutes from './admin/city';
 import blogRoutes from './admin/blog';
 import faqRoutes from './admin/faq';
 import adminPageRoutes from './admin/page';
+import seoRoutes from './admin/seo';
 //------ADMIN ROUTES------//
 
 
@@ -92,7 +93,8 @@ const router = createRouter({
     ...cityRoutes,
     ...blogRoutes,
     ...faqRoutes,
-    ...adminPageRoutes
+    ...adminPageRoutes,
+    ...seoRoutes
     ]
   }
   ]

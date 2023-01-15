@@ -242,13 +242,10 @@ var _hoisted_7 = {
 var _hoisted_8 = {
   "class": "breadcrumb-item"
 };
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Home");
-
-var _hoisted_10 = {
+var _hoisted_9 = {
   "class": "breadcrumb-item"
 };
-var _hoisted_11 = {
+var _hoisted_10 = {
   key: 0,
   "class": "breadcrumb-item active"
 };
@@ -261,13 +258,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: "/admin/dashboard"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_9];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Home")];
     }),
     _: 1
     /* STABLE */
 
   })]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.back_links, function (link) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: link.route
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -283,7 +280,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["to"])]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  )), $props.header !== 'Dashboard' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.header), 1
+  )), $props.header !== 'Dashboard' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.header), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.col ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.row ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.container-fluid ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.content-header ")], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
@@ -849,7 +846,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".dp__input_wrap{position:relative;width:100%;box-sizing:unset}.dp__input_wrap:focus{border-color:var(--dp-border-color-hover);outline:none}.dp__input{background-color:var(--dp-background-color);border-radius:4px;font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;border:1px solid var(--dp-border-color);outline:none;transition:border-color .2s cubic-bezier(0.645, 0.045, 0.355, 1);width:100%;font-size:1rem;line-height:1.5rem;padding:6px 12px;color:var(--dp-text-color);box-sizing:border-box}.dp__input::-moz-placeholder{opacity:.7}.dp__input::placeholder{opacity:.7}.dp__input:hover{border-color:var(--dp-border-color-hover)}.dp__input_reg{caret-color:rgba(0,0,0,0)}.dp__input_focus{border-color:var(--dp-border-color-hover)}.dp__disabled{background:var(--dp-disabled-color)}.dp__disabled::-moz-placeholder{color:var(--dp-disabled-color-text)}.dp__disabled::placeholder{color:var(--dp-disabled-color-text)}.dp__input_icons{display:inline-block;width:1rem;height:1rem;stroke-width:0;font-size:1rem;line-height:1.5rem;padding:6px 12px;color:var(--dp-icon-color);box-sizing:content-box}.dp__input_icon{cursor:pointer;position:absolute;top:50%;left:0;transform:translateY(-50%);color:var(--dp-icon-color)}.dp__clear_icon{position:absolute;top:50%;right:0;transform:translateY(-50%);cursor:pointer;color:var(--dp-icon-color)}.dp__input_icon_pad{padding-left:35px}.dp__input_valid{box-shadow:0 0 4px var(--dp-success-color);border-color:var(--dp-success-color)}.dp__input_valid:hover{border-color:var(--dp-success-color)}.dp__input_invalid{box-shadow:0 0 4px var(--dp-danger-color);border-color:var(--dp-danger-color)}.dp__input_invalid:hover{border-color:var(--dp-danger-color)}.dp__menu{position:absolute;background:var(--dp-background-color);border-radius:4px;min-width:260px;font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;font-size:1rem;-webkit-user-select:none;-moz-user-select:none;user-select:none;border:1px solid var(--dp-menu-border-color);box-sizing:border-box}.dp__menu::after{box-sizing:border-box}.dp__menu::before{box-sizing:border-box}.dp__menu:focus{border:1px solid var(--dp-menu-border-color);outline:none}.dp__menu_index{z-index:99999}.dp__menu_readonly,.dp__menu_disabled{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1}.dp__menu_disabled{background:rgba(255,255,255,.5);cursor:not-allowed}.dp__menu_readonly{background:rgba(0,0,0,0);cursor:default}.dp__arrow_top{left:50%;top:-1px;height:12px;width:12px;background-color:var(--dp-background-color);position:absolute;border-left:1px solid var(--dp-menu-border-color);border-top:1px solid var(--dp-menu-border-color);transform:translate(-50%, -50%) rotate(45deg)}.dp__arrow_bottom{left:50%;bottom:-1px;height:12px;width:12px;background-color:var(--dp-background-color);position:absolute;border-right:1px solid var(--dp-menu-border-color);border-bottom:1px solid var(--dp-menu-border-color);transform:translate(-50%, 50%) rotate(45deg)}.dp__now_wrap{text-align:center;padding:2px 0}.dp__now_button{border:1px solid var(--dp-primary-color);color:var(--dp-primary-color);padding:0 4px;font-weight:bold;border-radius:4px;font-size:1rem;cursor:pointer;background:rgba(0,0,0,0)}.dp__preset_ranges{padding:5px;border-right:1px solid var(--dp-border-color)}.dp__preset_range{padding:5px}.dp__preset_range:hover{background-color:var(--dp-hover-color);cursor:pointer}.dp__menu_content_wrapper{display:flex}.dp__calendar_wrap{display:flex;justify-content:center;align-items:center;flex-direction:column;font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;flex:0}.dp__calendar_header{position:relative;display:flex;justify-content:center;align-items:center;color:var(--dp-text-color);white-space:nowrap;font-weight:bold}.dp__calendar_header_item{text-align:center;flex-grow:1;height:35px;padding:5px;width:35px;box-sizing:border-box}.dp__calendar_row{display:flex;justify-content:center;align-items:center;margin:5px 0}.dp__calendar_item{text-align:center;flex-grow:1;box-sizing:border-box;color:var(--dp-text-color)}.dp__calendar{position:relative}.dp__calendar_header_cell{border-bottom:thin solid var(--dp-border-color);padding:.5rem}.dp__cell_inner{display:flex;align-items:center;text-align:center;justify-content:center;border-radius:4px;height:35px;padding:5px;width:35px;border:1px solid rgba(0,0,0,0);box-sizing:border-box;position:relative}.dp__cell_auto_range_start,.dp__date_hover_start:hover,.dp__range_start{border-bottom-right-radius:0;border-top-right-radius:0}.dp__cell_auto_range_end,.dp__date_hover_end:hover,.dp__range_end{border-bottom-left-radius:0;border-top-left-radius:0}.dp__range_end,.dp__range_start,.dp__active_date{background:var(--dp-primary-color);color:var(--dp-primary-text-color)}.dp__cell_auto_range_end,.dp__cell_auto_range_start{border-top:1px dashed var(--dp-primary-color);border-bottom:1px dashed var(--dp-primary-color)}.dp__date_hover_end:hover,.dp__date_hover_start:hover,.dp__date_hover:hover{background:var(--dp-hover-color);color:var(--dp-hover-text-color)}.dp__cell_offset{color:var(--dp-secondary-color)}.dp__cell_disabled{color:var(--dp-secondary-color);cursor:not-allowed}.dp__range_between{background:var(--dp-hover-color);border-radius:0;border-top:1px solid var(--dp-hover-color);border-bottom:1px solid var(--dp-hover-color)}.dp__range_between_week{background:var(--dp-primary-color);color:var(--dp-primary-text-color);border-radius:0;border-top:1px solid var(--dp-primary-color);border-bottom:1px solid var(--dp-primary-color)}.dp__today{border:1px solid var(--dp-primary-color)}.dp__week_num{color:var(--dp-secondary-color);text-align:center}.dp__cell_auto_range{border-radius:0;border-top:1px dashed var(--dp-primary-color);border-bottom:1px dashed var(--dp-primary-color)}.dp__cell_auto_range_start{border-left:1px dashed var(--dp-primary-color)}.dp__cell_auto_range_end{border-right:1px dashed var(--dp-primary-color)}.dp__calendar_header_separator{width:100%;height:1px;background:var(--dp-border-color)}.dp__calendar_next{margin-left:10px}.dp__marker_line,.dp__marker_dot{height:5px;background-color:var(--dp-marker-color);position:absolute;bottom:0}.dp__marker_dot{width:5px;border-radius:50%;left:50%;transform:translateX(-50%)}.dp__marker_line{width:100%;left:0}.dp__marker_tooltip{position:absolute;border-radius:4px;background-color:var(--dp-tooltip-color);padding:5px;border:1px solid var(--dp-border-color);z-index:99999;box-sizing:border-box;cursor:default}.dp__tooltip_content{white-space:nowrap}.dp__tooltip_text{display:flex;align-items:center;flex-flow:row nowrap;color:var(--dp-text-color)}.dp__tooltip_mark{height:5px;width:5px;border-radius:50%;background-color:var(--dp-text-color);color:var(--dp-text-color);margin-right:5px}.dp__arrow_bottom_tp{left:50%;bottom:0;height:8px;width:8px;background-color:var(--dp-tooltip-color);position:absolute;border-right:1px solid var(--dp-border-color);border-bottom:1px solid var(--dp-border-color);transform:translate(-50%, 50%) rotate(45deg)}.dp__instance_calendar{position:relative}@media only screen and (max-width: 600px){.dp__flex_display{flex-direction:column}}.dp__cell_highlight{background-color:var(--dp-highlight-color)}.dp__month_year_row{display:flex;align-items:center;height:35px;color:var(--dp-text-color);box-sizing:border-box}.dp__inner_nav{display:flex;align-items:center;justify-content:center;cursor:pointer;height:25px;width:25px;color:var(--dp-icon-color);text-align:center;border-radius:50%}.dp__inner_nav svg{height:20px;width:20px}.dp__inner_nav:hover{background:var(--dp-hover-color);color:var(--dp-hover-icon-color)}.dp__inner_nav_disabled:hover,.dp__inner_nav_disabled{background:var(--dp-disabled-color);color:var(--dp-disabled-color-text);cursor:not-allowed}.dp__month_year_select{width:50%;text-align:center;cursor:pointer;height:35px;display:flex;align-items:center;justify-content:center;border-radius:4px;box-sizing:border-box}.dp__month_year_select:hover{background:var(--dp-hover-color);color:var(--dp-hover-text-color)}.dp__overlay{position:absolute;overflow-y:auto;width:100%;height:100%;background:var(--dp-background-color);top:0;left:0;transition:opacity 1s ease-out;z-index:99999;font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;color:var(--dp-text-color);box-sizing:border-box}.dp__overlay::-webkit-scrollbar-track{box-shadow:var(--dp-scroll-bar-background);background-color:var(--dp-scroll-bar-background)}.dp__overlay::-webkit-scrollbar{width:5px;background-color:var(--dp-scroll-bar-background)}.dp__overlay::-webkit-scrollbar-thumb{background-color:var(--dp-scroll-bar-color);border-radius:10px}.dp__overlay:focus{border:none;outline:none}.dp__container_flex{display:flex}.dp__container_block{display:block}.dp__overlay_container{height:100%;flex-direction:column}.dp__overlay_row{padding:0;box-sizing:border-box;display:flex;margin-left:auto;margin-right:auto;flex-wrap:wrap;max-width:100%;width:100%;align-items:center}.dp__overlay_container>.dp__overlay_row{flex:1}.dp__overlay_col{box-sizing:border-box;width:33%;padding:3px;white-space:nowrap}.dp__overlay_cell_pad{padding:10px 0}.dp__overlay_cell_active{cursor:pointer;border-radius:4px;text-align:center;background:var(--dp-primary-color);color:var(--dp-primary-text-color)}.dp__overlay_cell{cursor:pointer;border-radius:4px;text-align:center}.dp__overlay_cell:hover{background:var(--dp-hover-color);color:var(--dp-hover-text-color)}.dp__cell_in_between{background:var(--dp-hover-color);color:var(--dp-hover-text-color)}.dp__overlay_action{position:sticky;bottom:0;background:#fff}.dp__over_action_scroll{right:5px;box-sizing:border-box}.dp__overlay_cell_disabled{cursor:not-allowed;background:var(--dp-disabled-color)}.dp__overlay_cell_disabled:hover{background:var(--dp-disabled-color)}.dp__overlay_cell_active_disabled{cursor:not-allowed;background:var(--dp-primary-disabled-color)}.dp__overlay_cell_active_disabled:hover{background:var(--dp-primary-disabled-color)}.dp__month_picker_header{display:flex;width:100%;align-items:center;justify-content:space-between;height:35px}.dp__time_input{width:100%;display:flex;align-items:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;user-select:none;font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;color:var(--dp-text-color)}.dp__time_col_reg{padding:0 20px}.dp__time_col_reg_with_button{padding:0 15px}.dp__time_col_sec{padding:0 10px}.dp__time_col_sec_with_button{padding:0 5px}.dp__time_col{font-size:2rem;text-align:center;display:flex;align-items:center;justify-content:center;flex-direction:column}.dp__time_display{cursor:pointer;color:var(--dp-text-color);border-radius:4px;display:flex;align-items:center;justify-content:center;padding:0 3px}.dp__time_display:hover{background:var(--dp-hover-color);color:var(--dp-hover-text-color)}.dp__inc_dec_button{padding:5px;margin:0;height:32px;width:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%;color:var(--dp-icon-color);box-sizing:border-box}.dp__inc_dec_button svg{height:32px;width:32px}.dp__inc_dec_button:hover{background:var(--dp-hover-color);color:var(--dp-primary-color)}.dp__pm_am_button{background:var(--dp-primary-color);color:var(--dp-primary-text-color);border:none;padding:10px;border-radius:4px;cursor:pointer}.dp__action_row{display:flex;align-items:center;width:100%;padding:10px;box-sizing:border-box;color:var(--dp-text-color);background:var(--dp-background-color)}.dp__action_row svg{height:20px;width:auto}.dp__selection_preview{width:50%;color:var(--dp-text-color);font-size:.8rem}.dp__action_buttons{width:50%;text-align:right}.dp__action{font-weight:bold;cursor:pointer;padding:2px 5px;border-radius:4px;display:inline-flex;align-items:center}.dp__select{color:var(--dp-success-color)}.dp__action_disabled{color:var(--dp-success-color-disabled);cursor:not-allowed}.dp__cancel{color:var(--dp-secondary-color)}.dp__theme_dark{--dp-background-color: #212121;--dp-text-color: #fff;--dp-hover-color: #484848;--dp-hover-text-color: #fff;--dp-hover-icon-color: #959595;--dp-primary-color: #005cb2;--dp-primary-disabled-color: #61a8ea;--dp-primary-text-color: #fff;--dp-secondary-color: #a9a9a9;--dp-border-color: #2d2d2d;--dp-menu-border-color: #2d2d2d;--dp-border-color-hover: #aaaeb7;--dp-disabled-color: #737373;--dp-disabled-color-text: #d0d0d0;--dp-scroll-bar-background: #212121;--dp-scroll-bar-color: #484848;--dp-success-color: #00701a;--dp-success-color-disabled: #428f59;--dp-icon-color: #959595;--dp-danger-color: #e53935;--dp-marker-color: #e53935;--dp-tooltip-color: #3e3e3e;--dp-highlight-color: rgb(0 92 178 / 20%)}.dp__theme_light{--dp-background-color: #fff;--dp-text-color: #212121;--dp-hover-color: #f3f3f3;--dp-hover-text-color: #212121;--dp-hover-icon-color: #959595;--dp-primary-color: #1976d2;--dp-primary-disabled-color: #6bacea;--dp-primary-text-color: #f8f5f5;--dp-secondary-color: #c0c4cc;--dp-border-color: #ddd;--dp-menu-border-color: #ddd;--dp-border-color-hover: #aaaeb7;--dp-disabled-color: #f6f6f6;--dp-scroll-bar-background: #f3f3f3;--dp-scroll-bar-color: #959595;--dp-success-color: #76d275;--dp-success-color-disabled: #a3d9b1;--dp-icon-color: #959595;--dp-danger-color: #ff6f60;--dp-marker-color: #ff6f60;--dp-tooltip-color: #fafafa;--dp-disabled-color-text: #8e8e8e;--dp-highlight-color: rgb(25 118 210 / 10%)}.dp__main{font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;-webkit-user-select:none;-moz-user-select:none;user-select:none;box-sizing:border-box}.dp__pointer{cursor:pointer}.dp__icon{stroke:currentcolor;fill:currentcolor}.dp__button{width:100%;text-align:center;color:var(--dp-icon-color);background:var(--dp-background-color);cursor:pointer;display:flex;align-items:center;align-content:center;justify-content:center;padding:10px;box-sizing:border-box;height:35px}.dp__button:hover{background:var(--dp-hover-color);color:var(--dp-hover-icon-color)}.dp__button svg{height:20px;width:auto}.dp__button_bottom{border-bottom-left-radius:4px;border-bottom-right-radius:4px}.dp__flex_display{display:flex}.dp__flex_display_with_input{flex-direction:column;align-items:start}.dp__relative{position:relative}.calendar-next-enter-active,.calendar-next-leave-active,.calendar-prev-enter-active,.calendar-prev-leave-active{transition:all .1s ease-out}.calendar-next-enter-from{opacity:0;transform:translateX(22px)}.calendar-next-leave-to{opacity:0;transform:translateX(-22px)}.calendar-prev-enter-from{opacity:0;transform:translateX(-22px)}.calendar-prev-leave-to{opacity:0;transform:translateX(22px)}.dp-menu-appear-enter-active,.dp-menu-appear-leave-active,.dp-slide-up-enter-active,.dp-slide-up-leave-active,.dp-slide-down-enter-active,.dp-slide-down-leave-active{transition:all .1s ease-out}.dp-slide-down-leave-to,.dp-slide-up-enter-from{opacity:0;transform:translateY(22px)}.dp-slide-down-enter-from,.dp-slide-up-leave-to{opacity:0;transform:translateY(-22px)}.dp-menu-appear-enter-from{opacity:0}.dp-menu-appear-leave-to{opacity:1}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".dp__input_wrap{position:relative;width:100%;box-sizing:unset}.dp__input_wrap:focus{border-color:var(--dp-border-color-hover);outline:none}.dp__input{background-color:var(--dp-background-color);border-radius:4px;font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;border:1px solid var(--dp-border-color);outline:none;transition:border-color .2s cubic-bezier(0.645, 0.045, 0.355, 1);width:100%;font-size:1rem;line-height:1.5rem;padding:6px 12px;color:var(--dp-text-color);box-sizing:border-box}.dp__input::-moz-placeholder{opacity:.7}.dp__input::placeholder{opacity:.7}.dp__input:hover{border-color:var(--dp-border-color-hover)}.dp__input_reg{caret-color:rgba(0,0,0,0)}.dp__input_focus{border-color:var(--dp-border-color-hover)}.dp__disabled{background:var(--dp-disabled-color)}.dp__disabled::-moz-placeholder{color:var(--dp-disabled-color-text)}.dp__disabled::placeholder{color:var(--dp-disabled-color-text)}.dp__input_icons{display:inline-block;width:1rem;height:1rem;stroke-width:0;font-size:1rem;line-height:1.5rem;padding:6px 12px;color:var(--dp-icon-color);box-sizing:content-box}.dp__input_icon{cursor:pointer;position:absolute;top:50%;left:0;transform:translateY(-50%);color:var(--dp-icon-color)}.dp__clear_icon{position:absolute;top:50%;right:0;transform:translateY(-50%);cursor:pointer;color:var(--dp-icon-color)}.dp__input_icon_pad{padding-left:35px}.dp__input_valid{box-shadow:0 0 4px var(--dp-success-color);border-color:var(--dp-success-color)}.dp__input_valid:hover{border-color:var(--dp-success-color)}.dp__input_invalid{box-shadow:0 0 4px var(--dp-danger-color);border-color:var(--dp-danger-color)}.dp__input_invalid:hover{border-color:var(--dp-danger-color)}.dp__menu{position:absolute;background:var(--dp-background-color);border-radius:4px;min-width:260px;font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;font-size:1rem;-webkit-user-select:none;-moz-user-select:none;user-select:none;border:1px solid var(--dp-menu-border-color);box-sizing:border-box}.dp__menu::after{box-sizing:border-box}.dp__menu::before{box-sizing:border-box}.dp__menu:focus{border:1px solid var(--dp-menu-border-color);outline:none}.dp__menu_index{z-index:99999}.dp__menu_readonly,.dp__menu_disabled{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1}.dp__menu_disabled{background:rgba(255,255,255,.5);cursor:not-allowed}.dp__menu_readonly{background:rgba(0,0,0,0);cursor:default}.dp__arrow_top{left:50%;top:-1px;height:12px;width:12px;background-color:var(--dp-background-color);position:absolute;border-left:1px solid var(--dp-menu-border-color);border-top:1px solid var(--dp-menu-border-color);transform:translate(-50%, -50%) rotate(45deg)}.dp__arrow_bottom{left:50%;bottom:-1px;height:12px;width:12px;background-color:var(--dp-background-color);position:absolute;border-right:1px solid var(--dp-menu-border-color);border-bottom:1px solid var(--dp-menu-border-color);transform:translate(-50%, 50%) rotate(45deg)}.dp__now_wrap{text-align:center;padding:2px 0}.dp__now_button{border:1px solid var(--dp-primary-color);color:var(--dp-primary-color);padding:0 4px;font-weight:bold;border-radius:4px;font-size:1rem;cursor:pointer;background:rgba(0,0,0,0)}.dp__preset_ranges{padding:5px;border-right:1px solid var(--dp-border-color)}.dp__sidebar_left{padding:5px;border-right:1px solid var(--dp-border-color)}.dp__sidebar_right{padding:5px;border-left:1px solid var(--dp-border-color)}.dp__preset_range{padding:5px}.dp__preset_range:hover{background-color:var(--dp-hover-color);cursor:pointer}.dp__menu_content_wrapper{display:flex}.dp__calendar_wrap{display:flex;justify-content:center;align-items:center;flex-direction:column;font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;flex:0}.dp__calendar_header{position:relative;display:flex;justify-content:center;align-items:center;color:var(--dp-text-color);white-space:nowrap;font-weight:bold}.dp__calendar_header_item{text-align:center;flex-grow:1;height:35px;padding:5px;width:35px;box-sizing:border-box}.dp__calendar_row{display:flex;justify-content:center;align-items:center;margin:5px 0}.dp__calendar_item{text-align:center;flex-grow:1;box-sizing:border-box;color:var(--dp-text-color)}.dp__calendar{position:relative}.dp__calendar_header_cell{border-bottom:thin solid var(--dp-border-color);padding:.5rem}.dp__cell_inner{display:flex;align-items:center;text-align:center;justify-content:center;border-radius:4px;height:35px;padding:5px;width:35px;border:1px solid rgba(0,0,0,0);box-sizing:border-box;position:relative}.dp__cell_auto_range_start,.dp__date_hover_start:hover,.dp__range_start{border-bottom-right-radius:0;border-top-right-radius:0}.dp__cell_auto_range_end,.dp__date_hover_end:hover,.dp__range_end{border-bottom-left-radius:0;border-top-left-radius:0}.dp__range_end,.dp__range_start,.dp__active_date{background:var(--dp-primary-color);color:var(--dp-primary-text-color)}.dp__cell_auto_range_end,.dp__cell_auto_range_start{border-top:1px dashed var(--dp-primary-color);border-bottom:1px dashed var(--dp-primary-color)}.dp__date_hover_end:hover,.dp__date_hover_start:hover,.dp__date_hover:hover{background:var(--dp-hover-color);color:var(--dp-hover-text-color)}.dp__cell_offset{color:var(--dp-secondary-color)}.dp__cell_disabled{color:var(--dp-secondary-color);cursor:not-allowed}.dp__range_between{background:var(--dp-hover-color);border-radius:0;border-top:1px solid var(--dp-hover-color);border-bottom:1px solid var(--dp-hover-color)}.dp__range_between_week{background:var(--dp-primary-color);color:var(--dp-primary-text-color);border-radius:0;border-top:1px solid var(--dp-primary-color);border-bottom:1px solid var(--dp-primary-color)}.dp__today{border:1px solid var(--dp-primary-color)}.dp__week_num{color:var(--dp-secondary-color);text-align:center}.dp__cell_auto_range{border-radius:0;border-top:1px dashed var(--dp-primary-color);border-bottom:1px dashed var(--dp-primary-color)}.dp__cell_auto_range_start{border-left:1px dashed var(--dp-primary-color)}.dp__cell_auto_range_end{border-right:1px dashed var(--dp-primary-color)}.dp__calendar_header_separator{width:100%;height:1px;background:var(--dp-border-color)}.dp__calendar_next{margin-left:10px}.dp__marker_line,.dp__marker_dot{height:5px;background-color:var(--dp-marker-color);position:absolute;bottom:0}.dp__marker_dot{width:5px;border-radius:50%;left:50%;transform:translateX(-50%)}.dp__marker_line{width:100%;left:0}.dp__marker_tooltip{position:absolute;border-radius:4px;background-color:var(--dp-tooltip-color);padding:5px;border:1px solid var(--dp-border-color);z-index:99999;box-sizing:border-box;cursor:default}.dp__tooltip_content{white-space:nowrap}.dp__tooltip_text{display:flex;align-items:center;flex-flow:row nowrap;color:var(--dp-text-color)}.dp__tooltip_mark{height:5px;width:5px;border-radius:50%;background-color:var(--dp-text-color);color:var(--dp-text-color);margin-right:5px}.dp__arrow_bottom_tp{left:50%;bottom:0;height:8px;width:8px;background-color:var(--dp-tooltip-color);position:absolute;border-right:1px solid var(--dp-border-color);border-bottom:1px solid var(--dp-border-color);transform:translate(-50%, 50%) rotate(45deg)}.dp__instance_calendar{position:relative}@media only screen and (max-width: 600px){.dp__flex_display{flex-direction:column}}.dp__cell_highlight{background-color:var(--dp-highlight-color)}.dp__month_year_row{display:flex;align-items:center;height:35px;color:var(--dp-text-color);box-sizing:border-box}.dp__inner_nav{display:flex;align-items:center;justify-content:center;cursor:pointer;height:25px;width:25px;color:var(--dp-icon-color);text-align:center;border-radius:50%}.dp__inner_nav svg{height:20px;width:20px}.dp__inner_nav:hover{background:var(--dp-hover-color);color:var(--dp-hover-icon-color)}.dp__inner_nav_disabled:hover,.dp__inner_nav_disabled{background:var(--dp-disabled-color);color:var(--dp-disabled-color-text);cursor:not-allowed}.dp__month_year_select{width:50%;text-align:center;cursor:pointer;height:35px;display:flex;align-items:center;justify-content:center;border-radius:4px;box-sizing:border-box}.dp__month_year_select:hover{background:var(--dp-hover-color);color:var(--dp-hover-text-color)}.dp__month_year_wrap{display:flex;width:100%}.dp__overlay{position:absolute;overflow-y:auto;width:100%;height:100%;background:var(--dp-background-color);top:0;left:0;transition:opacity 1s ease-out;z-index:99999;font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;color:var(--dp-text-color);box-sizing:border-box}.dp__overlay::-webkit-scrollbar-track{box-shadow:var(--dp-scroll-bar-background);background-color:var(--dp-scroll-bar-background)}.dp__overlay::-webkit-scrollbar{width:5px;background-color:var(--dp-scroll-bar-background)}.dp__overlay::-webkit-scrollbar-thumb{background-color:var(--dp-scroll-bar-color);border-radius:10px}.dp__overlay:focus{border:none;outline:none}.dp__container_flex{display:flex}.dp__container_block{display:block}.dp__overlay_container{height:100%;flex-direction:column}.dp__overlay_row{padding:0;box-sizing:border-box;display:flex;margin-left:auto;margin-right:auto;flex-wrap:wrap;max-width:100%;width:100%;align-items:center}.dp__overlay_container>.dp__overlay_row{flex:1}.dp__overlay_col{box-sizing:border-box;width:33%;padding:3px;white-space:nowrap}.dp__overlay_cell_pad{padding:10px 0}.dp__overlay_cell_active{cursor:pointer;border-radius:4px;text-align:center;background:var(--dp-primary-color);color:var(--dp-primary-text-color)}.dp__overlay_cell{cursor:pointer;border-radius:4px;text-align:center}.dp__overlay_cell:hover{background:var(--dp-hover-color);color:var(--dp-hover-text-color)}.dp__cell_in_between{background:var(--dp-hover-color);color:var(--dp-hover-text-color)}.dp__overlay_action{position:sticky;bottom:0;background:#fff}.dp__over_action_scroll{right:5px;box-sizing:border-box}.dp__overlay_cell_disabled{cursor:not-allowed;background:var(--dp-disabled-color)}.dp__overlay_cell_disabled:hover{background:var(--dp-disabled-color)}.dp__overlay_cell_active_disabled{cursor:not-allowed;background:var(--dp-primary-disabled-color)}.dp__overlay_cell_active_disabled:hover{background:var(--dp-primary-disabled-color)}.dp__month_picker_header{display:flex;width:100%;align-items:center;justify-content:space-between;height:35px}.dp__time_input{width:100%;display:flex;align-items:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;user-select:none;font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;color:var(--dp-text-color)}.dp__time_col_reg{padding:0 20px}.dp__time_col_reg_with_button{padding:0 15px}.dp__time_col_sec{padding:0 10px}.dp__time_col_sec_with_button{padding:0 5px}.dp__time_col{font-size:2rem;text-align:center;display:flex;align-items:center;justify-content:center;flex-direction:column}.dp__time_display{cursor:pointer;color:var(--dp-text-color);border-radius:4px;display:flex;align-items:center;justify-content:center;padding:0 3px}.dp__time_display:hover{background:var(--dp-hover-color);color:var(--dp-hover-text-color)}.dp__inc_dec_button{padding:5px;margin:0;height:32px;width:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%;color:var(--dp-icon-color);box-sizing:border-box}.dp__inc_dec_button svg{height:32px;width:32px}.dp__inc_dec_button:hover{background:var(--dp-hover-color);color:var(--dp-primary-color)}.dp__pm_am_button{background:var(--dp-primary-color);color:var(--dp-primary-text-color);border:none;padding:10px;border-radius:4px;cursor:pointer}.dp__action_row{display:flex;align-items:center;width:100%;padding:10px;box-sizing:border-box;color:var(--dp-text-color);background:var(--dp-background-color)}.dp__action_row svg{height:20px;width:auto}.dp__selection_preview{width:50%;color:var(--dp-text-color);font-size:.8rem}.dp__action_buttons{width:50%;text-align:right}.dp__action{font-weight:bold;cursor:pointer;padding:2px 5px;border-radius:4px;display:inline-flex;align-items:center}.dp__select{color:var(--dp-success-color)}.dp__action_disabled{color:var(--dp-success-color-disabled);cursor:not-allowed}.dp__cancel{color:var(--dp-secondary-color)}.dp__theme_dark{--dp-background-color: #212121;--dp-text-color: #fff;--dp-hover-color: #484848;--dp-hover-text-color: #fff;--dp-hover-icon-color: #959595;--dp-primary-color: #005cb2;--dp-primary-disabled-color: #61a8ea;--dp-primary-text-color: #fff;--dp-secondary-color: #a9a9a9;--dp-border-color: #2d2d2d;--dp-menu-border-color: #2d2d2d;--dp-border-color-hover: #aaaeb7;--dp-disabled-color: #737373;--dp-disabled-color-text: #d0d0d0;--dp-scroll-bar-background: #212121;--dp-scroll-bar-color: #484848;--dp-success-color: #00701a;--dp-success-color-disabled: #428f59;--dp-icon-color: #959595;--dp-danger-color: #e53935;--dp-marker-color: #e53935;--dp-tooltip-color: #3e3e3e;--dp-highlight-color: rgb(0 92 178 / 20%)}.dp__theme_light{--dp-background-color: #fff;--dp-text-color: #212121;--dp-hover-color: #f3f3f3;--dp-hover-text-color: #212121;--dp-hover-icon-color: #959595;--dp-primary-color: #1976d2;--dp-primary-disabled-color: #6bacea;--dp-primary-text-color: #f8f5f5;--dp-secondary-color: #c0c4cc;--dp-border-color: #ddd;--dp-menu-border-color: #ddd;--dp-border-color-hover: #aaaeb7;--dp-disabled-color: #f6f6f6;--dp-scroll-bar-background: #f3f3f3;--dp-scroll-bar-color: #959595;--dp-success-color: #76d275;--dp-success-color-disabled: #a3d9b1;--dp-icon-color: #959595;--dp-danger-color: #ff6f60;--dp-marker-color: #ff6f60;--dp-tooltip-color: #fafafa;--dp-disabled-color-text: #8e8e8e;--dp-highlight-color: rgb(25 118 210 / 10%)}.dp__main{font-family:-apple-system,blinkmacsystemfont,\"Segoe UI\",roboto,oxygen,ubuntu,cantarell,\"Open Sans\",\"Helvetica Neue\",sans-serif;-webkit-user-select:none;-moz-user-select:none;user-select:none;box-sizing:border-box}.dp__pointer{cursor:pointer}.dp__icon{stroke:currentcolor;fill:currentcolor}.dp__button{width:100%;text-align:center;color:var(--dp-icon-color);background:var(--dp-background-color);cursor:pointer;display:flex;align-items:center;align-content:center;justify-content:center;padding:10px;box-sizing:border-box;height:35px}.dp__button:hover{background:var(--dp-hover-color);color:var(--dp-hover-icon-color)}.dp__button svg{height:20px;width:auto}.dp__button_bottom{border-bottom-left-radius:4px;border-bottom-right-radius:4px}.dp__flex_display{display:flex}.dp__flex_display_with_input{flex-direction:column;align-items:start}.dp__relative{position:relative}.calendar-next-enter-active,.calendar-next-leave-active,.calendar-prev-enter-active,.calendar-prev-leave-active{transition:all .1s ease-out}.calendar-next-enter-from{opacity:0;transform:translateX(22px)}.calendar-next-leave-to{opacity:0;transform:translateX(-22px)}.calendar-prev-enter-from{opacity:0;transform:translateX(-22px)}.calendar-prev-leave-to{opacity:0;transform:translateX(22px)}.dp-menu-appear-enter-active,.dp-menu-appear-leave-active,.dp-slide-up-enter-active,.dp-slide-up-leave-active,.dp-slide-down-enter-active,.dp-slide-down-leave-active{transition:all .1s ease-out}.dp-slide-down-leave-to,.dp-slide-up-enter-from{opacity:0;transform:translateY(22px)}.dp-slide-down-enter-from,.dp-slide-up-leave-to{opacity:0;transform:translateY(-22px)}.dp-menu-appear-enter-from{opacity:0}.dp-menu-appear-enter-active,.dp-menu-appear-leave-active{transition:opacity .1s ease}.dp-menu-appear-leave-to{opacity:1}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10997,7 +10994,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ da)
+/* harmony export */   "default": () => (/* binding */ xn)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parse/index.js");
@@ -11007,202 +11004,155 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/setMinutes/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/setSeconds/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/setMilliseconds/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/addMonths/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getMonth/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getYear/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/setMonth/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/setYear/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getHours/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getMinutes/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getSeconds/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isAfter/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isBefore/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isEqual/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/add/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/set/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/sub/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfWeek/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/endOfWeek/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getDay/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/addDays/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/subMonths/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/addYears/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/subYears/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/differenceInCalendarDays/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/eachDayOfInterval/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getISOWeek/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isBefore/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isEqual/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isAfter/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getMonth/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getDay/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getYear/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getHours/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getMinutes/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getSeconds/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfWeek/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/endOfWeek/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/setMonth/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/setYear/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/set/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/addDays/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/add/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/addMonths/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/eachDayOfInterval/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/differenceInCalendarDays/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getISOWeek/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/subMonths/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/addYears/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/subYears/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/sub/index.js");
 
 
-const ot = (e, a) => {
-  const n = e.__vccOpts || e;
-  for (const [t, d] of a)
-    n[t] = d;
-  return n;
-}, Ya = {}, Ea = {
+const ot = (e, n) => {
+  const a = e.__vccOpts || e;
+  for (const [t, r] of n)
+    a[t] = r;
+  return a;
+}, ia = {}, ua = {
   version: "1.1",
   xmlns: "http://www.w3.org/2000/svg",
   width: "32",
   height: "32",
   viewBox: "0 0 32 32",
   class: "dp__icon"
-}, Fa = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M29.333 8c0-2.208-1.792-4-4-4h-18.667c-2.208 0-4 1.792-4 4v18.667c0 2.208 1.792 4 4 4h18.667c2.208 0 4-1.792 4-4v-18.667zM26.667 8v18.667c0 0.736-0.597 1.333-1.333 1.333 0 0-18.667 0-18.667 0-0.736 0-1.333-0.597-1.333-1.333 0 0 0-18.667 0-18.667 0-0.736 0.597-1.333 1.333-1.333 0 0 18.667 0 18.667 0 0.736 0 1.333 0.597 1.333 1.333z" }, null, -1), Ha = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M20 2.667v5.333c0 0.736 0.597 1.333 1.333 1.333s1.333-0.597 1.333-1.333v-5.333c0-0.736-0.597-1.333-1.333-1.333s-1.333 0.597-1.333 1.333z" }, null, -1), Wa = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M9.333 2.667v5.333c0 0.736 0.597 1.333 1.333 1.333s1.333-0.597 1.333-1.333v-5.333c0-0.736-0.597-1.333-1.333-1.333s-1.333 0.597-1.333 1.333z" }, null, -1), Ka = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M4 14.667h24c0.736 0 1.333-0.597 1.333-1.333s-0.597-1.333-1.333-1.333h-24c-0.736 0-1.333 0.597-1.333 1.333s0.597 1.333 1.333 1.333z" }, null, -1), Ua = [
-  Fa,
-  Ha,
-  Wa,
+}, ca = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M29.333 8c0-2.208-1.792-4-4-4h-18.667c-2.208 0-4 1.792-4 4v18.667c0 2.208 1.792 4 4 4h18.667c2.208 0 4-1.792 4-4v-18.667zM26.667 8v18.667c0 0.736-0.597 1.333-1.333 1.333 0 0-18.667 0-18.667 0-0.736 0-1.333-0.597-1.333-1.333 0 0 0-18.667 0-18.667 0-0.736 0.597-1.333 1.333-1.333 0 0 18.667 0 18.667 0 0.736 0 1.333 0.597 1.333 1.333z" }, null, -1), da = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M20 2.667v5.333c0 0.736 0.597 1.333 1.333 1.333s1.333-0.597 1.333-1.333v-5.333c0-0.736-0.597-1.333-1.333-1.333s-1.333 0.597-1.333 1.333z" }, null, -1), fa = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M9.333 2.667v5.333c0 0.736 0.597 1.333 1.333 1.333s1.333-0.597 1.333-1.333v-5.333c0-0.736-0.597-1.333-1.333-1.333s-1.333 0.597-1.333 1.333z" }, null, -1), va = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M4 14.667h24c0.736 0 1.333-0.597 1.333-1.333s-0.597-1.333-1.333-1.333h-24c-0.736 0-1.333 0.597-1.333 1.333s0.597 1.333 1.333 1.333z" }, null, -1), ma = [
+  ca,
+  da,
+  fa,
+  va
+];
+function ya(e, n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", ua, ma);
+}
+const Et = /* @__PURE__ */ ot(ia, [["render", ya]]), ha = {}, ga = {
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "32",
+  height: "32",
+  viewBox: "0 0 32 32",
+  class: "dp__icon"
+}, pa = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M23.057 7.057l-16 16c-0.52 0.52-0.52 1.365 0 1.885s1.365 0.52 1.885 0l16-16c0.52-0.52 0.52-1.365 0-1.885s-1.365-0.52-1.885 0z" }, null, -1), ka = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M7.057 8.943l16 16c0.52 0.52 1.365 0.52 1.885 0s0.52-1.365 0-1.885l-16-16c-0.52-0.52-1.365-0.52-1.885 0s-0.52 1.365 0 1.885z" }, null, -1), wa = [
+  pa,
+  ka
+];
+function ba(e, n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", ga, wa);
+}
+const $a = /* @__PURE__ */ ot(ha, [["render", ba]]), Da = {}, Ma = {
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "32",
+  height: "32",
+  viewBox: "0 0 32 32",
+  class: "dp__icon"
+}, _a = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M20.943 23.057l-7.057-7.057c0 0 7.057-7.057 7.057-7.057 0.52-0.52 0.52-1.365 0-1.885s-1.365-0.52-1.885 0l-8 8c-0.521 0.521-0.521 1.365 0 1.885l8 8c0.52 0.52 1.365 0.52 1.885 0s0.52-1.365 0-1.885z" }, null, -1), Aa = [
+  _a
+];
+function Ta(e, n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", Ma, Aa);
+}
+const kn = /* @__PURE__ */ ot(Da, [["render", Ta]]), Sa = {}, Ca = {
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "32",
+  height: "32",
+  viewBox: "0 0 32 32",
+  class: "dp__icon"
+}, Pa = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M12.943 24.943l8-8c0.521-0.521 0.521-1.365 0-1.885l-8-8c-0.52-0.52-1.365-0.52-1.885 0s-0.52 1.365 0 1.885l7.057 7.057c0 0-7.057 7.057-7.057 7.057-0.52 0.52-0.52 1.365 0 1.885s1.365 0.52 1.885 0z" }, null, -1), Na = [
+  Pa
+];
+function Ra(e, n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", Ca, Na);
+}
+const wn = /* @__PURE__ */ ot(Sa, [["render", Ra]]), Ia = {}, Oa = {
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "32",
+  height: "32",
+  viewBox: "0 0 32 32",
+  class: "dp__icon"
+}, Ba = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M16 1.333c-8.095 0-14.667 6.572-14.667 14.667s6.572 14.667 14.667 14.667c8.095 0 14.667-6.572 14.667-14.667s-6.572-14.667-14.667-14.667zM16 4c6.623 0 12 5.377 12 12s-5.377 12-12 12c-6.623 0-12-5.377-12-12s5.377-12 12-12z" }, null, -1), Ya = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M14.667 8v8c0 0.505 0.285 0.967 0.737 1.193l5.333 2.667c0.658 0.329 1.46 0.062 1.789-0.596s0.062-1.46-0.596-1.789l-4.596-2.298c0 0 0-7.176 0-7.176 0-0.736-0.597-1.333-1.333-1.333s-1.333 0.597-1.333 1.333z" }, null, -1), Va = [
+  Ba,
+  Ya
+];
+function Ea(e, n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", Oa, Va);
+}
+const Ln = /* @__PURE__ */ ot(Ia, [["render", Ea]]), La = {}, Fa = {
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "32",
+  height: "32",
+  viewBox: "0 0 32 32",
+  class: "dp__icon"
+}, Ua = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M24.943 19.057l-8-8c-0.521-0.521-1.365-0.521-1.885 0l-8 8c-0.52 0.52-0.52 1.365 0 1.885s1.365 0.52 1.885 0l7.057-7.057c0 0 7.057 7.057 7.057 7.057 0.52 0.52 1.365 0.52 1.885 0s0.52-1.365 0-1.885z" }, null, -1), Ha = [
+  Ua
+];
+function Wa(e, n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", Fa, Ha);
+}
+const Fn = /* @__PURE__ */ ot(La, [["render", Wa]]), za = {}, ja = {
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "32",
+  height: "32",
+  viewBox: "0 0 32 32",
+  class: "dp__icon"
+}, Ka = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M7.057 12.943l8 8c0.521 0.521 1.365 0.521 1.885 0l8-8c0.52-0.52 0.52-1.365 0-1.885s-1.365-0.52-1.885 0l-7.057 7.057c0 0-7.057-7.057-7.057-7.057-0.52-0.52-1.365-0.52-1.885 0s-0.52 1.365 0 1.885z" }, null, -1), xa = [
   Ka
 ];
-function La(e, a) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", Ea, Ua);
+function Ga(e, n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", ja, xa);
 }
-const Wt = /* @__PURE__ */ ot(Ya, [["render", La]]), Ga = {}, ja = {
-  version: "1.1",
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "32",
-  height: "32",
-  viewBox: "0 0 32 32",
-  class: "dp__icon"
-}, za = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M23.057 7.057l-16 16c-0.52 0.52-0.52 1.365 0 1.885s1.365 0.52 1.885 0l16-16c0.52-0.52 0.52-1.365 0-1.885s-1.365-0.52-1.885 0z" }, null, -1), Xa = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M7.057 8.943l16 16c0.52 0.52 1.365 0.52 1.885 0s0.52-1.365 0-1.885l-16-16c-0.52-0.52-1.365-0.52-1.885 0s-0.52 1.365 0 1.885z" }, null, -1), qa = [
-  za,
-  Xa
-];
-function Ja(e, a) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", ja, qa);
-}
-const Za = /* @__PURE__ */ ot(Ga, [["render", Ja]]), Qa = {}, xa = {
-  version: "1.1",
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "32",
-  height: "32",
-  viewBox: "0 0 32 32",
-  class: "dp__icon"
-}, el = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M20.943 23.057l-7.057-7.057c0 0 7.057-7.057 7.057-7.057 0.52-0.52 0.52-1.365 0-1.885s-1.365-0.52-1.885 0l-8 8c-0.521 0.521-0.521 1.365 0 1.885l8 8c0.52 0.52 1.365 0.52 1.885 0s0.52-1.365 0-1.885z" }, null, -1), tl = [
-  el
-];
-function nl(e, a) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", xa, tl);
-}
-const Pn = /* @__PURE__ */ ot(Qa, [["render", nl]]), al = {}, ll = {
-  version: "1.1",
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "32",
-  height: "32",
-  viewBox: "0 0 32 32",
-  class: "dp__icon"
-}, rl = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M12.943 24.943l8-8c0.521-0.521 0.521-1.365 0-1.885l-8-8c-0.52-0.52-1.365-0.52-1.885 0s-0.52 1.365 0 1.885l7.057 7.057c0 0-7.057 7.057-7.057 7.057-0.52 0.52-0.52 1.365 0 1.885s1.365 0.52 1.885 0z" }, null, -1), sl = [
-  rl
-];
-function ol(e, a) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", ll, sl);
-}
-const Cn = /* @__PURE__ */ ot(al, [["render", ol]]), il = {}, ul = {
-  version: "1.1",
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "32",
-  height: "32",
-  viewBox: "0 0 32 32",
-  class: "dp__icon"
-}, dl = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M16 1.333c-8.095 0-14.667 6.572-14.667 14.667s6.572 14.667 14.667 14.667c8.095 0 14.667-6.572 14.667-14.667s-6.572-14.667-14.667-14.667zM16 4c6.623 0 12 5.377 12 12s-5.377 12-12 12c-6.623 0-12-5.377-12-12s5.377-12 12-12z" }, null, -1), cl = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M14.667 8v8c0 0.505 0.285 0.967 0.737 1.193l5.333 2.667c0.658 0.329 1.46 0.062 1.789-0.596s0.062-1.46-0.596-1.789l-4.596-2.298c0 0 0-7.176 0-7.176 0-0.736-0.597-1.333-1.333-1.333s-1.333 0.597-1.333 1.333z" }, null, -1), fl = [
-  dl,
-  cl
-];
-function ml(e, a) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", ul, fl);
-}
-const Un = /* @__PURE__ */ ot(il, [["render", ml]]), vl = {}, yl = {
-  version: "1.1",
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "32",
-  height: "32",
-  viewBox: "0 0 32 32",
-  class: "dp__icon"
-}, pl = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M24.943 19.057l-8-8c-0.521-0.521-1.365-0.521-1.885 0l-8 8c-0.52 0.52-0.52 1.365 0 1.885s1.365 0.52 1.885 0l7.057-7.057c0 0 7.057 7.057 7.057 7.057 0.52 0.52 1.365 0.52 1.885 0s0.52-1.365 0-1.885z" }, null, -1), hl = [
-  pl
-];
-function gl(e, a) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", yl, hl);
-}
-const Ln = /* @__PURE__ */ ot(vl, [["render", gl]]), kl = {}, wl = {
-  version: "1.1",
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "32",
-  height: "32",
-  viewBox: "0 0 32 32",
-  class: "dp__icon"
-}, bl = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", { d: "M7.057 12.943l8 8c0.521 0.521 1.365 0.521 1.885 0l8-8c0.52-0.52 0.52-1.365 0-1.885s-1.365-0.52-1.885 0l-7.057 7.057c0 0-7.057-7.057-7.057-7.057-0.52-0.52-1.365-0.52-1.885 0s-0.52 1.365 0 1.885z" }, null, -1), $l = [
-  bl
-];
-function Dl(e, a) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", wl, $l);
-}
-const Gn = /* @__PURE__ */ ot(kl, [["render", Dl]]), Tn = (e, a) => {
-  const n = (0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(e, a.slice(0, e.length), new Date());
-  return (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(n) && (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(n) ? n : null;
-}, zt = (e, a) => {
-  if (typeof a == "string")
-    return Tn(e, a);
-  if (Array.isArray(a)) {
-    let n = null;
-    for (let t = 0; t < a.length && (n = Tn(e, a[t]), !n); t++)
-      ;
-    return n;
+const Un = /* @__PURE__ */ ot(za, [["render", Ga]]), bn = (e, n) => {
+  const a = (0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(e, n.slice(0, e.length), new Date());
+  return (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(a) && (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(a) ? a : null;
+}, Za = (e, n) => {
+  if (typeof n == "string")
+    return bn(e, n);
+  if (Array.isArray(n)) {
+    let a = null;
+    for (const t of n)
+      if (a = bn(e, t), a)
+        break;
+    return a;
   }
-  return typeof a == "function" ? a(e) : null;
-}, Fe = (e) => {
-  let a = new Date(JSON.parse(JSON.stringify(e)));
-  return a = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(a, 0), a = (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])(a, 0), a = (0,date_fns__WEBPACK_IMPORTED_MODULE_6__["default"])(a, 0), a = (0,date_fns__WEBPACK_IMPORTED_MODULE_7__["default"])(a, 0), a;
-}, rn = (e) => Array.isArray(e) ? (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(e[0]) && (e[1] ? (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(e[1]) : !0) : e ? (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(e) : !1, Ae = (e, a, n, t) => {
-  let d = e ? new Date(e) : new Date();
-  return (a || a === 0) && (d = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(d, +a)), (n || n === 0) && (d = (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])(d, +n)), (t || t === 0) && (d = (0,date_fns__WEBPACK_IMPORTED_MODULE_6__["default"])(d, +t)), (0,date_fns__WEBPACK_IMPORTED_MODULE_7__["default"])(d, 0);
-}, Ml = (e) => {
-  const a = (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(e, 1);
-  return { month: (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(a), year: (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(a) };
-}, st = (e, a, n) => {
-  let t = e ? new Date(e) : new Date();
-  return (a || a === 0) && (t = (0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(t, a)), n && (t = (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(t, n)), t;
-}, Rn = (e, a) => e ? `HH:mm${a ? ":ss" : ""}` : `hh:mm${a ? ":ss" : ""} aa`, jn = (e, a, n, t, d, m, p, v) => e || (t ? "MM/yyyy" : d ? Rn(a, n) : m ? "MM/dd/yyyy" : p ? "yyyy" : v ? `MM/dd/yyyy, ${Rn(a, n)}` : "MM/dd/yyyy"), Xt = (e) => {
-  const a = e || new Date();
-  return {
-    hours: (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(a),
-    minutes: (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(a),
-    seconds: (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(a)
-  };
-}, It = (e) => ({ month: (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(e), year: (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(e) }), Vn = (e) => Array.isArray(e) ? [It(e[0]), e[1] ? It(e[1]) : null] : It(e), sn = (e) => Array.isArray(e) ? [Xt(e[0]), Xt(e[1])] : Xt(e), qt = (e, a, n) => n ? (0,date_fns__WEBPACK_IMPORTED_MODULE_16__["default"])(e, a, { locale: n }) : (0,date_fns__WEBPACK_IMPORTED_MODULE_16__["default"])(e, a), vt = (e, a, n, t, d) => Array.isArray(e) ? `${qt(e[0], a, n)} ${d && !e[1] ? "" : t || "-"} ${e[1] ? qt(e[1], a, n) : ""}` : qt(e, a, n), De = (e, a) => !e || !a ? !1 : (0,date_fns__WEBPACK_IMPORTED_MODULE_17__["default"])(Fe(e), Fe(a)), we = (e, a) => !e || !a ? !1 : (0,date_fns__WEBPACK_IMPORTED_MODULE_18__["default"])(Fe(e), Fe(a)), ce = (e, a) => !e || !a ? !1 : (0,date_fns__WEBPACK_IMPORTED_MODULE_19__["default"])(Fe(e), Fe(a)), Sl = (e, a) => (0,date_fns__WEBPACK_IMPORTED_MODULE_20__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), e), a), Al = (e, a) => (0,date_fns__WEBPACK_IMPORTED_MODULE_22__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), e), a), Jt = (e) => (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), { hours: (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(e), minutes: (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(e), seconds: (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(e) }), _n = (e) => (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), {
-  hours: +e.hours || 0,
-  minutes: +e.minutes || 0,
-  seconds: +e.seconds || 0
-}), ft = (e, a, n, t) => {
-  if (!e)
-    return !0;
-  if (t) {
-    const d = n === "max" ? (0,date_fns__WEBPACK_IMPORTED_MODULE_18__["default"])(e, a) : (0,date_fns__WEBPACK_IMPORTED_MODULE_17__["default"])(e, a), m = { seconds: 0, milliseconds: 0 };
-    return d || (0,date_fns__WEBPACK_IMPORTED_MODULE_19__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(e, m), (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(a, m));
+  return typeof n == "function" ? n(e) : null;
+}, b = (e) => e ? new Date(e) : new Date(), Xa = (e, n) => {
+  if (n) {
+    const t = (e.getMonth() + 1).toString().padStart(2, "0"), r = e.getDate().toString().padStart(2, "0"), u = e.getHours().toString().padStart(2, "0"), p = e.getMinutes().toString().padStart(2, "0");
+    return `${e.getFullYear()}-${t}-${r}T${u}:${p}:00.000Z`;
   }
-  return n === "max" ? e.getTime() <= a.getTime() : e.getTime() >= a.getTime();
-}, on = (e, a, n, t, d) => {
-  let m = !0;
-  if (!e)
-    return !0;
-  const p = !d && !t ? Array.isArray(e) ? [e[0] ? Jt(e[0]) : null, e[1] ? Jt(e[1]) : null] : Jt(e) : e;
-  if (a || t) {
-    const v = a ? _n(a) : new Date(t);
-    Array.isArray(p) ? m = ft(p[0], v, "max", !!t) && ft(p[1], v, "max", !!t) : m = ft(p, v, "max", !!t);
-  }
-  if (n || d) {
-    const v = n ? _n(n) : new Date(d);
-    Array.isArray(p) ? m = ft(p[0], v, "min", !!d) && ft(p[1], v, "min", !!d) && m : m = ft(p, v, "min", !!d) && m;
-  }
-  return m;
-}, Pl = (e, a, n) => {
-  let t = !0;
-  return a && n && (t = De(new Date(e), new Date(a)) && we(new Date(e), new Date(n))), a && (t = De(new Date(e), new Date(a))), n && (t = we(new Date(e), new Date(n))), t;
-}, Ee = (e) => e instanceof Date ? e : (0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(e), Zt = (e, a) => {
-  if (a) {
-    const t = new Date().getTimezoneOffset() * 6e4;
-    return new Date(e.getTime() - t).toISOString();
-  }
-  const n = Date.UTC(
+  const a = Date.UTC(
     e.getUTCFullYear(),
     e.getUTCMonth(),
     e.getUTCDate(),
@@ -11210,96 +11160,1188 @@ const Gn = /* @__PURE__ */ ot(kl, [["render", Dl]]), Tn = (e, a) => {
     e.getUTCMinutes(),
     e.getUTCSeconds()
   );
-  return new Date(n).toISOString();
-}, zn = (e, a, n) => e && e[0] && e[1] ? De(n, e[0]) && we(n, e[1]) : e && e[0] && a ? De(n, e[0]) && we(n, a) || we(n, e[0]) && De(n, a) : !1, Rt = (e, a) => {
-  const n = (0,date_fns__WEBPACK_IMPORTED_MODULE_24__["default"])(e, { weekStartsOn: a }), t = (0,date_fns__WEBPACK_IMPORTED_MODULE_25__["default"])(e, { weekStartsOn: a });
-  return [n, t];
-}, Xn = (e, a) => Array.isArray(a) ? a.some((n) => ce(Ee(new Date(n)), Ee(e))) : a(e), Cl = (e, a, n, t, d, m, p, v) => {
-  const g = n ? De(Ee(e), Ee(n)) : !1, w = a ? we(Ee(e), Ee(a)) : !1, V = Xn(e, t), E = (m.months.length ? m.months.map((l) => +l) : []).includes((0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(e)), N = p.length ? p.some((l) => +l === (0,date_fns__WEBPACK_IMPORTED_MODULE_26__["default"])(e)) : !1, G = d.length ? !d.some((l) => ce(Ee(l), Ee(e))) : !1, T = (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(e), x = T < +v[0] || T > +v[1];
-  return !(g || w || V || E || x || N || G);
-}, qn = (e, a, n, t, d, m, p) => ({
-  validate: (g) => Cl(g, e, a, n, t, d, m, p)
-}), Xe = Symbol(), Kt = Symbol(), pn = Symbol(), Jn = Symbol(), Zn = Symbol(), qe = Symbol(), hn = {
-  disabled: { type: Boolean, default: !1 },
-  readonly: { type: Boolean, default: !1 },
-  autoApply: { type: Boolean, default: !1 },
-  inline: { type: Boolean, default: !1 },
-  textInput: { type: Boolean, default: !1 }
-}, gn = {
-  range: { type: Boolean, default: !1 },
-  uid: { type: String, default: null }
-}, Qn = {
-  enableSeconds: { type: Boolean, default: !1 },
-  is24: { type: Boolean, default: !0 },
-  noHoursOverlay: { type: Boolean, default: !1 },
-  noMinutesOverlay: { type: Boolean, default: !1 },
-  noSecondsOverlay: { type: Boolean, default: !1 },
-  hoursGridIncrement: { type: [String, Number], default: 1 },
-  minutesGridIncrement: { type: [String, Number], default: 5 },
-  secondsGridIncrement: { type: [String, Number], default: 5 },
-  hoursIncrement: { type: [Number, String], default: 1 },
-  minutesIncrement: { type: [Number, String], default: 1 },
-  secondsIncrement: { type: [Number, String], default: 1 }
-}, xn = {
-  ...Qn,
-  fixedStart: { type: Boolean, default: !1 },
-  fixedEnd: { type: Boolean, default: !1 },
-  timePicker: { type: Boolean, default: !1 }
-}, ea = {
-  name: { type: String, default: null },
-  placeholder: { type: String, default: "" },
-  hideInputIcon: { type: Boolean, default: !1 },
-  clearable: { type: Boolean, default: !0 },
-  state: { type: Boolean, default: null },
-  required: { type: Boolean, default: !1 },
-  autocomplete: { type: String, default: "off" },
-  inputClassName: { type: String, default: null },
-  inlineWithInput: { type: Boolean, default: !1 },
-  textInputOptions: { type: Object, default: () => null }
-}, ta = {
-  minTime: { type: Object, default: null },
-  maxTime: { type: Object, default: null }
-}, kn = {
-  minDate: { type: [Date, String], default: null },
-  maxDate: { type: [Date, String], default: null }
-}, na = {
-  selectText: { type: String, default: "Select" },
-  cancelText: { type: String, default: "Cancel" },
-  previewFormat: {
-    type: [String, Function],
-    default: () => ""
+  return new Date(a).toISOString();
+}, je = (e) => {
+  let n = b(JSON.parse(JSON.stringify(e)));
+  return n = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(n, 0), n = (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])(n, 0), n = (0,date_fns__WEBPACK_IMPORTED_MODULE_6__["default"])(n, 0), n = (0,date_fns__WEBPACK_IMPORTED_MODULE_7__["default"])(n, 0), n;
+}, Le = (e, n, a, t) => {
+  let r = e ? b(e) : b();
+  return (n || n === 0) && (r = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(r, +n)), (a || a === 0) && (r = (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])(r, +a)), (t || t === 0) && (r = (0,date_fns__WEBPACK_IMPORTED_MODULE_6__["default"])(r, +t)), (0,date_fns__WEBPACK_IMPORTED_MODULE_7__["default"])(r, 0);
+}, Pe = (e, n) => !e || !n ? !1 : (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(je(e), je(n)), ye = (e, n) => !e || !n ? !1 : (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(je(e), je(n)), Be = (e, n) => !e || !n ? !1 : (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(je(e), je(n)), Hn = (e, n, a) => e && e[0] && e[1] ? Be(a, e[0]) && Pe(a, e[1]) : e && e[0] && n ? Be(a, e[0]) && Pe(a, n) || Pe(a, e[0]) && Be(a, n) : !1, mt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  menuFocused: !1,
+  shiftKeyInMenu: !1
+}), Wn = () => {
+  const e = (t) => {
+    mt.menuFocused = t;
+  }, n = (t) => {
+    mt.shiftKeyInMenu !== t && (mt.shiftKeyInMenu = t);
+  };
+  return {
+    control: (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({ shiftKeyInMenu: mt.shiftKeyInMenu, menuFocused: mt.menuFocused })),
+    setMenuFocused: e,
+    setShiftKey: n
+  };
+};
+function dn(e) {
+  return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
+}
+var It = {}, qa = {
+  get exports() {
+    return It;
   },
-  multiDates: { type: Boolean, default: !1 },
-  partialRange: { type: Boolean, default: !0 },
-  ignoreTimeValidation: { type: Boolean, default: !1 },
-  ...ta
-}, wn = {
-  monthPicker: { type: Boolean, default: !1 },
-  customProps: { type: Object, default: null },
-  yearPicker: { type: Boolean, default: !1 },
-  modelAuto: { type: Boolean, default: !1 }
-}, aa = {
-  locale: { type: String, default: "en-Us" },
-  weekNumName: { type: String, default: "W" },
-  weekStart: { type: [Number, String], default: 1 },
-  weekNumbers: { type: Boolean, default: !1 },
-  calendarClassName: { type: String, default: null },
-  noSwipe: { type: Boolean, default: !1 },
-  monthChangeOnScroll: { type: [Boolean, String], default: !0 },
-  dayNames: {
-    type: [Function, Array],
-    default: null
+  set exports(e) {
+    It = e;
   }
-}, la = {
-  ...xn,
-  ...na,
-  ...wn,
-  ...kn,
-  ...aa,
-  ...gn,
+};
+(function(e, n) {
+  Object.defineProperty(n, "__esModule", {
+    value: !0
+  }), n.default = a;
+  function a(t) {
+    if (t === null || t === !0 || t === !1)
+      return NaN;
+    var r = Number(t);
+    return isNaN(r) ? r : r < 0 ? Math.ceil(r) : Math.floor(r);
+  }
+  e.exports = n.default;
+})(qa, It);
+const Ja = /* @__PURE__ */ dn(It);
+var Ot = {}, Qa = {
+  get exports() {
+    return Ot;
+  },
+  set exports(e) {
+    Ot = e;
+  }
+};
+(function(e, n) {
+  Object.defineProperty(n, "__esModule", {
+    value: !0
+  }), n.default = a;
+  function a(t) {
+    var r = new Date(Date.UTC(t.getFullYear(), t.getMonth(), t.getDate(), t.getHours(), t.getMinutes(), t.getSeconds(), t.getMilliseconds()));
+    return r.setUTCFullYear(t.getFullYear()), t.getTime() - r.getTime();
+  }
+  e.exports = n.default;
+})(Qa, Ot);
+const $n = /* @__PURE__ */ dn(Ot);
+function el(e, n) {
+  var a = ll(n);
+  return a.formatToParts ? nl(a, e) : al(a, e);
+}
+var tl = {
+  year: 0,
+  month: 1,
+  day: 2,
+  hour: 3,
+  minute: 4,
+  second: 5
+};
+function nl(e, n) {
+  try {
+    for (var a = e.formatToParts(n), t = [], r = 0; r < a.length; r++) {
+      var u = tl[a[r].type];
+      u >= 0 && (t[u] = parseInt(a[r].value, 10));
+    }
+    return t;
+  } catch (p) {
+    if (p instanceof RangeError)
+      return [NaN];
+    throw p;
+  }
+}
+function al(e, n) {
+  var a = e.format(n).replace(/\u200E/g, ""), t = /(\d+)\/(\d+)\/(\d+),? (\d+):(\d+):(\d+)/.exec(a);
+  return [t[3], t[1], t[2], t[4], t[5], t[6]];
+}
+var jt = {};
+function ll(e) {
+  if (!jt[e]) {
+    var n = new Intl.DateTimeFormat("en-US", {
+      hour12: !1,
+      timeZone: "America/New_York",
+      year: "numeric",
+      month: "numeric",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    }).format(new Date("2014-06-25T04:00:00.123Z")), a = n === "06/25/2014, 00:00:00" || n === "‎06‎/‎25‎/‎2014‎ ‎00‎:‎00‎:‎00";
+    jt[e] = a ? new Intl.DateTimeFormat("en-US", {
+      hour12: !1,
+      timeZone: e,
+      year: "numeric",
+      month: "numeric",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    }) : new Intl.DateTimeFormat("en-US", {
+      hourCycle: "h23",
+      timeZone: e,
+      year: "numeric",
+      month: "numeric",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    });
+  }
+  return jt[e];
+}
+function fn(e, n, a, t, r, u, p) {
+  var $ = new Date(0);
+  return $.setUTCFullYear(e, n, a), $.setUTCHours(t, r, u, p), $;
+}
+var Dn = 36e5, rl = 6e4, Kt = {
+  timezone: /([Z+-].*)$/,
+  timezoneZ: /^(Z)$/,
+  timezoneHH: /^([+-]\d{2})$/,
+  timezoneHHMM: /^([+-]\d{2}):?(\d{2})$/
+};
+function vn(e, n, a) {
+  var t, r;
+  if (e === "" || (t = Kt.timezoneZ.exec(e), t))
+    return 0;
+  var u;
+  if (t = Kt.timezoneHH.exec(e), t)
+    return u = parseInt(t[1], 10), Mn(u) ? -(u * Dn) : NaN;
+  if (t = Kt.timezoneHHMM.exec(e), t) {
+    u = parseInt(t[1], 10);
+    var p = parseInt(t[2], 10);
+    return Mn(u, p) ? (r = Math.abs(u) * Dn + p * rl, u > 0 ? -r : r) : NaN;
+  }
+  if (il(e)) {
+    n = new Date(n || Date.now());
+    var $ = a ? n : ol(n), Y = an($, e), L = a ? Y : sl(n, Y, e);
+    return -L;
+  }
+  return NaN;
+}
+function ol(e) {
+  return fn(
+    e.getFullYear(),
+    e.getMonth(),
+    e.getDate(),
+    e.getHours(),
+    e.getMinutes(),
+    e.getSeconds(),
+    e.getMilliseconds()
+  );
+}
+function an(e, n) {
+  var a = el(e, n), t = fn(
+    a[0],
+    a[1] - 1,
+    a[2],
+    a[3] % 24,
+    a[4],
+    a[5],
+    0
+  ).getTime(), r = e.getTime(), u = r % 1e3;
+  return r -= u >= 0 ? u : 1e3 + u, t - r;
+}
+function sl(e, n, a) {
+  var t = e.getTime(), r = t - n, u = an(new Date(r), a);
+  if (n === u)
+    return n;
+  r -= u - n;
+  var p = an(new Date(r), a);
+  return u === p ? u : Math.max(u, p);
+}
+function Mn(e, n) {
+  return -23 <= e && e <= 23 && (n == null || 0 <= n && n <= 59);
+}
+var _n = {};
+function il(e) {
+  if (_n[e])
+    return !0;
+  try {
+    return new Intl.DateTimeFormat(void 0, { timeZone: e }), _n[e] = !0, !0;
+  } catch {
+    return !1;
+  }
+}
+var zn = /(Z|[+-]\d{2}(?::?\d{2})?| UTC| [a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?)$/, xt = 36e5, An = 6e4, ul = 2, Oe = {
+  dateTimePattern: /^([0-9W+-]+)(T| )(.*)/,
+  datePattern: /^([0-9W+-]+)(.*)/,
+  plainTime: /:/,
+  YY: /^(\d{2})$/,
+  YYY: [
+    /^([+-]\d{2})$/,
+    /^([+-]\d{3})$/,
+    /^([+-]\d{4})$/
+  ],
+  YYYY: /^(\d{4})/,
+  YYYYY: [
+    /^([+-]\d{4})/,
+    /^([+-]\d{5})/,
+    /^([+-]\d{6})/
+  ],
+  MM: /^-(\d{2})$/,
+  DDD: /^-?(\d{3})$/,
+  MMDD: /^-?(\d{2})-?(\d{2})$/,
+  Www: /^-?W(\d{2})$/,
+  WwwD: /^-?W(\d{2})-?(\d{1})$/,
+  HH: /^(\d{2}([.,]\d*)?)$/,
+  HHMM: /^(\d{2}):?(\d{2}([.,]\d*)?)$/,
+  HHMMSS: /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/,
+  timeZone: zn
+};
+function ln(e, n) {
+  if (arguments.length < 1)
+    throw new TypeError("1 argument required, but only " + arguments.length + " present");
+  if (e === null)
+    return new Date(NaN);
+  var a = n || {}, t = a.additionalDigits == null ? ul : Ja(a.additionalDigits);
+  if (t !== 2 && t !== 1 && t !== 0)
+    throw new RangeError("additionalDigits must be 0, 1 or 2");
+  if (e instanceof Date || typeof e == "object" && Object.prototype.toString.call(e) === "[object Date]")
+    return new Date(e.getTime());
+  if (typeof e == "number" || Object.prototype.toString.call(e) === "[object Number]")
+    return new Date(e);
+  if (!(typeof e == "string" || Object.prototype.toString.call(e) === "[object String]"))
+    return new Date(NaN);
+  var r = cl(e), u = dl(r.date, t), p = u.year, $ = u.restDateString, Y = fl($, p);
+  if (isNaN(Y))
+    return new Date(NaN);
+  if (Y) {
+    var L = Y.getTime(), V = 0, i;
+    if (r.time && (V = vl(r.time), isNaN(V)))
+      return new Date(NaN);
+    if (r.timeZone || a.timeZone) {
+      if (i = vn(r.timeZone || a.timeZone, new Date(L + V)), isNaN(i))
+        return new Date(NaN);
+    } else
+      i = $n(new Date(L + V)), i = $n(new Date(L + V + i));
+    return new Date(L + V + i);
+  } else
+    return new Date(NaN);
+}
+function cl(e) {
+  var n = {}, a = Oe.dateTimePattern.exec(e), t;
+  if (a ? (n.date = a[1], t = a[3]) : (a = Oe.datePattern.exec(e), a ? (n.date = a[1], t = a[2]) : (n.date = null, t = e)), t) {
+    var r = Oe.timeZone.exec(t);
+    r ? (n.time = t.replace(r[1], ""), n.timeZone = r[1].trim()) : n.time = t;
+  }
+  return n;
+}
+function dl(e, n) {
+  var a = Oe.YYY[n], t = Oe.YYYYY[n], r;
+  if (r = Oe.YYYY.exec(e) || t.exec(e), r) {
+    var u = r[1];
+    return {
+      year: parseInt(u, 10),
+      restDateString: e.slice(u.length)
+    };
+  }
+  if (r = Oe.YY.exec(e) || a.exec(e), r) {
+    var p = r[1];
+    return {
+      year: parseInt(p, 10) * 100,
+      restDateString: e.slice(p.length)
+    };
+  }
+  return {
+    year: null
+  };
+}
+function fl(e, n) {
+  if (n === null)
+    return null;
+  var a, t, r, u;
+  if (e.length === 0)
+    return t = new Date(0), t.setUTCFullYear(n), t;
+  if (a = Oe.MM.exec(e), a)
+    return t = new Date(0), r = parseInt(a[1], 10) - 1, Sn(n, r) ? (t.setUTCFullYear(n, r), t) : new Date(NaN);
+  if (a = Oe.DDD.exec(e), a) {
+    t = new Date(0);
+    var p = parseInt(a[1], 10);
+    return hl(n, p) ? (t.setUTCFullYear(n, 0, p), t) : new Date(NaN);
+  }
+  if (a = Oe.MMDD.exec(e), a) {
+    t = new Date(0), r = parseInt(a[1], 10) - 1;
+    var $ = parseInt(a[2], 10);
+    return Sn(n, r, $) ? (t.setUTCFullYear(n, r, $), t) : new Date(NaN);
+  }
+  if (a = Oe.Www.exec(e), a)
+    return u = parseInt(a[1], 10) - 1, Cn(n, u) ? Tn(n, u) : new Date(NaN);
+  if (a = Oe.WwwD.exec(e), a) {
+    u = parseInt(a[1], 10) - 1;
+    var Y = parseInt(a[2], 10) - 1;
+    return Cn(n, u, Y) ? Tn(n, u, Y) : new Date(NaN);
+  }
+  return null;
+}
+function vl(e) {
+  var n, a, t;
+  if (n = Oe.HH.exec(e), n)
+    return a = parseFloat(n[1].replace(",", ".")), Gt(a) ? a % 24 * xt : NaN;
+  if (n = Oe.HHMM.exec(e), n)
+    return a = parseInt(n[1], 10), t = parseFloat(n[2].replace(",", ".")), Gt(a, t) ? a % 24 * xt + t * An : NaN;
+  if (n = Oe.HHMMSS.exec(e), n) {
+    a = parseInt(n[1], 10), t = parseInt(n[2], 10);
+    var r = parseFloat(n[3].replace(",", "."));
+    return Gt(a, t, r) ? a % 24 * xt + t * An + r * 1e3 : NaN;
+  }
+  return null;
+}
+function Tn(e, n, a) {
+  n = n || 0, a = a || 0;
+  var t = new Date(0);
+  t.setUTCFullYear(e, 0, 4);
+  var r = t.getUTCDay() || 7, u = n * 7 + a + 1 - r;
+  return t.setUTCDate(t.getUTCDate() + u), t;
+}
+var ml = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], yl = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+function jn(e) {
+  return e % 400 === 0 || e % 4 === 0 && e % 100 !== 0;
+}
+function Sn(e, n, a) {
+  if (n < 0 || n > 11)
+    return !1;
+  if (a != null) {
+    if (a < 1)
+      return !1;
+    var t = jn(e);
+    if (t && a > yl[n] || !t && a > ml[n])
+      return !1;
+  }
+  return !0;
+}
+function hl(e, n) {
+  if (n < 1)
+    return !1;
+  var a = jn(e);
+  return !(a && n > 366 || !a && n > 365);
+}
+function Cn(e, n, a) {
+  return !(n < 0 || n > 52 || a != null && (a < 0 || a > 6));
+}
+function Gt(e, n, a) {
+  return !(e != null && (e < 0 || e >= 25) || n != null && (n < 0 || n >= 60) || a != null && (a < 0 || a >= 60));
+}
+var Bt = {}, gl = {
+  get exports() {
+    return Bt;
+  },
+  set exports(e) {
+    Bt = e;
+  }
+}, Yt = {}, pl = {
+  get exports() {
+    return Yt;
+  },
+  set exports(e) {
+    Yt = e;
+  }
+};
+(function(e, n) {
+  Object.defineProperty(n, "__esModule", {
+    value: !0
+  }), n.default = a;
+  function a(t, r) {
+    if (t == null)
+      throw new TypeError("assign requires that input parameter not be null or undefined");
+    for (var u in r)
+      Object.prototype.hasOwnProperty.call(r, u) && (t[u] = r[u]);
+    return t;
+  }
+  e.exports = n.default;
+})(pl, Yt);
+(function(e, n) {
+  Object.defineProperty(n, "__esModule", {
+    value: !0
+  }), n.default = r;
+  var a = t(Yt);
+  function t(u) {
+    return u && u.__esModule ? u : { default: u };
+  }
+  function r(u) {
+    return (0, a.default)({}, u);
+  }
+  e.exports = n.default;
+})(gl, Bt);
+const kl = /* @__PURE__ */ dn(Bt);
+function wl(e, n, a) {
+  var t = ln(e, a), r = vn(n, t, !0), u = new Date(t.getTime() - r), p = new Date(0);
+  return p.setFullYear(u.getUTCFullYear(), u.getUTCMonth(), u.getUTCDate()), p.setHours(u.getUTCHours(), u.getUTCMinutes(), u.getUTCSeconds(), u.getUTCMilliseconds()), p;
+}
+function bl(e, n, a) {
+  if (typeof e == "string" && !e.match(zn)) {
+    var t = kl(a);
+    return t.timeZone = n, ln(e, t);
+  }
+  var r = ln(e, a), u = fn(
+    r.getFullYear(),
+    r.getMonth(),
+    r.getDate(),
+    r.getHours(),
+    r.getMinutes(),
+    r.getSeconds(),
+    r.getMilliseconds()
+  ).getTime(), p = vn(n, new Date(u));
+  return new Date(u + p);
+}
+const $l = (e, n = 3) => {
+  const a = [];
+  for (let t = 0; t < e.length; t += n)
+    a.push([e[t], e[t + 1], e[t + 2]]);
+  return a;
+}, Dl = (e, n) => {
+  const a = [1, 2, 3, 4, 5, 6, 7].map((u) => new Intl.DateTimeFormat(e, { weekday: "short", timeZone: "UTC" }).format(new Date(`2017-01-0${u}T00:00:00+00:00`)).slice(0, 2)), t = a.slice(0, n), r = a.slice(n + 1, a.length);
+  return [a[n]].concat(...r).concat(...t);
+}, Ml = (e) => {
+  const n = [];
+  for (let a = +e[0]; a <= +e[1]; a++)
+    n.push({ value: +a, text: `${a}` });
+  return n;
+}, _l = (e, n) => {
+  const a = new Intl.DateTimeFormat(e, { month: n, timeZone: "UTC" });
+  return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((r) => {
+    const u = r < 10 ? `0${r}` : r;
+    return new Date(`2017-${u}-01T00:00:00+00:00`);
+  }).map((r, u) => ({
+    text: a.format(r),
+    value: u
+  }));
+}, Al = (e) => [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11][e], Ce = (e) => {
+  const n = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(e);
+  return (n == null ? void 0 : n.$el) ?? n;
+}, Tl = (e) => Object.assign({ type: "dot" }, e), Kn = (e) => Array.isArray(e) ? !!e[0] && !!e[1] : !1, Vt = {
+  prop: (e) => `"${e}" prop must be enabled!`,
+  dateArr: (e) => `You need to use array as "model-value" binding in order to support "${e}"`
+}, _e = (e) => e, Pn = (e) => Object.assign(
+  {
+    menuAppear: "dp-menu-appear",
+    open: "dp-slide-down",
+    close: "dp-slide-up",
+    next: "calendar-next",
+    previous: "calendar-prev",
+    vNext: "dp-slide-up",
+    vPrevious: "dp-slide-down"
+  },
+  e
+), Sl = (e) => Object.assign(
+  {
+    toggleOverlay: "Toggle overlay",
+    menu: "Datepicker menu",
+    input: "Datepicker input",
+    calendarWrap: "Calendar wrapper",
+    calendarDays: "Calendar days",
+    openTimePicker: "Open time picker",
+    closeTimePicker: "Close time Picker",
+    incrementValue: (n) => `Increment ${n}`,
+    decrementValue: (n) => `Decrement ${n}`,
+    openTpOverlay: (n) => `Open ${n} overlay`,
+    amPmButton: "Switch AM/PM mode",
+    openYearsOverlay: "Open years overlay",
+    openMonthsOverlay: "Open months overlay",
+    nextMonth: "Next month",
+    prevMonth: "Previous month",
+    day: () => ""
+  },
+  e
+), Cl = (e) => e === null ? 0 : typeof e == "boolean" ? e ? 2 : 0 : +e >= 2 ? +e : 2, Pl = (e, n, a) => e || (typeof a == "string" ? a : n), Nl = (e) => typeof e == "boolean" ? e ? Pn({}) : !1 : Pn(e), Rl = () => ({
+  enterSubmit: !0,
+  tabSubmit: !0,
+  openMenu: !0,
+  rangeSeparator: " - "
+}), Il = (e) => Object.assign({ months: [], years: [], times: { hours: [], minutes: [], seconds: [] } }, e), Ee = (e) => {
+  const n = () => {
+    if (e.partialRange)
+      return null;
+    throw new Error(Vt.prop("partial-range"));
+  }, a = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
+    ariaLabels: Sl(e.ariaLabels),
+    textInputOptions: Object.assign(Rl(), e.textInputOptions),
+    multiCalendars: Cl(e.multiCalendars),
+    previewFormat: Pl(e.previewFormat, e.format, u()),
+    filters: Il(e.filters),
+    transitions: Nl(e.transitions),
+    startTime: _()
+  })), t = (l) => {
+    if (e.range)
+      return l();
+    throw new Error(Vt.prop("range"));
+  }, r = () => {
+    const l = e.enableSeconds ? ":ss" : "";
+    return e.is24 ? `HH:mm${l}` : `hh:mm${l} aa`;
+  }, u = () => e.format ? e.format : e.monthPicker ? "MM/yyyy" : e.timePicker ? r() : e.weekPicker ? "MM/dd/yyyy" : e.yearPicker ? "yyyy" : e.enableTimePicker ? `MM/dd/yyyy, ${r()}` : "MM/dd/yyyy", p = (l, f) => {
+    if (typeof e.format == "function")
+      return e.format(l);
+    const k = f || u(), R = e.formatLocale ? { locale: e.formatLocale } : void 0;
+    return Array.isArray(l) ? `${(0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(l[0], k, R)} ${e.modelAuto && !l[1] ? "" : a.value.textInputOptions.rangeSeparator || "-"} ${l[1] ? (0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(l[1], k, R) : ""}` : (0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(l, k, R);
+  }, $ = (l) => e.timezone ? wl(l, e.timezone) : l, Y = (l) => e.timezone ? bl(l, e.timezone) : l, L = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (l) => {
+    var f;
+    return (f = e.hideNavigation) == null ? void 0 : f.includes(l);
+  }), V = (l) => {
+    const f = e.maxDate ? Be($(l), $(b(e.maxDate))) : !1, k = e.minDate ? Pe($(l), $(b(e.minDate))) : !1, R = C(l, e.disabledDates), ce = a.value.filters.months.map((De) => +De).includes((0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(l)), v = e.disabledWeekDays.length ? e.disabledWeekDays.some((De) => +De === (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(l)) : !1, d = e.allowedDates.length ? !e.allowedDates.some((De) => ye($(b(De)), $(l))) : !1, O = (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(l), de = O < +e.yearRange[0] || O > +e.yearRange[1];
+    return !(f || k || R || ce || de || v || d);
+  }, i = (l) => {
+    const f = {
+      hours: (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(b()),
+      minutes: (0,date_fns__WEBPACK_IMPORTED_MODULE_16__["default"])(b()),
+      seconds: (0,date_fns__WEBPACK_IMPORTED_MODULE_17__["default"])(b())
+    };
+    return Object.assign(f, l);
+  }, _ = () => e.range ? e.startTime && Array.isArray(e.startTime) ? [i(e.startTime[0]), i(e.startTime[1])] : null : e.startTime && !Array.isArray(e.startTime) ? i(e.startTime) : null, I = (l) => !V(l), B = (l) => Array.isArray(l) ? (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(l[0]) && (l[1] ? (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(l[1]) : !0) : l ? (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(l) : !1, X = (l) => l instanceof Date ? l : (0,date_fns__WEBPACK_IMPORTED_MODULE_18__["default"])(l), Q = (l) => {
+    const f = (0,date_fns__WEBPACK_IMPORTED_MODULE_19__["default"])($(l), { weekStartsOn: +e.weekStart }), k = (0,date_fns__WEBPACK_IMPORTED_MODULE_20__["default"])($(l), { weekStartsOn: +e.weekStart });
+    return [f, k];
+  }, C = (l, f) => Array.isArray(f) ? f.some((k) => ye($(b(k)), $(l))) : f(l), M = (l, f, k) => {
+    let R = l ? b(l) : b();
+    return (f || f === 0) && (R = (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(R, f)), k && (R = (0,date_fns__WEBPACK_IMPORTED_MODULE_22__["default"])(R, k)), R;
+  }, Z = (l) => (0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(b(), { hours: (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(l), minutes: (0,date_fns__WEBPACK_IMPORTED_MODULE_16__["default"])(l), seconds: (0,date_fns__WEBPACK_IMPORTED_MODULE_17__["default"])(l) }), ae = (l) => (0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(b(), {
+    hours: +l.hours || 0,
+    minutes: +l.minutes || 0,
+    seconds: +l.seconds || 0
+  }), ne = (l, f, k, R) => {
+    if (!l)
+      return !0;
+    if (R) {
+      const ie = k === "max" ? (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(l, f) : (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(l, f), ce = { seconds: 0, milliseconds: 0 };
+      return ie || (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(l, ce), (0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(f, ce));
+    }
+    return k === "max" ? l.getTime() <= f.getTime() : l.getTime() >= f.getTime();
+  }, P = () => !e.enableTimePicker || e.monthPicker || e.yearPicker || e.ignoreTimeValidation, m = (l) => Array.isArray(l) ? [l[0] ? Z(l[0]) : null, l[1] ? Z(l[1]) : null] : Z(l), N = (l) => {
+    const f = e.maxTime ? ae(e.maxTime) : b(e.maxDate);
+    return Array.isArray(l) ? ne(l[0], f, "max", !!e.maxDate) && ne(l[1], f, "max", !!e.maxDate) : ne(l, f, "max", !!e.maxDate);
+  }, j = (l, f) => {
+    const k = e.minTime ? ae(e.minTime) : b(e.minDate);
+    return Array.isArray(l) ? ne(l[0], k, "min", !!e.minDate) && ne(l[1], k, "min", !!e.minDate) && f : ne(l, k, "min", !!e.minDate) && f;
+  }, ee = (l) => {
+    let f = !0;
+    if (!l || P())
+      return !0;
+    const k = !e.minDate && !e.maxDate ? m(l) : l;
+    return (e.maxTime || e.maxDate) && (f = N(_e(k))), (e.minTime || e.minDate) && (f = j(_e(k), f)), f;
+  }, E = (l, f) => {
+    const k = b(JSON.parse(JSON.stringify(l))), R = [];
+    for (let ie = 0; ie < 7; ie++) {
+      const ce = (0,date_fns__WEBPACK_IMPORTED_MODULE_24__["default"])(k, ie), v = (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(ce) !== f;
+      R.push({
+        text: e.hideOffsetDates && v ? "" : ce.getDate(),
+        value: ce,
+        current: !v,
+        classData: {}
+      });
+    }
+    return R;
+  }, z = (l, f) => {
+    const k = [], R = b($(new Date(f, l))), ie = b($(new Date(f, l + 1, 0))), ce = (0,date_fns__WEBPACK_IMPORTED_MODULE_19__["default"])(R, { weekStartsOn: e.weekStart }), v = (d) => {
+      const O = E(d, l);
+      if (k.push({ days: O }), !k[k.length - 1].days.some(
+        (de) => ye(je(de.value), je(ie))
+      )) {
+        const de = (0,date_fns__WEBPACK_IMPORTED_MODULE_24__["default"])(d, 7);
+        v(de);
+      }
+    };
+    if (v(ce), e.sixWeeks && k.length < 6) {
+      const d = 6 - k.length;
+      for (let O = 1; O <= d; O++) {
+        const de = k[k.length - 1], De = de.days[de.days.length - 1], we = E((0,date_fns__WEBPACK_IMPORTED_MODULE_24__["default"])(De.value, 1), (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(R));
+        k.push({ days: we });
+      }
+    }
+    return k;
+  }, g = (l, f, k) => [(0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(b(l), { date: 1 }), (0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(b(), { month: f, year: k, date: 1 })], c = (l, f) => Pe(...g(e.minDate, l, f)) || ye(...g(e.minDate, l, f)), A = (l, f) => Be(...g(e.maxDate, l, f)) || ye(...g(e.maxDate, l, f)), T = (l, f, k) => {
+    let R = !1;
+    return e.maxDate && k && A(l, f) && (R = !0), e.minDate && !k && c(l, f) && (R = !0), R;
+  };
+  return {
+    checkPartialRangeValue: n,
+    checkRangeEnabled: t,
+    getZonedDate: $,
+    getZonedToUtc: Y,
+    formatDate: p,
+    getDefaultPattern: u,
+    validateDate: V,
+    getDefaultStartTime: _,
+    isDisabled: I,
+    isValidDate: B,
+    sanitizeDate: X,
+    getWeekFromDate: Q,
+    matchDate: C,
+    setDateMonthOrYear: M,
+    isValidTime: ee,
+    getCalendarDays: z,
+    validateMonthYearInRange: (l, f, k, R) => {
+      let ie = !1;
+      return R ? e.minDate && e.maxDate ? ie = T(l, f, k) : (e.minDate && c(l, f) || e.maxDate && A(l, f)) && (ie = !0) : ie = !0, ie;
+    },
+    validateMaxDate: A,
+    validateMinDate: c,
+    defaults: a,
+    hideNavigationButtons: L
+  };
+}, fe = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  monthYear: [],
+  calendar: [],
+  time: [],
+  actionRow: [],
+  selectionGrid: [],
+  timePicker: {
+    0: [],
+    1: []
+  },
+  monthPicker: []
+}), Zt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), At = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), Xt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), qt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), Jt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), Re = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0), Ae = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0), Je = () => {
+  const e = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => At.value ? [...fe.selectionGrid, fe.actionRow].filter((C) => C.length) : Xt.value ? [
+    ...fe.timePicker[0],
+    ...fe.timePicker[1],
+    Jt.value ? [] : [Zt.value],
+    fe.actionRow
+  ].filter((C) => C.length) : qt.value ? [...fe.monthPicker, fe.actionRow] : [fe.monthYear, ...fe.calendar, fe.time, fe.actionRow].filter((C) => C.length)), n = (C) => {
+    Re.value = C ? Re.value + 1 : Re.value - 1;
+    let M = null;
+    e.value[Ae.value] && (M = e.value[Ae.value][Re.value]), M || (Re.value = C ? Re.value - 1 : Re.value + 1);
+  }, a = (C) => {
+    if (Ae.value === 0 && !C || Ae.value === e.value.length && C)
+      return;
+    Ae.value = C ? Ae.value + 1 : Ae.value - 1, e.value[Ae.value] ? e.value[Ae.value] && !e.value[Ae.value][Re.value] && Re.value !== 0 && (Re.value = e.value[Ae.value].length - 1) : Ae.value = C ? Ae.value - 1 : Ae.value + 1;
+  }, t = (C) => {
+    let M = null;
+    e.value[Ae.value] && (M = e.value[Ae.value][Re.value]), M ? M.focus({ preventScroll: !At.value }) : Re.value = C ? Re.value - 1 : Re.value + 1;
+  }, r = () => {
+    n(!0), t(!0);
+  }, u = () => {
+    n(!1), t(!1);
+  }, p = () => {
+    a(!1), t(!0);
+  }, $ = () => {
+    a(!0), t(!0);
+  }, Y = (C, M) => {
+    fe[M] = C;
+  }, L = (C, M) => {
+    fe[M] = C;
+  }, V = () => {
+    Re.value = 0, Ae.value = 0;
+  };
+  return {
+    buildMatrix: Y,
+    buildMultiLevelMatrix: L,
+    setTimePickerBackRef: (C) => {
+      Zt.value = C;
+    },
+    setSelectionGrid: (C) => {
+      At.value = C, V(), C || (fe.selectionGrid = []);
+    },
+    setTimePicker: (C, M = !1) => {
+      Xt.value = C, Jt.value = M, V(), C || (fe.timePicker[0] = [], fe.timePicker[1] = []);
+    },
+    setTimePickerElements: (C, M = 0) => {
+      fe.timePicker[M] = C;
+    },
+    arrowRight: r,
+    arrowLeft: u,
+    arrowUp: p,
+    arrowDown: $,
+    clearArrowNav: () => {
+      fe.monthYear = [], fe.calendar = [], fe.time = [], fe.actionRow = [], fe.selectionGrid = [], fe.timePicker[0] = [], fe.timePicker[1] = [], At.value = !1, Xt.value = !1, Jt.value = !1, qt.value = !1, V(), Zt.value = null;
+    },
+    setMonthPicker: (C) => {
+      qt.value = C, V();
+    },
+    refSets: fe
+  };
+}, Nn = (e) => Array.isArray(e), tt = (e) => Array.isArray(e), Rn = (e) => Array.isArray(e) && e.length === 2, Ol = (e, n, a, t) => {
+  const {
+    getDefaultStartTime: r,
+    isDisabled: u,
+    sanitizeDate: p,
+    getWeekFromDate: $,
+    setDateMonthOrYear: Y,
+    validateMonthYearInRange: L,
+    defaults: V
+  } = Ee(e), i = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)({
+    get: () => e.internalModelValue,
+    set: (o) => {
+      !e.readonly && !e.disabled && n("update:internal-model-value", o);
+    }
+  }), _ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), I = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{ month: (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(b()), year: (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(b()) }]), B = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+    hours: e.range ? [(0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(b()), (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(b())] : (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(b()),
+    minutes: e.range ? [(0,date_fns__WEBPACK_IMPORTED_MODULE_16__["default"])(b()), (0,date_fns__WEBPACK_IMPORTED_MODULE_16__["default"])(b())] : (0,date_fns__WEBPACK_IMPORTED_MODULE_16__["default"])(b()),
+    seconds: e.range ? [0, 0] : 0
+  }), X = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+    () => (o) => I.value[o] ? I.value[o].month : 0
+  ), Q = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+    () => (o) => I.value[o] ? I.value[o].year : 0
+  ), C = (o, w, x) => {
+    I.value[o].month = w === null ? I.value[o].month : w, I.value[o].year = x === null ? I.value[o].year : x;
+  }, M = (o, w) => {
+    B[o] = w;
+  };
+  (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
+    i.value || (e.startDate && (C(0, (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(b(e.startDate)), (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(b(e.startDate))), V.value.multiCalendars && Fe(0)), V.value.startTime && g()), Z(!0);
+  });
+  const Z = (o = !1) => {
+    if (i.value)
+      return Array.isArray(i.value) ? N(o) : ne(i.value);
+    if (e.timePicker)
+      return j();
+    if (e.monthPicker && !e.range)
+      return ee();
+    if (e.yearPicker && !e.range)
+      return E();
+    if (V.value.multiCalendars)
+      return ae(b(), o);
+  }, ae = (o, w = !1) => {
+    if ((!V.value.multiCalendars || !e.multiStatic || w) && C(0, (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(o), (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(o)), V.value.multiCalendars)
+      for (let x = 1; x < V.value.multiCalendars; x++) {
+        const te = (0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(b(), { month: X.value(x - 1), year: Q.value(x - 1) }), ge = (0,date_fns__WEBPACK_IMPORTED_MODULE_25__["default"])(te, { months: 1 });
+        I.value[x] = { month: (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(ge), year: (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(ge) };
+      }
+  }, ne = (o) => {
+    ae(o), M("hours", (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(o)), M("minutes", (0,date_fns__WEBPACK_IMPORTED_MODULE_16__["default"])(o)), M("seconds", (0,date_fns__WEBPACK_IMPORTED_MODULE_17__["default"])(o));
+  }, P = (o, w) => {
+    ae(o[0], w);
+    const x = (te, ge) => [
+      te(o[0]),
+      o[1] ? te(o[1]) : B[ge][1]
+    ];
+    M("hours", x(date_fns__WEBPACK_IMPORTED_MODULE_15__["default"], "hours")), M("minutes", x(date_fns__WEBPACK_IMPORTED_MODULE_16__["default"], "minutes")), M("seconds", x(date_fns__WEBPACK_IMPORTED_MODULE_17__["default"], "seconds"));
+  }, m = (o, w) => {
+    if (e.range && !e.multiDates)
+      return P(o, w);
+    if (e.multiDates) {
+      const x = o[o.length - 1];
+      return ne(x);
+    }
+  }, N = (o) => {
+    const w = i.value;
+    m(w, o), V.value.multiCalendars && e.multiCalendarsSolo && A();
+  }, j = () => {
+    if (g(), !e.range)
+      i.value = Le(b(), B.hours, B.minutes, z());
+    else {
+      const o = B.hours, w = B.minutes;
+      i.value = [
+        Le(b(), o[0], w[0], z()),
+        Le(b(), o[1], w[1], z(!1))
+      ];
+    }
+  }, ee = () => {
+    i.value = Y(b(), X.value(0), Q.value(0));
+  }, E = () => {
+    i.value = b();
+  }, z = (o = !0) => e.enableSeconds ? Array.isArray(B.seconds) ? o ? B.seconds[0] : B.seconds[1] : B.seconds : 0, g = () => {
+    const o = r();
+    if (o) {
+      const w = Array.isArray(o), x = w ? [+o[0].hours, +o[1].hours] : +o.hours, te = w ? [+o[0].minutes, +o[1].minutes] : +o.minutes, ge = w ? [+o[0].seconds, +o[1].seconds] : +o.seconds;
+      M("hours", x), M("minutes", te), e.enableSeconds && M("seconds", ge);
+    }
+  }, c = () => Array.isArray(i.value) && i.value.length ? i.value[i.value.length - 1] : null, A = () => {
+    if (Array.isArray(i.value) && i.value.length === 2) {
+      const o = b(
+        b(i.value[1] ? i.value[1] : (0,date_fns__WEBPACK_IMPORTED_MODULE_26__["default"])(i.value[0], 1))
+      ), [w, x] = [(0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(i.value[0]), (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(i.value[0])], [te, ge] = [(0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(i.value[1]), (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(i.value[1])];
+      (w !== te || w === te && x !== ge) && e.multiCalendarsSolo && C(1, (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(o), (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(o));
+    }
+  }, T = (o) => {
+    const w = (0,date_fns__WEBPACK_IMPORTED_MODULE_26__["default"])(o, 1);
+    return { month: (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(w), year: (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(w) };
+  }, K = (o) => {
+    const w = (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(b(o)), x = (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(b(o));
+    if (C(0, w, x), V.value.multiCalendars > 0)
+      for (let te = 1; te < V.value.multiCalendars; te++) {
+        const ge = T(
+          (0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(b(o), { year: X.value(te - 1), month: Q.value(te - 1) })
+        );
+        C(te, ge.month, ge.year);
+      }
+  }, l = (o) => {
+    if (i.value && Array.isArray(i.value))
+      if (i.value.some((w) => ye(o, w))) {
+        const w = i.value.filter((x) => !ye(x, o));
+        i.value = w.length ? w : null;
+      } else
+        (e.multiDatesLimit && +e.multiDatesLimit > i.value.length || !e.multiDatesLimit) && i.value.push(o);
+    else
+      i.value = [o];
+  }, f = (o, w) => {
+    const x = Be(o, w) ? w : o, te = Be(w, o) ? w : o;
+    return (0,date_fns__WEBPACK_IMPORTED_MODULE_27__["default"])({ start: x, end: te });
+  }, k = (o) => {
+    if (Array.isArray(i.value) && i.value[0]) {
+      const w = (0,date_fns__WEBPACK_IMPORTED_MODULE_28__["default"])(o, i.value[0]), x = f(i.value[0], o), te = x.length === 1 ? 0 : x.filter((y) => u(y)).length, ge = Math.abs(w) - te;
+      if (e.minRange && e.maxRange)
+        return ge >= +e.minRange && ge <= +e.maxRange;
+      if (e.minRange)
+        return ge >= +e.minRange;
+      if (e.maxRange)
+        return ge <= +e.maxRange;
+    }
+    return !0;
+  }, R = (o) => Array.isArray(i.value) && i.value.length === 2 ? e.fixedStart && (Be(o, i.value[0]) || ye(o, i.value[0])) ? [i.value[0], o] : e.fixedEnd && (Pe(o, i.value[1]) || ye(o, i.value[1])) ? [o, i.value[1]] : i.value : [], ie = () => {
+    e.autoApply && n("auto-apply");
+  }, ce = () => {
+    e.autoApply && n("select-date");
+  }, v = (o) => !(0,date_fns__WEBPACK_IMPORTED_MODULE_27__["default"])({ start: o[0], end: o[1] }).some((x) => u(x)), d = (o) => (i.value = $(b(o.value)), ie()), O = (o) => {
+    const w = Le(b(o.value), B.hours, B.minutes, z());
+    e.multiDates ? l(w) : i.value = w, a(), ie();
+  }, de = () => {
+    _.value = i.value ? i.value.slice() : [], _.value.length === 2 && !(e.fixedStart || e.fixedEnd) && (_.value = []);
+  }, De = (o, w) => {
+    const x = [b(o.value), (0,date_fns__WEBPACK_IMPORTED_MODULE_24__["default"])(b(o.value), +e.autoRange)];
+    v(x) && (w && K(o.value), _.value = x);
+  }, we = (o) => {
+    _.value = R(b(o.value));
+  }, We = (o) => e.noDisabledRange ? f(_.value[0], o).some((x) => u(x)) : !1, Xe = (o, w) => {
+    if (de(), e.autoRange)
+      return De(o, w);
+    if (e.fixedStart || e.fixedEnd)
+      return we(o);
+    _.value[0] ? k(b(o.value)) && !We(o.value) && (Pe(b(o.value), b(_.value[0])) ? _.value.unshift(b(o.value)) : _.value[1] = b(o.value)) : _.value[0] = b(o.value);
+  }, F = (o) => {
+    _.value[o] = Le(
+      _.value[o],
+      B.hours[o],
+      B.minutes[o],
+      z(o !== 1)
+    );
+  }, be = () => {
+    _.value.length && (_.value[0] && !_.value[1] ? F(0) : (F(0), F(1), a()), i.value = _.value.slice(), _.value[0] && _.value[1] && e.autoApply && n("auto-apply"), _.value[0] && !_.value[1] && e.modelAuto && e.autoApply && n("auto-apply"));
+  }, pe = (o, w = !1) => {
+    if (!(u(o.value) || !o.current && e.hideOffsetDates)) {
+      if (e.weekPicker)
+        return d(o);
+      if (!e.range)
+        return O(o);
+      tt(B.hours) && tt(B.minutes) && !e.multiDates && (Xe(o, w), be());
+    }
+  }, Ne = (o) => {
+    const w = o.find((x) => x.current);
+    return w ? (0,date_fns__WEBPACK_IMPORTED_MODULE_29__["default"])(w.value) : "";
+  }, Fe = (o) => {
+    for (let w = o - 1; w >= 0; w--) {
+      const x = (0,date_fns__WEBPACK_IMPORTED_MODULE_30__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(b(), { month: X.value(w + 1), year: Q.value(w + 1) }), 1);
+      C(w, (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(x), (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(x));
+    }
+    for (let w = o + 1; w <= V.value.multiCalendars - 1; w++) {
+      const x = (0,date_fns__WEBPACK_IMPORTED_MODULE_26__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(b(), { month: X.value(w - 1), year: Q.value(w - 1) }), 1);
+      C(w, (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(x), (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(x));
+    }
+  }, et = (o) => Y(b(), X.value(o), Q.value(o)), bt = (o) => Le(o, B.hours, B.minutes, z()), $t = (o, w) => {
+    const x = e.monthPicker ? X.value(o) !== w.month || !w.fromNav : Q.value(o) !== w.year;
+    if (C(o, w.month, w.year), V.value.multiCalendars && !e.multiCalendarsSolo && Fe(o), e.monthPicker || e.yearPicker)
+      if (e.range) {
+        if (x) {
+          let te = i.value ? i.value.slice() : [];
+          te.length === 2 && te[1] !== null && (te = []), te.length ? Pe(et(o), te[0]) ? te.unshift(et(o)) : te[1] = et(o) : te = [et(o)], i.value = te;
+        }
+      } else
+        i.value = et(o);
+    n("update-month-year", { instance: o, month: w.month, year: w.year }), t(e.multiCalendarsSolo ? o : void 0);
+  }, Ft = async (o = !1) => {
+    if (e.autoApply && (e.monthPicker || e.yearPicker)) {
+      await (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)();
+      const w = e.monthPicker ? o : !1;
+      e.range ? n("auto-apply", w || !i.value || i.value.length === 1) : n("auto-apply", w);
+    }
+    a();
+  }, Dt = (o, w) => {
+    const x = (0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(b(), { month: X.value(w), year: Q.value(w) }), te = o < 0 ? (0,date_fns__WEBPACK_IMPORTED_MODULE_26__["default"])(x, 1) : (0,date_fns__WEBPACK_IMPORTED_MODULE_30__["default"])(x, 1);
+    L((0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(te), (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(te), o < 0, e.preventMinMaxNavigation) && (C(w, (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(te), (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(te)), V.value.multiCalendars && !e.multiCalendarsSolo && Fe(w), t());
+  }, vt = (o) => {
+    Nn(o) && Nn(i.value) && tt(B.hours) && tt(B.minutes) ? (o[0] && i.value[0] && (i.value[0] = Le(o[0], B.hours[0], B.minutes[0], z())), o[1] && i.value[1] && (i.value[1] = Le(o[1], B.hours[1], B.minutes[1], z(!1)))) : e.multiDates && Array.isArray(i.value) ? i.value[i.value.length - 1] = bt(o) : !e.range && !Rn(o) && (i.value = bt(o)), n("time-update");
+  }, Ut = (o, w = !0, x = !1) => {
+    const te = w ? o : B.hours, ge = !w && !x ? o : B.minutes, y = x ? o : B.seconds;
+    if (e.range && Rn(i.value) && tt(te) && tt(ge) && tt(y) && !e.disableTimeRangeValidation) {
+      const G = (ke) => Le(i.value[ke], te[ke], ge[ke], y[ke]), Me = (ke) => (0,date_fns__WEBPACK_IMPORTED_MODULE_7__["default"])(i.value[ke], 0);
+      if (ye(i.value[0], i.value[1]) && ((0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(G(0), Me(1)) || (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(G(1), Me(0))))
+        return;
+    }
+    if (M("hours", te), M("minutes", ge), M("seconds", y), i.value)
+      if (e.multiDates) {
+        const G = c();
+        G && vt(G);
+      } else
+        vt(i.value);
+    else
+      e.timePicker && vt(e.range ? [b(), b()] : b());
+    a();
+  }, Ht = (o, w) => {
+    e.monthChangeOnScroll && Dt(e.monthChangeOnScroll !== "inverse" ? -o.deltaY : o.deltaY, w);
+  }, Wt = (o, w, x = !1) => {
+    e.monthChangeOnArrows && e.vertical === x && Mt(o, w);
+  }, Mt = (o, w) => {
+    Dt(o === "right" ? -1 : 1, w);
+  };
+  return {
+    time: B,
+    month: X,
+    year: Q,
+    modelValue: i,
+    calendars: I,
+    monthYearSelect: Ft,
+    isDisabled: u,
+    updateTime: Ut,
+    getWeekNum: Ne,
+    selectDate: pe,
+    updateMonthYear: $t,
+    handleScroll: Ht,
+    getMarker: (o) => e.markers.find((w) => ye(p(o.value), p(w.date))),
+    handleArrow: Wt,
+    handleSwipe: Mt,
+    selectCurrentDate: () => {
+      e.range ? i.value && Array.isArray(i.value) && i.value[0] ? i.value = Pe(b(), i.value[0]) ? [b(), i.value[0]] : [i.value[0], b()] : i.value = [b()] : i.value = b(), ce();
+    },
+    presetDateRange: (o, w) => {
+      w || o.length && o.length <= 2 && e.range && (i.value = o.map((x) => b(x)), ce());
+    }
+  };
+}, Bl = (e, n, a) => {
+  const t = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(), {
+    getZonedToUtc: r,
+    getZonedDate: u,
+    formatDate: p,
+    getDefaultPattern: $,
+    checkRangeEnabled: Y,
+    checkPartialRangeValue: L,
+    isValidDate: V,
+    setDateMonthOrYear: i,
+    defaults: _
+  } = Ee(n), I = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+  (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(t, () => {
+    e("internal-model-change", t.value);
+  });
+  const B = (v) => {
+    const d = v || b();
+    return {
+      hours: (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(d),
+      minutes: (0,date_fns__WEBPACK_IMPORTED_MODULE_16__["default"])(d),
+      seconds: n.enableSeconds ? (0,date_fns__WEBPACK_IMPORTED_MODULE_17__["default"])(d) : 0
+    };
+  }, X = (v) => ({ month: (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(v), year: (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(v) }), Q = (v) => Array.isArray(v) ? Y(() => [
+    (0,date_fns__WEBPACK_IMPORTED_MODULE_22__["default"])(b(), v[0]),
+    v[1] ? (0,date_fns__WEBPACK_IMPORTED_MODULE_22__["default"])(b(), v[1]) : L()
+  ]) : (0,date_fns__WEBPACK_IMPORTED_MODULE_22__["default"])(b(), +v), C = (v) => Array.isArray(v) ? [
+    Le(null, +v[0].hours, +v[0].minutes, v[0].seconds),
+    Le(null, +v[1].hours, +v[1].minutes, v[1].seconds)
+  ] : Le(null, v.hours, v.minutes, v == null ? void 0 : v.seconds), M = (v) => Array.isArray(v) ? Y(() => [
+    i(null, +v[0].month, +v[0].year),
+    v[1] ? i(null, +v[1].month, +v[1].year) : L()
+  ]) : i(null, +v.month, +v.year), Z = (v) => {
+    if (Array.isArray(v))
+      return v.map((d) => K(d));
+    throw new Error(Vt.dateArr("multi-dates"));
+  }, ae = (v) => {
+    if (Array.isArray(v))
+      return [b(v[0]), b(v[1])];
+    throw new Error(Vt.dateArr("week-picker"));
+  }, ne = (v) => n.modelAuto ? Array.isArray(v) ? [K(v[0]), K(v[1])] : n.autoApply ? [K(v)] : [K(v), null] : Array.isArray(v) ? Y(() => [
+    K(v[0]),
+    v[1] ? K(v[1]) : L()
+  ]) : K(v), P = () => {
+    Array.isArray(t.value) && n.range && t.value.length === 1 && t.value.push(L());
+  }, m = () => {
+    const v = t.value;
+    return [
+      l(v[0]),
+      v[1] ? l(v[1]) : L()
+    ];
+  }, N = () => t.value[1] ? m() : l(_e(t.value[0])), j = () => t.value.map((v) => l(v)), ee = () => (P(), n.modelAuto ? N() : n.multiDates ? j() : Array.isArray(t.value) ? Y(() => m()) : l(_e(t.value))), E = (v) => v ? n.timePicker ? C(_e(v)) : n.monthPicker ? M(_e(v)) : n.yearPicker ? Q(_e(v)) : n.multiDates ? Z(_e(v)) : n.weekPicker ? ae(_e(v)) : ne(_e(v)) : null, z = (v) => {
+    const d = E(v);
+    V(_e(d)) ? (t.value = _e(d), T()) : (t.value = null, I.value = "");
+  }, g = () => {
+    var d;
+    const v = (O) => {
+      var de;
+      return (0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(O, (de = _.value.textInputOptions) == null ? void 0 : de.format);
+    };
+    return `${v(t.value[0])} ${(d = _.value.textInputOptions) == null ? void 0 : d.rangeSeparator} ${t.value[1] ? v(t.value[1]) : ""}`;
+  }, c = () => {
+    var v;
+    return a.value && t.value ? Array.isArray(t.value) ? g() : (0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(t.value, (v = _.value.textInputOptions) == null ? void 0 : v.format) : p(t.value);
+  }, A = () => {
+    var v;
+    return t.value ? n.multiDates ? t.value.map((d) => p(d)).join("; ") : n.textInput && typeof ((v = _.value.textInputOptions) == null ? void 0 : v.format) == "string" ? c() : p(t.value) : "";
+  }, T = () => {
+    !n.format || typeof n.format == "string" ? I.value = A() : I.value = n.format(t.value);
+  }, K = (v) => {
+    if (n.utc) {
+      const d = new Date(v);
+      return n.utc === "preserve" ? new Date(d.getTime() + d.getTimezoneOffset() * 6e4) : d;
+    }
+    return n.modelType ? n.modelType === "date" || n.modelType === "timestamp" ? u(new Date(v)) : n.modelType === "format" && (typeof n.format == "string" || !n.format) ? (0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(v, $(), new Date()) : u((0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(v, n.modelType, new Date())) : u(new Date(v));
+  }, l = (v) => n.utc ? Xa(v, n.utc === "preserve") : n.modelType ? n.modelType === "timestamp" ? +r(v) : n.modelType === "format" && (typeof n.format == "string" || !n.format) ? p(r(v)) : p(r(v), n.modelType) : r(v), f = (v) => {
+    e("update:model-value", v);
+  }, k = (v) => Array.isArray(t.value) ? [
+    v(t.value[0]),
+    t.value[1] ? v(t.value[1]) : L()
+  ] : v(_e(t.value)), R = (v) => f(_e(k(v)));
+  return {
+    inputValue: I,
+    internalModelValue: t,
+    checkBeforeEmit: () => t.value ? n.range ? n.partialRange ? t.value.length >= 1 : t.value.length === 2 : !!t.value : !1,
+    parseExternalModelValue: z,
+    formatInputValue: T,
+    emitModelValue: () => (T(), n.monthPicker ? R(X) : n.timePicker ? R(B) : n.yearPicker ? R(date_fns__WEBPACK_IMPORTED_MODULE_14__["default"]) : n.weekPicker ? f(t.value) : f(ee()))
+  };
+}, Yl = (e, n) => {
+  const { validateMonthYearInRange: a, validateMaxDate: t, validateMinDate: r, defaults: u } = Ee(e), p = (i, _) => {
+    let I = i;
+    return u.value.filters.months.includes((0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(I)) ? (I = _ ? (0,date_fns__WEBPACK_IMPORTED_MODULE_26__["default"])(i, 1) : (0,date_fns__WEBPACK_IMPORTED_MODULE_30__["default"])(i, 1), p(I, _)) : I;
+  }, $ = (i, _) => {
+    let I = i;
+    return u.value.filters.years.includes((0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(I)) ? (I = _ ? (0,date_fns__WEBPACK_IMPORTED_MODULE_31__["default"])(i, 1) : (0,date_fns__WEBPACK_IMPORTED_MODULE_32__["default"])(i, 1), $(I, _)) : I;
+  }, Y = (i) => {
+    const _ = (0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(new Date(), { month: e.month, year: e.year });
+    let I = i ? (0,date_fns__WEBPACK_IMPORTED_MODULE_26__["default"])(_, 1) : (0,date_fns__WEBPACK_IMPORTED_MODULE_30__["default"])(_, 1), B = (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(I), X = (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(I);
+    u.value.filters.months.includes(B) && (I = p(I, i), B = (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(I), X = (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(I)), u.value.filters.years.includes(X) && (I = $(I, i), X = (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(I)), a(B, X, i, e.preventMinMaxNavigation) && L(B, X);
+  }, L = (i, _) => {
+    n("update-month-year", { month: i, year: _ });
+  }, V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (i) => {
+    if (!e.preventMinMaxNavigation || i && !e.maxDate || !i && !e.minDate)
+      return !1;
+    const _ = (0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(new Date(), { month: e.month, year: e.year }), I = i ? (0,date_fns__WEBPACK_IMPORTED_MODULE_26__["default"])(_, 1) : (0,date_fns__WEBPACK_IMPORTED_MODULE_30__["default"])(_, 1), B = [(0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(I), (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(I)];
+    return i ? !t(...B) : !r(...B);
+  });
+  return { handleMonthYearChange: Y, isDisabled: V, updateMonthYear: L };
+};
+var Rt = /* @__PURE__ */ ((e) => (e.center = "center", e.left = "left", e.right = "right", e))(Rt || {});
+const Vl = (e, n, a, t) => {
+  const r = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
+    top: "0",
+    left: "0",
+    transform: "none"
+  }), u = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRef)(t, "teleportCenter");
+  (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(p, () => {
+    Q();
+  });
+  const $ = (P) => {
+    const m = P.getBoundingClientRect();
+    return {
+      left: m.left + window.scrollX,
+      top: m.top + window.scrollY
+    };
+  }, Y = (P) => {
+    const m = P.getBoundingClientRect();
+    let N = 0, j = 0;
+    for (; P && !isNaN(P.offsetLeft) && !isNaN(P.offsetTop); )
+      N += P.offsetLeft - P.scrollLeft, j = m.top + P.scrollTop, P = P.offsetParent;
+    return { top: j, left: N };
+  }, L = (P, m) => {
+    r.value.left = `${P + m}px`, r.value.transform = "translateX(-100%)";
+  }, V = (P) => {
+    r.value.left = `${P}px`, r.value.transform = "translateX(0)";
+  }, i = (P, m, N = !1) => {
+    t.position === Rt.left && V(P), t.position === Rt.right && L(P, m), t.position === Rt.center && (r.value.left = `${P + m / 2}px`, r.value.transform = N ? "translate(-50%, -50%)" : "translateX(-50%)");
+  }, _ = (P) => {
+    const { width: m, height: N } = P.getBoundingClientRect(), { top: j, left: ee } = t.altPosition ? Y(P) : $(P);
+    return { top: j, left: ee, width: m, height: N };
+  }, I = () => {
+    const P = Ce(n);
+    if (P) {
+      const { top: m, left: N, width: j, height: ee } = _(P);
+      r.value.top = `${m + ee / 2}px`, r.value.transform = "translateY(-50%)", i(N, j, !0);
+    }
+  }, B = () => {
+    r.value.left = "50%", r.value.top = "50%", r.value.transform = "translate(-50%, -50%)", r.value.position = "fixed";
+  }, X = () => {
+    const P = Ce(n);
+    r.value = t.altPosition(P);
+  }, Q = (P = !0) => {
+    if (!t.inline)
+      return p.value ? B() : t.altPosition && typeof t.altPosition != "boolean" ? X() : (P && a("recalculate-position"), ne());
+  }, C = (P, m) => {
+    const { top: N, left: j, height: ee, width: E } = _(P);
+    r.value.top = `${ee + N + +t.offset}px`, i(j, E), Z(P, m), u.value = !1;
+  }, M = (P, m) => {
+    const { top: N, left: j, width: ee } = _(P), { height: E } = m.getBoundingClientRect();
+    r.value.top = `${N - E - +t.offset}px`, i(j, ee), Z(P, m), u.value = !0;
+  }, Z = (P, m) => {
+    if (t.autoPosition) {
+      const { left: N, width: j } = _(P), { left: ee, right: E } = m.getBoundingClientRect();
+      if (ee < 0)
+        return V(N);
+      if (E > document.documentElement.clientWidth)
+        return L(N, j);
+    }
+  }, ae = (P, m) => {
+    const { height: N } = m.getBoundingClientRect(), { top: j, height: ee } = P.getBoundingClientRect(), z = window.innerHeight - j - ee, g = j;
+    return N <= z ? C(P, m) : N > z && N <= g ? M(P, m) : z >= g ? C(P, m) : M(P, m);
+  }, ne = () => {
+    const P = Ce(n), m = Ce(e);
+    if (P && m)
+      return t.autoPosition ? ae(P, m) : C(P, m);
+  };
+  return { openOnTop: u, menuPosition: r, setMenuPosition: Q, setInitialPosition: I };
+}, it = [
+  { name: "clock-icon", use: ["time", "calendar"] },
+  { name: "arrow-left", use: ["month-year", "calendar"] },
+  { name: "arrow-right", use: ["month-year", "calendar"] },
+  { name: "arrow-up", use: ["time", "calendar"] },
+  { name: "arrow-down", use: ["time", "calendar"] },
+  { name: "calendar-icon", use: ["month-year", "time", "calendar"] },
+  { name: "day", use: ["calendar"] },
+  { name: "month-overlay-value", use: ["calendar", "month-year"] },
+  { name: "year-overlay-value", use: ["calendar", "month-year"] },
+  { name: "year-overlay", use: ["month-year"] },
+  { name: "month-overlay", use: ["month-year"] },
+  { name: "month-overlay-header", use: ["month-year"] },
+  { name: "year-overlay-header", use: ["month-year"] },
+  { name: "hours-overlay-value", use: ["calendar", "time"] },
+  { name: "minutes-overlay-value", use: ["calendar", "time"] },
+  { name: "seconds-overlay-value", use: ["calendar", "time"] },
+  { name: "hours", use: ["calendar", "time"] },
+  { name: "minutes", use: ["calendar", "time"] },
+  { name: "month", use: ["calendar", "month-year"] },
+  { name: "year", use: ["calendar", "month-year"] },
+  { name: "action-select", use: ["action"] },
+  { name: "action-preview", use: ["action"] },
+  { name: "calendar-header", use: ["calendar"] },
+  { name: "marker-tooltip", use: ["calendar"] },
+  { name: "now-button", use: [] },
+  { name: "time-picker-overlay", use: ["calendar", "time"] },
+  { name: "am-pm-button", use: ["calendar", "time"] },
+  { name: "left-sidebar", use: ["menu"] },
+  { name: "right-sidebar", use: ["menu"] },
+  { name: "month-year", use: ["month-year"] },
+  { name: "time-picker", use: ["menu"] },
+  { name: "action-row", use: ["menu"] }
+], El = [{ name: "trigger" }, { name: "input-icon" }, { name: "clear-icon" }, { name: "dp-input" }], Ll = {
+  all: () => it,
+  monthYear: () => it.filter((e) => e.use.includes("month-year")),
+  input: () => El,
+  timePicker: () => it.filter((e) => e.use.includes("time")),
+  action: () => it.filter((e) => e.use.includes("action")),
+  calendar: () => it.filter((e) => e.use.includes("calendar")),
+  menu: () => it.filter((e) => e.use.includes("menu"))
+}, lt = (e, n, a) => {
+  const t = [];
+  return Ll[n]().forEach((r) => {
+    e[r.name] && t.push(r.name);
+  }), a && a.length && a.forEach((r) => {
+    r.slot && t.push(r.slot);
+  }), t;
+}, Lt = (e) => ({ transitionName: (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (a) => e && typeof e != "boolean" ? a ? e.open : e.close : ""), showTransition: !!e }), Qe = {
+  multiCalendars: { type: [Boolean, Number, String], default: null },
+  modelValue: { type: [String, Date, Array, Object, Number], default: null },
+  modelType: { type: String, default: null },
+  position: { type: String, default: "center" },
+  dark: { type: Boolean, default: !1 },
+  format: {
+    type: [String, Function],
+    default: () => null
+  },
+  closeOnScroll: { type: Boolean, default: !1 },
+  autoPosition: { type: Boolean, default: !0 },
+  closeOnAutoApply: { type: Boolean, default: !0 },
+  teleport: { type: [String, Object], default: "body" },
+  altPosition: { type: [Boolean, Function], default: !1 },
+  transitions: { type: [Boolean, Object], default: !0 },
+  formatLocale: { type: Object, default: null },
+  utc: { type: [Boolean, String], default: !1 },
+  ariaLabels: { type: Object, default: () => ({}) },
+  offset: { type: [Number, String], default: 10 },
+  hideNavigation: { type: Array, default: () => [] },
+  timezone: { type: String, default: null },
   vertical: { type: Boolean, default: !1 },
   disableMonthYearSelect: { type: Boolean, default: !1 },
   menuClassName: { type: String, default: null },
+  dayClass: { type: Function, default: null },
   yearRange: { type: Array, default: () => [1900, 2100] },
   multiCalendarsSolo: { type: Boolean, default: !1 },
   calendarCellClassName: { type: String, default: null },
@@ -11345,76 +12387,100 @@ const Gn = /* @__PURE__ */ ot(kl, [["render", Dl]]), Tn = (e, a) => {
     type: Array,
     default: null
   },
-  teleportCenter: { type: Boolean, default: !1 }
-}, Tl = {
-  ...ea,
-  ...hn,
-  ...la,
-  multiCalendars: { type: [Boolean, Number, String], default: null },
-  modelValue: { type: [String, Date, Array, Object, Number], default: null },
-  modelType: { type: String, default: null },
-  position: { type: String, default: "center" },
-  dark: { type: Boolean, default: !1 },
-  format: {
-    type: [String, Function],
-    default: () => null
+  highlightDisabledDays: { type: Boolean, default: !1 },
+  teleportCenter: { type: Boolean, default: !1 },
+  locale: { type: String, default: "en-Us" },
+  weekNumName: { type: String, default: "W" },
+  weekStart: { type: [Number, String], default: 1 },
+  weekNumbers: { type: Boolean, default: !1 },
+  calendarClassName: { type: String, default: null },
+  noSwipe: { type: Boolean, default: !1 },
+  monthChangeOnScroll: { type: [Boolean, String], default: !0 },
+  dayNames: {
+    type: [Function, Array],
+    default: null
   },
-  closeOnScroll: { type: Boolean, default: !1 },
-  autoPosition: { type: Boolean, default: !0 },
-  closeOnAutoApply: { type: Boolean, default: !0 },
-  teleport: { type: [String, Object], default: "body" },
-  altPosition: { type: [Boolean, Function], default: !1 },
-  transitions: { type: [Boolean, Object], default: !0 },
-  formatLocale: { type: Object, default: null },
-  utc: { type: [Boolean, String], default: !1 },
-  ariaLabels: { type: Object, default: () => ({}) },
-  offset: { type: [Number, String], default: 10 }
-}, ra = {
+  monthPicker: { type: Boolean, default: !1 },
+  customProps: { type: Object, default: null },
+  yearPicker: { type: Boolean, default: !1 },
+  modelAuto: { type: Boolean, default: !1 },
+  selectText: { type: String, default: "Select" },
+  cancelText: { type: String, default: "Cancel" },
+  previewFormat: {
+    type: [String, Function],
+    default: () => ""
+  },
+  multiDates: { type: Boolean, default: !1 },
+  partialRange: { type: Boolean, default: !0 },
+  ignoreTimeValidation: { type: Boolean, default: !1 },
+  minDate: { type: [Date, String], default: null },
+  maxDate: { type: [Date, String], default: null },
+  minTime: { type: Object, default: null },
+  maxTime: { type: Object, default: null },
+  name: { type: String, default: null },
+  placeholder: { type: String, default: "" },
+  hideInputIcon: { type: Boolean, default: !1 },
+  clearable: { type: Boolean, default: !0 },
+  state: { type: Boolean, default: null },
+  required: { type: Boolean, default: !1 },
+  autocomplete: { type: String, default: "off" },
+  inputClassName: { type: String, default: null },
+  inlineWithInput: { type: Boolean, default: !1 },
+  textInputOptions: { type: Object, default: () => null },
+  fixedStart: { type: Boolean, default: !1 },
+  fixedEnd: { type: Boolean, default: !1 },
+  timePicker: { type: Boolean, default: !1 },
+  enableSeconds: { type: Boolean, default: !1 },
+  is24: { type: Boolean, default: !0 },
+  noHoursOverlay: { type: Boolean, default: !1 },
+  noMinutesOverlay: { type: Boolean, default: !1 },
+  noSecondsOverlay: { type: Boolean, default: !1 },
+  hoursGridIncrement: { type: [String, Number], default: 1 },
+  minutesGridIncrement: { type: [String, Number], default: 5 },
+  secondsGridIncrement: { type: [String, Number], default: 5 },
+  hoursIncrement: { type: [Number, String], default: 1 },
+  minutesIncrement: { type: [Number, String], default: 1 },
+  secondsIncrement: { type: [Number, String], default: 1 },
   range: { type: Boolean, default: !1 },
-  multiCalendars: { type: Number, default: 0 },
-  internalModelValue: { type: [Date, Array], default: null }
-}, sa = {
-  ...wn,
-  ...ra,
-  vertical: { type: Boolean, default: !1 },
-  month: { type: Number, default: 0 },
-  year: { type: Number, default: 0 },
-  instance: { type: Number, default: 1 }
-}, Rl = ["aria-label", "aria-disabled", "aria-readonly"], Vl = {
+  uid: { type: String, default: null },
+  disabled: { type: Boolean, default: !1 },
+  readonly: { type: Boolean, default: !1 },
+  inline: { type: Boolean, default: !1 },
+  textInput: { type: Boolean, default: !1 },
+  onClickOutside: { type: Function, default: null },
+  noDisabledRange: { type: Boolean, default: !1 },
+  sixWeeks: { type: Boolean, default: !1 }
+}, Fl = ["aria-label", "aria-disabled", "aria-readonly"], Ul = {
   key: 1,
   class: "dp__input_wrap"
-}, _l = ["id", "name", "inputmode", "placeholder", "disabled", "readonly", "required", "value", "autocomplete", "onKeydown"], Bl = {
+}, Hl = ["id", "name", "inputmode", "placeholder", "disabled", "readonly", "required", "value", "autocomplete", "onKeydown"], Wl = {
   key: 2,
   class: "dp__input_icon"
-}, Ol = {
+}, zl = {
   key: 4,
   class: "dp__clear_icon"
-}, Nl = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+}, jl = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: "DatepickerInput",
   props: {
-    ...ea,
-    ...hn,
-    ...gn,
-    inputValue: { type: String, default: "" },
-    inline: { type: Boolean, default: !1 },
     isMenuOpen: { type: Boolean, default: !1 },
-    pattern: { type: String, default: "" }
+    inputValue: { type: String, default: "" },
+    ...Qe
   },
   emits: [
     "clear",
     "open",
-    "update:inputValue",
-    "setInputDate",
+    "update:input-value",
+    "set-input-date",
     "close",
-    "selectDate",
-    "setEmptyDate",
+    "select-date",
+    "set-empty-date",
     "toggle",
     "focus-prev",
     "focus",
     "blur"
   ],
-  setup(e, { expose: a, emit: n }) {
-    const t = e, d = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(), m = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), v = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Xe), g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+  setup(e, { expose: n, emit: a }) {
+    const t = e, { getDefaultPattern: r, isValidDate: u, defaults: p } = Ee(t), $ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(), Y = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), L = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
       () => ({
         dp__pointer: !t.disabled && !t.readonly && !t.textInput,
         dp__disabled: t.disabled,
@@ -11423,580 +12489,453 @@ const Gn = /* @__PURE__ */ ot(kl, [["render", Dl]]), Tn = (e, a) => {
         dp__input_icon_pad: !t.hideInputIcon,
         dp__input_valid: t.state,
         dp__input_invalid: t.state === !1,
-        dp__input_focus: p.value || t.isMenuOpen,
+        dp__input_focus: L.value || t.isMenuOpen,
         dp__input_reg: !t.textInput,
         [t.inputClassName]: !!t.inputClassName
       })
-    ), w = (i) => {
-      var K;
-      const { value: Y } = i.target, { format: z, rangeSeparator: P } = t.textInputOptions;
-      if (Y !== "") {
-        if (((K = t.textInputOptions) == null ? void 0 : K.openMenu) && !t.isMenuOpen && n("open"), t.range) {
-          const [X, ee] = Y.split(`${P}`);
-          if (X && ee) {
-            const Z = zt(X.trim(), z || t.pattern), j = zt(ee.trim(), z || t.pattern);
-            d.value = Z && j ? [Z, j] : null;
-          }
-        } else
-          d.value = zt(Y, z || t.pattern);
-        n("setInputDate", d.value);
+    ), i = () => {
+      a("set-input-date", null), t.autoApply && (a("set-empty-date"), $.value = null);
+    }, _ = (m) => {
+      var N;
+      return Za(m, ((N = p.value.textInputOptions) == null ? void 0 : N.format) || r());
+    }, I = (m) => {
+      const { rangeSeparator: N } = p.value.textInputOptions;
+      if (t.range) {
+        const [j, ee] = m.split(`${N}`);
+        if (j && ee) {
+          const E = _(j.trim()), z = _(ee.trim());
+          $.value = E && z ? [E, z] : null;
+        }
       } else
-        n("setInputDate", null), t.autoApply && (n("setEmptyDate"), d.value = null);
-      n("update:inputValue", Y);
-    }, V = () => {
-      var i, Y;
-      ((i = t.textInputOptions) == null ? void 0 : i.enterSubmit) && rn(d.value) && t.inputValue !== "" ? (n("setInputDate", d.value, !0), d.value = null) : ((Y = t.textInputOptions) == null ? void 0 : Y.enterSubmit) && t.inputValue === "" && (d.value = null, n("clear"));
-    }, R = () => {
-      var i, Y;
-      ((i = t.textInputOptions) == null ? void 0 : i.tabSubmit) && rn(d.value) && t.inputValue !== "" ? (n("setInputDate", d.value, !0), d.value = null) : ((Y = t.textInputOptions) == null ? void 0 : Y.tabSubmit) && t.inputValue === "" && (d.value = null, n("clear"));
-    }, E = () => {
-      p.value = !0, n("focus");
-    }, N = (i) => {
-      var Y;
-      i.preventDefault(), i.stopImmediatePropagation(), i.stopPropagation(), t.textInput && ((Y = t.textInputOptions) == null ? void 0 : Y.openMenu) ? t.isMenuOpen ? t.textInputOptions.enterSubmit && n("selectDate") : n("open") : t.textInput || n("toggle");
-    }, G = () => {
-      p.value = !1, t.isMenuOpen || n("blur"), t.autoApply && t.textInput && d.value && (n("setInputDate", d.value), n("selectDate"), d.value = null);
-    }, T = () => {
-      n("clear");
-    }, x = (i) => {
-      t.textInput || i.preventDefault();
+        $.value = _(m);
+    }, B = (m) => {
+      var j;
+      const { value: N } = m.target;
+      N !== "" ? (((j = p.value.textInputOptions) == null ? void 0 : j.openMenu) && !t.isMenuOpen && a("open"), I(N), a("set-input-date", $.value)) : i(), a("update:input-value", N);
+    }, X = () => {
+      var m, N;
+      ((m = p.value.textInputOptions) == null ? void 0 : m.enterSubmit) && u($.value) && t.inputValue !== "" ? (a("set-input-date", $.value, !0), $.value = null) : ((N = p.value.textInputOptions) == null ? void 0 : N.enterSubmit) && t.inputValue === "" && ($.value = null, a("clear"));
+    }, Q = () => {
+      var m, N;
+      ((m = p.value.textInputOptions) == null ? void 0 : m.tabSubmit) && u($.value) && t.inputValue !== "" ? (a("set-input-date", $.value, !0), $.value = null) : ((N = p.value.textInputOptions) == null ? void 0 : N.tabSubmit) && t.inputValue === "" && ($.value = null, a("clear"));
+    }, C = () => {
+      L.value = !0, a("focus");
+    }, M = (m) => {
+      var N;
+      m.preventDefault(), m.stopImmediatePropagation(), m.stopPropagation(), t.textInput && ((N = p.value.textInputOptions) == null ? void 0 : N.openMenu) && !t.inlineWithInput ? t.isMenuOpen ? p.value.textInputOptions.enterSubmit && a("select-date") : a("open") : t.textInput || a("toggle");
+    }, Z = () => {
+      L.value = !1, t.isMenuOpen || a("blur"), t.autoApply && t.textInput && $.value && (a("set-input-date", $.value), a("select-date"), $.value = null);
+    }, ae = () => {
+      a("clear");
+    }, ne = (m) => {
+      t.textInput || m.preventDefault();
     };
-    return a({
+    return n({
       focusInput: () => {
-        m.value && m.value.focus({ preventScroll: !0 });
+        Y.value && Y.value.focus({ preventScroll: !0 });
       }
-    }), (i, Y) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      onClick: N,
-      "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(v).input,
-      role: "textbox",
-      "aria-multiline": "false",
-      "aria-disabled": i.disabled,
-      "aria-readonly": i.readonly
-    }, [
-      i.$slots.trigger && !i.$slots["dp-input"] && !e.inline ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(i.$slots, "trigger", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-      !i.$slots.trigger && (!e.inline || i.inlineWithInput) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Vl, [
-        i.$slots["dp-input"] && !i.$slots.trigger && !e.inline ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(i.$slots, "dp-input", {
-          key: 0,
-          value: e.inputValue,
-          onInput: w,
-          onEnter: V,
-          onTab: R,
-          onClear: T
-        }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-        i.$slots["dp-input"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("input", {
-          key: 1,
-          ref_key: "inputRef",
-          ref: m,
-          id: i.uid ? `dp-input-${i.uid}` : void 0,
-          name: i.name,
-          class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(g)),
-          inputmode: i.textInput ? "text" : "none",
-          placeholder: i.placeholder,
-          disabled: i.disabled,
-          readonly: i.readonly,
-          required: i.required,
-          value: e.inputValue,
-          autocomplete: i.autocomplete,
-          onInput: w,
-          onKeydown: [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(N, ["enter"]),
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(R, ["tab"])
-          ],
-          onBlur: G,
-          onFocus: E,
-          onKeypress: x
-        }, null, 42, _l)),
-        i.$slots["input-icon"] && !i.hideInputIcon ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", Bl, [
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(i.$slots, "input-icon")
-        ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-        !i.$slots["input-icon"] && !i.hideInputIcon && !i.$slots["dp-input"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Wt), {
-          key: 3,
-          class: "dp__input_icon dp__input_icons"
-        })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-        i.$slots["clear-icon"] && e.inputValue && i.clearable && !i.disabled && !i.readonly ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", Ol, [
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(i.$slots, "clear-icon", { clear: T })
-        ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-        i.clearable && !i.$slots["clear-icon"] && e.inputValue && !i.disabled && !i.readonly ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Za), {
-          key: 5,
-          class: "dp__clear_icon dp__input_icons",
-          onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(T, ["stop", "prevent"])
-        }, null, 8, ["onClick"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
-      ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
-    ], 8, Rl));
+    }), (m, N) => {
+      var j;
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        onClick: M,
+        "aria-label": (j = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(p).ariaLabels) == null ? void 0 : j.input,
+        role: "textbox",
+        "aria-multiline": "false",
+        "aria-disabled": m.disabled,
+        "aria-readonly": m.readonly
+      }, [
+        m.$slots.trigger && !m.$slots["dp-input"] && !m.inline ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(m.$slots, "trigger", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+        !m.$slots.trigger && (!m.inline || m.inlineWithInput) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Ul, [
+          m.$slots["dp-input"] && !m.$slots.trigger && !m.inline ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(m.$slots, "dp-input", {
+            key: 0,
+            value: e.inputValue,
+            onInput: B,
+            onEnter: X,
+            onTab: Q,
+            onClear: ae
+          }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+          m.$slots["dp-input"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("input", {
+            key: 1,
+            ref_key: "inputRef",
+            ref: Y,
+            id: m.uid ? `dp-input-${m.uid}` : void 0,
+            name: m.name,
+            class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(V)),
+            inputmode: m.textInput ? "text" : "none",
+            placeholder: m.placeholder,
+            disabled: m.disabled,
+            readonly: m.readonly,
+            required: m.required,
+            value: e.inputValue,
+            autocomplete: m.autocomplete,
+            onInput: B,
+            onKeydown: [
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(M, ["enter"]),
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(Q, ["tab"])
+            ],
+            onBlur: Z,
+            onFocus: C,
+            onKeypress: ne
+          }, null, 42, Hl)),
+          m.$slots["input-icon"] && !m.hideInputIcon ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", Wl, [
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(m.$slots, "input-icon")
+          ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+          !m.$slots["input-icon"] && !m.hideInputIcon && !m.$slots["dp-input"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Et), {
+            key: 3,
+            class: "dp__input_icon dp__input_icons"
+          })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+          m.$slots["clear-icon"] && e.inputValue && m.clearable && !m.disabled && !m.readonly ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", zl, [
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(m.$slots, "clear-icon", { clear: ae })
+          ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+          m.clearable && !m.$slots["clear-icon"] && e.inputValue && !m.disabled && !m.readonly ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)($a), {
+            key: 5,
+            class: "dp__clear_icon dp__input_icons",
+            "data-test": "clear-icon",
+            onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(ae, ["stop", "prevent"])
+          }, null, 8, ["onClick"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+        ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+      ], 8, Fl);
+    };
   }
-}), Il = (e) => typeof e == "object", Bn = (e, a) => a, Yl = (e) => Array.isArray(e) && e.length === 2, El = (e) => Array.isArray(e), Fl = (e) => typeof e == "object", bt = (e) => Array.isArray(e), Ve = (e) => Array.isArray(e), Yt = (e) => Array.isArray(e) && e.length === 2, Hl = (e, a) => a ? Array.isArray(e) : Yt(e), Wl = (e) => Array.isArray(e), Kl = (e) => typeof e == "string" || typeof e == "object" || typeof e == "number", On = (e) => typeof e == "string", de = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
-  monthYear: [],
-  calendar: [],
-  time: [],
-  actionRow: [],
-  selectionGrid: [],
-  timePicker: {
-    0: [],
-    1: []
-  },
-  monthPicker: []
-}), Qt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), Vt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), xt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), en = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), tn = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), $e = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0), he = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0), Je = () => {
-  const e = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => Vt.value ? [...de.selectionGrid, de.actionRow].filter((l) => l.length) : xt.value ? [
-    ...de.timePicker[0],
-    ...de.timePicker[1],
-    tn.value ? [] : [Qt.value],
-    de.actionRow
-  ].filter((l) => l.length) : en.value ? [...de.monthPicker, de.actionRow] : [de.monthYear, ...de.calendar, de.time, de.actionRow].filter((l) => l.length)), a = (l) => {
-    $e.value = l ? $e.value + 1 : $e.value - 1;
-    let i = null;
-    e.value[he.value] && (i = e.value[he.value][$e.value]), i || ($e.value = l ? $e.value - 1 : $e.value + 1);
-  }, n = (l) => {
-    if (he.value === 0 && !l || he.value === e.value.length && l)
-      return;
-    he.value = l ? he.value + 1 : he.value - 1, e.value[he.value] ? e.value[he.value] && !e.value[he.value][$e.value] && $e.value !== 0 && ($e.value = e.value[he.value].length - 1) : he.value = l ? he.value - 1 : he.value + 1;
-  }, t = (l) => {
-    let i = null;
-    e.value[he.value] && (i = e.value[he.value][$e.value]), i ? i.focus({ preventScroll: !Vt.value }) : $e.value = l ? $e.value - 1 : $e.value + 1;
-  }, d = () => {
-    a(!0), t(!0);
-  }, m = () => {
-    a(!1), t(!1);
-  }, p = () => {
-    n(!1), t(!0);
-  }, v = () => {
-    n(!0), t(!0);
-  }, g = (l, i) => {
-    de[i] = l;
-  }, w = (l, i) => {
-    de[i] = l;
-  }, V = () => {
-    $e.value = 0, he.value = 0;
-  };
-  return {
-    buildMatrix: g,
-    buildMultiLevelMatrix: w,
-    setTimePickerBackRef: (l) => {
-      Qt.value = l;
-    },
-    setSelectionGrid: (l) => {
-      Vt.value = l, V(), l || (de.selectionGrid = []);
-    },
-    setTimePicker: (l, i = !1) => {
-      xt.value = l, tn.value = i, V(), l || (de.timePicker[0] = [], de.timePicker[1] = []);
-    },
-    setTimePickerElements: (l, i = 0) => {
-      de.timePicker[i] = l;
-    },
-    arrowRight: d,
-    arrowLeft: m,
-    arrowUp: p,
-    arrowDown: v,
-    clearArrowNav: () => {
-      de.monthYear = [], de.calendar = [], de.time = [], de.actionRow = [], de.selectionGrid = [], de.timePicker[0] = [], de.timePicker[1] = [], Vt.value = !1, xt.value = !1, tn.value = !1, en.value = !1, V(), Qt.value = null;
-    },
-    setMonthPicker: (l) => {
-      en.value = l, V();
-    }
-  };
-}, Ul = (e, a, n) => {
-  const t = new Date(JSON.parse(JSON.stringify(e))), d = [];
-  for (let m = 0; m < 7; m++) {
-    const p = (0,date_fns__WEBPACK_IMPORTED_MODULE_27__["default"])(t, m), v = (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(p) !== a;
-    d.push({
-      text: n && v ? "" : p.getDate(),
-      value: p,
-      current: !v
-    });
-  }
-  return d;
-}, Ll = (e, a, n, t) => {
-  const d = [], m = new Date(a, e), p = new Date(a, e + 1, 0), v = (0,date_fns__WEBPACK_IMPORTED_MODULE_24__["default"])(m, { weekStartsOn: n }), g = (w) => {
-    const V = Ul(w, e, t);
-    if (d.push({ days: V }), !d[d.length - 1].days.some((R) => ce(Fe(R.value), Fe(p)))) {
-      const R = (0,date_fns__WEBPACK_IMPORTED_MODULE_27__["default"])(w, 7);
-      g(R);
-    }
-  };
-  return g(v), d;
-}, Gl = (e, a = 3) => {
-  const n = [];
-  for (let t = 0; t < e.length; t += a)
-    n.push([e[t], e[t + 1], e[t + 2]]);
-  return n;
-}, jl = (e, a) => {
-  const n = [1, 2, 3, 4, 5, 6, 7].map((m) => new Intl.DateTimeFormat(e, { weekday: "short", timeZone: "UTC" }).format(new Date(`2017-01-0${m}T00:00:00+00:00`)).slice(0, 2)), t = n.slice(0, a), d = n.slice(a + 1, n.length);
-  return [n[a]].concat(...d).concat(...t);
-}, zl = (e) => {
-  const a = [];
-  for (let n = +e[0]; n <= +e[1]; n++)
-    a.push({ value: +n, text: `${n}` });
-  return a;
-}, Xl = (e, a) => {
-  const n = new Intl.DateTimeFormat(e, { month: a, timeZone: "UTC" });
-  return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((d) => {
-    const m = d < 10 ? `0${d}` : d;
-    return new Date(`2017-${m}-01T00:00:00+00:00`);
-  }).map((d, m) => ({
-    text: n.format(d),
-    value: m
-  }));
-}, ql = (e) => [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11][e], Jl = () => ({
-  enterSubmit: !0,
-  tabSubmit: !0,
-  openMenu: !0,
-  rangeSeparator: " - "
-}), Zl = (e) => Object.assign({ months: [], years: [], times: { hours: [], minutes: [], seconds: [] } }, e), Ql = (e) => {
-  function n(t) {
-    let d = "";
-    const m = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", p = m.length;
-    for (let v = 0; v < t; v++)
-      d += m.charAt(Math.floor(Math.random() * p));
-    return d + e;
-  }
-  return n(5);
-}, ke = (e) => {
-  var n;
-  const a = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(e);
-  return (n = a == null ? void 0 : a.$el) != null ? n : a;
-}, xl = (e) => Object.assign({ type: "dot" }, e), Nn = (e) => Object.assign(
-  {
-    menuAppear: "dp-menu-appear",
-    open: "dp-slide-down",
-    close: "dp-slide-up",
-    next: "calendar-next",
-    previous: "calendar-prev",
-    vNext: "dp-slide-up",
-    vPrevious: "dp-slide-down"
-  },
-  e
-), er = (e) => Object.assign(
-  {
-    toggleOverlay: "Toggle overlay",
-    menu: "Datepicker menu",
-    input: "Datepicker input",
-    calendarWrap: "Calendar wrapper",
-    calendarDays: "Calendar days",
-    openTimePicker: "Open time picker",
-    closeTimePicker: "Close time Picker",
-    incrementValue: (a) => `Increment ${a}`,
-    decrementValue: (a) => `Decrement ${a}`,
-    openTpOverlay: (a) => `Open ${a} overlay`,
-    amPmButton: "Switch AM/PM mode",
-    openYearsOverlay: "Open years overlay",
-    openMonthsOverlay: "Open months overlay",
-    nextMonth: "Next month",
-    prevMonth: "Previous month"
-  },
-  e
-), oa = (e) => Array.isArray(e) ? !!e[0] && !!e[1] : !1, tr = { class: "dp__selection_preview" }, nr = { class: "dp__action_buttons" }, ar = ["onKeydown"], lr = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+}), Kl = { class: "dp__selection_preview" }, xl = { class: "dp__action_buttons" }, Gl = ["onKeydown"], Zl = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: "ActionRow",
   props: {
-    ...na,
-    ...kn,
-    ...ta,
-    ...wn,
-    ...ra,
-    inline: { type: Boolean, default: !1 },
-    timePicker: { type: Boolean, default: !1 },
     calendarWidth: { type: Number, default: 0 },
     menuMount: { type: Boolean, default: !1 },
-    enableTimePicker: { type: Boolean, default: !0 }
+    internalModelValue: { type: [Date, Array], default: null },
+    ...Qe
   },
-  emits: ["closePicker", "selectDate", "invalid-select"],
-  setup(e, { emit: a }) {
-    const n = e, { buildMatrix: t } = Je(), d = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Zn), m = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(qe), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), v = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+  emits: ["close-picker", "select-date", "invalid-select"],
+  setup(e, { emit: n }) {
+    const a = e, { formatDate: t, isValidTime: r, defaults: u } = Ee(a), { buildMatrix: p } = Je(), $ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), Y = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
-      m != null && m.value && t([ke(p), ke(v)], "actionRow");
+      a.arrowNavigation && p([Ce($), Ce(Y)], "actionRow");
     });
-    const g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => n.range && !n.partialRange && n.internalModelValue ? n.internalModelValue.length === 2 : !0), w = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
+    const L = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => a.range && !a.partialRange && a.internalModelValue ? a.internalModelValue.length === 2 : !0), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
       dp__action: !0,
       dp__select: !0,
-      dp__action_disabled: !V.value || !R.value || !g.value
-    })), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => !n.enableTimePicker || n.ignoreTimeValidation ? !0 : on(n.internalModelValue, n.maxTime, n.minTime, n.maxDate, n.minDate)), R = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => n.monthPicker ? Pl(n.internalModelValue, n.minDate, n.maxDate) : !0), E = (T) => vt(T, n.previewFormat, d == null ? void 0 : d.value), N = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => !n.internalModelValue || !n.menuMount ? "" : typeof n.previewFormat == "string" ? bt(n.internalModelValue) ? n.internalModelValue.length === 2 && n.internalModelValue[1] ? n.multiCalendars > 0 ? `${E(n.internalModelValue[0])} - ${E(
-      n.internalModelValue[1]
-    )}` : [E(n.internalModelValue[0]), E(n.internalModelValue[1])] : n.multiDates ? n.internalModelValue.map((T) => `${E(T)}`) : n.modelAuto ? `${E(n.internalModelValue[0])}` : `${E(n.internalModelValue[0])} -` : vt(n.internalModelValue, n.previewFormat, d == null ? void 0 : d.value) : n.timePicker ? n.previewFormat(sn(n.internalModelValue)) : n.monthPicker ? n.previewFormat(It(n.internalModelValue)) : n.previewFormat(n.internalModelValue)), G = () => {
-      V.value && R.value && g.value ? a("selectDate") : a("invalid-select");
+      dp__action_disabled: !i.value || !_.value || !L.value
+    })), i = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => !a.enableTimePicker || a.ignoreTimeValidation ? !0 : r(a.internalModelValue)), _ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => a.monthPicker ? Q(a.internalModelValue) : !0), I = () => {
+      const M = u.value.previewFormat;
+      return a.timePicker || a.monthPicker, M(_e(a.internalModelValue));
+    }, B = () => {
+      const M = a.internalModelValue;
+      return u.value.multiCalendars > 0 ? `${t(M[0])} - ${t(M[1])}` : [t(M[0]), t(M[1])];
+    }, X = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => !a.internalModelValue || !a.menuMount ? "" : typeof u.value.previewFormat == "string" ? Array.isArray(a.internalModelValue) ? a.internalModelValue.length === 2 && a.internalModelValue[1] ? B() : a.multiDates ? a.internalModelValue.map((M) => `${t(M)}`) : a.modelAuto ? `${t(a.internalModelValue[0])}` : `${t(a.internalModelValue[0])} -` : t(a.internalModelValue) : I()), Q = (M) => {
+      if (!a.monthPicker)
+        return !0;
+      let Z = !0;
+      return a.minDate && a.maxDate ? Be(b(M), b(a.minDate)) && Pe(b(M), b(a.maxDate)) : (a.minDate && (Z = Be(b(M), b(a.minDate))), a.maxDate && (Z = Pe(b(M), b(a.maxDate))), Z);
+    }, C = () => {
+      i.value && _.value && L.value ? n("select-date") : n("invalid-select");
     };
-    return (T, x) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    return (M, Z) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       class: "dp__action_row",
       style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)(e.calendarWidth ? { width: `${e.calendarWidth}px` } : {})
     }, [
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", tr, [
-        T.$slots["action-preview"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(T.$slots, "action-preview", {
+      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", Kl, [
+        M.$slots["action-preview"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(M.$slots, "action-preview", {
           key: 0,
-          value: T.internalModelValue
+          value: e.internalModelValue
         }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-        T.$slots["action-preview"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
-          Array.isArray((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N)) ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 0 }, [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N)), 1)
+        M.$slots["action-preview"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+          Array.isArray((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(X)) ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 0 }, [
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(X)), 1)
           ], 64)),
-          Array.isArray((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N)) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N), (l, i) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", { key: i }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(l), 1))), 128)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+          Array.isArray((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(X)) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(X), (ae, ne) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", { key: ne }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(ae), 1))), 128)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
         ], 64))
       ]),
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", nr, [
-        T.$slots["action-select"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(T.$slots, "action-select", {
+      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", xl, [
+        M.$slots["action-select"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(M.$slots, "action-select", {
           key: 0,
-          value: T.internalModelValue
+          value: e.internalModelValue
         }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-        T.$slots["action-select"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
-          e.inline ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+        M.$slots["action-select"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+          M.inline ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
             key: 0,
             class: "dp__action dp__cancel",
             ref_key: "cancelButtonRef",
-            ref: p,
+            ref: $,
             tabindex: "0",
-            onClick: x[0] || (x[0] = (l) => T.$emit("closePicker")),
+            onClick: Z[0] || (Z[0] = (ae) => M.$emit("close-picker")),
             onKeydown: [
-              x[1] || (x[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((l) => T.$emit("closePicker"), ["enter"])),
-              x[2] || (x[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((l) => T.$emit("closePicker"), ["space"]))
+              Z[1] || (Z[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((ae) => M.$emit("close-picker"), ["enter"])),
+              Z[2] || (Z[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((ae) => M.$emit("close-picker"), ["space"]))
             ]
-          }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(T.cancelText), 545)),
+          }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(M.cancelText), 545)),
           (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-            class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(w)),
+            class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(V)),
             tabindex: "0",
             onKeydown: [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(G, ["enter"]),
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(G, ["space"])
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(C, ["enter"]),
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(C, ["space"])
             ],
-            onClick: G,
+            onClick: C,
+            "data-test": "select-button",
             ref_key: "selectButtonRef",
-            ref: v
-          }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(T.selectText), 43, ar)
+            ref: Y
+          }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(M.selectText), 43, Gl)
         ], 64))
       ])
     ], 4));
   }
-}), rr = ["aria-label"], sr = {
+}), Xl = ["aria-label"], ql = {
   class: "dp__calendar_header",
   role: "row"
-}, or = {
+}, Jl = {
   key: 0,
   class: "dp__calendar_header_item",
   role: "gridcell"
-}, ir = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", { class: "dp__calendar_header_separator" }, null, -1), ur = ["aria-label"], dr = {
+}, Ql = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", { class: "dp__calendar_header_separator" }, null, -1), er = ["aria-label"], tr = {
   key: 0,
   role: "gridcell",
   class: "dp__calendar_item dp__week_num"
-}, cr = { class: "dp__cell_inner" }, fr = ["aria-selected", "aria-disabled", "onClick", "onKeydown", "onMouseover"], mr = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", { class: "dp__arrow_bottom_tp" }, null, -1), vr = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+}, nr = { class: "dp__cell_inner" }, ar = ["aria-selected", "aria-disabled", "aria-label", "data-test", "onClick", "onKeydown", "onMouseover"], lr = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", { class: "dp__arrow_bottom_tp" }, null, -1), rr = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: "Calendar",
   props: {
-    ...sa,
-    ...aa,
     mappedDates: { type: Array, default: () => [] },
     getWeekNum: {
       type: Function,
       default: () => ""
     },
-    modeHeight: { type: [Number, String], default: 255 },
-    specificMode: { type: Boolean, default: !1 }
+    specificMode: { type: Boolean, default: !1 },
+    instance: { type: Number, default: 0 },
+    month: { type: Number, default: 0 },
+    year: { type: Number, default: 0 },
+    ...Qe
   },
-  emits: ["selectDate", "setHoverDate", "handleScroll", "mount", "handleSwipe", "handleSpace"],
-  setup(e, { expose: a, emit: n }) {
-    const t = e, d = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), m = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({ bottom: "", left: "", transform: "" }), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), v = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!0), w = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Kt), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Xe), R = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(qe), E = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(""), N = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({ startX: 0, endX: 0, startY: 0, endY: 0 }), G = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.dayNames ? Array.isArray(t.dayNames) ? t.dayNames : t.dayNames(t.locale, +t.weekStart) : jl(t.locale, +t.weekStart)), { buildMultiLevelMatrix: T } = Je();
+  emits: [
+    "select-date",
+    "set-hover-date",
+    "handle-scroll",
+    "mount",
+    "handle-swipe",
+    "handle-space"
+  ],
+  setup(e, { expose: n, emit: a }) {
+    const t = e, { buildMultiLevelMatrix: r } = Je(), { setDateMonthOrYear: u, defaults: p } = Ee(t), $ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), Y = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({ bottom: "", left: "", transform: "" }), L = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), i = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!0), _ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(""), I = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({ startX: 0, endX: 0, startY: 0, endY: 0 }), B = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.dayNames ? Array.isArray(t.dayNames) ? t.dayNames : t.dayNames(t.locale, +t.weekStart) : Dl(t.locale, +t.weekStart));
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
-      n("mount", { cmp: "calendar", refs: p }), t.noSwipe || v.value && (v.value.addEventListener("touchstart", ee, { passive: !1 }), v.value.addEventListener("touchend", Z, { passive: !1 }), v.value.addEventListener("touchmove", j, { passive: !1 })), t.monthChangeOnScroll && v.value && v.value.addEventListener("wheel", u, { passive: !1 });
+      a("mount", { cmp: "calendar", refs: L }), t.noSwipe || V.value && (V.value.addEventListener("touchstart", N, { passive: !1 }), V.value.addEventListener("touchend", j, { passive: !1 }), V.value.addEventListener("touchmove", ee, { passive: !1 })), t.monthChangeOnScroll && V.value && V.value.addEventListener("wheel", g, { passive: !1 });
     });
-    const x = (s, h) => {
-      if (w != null && w.value) {
-        const F = Fe(st(new Date(), t.month, t.year));
-        E.value = De(Fe(st(new Date(), s, h)), F) ? w.value[t.vertical ? "vNext" : "next"] : w.value[t.vertical ? "vPrevious" : "previous"], g.value = !1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
-          g.value = !0;
+    const X = (c) => c ? t.vertical ? "vNext" : "next" : t.vertical ? "vPrevious" : "previous", Q = (c, A) => {
+      if (t.transitions) {
+        const T = je(u(b(), t.month, t.year));
+        _.value = Be(je(u(b(), c, A)), T) ? p.value.transitions[X(!0)] : p.value.transitions[X(!1)], i.value = !1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+          i.value = !0;
         });
       }
-    }, l = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+    }, C = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
       () => ({
         dp__calendar_wrap: !0,
         [t.calendarClassName]: !!t.calendarClassName
       })
-    ), i = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (s) => {
-      const h = xl(s);
+    ), M = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (c) => {
+      const A = Tl(c);
       return {
-        dp__marker_dot: h.type === "dot",
-        dp__marker_line: h.type === "line"
+        dp__marker_dot: A.type === "dot",
+        dp__marker_line: A.type === "line"
       };
-    }), Y = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (s) => ce(s, d.value)), z = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
+    }), Z = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (c) => ye(c, $.value)), ae = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
       dp__calendar: !0,
-      dp__calendar_next: t.multiCalendars > 0 && t.instance !== 0
-    })), P = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.specificMode ? { height: `${t.modeHeight}px` } : null), K = (s, h, F) => {
-      var J, I;
-      if (n("setHoverDate", s), (I = (J = s.marker) == null ? void 0 : J.tooltip) != null && I.length) {
-        const oe = ke(p.value[h][F]);
-        if (oe) {
-          const { width: te, height: k } = oe.getBoundingClientRect();
-          m.value = {
-            bottom: `${k}px`,
-            left: `${te / 2}px`,
+      dp__calendar_next: p.value.multiCalendars > 0 && t.instance !== 0
+    })), ne = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.specificMode ? { height: `${t.modeHeight}px` } : void 0), P = (c, A, T) => {
+      var K, l;
+      if (a("set-hover-date", c), (l = (K = c.marker) == null ? void 0 : K.tooltip) != null && l.length) {
+        const f = Ce(L.value[A][T]);
+        if (f) {
+          const { width: k, height: R } = f.getBoundingClientRect();
+          Y.value = {
+            bottom: `${R}px`,
+            left: `${k / 2}px`,
             transform: "translateX(-50%)"
-          }, d.value = s.value;
+          }, $.value = c.value;
         }
       }
-    }, X = () => {
-      d.value = null;
-    }, ee = (s) => {
-      N.value.startX = s.changedTouches[0].screenX, N.value.startY = s.changedTouches[0].screenY;
-    }, Z = (s) => {
-      N.value.endX = s.changedTouches[0].screenX, N.value.endY = s.changedTouches[0].screenY, M();
-    }, j = (s) => {
-      s.preventDefault();
-    }, M = () => {
-      const s = t.vertical ? "Y" : "X";
-      Math.abs(N.value[`start${s}`] - N.value[`end${s}`]) > 10 && n("handleSwipe", N.value[`start${s}`] > N.value[`end${s}`] ? "right" : "left");
-    }, D = (s, h, F) => {
-      s && (Array.isArray(p.value[h]) ? p.value[h][F] = s : p.value[h] = [s]), R != null && R.value && T(p.value, "calendar");
-    }, u = (s) => {
-      t.monthChangeOnScroll && (s.preventDefault(), n("handleScroll", s));
+    }, m = () => {
+      $.value = null;
+    }, N = (c) => {
+      I.value.startX = c.changedTouches[0].screenX, I.value.startY = c.changedTouches[0].screenY;
+    }, j = (c) => {
+      I.value.endX = c.changedTouches[0].screenX, I.value.endY = c.changedTouches[0].screenY, E();
+    }, ee = (c) => {
+      t.vertical && !t.inline && c.preventDefault();
+    }, E = () => {
+      const c = t.vertical ? "Y" : "X";
+      Math.abs(I.value[`start${c}`] - I.value[`end${c}`]) > 10 && a("handle-swipe", I.value[`start${c}`] > I.value[`end${c}`] ? "right" : "left");
+    }, z = (c, A, T) => {
+      c && (Array.isArray(L.value[A]) ? L.value[A][T] = c : L.value[A] = [c]), t.arrowNavigation && r(L.value, "calendar");
+    }, g = (c) => {
+      t.monthChangeOnScroll && (c.preventDefault(), a("handle-scroll", c));
     };
-    return a({ triggerTransition: x }), (s, h) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(z))
-    }, [
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-        style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(P))
+    return n({ triggerTransition: Q }), (c, A) => {
+      var T;
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ae))
       }, [
-        e.specificMode ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-          key: 0,
-          ref_key: "calendarWrapRef",
-          ref: v,
-          class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(l)),
-          role: "grid",
-          "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(V).calendarWrap
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+          style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ne))
         }, [
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", sr, [
-            s.weekNumbers ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", or, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(s.weekNumName), 1)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-            ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(G), (F, J) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-              class: "dp__calendar_header_item",
-              role: "gridcell",
-              key: J
-            }, [
-              s.$slots["calendar-header"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(s.$slots, "calendar-header", {
-                key: 0,
-                day: F,
-                index: J
-              }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-              s.$slots["calendar-header"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(F), 1)
-              ], 64))
-            ]))), 128))
-          ]),
-          ir,
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
-            name: E.value,
-            css: !!(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(w)
-          }, {
-            default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-              g.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-                key: 0,
-                class: "dp__calendar",
-                role: "grid",
-                "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(V).calendarDays
+          e.specificMode ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+            key: 0,
+            ref_key: "calendarWrapRef",
+            ref: V,
+            class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(C)),
+            role: "grid",
+            "aria-label": (T = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(p).ariaLabels) == null ? void 0 : T.calendarWrap
+          }, [
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", ql, [
+              c.weekNumbers ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Jl, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(c.weekNumName), 1)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+              ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(B), (K, l) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                class: "dp__calendar_header_item",
+                role: "gridcell",
+                key: l,
+                "data-test": "calendar-header"
               }, [
-                ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(e.mappedDates, (F, J) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-                  class: "dp__calendar_row",
-                  role: "row",
-                  key: J
-                }, [
-                  s.weekNumbers ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", dr, [
-                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", cr, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(e.getWeekNum(F.days)), 1)
-                  ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-                  ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(F.days, (I, oe) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-                    role: "gridcell",
-                    class: "dp__calendar_item",
-                    ref_for: !0,
-                    ref: (te) => D(te, J, oe),
-                    key: oe + J,
-                    "aria-selected": I.classData.dp__active_date || I.classData.dp__range_start || I.classData.dp__range_start,
-                    "aria-disabled": I.classData.dp__cell_disabled,
-                    tabindex: "0",
-                    onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((te) => s.$emit("selectDate", I), ["stop", "prevent"]),
-                    onKeydown: [
-                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((te) => s.$emit("selectDate", I), ["enter"]),
-                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((te) => s.$emit("handleSpace", I), ["space"])
-                    ],
-                    onMouseover: (te) => K(I, J, oe),
-                    onMouseleave: X
-                  }, [
-                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-                      class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["dp__cell_inner", I.classData])
-                    }, [
-                      s.$slots.day ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(s.$slots, "day", {
-                        key: 0,
-                        day: +I.text,
-                        date: I.value
-                      }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-                      s.$slots.day ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
-                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(I.text), 1)
-                      ], 64)),
-                      I.marker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-                        key: 2,
-                        class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(i)(I.marker)),
-                        style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)(I.marker.color ? { backgroundColor: I.marker.color } : {})
-                      }, null, 6)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y)(I.value) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-                        key: 3,
-                        class: "dp__marker_tooltip",
-                        style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)(m.value)
-                      }, [
-                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-                          class: "dp__tooltip_content",
-                          onClick: h[0] || (h[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(() => {
-                          }, ["stop"]))
-                        }, [
-                          ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(I.marker.tooltip, (te, k) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-                            key: k,
-                            class: "dp__tooltip_text"
-                          }, [
-                            s.$slots["marker-tooltip"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(s.$slots, "marker-tooltip", {
-                              key: 0,
-                              tooltop: te,
-                              day: I.value
-                            }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-                            s.$slots["marker-tooltip"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
-                              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-                                class: "dp__tooltip_mark",
-                                style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)(te.color ? { backgroundColor: te.color } : {})
-                              }, null, 4),
-                              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(te.text), 1)
-                            ], 64))
-                          ]))), 128)),
-                          mr
-                        ])
-                      ], 4)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
-                    ], 2)
-                  ], 40, fr))), 128))
-                ]))), 128))
-              ], 8, ur)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+                c.$slots["calendar-header"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(c.$slots, "calendar-header", {
+                  key: 0,
+                  day: K,
+                  index: l
+                }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                c.$slots["calendar-header"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(K), 1)
+                ], 64))
+              ]))), 128))
             ]),
-            _: 3
-          }, 8, ["name", "css"])
-        ], 10, rr))
-      ], 4)
-    ], 2));
+            Ql,
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+              name: _.value,
+              css: !!c.transitions
+            }, {
+              default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => {
+                var K;
+                return [
+                  i.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                    key: 0,
+                    class: "dp__calendar",
+                    role: "grid",
+                    "aria-label": (K = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(p).ariaLabels) == null ? void 0 : K.calendarDays
+                  }, [
+                    ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(e.mappedDates, (l, f) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                      class: "dp__calendar_row",
+                      role: "row",
+                      key: f
+                    }, [
+                      c.weekNumbers ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", tr, [
+                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", nr, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(e.getWeekNum(l.days)), 1)
+                      ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                      ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(l.days, (k, R) => {
+                        var ie, ce, v;
+                        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                          role: "gridcell",
+                          class: "dp__calendar_item",
+                          ref_for: !0,
+                          ref: (d) => z(d, f, R),
+                          key: R + f,
+                          "aria-selected": k.classData.dp__active_date || k.classData.dp__range_start || k.classData.dp__range_start,
+                          "aria-disabled": k.classData.dp__cell_disabled,
+                          "aria-label": (ce = (ie = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(p).ariaLabels) == null ? void 0 : ie.day) == null ? void 0 : ce.call(ie, k),
+                          tabindex: "0",
+                          "data-test": k.value,
+                          onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((d) => c.$emit("select-date", k), ["stop", "prevent"]),
+                          onKeydown: [
+                            (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((d) => c.$emit("select-date", k), ["enter"]),
+                            (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((d) => c.$emit("handle-space", k), ["space"])
+                          ],
+                          onMouseover: (d) => P(k, f, R),
+                          onMouseleave: m
+                        }, [
+                          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                            class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["dp__cell_inner", k.classData])
+                          }, [
+                            c.$slots.day ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(c.$slots, "day", {
+                              key: 0,
+                              day: +k.text,
+                              date: k.value
+                            }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                            c.$slots.day ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+                              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(k.text), 1)
+                            ], 64)),
+                            k.marker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                              key: 2,
+                              class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M)(k.marker)),
+                              style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)(k.marker.color ? { backgroundColor: k.marker.color } : {})
+                            }, null, 6)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                            (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Z)(k.value) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                              key: 3,
+                              class: "dp__marker_tooltip",
+                              style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)(Y.value)
+                            }, [
+                              (v = k.marker) != null && v.tooltip ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                                key: 0,
+                                class: "dp__tooltip_content",
+                                onClick: A[0] || (A[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(() => {
+                                }, ["stop"]))
+                              }, [
+                                ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(k.marker.tooltip, (d, O) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                                  key: O,
+                                  class: "dp__tooltip_text"
+                                }, [
+                                  c.$slots["marker-tooltip"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(c.$slots, "marker-tooltip", {
+                                    key: 0,
+                                    tooltop: d,
+                                    day: k.value
+                                  }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                                  c.$slots["marker-tooltip"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+                                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                                      class: "dp__tooltip_mark",
+                                      style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)(d.color ? { backgroundColor: d.color } : {})
+                                    }, null, 4),
+                                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(d.text), 1)
+                                  ], 64))
+                                ]))), 128)),
+                                lr
+                              ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+                            ], 4)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+                          ], 2)
+                        ], 40, ar);
+                      }), 128))
+                    ]))), 128))
+                  ], 8, er)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+                ];
+              }),
+              _: 3
+            }, 8, ["name", "css"])
+          ], 10, Xl))
+        ], 4)
+      ], 2);
+    };
   }
-}), yr = ["aria-label", "aria-disabled"], nn = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+}), or = ["aria-label", "aria-disabled"], Qt = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: "ActionIcon",
   props: {
     ariaLabel: { type: String, default: "" },
     disabled: { type: Boolean, default: !1 }
   },
-  emits: ["activate", "setRef"],
-  setup(e, { emit: a }) {
-    const n = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => a("setRef", n)), (t, d) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+  emits: ["activate", "set-ref"],
+  setup(e, { emit: n }) {
+    const a = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => n("set-ref", a)), (t, r) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       class: "dp__month_year_col_nav",
-      onClick: d[0] || (d[0] = (m) => t.$emit("activate")),
+      onClick: r[0] || (r[0] = (u) => t.$emit("activate")),
       onKeydown: [
-        d[1] || (d[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((m) => t.$emit("activate"), ["enter"])),
-        d[2] || (d[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((m) => t.$emit("activate"), ["space"]))
+        r[1] || (r[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((u) => t.$emit("activate"), ["enter"])),
+        r[2] || (r[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((u) => t.$emit("activate"), ["space"]))
       ],
       tabindex: "0",
       role: "button",
       "aria-label": e.ariaLabel,
       "aria-disabled": e.disabled,
       ref_key: "elRef",
-      ref: n
+      ref: a
     }, [
       (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["dp__inner_nav", { dp__inner_nav_disabled: e.disabled }])
       }, [
         (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(t.$slots, "default")
       ], 2)
-    ], 40, yr));
+    ], 40, or));
   }
-}), pr = { class: "dp__selection_grid_header" }, hr = ["aria-selected", "aria-disabled", "onClick", "onKeydown", "onMouseover"], gr = ["aria-label", "onKeydown"], Mt = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+}), sr = ["onKeydown"], ir = { class: "dp__selection_grid_header" }, ur = ["aria-selected", "aria-disabled", "data-test", "onClick", "onKeydown", "onMouseover"], cr = ["aria-label", "onKeydown"], gt = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: "SelectionGrid",
   props: {
     items: { type: Array, default: () => [] },
@@ -12010,163 +12949,177 @@ const Gn = /* @__PURE__ */ ot(kl, [["render", Dl]]), Tn = (e, a) => {
     headerRefs: { type: Array, default: () => [] },
     skipButtonRef: { type: Boolean, default: !1 },
     monthPicker: { type: Boolean, default: !1 },
-    yearPicker: { type: Boolean, default: !1 }
+    yearPicker: { type: Boolean, default: !1 },
+    escClose: { type: Boolean, default: !0 },
+    type: { type: String, default: null },
+    arrowNavigation: { type: Boolean, default: !1 },
+    autoApply: { type: Boolean, default: !1 },
+    textInput: { type: Boolean, default: !1 },
+    ariaLabels: { type: Object, default: () => ({}) },
+    hideNavigation: { type: Array, default: () => [] }
   },
-  emits: ["update:modelValue", "selected", "toggle", "reset-flow"],
-  setup(e, { expose: a, emit: n }) {
-    const t = e, d = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), m = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), v = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(pn, !1), w = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Jn, (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1)), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Xe), R = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(qe), E = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(), N = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(), { setSelectionGrid: G, buildMultiLevelMatrix: T, setMonthPicker: x } = Je();
+  emits: ["update:model-value", "selected", "toggle", "reset-flow"],
+  setup(e, { expose: n, emit: a }) {
+    const t = e, { setSelectionGrid: r, buildMultiLevelMatrix: u, setMonthPicker: p } = Je(), { hideNavigationButtons: $ } = Ee(t), Y = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), L = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), i = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), _ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(), I = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUpdate)(() => {
-      m.value = null;
+      L.value = null;
     }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)().then(() => Z()), i(), l(!0);
-    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.onUnmounted)(() => l(!1));
-    const l = (s) => {
-      var h;
-      R != null && R.value && ((h = t.headerRefs) != null && h.length ? x(s) : G(s));
-    }, i = () => {
-      const s = ke(p);
-      s && (w.value || s.focus({ preventScroll: !0 }), d.value = s.clientHeight < s.scrollHeight);
-    }, Y = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+      (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)().then(() => m()), X(), B(!0);
+    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.onUnmounted)(() => B(!1));
+    const B = (c) => {
+      var A;
+      t.arrowNavigation && ((A = t.headerRefs) != null && A.length ? p(c) : r(c));
+    }, X = () => {
+      const c = Ce(V);
+      c && (t.textInput || c.focus({ preventScroll: !0 }), Y.value = c.clientHeight < c.scrollHeight);
+    }, Q = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
       () => ({
         dp__overlay: !0
       })
-    ), z = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
+    ), C = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
       dp__overlay_col: !0
-    })), P = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.items.map((s) => s.filter((h) => h).map((h) => {
-      var I, oe, te;
-      const F = t.disabledValues.some((k) => k === h.value) || ee(h.value), J = (I = t.multiModelValue) != null && I.length ? (oe = t.multiModelValue) == null ? void 0 : oe.some(
-        (k) => ce(
-          k,
-          (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(
-            t.monthPicker ? (0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(new Date(), h.value) : new Date(),
-            t.monthPicker ? t.year : h.value
+    })), M = (c) => t.skipActive ? !1 : c.value === t.modelValue, Z = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.items.map((c) => c.filter((A) => A).map((A) => {
+      var l, f, k;
+      const T = t.disabledValues.some((R) => R === A.value) || P(A.value), K = (l = t.multiModelValue) != null && l.length ? (f = t.multiModelValue) == null ? void 0 : f.some(
+        (R) => ye(
+          R,
+          (0,date_fns__WEBPACK_IMPORTED_MODULE_22__["default"])(
+            t.monthPicker ? (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), A.value) : new Date(),
+            t.monthPicker ? t.year : A.value
           )
         )
-      ) : t.skipActive ? !1 : h.value === t.modelValue;
+      ) : M(A);
       return {
-        ...h,
+        ...A,
         className: {
-          dp__overlay_cell_active: J,
-          dp__overlay_cell: !J,
-          dp__overlay_cell_disabled: F,
-          dp__overlay_cell_active_disabled: F && J,
+          dp__overlay_cell_active: K,
+          dp__overlay_cell: !K,
+          dp__overlay_cell_disabled: T,
+          dp__overlay_cell_active_disabled: T && K,
           dp__overlay_cell_pad: !0,
-          dp__cell_in_between: (te = t.multiModelValue) != null && te.length ? M(h.value) : !1
+          dp__cell_in_between: (k = t.multiModelValue) != null && k.length ? j(A.value) : !1
         }
       };
-    }))), K = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+    }))), ae = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
       () => ({
         dp__button: !0,
         dp__overlay_action: !0,
-        dp__over_action_scroll: d.value,
-        dp__button_bottom: g
+        dp__over_action_scroll: Y.value,
+        dp__button_bottom: t.autoApply
       })
-    ), X = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-      var s, h;
+    ), ne = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+      var c, A;
       return {
         dp__overlay_container: !0,
-        dp__container_flex: ((s = t.items) == null ? void 0 : s.length) <= 6,
-        dp__container_block: ((h = t.items) == null ? void 0 : h.length) > 6
+        dp__container_flex: ((c = t.items) == null ? void 0 : c.length) <= 6,
+        dp__container_block: ((A = t.items) == null ? void 0 : A.length) > 6
       };
-    }), ee = (s) => {
-      const h = t.maxValue || t.maxValue === 0, F = t.minValue || t.minValue === 0;
-      return !h && !F ? !1 : h && F ? +s > +t.maxValue || +s < +t.minValue : h ? +s > +t.maxValue : F ? +s < +t.minValue : !1;
-    }, Z = () => {
-      const s = ke(m);
-      if (s) {
-        const h = ke(p);
-        h && (h.scrollTop = s.offsetTop - h.offsetTop - (h.getBoundingClientRect().height / 2 - s.getBoundingClientRect().height));
+    }), P = (c) => {
+      const A = t.maxValue || t.maxValue === 0, T = t.minValue || t.minValue === 0;
+      return !A && !T ? !1 : A && T ? +c > +t.maxValue || +c < +t.minValue : A ? +c > +t.maxValue : T ? +c < +t.minValue : !1;
+    }, m = () => {
+      const c = Ce(L);
+      if (c) {
+        const A = Ce(V);
+        A && (A.scrollTop = c.offsetTop - A.offsetTop - (A.getBoundingClientRect().height / 2 - c.getBoundingClientRect().height));
       }
-    }, j = (s) => {
-      !t.disabledValues.some((h) => h === s) && !ee(s) && (n("update:modelValue", s), n("selected"));
-    }, M = (s) => {
-      const h = t.monthPicker ? t.year : s;
-      return zn(
+    }, N = (c) => {
+      !t.disabledValues.some((A) => A === c) && !P(c) && (a("update:model-value", c), a("selected"));
+    }, j = (c) => {
+      const A = t.monthPicker ? t.year : c;
+      return Hn(
         t.multiModelValue,
-        (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(
-          t.monthPicker ? (0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(new Date(), E.value || 0) : new Date(),
-          t.monthPicker ? h : E.value || h
+        (0,date_fns__WEBPACK_IMPORTED_MODULE_22__["default"])(
+          t.monthPicker ? (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), _.value || 0) : new Date(),
+          t.monthPicker ? A : _.value || A
         ),
-        (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(t.monthPicker ? (0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(new Date(), s) : new Date(), h)
+        (0,date_fns__WEBPACK_IMPORTED_MODULE_22__["default"])(t.monthPicker ? (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), c) : new Date(), A)
       );
-    }, D = () => {
-      n("toggle"), n("reset-flow");
-    }, u = (s, h, F, J) => {
-      var I, oe;
-      if (s && (h.value === +t.modelValue && !t.disabledValues.includes(h.value) && (m.value = s), R != null && R.value)) {
-        Array.isArray(v.value[F]) ? v.value[F][J] = s : v.value[F] = [s];
-        const te = (I = t.headerRefs) != null && I.length ? [t.headerRefs].concat(v.value) : v.value.concat([t.skipButtonRef ? [] : [N.value]]);
-        T(te, (oe = t.headerRefs) != null && oe.length ? "monthPicker" : "selectionGrid");
-      }
+    }, ee = () => {
+      a("toggle"), a("reset-flow");
+    }, E = () => {
+      t.escClose && ee();
+    }, z = (c, A, T, K) => {
+      c && (A.value === +t.modelValue && !t.disabledValues.includes(A.value) && (L.value = c), t.arrowNavigation && (Array.isArray(i.value[T]) ? i.value[T][K] = c : i.value[T] = [c], g()));
+    }, g = () => {
+      var A, T;
+      const c = (A = t.headerRefs) != null && A.length ? [t.headerRefs].concat(i.value) : i.value.concat([t.skipButtonRef ? [] : [I.value]]);
+      u(_e(c), (T = t.headerRefs) != null && T.length ? "monthPicker" : "selectionGrid");
     };
-    return a({ focusGrid: i }), (s, h) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      ref_key: "gridWrapRef",
-      ref: p,
-      class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y)),
-      role: "dialog",
-      tabindex: "0"
-    }, [
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-        class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(X)),
-        role: "grid"
+    return n({ focusGrid: X }), (c, A) => {
+      var T;
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        ref_key: "gridWrapRef",
+        ref: V,
+        class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Q)),
+        role: "dialog",
+        tabindex: "0",
+        onKeydown: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(E, ["esc"])
       }, [
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", pr, [
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(s.$slots, "header")
-        ]),
-        ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(P), (F, J) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-          class: "dp__overlay_row",
-          key: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ql)(J),
-          role: "row"
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+          class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ne)),
+          role: "grid"
         }, [
-          ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(F, (I, oe) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-            role: "gridcell",
-            class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(z)),
-            key: I.value,
-            "aria-selected": I.value === e.modelValue && !e.disabledValues.includes(I.value),
-            "aria-disabled": I.className.dp__overlay_cell_disabled,
-            ref_for: !0,
-            ref: (te) => u(te, I, J, oe),
-            tabindex: "0",
-            onClick: (te) => j(I.value),
-            onKeydown: [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((te) => j(I.value), ["enter"]),
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((te) => j(I.value), ["space"])
-            ],
-            onMouseover: (te) => E.value = I.value
-          }, [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-              class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(I.className)
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", ir, [
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(c.$slots, "header")
+          ]),
+          c.$slots.overlay ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(c.$slots, "overlay", { key: 0 }) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+            ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Z), (K, l) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+              class: "dp__overlay_row",
+              key: l,
+              role: "row"
             }, [
-              s.$slots.item ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(s.$slots, "item", {
-                key: 0,
-                item: I
-              }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-              s.$slots.item ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(I.text), 1)
-              ], 64))
-            ], 2)
-          ], 42, hr))), 128))
-        ]))), 128)),
-        s.$slots["button-icon"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-          key: 0,
-          role: "button",
-          "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(V).toggleOverlay,
-          class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(K)),
-          tabindex: "0",
-          ref_key: "toggleButton",
-          ref: N,
-          onClick: D,
-          onKeydown: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(D, ["enter"])
-        }, [
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(s.$slots, "button-icon")
-        ], 42, gr)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
-      ], 2)
-    ], 2));
+              ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(K, (f, k) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                role: "gridcell",
+                class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(C)),
+                key: f.value,
+                "aria-selected": f.value === e.modelValue && !e.disabledValues.includes(f.value),
+                "aria-disabled": f.className.dp__overlay_cell_disabled,
+                ref_for: !0,
+                ref: (R) => z(R, f, l, k),
+                tabindex: "0",
+                "data-test": f.text,
+                onClick: (R) => N(f.value),
+                onKeydown: [
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((R) => N(f.value), ["enter"]),
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((R) => N(f.value), ["space"])
+                ],
+                onMouseover: (R) => _.value = f.value
+              }, [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                  class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(f.className)
+                }, [
+                  c.$slots.item ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(c.$slots, "item", {
+                    key: 0,
+                    item: f
+                  }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                  c.$slots.item ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(f.text), 1)
+                  ], 64))
+                ], 2)
+              ], 42, ur))), 128))
+            ]))), 128)),
+            c.$slots["button-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+              key: 0,
+              role: "button",
+              "aria-label": (T = e.ariaLabels) == null ? void 0 : T.toggleOverlay,
+              class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ae)),
+              tabindex: "0",
+              ref_key: "toggleButton",
+              ref: I,
+              onClick: ee,
+              onKeydown: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(ee, ["enter"])
+            }, [
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(c.$slots, "button-icon")
+            ], 42, cr)), [
+              [vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)($)(e.type)]
+            ]) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+          ], 64))
+        ], 2)
+      ], 42, sr);
+    };
   }
-}), Ut = () => {
-  const e = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Kt);
-  return { transitionName: (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (n) => e != null && e.value ? n ? e.value.open : e.value.close : ""), showTransition: !!(e != null && e.value) };
-}, kr = ["aria-label"], In = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+}), dr = ["aria-label"], In = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: "RegularPicker",
   props: {
     ariaLabel: { type: String, default: "" },
@@ -12177,55 +13130,85 @@ const Gn = /* @__PURE__ */ ot(kl, [["render", Dl]]), Tn = (e, a) => {
     minValue: { type: Number, default: null },
     maxValue: { type: Number, default: null },
     slotName: { type: String, default: "" },
-    headerRefs: { type: Array, default: () => [] }
+    overlaySlot: { type: String, default: "" },
+    headerRefs: { type: Array, default: () => [] },
+    escClose: { type: Boolean, default: !0 },
+    type: { type: String, default: null },
+    transitions: { type: [Object, Boolean], default: !1 },
+    arrowNavigation: { type: Boolean, default: !1 },
+    autoApply: { type: Boolean, default: !1 },
+    textInput: { type: Boolean, default: !1 },
+    ariaLabels: { type: Object, default: () => ({}) },
+    hideNavigation: { type: Array, default: () => [] }
   },
-  emits: ["update:model-value", "toggle", "setRef"],
-  setup(e, { emit: a }) {
-    const { transitionName: n, showTransition: t } = Ut(), d = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => a("setRef", d)), (m, p) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [
+  emits: ["update:model-value", "toggle", "set-ref"],
+  setup(e, { emit: n }) {
+    const a = e, { transitionName: t, showTransition: r } = Lt(a.transitions), u = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => n("set-ref", u)), (p, $) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [
       (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         class: "dp__month_year_select",
-        onClick: p[0] || (p[0] = (v) => m.$emit("toggle")),
+        onClick: $[0] || ($[0] = (Y) => p.$emit("toggle")),
         onKeydown: [
-          p[1] || (p[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((v) => m.$emit("toggle"), ["enter"])),
-          p[2] || (p[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((v) => m.$emit("toggle"), ["space"]))
+          $[1] || ($[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((Y) => p.$emit("toggle"), ["enter"])),
+          $[2] || ($[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((Y) => p.$emit("toggle"), ["space"]))
         ],
         role: "button",
         "aria-label": e.ariaLabel,
         tabindex: "0",
         ref_key: "elRef",
-        ref: d
+        ref: u
       }, [
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(m.$slots, "default")
-      ], 40, kr),
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(p.$slots, "default")
+      ], 40, dr),
       (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
-        name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(n)(e.showSelectionGrid),
-        css: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(t)
+        name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(t)(e.showSelectionGrid),
+        css: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(r)
       }, {
         default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-          e.showSelectionGrid ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(Mt, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 0 }, {
+          e.showSelectionGrid ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(gt, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 0 }, {
             modelValue: e.modelValue,
             items: e.items,
             disabledValues: e.disabledValues,
             minValue: e.minValue,
-            maxValue: e.maxValue
+            maxValue: e.maxValue,
+            escClose: e.escClose,
+            type: e.type,
+            arrowNavigation: e.arrowNavigation,
+            textInput: e.textInput,
+            autoApply: e.autoApply,
+            ariaLabels: e.ariaLabels,
+            hideNavigation: e.hideNavigation
           }, {
             "header-refs": [],
-            "onUpdate:modelValue": p[3] || (p[3] = (v) => m.$emit("update:model-value", v)),
-            onToggle: p[4] || (p[4] = (v) => m.$emit("toggle"))
+            "onUpdate:modelValue": $[3] || ($[3] = (Y) => p.$emit("update:model-value", Y)),
+            onToggle: $[4] || ($[4] = (Y) => p.$emit("toggle"))
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
             "button-icon": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-              m.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(m.$slots, "calendar-icon", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-              m.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Wt), { key: 1 }))
+              p.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(p.$slots, "calendar-icon", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+              p.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Et), { key: 1 }))
             ]),
             _: 2
           }, [
-            m.$slots[e.slotName] ? {
+            p.$slots[e.slotName] ? {
               name: "item",
-              fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: v }) => [
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(m.$slots, e.slotName, { item: v })
+              fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: Y }) => [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(p.$slots, e.slotName, { item: Y })
               ]),
               key: "0"
+            } : void 0,
+            p.$slots[e.overlaySlot] ? {
+              name: "overlay",
+              fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(p.$slots, e.overlaySlot)
+              ]),
+              key: "1"
+            } : void 0,
+            p.$slots[`${e.overlaySlot}-header`] ? {
+              name: "header",
+              fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(p.$slots, `${e.overlaySlot}-header`)
+              ]),
+              key: "2"
             } : void 0
           ]), 1040)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
         ]),
@@ -12233,362 +13216,398 @@ const Gn = /* @__PURE__ */ ot(kl, [["render", Dl]]), Tn = (e, a) => {
       }, 8, ["name", "css"])
     ], 64));
   }
-}), Ft = (e, a, n) => [(0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(e), { date: 1 }), (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), { month: a, year: n, date: 1 })], un = (e, a, n) => we(...Ft(e, a, n)) || ce(...Ft(e, a, n)), dn = (e, a, n) => De(...Ft(e, a, n)) || ce(...Ft(e, a, n)), ia = (e, a, n, t, d, m) => {
-  let p = !1;
-  return m ? e && a ? (a && d && dn(a, n, t) && (p = !0), e && !d && un(e, n, t) && (p = !0)) : (e && un(e, n, t) || a && dn(a, n, t)) && (p = !0) : p = !0, p;
-}, wr = (e, a) => {
-  const n = (v, g) => {
-    let w = v;
-    return e.filters.months.includes((0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(w)) ? (w = g ? (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(v, 1) : (0,date_fns__WEBPACK_IMPORTED_MODULE_28__["default"])(v, 1), n(w, g)) : w;
-  }, t = (v, g) => {
-    let w = v;
-    return e.filters.years.includes((0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(w)) ? (w = g ? (0,date_fns__WEBPACK_IMPORTED_MODULE_29__["default"])(v, 1) : (0,date_fns__WEBPACK_IMPORTED_MODULE_30__["default"])(v, 1), t(w, g)) : w;
-  }, d = (v) => {
-    const g = (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), { month: e.month, year: e.year });
-    let w = v ? (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(g, 1) : (0,date_fns__WEBPACK_IMPORTED_MODULE_28__["default"])(g, 1), V = (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(w), R = (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(w);
-    e.filters.months.includes(V) && (w = n(w, v), V = (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(w), R = (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(w)), e.filters.years.includes(R) && (w = t(w, v), R = (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(w)), ia(e.minDate, e.maxDate, V, R, v, e.preventMinMaxNavigation) && m(V, R);
-  }, m = (v, g) => {
-    a("update-month-year", { month: v, year: g });
-  }, p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (v) => {
-    if (!e.preventMinMaxNavigation || v && !e.maxDate || !v && !e.minDate)
-      return !1;
-    const g = (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), { month: e.month, year: e.year }), w = v ? (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(g, 1) : (0,date_fns__WEBPACK_IMPORTED_MODULE_28__["default"])(g, 1), V = [(0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(w), (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(w)];
-    return v ? !dn(e.maxDate, ...V) : !un(e.minDate, ...V);
-  });
-  return { handleMonthYearChange: d, isDisabled: p };
-}, br = { class: "dp__month_year_row" }, $r = { class: "dp__month_picker_header" }, Dr = ["aria-label"], Mr = ["aria-label", "onKeydown"], Sr = ["aria-label"], Ar = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+}), fr = { class: "dp__month_year_row" }, vr = { class: "dp__month_year_wrap" }, mr = { class: "dp__month_picker_header" }, yr = ["aria-label"], hr = ["aria-label"], gr = ["aria-label"], pr = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: "MonthYearPicker",
   props: {
-    ...sa,
-    ...kn,
-    preventMinMaxNavigation: { type: Boolean, default: !1 },
-    reverseYears: { type: Boolean, default: !1 },
+    month: { type: Number, default: 0 },
+    year: { type: Number, default: 0 },
+    instance: { type: Number, default: 0 },
     years: { type: Array, default: () => [] },
     months: { type: Array, default: () => [] },
-    filters: { type: Object, default: () => ({}) },
-    multiCalendarsSolo: { type: Boolean, default: !1 },
-    yearPicker: { type: Boolean, default: !1 }
+    internalModelValue: { type: [Date, Array], default: null },
+    ...Qe
   },
-  emits: ["update-month-year", "monthYearSelect", "mount", "reset-flow", "overlay-closed"],
-  setup(e, { expose: a, emit: n }) {
-    const t = e, { transitionName: d, showTransition: m } = Ut(), { buildMatrix: p } = Je(), v = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), w = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([null, null, null, null]), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), R = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), E = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), N = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Xe), G = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(qe), { handleMonthYearChange: T, isDisabled: x } = wr(t, n);
+  emits: ["update-month-year", "month-year-select", "mount", "reset-flow", "overlay-closed"],
+  setup(e, { expose: n, emit: a }) {
+    const t = e, { defaults: r } = Ee(t), { transitionName: u, showTransition: p } = Lt(r.value.transitions), { buildMatrix: $ } = Je(), { handleMonthYearChange: Y, isDisabled: L, updateMonthYear: V } = Yl(t, a), i = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), _ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), I = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([null, null, null, null]), B = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), X = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), Q = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
-      n("mount");
+      a("mount");
     });
-    const l = (k) => ({
-      get: () => t[k],
-      set: (_) => {
-        const O = k === "month" ? "year" : "month";
-        n("update-month-year", { [k]: _, [O]: t[O] }), n("monthYearSelect", k === "year"), k === "month" ? F(!0) : J(!0);
+    const C = (d) => ({
+      get: () => t[d],
+      set: (O) => {
+        const de = d === "month" ? "year" : "month";
+        a("update-month-year", { [d]: O, [de]: t[de] }), a("month-year-select", d === "year"), d === "month" ? k(!0) : R(!0);
       }
-    }), i = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(l("month")), Y = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(l("year")), z = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (k) => {
-      const _ = k === "month";
+    }), M = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(C("month")), Z = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(C("year")), ae = (d) => {
+      const O = (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(b(d));
+      return t.year === O;
+    }, ne = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.monthPicker ? Array.isArray(t.disabledDates) ? t.disabledDates.map((d) => b(d)).filter((d) => ae(d)).map((d) => (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(d)) : [] : []), P = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (d) => {
+      const O = d === "month";
       return {
-        showSelectionGrid: (_ ? v : g).value,
-        items: (_ ? D : u).value,
-        disabledValues: t.filters[_ ? "months" : "years"],
-        minValue: (_ ? X : P).value,
-        maxValue: (_ ? ee : K).value,
-        headerRefs: _ && t.monthPicker ? [V.value, R.value, E.value] : []
+        showSelectionGrid: (O ? i : _).value,
+        items: (O ? T : K).value,
+        disabledValues: r.value.filters[O ? "months" : "years"].concat(ne.value),
+        minValue: (O ? ee : N).value,
+        maxValue: (O ? E : j).value,
+        headerRefs: O && t.monthPicker ? [B.value, X.value, Q.value] : [],
+        escClose: t.escClose,
+        transitions: r.value.transitions,
+        ariaLabels: r.value.ariaLabels,
+        textInput: t.textInput,
+        autoApply: t.autoApply,
+        arrowNavigation: t.arrowNavigation,
+        hideNavigation: t.hideNavigation
       };
-    }), P = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.minDate ? (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(new Date(t.minDate)) : null), K = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.maxDate ? (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(new Date(t.maxDate)) : null), X = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-      if (t.minDate && P.value) {
-        if (P.value > t.year)
+    }), m = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (d) => ({
+      month: t.month,
+      year: t.year,
+      items: d === "month" ? t.months : t.years,
+      instance: t.instance,
+      updateMonthYear: V,
+      toggle: d === "month" ? k : R
+    })), N = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.minDate ? (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(b(t.minDate)) : null), j = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.maxDate ? (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(b(t.maxDate)) : null), ee = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+      if (t.minDate && N.value) {
+        if (N.value > t.year)
           return 12;
-        if (P.value === t.year)
-          return (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(new Date(t.minDate));
+        if (N.value === t.year)
+          return (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(b(t.minDate));
       }
       return null;
-    }), ee = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.maxDate && K.value ? K.value < t.year ? -1 : K.value === t.year ? (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(new Date(t.maxDate)) : null : null), Z = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.range && t.internalModelValue && (t.monthPicker || t.yearPicker) ? t.internalModelValue : []), j = (k, _ = !1) => {
-      const O = [];
-      for (let Re = 0; Re < k.length; Re += 3) {
-        const Ie = [k[Re], k[Re + 1], k[Re + 2]];
-        O.push(_ ? Ie.reverse() : Ie);
+    }), E = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.maxDate && j.value ? j.value < t.year ? -1 : j.value === t.year ? (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(b(t.maxDate)) : null : null), z = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.range && t.internalModelValue && (t.monthPicker || t.yearPicker) ? t.internalModelValue : []), g = (d) => d.reverse(), c = (d, O = !1) => {
+      const de = [], De = (we) => O ? g(we) : we;
+      for (let we = 0; we < d.length; we += 3) {
+        const We = [d[we], d[we + 1], d[we + 2]];
+        de.push(De(We));
       }
-      return _ ? O.reverse() : O;
-    }, M = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-      const k = t.months.find((_) => _.value === t.month);
-      return k || { text: "", value: 0 };
-    }), D = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => j(t.months)), u = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => j(t.years, t.reverseYears)), s = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.multiCalendars ? t.multiCalendarsSolo ? !0 : t.instance === 0 : !0), h = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.multiCalendars ? t.multiCalendarsSolo ? !0 : t.instance === t.multiCalendars - 1 : !0), F = (k = !1) => {
-      I(k), v.value = !v.value, v.value || n("overlay-closed");
-    }, J = (k = !1) => {
-      I(k), g.value = !g.value, g.value || n("overlay-closed");
-    }, I = (k) => {
-      k || n("reset-flow");
-    }, oe = (k = !1) => {
-      n("update-month-year", { year: k ? t.year + 1 : t.year - 1, month: t.month });
-    }, te = (k, _) => {
-      G != null && G.value && (w.value[_] = ke(k), p(w.value, "monthYear"));
+      return O ? de.reverse() : de;
+    }, A = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+      const d = t.months.find((O) => O.value === t.month);
+      return d || { text: "", value: 0 };
+    }), T = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => c(t.months)), K = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => c(t.years, t.reverseYears)), l = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => r.value.multiCalendars ? t.multiCalendarsSolo ? !0 : t.instance === 0 : !0), f = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => r.value.multiCalendars ? t.multiCalendarsSolo ? !0 : t.instance === r.value.multiCalendars - 1 : !0), k = (d = !1) => {
+      ie(d), i.value = !i.value, i.value || a("overlay-closed");
+    }, R = (d = !1) => {
+      ie(d), _.value = !_.value, _.value || a("overlay-closed");
+    }, ie = (d) => {
+      d || a("reset-flow");
+    }, ce = (d = !1) => {
+      a("update-month-year", {
+        year: d ? t.year + 1 : t.year - 1,
+        month: t.month,
+        fromNav: !0
+      });
+    }, v = (d, O) => {
+      t.arrowNavigation && (I.value[O] = Ce(d), $(I.value, "monthYear"));
     };
-    return a({
-      toggleMonthPicker: F,
-      toggleYearPicker: J
-    }), (k, _) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", br, [
-      !k.monthPicker && !e.yearPicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 0 }, [
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(s) && !k.vertical ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(nn, {
-          key: 0,
-          "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N).prevMonth,
-          disabled: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(x)(!1),
-          onActivate: _[0] || (_[0] = (O) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(T)(!1)),
-          onSetRef: _[1] || (_[1] = (O) => te(O, 0))
-        }, {
-          default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-            k.$slots["arrow-left"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "arrow-left", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-            k.$slots["arrow-left"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Pn), { key: 1 }))
-          ]),
-          _: 3
-        }, 8, ["aria-label", "disabled"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(In, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
-          "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N).openMonthsOverlay,
-          "slot-name": "month-overlay",
-          modelValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(i),
-          "onUpdate:modelValue": _[2] || (_[2] = (O) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(i) ? i.value = O : null)
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(z)("month"), {
-          onToggle: F,
-          onSetRef: _[3] || (_[3] = (O) => te(O, 1))
-        }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
-          default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-            k.$slots.month ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "month", (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 0 }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M)))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-            k.$slots.month ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M).text), 1)
-            ], 64))
-          ]),
-          _: 2
-        }, [
-          k.$slots["calendar-icon"] ? {
-            name: "calendar-icon",
-            fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "calendar-icon")
-            ]),
-            key: "0"
-          } : void 0,
-          k.$slots["month-overlay"] ? {
-            name: "month-overlay",
-            fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: O }) => [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "month-overlay", {
-                text: O.text,
-                value: O.value
-              })
-            ]),
-            key: "1"
-          } : void 0
-        ]), 1040, ["aria-label", "modelValue"]),
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(In, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
-          "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N).openYearsOverlay,
-          "slot-name": "year-overlay",
-          modelValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y),
-          "onUpdate:modelValue": _[4] || (_[4] = (O) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(Y) ? Y.value = O : null)
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(z)("year"), {
-          onToggle: J,
-          onSetRef: _[5] || (_[5] = (O) => te(O, 2))
-        }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
-          default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-            k.$slots.year ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "year", {
+    return n({
+      toggleMonthPicker: k,
+      toggleYearPicker: R
+    }), (d, O) => {
+      var de, De, we, We, Xe;
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", fr, [
+        d.$slots["month-year"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "month-year", (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 0 }, { month: e.month, year: e.year, months: e.months, years: e.years, updateMonthYear: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(V), handleMonthYearChange: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y), instance: e.instance }))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+          !d.monthPicker && !d.yearPicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 0 }, [
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(l) && !d.vertical ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(Qt, {
               key: 0,
-              year: k.year
-            }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-            k.$slots.year ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(k.year), 1)
-            ], 64))
-          ]),
-          _: 2
-        }, [
-          k.$slots["calendar-icon"] ? {
-            name: "calendar-icon",
-            fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "calendar-icon")
-            ]),
-            key: "0"
-          } : void 0,
-          k.$slots["year-overlay"] ? {
-            name: "year-overlay",
-            fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: O }) => [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "year-overlay", {
-                text: O.text,
-                value: O.value
-              })
-            ]),
-            key: "1"
-          } : void 0
-        ]), 1040, ["aria-label", "modelValue"]),
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(s) && k.vertical ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(nn, {
-          key: 1,
-          "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N).prevMonth,
-          disabled: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(x)(!1),
-          onActivate: _[6] || (_[6] = (O) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(T)(!1))
-        }, {
-          default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-            k.$slots["arrow-up"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "arrow-up", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-            k.$slots["arrow-up"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ln), { key: 1 }))
-          ]),
-          _: 3
-        }, 8, ["aria-label", "disabled"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(h) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(nn, {
-          key: 2,
-          disabled: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(x)(!0),
-          "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N).nextMonth,
-          onActivate: _[7] || (_[7] = (O) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(T)(!0)),
-          ref: "rightIcon",
-          onSetRef: _[8] || (_[8] = (O) => te(O, 3))
-        }, {
-          default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-            k.$slots[k.vertical ? "arrow-down" : "arrow-right"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, k.vertical ? "arrow-down" : "arrow-right", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-            k.$slots[k.vertical ? "arrow-down" : "arrow-right"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)(k.vertical ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Gn) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Cn)), { key: 1 }))
-          ]),
-          _: 3
-        }, 8, ["disabled", "aria-label"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
-      ], 64)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-      k.monthPicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(Mt, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 1 }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(z)("month"), {
-        "skip-active": t.range,
-        year: k.year,
-        "multi-model-value": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Z),
-        "month-picker": "",
-        modelValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(i),
-        "onUpdate:modelValue": _[15] || (_[15] = (O) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(i) ? i.value = O : null),
-        onToggle: F,
-        onSelected: _[16] || (_[16] = (O) => k.$emit("overlay-closed"))
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
-        header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", $r, [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-              class: "dp__month_year_col_nav",
-              tabindex: "0",
-              ref_key: "mpPrevIconRef",
-              ref: V,
-              onClick: _[9] || (_[9] = (O) => oe(!1)),
-              onKeydown: _[10] || (_[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((O) => oe(!1), ["enter"]))
-            }, [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-                class: "dp__inner_nav",
-                role: "button",
-                "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N).prevMonth
-              }, [
-                k.$slots["arrow-left"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "arrow-left", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-                k.$slots["arrow-left"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Pn), { key: 1 }))
-              ], 8, Dr)
-            ], 544),
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-              class: "dp__pointer",
-              role: "button",
-              ref_key: "mpYearButtonRef",
-              ref: R,
-              "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N).openYearsOverlay,
-              tabindex: "0",
-              onClick: J,
-              onKeydown: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(J, ["enter"])
-            }, [
-              k.$slots.year ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "year", {
-                key: 0,
-                year: k.year
-              }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-              k.$slots.year ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(k.year), 1)
-              ], 64))
-            ], 40, Mr),
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-              class: "dp__month_year_col_nav",
-              tabindex: "0",
-              ref_key: "mpNextIconRef",
-              ref: E,
-              onClick: _[11] || (_[11] = (O) => oe(!0)),
-              onKeydown: _[12] || (_[12] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((O) => oe(!0), ["enter"]))
-            }, [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-                class: "dp__inner_nav",
-                role: "button",
-                "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N).nextMonth
-              }, [
-                k.$slots["arrow-right"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "arrow-right", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-                k.$slots["arrow-right"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Cn), { key: 1 }))
-              ], 8, Sr)
-            ], 544)
-          ]),
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
-            name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(d)(g.value),
-            css: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(m)
-          }, {
-            default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-              g.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(Mt, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 0 }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(z)("year"), {
-                modelValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y),
-                "onUpdate:modelValue": _[13] || (_[13] = (O) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(Y) ? Y.value = O : null),
-                onToggle: J,
-                onSelected: _[14] || (_[14] = (O) => k.$emit("overlay-closed"))
+              "aria-label": (de = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(r).ariaLabels) == null ? void 0 : de.prevMonth,
+              disabled: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(L)(!1),
+              onActivate: O[0] || (O[0] = (F) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y)(!1)),
+              onSetRef: O[1] || (O[1] = (F) => v(F, 0))
+            }, {
+              default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                d.$slots["arrow-left"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "arrow-left", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                d.$slots["arrow-left"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(kn), { key: 1 }))
+              ]),
+              _: 3
+            }, 8, ["aria-label", "disabled"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", vr, [
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(In, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+                type: "month",
+                "slot-name": "month-overlay-val",
+                "overlay-slot": "overlay-month",
+                "aria-label": (De = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(r).ariaLabels) == null ? void 0 : De.openMonthsOverlay,
+                modelValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M),
+                "onUpdate:modelValue": O[2] || (O[2] = (F) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(M) ? M.value = F : null)
+              }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(P)("month"), {
+                onToggle: k,
+                onSetRef: O[3] || (O[3] = (F) => v(F, 1))
               }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
-                "button-icon": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-                  k.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "calendar-icon", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-                  k.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Wt), { key: 1 }))
+                default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                  d.$slots.month ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "month", (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 0 }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(A)))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                  d.$slots.month ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(A).text), 1)
+                  ], 64))
                 ]),
                 _: 2
               }, [
-                k.$slots["year-overlay"] ? {
-                  name: "item",
-                  fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: O }) => [
-                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "year-overlay", {
-                      text: O.text,
-                      value: O.value
-                    })
+                d.$slots["calendar-icon"] ? {
+                  name: "calendar-icon",
+                  fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "calendar-icon")
                   ]),
                   key: "0"
+                } : void 0,
+                d.$slots["month-overlay-value"] ? {
+                  name: "month-overlay-val",
+                  fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: F }) => [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "month-overlay-value", {
+                      text: F.text,
+                      value: F.value
+                    })
+                  ]),
+                  key: "1"
+                } : void 0,
+                d.$slots["month-overlay"] ? {
+                  name: "overlay-month",
+                  fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "month-overlay", (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(m)("month"))))
+                  ]),
+                  key: "2"
+                } : void 0,
+                d.$slots["month-overlay-header"] ? {
+                  name: "overlay-month-header",
+                  fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "month-overlay-header", { toggle: k })
+                  ]),
+                  key: "3"
                 } : void 0
-              ]), 1040, ["modelValue"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+              ]), 1040, ["aria-label", "modelValue"]),
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(In, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+                type: "year",
+                "slot-name": "year-overlay-val",
+                "overlay-slot": "overlay-year",
+                "aria-label": (we = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(r).ariaLabels) == null ? void 0 : we.openYearsOverlay,
+                modelValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Z),
+                "onUpdate:modelValue": O[4] || (O[4] = (F) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(Z) ? Z.value = F : null)
+              }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(P)("year"), {
+                onToggle: R,
+                onSetRef: O[5] || (O[5] = (F) => v(F, 2))
+              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
+                default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                  d.$slots.year ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "year", {
+                    key: 0,
+                    year: e.year
+                  }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                  d.$slots.year ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(e.year), 1)
+                  ], 64))
+                ]),
+                _: 2
+              }, [
+                d.$slots["calendar-icon"] ? {
+                  name: "calendar-icon",
+                  fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "calendar-icon")
+                  ]),
+                  key: "0"
+                } : void 0,
+                d.$slots["year-overlay-value"] ? {
+                  name: "year-overlay-val",
+                  fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: F }) => [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "year-overlay-value", {
+                      text: F.text,
+                      value: F.value
+                    })
+                  ]),
+                  key: "1"
+                } : void 0,
+                d.$slots["year-overlay"] ? {
+                  name: "overlay-year",
+                  fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "year-overlay", (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(m)("year"))))
+                  ]),
+                  key: "2"
+                } : void 0,
+                d.$slots["year-overlay-header"] ? {
+                  name: "overlay-year-header",
+                  fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "year-overlay-header", { toggle: R })
+                  ]),
+                  key: "3"
+                } : void 0
+              ]), 1040, ["aria-label", "modelValue"])
             ]),
-            _: 3
-          }, 8, ["name", "css"])
-        ]),
-        _: 2
-      }, [
-        k.$slots["month-overlay"] ? {
-          name: "item",
-          fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: O }) => [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "month-overlay", {
-              text: O.text,
-              value: O.value
-            })
-          ]),
-          key: "0"
-        } : void 0
-      ]), 1040, ["skip-active", "year", "multi-model-value", "modelValue"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-      e.yearPicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(Mt, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 2 }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(z)("year"), {
-        modelValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y),
-        "onUpdate:modelValue": _[17] || (_[17] = (O) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(Y) ? Y.value = O : null),
-        "multi-model-value": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Z),
-        "skip-active": t.range,
-        "skip-button-ref": "",
-        "year-picker": "",
-        onToggle: J,
-        onSelected: _[18] || (_[18] = (O) => k.$emit("overlay-closed"))
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
-        k.$slots["year-overlay"] ? {
-          name: "item",
-          fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: O }) => [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(k.$slots, "year-overlay", {
-              text: O.text,
-              value: O.value
-            })
-          ]),
-          key: "0"
-        } : void 0
-      ]), 1040, ["modelValue", "multi-model-value", "skip-active"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
-    ]));
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(l) && d.vertical ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(Qt, {
+              key: 1,
+              "aria-label": (We = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(r).ariaLabels) == null ? void 0 : We.prevMonth,
+              disabled: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(L)(!1),
+              onActivate: O[6] || (O[6] = (F) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y)(!1))
+            }, {
+              default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                d.$slots["arrow-up"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "arrow-up", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                d.$slots["arrow-up"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Fn), { key: 1 }))
+              ]),
+              _: 3
+            }, 8, ["aria-label", "disabled"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(f) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(Qt, {
+              key: 2,
+              ref: "rightIcon",
+              disabled: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(L)(!0),
+              "aria-label": (Xe = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(r).ariaLabels) == null ? void 0 : Xe.nextMonth,
+              onActivate: O[7] || (O[7] = (F) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y)(!0)),
+              onSetRef: O[8] || (O[8] = (F) => v(F, 3))
+            }, {
+              default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                d.$slots[d.vertical ? "arrow-down" : "arrow-right"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, d.vertical ? "arrow-down" : "arrow-right", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                d.$slots[d.vertical ? "arrow-down" : "arrow-right"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)(d.vertical ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Un) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(wn)), { key: 1 }))
+              ]),
+              _: 3
+            }, 8, ["disabled", "aria-label"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+          ], 64)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+          d.monthPicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(gt, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 1 }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(P)("month"), {
+            "skip-active": d.range,
+            year: e.year,
+            "multi-model-value": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(z),
+            "month-picker": "",
+            modelValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M),
+            "onUpdate:modelValue": O[17] || (O[17] = (F) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(M) ? M.value = F : null),
+            onToggle: k,
+            onSelected: O[18] || (O[18] = (F) => d.$emit("overlay-closed"))
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
+            header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => {
+              var F, be, pe;
+              return [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", mr, [
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                    class: "dp__month_year_col_nav",
+                    tabindex: "0",
+                    ref_key: "mpPrevIconRef",
+                    ref: B,
+                    onClick: O[9] || (O[9] = (Ne) => ce(!1)),
+                    onKeydown: O[10] || (O[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((Ne) => ce(!1), ["enter"]))
+                  }, [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                      class: "dp__inner_nav",
+                      role: "button",
+                      "aria-label": (F = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(r).ariaLabels) == null ? void 0 : F.prevMonth
+                    }, [
+                      d.$slots["arrow-left"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "arrow-left", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                      d.$slots["arrow-left"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(kn), { key: 1 }))
+                    ], 8, yr)
+                  ], 544),
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                    class: "dp__pointer",
+                    role: "button",
+                    ref_key: "mpYearButtonRef",
+                    ref: X,
+                    "aria-label": (be = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(r).ariaLabels) == null ? void 0 : be.openYearsOverlay,
+                    tabindex: "0",
+                    onClick: O[11] || (O[11] = () => R(!1)),
+                    onKeydown: O[12] || (O[12] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(() => R(!1), ["enter"]))
+                  }, [
+                    d.$slots.year ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "year", {
+                      key: 0,
+                      year: e.year
+                    }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                    d.$slots.year ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(e.year), 1)
+                    ], 64))
+                  ], 40, hr),
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                    class: "dp__month_year_col_nav",
+                    tabindex: "0",
+                    ref_key: "mpNextIconRef",
+                    ref: Q,
+                    onClick: O[13] || (O[13] = (Ne) => ce(!0)),
+                    onKeydown: O[14] || (O[14] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((Ne) => ce(!0), ["enter"]))
+                  }, [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                      class: "dp__inner_nav",
+                      role: "button",
+                      "aria-label": (pe = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(r).ariaLabels) == null ? void 0 : pe.nextMonth
+                    }, [
+                      d.$slots["arrow-right"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "arrow-right", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                      d.$slots["arrow-right"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(wn), { key: 1 }))
+                    ], 8, gr)
+                  ], 544)
+                ]),
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+                  name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(u)(_.value),
+                  css: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(p)
+                }, {
+                  default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                    _.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(gt, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 0 }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(P)("year"), {
+                      modelValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Z),
+                      "onUpdate:modelValue": O[15] || (O[15] = (Ne) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(Z) ? Z.value = Ne : null),
+                      onToggle: R,
+                      onSelected: O[16] || (O[16] = (Ne) => d.$emit("overlay-closed"))
+                    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
+                      "button-icon": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                        d.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "calendar-icon", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                        d.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Et), { key: 1 }))
+                      ]),
+                      _: 2
+                    }, [
+                      d.$slots["year-overlay-value"] ? {
+                        name: "item",
+                        fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: Ne }) => [
+                          (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "year-overlay-value", {
+                            text: Ne.text,
+                            value: Ne.value
+                          })
+                        ]),
+                        key: "0"
+                      } : void 0
+                    ]), 1040, ["modelValue"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+                  ]),
+                  _: 3
+                }, 8, ["name", "css"])
+              ];
+            }),
+            _: 2
+          }, [
+            d.$slots["month-overlay-value"] ? {
+              name: "item",
+              fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: F }) => [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "month-overlay-value", {
+                  text: F.text,
+                  value: F.value
+                })
+              ]),
+              key: "0"
+            } : void 0
+          ]), 1040, ["skip-active", "year", "multi-model-value", "modelValue"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+          d.yearPicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(gt, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 2 }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(P)("year"), {
+            modelValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Z),
+            "onUpdate:modelValue": O[19] || (O[19] = (F) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(Z) ? Z.value = F : null),
+            "multi-model-value": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(z),
+            "skip-active": d.range,
+            "skip-button-ref": "",
+            "year-picker": "",
+            onToggle: R,
+            onSelected: O[20] || (O[20] = (F) => d.$emit("overlay-closed"))
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
+            d.$slots["year-overlay-value"] ? {
+              name: "item",
+              fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: F }) => [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(d.$slots, "year-overlay-value", {
+                  text: F.text,
+                  value: F.value
+                })
+              ]),
+              key: "0"
+            } : void 0
+          ]), 1040, ["modelValue", "multi-model-value", "skip-active"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+        ], 64))
+      ]);
+    };
   }
-}), Pr = {
+}), kr = {
   key: 0,
   class: "dp__time_input"
-}, Cr = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" : "), Tr = ["aria-label", "onKeydown", "onClick"], Rr = ["aria-label", "onKeydown", "onClick"], Vr = ["aria-label", "onKeydown", "onClick"], _r = { key: 0 }, Br = ["aria-label", "onKeydown"], Or = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+}, wr = ["aria-label", "onKeydown", "onClick"], br = ["aria-label", "onKeydown", "onClick"], $r = ["aria-label", "onKeydown", "onClick"], Dr = { key: 0 }, Mr = ["aria-label", "onKeydown"], _r = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: "TimeInput",
   props: {
-    ...Qn,
     hours: { type: Number, default: 0 },
     minutes: { type: Number, default: 0 },
     seconds: { type: Number, default: 0 },
-    filters: { type: Object, default: () => ({}) },
-    disabled: { type: Boolean, default: !1 },
     closeTimePickerBtn: { type: Object, default: null },
-    order: { type: Number, default: 0 }
+    order: { type: Number, default: 0 },
+    ...Qe
   },
   emits: [
-    "setHours",
-    "setMinutes",
+    "set-hours",
+    "set-minutes",
     "update:hours",
     "update:minutes",
     "update:seconds",
@@ -12596,16 +13615,16 @@ const Gn = /* @__PURE__ */ ot(kl, [["render", Dl]]), Tn = (e, a) => {
     "mounted",
     "overlay-closed"
   ],
-  setup(e, { expose: a, emit: n }) {
-    const t = e, d = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  setup(e, { expose: n, emit: a }) {
+    const t = e, { setTimePickerElements: r, setTimePickerBackRef: u } = Je(), { defaults: p } = Ee(t), { transitionName: $, showTransition: Y } = Lt(p.value.transitions), L = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
       hours: !1,
       minutes: !1,
       seconds: !1
-    }), m = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("AM"), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), v = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Xe), g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(qe), w = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), { transitionName: V, showTransition: R } = Ut(), { setTimePickerElements: E, setTimePickerBackRef: N } = Je();
+    }), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("AM"), i = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), _ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
-      n("mounted");
+      a("mounted");
     });
-    const G = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+    const I = (g, c) => (0,date_fns__WEBPACK_IMPORTED_MODULE_25__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(b(), g), c), B = (g, c) => (0,date_fns__WEBPACK_IMPORTED_MODULE_33__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_23__["default"])(b(), g), c), X = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
       () => ({
         dp__time_col: !0,
         dp__time_col_reg: !t.enableSeconds && t.is24,
@@ -12613,213 +13632,186 @@ const Gn = /* @__PURE__ */ ot(kl, [["render", Dl]]), Tn = (e, a) => {
         dp__time_col_sec: t.enableSeconds && t.is24,
         dp__time_col_sec_with_button: t.enableSeconds && !t.is24
       })
-    ), T = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-      const M = [{ type: "hours" }, "separator", { type: "minutes" }];
-      return t.enableSeconds ? M.concat(["separator", { type: "seconds" }]) : M;
-    }), x = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => T.value.filter((M) => typeof M != "string")), l = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (M) => {
-      if (M === "hours") {
-        const D = K(t.hours);
-        return { text: D < 10 ? `0${D}` : `${D}`, value: D };
+    ), Q = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+      const g = [{ type: "hours" }, { type: "", separator: !0 }, { type: "minutes" }];
+      return t.enableSeconds ? g.concat([{ type: "", separator: !0 }, { type: "seconds" }]) : g;
+    }), C = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => Q.value.filter((g) => !g.separator)), M = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (g) => {
+      if (g === "hours") {
+        const c = N(t.hours);
+        return { text: c < 10 ? `0${c}` : `${c}`, value: c };
       }
-      return { text: t[M] < 10 ? `0${t[M]}` : `${t[M]}`, value: t[M] };
-    }), i = (M) => {
-      const D = M === "hours" ? t.is24 ? 24 : 12 : 60, u = +t[`${M}GridIncrement`], s = [];
-      for (let h = 0; h < D; h += u)
-        s.push({ value: h, text: h < 10 ? `0${h}` : `${h}` });
-      return Gl(s);
-    }, Y = (M) => t[`no${M[0].toUpperCase() + M.slice(1)}Overlay`], z = (M) => {
-      Y(M) || (d[M] = !d[M], d[M] || n("overlay-closed"));
-    }, P = (M, D = !0) => {
-      const u = M === "hours" ? date_fns__WEBPACK_IMPORTED_MODULE_13__["default"] : M === "minutes" ? date_fns__WEBPACK_IMPORTED_MODULE_14__["default"] : date_fns__WEBPACK_IMPORTED_MODULE_15__["default"], s = D ? Sl : Al;
-      n(`update:${M}`, u(s({ [M]: +t[M] }, { [M]: +t[`${M}Increment`] })));
-    }, K = (M) => t.is24 ? M : (M >= 12 ? m.value = "PM" : m.value = "AM", ql(M)), X = () => {
-      m.value === "PM" ? (m.value = "AM", n("update:hours", t.hours - 12)) : (m.value = "PM", n("update:hours", t.hours + 12));
-    }, ee = (M) => {
-      d[M] = !0;
-    }, Z = (M, D, u) => {
-      if (M && (g == null ? void 0 : g.value)) {
-        Array.isArray(w.value[D]) ? w.value[D][u] = M : w.value[D] = [M];
-        const s = w.value.reduce(
-          (h, F) => F.map((J, I) => [...h[I] || [], F[I]]),
+      return { text: t[g] < 10 ? `0${t[g]}` : `${t[g]}`, value: t[g] };
+    }), Z = (g) => {
+      const c = t.is24 ? 24 : 12, A = g === "hours" ? c : 60, T = +t[`${g}GridIncrement`], K = g === "hours" && !t.is24 ? T : 0, l = [];
+      for (let f = K; f < A; f += T)
+        l.push({ value: f, text: f < 10 ? `0${f}` : `${f}` });
+      return g === "hours" && !t.is24 && l.push({ value: 0, text: "12" }), $l(l);
+    }, ae = (g) => t[`no${g[0].toUpperCase() + g.slice(1)}Overlay`], ne = (g) => {
+      ae(g) || (L[g] = !L[g], L[g] || a("overlay-closed"));
+    }, P = (g) => g === "hours" ? date_fns__WEBPACK_IMPORTED_MODULE_15__["default"] : g === "minutes" ? date_fns__WEBPACK_IMPORTED_MODULE_16__["default"] : date_fns__WEBPACK_IMPORTED_MODULE_17__["default"], m = (g, c = !0) => {
+      const A = c ? I : B;
+      a(
+        `update:${g}`,
+        P(g)(A({ [g]: +t[g] }, { [g]: +t[`${g}Increment`] }))
+      );
+    }, N = (g) => t.is24 ? g : (g >= 12 ? V.value = "PM" : V.value = "AM", Al(g)), j = () => {
+      V.value === "PM" ? (V.value = "AM", a("update:hours", t.hours - 12)) : (V.value = "PM", a("update:hours", t.hours + 12));
+    }, ee = (g) => {
+      L[g] = !0;
+    }, E = (g, c, A) => {
+      if (g && t.arrowNavigation) {
+        Array.isArray(_.value[c]) ? _.value[c][A] = g : _.value[c] = [g];
+        const T = _.value.reduce(
+          (K, l) => l.map((f, k) => [...K[k] || [], l[k]]),
           []
         );
-        N(t.closeTimePickerBtn), p.value && (s[1] = s[1].concat(p.value)), E(s, t.order);
+        u(t.closeTimePickerBtn), i.value && (T[1] = T[1].concat(i.value)), r(T, t.order);
       }
-    }, j = (M, D) => M === "hours" && !t.is24 ? n(`update:${M}`, m.value === "PM" ? D + 12 : D) : n(`update:${M}`, D);
-    return a({ openChildCmp: ee }), (M, D) => e.disabled ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Pr, [
-      ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(T), (u, s) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-        key: s,
-        class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(G))
-      }, [
-        u === "separator" ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 0 }, [
-          Cr
-        ], 64)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-            class: "dp__inc_dec_button",
-            role: "button",
-            "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(v).incrementValue(u.type),
-            tabindex: "0",
-            onKeydown: [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((h) => P(u.type), ["enter"]),
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((h) => P(u.type), ["space"])
-            ],
-            onClick: (h) => P(u.type),
-            ref_for: !0,
-            ref: (h) => Z(h, s, 0)
+    }, z = (g, c) => g === "hours" && !t.is24 ? a(`update:${g}`, V.value === "PM" ? c + 12 : c) : a(`update:${g}`, c);
+    return n({ openChildCmp: ee }), (g, c) => {
+      var A;
+      return g.disabled ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", kr, [
+        ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Q), (T, K) => {
+          var l, f, k;
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+            key: K,
+            class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(X))
           }, [
-            M.$slots["arrow-up"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(M.$slots, "arrow-up", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-            M.$slots["arrow-up"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ln), { key: 1 }))
-          ], 40, Tr),
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-            role: "button",
-            "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(v).openTpOverlay(u.type),
-            class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(Y(u.type) ? "" : "dp__time_display"),
-            tabindex: "0",
-            onKeydown: [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((h) => z(u.type), ["enter"]),
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((h) => z(u.type), ["space"])
-            ],
-            onClick: (h) => z(u.type),
-            ref_for: !0,
-            ref: (h) => Z(h, s, 1)
-          }, [
-            M.$slots[u.type] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(M.$slots, u.type, {
-              key: 0,
-              text: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(l)(u.type).text,
-              value: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(l)(u.type).value
-            }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-            M.$slots[u.type] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(l)(u.type).text), 1)
+            T.separator ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 0 }, [
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" : ")
+            ], 64)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                class: "dp__inc_dec_button",
+                role: "button",
+                "aria-label": (l = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(p).ariaLabels) == null ? void 0 : l.incrementValue(T.type),
+                tabindex: "0",
+                onKeydown: [
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((R) => m(T.type), ["enter"]),
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((R) => m(T.type), ["space"])
+                ],
+                onClick: (R) => m(T.type),
+                ref_for: !0,
+                ref: (R) => E(R, K, 0)
+              }, [
+                g.$slots["arrow-up"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(g.$slots, "arrow-up", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                g.$slots["arrow-up"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Fn), { key: 1 }))
+              ], 40, wr),
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                role: "button",
+                "aria-label": (f = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(p).ariaLabels) == null ? void 0 : f.openTpOverlay(T.type),
+                class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(ae(T.type) ? "" : "dp__time_display"),
+                tabindex: "0",
+                onKeydown: [
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((R) => ne(T.type), ["enter"]),
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((R) => ne(T.type), ["space"])
+                ],
+                onClick: (R) => ne(T.type),
+                ref_for: !0,
+                ref: (R) => E(R, K, 1)
+              }, [
+                g.$slots[T.type] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(g.$slots, T.type, {
+                  key: 0,
+                  text: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M)(T.type).text,
+                  value: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M)(T.type).value
+                }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                g.$slots[T.type] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M)(T.type).text), 1)
+                ], 64))
+              ], 42, br),
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                class: "dp__inc_dec_button",
+                role: "button",
+                "aria-label": (k = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(p).ariaLabels) == null ? void 0 : k.decrementValue(T.type),
+                tabindex: "0",
+                onKeydown: [
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((R) => m(T.type, !1), ["enter"]),
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((R) => m(T.type, !1), ["space"])
+                ],
+                onClick: (R) => m(T.type, !1),
+                ref_for: !0,
+                ref: (R) => E(R, K, 2)
+              }, [
+                g.$slots["arrow-down"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(g.$slots, "arrow-down", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                g.$slots["arrow-down"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Un), { key: 1 }))
+              ], 40, $r)
             ], 64))
-          ], 42, Rr),
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-            class: "dp__inc_dec_button",
-            role: "button",
-            "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(v).decrementValue(u.type),
-            tabindex: "0",
-            onKeydown: [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((h) => P(u.type, !1), ["enter"]),
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((h) => P(u.type, !1), ["space"])
-            ],
-            onClick: (h) => P(u.type, !1),
-            ref_for: !0,
-            ref: (h) => Z(h, s, 2)
-          }, [
-            M.$slots["arrow-down"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(M.$slots, "arrow-down", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-            M.$slots["arrow-down"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Gn), { key: 1 }))
-          ], 40, Vr)
-        ], 64))
-      ], 2))), 128)),
-      M.is24 ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _r, [
-        M.$slots["am-pm-button"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(M.$slots, "am-pm-button", {
-          key: 0,
-          toggle: X,
-          value: m.value
-        }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-        M.$slots["am-pm-button"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
-          key: 1,
-          ref_key: "amPmButton",
-          ref: p,
-          type: "button",
-          class: "dp__pm_am_button",
-          role: "button",
-          "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(v).amPmButton,
-          tabindex: "0",
-          onClick: X,
-          onKeydown: [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(X, ["prevent"]), ["enter"]),
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(X, ["prevent"]), ["space"])
-          ]
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(m.value), 41, Br))
-      ])),
-      ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(x), (u, s) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
-        key: s,
-        name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(V)(d[u.type]),
-        css: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(R)
-      }, {
-        default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-          d[u.type] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(Mt, {
+          ], 2);
+        }), 128)),
+        g.is24 ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Dr, [
+          g.$slots["am-pm-button"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(g.$slots, "am-pm-button", {
             key: 0,
-            items: i(u.type),
-            "disabled-values": e.filters.times[u.type],
-            "onUpdate:modelValue": (h) => j(u.type, h),
-            onSelected: (h) => z(u.type),
-            onToggle: (h) => z(u.type),
-            onResetFlow: D[0] || (D[0] = (h) => M.$emit("reset-flow"))
-          }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
-            "button-icon": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-              M.$slots["clock-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(M.$slots, "clock-icon", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-              M.$slots["clock-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Un), { key: 1 }))
-            ]),
-            _: 2
-          }, [
-            M.$slots[`${u.type}-overlay`] ? {
-              name: "item",
-              fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: h }) => [
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(M.$slots, `${u.type}-overlay`, {
-                  text: h.text,
-                  value: h.value
-                })
+            toggle: j,
+            value: V.value
+          }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+          g.$slots["am-pm-button"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+            key: 1,
+            ref_key: "amPmButton",
+            ref: i,
+            type: "button",
+            class: "dp__pm_am_button",
+            role: "button",
+            "aria-label": (A = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(p).ariaLabels) == null ? void 0 : A.amPmButton,
+            tabindex: "0",
+            onClick: j,
+            onKeydown: [
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(j, ["prevent"]), ["enter"]),
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(j, ["prevent"]), ["space"])
+            ]
+          }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(V.value), 41, Mr))
+        ])),
+        ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(C), (T, K) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+          key: K,
+          name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)($)(L[T.type]),
+          css: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y)
+        }, {
+          default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+            L[T.type] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(gt, {
+              key: 0,
+              items: Z(T.type),
+              "disabled-values": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(p).filters.times[T.type],
+              "esc-close": g.escClose,
+              "aria-labels": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(p).ariaLabels,
+              "hide-navigation": g.hideNavigation,
+              "onUpdate:modelValue": (l) => z(T.type, l),
+              onSelected: (l) => ne(T.type),
+              onToggle: (l) => ne(T.type),
+              onResetFlow: c[0] || (c[0] = (l) => g.$emit("reset-flow")),
+              type: T.type
+            }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({
+              "button-icon": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                g.$slots["clock-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(g.$slots, "clock-icon", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                g.$slots["clock-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ln), { key: 1 }))
               ]),
-              key: "0"
-            } : void 0
-          ]), 1032, ["items", "disabled-values", "onUpdate:modelValue", "onSelected", "onToggle"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
-        ]),
-        _: 2
-      }, 1032, ["name", "css"]))), 128))
-    ]));
+              _: 2
+            }, [
+              g.$slots[`${T.type}-overlay-value`] ? {
+                name: "item",
+                fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(({ item: l }) => [
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(g.$slots, `${T.type}-overlay-value`, {
+                    text: l.text,
+                    value: l.value
+                  })
+                ]),
+                key: "0"
+              } : void 0
+            ]), 1032, ["items", "disabled-values", "esc-close", "aria-labels", "hide-navigation", "onUpdate:modelValue", "onSelected", "onToggle", "type"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+          ]),
+          _: 2
+        }, 1032, ["name", "css"]))), 128))
+      ]));
+    };
   }
-}), wt = [
-  { name: "clock-icon", use: ["time", "calendar"] },
-  { name: "arrow-left", use: ["month-year", "calendar"] },
-  { name: "arrow-right", use: ["month-year", "calendar"] },
-  { name: "arrow-up", use: ["time", "calendar"] },
-  { name: "arrow-down", use: ["time", "calendar"] },
-  { name: "calendar-icon", use: ["month-year", "time", "calendar"] },
-  { name: "day", use: ["calendar"] },
-  { name: "month-overlay", use: ["calendar", "month-year"] },
-  { name: "year-overlay", use: ["calendar", "month-year"] },
-  { name: "hours-overlay", use: ["calendar", "time"] },
-  { name: "minutes-overlay", use: ["calendar", "time"] },
-  { name: "seconds-overlay", use: ["calendar", "time"] },
-  { name: "hours", use: ["calendar", "time"] },
-  { name: "minutes", use: ["calendar", "time"] },
-  { name: "month", use: ["calendar", "month-year"] },
-  { name: "year", use: ["calendar", "month-year"] },
-  { name: "action-select", use: ["action"] },
-  { name: "action-preview", use: ["action"] },
-  { name: "calendar-header", use: ["calendar"] },
-  { name: "marker-tooltip", use: ["calendar"] },
-  { name: "now-button", use: [] },
-  { name: "time-picker-overlay", use: ["calendar", "time"] },
-  { name: "am-pm-button", use: ["calendar", "time"] }
-], Nr = [{ name: "trigger" }, { name: "input-icon" }, { name: "clear-icon" }, { name: "dp-input" }], Ir = {
-  all: () => wt,
-  monthYear: () => wt.filter((e) => e.use.includes("month-year")),
-  input: () => Nr,
-  timePicker: () => wt.filter((e) => e.use.includes("time")),
-  action: () => wt.filter((e) => e.use.includes("action")),
-  calendar: () => wt.filter((e) => e.use.includes("calendar"))
-}, at = (e, a) => {
-  const n = [];
-  return Ir[a]().forEach((t) => {
-    e[t.name] && n.push(t.name);
-  }), n;
-}, Yr = ["aria-label"], Er = { class: "dp__overlay_container dp__container_flex" }, Fr = {
+}), Ar = ["aria-label"], Tr = { class: "dp__overlay_container dp__container_flex" }, Sr = {
   key: 1,
   class: "dp__overlay_row"
-}, Hr = ["aria-label"], Wr = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+}, Cr = ["aria-label"], Pr = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: "TimePicker",
   props: {
-    ...xn,
-    range: { type: Boolean, default: !1 },
-    filters: { type: Object, default: () => ({}) },
     hours: { type: [Number, Array], default: 0 },
     minutes: { type: [Number, Array], default: 0 },
     seconds: { type: [Number, Array], default: 0 },
-    customProps: { type: Object, default: null },
-    modelAuto: { type: Boolean, default: !1 },
-    internalModelValue: { type: [Date, Array], default: null }
+    internalModelValue: { type: [Date, Array], default: null },
+    ...Qe
   },
   emits: [
     "update:hours",
@@ -12829,1084 +13821,658 @@ const Gn = /* @__PURE__ */ ot(kl, [["render", Dl]]), Tn = (e, a) => {
     "reset-flow",
     "overlay-closed"
   ],
-  setup(e, { expose: a, emit: n }) {
-    const t = e, d = (0,vue__WEBPACK_IMPORTED_MODULE_0__.useSlots)(), m = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), v = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(pn, !1), g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), w = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Xe), R = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(qe), { transitionName: E, showTransition: N } = Ut(), { buildMatrix: G, setTimePicker: T } = Je();
+  setup(e, { expose: n, emit: a }) {
+    const t = e, { buildMatrix: r, setTimePicker: u } = Je(), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.useSlots)(), { hideNavigationButtons: $, defaults: Y } = Ee(t), { transitionName: L, showTransition: V } = Lt(Y.value.transitions), i = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), _ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), I = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), B = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
-      n("mount"), !t.timePicker && (R == null ? void 0 : R.value) ? G([ke(m.value)], "time") : T(!0, t.timePicker);
+      a("mount"), !t.timePicker && t.arrowNavigation ? r([Ce(i.value)], "time") : u(!0, t.timePicker);
     });
-    const x = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.range && t.modelAuto ? oa(t.internalModelValue) : !0), l = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), i = (D) => ({
-      hours: Array.isArray(t.hours) ? t.hours[D] : t.hours,
-      minutes: Array.isArray(t.minutes) ? t.minutes[D] : t.minutes,
-      seconds: Array.isArray(t.seconds) ? t.seconds[D] : t.seconds
-    }), Y = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-      const D = [];
+    const X = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.range && t.modelAuto ? Kn(t.internalModelValue) : !0), Q = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), C = (E) => ({
+      hours: Array.isArray(t.hours) ? t.hours[E] : t.hours,
+      minutes: Array.isArray(t.minutes) ? t.minutes[E] : t.minutes,
+      seconds: Array.isArray(t.seconds) ? t.seconds[E] : t.seconds
+    }), M = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+      const E = [];
       if (t.range)
-        for (let u = 0; u < 2; u++)
-          D.push(i(u));
+        for (let z = 0; z < 2; z++)
+          E.push(C(z));
       else
-        D.push(i(0));
-      return D;
-    }), z = (D, u = !1, s = "") => {
-      u || n("reset-flow"), l.value = D, R != null && R.value && (T(D), D || n("overlay-closed")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
-        s !== "" && g.value[0] && g.value[0].openChildCmp(s);
+        E.push(C(0));
+      return E;
+    }), Z = (E, z = !1, g = "") => {
+      z || a("reset-flow"), Q.value = E, t.arrowNavigation && (u(E), E || a("overlay-closed")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+        g !== "" && I.value[0] && I.value[0].openChildCmp(g);
       });
-    }, P = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
+    }, ae = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
       dp__button: !0,
-      dp__button_bottom: v
-    })), K = at(d, "timePicker"), X = (D, u, s) => t.range ? u === 0 ? [D, Y.value[1][s]] : [Y.value[0][s], D] : D, ee = (D) => {
-      n("update:hours", D);
-    }, Z = (D) => {
-      n("update:minutes", D);
-    }, j = (D) => {
-      n("update:seconds", D);
-    }, M = () => {
-      w.value && (R == null ? void 0 : R.value) && w.value.focus({ preventScroll: !0 });
+      dp__button_bottom: t.autoApply
+    })), ne = lt(p, "timePicker"), P = (E, z, g) => t.range ? z === 0 ? [E, M.value[1][g]] : [M.value[0][g], E] : E, m = (E) => {
+      a("update:hours", E);
+    }, N = (E) => {
+      a("update:minutes", E);
+    }, j = (E) => {
+      a("update:seconds", E);
+    }, ee = () => {
+      B.value && t.arrowNavigation && B.value.focus({ preventScroll: !0 });
     };
-    return a({ toggleTimePicker: z }), (D, u) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [
-      D.timePicker ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-        key: 0,
-        class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(P)),
-        role: "button",
-        "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(V).openTimePicker,
-        tabindex: "0",
-        ref_key: "openTimePickerBtn",
-        ref: m,
-        onKeydown: [
-          u[0] || (u[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((s) => z(!0), ["enter"])),
-          u[1] || (u[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((s) => z(!0), ["space"]))
-        ],
-        onClick: u[2] || (u[2] = (s) => z(!0))
-      }, [
-        D.$slots["clock-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(D.$slots, "clock-icon", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-        D.$slots["clock-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Un), { key: 1 }))
-      ], 42, Yr)),
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
-        name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(E)(l.value),
-        css: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N)
-      }, {
-        default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-          l.value || D.timePicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-            key: 0,
-            class: "dp__overlay",
-            ref_key: "overlayRef",
-            ref: w,
-            tabindex: "0"
-          }, [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", Er, [
-              D.$slots["time-picker-overlay"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(D.$slots, "time-picker-overlay", {
-                key: 0,
-                range: e.range,
-                hours: e.hours,
-                minutes: e.minutes,
-                seconds: e.seconds,
-                setHours: ee,
-                setMinutes: Z,
-                setSeconds: j
-              }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-              D.$slots["time-picker-overlay"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Fr, [
-                ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y), (s, h) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(Or, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
-                  key: h,
-                  disabled: h === 0 ? D.fixedStart : D.fixedEnd,
-                  hours: s.hours,
-                  minutes: s.minutes,
-                  seconds: s.seconds,
-                  filters: e.filters,
-                  ref_for: !0,
-                  ref_key: "timeInputRefs",
-                  ref: g
-                }, {
-                  is24: D.is24,
-                  hoursGridIncrement: D.hoursGridIncrement,
-                  minutesGridIncrement: D.minutesGridIncrement,
-                  secondsGridIncrement: D.secondsGridIncrement,
-                  hoursIncrement: D.hoursIncrement,
-                  minutesIncrement: D.minutesIncrement,
-                  secondsIncrement: D.secondsIncrement,
-                  filters: e.filters,
-                  noHoursOverlay: D.noHoursOverlay,
-                  noMinutesOverlay: D.noMinutesOverlay,
-                  noSecondsOverlay: D.noSecondsOverlay,
-                  enableSeconds: D.enableSeconds,
-                  closeTimePickerBtn: p.value,
-                  order: h
-                }, {
-                  "onUpdate:hours": (F) => ee(X(F, h, "hours")),
-                  "onUpdate:minutes": (F) => Z(X(F, h, "minutes")),
-                  "onUpdate:seconds": (F) => j(X(F, h, "seconds")),
-                  onMounted: M,
-                  onOverlayClosed: M
-                }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
-                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(K), (F, J) => ({
-                    name: F,
-                    fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((I) => [
-                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(D.$slots, F, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)(I)))
-                    ])
-                  }))
-                ]), 1040, ["disabled", "hours", "minutes", "seconds", "filters", "onUpdate:hours", "onUpdate:minutes", "onUpdate:seconds"])), [
-                  [vue__WEBPACK_IMPORTED_MODULE_0__.vShow, h === 0 ? !0 : (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(x)]
-                ])), 128))
-              ])),
-              D.timePicker ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-                key: 2,
-                ref_key: "closeTimePickerBtn",
-                ref: p,
-                class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(P)),
-                role: "button",
-                "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(V).closeTimePicker,
-                tabindex: "0",
-                onKeydown: [
-                  u[3] || (u[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((s) => z(!1), ["enter"])),
-                  u[4] || (u[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((s) => z(!1), ["space"]))
-                ],
-                onClick: u[5] || (u[5] = (s) => z(!1))
-              }, [
-                D.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(D.$slots, "calendar-icon", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-                D.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Wt), { key: 1 }))
-              ], 42, Hr))
-            ])
-          ], 512)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+    return n({ toggleTimePicker: Z }), (E, z) => {
+      var g;
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [
+        E.timePicker ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+          key: 0,
+          class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ae)),
+          role: "button",
+          "aria-label": (g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y).ariaLabels) == null ? void 0 : g.openTimePicker,
+          tabindex: "0",
+          ref_key: "openTimePickerBtn",
+          ref: i,
+          onKeydown: [
+            z[0] || (z[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((c) => Z(!0), ["enter"])),
+            z[1] || (z[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((c) => Z(!0), ["space"]))
+          ],
+          onClick: z[2] || (z[2] = (c) => Z(!0))
+        }, [
+          E.$slots["clock-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(E.$slots, "clock-icon", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+          E.$slots["clock-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ln), { key: 1 }))
+        ], 42, Ar)), [
+          [vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)($)("time")]
         ]),
-        _: 3
-      }, 8, ["name", "css"])
-    ]));
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+          name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(L)(Q.value),
+          css: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(V)
+        }, {
+          default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => {
+            var c;
+            return [
+              Q.value || E.timePicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                key: 0,
+                class: "dp__overlay",
+                ref_key: "overlayRef",
+                ref: B,
+                tabindex: "0"
+              }, [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", Tr, [
+                  E.$slots["time-picker-overlay"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(E.$slots, "time-picker-overlay", {
+                    key: 0,
+                    hours: e.hours,
+                    minutes: e.minutes,
+                    seconds: e.seconds,
+                    setHours: m,
+                    setMinutes: N,
+                    setSeconds: j
+                  }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                  E.$slots["time-picker-overlay"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Sr, [
+                    ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M), (A, T) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_r, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: T }, {
+                      ...E.$props,
+                      order: T,
+                      hours: A.hours,
+                      minutes: A.minutes,
+                      seconds: A.seconds,
+                      closeTimePickerBtn: _.value,
+                      disabled: T === 0 ? E.fixedStart : E.fixedEnd
+                    }, {
+                      ref_for: !0,
+                      ref_key: "timeInputRefs",
+                      ref: I,
+                      "onUpdate:hours": (K) => m(P(K, T, "hours")),
+                      "onUpdate:minutes": (K) => N(P(K, T, "minutes")),
+                      "onUpdate:seconds": (K) => j(P(K, T, "seconds")),
+                      onMounted: ee,
+                      onOverlayClosed: ee
+                    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
+                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ne), (K, l) => ({
+                        name: K,
+                        fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((f) => [
+                          (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(E.$slots, K, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)(f)))
+                        ])
+                      }))
+                    ]), 1040, ["onUpdate:hours", "onUpdate:minutes", "onUpdate:seconds"])), [
+                      [vue__WEBPACK_IMPORTED_MODULE_0__.vShow, T === 0 ? !0 : (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(X)]
+                    ])), 128))
+                  ])),
+                  E.timePicker ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                    key: 2,
+                    ref_key: "closeTimePickerBtn",
+                    ref: _,
+                    class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ae)),
+                    role: "button",
+                    "aria-label": (c = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y).ariaLabels) == null ? void 0 : c.closeTimePicker,
+                    tabindex: "0",
+                    onKeydown: [
+                      z[3] || (z[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((A) => Z(!1), ["enter"])),
+                      z[4] || (z[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((A) => Z(!1), ["space"]))
+                    ],
+                    onClick: z[5] || (z[5] = (A) => Z(!1))
+                  }, [
+                    E.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(E.$slots, "calendar-icon", { key: 0 }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                    E.$slots["calendar-icon"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Et), { key: 1 }))
+                  ], 42, Cr)), [
+                    [vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)($)("time")]
+                  ])
+                ])
+              ], 512)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+            ];
+          }),
+          _: 3
+        }, 8, ["name", "css"])
+      ]);
+    };
   }
-}), Kr = (e, a, n, t) => {
-  const d = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(new Date()), m = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{ month: (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(new Date()), year: (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(new Date()) }]), v = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(
-    e.range ? [(0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(new Date()), (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(new Date())] : (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(new Date())
-  ), g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(
-    e.range ? [(0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(new Date()), (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(new Date())] : (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(new Date())
-  ), w = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(e.range ? [0, 0] : 0);
-  (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(
-    p,
-    () => {
-      setTimeout(() => {
-        e.openOnTop && a("dpOpen");
-      }, 0);
-    },
-    { deep: !0 }
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
-    Z(!0), l.value || (e.startDate && (p.value[0].month = (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(new Date(e.startDate)), p.value[0].year = (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(new Date(e.startDate)), e.multiCalendars && _(0)), e.startTime && x());
-  });
-  const V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
-    () => (r) => p.value[r] ? p.value[r].month : 0
-  ), R = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
-    () => (r) => p.value[r] ? p.value[r].year : 0
-  ), E = (r, b, S) => {
-    p.value[r].month = b, p.value[r].year = S;
-  }, N = (r, b) => p.value[r].month = b, G = (r, b) => p.value[r].year = b, T = (r = !0) => e.enableSeconds ? Array.isArray(w.value) ? r ? w.value[0] : w.value[1] : w.value : 0, x = () => {
-    e.startTime && (Wl(e.startTime) ? (v.value = [+e.startTime[0].hours, +e.startTime[1].hours], g.value = [+e.startTime[0].minutes, +e.startTime[1].minutes], e.enableSeconds && (w.value = [+e.startTime[0].seconds, +e.startTime[1].seconds])) : (v.value = +e.startTime.hours, g.value = +e.startTime.minutes, e.enableSeconds && (w.value = +e.startTime.seconds)));
-  }, l = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)({
-    get: () => e.internalModelValue,
-    set: (r) => {
-      !e.readonly && !e.disabled && a("update:internalModelValue", r);
-    }
-  });
-  (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(l, () => Z());
-  const i = (r) => {
-    const { validate: b } = qn(
-      e.minDate,
-      e.maxDate,
-      e.disabledDates,
-      e.allowedDates,
-      e.filters,
-      e.disabledWeekDays,
-      e.yearRange
-    );
-    return !b(r);
-  }, Y = (r) => !l.value || e.hideOffsetDates && !r.current ? !1 : e.range ? e.modelAuto && Array.isArray(l.value) ? ce(r.value, l.value[0] ? l.value[0] : d.value) : !1 : e.multiDates && Array.isArray(l.value) ? l.value.some((b) => ce(b, r.value)) : ce(r.value, l.value ? l.value : d.value), z = (r) => zn(l.value, m.value, r.value), P = (r, b = !1) => {
-    if ((!e.multiCalendars || !e.multiStatic || b) && (N(0, (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(r)), G(0, (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(r))), e.multiCalendars)
-      for (let S = 1; S <= e.multiCalendars; S++) {
-        const se = (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), { month: V.value(S - 1), year: R.value(S - 1) }), Se = (0,date_fns__WEBPACK_IMPORTED_MODULE_20__["default"])(se, { months: 1 });
-        p.value[S] = { month: (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(Se), year: (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(Se) };
-      }
-  }, K = () => {
-    if (Array.isArray(l.value) && l.value.length === 2) {
-      const r = new Date(l.value[1] ? l.value[1] : (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(l.value[0], 1)), [b, S] = [(0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(l.value[0]), (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(l.value[0])], [se, Se] = [(0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(l.value[1]), (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(l.value[1])];
-      (b !== se || b === se && S !== Se) && e.multiCalendarsSolo && (N(1, (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(r)), G(1, (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(r)));
-    }
-  }, X = (r) => {
-    P(r), v.value = (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(r), g.value = (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(r), w.value = (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(r);
-  }, ee = () => Array.isArray(l.value) && l.value.length ? l.value[l.value.length - 1] : null, Z = (r = !1) => {
-    if (l.value)
-      if (bt(l.value)) {
-        if (l.value.length === 2 && !e.multiDates)
-          P(l.value[0], r), v.value = [
-            (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(l.value[0]),
-            l.value[1] ? (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(l.value[1]) : (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(new Date())
-          ], g.value = [
-            (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(l.value[0]),
-            l.value[1] ? (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(l.value[1]) : (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(new Date())
-          ], w.value = [
-            (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(l.value[0]),
-            l.value[1] ? (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(l.value[1]) : (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(new Date())
-          ];
-        else if (bt(l.value) && e.multiDates) {
-          const b = l.value[l.value.length - 1];
-          b && X(b);
-        }
-        e.multiCalendars && e.multiCalendarsSolo && K();
-      } else
-        X(l.value);
-    else
-      e.timePicker ? (x(), e.range ? Ve(v.value) && Ve(g.value) && (l.value = [
-        Ae(new Date(), v.value[0], g.value[0], T()),
-        Ae(new Date(), v.value[1], g.value[1], T(!1))
-      ]) : l.value = Ae(
-        new Date(),
-        v.value,
-        g.value,
-        T()
-      )) : e.monthPicker && !e.range ? l.value = st(new Date(), V.value(0), R.value(0)) : e.multiCalendars ? P(new Date()) : e.yearPicker && !e.range && (l.value = new Date());
-  }, j = (r) => {
-    const b = (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(new Date(r)), S = (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(new Date(r));
-    if (N(0, b), G(0, S), e.multiCalendars > 0)
-      for (let se = 1; se < e.multiCalendars; se++) {
-        const Se = Ml(
-          (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(r), { year: V.value(se - 1), month: R.value(se - 1) })
-        );
-        N(se, Se.month), G(se, Se.year);
-      }
-  }, M = (r) => {
-    if (l.value && Array.isArray(l.value))
-      if (l.value.some((b) => ce(r, b))) {
-        const b = l.value.filter((S) => !ce(S, r));
-        l.value = b.length ? b : null;
-      } else
-        (e.multiDatesLimit && +e.multiDatesLimit > l.value.length || !e.multiDatesLimit) && l.value.push(r);
-    else
-      l.value = [r];
-  }, D = (r) => {
-    if (Array.isArray(l.value) && l.value[0]) {
-      const b = (0,date_fns__WEBPACK_IMPORTED_MODULE_31__["default"])(r, l.value[0]), S = De(l.value[0], r) ? r : l.value[0], se = De(r, l.value[0]) ? r : l.value[0], xe = (0,date_fns__WEBPACK_IMPORTED_MODULE_32__["default"])({ start: S, end: se }).filter((dt) => i(dt)).length, Te = Math.abs(b < 0 ? b + 1 : b - 1) - xe;
-      if (e.minRange && e.maxRange)
-        return Te >= +e.minRange && Te <= +e.maxRange;
-      if (e.minRange)
-        return Te >= +e.minRange;
-      if (e.maxRange)
-        return Te <= +e.maxRange;
-    }
-    return !0;
-  }, u = (r) => Array.isArray(l.value) && l.value.length === 2 ? e.fixedStart && (De(r, l.value[0]) || ce(r, l.value[0])) ? [l.value[0], r] : e.fixedEnd && (we(r, l.value[1]) || ce(r, l.value[1])) ? [r, l.value[1]] : l.value : [], s = () => {
-    e.autoApply && a("autoApply");
-  }, h = (r) => !(0,date_fns__WEBPACK_IMPORTED_MODULE_32__["default"])({ start: r[0], end: r[1] }).some((S) => i(S)), F = (r, b = !1) => {
-    if (!i(r.value) && !(!r.current && e.hideOffsetDates)) {
-      if (e.weekPicker)
-        return l.value = Rt(new Date(r.value), +e.weekStart), s();
-      if (!e.range && !Ve(v.value) && !Ve(g.value)) {
-        const S = Ae(new Date(r.value), v.value, g.value, T());
-        e.multiDates ? M(S) : l.value = S, n(), s();
-      } else if (Ve(v.value) && Ve(g.value) && !e.multiDates) {
-        let S = l.value ? l.value.slice() : [];
-        if (S.length === 2 && !(e.fixedStart || e.fixedEnd) && (S = []), e.autoRange) {
-          const se = [new Date(r.value), (0,date_fns__WEBPACK_IMPORTED_MODULE_27__["default"])(new Date(r.value), +e.autoRange)];
-          h(se) && (b && j(r.value), S = se);
-        } else
-          e.fixedStart || e.fixedEnd ? S = u(new Date(r.value)) : S[0] ? D(new Date(r.value)) && (we(new Date(r.value), new Date(S[0])) ? S.unshift(new Date(r.value)) : S[1] = new Date(r.value)) : S[0] = new Date(r.value);
-        S.length && (S[0] && !S[1] ? S[0] = Ae(S[0], v.value[0], g.value[0], T()) : (S[0] = Ae(S[0], v.value[0], g.value[0], T()), S[1] = Ae(S[1], v.value[1], g.value[1], T(!1)), n()), l.value = S, S[0] && S[1] && e.autoApply && a("autoApply"));
-      }
-    }
-  }, J = (r) => {
-    const b = r.find((S) => S.current);
-    return b ? (0,date_fns__WEBPACK_IMPORTED_MODULE_33__["default"])(b.value) : "";
-  }, I = (r) => {
-    !r.current && e.hideOffsetDates || (m.value = r.value);
-  }, oe = (r) => {
-    if (e.autoRange || e.weekPicker) {
-      if (m.value) {
-        if (e.hideOffsetDates && !r.current)
+}), Nr = (e, n) => {
+  const { isDisabled: a, matchDate: t, getWeekFromDate: r } = Ee(n), u = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(b()), $ = (l) => {
+    !l.current && n.hideOffsetDates || (u.value = l.value);
+  }, Y = () => {
+    u.value = null;
+  }, L = (l) => Array.isArray(e.value) && n.range && e.value[0] && u.value ? l ? Be(u.value, e.value[0]) : Pe(u.value, e.value[0]) : !0, V = (l, f) => {
+    const k = () => e.value ? f ? e.value[0] || null : e.value[1] : null, R = e.value && Array.isArray(e.value) ? k() : null;
+    return ye(b(l.value), R);
+  }, i = (l) => {
+    const f = Array.isArray(e.value) ? e.value[0] : null;
+    return l ? !Pe(u.value || null, f) : !0;
+  }, _ = (l, f = !0) => (n.range || n.weekPicker) && Array.isArray(e.value) ? n.hideOffsetDates && !l.current ? !1 : ye(b(l.value), e.value[f ? 0 : 1]) : n.range ? V(l, f) && i(f) || ye(l.value, Array.isArray(e.value) ? e.value[0] : null) && L(f) : !1, I = (l, f, k) => Array.isArray(e.value) && e.value[0] && e.value.length === 1 ? l ? !1 : k ? Be(e.value[0], f.value) : Pe(e.value[0], f.value) : !1, B = (l) => !e.value || n.hideOffsetDates && !l.current ? !1 : n.range ? n.modelAuto && Array.isArray(e.value) ? ye(l.value, e.value[0] ? e.value[0] : p.value) : !1 : n.multiDates && Array.isArray(e.value) ? e.value.some((f) => ye(f, l.value)) : ye(l.value, e.value ? e.value : p.value), X = (l) => {
+    if (n.autoRange || n.weekPicker) {
+      if (u.value) {
+        if (n.hideOffsetDates && !l.current)
           return !1;
-        const b = (0,date_fns__WEBPACK_IMPORTED_MODULE_27__["default"])(m.value, +e.autoRange), S = Rt(new Date(m.value), +e.weekStart);
-        return e.weekPicker ? ce(S[1], new Date(r.value)) : ce(b, new Date(r.value));
+        const f = (0,date_fns__WEBPACK_IMPORTED_MODULE_24__["default"])(u.value, +n.autoRange), k = r(b(u.value));
+        return n.weekPicker ? ye(k[1], b(l.value)) : ye(f, b(l.value));
       }
       return !1;
     }
     return !1;
-  }, te = (r) => {
-    if (e.autoRange || e.weekPicker) {
-      if (m.value) {
-        const b = (0,date_fns__WEBPACK_IMPORTED_MODULE_27__["default"])(m.value, +e.autoRange);
-        if (e.hideOffsetDates && !r.current)
+  }, Q = (l) => {
+    if (n.autoRange || n.weekPicker) {
+      if (u.value) {
+        const f = (0,date_fns__WEBPACK_IMPORTED_MODULE_24__["default"])(u.value, +n.autoRange);
+        if (n.hideOffsetDates && !l.current)
           return !1;
-        const S = Rt(new Date(m.value), +e.weekStart);
-        return e.weekPicker ? De(r.value, S[0]) && we(r.value, S[1]) : De(r.value, m.value) && we(r.value, b);
+        const k = r(b(u.value));
+        return n.weekPicker ? Be(l.value, k[0]) && Pe(l.value, k[1]) : Be(l.value, u.value) && Pe(l.value, f);
       }
       return !1;
     }
     return !1;
-  }, k = (r) => {
-    if (e.autoRange || e.weekPicker) {
-      if (m.value) {
-        if (e.hideOffsetDates && !r.current)
+  }, C = (l) => {
+    if (n.autoRange || n.weekPicker) {
+      if (u.value) {
+        if (n.hideOffsetDates && !l.current)
           return !1;
-        const b = Rt(new Date(m.value), +e.weekStart);
-        return e.weekPicker ? ce(b[0], r.value) : ce(m.value, r.value);
+        const f = r(b(u.value));
+        return n.weekPicker ? ye(f[0], l.value) : ye(u.value, l.value);
       }
       return !1;
     }
     return !1;
-  }, _ = (r) => {
-    for (let b = r - 1; b >= 0; b--) {
-      const S = (0,date_fns__WEBPACK_IMPORTED_MODULE_28__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), { month: V.value(b + 1), year: R.value(b + 1) }), 1);
-      E(b, (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(S), (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(S));
-    }
-    for (let b = r + 1; b <= e.multiCalendars - 1; b++) {
-      const S = (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), { month: V.value(b - 1), year: R.value(b - 1) }), 1);
-      E(b, (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(S), (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(S));
-    }
-  }, O = (r) => st(new Date(), V.value(r), R.value(r)), Re = (r, b) => {
-    if (N(r, b.month), G(r, b.year), e.multiCalendars && !e.multiCalendarsSolo && _(r), e.monthPicker || e.yearPicker)
-      if (e.range) {
-        let S = l.value ? l.value.slice() : [];
-        S.length === 2 && S[1] !== null && (S = []), S.length ? we(O(r), S[0]) ? S.unshift(O(r)) : S[1] = O(r) : S = [O(r)], l.value = S;
-      } else
-        l.value = O(r);
-    n(), a("updateMonthYear", { instance: r, month: b.month, year: b.year }), Pt(e.multiCalendarsSolo ? r : void 0);
-  }, Ie = (r) => Ae(r, v.value, g.value, T()), Ye = (r) => {
-    bt(r) && bt(l.value) && Ve(v.value) && Ve(g.value) ? (r[0] && l.value[0] && (l.value[0] = Ae(r[0], v.value[0], g.value[0], T())), r[1] && l.value[1] && (l.value[1] = Ae(
-      r[1],
-      v.value[1],
-      g.value[1],
-      T(!1)
-    ))) : e.multiDates && Array.isArray(l.value) ? l.value[l.value.length - 1] = Ie(r) : !e.range && !Yt(r) && (l.value = Ie(r)), a("timeUpdate");
-  }, Ke = (r, b = !0, S = !1) => {
-    const se = b ? r : v.value, Se = !b && !S ? r : g.value, xe = S ? r : w.value;
-    if (e.range && Yt(l.value) && Ve(se) && Ve(Se) && Ve(xe) && !e.disableTimeRangeValidation) {
-      const Te = (Le) => Ae(l.value[Le], se[Le], Se[Le], xe[Le]), dt = (Le) => (0,date_fns__WEBPACK_IMPORTED_MODULE_7__["default"])(l.value[Le], 0);
-      if (ce(l.value[0], l.value[1]) && ((0,date_fns__WEBPACK_IMPORTED_MODULE_17__["default"])(Te(0), dt(1)) || (0,date_fns__WEBPACK_IMPORTED_MODULE_18__["default"])(Te(1), dt(0))))
-        return;
-    }
-    if (v.value = se, g.value = Se, w.value = xe, l.value)
-      if (e.multiDates) {
-        const Te = ee();
-        Te && Ye(Te);
-      } else
-        Ye(l.value);
-    else
-      e.timePicker && Ye(e.range ? [new Date(), new Date()] : new Date());
-    n();
-  }, Ue = () => {
-    m.value = null;
-  }, Ze = (r) => Bn(l.value, e.range) && l.value[0] && m.value ? r ? De(m.value, l.value[0]) : we(m.value, l.value[0]) : !0, be = (r, b = !0) => (e.range || e.weekPicker) && Yt(l.value) ? e.hideOffsetDates && !r.current ? !1 : ce(new Date(r.value), l.value[b ? 0 : 1]) : e.range ? ce(
-    new Date(r.value),
-    l.value && Array.isArray(l.value) ? b ? l.value[0] || null : l.value[1] : null
-  ) && (b ? !we(
-    m.value || null,
-    Array.isArray(l.value) ? l.value[0] : null
-  ) : !0) || ce(r.value, Array.isArray(l.value) ? l.value[0] : null) && Ze(b) : !1, it = (r, b) => Array.isArray(e.internalModelValue) && e.internalModelValue.length || e.weekPicker ? !1 : !r && !Y(b) && !(!b.current && e.hideOffsetDates) && (e.range ? !be(b) && !be(b, !1) : !0), pt = (r, b, S) => Array.isArray(e.internalModelValue) && e.internalModelValue[0] && e.internalModelValue.length === 1 ? r ? !1 : S ? De(e.internalModelValue[0], b.value) : we(e.internalModelValue[0], b.value) : !1, ht = (r = !1) => {
-    e.autoApply && (e.monthPicker || e.yearPicker) && (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)().then(() => {
-      e.range ? a("autoApply", r || !l.value || l.value.length === 1) : a("autoApply", r);
-    });
-  }, c = (r, b) => {
-    const S = (0,date_fns__WEBPACK_IMPORTED_MODULE_21__["default"])(new Date(), { month: V.value(b), year: R.value(b) }), se = r < 0 ? (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(S, 1) : (0,date_fns__WEBPACK_IMPORTED_MODULE_28__["default"])(S, 1);
-    ia(
-      e.minDate,
-      e.maxDate,
-      (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(se),
-      (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(se),
-      r < 0,
-      e.preventMinMaxNavigation
-    ) && (E(b, (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(se), (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(se)), e.multiCalendars && !e.multiCalendarsSolo && _(b), Pt());
-  }, ae = (r, b) => {
-    e.monthChangeOnScroll && c(e.monthChangeOnScroll !== "inverse" ? -r.deltaY : r.deltaY, b);
-  }, me = (r, b, S = !1) => {
-    e.monthChangeOnArrows && e.vertical === S && ut(r, b);
-  }, ut = (r, b) => {
-    c(r === "right" ? -1 : 1, b);
-  }, Qe = (r) => e.markers.find((b) => ce(Ee(r.value), Ee(b.date))), Lt = () => {
-    e.range ? Bn(l.value, e.range) && (l.value && l.value[0] ? l.value = we(new Date(), l.value[0]) ? [new Date(), l.value[0]] : [l.value[0], new Date()] : l.value = [new Date()]) : a("update:internalModelValue", new Date()), e.autoApply && a("selectDate");
-  }, Gt = (r) => {
-    r.length && r.length <= 2 && e.range && (l.value = r.map((b) => new Date(b)), e.autoApply && a("selectDate"));
-  }, Pt = (r) => {
-    r || r === 0 ? t.value[r].triggerTransition(V.value(r), R.value(r)) : t.value.forEach((b, S) => b.triggerTransition(V.value(S), R.value(S)));
-  };
+  }, M = (l) => Hn(e.value, u.value, l.value), Z = () => n.modelAuto && Array.isArray(n.internalModelValue) ? !!n.internalModelValue[0] : !1, ae = () => n.modelAuto ? Kn(n.internalModelValue) : !0, ne = (l) => {
+    if (Array.isArray(e.value) && e.value.length || n.weekPicker)
+      return !1;
+    const f = n.range ? !_(l) && !_(l, !1) : !0;
+    return !a(l.value) && !B(l) && !(!l.current && n.hideOffsetDates) && f;
+  }, P = (l) => n.range ? n.modelAuto ? Z() && B(l) : !1 : B(l), m = (l) => n.highlight ? t(l.value, n.highlight) : !1, N = (l) => a(l.value) && n.highlightDisabledDays === !1, j = (l) => n.highlightWeekDays && n.highlightWeekDays.includes(l.value.getDay()), ee = (l) => (n.range || n.weekPicker) && (n.multiCalendars > 0 ? l.current : !0) && ae() && !(!l.current && n.hideOffsetDates) && !B(l) ? M(l) : !1, E = (l) => ({
+    dp__cell_offset: !l.current,
+    dp__pointer: !n.disabled && !(!l.current && n.hideOffsetDates) && !a(l.value),
+    dp__cell_disabled: a(l.value),
+    dp__cell_highlight: !N(l) && (m(l) || j(l)) && !P(l),
+    dp__cell_highlight_active: !N(l) && (m(l) || j(l)) && P(l),
+    dp__today: !n.noToday && ye(l.value, p.value) && l.current
+  }), z = (l) => ({
+    dp__active_date: P(l),
+    dp__date_hover: ne(l)
+  }), g = (l) => ({
+    ...c(l),
+    ...A(l),
+    dp__range_between_week: ee(l) && n.weekPicker
+  }), c = (l) => ({
+    dp__range_start: n.multiCalendars > 0 ? l.current && _(l) && ae() : _(l) && ae(),
+    dp__range_end: n.multiCalendars > 0 ? l.current && _(l, !1) && ae() : _(l, !1) && ae(),
+    dp__range_between: ee(l) && !n.weekPicker,
+    dp__date_hover_start: I(ne(l), l, !0),
+    dp__date_hover_end: I(ne(l), l, !1)
+  }), A = (l) => ({
+    ...c(l),
+    dp__cell_auto_range: Q(l),
+    dp__cell_auto_range_start: C(l),
+    dp__cell_auto_range_end: X(l)
+  }), T = (l) => n.range ? n.autoRange ? A(l) : n.modelAuto ? { ...z(l), ...c(l) } : c(l) : n.weekPicker ? g(l) : z(l);
   return {
-    today: d,
-    hours: v,
-    minutes: g,
-    seconds: w,
-    month: V,
-    year: R,
-    monthYearSelect: ht,
-    isDisabled: i,
-    updateTime: Ke,
-    setHoverDate: I,
-    getWeekNum: J,
-    selectDate: F,
-    rangeActive: z,
-    isActiveDate: Y,
-    updateMonthYear: Re,
-    isHoverRangeEnd: oe,
-    isAutoRangeInBetween: te,
-    isAutoRangeStart: k,
-    clearHoverDate: Ue,
-    rangeActiveStartEnd: be,
-    handleScroll: ae,
-    getMarker: Qe,
-    handleArrow: me,
-    handleSwipe: ut,
-    selectCurrentDate: Lt,
-    isHoverDate: it,
-    isHoverDateStartEnd: pt,
-    presetDateRange: Gt
+    setHoverDate: $,
+    clearHoverDate: Y,
+    getDayClassData: (l) => ({
+      ...E(l),
+      ...T(l),
+      [n.dayClass ? n.dayClass(l.value) : ""]: !0,
+      [n.calendarCellClassName]: !!n.calendarCellClassName
+    })
   };
-}, _t = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
-  menuFocused: !1,
-  shiftKeyInMenu: !1
-}), ua = () => ({
-  setMenuFocused: (t) => {
-    _t.menuFocused = t;
-  },
-  getStore: () => _t,
-  setShiftKey: (t) => {
-    _t.shiftKeyInMenu !== t && (_t.shiftKeyInMenu = t);
-  }
-});
-var Et = /* @__PURE__ */ ((e) => (e.center = "center", e.left = "left", e.right = "right", e))(Et || {});
-const Ur = ["id", "aria-label", "onKeydown"], Lr = {
+}, Rr = ["id", "onKeydown"], Ir = {
   key: 0,
-  class: "dp__preset_ranges"
-}, Gr = ["onClick"], jr = {
+  class: "dp__sidebar_left"
+}, Or = {
   key: 1,
+  class: "dp__preset_ranges"
+}, Br = ["onClick"], Yr = {
+  key: 2,
+  class: "dp__sidebar_right"
+}, Vr = {
+  key: 3,
   class: "dp__now_wrap"
-}, zr = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+}, Er = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: "DatepickerMenu",
   props: {
-    ...la,
-    ...gn,
-    ...hn,
+    openOnTop: { type: Boolean, default: !1 },
     internalModelValue: { type: [Date, Array], default: null },
-    multiCalendars: { type: Number, default: 0 },
-    openOnTop: { type: Boolean, default: !1 }
+    ...Qe
   },
   emits: [
-    "update:internalModelValue",
-    "closePicker",
-    "selectDate",
-    "dpOpen",
-    "autoApply",
-    "timeUpdate",
+    "close-picker",
+    "select-date",
+    "auto-apply",
+    "time-update",
     "flow-step",
-    "updateMonthYear",
-    "invalid-select"
+    "update-month-year",
+    "invalid-select",
+    "update:internal-model-value",
+    "recalculate-position"
   ],
-  setup(e, { emit: a }) {
-    const n = e, t = (0,vue__WEBPACK_IMPORTED_MODULE_0__.useSlots)(), d = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), m = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
-      timePicker: !!(!n.enableTimePicker || n.timePicker || n.monthPicker),
-      monthYearInput: !!n.timePicker,
+  setup(e, { emit: n }) {
+    const a = e, { setMenuFocused: t, setShiftKey: r, control: u } = Wn(), { getCalendarDays: p, defaults: $ } = Ee(a), Y = (0,vue__WEBPACK_IMPORTED_MODULE_0__.useSlots)(), L = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+      timePicker: !!(!a.enableTimePicker || a.timePicker || a.monthPicker),
+      monthYearInput: !!a.timePicker,
       calendar: !1
-    }), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), v = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), w = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0), R = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), E = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0), N = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Kt), G = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(Xe), T = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(qe), { setMenuFocused: x, setShiftKey: l, getStore: i } = ua();
+    }), i = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), _ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]), I = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), B = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), X = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0), Q = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), C = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
-      var U;
-      R.value = !0, (U = n.presetRanges) != null && U.length || se();
-      const f = ke(w);
-      if (f && !n.textInput && !n.inline && (x(!0), X()), f) {
-        const H = (q) => {
-          !n.monthYearComponent && !n.timePickerComponent && q.preventDefault(), q.stopImmediatePropagation(), q.stopPropagation();
+      var G;
+      Q.value = !0, !((G = a.presetRanges) != null && G.length) && !Y["left-sidebar"] && !Y["right-sidebar"] && Fe();
+      const y = Ce(B);
+      if (y && !a.textInput && !a.inline && (t(!0), m()), y) {
+        const Me = (ke) => {
+          !a.monthYearComponent && !a.timePickerComponent && !Object.keys(Y).length && ke.preventDefault(), ke.stopImmediatePropagation(), ke.stopPropagation();
         };
-        f.addEventListener("pointerdown", H), f.addEventListener("mousedown", H);
+        y.addEventListener("pointerdown", Me), y.addEventListener("mousedown", Me);
       }
-      document.addEventListener("resize", se);
+      document.addEventListener("resize", Fe);
     }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.onUnmounted)(() => {
-      document.removeEventListener("resize", se);
+      document.removeEventListener("resize", Fe);
     });
-    const { arrowRight: Y, arrowLeft: z, arrowDown: P, arrowUp: K } = Je(), X = () => {
-      const f = ke(w);
-      f && f.focus({ preventScroll: !0 });
-    }, ee = () => {
-      var f;
-      ((f = n.flow) == null ? void 0 : f.length) && E.value !== -1 && (E.value += 1, a("flow-step", E.value), bn());
-    }, Z = () => {
-      E.value = -1;
+    const { arrowRight: M, arrowLeft: Z, arrowDown: ae, arrowUp: ne } = Je(), P = (y) => {
+      y || y === 0 ? _.value[y].triggerTransition(
+        z.value(y),
+        g.value(y)
+      ) : _.value.forEach(
+        (G, Me) => G.triggerTransition(z.value(Me), g.value(Me))
+      );
+    }, m = () => {
+      const y = Ce(B);
+      y && y.focus({ preventScroll: !0 });
+    }, N = () => {
+      var y;
+      ((y = a.flow) == null ? void 0 : y.length) && C.value !== -1 && (C.value += 1, n("flow-step", C.value), x());
+    }, j = () => {
+      C.value = -1;
     }, {
-      updateTime: j,
-      updateMonthYear: M,
-      today: D,
-      month: u,
-      year: s,
-      hours: h,
-      minutes: F,
-      seconds: J,
-      isDisabled: I,
-      isActiveDate: oe,
-      selectDate: te,
-      getWeekNum: k,
-      setHoverDate: _,
-      isHoverRangeEnd: O,
-      isAutoRangeInBetween: Re,
-      isAutoRangeStart: Ie,
-      rangeActive: Ye,
-      clearHoverDate: Ke,
-      rangeActiveStartEnd: Ue,
-      monthYearSelect: Ze,
-      handleScroll: be,
-      handleArrow: it,
-      handleSwipe: pt,
-      getMarker: ht,
-      selectCurrentDate: c,
-      isHoverDateStartEnd: ae,
-      isHoverDate: me,
-      presetDateRange: ut
-    } = Kr(n, a, ee, v), Qe = at(t, "calendar"), Lt = at(t, "action"), Gt = at(t, "timePicker"), Pt = at(t, "monthYear"), r = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => n.openOnTop ? "dp__arrow_bottom" : "dp__arrow_top"), b = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => zl(n.yearRange)), S = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => Xl(n.locale, n.monthNameFormat)), se = () => {
-      const f = ke(d);
-      f && (V.value = f.getBoundingClientRect().width);
-    }, Se = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
-      () => (f) => Ll(
-        u.value(f),
-        s.value(f),
-        +n.weekStart,
-        n.hideOffsetDates
-      )
-    ), xe = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
-      () => n.multiCalendars > 0 && n.range ? [...Array(n.multiCalendars).keys()] : [0]
-    ), Te = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
-      () => (f) => f === 1
-    ), dt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => n.monthPicker || n.timePicker || n.yearPicker), Le = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+      calendars: ee,
+      modelValue: E,
+      month: z,
+      year: g,
+      time: c,
+      updateTime: A,
+      updateMonthYear: T,
+      selectDate: K,
+      getWeekNum: l,
+      monthYearSelect: f,
+      handleScroll: k,
+      handleArrow: R,
+      handleSwipe: ie,
+      getMarker: ce,
+      selectCurrentDate: v,
+      presetDateRange: d
+    } = Ol(a, n, N, P), { setHoverDate: O, clearHoverDate: de, getDayClassData: De } = Nr(E, a);
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(
+      ee,
+      () => {
+        a.openOnTop && setTimeout(() => {
+          n("recalculate-position");
+        }, 0);
+      },
+      { deep: !0 }
+    );
+    const we = lt(Y, "calendar"), We = lt(Y, "action"), Xe = lt(Y, "timePicker"), F = lt(Y, "monthYear"), be = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => a.openOnTop ? "dp__arrow_bottom" : "dp__arrow_top"), pe = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => Ml(a.yearRange)), Ne = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => _l(a.locale, a.monthNameFormat)), Fe = () => {
+      const y = Ce(L);
+      y && (X.value = y.getBoundingClientRect().width);
+    }, et = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (y) => p(z.value(y), g.value(y))), bt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+      () => $.value.multiCalendars > 0 && a.range ? [...Array($.value.multiCalendars).keys()] : [0]
+    ), $t = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+      () => (y) => y === 1
+    ), Ft = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => a.monthPicker || a.timePicker || a.yearPicker), Dt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
       () => ({
-        dp__flex_display: n.multiCalendars > 0
+        dp__flex_display: $.value.multiCalendars > 0
       })
-    ), ca = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
-      dp__instance_calendar: n.multiCalendars > 0
-    })), fa = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
-      dp__menu_disabled: n.disabled,
-      dp__menu_readonly: n.readonly
-    })), ma = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
-      () => (f) => ha(Se, f)
-    ), va = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
-      locale: n.locale,
-      weekNumName: n.weekNumName,
-      weekStart: n.weekStart,
-      weekNumbers: n.weekNumbers,
-      customProps: n.customProps,
-      calendarClassName: n.calendarClassName,
-      specificMode: dt.value,
-      getWeekNum: k,
-      multiCalendars: n.multiCalendars,
-      modeHeight: n.modeHeight,
-      internalModelValue: n.internalModelValue,
-      noSwipe: n.noSwipe,
-      vertical: n.vertical,
-      dayNames: n.dayNames,
-      monthChangeOnScroll: n.monthChangeOnScroll
-    })), ya = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+    ), vt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
+      dp__instance_calendar: $.value.multiCalendars > 0
+    })), Ut = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
+      dp__menu_disabled: a.disabled,
+      dp__menu_readonly: a.readonly
+    })), Ht = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+      () => (y) => Mt(et, y)
+    ), Wt = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
       () => ({
         dp__menu: !0,
-        dp__menu_index: !n.inline,
-        dp__relative: n.inline,
-        [n.menuClassName]: !!n.menuClassName
+        dp__menu_index: !a.inline,
+        dp__relative: a.inline,
+        [a.menuClassName]: !!a.menuClassName
       })
-    ), pa = () => n.modelAuto && Array.isArray(n.internalModelValue) ? !!n.internalModelValue[0] : !1, gt = () => n.modelAuto ? oa(n.internalModelValue) : !0, ha = (f, U) => f.value(U).map((H) => ({
-      ...H,
-      days: H.days.map((q) => {
-        const Q = I(q.value), kt = me(Q, q), et = n.range ? n.modelAuto ? pa() && oe(q) : !1 : oe(q), $n = n.highlight ? Xn(q.value, n.highlight) : !1, Dn = n.highlightWeekDays && n.highlightWeekDays.includes(q.value.getDay()), Mn = (n.range || n.weekPicker) && (n.multiCalendars > 0 ? q.current : !0) && !Q && gt() && !(!q.current && n.hideOffsetDates) && !oe(q) ? Ye(q) : !1;
-        return q.marker = ht(q), q.classData = {
-          dp__cell_offset: !q.current,
-          dp__pointer: !Q && !(!q.current && n.hideOffsetDates),
-          dp__active_date: et,
-          dp__date_hover: kt,
-          dp__date_hover_start: ae(kt, q, !0),
-          dp__date_hover_end: ae(kt, q, !1),
-          dp__range_between: Mn && !n.weekPicker,
-          dp__range_between_week: Mn && n.weekPicker,
-          dp__today: !n.noToday && ce(q.value, D.value) && q.current,
-          dp__cell_disabled: Q,
-          dp__cell_auto_range: Re(q),
-          dp__cell_auto_range_start: Ie(q),
-          dp__cell_auto_range_end: O(q),
-          dp__range_start: n.multiCalendars > 0 ? q.current && Ue(q) && gt() : Ue(q) && gt(),
-          dp__range_end: n.multiCalendars > 0 ? q.current && Ue(q, !1) && gt() : Ue(q, !1) && gt(),
-          [n.calendarCellClassName]: !!n.calendarCellClassName,
-          dp__cell_highlight: ($n || Dn) && !et,
-          dp__cell_highlight_active: ($n || Dn) && et
-        }, q;
-      })
-    })), ga = (f) => {
-      f.stopPropagation(), f.preventDefault(), f.stopImmediatePropagation();
-    }, ka = () => {
-      n.escClose && a("closePicker");
-    }, wa = (f, U = !1) => {
-      te(f, U), n.spaceConfirm && a("selectDate");
-    }, jt = (f) => {
-      var U;
-      (U = n.flow) != null && U.length && (m[f] = !0, Object.keys(m).filter((H) => !m[H]).length || bn());
-    }, bn = () => {
-      n.flow[E.value] === "month" && p.value[0] && p.value[0].toggleMonthPicker(!0), n.flow[E.value] === "year" && p.value && p.value[0].toggleYearPicker(!0), n.flow[E.value] === "calendar" && g.value && g.value.toggleTimePicker(!1, !0), n.flow[E.value] === "time" && g.value && g.value.toggleTimePicker(!0, !0);
-      const f = n.flow[E.value];
-      (f === "hours" || f === "minutes" || f === "seconds") && g.value && g.value.toggleTimePicker(!0, !0, f);
-    }, Ct = (f) => {
-      if (T != null && T.value) {
-        if (f === "up")
-          return K();
-        if (f === "down")
-          return P();
-        if (f === "left")
-          return z();
-        if (f === "right")
-          return Y();
+    ), Mt = (y, G) => y.value(G).map((Me) => ({
+      ...Me,
+      days: Me.days.map((ke) => (ke.marker = ce(ke), ke.classData = De(ke), ke))
+    })), mn = (y) => {
+      y.stopPropagation(), y.preventDefault(), y.stopImmediatePropagation();
+    }, yn = () => {
+      a.escClose && n("close-picker");
+    }, hn = (y, G = !1) => {
+      K(y, G), a.spaceConfirm && n("select-date");
+    }, o = (y) => {
+      var G;
+      (G = a.flow) != null && G.length && (V[y] = !0, Object.keys(V).filter((Me) => !V[Me]).length || x());
+    }, w = (y, G, Me, ke, ..._t) => {
+      if (a.flow[C.value] === y) {
+        const q = ke ? G.value[0] : G.value;
+        q && q[Me](..._t);
+      }
+    }, x = () => {
+      w("month", i, "toggleMonthPicker", !0, !0), w("year", i, "toggleYearPicker", !0, !0), w("calendar", I, "toggleTimePicker", !1, !1, !0), w("time", I, "toggleTimePicker", !1, !0, !0);
+      const y = a.flow[C.value];
+      (y === "hours" || y === "minutes" || y === "seconds") && w(y, I, "toggleTimePicker", !1, !0, !0, y);
+    }, te = (y) => {
+      if (a.arrowNavigation) {
+        if (y === "up")
+          return ne();
+        if (y === "down")
+          return ae();
+        if (y === "left")
+          return Z();
+        if (y === "right")
+          return M();
       } else
-        f === "left" || f === "up" ? it("left", 0, f === "up") : it("right", 0, f === "down");
-    }, ba = (f) => {
-      l(f.shiftKey), !n.disableMonthYearSelect && f.code === "Tab" && f.target.classList.contains("dp__menu") && i().shiftKeyInMenu && (f.preventDefault(), f.stopImmediatePropagation(), a("closePicker"));
+        y === "left" || y === "up" ? R("left", 0, y === "up") : R("right", 0, y === "down");
+    }, ge = (y) => {
+      r(y.shiftKey), !a.disableMonthYearSelect && y.code === "Tab" && y.target.classList.contains("dp__menu") && u.value.shiftKeyInMenu && (y.preventDefault(), y.stopImmediatePropagation(), n("close-picker"));
     };
-    return (f, U) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
-      appear: "",
-      name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N).menuAppear,
-      mode: "out-in",
-      css: !!(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N)
-    }, {
-      default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-          id: f.uid ? `dp-menu-${f.uid}` : void 0,
-          tabindex: "0",
-          ref_key: "dpMenuRef",
-          ref: w,
-          role: "dialog",
-          "aria-label": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(G).menu,
-          class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ya)),
-          onMouseleave: U[12] || (U[12] = (...H) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ke) && (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ke)(...H)),
-          onClick: ga,
-          onKeydown: [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(ka, ["esc"]),
-            U[13] || (U[13] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((H) => Ct("left"), ["prevent"]), ["left"])),
-            U[14] || (U[14] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((H) => Ct("up"), ["prevent"]), ["up"])),
-            U[15] || (U[15] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((H) => Ct("down"), ["prevent"]), ["down"])),
-            U[16] || (U[16] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((H) => Ct("right"), ["prevent"]), ["right"])),
-            ba
-          ]
-        }, [
-          (f.disabled || f.readonly) && f.inline ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-            key: 0,
-            class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(fa))
-          }, null, 2)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-          !f.inline && !f.teleportCenter ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-            key: 1,
-            class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(r))
-          }, null, 2)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-            class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(f.presetRanges.length ? "dp__menu_content_wrapper" : null)
-          }, [
-            f.presetRanges.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Lr, [
-              ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(f.presetRanges, (H, q) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-                key: q,
-                style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)(H.style || {}),
-                class: "dp__preset_range",
-                onClick: (Q) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ut)(H.range)
-              }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(H.label), 13, Gr))), 128))
-            ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+    return (y, G) => {
+      var Me;
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+        appear: "",
+        name: (Me = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)($).transitions) == null ? void 0 : Me.menuAppear,
+        mode: "out-in",
+        css: !!y.transitions
+      }, {
+        default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => {
+          var ke, _t;
+          return [
             (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-              class: "dp__instance_calendar",
-              ref_key: "calendarWrapperRef",
-              ref: d,
-              role: "document"
+              id: y.uid ? `dp-menu-${y.uid}` : void 0,
+              tabindex: "0",
+              ref_key: "dpMenuRef",
+              ref: B,
+              role: "dialog",
+              class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Wt)),
+              onMouseleave: G[12] || (G[12] = (...q) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(de) && (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(de)(...q)),
+              onClick: mn,
+              onKeydown: [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(yn, ["esc"]),
+                G[13] || (G[13] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((q) => te("left"), ["prevent"]), ["left"])),
+                G[14] || (G[14] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((q) => te("up"), ["prevent"]), ["up"])),
+                G[15] || (G[15] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((q) => te("down"), ["prevent"]), ["down"])),
+                G[16] || (G[16] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((q) => te("right"), ["prevent"]), ["right"])),
+                ge
+              ]
             }, [
+              (y.disabled || y.readonly) && y.inline ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                key: 0,
+                class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ut))
+              }, null, 2)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+              !y.inline && !y.teleportCenter ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                key: 1,
+                class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(be))
+              }, null, 2)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
               (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-                class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Le))
+                class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
+                  dp__menu_content_wrapper: ((ke = y.presetRanges) == null ? void 0 : ke.length) || !!y.$slots["left-sidebar"] || !!y.$slots["right-sidebar"]
+                })
               }, [
-                ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(xe), (H, q) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-                  key: H,
-                  class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ca))
+                y.$slots["left-sidebar"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Ir, [
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(y.$slots, "left-sidebar")
+                ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                (_t = y.presetRanges) != null && _t.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Or, [
+                  ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(y.presetRanges, (q, st) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                    key: st,
+                    style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)(q.style || {}),
+                    class: "dp__preset_range",
+                    onClick: (oe) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(d)(q.range, !!q.slot)
+                  }, [
+                    q.slot ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(y.$slots, q.slot, {
+                      key: 0,
+                      presetDateRange: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(d),
+                      label: q.label,
+                      range: q.range
+                    }) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(q.label), 1)
+                    ], 64))
+                  ], 12, Br))), 128))
+                ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                  class: "dp__instance_calendar",
+                  ref_key: "calendarWrapperRef",
+                  ref: L,
+                  role: "document"
                 }, [
-                  !f.disableMonthYearSelect && !f.timePicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)(f.monthYearComponent ? f.monthYearComponent : Ar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                    class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Dt))
+                  }, [
+                    ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(!0), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(bt), (q, st) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                      key: q,
+                      class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(vt))
+                    }, [
+                      !y.disableMonthYearSelect && !y.timePicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)(y.monthYearComponent ? y.monthYearComponent : pr), (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+                        key: 0,
+                        ref_for: !0,
+                        ref: (oe) => {
+                          oe && (i.value[st] = oe);
+                        },
+                        months: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ne),
+                        years: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(pe),
+                        month: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(z)(q),
+                        year: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(g)(q),
+                        instance: q,
+                        "internal-model-value": e.internalModelValue
+                      }, y.$props, {
+                        onMount: G[0] || (G[0] = (oe) => o("monthYearInput")),
+                        onResetFlow: j,
+                        onUpdateMonthYear: (oe) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(T)(q, oe),
+                        onMonthYearSelect: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(f),
+                        onOverlayClosed: m
+                      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
+                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(F), (oe, Gn) => ({
+                          name: oe,
+                          fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((zt) => [
+                            (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(y.$slots, oe, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)(zt)))
+                          ])
+                        }))
+                      ]), 1040, ["months", "years", "month", "year", "instance", "internal-model-value", "onUpdateMonthYear", "onMonthYearSelect"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(rr, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+                        ref_for: !0,
+                        ref: (oe) => {
+                          oe && (_.value[st] = oe);
+                        },
+                        "specific-mode": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ft),
+                        "get-week-num": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(l),
+                        instance: q,
+                        "mapped-dates": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ht)(q),
+                        month: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(z)(q),
+                        year: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(g)(q)
+                      }, y.$props, {
+                        "flow-step": C.value,
+                        "onUpdate:flow-step": G[1] || (G[1] = (oe) => C.value = oe),
+                        onSelectDate: (oe) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(K)(oe, !(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)($t)(q)),
+                        onHandleSpace: (oe) => hn(oe, !(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)($t)(q)),
+                        onSetHoverDate: G[2] || (G[2] = (oe) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(O)(oe)),
+                        onHandleScroll: (oe) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(k)(oe, q),
+                        onHandleSwipe: (oe) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ie)(oe, q),
+                        onMount: G[3] || (G[3] = (oe) => o("calendar")),
+                        onResetFlow: j
+                      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
+                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(we), (oe, Gn) => ({
+                          name: oe,
+                          fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((zt) => [
+                            (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(y.$slots, oe, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)({ ...zt })))
+                          ])
+                        }))
+                      ]), 1040, ["specific-mode", "get-week-num", "instance", "mapped-dates", "month", "year", "flow-step", "onSelectDate", "onHandleSpace", "onHandleScroll", "onHandleSwipe"])
+                    ], 2))), 128))
+                  ], 2),
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [
+                    y.$slots["time-picker"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(y.$slots, "time-picker", (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 0 }, { time: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(c), updateTime: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(A) }))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 1 }, [
+                      y.enableTimePicker && !y.monthPicker && !y.weekPicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)(y.timePickerComponent ? y.timePickerComponent : Pr), (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+                        key: 0,
+                        ref_key: "timePickerRef",
+                        ref: I,
+                        hours: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(c).hours,
+                        minutes: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(c).minutes,
+                        seconds: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(c).seconds,
+                        "internal-model-value": e.internalModelValue
+                      }, y.$props, {
+                        onMount: G[4] || (G[4] = (q) => o("timePicker")),
+                        "onUpdate:hours": G[5] || (G[5] = (q) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(A)(q)),
+                        "onUpdate:minutes": G[6] || (G[6] = (q) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(A)(q, !1)),
+                        "onUpdate:seconds": G[7] || (G[7] = (q) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(A)(q, !1, !0)),
+                        onResetFlow: j,
+                        onOverlayClosed: m
+                      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
+                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Xe), (q, st) => ({
+                          name: q,
+                          fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((oe) => [
+                            (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(y.$slots, q, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)(oe)))
+                          ])
+                        }))
+                      ]), 1040, ["hours", "minutes", "seconds", "internal-model-value"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+                    ], 64))
+                  ])
+                ], 512),
+                y.$slots["right-sidebar"] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Yr, [
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(y.$slots, "right-sidebar")
+                ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                y.showNowButton ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", Vr, [
+                  y.$slots["now-button"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(y.$slots, "now-button", {
                     key: 0,
-                    ref_for: !0,
-                    ref: (Q) => {
-                      Q && (p.value[q] = Q);
-                    }
-                  }, {
-                    months: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(S),
-                    years: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(b),
-                    filters: f.filters,
-                    monthPicker: f.monthPicker,
-                    month: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(u)(H),
-                    year: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(s)(H),
-                    customProps: f.customProps,
-                    multiCalendars: e.multiCalendars,
-                    multiCalendarsSolo: f.multiCalendarsSolo,
-                    instance: H,
-                    minDate: f.minDate,
-                    maxDate: f.maxDate,
-                    preventMinMaxNavigation: f.preventMinMaxNavigation,
-                    internalModelValue: e.internalModelValue,
-                    range: f.range,
-                    reverseYears: f.reverseYears,
-                    vertical: f.vertical,
-                    yearPicker: f.yearPicker
-                  }, {
-                    onMount: U[0] || (U[0] = (Q) => jt("monthYearInput")),
-                    onResetFlow: Z,
-                    onUpdateMonthYear: (Q) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M)(H, Q),
-                    onMonthYearSelect: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Ze),
-                    onOverlayClosed: X
-                  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
-                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Pt), (Q, kt) => ({
-                      name: Q,
-                      fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((et) => [
-                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(f.$slots, Q, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)(et)))
-                      ])
-                    }))
-                  ]), 1040, ["onUpdateMonthYear", "onMonthYearSelect"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vr, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
-                    ref_for: !0,
-                    ref: (Q) => {
-                      Q && (v.value[q] = Q);
-                    }
-                  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(va), {
-                    "flow-step": E.value,
-                    "onUpdate:flow-step": U[1] || (U[1] = (Q) => E.value = Q),
-                    instance: H,
-                    "mapped-dates": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ma)(H),
-                    month: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(u)(H),
-                    year: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(s)(H),
-                    onSelectDate: (Q) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(te)(Q, !(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Te)(H)),
-                    onHandleSpace: (Q) => wa(Q, !(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Te)(H)),
-                    onSetHoverDate: U[2] || (U[2] = (Q) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(_)(Q)),
-                    onHandleScroll: (Q) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(be)(Q, H),
-                    onHandleSwipe: (Q) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(pt)(Q, H),
-                    onMount: U[3] || (U[3] = (Q) => jt("calendar")),
-                    onResetFlow: Z
-                  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
-                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Qe), (Q, kt) => ({
-                      name: Q,
-                      fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((et) => [
-                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(f.$slots, Q, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)({ ...et })))
-                      ])
-                    }))
-                  ]), 1040, ["flow-step", "instance", "mapped-dates", "month", "year", "onSelectDate", "onHandleSpace", "onHandleScroll", "onHandleSwipe"])
-                ], 2))), 128))
+                    selectCurrentDate: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(v)
+                  }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
+                  y.$slots["now-button"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+                    key: 1,
+                    type: "button",
+                    role: "button",
+                    class: "dp__now_button",
+                    onClick: G[8] || (G[8] = (...q) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(v) && (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(v)(...q))
+                  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(y.nowButtonLabel), 1))
+                ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
               ], 2),
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [
-                f.enableTimePicker && !f.monthPicker && !f.weekPicker ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)(f.timePickerComponent ? f.timePickerComponent : Wr), (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+              y.$slots["action-row"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(y.$slots, "action-row", (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 2 }, {
+                internalModelValue: e.internalModelValue,
+                selectDate: () => y.$emit("select-date"),
+                closePicker: () => y.$emit("close-picker")
+              }))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, { key: 3 }, [
+                !y.autoApply || y.keepActionRow ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)(y.actionRowComponent ? y.actionRowComponent : Zl), (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
                   key: 0,
-                  ref_key: "timePickerRef",
-                  ref: g
-                }, {
-                  is24: f.is24,
-                  hoursIncrement: f.hoursIncrement,
-                  minutesIncrement: f.minutesIncrement,
-                  hoursGridIncrement: f.hoursGridIncrement,
-                  secondsIncrement: f.secondsIncrement,
-                  minutesGridIncrement: f.minutesGridIncrement,
-                  secondsGridIncrement: f.secondsGridIncrement,
-                  noHoursOverlay: f.noHoursOverlay,
-                  noMinutesOverlay: f.noMinutesOverlay,
-                  noSecondsOverlay: f.noSecondsOverlay,
-                  range: f.range,
-                  filters: f.filters,
-                  timePicker: f.timePicker,
-                  hours: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(h),
-                  minutes: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(F),
-                  seconds: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(J),
-                  customProps: f.customProps,
-                  enableSeconds: f.enableSeconds,
-                  fixedStart: f.fixedStart,
-                  fixedEnd: f.fixedEnd,
-                  modelAuto: f.modelAuto,
-                  internalModelValue: e.internalModelValue
-                }, {
-                  onMount: U[4] || (U[4] = (H) => jt("timePicker")),
-                  "onUpdate:hours": U[5] || (U[5] = (H) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(j)(H)),
-                  "onUpdate:minutes": U[6] || (U[6] = (H) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(j)(H, !1)),
-                  "onUpdate:seconds": U[7] || (U[7] = (H) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(j)(H, !1, !0)),
-                  onResetFlow: Z,
-                  onOverlayClosed: X
+                  "menu-mount": Q.value,
+                  "calendar-width": X.value,
+                  "internal-model-value": e.internalModelValue
+                }, y.$props, {
+                  onClosePicker: G[9] || (G[9] = (q) => y.$emit("close-picker")),
+                  onSelectDate: G[10] || (G[10] = (q) => y.$emit("select-date")),
+                  onInvalidSelect: G[11] || (G[11] = (q) => y.$emit("invalid-select"))
                 }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
-                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Gt), (H, q) => ({
-                    name: H,
-                    fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((Q) => [
-                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(f.$slots, H, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)(Q)))
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(We), (q, st) => ({
+                    name: q,
+                    fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((oe) => [
+                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(y.$slots, q, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)({ ...oe })))
                     ])
                   }))
-                ]), 1040)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
-              ])
-            ], 512),
-            f.showNowButton ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", jr, [
-              f.$slots["now-button"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(f.$slots, "now-button", {
-                key: 0,
-                selectCurrentDate: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(c)
-              }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0),
-              f.$slots["now-button"] ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
-                key: 1,
-                type: "button",
-                role: "button",
-                class: "dp__now_button",
-                onClick: U[8] || (U[8] = (...H) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(c) && (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(c)(...H))
-              }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(f.nowButtonLabel), 1))
-            ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
-          ], 2),
-          !f.autoApply || f.keepActionRow ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)(f.actionRowComponent ? f.actionRowComponent : lr), (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({ key: 2 }, {
-            calendarWidth: V.value,
-            selectText: f.selectText,
-            cancelText: f.cancelText,
-            internalModelValue: e.internalModelValue,
-            range: f.range,
-            previewFormat: f.previewFormat,
-            inline: f.inline,
-            monthPicker: f.monthPicker,
-            timePicker: f.timePicker,
-            customProps: f.customProps,
-            multiCalendars: e.multiCalendars,
-            menuMount: R.value,
-            maxTime: f.maxTime,
-            minTime: f.minTime,
-            enableTimePicker: f.enableTimePicker,
-            minDate: f.minDate,
-            maxDate: f.maxDate,
-            multiDates: f.multiDates,
-            modelAuto: f.modelAuto,
-            partialRange: f.partialRange,
-            ignoreTimeValidation: f.ignoreTimeValidation
-          }, {
-            onClosePicker: U[9] || (U[9] = (H) => f.$emit("closePicker")),
-            onSelectDate: U[10] || (U[10] = (H) => f.$emit("selectDate")),
-            onInvalidSelect: U[11] || (U[11] = (H) => f.$emit("invalid-select"))
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Lt), (H, q) => ({
-              name: H,
-              fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((Q) => [
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(f.$slots, H, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)({ ...Q })))
-              ])
-            }))
-          ]), 1040)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
-        ], 42, Ur)
-      ]),
-      _: 3
-    }, 8, ["name", "css"]));
-  }
-}), Xr = (e, a, n, t, d, m, p, v, g, w, V, R, E, N, G, T, x) => {
-  const l = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(""), i = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)();
-  (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(i, () => {
-    x("internalModelChange", i.value);
-  });
-  const Y = (u) => [ee(u[0]), u[1] ? ee(u[1]) : null], z = (u) => {
-    let s = null;
-    u ? a ? Yl(u) && "hours" in u[0] && "minutes" in u[0] ? s = [
-      Ae(null, +u[0].hours, +u[0].minutes, +u[0].seconds),
-      Ae(null, +u[1].hours, +u[1].minutes, +u[1].seconds)
-    ] : Il(u) && (s = Ae(null, +u.hours, +u.minutes, +u.seconds)) : n ? El(u) && "month" in u[0] && "year" in u[0] ? (s = [st(null, +u[0].month, +u[0].year)], u[1] ? s[1] = st(null, +u[1].month, +u[1].year) : !u[1] && d && (s[1] = null)) : Fl(u) && "month" in u && "year" in u && (s = st(null, +u.month, +u.year)) : E ? Array.isArray(u) ? s = [
-      (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(new Date(), u[0]),
-      !u[1] && d ? null : (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(new Date(), u[1])
-    ] : s = (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(new Date(), u) : w && Array.isArray(u) ? s = u.map((h) => ee(h)) : R && Array.isArray(u) ? s = [new Date(u[0]), new Date(u[1])] : t ? T ? Array.isArray(u) ? s = Y(u) : s = [ee(u), null] : Hl(u, d) && (s = Y(u)) : Kl(u) && (s = ee(u)) : s = null, rn(s) ? (i.value = s, K()) : (i.value = null, l.value = "");
-  }, P = () => jn(
-    e,
-    m,
-    v,
-    n,
-    a,
-    R,
-    E,
-    p
-  ), K = () => {
-    if (!i.value)
-      l.value = "";
-    else if (!e || typeof e == "string") {
-      const u = P();
-      Array.isArray(i.value) && w ? l.value = i.value.map((s) => vt(s, u, g == null ? void 0 : g.value)).join("; ") : l.value = vt(
-        i.value,
-        u,
-        g == null ? void 0 : g.value,
-        N == null ? void 0 : N.rangeSeparator,
-        T
-      );
-    } else
-      a ? l.value = e(sn(i.value)) : n ? l.value = e(Vn(i.value)) : l.value = e(i.value);
-  }, X = () => i.value ? t ? d ? i.value.length >= 1 : i.value.length === 2 : !!i.value : !1, ee = (u) => {
-    if (V) {
-      const s = new Date(u);
-      return V === "preserve" ? new Date(s.getTime() + s.getTimezoneOffset() * 6e4) : s;
-    }
-    return G ? G === "date" || G === "timestamp" ? new Date(u) : G === "format" && (typeof e == "string" || !e) ? (0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(u, P(), new Date()) : (0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(u, G, new Date()) : new Date(u);
-  }, Z = (u) => G ? G === "timestamp" ? +u : G === "format" && (typeof e == "string" || !e) ? vt(u, P(), g == null ? void 0 : g.value, N == null ? void 0 : N.rangeSeparator) : vt(u, G, g == null ? void 0 : g.value, N == null ? void 0 : N.rangeSeparator) : u, j = (u) => {
-    x("update:modelValue", u);
-  }, M = () => [
-    Z(i.value[0]),
-    i.value[1] ? Z(i.value[1]) : null
-  ];
-  return {
-    parseExternalModelValue: z,
-    formatInputValue: K,
-    internalModelValue: i,
-    inputValue: l,
-    emitModelValue: () => {
-      if (n)
-        j(Vn(i.value));
-      else if (a)
-        j(sn(i.value));
-      else if (R)
-        j(i.value);
-      else if (E)
-        j(
-          Array.isArray(i.value) ? [
-            (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(i.value[0]),
-            i.value[1] ? (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(i.value[1]) : null
-          ] : (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(i.value)
-        );
-      else {
-        if (i.value && t && d && i.value.length === 1 && i.value.push(null), V) {
-          let u;
-          if (Array.isArray(i.value)) {
-            const s = (h) => h && Zt(h, V === "preserve");
-            T ? u = i.value[1] ? i.value.map(s) : Zt(i.value[0], V === "preserve") : u = i.value.map(s);
-          } else
-            u = Zt(i.value, V === "preserve");
-          return j(u);
-        }
-        Array.isArray(i.value) && !w ? j(
-          T ? i.value[1] ? M() : Z(i.value[0]) : M()
-        ) : Array.isArray(i.value) && w ? j(i.value.map((u) => Z(u))) : j(Z(i.value));
-      }
-      K();
-    },
-    checkBeforeEmit: X
-  };
-}, qr = (e, a, n, t, d, m, p, v, g) => {
-  const w = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
-    top: "0",
-    left: "0",
-    transform: "none"
-  }), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), R = 390, E = (P) => {
-    const K = P.getBoundingClientRect();
-    return {
-      left: K.left + window.scrollX,
-      top: K.top + window.scrollY
+                ]), 1040, ["menu-mount", "calendar-width", "internal-model-value"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+              ], 64))
+            ], 42, Rr)
+          ];
+        }),
+        _: 3
+      }, 8, ["name", "css"]);
     };
-  }, N = (P) => {
-    const K = P.getBoundingClientRect();
-    let X = 0, ee = 0;
-    for (; P && !isNaN(P.offsetLeft) && !isNaN(P.offsetTop); )
-      X += P.offsetLeft - P.scrollLeft, ee = K.top + P.scrollTop, P = P.offsetParent;
-    return { top: ee, left: X };
-  }, G = (P, K) => {
-    w.value.left = `${P + K}px`, w.value.transform = "translateX(-100%)";
-  }, T = (P) => {
-    w.value.left = `${P}px`, w.value.transform = "translateX(0)";
-  }, x = (P, K) => {
-    e === Et.left && T(P), e === Et.right && G(P, K), e === Et.center && (w.value.left = `${P + K / 2}px`, w.value.transform = "translateX(-50%)");
-  }, l = () => {
-    const P = ke(d);
-    if (P) {
-      const K = window.innerHeight, { top: X } = a ? N(P) : E(P), { left: ee, width: Z, top: j, height: M } = P.getBoundingClientRect(), D = K - j - M;
-      w.value.top = j > D ? `${X - R}px` : `${X}px`, x(ee, Z);
-    }
-  }, i = () => {
-    w.value.left = "50%", w.value.top = "50%", w.value.transform = "translate(-50%, -50%)", w.value.position = "fixed";
-  }, Y = (P = !0) => {
-    if (!m) {
-      if (v.value)
-        return i();
-      const K = ke(d);
-      if (a && typeof a != "boolean")
-        w.value = a(K);
-      else if (K) {
-        const { left: X, width: ee, height: Z } = K.getBoundingClientRect(), { top: j } = a ? N(K) : E(K);
-        w.value.top = `${Z + j + +p}px`, x(X, ee), P && n && z();
-      }
-    }
-  }, z = () => {
-    const P = ke(d);
-    if (P && n && !m) {
-      const { height: K, top: X, left: ee, width: Z } = P.getBoundingClientRect(), { top: j } = a ? N(P) : E(P), D = window.innerHeight - X - K, u = ke(t);
-      if (u) {
-        const { height: s, left: h, right: F } = u.getBoundingClientRect(), J = s + K;
-        J > X && J > D ? X < D ? (Y(!1), V.value = !1) : (w.value.top = `${j - s - +p}px`, V.value = !0) : J > D ? (w.value.top = `${j - s - +p}px`, V.value = !0) : (Y(!1), V.value = !1), h < 0 ? T(ee) : F > document.documentElement.clientWidth && G(ee, Z);
-      }
-    }
-    g("recalculatePosition");
-  };
-  return { openOnTop: V, menuPosition: w, setMenuPosition: Y, setInitialPosition: l, recalculatePosition: z };
-}, Jr = typeof window < "u" ? window : void 0, an = () => {
-}, Zr = (e) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.getCurrentScope)() ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.onScopeDispose)(e), !0) : !1, Qr = (e, a, n, t) => {
+  }
+}), Lr = typeof window < "u" ? window : void 0, en = () => {
+}, Fr = (e) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.getCurrentScope)() ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.onScopeDispose)(e), !0) : !1, Ur = (e, n, a, t) => {
   if (!e)
-    return an;
-  let d = an;
-  const m = (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(
+    return en;
+  let r = en;
+  const u = (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(
     () => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(e),
-    (v) => {
-      d(), v && (v.addEventListener(a, n, t), d = () => {
-        v.removeEventListener(a, n, t), d = an;
+    ($) => {
+      r(), $ && ($.addEventListener(n, a, t), r = () => {
+        $.removeEventListener(n, a, t), r = en;
       });
     },
     { immediate: !0, flush: "post" }
   ), p = () => {
-    m(), d();
+    u(), r();
   };
-  return Zr(p), p;
-}, xr = (e, a, n, t = {}) => {
-  const { window: d = Jr, event: m = "pointerdown" } = t;
-  return d ? Qr(d, m, (v) => {
-    const g = ke(e), w = ke(a);
-    !g || !w || g === v.target || v.composedPath().includes(g) || v.composedPath().includes(w) || n(v);
+  return Fr(p), p;
+}, Hr = (e, n, a, t = {}) => {
+  const { window: r = Lr, event: u = "pointerdown" } = t;
+  return r ? Ur(r, u, ($) => {
+    const Y = Ce(e), L = Ce(n);
+    !Y || !L || Y === $.target || $.composedPath().includes(Y) || $.composedPath().includes(L) || a($);
   }, { passive: !0 }) : void 0;
-}, es = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+}, Wr = /* @__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: "VueDatePicker",
   props: {
-    ...Tl
+    ...Qe
   },
   emits: [
-    "update:modelValue",
-    "textSubmit",
+    "update:model-value",
+    "text-submit",
     "closed",
     "cleared",
     "open",
     "focus",
     "blur",
-    "internalModelChange",
-    "recalculatePosition",
+    "internal-model-change",
+    "recalculate-position",
     "flow-step",
-    "updateMonthYear",
+    "update-month-year",
     "invalid-select"
   ],
-  setup(e, { expose: a, emit: n }) {
-    const t = e, d = (0,vue__WEBPACK_IMPORTED_MODULE_0__.useSlots)(), m = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRef)(t, "modelValue"), v = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), w = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRef)(t, "teleportCenter");
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)(pn, t.autoApply);
-    const V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.formatLocale);
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)(Zn, V), (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)(Jn, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRef)(t, "textInput")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)(qe, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRef)(t, "arrowNavigation")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
-      z(t.modelValue), t.inline || (window.addEventListener("scroll", k), window.addEventListener("resize", _)), t.inline && (m.value = !0);
+  setup(e, { expose: n, emit: a }) {
+    const t = e, r = (0,vue__WEBPACK_IMPORTED_MODULE_0__.useSlots)(), u = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), p = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRef)(t, "modelValue"), $ = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRef)(t, "timezone"), Y = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), L = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null), V = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!1), { setMenuFocused: i, setShiftKey: _ } = Wn(), { clearArrowNav: I } = Je(), { validateDate: B, isValidTime: X, defaults: Q } = Ee(t);
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
+      j(t.modelValue), t.inline || (window.addEventListener("scroll", A), window.addEventListener("resize", T)), t.inline && (u.value = !0);
     }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.onUnmounted)(() => {
-      t.inline || (window.removeEventListener("scroll", k), window.removeEventListener("resize", _));
+      t.inline || (window.removeEventListener("scroll", A), window.removeEventListener("resize", T));
     });
-    const R = at(d, "all"), E = at(d, "input");
+    const C = lt(r, "all", t.presetRanges), M = lt(r, "input");
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(
-      p,
+      [p, $],
       () => {
-        z(p.value);
+        j(p.value);
       },
       { deep: !0 }
     );
-    const { openOnTop: N, menuPosition: G, setMenuPosition: T, recalculatePosition: x, setInitialPosition: l } = qr(
-      t.position,
-      t.altPosition,
-      t.autoPosition,
-      v,
-      g,
-      t.inline,
-      t.offset,
-      w,
-      n
+    const { openOnTop: Z, menuPosition: ae, setMenuPosition: ne, setInitialPosition: P } = Vl(
+      Y,
+      L,
+      a,
+      t
     ), {
-      internalModelValue: i,
-      inputValue: Y,
-      parseExternalModelValue: z,
-      emitModelValue: P,
-      checkBeforeEmit: K,
-      formatInputValue: X
-    } = Xr(
-      t.format,
-      t.timePicker,
-      t.monthPicker,
-      t.range,
-      t.partialRange,
-      t.is24,
-      t.enableTimePicker,
-      t.enableSeconds,
-      V,
-      t.multiDates,
-      t.utc,
-      t.weekPicker,
-      t.yearPicker,
-      t.textInputOptions,
-      t.modelType,
-      t.modelAuto,
-      n
-    ), { clearArrowNav: ee } = Je(), { setMenuFocused: Z, setShiftKey: j } = ua(), M = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
+      inputValue: m,
+      internalModelValue: N,
+      parseExternalModelValue: j,
+      emitModelValue: ee,
+      formatInputValue: E,
+      checkBeforeEmit: z
+    } = Bl(a, t, V), g = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(
       () => ({
         dp__main: !0,
         dp__theme_dark: t.dark,
@@ -13914,254 +14480,128 @@ const Ur = ["id", "aria-label", "onKeydown"], Lr = {
         dp__flex_display: t.inline,
         dp__flex_display_with_input: t.inlineWithInput
       })
-    ), D = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => On(t.format) ? t.format : jn(
-      null,
-      t.is24,
-      t.enableSeconds,
-      t.monthPicker,
-      t.timePicker,
-      t.weekPicker,
-      t.yearPicker,
-      t.enableTimePicker
-    )), u = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.previewFormat ? t.previewFormat : On(D.value) ? D.value : t.format), s = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => typeof t.transitions == "boolean" ? t.transitions ? Nn({}) : !1 : Nn(t.transitions));
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)(Kt, s);
-    const h = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.dark ? "dp__theme_dark" : "dp__theme_light"), F = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => Object.assign(Jl(), t.textInputOptions)), J = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => er(t.ariaLabels));
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)(Xe, J);
-    const I = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => Zl(t.filters)), oe = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-      const c = (ae) => {
-        const me = {
-          hours: (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(new Date()),
-          minutes: (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(new Date()),
-          seconds: (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(new Date())
-        };
-        return Object.assign(me, ae);
-      };
-      return t.range ? t.startTime && Array.isArray(t.startTime) ? [c(t.startTime[0]), c(t.startTime[1])] : null : t.startTime && !Array.isArray(t.startTime) ? c(t.startTime) : null;
-    }), te = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.multiCalendars === null ? 0 : typeof t.multiCalendars == "boolean" ? t.multiCalendars ? 2 : 0 : +t.multiCalendars >= 2 ? +t.multiCalendars : 2), k = () => {
-      m.value && (t.closeOnScroll ? be() : t.autoPosition ? T() : window.removeEventListener("scroll", k));
-    }, _ = () => {
-      m.value && T();
-    }, O = () => {
-      !t.disabled && !t.readonly && (l(), m.value = !0, (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)().then(() => {
-        T(), m.value && n("open");
-      }), m.value || Ze(), z(t.modelValue));
-    }, Re = () => {
-      Y.value = "", Ze(), n("update:modelValue", null), n("cleared"), be();
-    }, Ie = () => {
-      const { validate: c } = qn(
-        t.minDate,
-        t.maxDate,
-        t.disabledDates,
-        t.allowedDates,
-        I.value,
-        t.disabledWeekDays,
-        t.yearRange
-      ), ae = i.value;
-      return !ae || !Array.isArray(ae) && c(ae) ? !0 : Array.isArray(ae) ? ae.length === 2 && c(ae[0]) && c(ae[1]) ? !0 : !!c(ae[0]) : !1;
-    }, Ye = () => {
-      K() && Ie() ? (P(), be()) : n("invalid-select", i.value);
-    }, Ke = (c) => {
-      P(), t.closeOnAutoApply && !c && be();
-    }, Ue = (c = !1) => {
-      t.autoApply && (!t.enableTimePicker || t.monthPicker || t.yearPicker || t.ignoreTimeValidation ? !0 : on(i.value, t.maxTime, t.minTime, t.maxDate, t.minDate)) && Ie() && (t.range && Array.isArray(i.value) ? (t.partialRange || i.value.length === 2) && Ke(c) : Ke(c));
-    }, Ze = () => {
-      i.value = null;
-    }, be = () => {
-      t.inline || (m.value && (m.value = !1, Z(!1), j(!1), ee(), n("closed"), l(), Y.value && z(p.value)), Ze(), g.value && g.value.focusInput());
-    }, it = (c, ae) => {
-      if (!c) {
-        i.value = null;
+    ), c = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.dark ? "dp__theme_dark" : "dp__theme_light"), A = () => {
+      u.value && (t.closeOnScroll ? v() : t.autoPosition ? ne() : window.removeEventListener("scroll", A));
+    }, T = () => {
+      u.value && ne();
+    }, K = () => {
+      !t.disabled && !t.readonly && (P(), u.value = !0, (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)().then(() => {
+        ne(), u.value && a("open");
+      }), u.value || ce(), j(t.modelValue));
+    }, l = () => {
+      m.value = "", ce(), a("update:model-value", null), a("cleared"), v();
+    }, f = () => {
+      const F = N.value;
+      return !F || !Array.isArray(F) && B(F) ? !0 : Array.isArray(F) ? F.length === 2 && B(F[0]) && B(F[1]) ? !0 : B(F[0]) : !1;
+    }, k = () => {
+      z() && f() ? (ee(), v()) : a("invalid-select", N.value);
+    }, R = (F) => {
+      ee(), t.closeOnAutoApply && !F && v();
+    }, ie = (F = !1) => {
+      t.autoApply && X(N.value) && f() && (t.range && Array.isArray(N.value) ? (t.partialRange || N.value.length === 2) && R(F) : R(F));
+    }, ce = () => {
+      t.textInput || (N.value = null);
+    }, v = () => {
+      t.inline || (u.value && (u.value = !1, i(!1), _(!1), I(), a("closed"), P(), m.value && j(p.value)), ce(), L.value && L.value.focusInput());
+    }, d = (F, be) => {
+      if (!F) {
+        N.value = null;
         return;
       }
-      i.value = c, ae && (Ye(), n("textSubmit"));
-    }, pt = () => {
-      t.autoApply && on(i.value, t.maxTime, t.minTime, t.maxDate, t.minDate) && P();
-    }, ht = () => m.value ? be() : O();
-    return xr(v, g, be), a({
-      closeMenu: be,
-      selectDate: Ye,
-      clearValue: Re,
-      openMenu: O,
-      onScroll: k,
-      formatInputValue: X
-    }), (c, ae) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M))
+      N.value = F, be && (k(), a("text-submit"));
+    }, O = () => {
+      t.autoApply && X(N.value) && ee();
+    }, de = () => u.value ? v() : K(), De = (F) => {
+      N.value = F;
+    }, we = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => t.textInput && Q.value.textInputOptions.format), We = () => {
+      we.value && (V.value = !0, E()), a("focus");
+    }, Xe = () => {
+      we.value && (V.value = !1, E()), a("blur");
+    };
+    return Hr(
+      Y,
+      L,
+      t.onClickOutside ? () => t.onClickOutside(f) : v
+    ), n({
+      closeMenu: v,
+      selectDate: k,
+      clearValue: l,
+      openMenu: K,
+      onScroll: A,
+      formatInputValue: E,
+      updateInternalModelValue: De
+    }), (F, be) => ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(g))
     }, [
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(Nl, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(jl, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
         ref_key: "inputRef",
-        ref: g
-      }, {
-        placeholder: c.placeholder,
-        hideInputIcon: c.hideInputIcon,
-        readonly: c.readonly,
-        disabled: c.disabled,
-        inputClassName: c.inputClassName,
-        clearable: c.clearable,
-        state: c.state,
-        inline: c.inline,
-        inlineWithInput: c.inlineWithInput,
-        textInput: c.textInput,
-        textInputOptions: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(F),
-        range: c.range,
-        isMenuOpen: m.value,
-        pattern: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(D),
-        autoApply: c.autoApply,
-        uid: c.uid,
-        required: c.required,
-        name: c.name,
-        autocomplete: c.autocomplete
-      }, {
-        "input-value": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Y),
-        "onUpdate:input-value": ae[0] || (ae[0] = (me) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(Y) ? Y.value = me : null),
-        onClear: Re,
-        onOpen: O,
-        onSetInputDate: it,
-        onSetEmptyDate: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(P),
-        onSelectDate: Ye,
-        onToggle: ht,
-        onClose: be,
-        onFocus: ae[1] || (ae[1] = (me) => c.$emit("focus")),
-        onBlur: ae[2] || (ae[2] = (me) => c.$emit("blur"))
+        ref: L,
+        "is-menu-open": u.value,
+        "input-value": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(m),
+        "onUpdate:input-value": be[0] || (be[0] = (pe) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(m) ? m.value = pe : null)
+      }, F.$props, {
+        onClear: l,
+        onOpen: K,
+        onSetInputDate: d,
+        onSetEmptyDate: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ee),
+        onSelectDate: k,
+        onToggle: de,
+        onClose: v,
+        onFocus: We,
+        onBlur: Xe
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(E), (me, ut) => ({
-          name: me,
-          fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((Qe) => [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(c.$slots, me, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)(Qe)))
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(M), (pe, Ne) => ({
+          name: pe,
+          fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((Fe) => [
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(F.$slots, pe, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)(Fe)))
           ])
         }))
-      ]), 1040, ["input-value", "onSetEmptyDate"]),
-      m.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Teleport, {
+      ]), 1040, ["is-menu-open", "input-value", "onSetEmptyDate"]),
+      u.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Teleport, {
         key: 0,
-        to: c.teleport,
-        disabled: c.inline
+        to: F.teleport,
+        disabled: F.inline
       }, [
-        m.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(zr, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+        u.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(Er, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
           key: 0,
           ref_key: "dpMenuRef",
-          ref: v,
-          class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(h),
-          style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(G)
-        }, {
-          weekNumbers: c.weekNumbers,
-          weekStart: c.weekStart,
-          disableMonthYearSelect: c.disableMonthYearSelect,
-          menuClassName: c.menuClassName,
-          calendarClassName: c.calendarClassName,
-          yearRange: c.yearRange,
-          range: c.range,
-          multiCalendars: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(te),
-          multiCalendarsSolo: c.multiCalendarsSolo,
-          multiStatic: c.multiStatic,
-          calendarCellClassName: c.calendarCellClassName,
-          enableTimePicker: c.enableTimePicker,
-          is24: c.is24,
-          hoursIncrement: c.hoursIncrement,
-          minutesIncrement: c.minutesIncrement,
-          hoursGridIncrement: c.hoursGridIncrement,
-          minutesGridIncrement: c.minutesGridIncrement,
-          minDate: c.minDate,
-          maxDate: c.maxDate,
-          autoApply: c.autoApply,
-          selectText: c.selectText,
-          cancelText: c.cancelText,
-          previewFormat: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(u),
-          locale: c.locale,
-          weekNumName: c.weekNumName,
-          disabledDates: c.disabledDates,
-          filters: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(I),
-          minTime: c.minTime,
-          maxTime: c.maxTime,
-          inline: c.inline,
-          openOnTop: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N),
-          monthPicker: c.monthPicker,
-          timePicker: c.timePicker,
-          monthNameFormat: c.monthNameFormat,
-          startDate: c.startDate,
-          startTime: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(oe),
-          monthYearComponent: c.monthYearComponent,
-          timePickerComponent: c.timePickerComponent,
-          actionRowComponent: c.actionRowComponent,
-          customProps: c.customProps,
-          hideOffsetDates: c.hideOffsetDates,
-          autoRange: c.autoRange,
-          noToday: c.noToday,
-          noHoursOverlay: c.noHoursOverlay,
-          noMinutesOverlay: c.noMinutesOverlay,
-          disabledWeekDays: c.disabledWeekDays,
-          allowedDates: c.allowedDates,
-          showNowButton: c.showNowButton,
-          nowButtonLabel: c.nowButtonLabel,
-          monthChangeOnScroll: c.monthChangeOnScroll,
-          markers: c.markers,
-          uid: c.uid,
-          modeHeight: c.modeHeight,
-          enableSeconds: c.enableSeconds,
-          secondsIncrement: c.secondsIncrement,
-          secondsGridIncrement: c.secondsGridIncrement,
-          noSecondsOverlay: c.noSecondsOverlay,
-          escClose: c.escClose,
-          spaceConfirm: c.spaceConfirm,
-          monthChangeOnArrows: c.monthChangeOnArrows,
-          textInput: c.textInput,
-          disabled: c.disabled,
-          readonly: c.readonly,
-          multiDates: c.multiDates,
-          presetRanges: c.presetRanges,
-          flow: c.flow,
-          preventMinMaxNavigation: c.preventMinMaxNavigation,
-          minRange: c.minRange,
-          maxRange: c.maxRange,
-          fixedStart: c.fixedStart,
-          fixedEnd: c.fixedEnd,
-          multiDatesLimit: c.multiDatesLimit,
-          reverseYears: c.reverseYears,
-          keepActionRow: c.keepActionRow,
-          weekPicker: c.weekPicker,
-          noSwipe: c.noSwipe,
-          vertical: c.vertical,
-          arrowNavigation: c.arrowNavigation,
-          yearPicker: c.yearPicker,
-          disableTimeRangeValidation: c.disableTimeRangeValidation,
-          dayNames: c.dayNames,
-          modelAuto: c.modelAuto,
-          highlight: c.highlight,
-          highlightWeekDays: c.highlightWeekDays,
-          partialRange: c.partialRange,
-          teleportCenter: c.teleportCenter,
-          ignoreTimeValidation: c.ignoreTimeValidation
-        }, {
-          internalModelValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(i),
-          "onUpdate:internalModelValue": ae[3] || (ae[3] = (me) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(i) ? i.value = me : null),
-          onClosePicker: be,
-          onSelectDate: Ye,
-          onDpOpen: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(x),
-          onAutoApply: Ue,
-          onTimeUpdate: pt,
-          onFlowStep: ae[4] || (ae[4] = (me) => c.$emit("flow-step", me)),
-          onUpdateMonthYear: ae[5] || (ae[5] = (me) => c.$emit("updateMonthYear", me)),
-          onInvalidSelect: ae[6] || (ae[6] = (me) => c.$emit("invalid-select", (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(i)))
+          ref: Y,
+          class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(c),
+          style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ae),
+          "open-on-top": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(Z)
+        }, F.$props, {
+          "internal-model-value": (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N),
+          "onUpdate:internal-model-value": be[1] || (be[1] = (pe) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(N) ? N.value = pe : null),
+          onClosePicker: v,
+          onSelectDate: k,
+          onAutoApply: ie,
+          onTimeUpdate: O,
+          onFlowStep: be[2] || (be[2] = (pe) => F.$emit("flow-step", pe)),
+          onUpdateMonthYear: be[3] || (be[3] = (pe) => F.$emit("update-month-year", pe)),
+          onInvalidSelect: be[4] || (be[4] = (pe) => F.$emit("invalid-select", (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(N))),
+          onRecalculatePosition: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(ne)
         }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createSlots)({ _: 2 }, [
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(R), (me, ut) => ({
-            name: me,
-            fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((Qe) => [
-              (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(c.$slots, me, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)({ ...Qe })))
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(C), (pe, Ne) => ({
+            name: pe,
+            fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)((Fe) => [
+              (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(F.$slots, pe, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)({ ...Fe })))
             ])
           }))
-        ]), 1040, ["class", "style", "internalModelValue", "onDpOpen"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
+        ]), 1040, ["class", "style", "open-on-top", "internal-model-value", "onRecalculatePosition"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
       ], 8, ["to", "disabled"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("", !0)
     ], 2));
   }
-}), da = /* @__PURE__ */ (() => {
-  const e = es;
-  return e.install = (a) => {
-    a.component("Vue3DatePicker", e);
+}), xn = /* @__PURE__ */ (() => {
+  const e = Wr;
+  return e.install = (n) => {
+    n.component("Vue3DatePicker", e);
   }, e;
-})(), ts = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+})(), zr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: da
+  default: xn
 }, Symbol.toStringTag, { value: "Module" }));
-Object.entries(ts).forEach(([e, a]) => {
-  e !== "default" && (da[e] = a);
+Object.entries(zr).forEach(([e, n]) => {
+  e !== "default" && (xn[e] = n);
 });
 
 

@@ -32,6 +32,7 @@ class ItemController extends CommonController
         //
         return $this->indexPage(
             Item::selectItemData()
+            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -41,6 +42,7 @@ class ItemController extends CommonController
         return $this->indexPage(
             Item::onlyTrashed()
             ->selectItemData()
+            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -210,6 +212,13 @@ private function insertItemTaxes($taxes,$itemId,$update=NULL){
         $this->addAttributes($item->id,request('attributes'));
         $this->insertColors($request->colors,$item->id);
         $this->insertItemTaxes($request->taxes,$item->id);
+        $this->seo->create([
+            'title' => $request->name ,
+            'description' => $request->name ,
+            'type' => '-',
+            'model' => $this->model,
+            'model_id' => $item->id
+        ]);
         DB::commit();
         return response()->json([
             'message' => $request->name . ' Item is created successfully'
@@ -310,7 +319,8 @@ private function validateData($id=NULL){
 public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return $this->indexPage(
-        Item::selectItemData()
+        Item::selectSeo()
+        ->selectItemData()
         ->searchData($searchData)
         ->searchCreateAndUpdate($searchData)
         ->latest('id')
@@ -322,6 +332,7 @@ public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
     return $this->indexPage(
         Item::onlyTrashed()
+        ->selectSeo()
         ->selectItemData()
         ->trashSearchData($searchData)
         ->searchDelete($searchData)

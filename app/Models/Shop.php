@@ -14,4 +14,6 @@ class Shop extends TransactionModel
         'address' ,
         'pic'
     ];
+
+    protected static $tableName='shops';
 }

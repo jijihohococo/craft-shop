@@ -17,6 +17,8 @@ class Brand extends TransactionModel
 
     public static $cacheKey='brands_cache';
 
+    protected static $tableName='brands';
+
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-brands',60*60*24,function(){
             return self::orderBy('name')->get();

@@ -17,6 +17,8 @@ class Category extends TransactionModel
 
     public static $cacheKey='categories_cache';
 
+    protected static $tableName='categories';
+
     public function getWithSubcategories(){
         return Cache::tags(self::$cacheKey)->remember('all-categories',60*60*24,function(){
             return self::addSelect(['subcategories' => function($query){

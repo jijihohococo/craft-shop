@@ -13,4 +13,6 @@ class Page extends TransactionModel
         'link',
         'description'
     ];
+
+    protected static $tableName='pages';
 }

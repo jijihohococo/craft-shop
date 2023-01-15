@@ -2630,7 +2630,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /**
- * Vue 3 Carousel 0.2.0
+ * Vue 3 Carousel 0.2.9
  * (c) 2022
  * @license MIT
  */
@@ -2727,24 +2727,113 @@ const carouselProps = {
     },
 };
 
-/**
- * return a debounced version of the function
- * @param fn
- * @param delay
- */
-// eslint-disable-next-line no-unused-vars
-function debounce(fn, delay) {
-    let timerId;
-    return function (...args) {
-        if (timerId) {
-            clearTimeout(timerId);
-        }
-        timerId = setTimeout(() => {
-            fn(...args);
-            timerId = null;
-        }, delay);
-    };
+function getMaxSlideIndex({ config, slidesCount }) {
+    const { snapAlign, wrapAround, itemsToShow = 1 } = config;
+    if (wrapAround) {
+        return Math.max(slidesCount - 1, 0);
+    }
+    let output;
+    switch (snapAlign) {
+        case 'start':
+            output = slidesCount - itemsToShow;
+            break;
+        case 'end':
+            output = slidesCount - 1;
+            break;
+        case 'center':
+        case 'center-odd':
+            output = slidesCount - Math.ceil((itemsToShow - 0.5) / 2);
+            break;
+        case 'center-even':
+            output = slidesCount - Math.ceil(itemsToShow / 2);
+            break;
+        default:
+            output = 0;
+            break;
+    }
+    return Math.max(output, 0);
 }
+
+function getMinSlideIndex({ config, slidesCount }) {
+    const { wrapAround, snapAlign, itemsToShow = 1 } = config;
+    let output = 0;
+    if (wrapAround || itemsToShow > slidesCount) {
+        return output;
+    }
+    switch (snapAlign) {
+        case 'start':
+            output = 0;
+            break;
+        case 'end':
+            output = itemsToShow - 1;
+            break;
+        case 'center':
+        case 'center-odd':
+            output = Math.floor((itemsToShow - 1) / 2);
+            break;
+        case 'center-even':
+            output = Math.floor((itemsToShow - 2) / 2);
+            break;
+        default:
+            output = 0;
+            break;
+    }
+    return output;
+}
+
+function getNumberInRange({ val, max, min }) {
+    if (max < min) {
+        return val;
+    }
+    return Math.min(Math.max(val, min), max);
+}
+
+function getSlidesToScroll({ config, currentSlide, slidesCount }) {
+    const { snapAlign, wrapAround, itemsToShow = 1 } = config;
+    let output = currentSlide;
+    switch (snapAlign) {
+        case 'center':
+        case 'center-odd':
+            output -= (itemsToShow - 1) / 2;
+            break;
+        case 'center-even':
+            output -= (itemsToShow - 2) / 2;
+            break;
+        case 'end':
+            output -= itemsToShow - 1;
+            break;
+    }
+    if (wrapAround) {
+        return output;
+    }
+    return getNumberInRange({
+        val: output,
+        max: slidesCount - itemsToShow,
+        min: 0,
+    });
+}
+
+function getSlidesVNodes(vNode) {
+    var _a, _b, _c, _d;
+    // Return empty array if there's any node
+    if (!vNode)
+        return [];
+    // Check if the Slides components are added directly without v-for (#72)
+    if (((_a = vNode[0]) === null || _a === void 0 ? void 0 : _a.children) === "v-if" || ((_c = (_b = vNode[0]) === null || _b === void 0 ? void 0 : _b.type) === null || _c === void 0 ? void 0 : _c.name) === 'CarouselSlide')
+        return vNode.filter((node) => { var _a; return ((_a = node.type) === null || _a === void 0 ? void 0 : _a.name) === "CarouselSlide"; });
+    return ((_d = vNode[0]) === null || _d === void 0 ? void 0 : _d.children) || [];
+}
+
+function mapNumberToRange({ val, max, min = 0 }) {
+    if (val > max) {
+        return mapNumberToRange({ val: val - (max + 1), max, min });
+    }
+    if (val < min) {
+        return mapNumberToRange({ val: val + (max + 1), max, min });
+    }
+    return val;
+}
+
 /**
  * return a throttle version of the function
  * Throttling
@@ -2762,84 +2851,24 @@ function throttle(fn, limit) {
         }
     };
 }
-function getSlidesVNodes(vNode) {
-    var _a, _b, _c;
-    // Return empty array if there's any node
-    if (!vNode)
-        return [];
-    // Check if the Slides components are added directly without v-for (#72)
-    if (((_b = (_a = vNode[0]) === null || _a === void 0 ? void 0 : _a.type) === null || _b === void 0 ? void 0 : _b.name) === 'CarouselSlide')
-        return vNode;
-    return ((_c = vNode[0]) === null || _c === void 0 ? void 0 : _c.children) || [];
-}
-function getMaxSlideIndex(config, slidesCount) {
-    if (config.wrapAround) {
-        return slidesCount - 1;
-    }
-    switch (config.snapAlign) {
-        case 'start':
-            return slidesCount - config.itemsToShow;
-        case 'end':
-            return slidesCount - 1;
-        case 'center':
-        case 'center-odd':
-            return slidesCount - Math.ceil((config.itemsToShow - 0.5) / 2);
-        case 'center-even':
-            return slidesCount - Math.ceil(config.itemsToShow / 2);
-        default:
-            return 0;
-    }
-}
-function getMinSlideIndex(config) {
-    if (config.wrapAround) {
-        return 0;
-    }
-    switch (config.snapAlign) {
-        case 'start':
-            return 0;
-        case 'end':
-            return config.itemsToShow - 1;
-        case 'center':
-        case 'center-odd':
-            return Math.floor((config.itemsToShow - 1) / 2);
-        case 'center-even':
-            return Math.floor((config.itemsToShow - 2) / 2);
-        default:
-            return 0;
-    }
-}
-function getCurrentSlideIndex(config, val, max, min) {
-    if (config.wrapAround) {
-        return val;
-    }
-    return Math.min(Math.max(val, min), max);
-}
-function getSlidesToScroll({ currentSlide, snapAlign, itemsToShow, wrapAround, slidesCount, }) {
-    let output = currentSlide;
-    if (snapAlign === 'center' || snapAlign === 'center-odd') {
-        output -= (itemsToShow - 1) / 2;
-    }
-    else if (snapAlign === 'center-even') {
-        output -= (itemsToShow - 2) / 2;
-    }
-    else if (snapAlign === 'end') {
-        output -= itemsToShow - 1;
-    }
-    if (!wrapAround) {
-        const max = slidesCount - itemsToShow;
-        const min = 0;
-        output = Math.max(Math.min(output, max), min);
-    }
-    return output;
-}
-function mapNumberToRange(current, max, min = 0) {
-    if (current > max) {
-        return mapNumberToRange(current - (max + 1), max, min);
-    }
-    if (current < min) {
-        return mapNumberToRange(current + (max + 1), max, min);
-    }
-    return current;
+
+/**
+ * return a debounced version of the function
+ * @param fn
+ * @param delay
+ */
+// eslint-disable-next-line no-unused-vars
+function debounce(fn, delay) {
+    let timerId;
+    return function (...args) {
+        if (timerId) {
+            clearTimeout(timerId);
+        }
+        timerId = setTimeout(() => {
+            fn(...args);
+            timerId = null;
+        }, delay);
+    };
 }
 
 var ARIAComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
@@ -2863,14 +2892,14 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
         const root = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
         const slides = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
         const slideWidth = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
-        const slidesCount = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1);
+        const slidesCount = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
         let breakpoints = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({});
         // generate carousel configs
         let __defaultConfig = Object.assign({}, defaultConfigs);
         // current config
         const config = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)(Object.assign({}, __defaultConfig));
         // slides
-        const currentSlideIndex = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((_a = config.modelValue) !== null && _a !== void 0 ? _a : 0);
+        const currentSlideIndex = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((_a = props.modelValue) !== null && _a !== void 0 ? _a : 0);
         const prevSlideIndex = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
         const middleSlideIndex = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
         const maxSlideIndex = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
@@ -2916,7 +2945,7 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
             Object.entries(newConfig).forEach(([key, val]) => (config[key] = val));
         }
         const handleWindowResize = debounce(() => {
-            if (breakpoints.value) {
+            if (Object.keys(breakpoints.value).length) {
                 updateBreakpointsConfigs();
                 updateSlidesData();
             }
@@ -2932,20 +2961,28 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
             slideWidth.value = rect.width / config.itemsToShow;
         }
         function updateSlidesData() {
-            slidesCount.value = Math.max(slides.value.length, 1);
             if (slidesCount.value <= 0)
                 return;
             middleSlideIndex.value = Math.ceil((slidesCount.value - 1) / 2);
-            maxSlideIndex.value = getMaxSlideIndex(config, slidesCount.value);
-            minSlideIndex.value = getMinSlideIndex(config);
-            currentSlideIndex.value = getCurrentSlideIndex(config, currentSlideIndex.value, maxSlideIndex.value, minSlideIndex.value);
+            maxSlideIndex.value = getMaxSlideIndex({ config, slidesCount: slidesCount.value });
+            minSlideIndex.value = getMinSlideIndex({ config, slidesCount: slidesCount.value });
+            if (!config.wrapAround) {
+                currentSlideIndex.value = getNumberInRange({
+                    val: currentSlideIndex.value,
+                    max: maxSlideIndex.value,
+                    min: minSlideIndex.value,
+                });
+            }
         }
         (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
-            if (breakpoints.value) {
+            if (Object.keys(breakpoints.value).length) {
                 updateBreakpointsConfigs();
-                updateSlidesData();
             }
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => setTimeout(updateSlideWidth, 16));
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+                updateSlidesData();
+                updateSlideWidth();
+                emit('init');
+            });
             initAutoplay();
             window.addEventListener('resize', handleWindowResize, { passive: true });
         });
@@ -2956,6 +2993,13 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
             if (autoplayTimer) {
                 clearInterval(autoplayTimer);
             }
+            /**
+             * use the same options as in onMounted
+             * https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener#Matching_event_listeners_for_removal
+             */
+            window.removeEventListener('resize', handleWindowResize, {
+                passive: true,
+            });
         });
         /**
          * Carousel Event listeners
@@ -2972,6 +3016,9 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
             isHover.value = false;
         };
         function handleDragStart(event) {
+            if (['INPUT', 'TEXTAREA'].includes(event.target.tagName)) {
+                return;
+            }
             isTouch = event.type === 'touchstart';
             if ((!isTouch && event.button !== 0) || isSliding.value) {
                 return;
@@ -3025,9 +3072,6 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
             }, config.autoplay);
         }
         function resetAutoplay() {
-            if (!config.autoplay || config.autoplay <= 0) {
-                return;
-            }
             if (autoplayTimer) {
                 clearInterval(autoplayTimer);
                 autoplayTimer = null;
@@ -3039,21 +3083,48 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
          */
         const isSliding = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
         function slideTo(slideIndex) {
-            if (currentSlideIndex.value === slideIndex || isSliding.value) {
+            const currentVal = config.wrapAround
+                ? slideIndex
+                : getNumberInRange({
+                    val: slideIndex,
+                    max: maxSlideIndex.value,
+                    min: minSlideIndex.value,
+                });
+            if (currentSlideIndex.value === currentVal || isSliding.value) {
                 return;
             }
+            emit('slide-start', {
+                slidingToIndex: slideIndex,
+                currentSlideIndex: currentSlideIndex.value,
+                prevSlideIndex: prevSlideIndex.value,
+                slidesCount: slidesCount.value,
+            });
             isSliding.value = true;
-            resetAutoplay();
-            const currentVal = getCurrentSlideIndex(config, slideIndex, maxSlideIndex.value, minSlideIndex.value);
             prevSlideIndex.value = currentSlideIndex.value;
             currentSlideIndex.value = currentVal;
             transitionTimer = setTimeout(() => {
-                const mappedNumber = mapNumberToRange(currentVal, maxSlideIndex.value);
                 if (config.wrapAround) {
-                    currentSlideIndex.value = mappedNumber;
+                    const mappedNumber = mapNumberToRange({
+                        val: currentVal,
+                        max: maxSlideIndex.value,
+                        min: 0,
+                    });
+                    if (mappedNumber !== currentSlideIndex.value) {
+                        currentSlideIndex.value = mappedNumber;
+                        emit('loop', {
+                            currentSlideIndex: currentSlideIndex.value,
+                            slidingToIndex: slideIndex,
+                        });
+                    }
                 }
-                emit('update:modelValue', mappedNumber);
+                emit('update:modelValue', currentSlideIndex.value);
+                emit('slide-end', {
+                    currentSlideIndex: currentSlideIndex.value,
+                    prevSlideIndex: prevSlideIndex.value,
+                    slidesCount: slidesCount.value,
+                });
                 isSliding.value = false;
+                resetAutoplay();
             }, config.transition);
         }
         function next() {
@@ -3069,9 +3140,7 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
          * Track style
          */
         const slidesToScroll = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => getSlidesToScroll({
-            itemsToShow: config.itemsToShow,
-            snapAlign: config.snapAlign,
-            wrapAround: Boolean(config.wrapAround),
+            config,
             currentSlide: currentSlideIndex.value,
             slidesCount: slidesCount.value,
         }));
@@ -3086,9 +3155,6 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
                 width: `100%`,
             };
         });
-        function initCarousel() {
-            initDefaultConfigs();
-        }
         function restartCarousel() {
             initDefaultConfigs();
             updateBreakpointsConfigs();
@@ -3096,32 +3162,29 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
             updateSlideWidth();
             resetAutoplay();
         }
-        function updateCarousel() {
-            updateSlidesData();
-        }
         // Update the carousel on props change
         Object.keys(carouselProps).forEach((prop) => {
             if (['modelValue'].includes(prop))
                 return;
             (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(() => props[prop], restartCarousel);
         });
+        // Handle changing v-model value
         (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(() => props['modelValue'], (val) => {
             if (val !== currentSlideIndex.value) {
                 slideTo(Number(val));
             }
         });
+        // Handel when slides added/removed
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(slidesCount, updateSlidesData);
         // Init carousel
-        initCarousel();
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.watchEffect)(() => {
-            // Handel when slides added/removed
-            if (slidesCount.value !== slides.value.length) {
-                updateCarousel();
-            }
-        });
+        initDefaultConfigs();
         const data = {
             config,
             slidesCount,
             slideWidth,
+            next,
+            prev,
+            slideTo,
             currentSlide: currentSlideIndex,
             maxSlide: maxSlideIndex,
             minSlide: minSlideIndex,
@@ -3131,9 +3194,8 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
             updateBreakpointsConfigs,
             updateSlidesData,
             updateSlideWidth,
-            initCarousel,
+            initDefaultConfigs,
             restartCarousel,
-            updateCarousel,
             slideTo,
             next,
             prev,
@@ -3149,11 +3211,20 @@ var Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
             slidesElements.forEach((el, index) => (el.props.index = index));
             let output = slidesElements;
             if (config.wrapAround) {
-                const slidesBefore = slidesElements.map((el, index) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.cloneVNode)(el, { index: -slidesElements.length + index, isClone: true }));
-                const slidesAfter = slidesElements.map((el, index) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.cloneVNode)(el, { index: slidesElements.length + index, isClone: true }));
+                const slidesBefore = slidesElements.map((el, index) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.cloneVNode)(el, {
+                    index: -slidesElements.length + index,
+                    isClone: true,
+                    key: `clone-before-${index}`,
+                }));
+                const slidesAfter = slidesElements.map((el, index) => (0,vue__WEBPACK_IMPORTED_MODULE_0__.cloneVNode)(el, {
+                    index: slidesElements.length + index,
+                    isClone: true,
+                    key: `clone-after-${index}`,
+                }));
                 output = [...slidesBefore, ...slidesElements, ...slidesAfter];
             }
             slides.value = slidesElements;
+            slidesCount.value = Math.max(slidesElements.length, 1);
             const trackEl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('ol', {
                 class: 'carousel__track',
                 style: trackStyle.value,
@@ -3213,14 +3284,13 @@ const Navigation = (props, { slots, attrs }) => {
     const minSlide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('minSlide', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1));
     const currentSlide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('currentSlide', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1));
     const nav = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('nav', {});
-    const isRTL = config.dir === 'rtl';
+    const { dir, wrapAround } = config;
+    const isRTL = dir === 'rtl';
     const prevButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('button', {
         type: 'button',
         class: [
             'carousel__prev',
-            !config.wrapAround &&
-                currentSlide.value <= minSlide.value &&
-                'carousel__prev--disabled',
+            !wrapAround && currentSlide.value <= minSlide.value && 'carousel__prev--disabled',
             attrs === null || attrs === void 0 ? void 0 : attrs.class,
         ],
         'aria-label': `Navigate to previous slide`,
@@ -3230,9 +3300,7 @@ const Navigation = (props, { slots, attrs }) => {
         type: 'button',
         class: [
             'carousel__next',
-            !config.wrapAround &&
-                currentSlide.value >= maxSlide.value &&
-                'carousel__next--disabled',
+            !wrapAround && currentSlide.value >= maxSlide.value && 'carousel__next--disabled',
             attrs === null || attrs === void 0 ? void 0 : attrs.class,
         ],
         'aria-label': `Navigate to next slide`,
@@ -3245,15 +3313,12 @@ const Pagination = () => {
     const maxSlide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('maxSlide', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1));
     const minSlide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('minSlide', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1));
     const currentSlide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('currentSlide', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1));
-    const slidesCount = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('slidesCount', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1));
     const nav = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('nav', {});
-    function handleButtonClick(slideNumber) {
-        nav.slideTo(slideNumber);
-    }
-    const isActive = (slide) => {
-        const val = mapNumberToRange(currentSlide.value, slidesCount.value - 1, 0);
-        return val === slide;
-    };
+    const isActive = (slide) => mapNumberToRange({
+        val: currentSlide.value,
+        max: maxSlide.value,
+        min: 0,
+    }) === slide;
     const children = [];
     for (let slide = minSlide.value; slide < maxSlide.value + 1; slide++) {
         const button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('button', {
@@ -3263,7 +3328,7 @@ const Pagination = () => {
                 'carousel__pagination-button--active': isActive(slide),
             },
             'aria-label': `Navigate to slide ${slide + 1}`,
-            onClick: () => handleButtonClick(slide),
+            onClick: () => nav.slideTo(slide),
         });
         const item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('li', { class: 'carousel__pagination-item', key: slide }, button);
         children.push(item);
@@ -3289,19 +3354,17 @@ var Slide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
         const slidesToScroll = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('slidesToScroll', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0));
         const slideWidth = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('slideWidth', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0));
         const isSliding = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('isSliding', (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false));
-        const slideStyle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-            return {
-                width: slideWidth.value ? `${slideWidth.value}px` : `100%`,
-            };
-        });
+        const slideStyle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
+            width: slideWidth.value ? `${slideWidth.value}px` : `100%`,
+        }));
         const isActive = () => props.index === currentSlide.value;
+        const isPrev = () => props.index === currentSlide.value - 1;
+        const isNext = () => props.index === currentSlide.value + 1;
         const isVisible = () => {
             const min = Math.floor(slidesToScroll.value);
             const max = Math.ceil(slidesToScroll.value + config.itemsToShow - 1);
             return props.index >= min && props.index <= max;
         };
-        const isPrev = () => props.index === currentSlide.value - 1;
-        const isNext = () => props.index === currentSlide.value + 1;
         return () => {
             var _a;
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('li', {

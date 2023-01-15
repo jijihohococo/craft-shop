@@ -126,9 +126,6 @@ var _hoisted_1 = ["id", "aria-labelledby"];
 var _hoisted_2 = {
   "class": "product_slider carousel_slider nav_style1"
 };
-
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" .carousel__item { min-height: 200px; width: 100%; background-color: var(--vc-clr-primary); color: var(--vc-clr-white); font-size: 20px; border-radius: 8px; display: flex; justify-content: center; align-items: center; } .carousel__slide { padding: 10px; } ");
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_SliderItem = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SliderItem");
 
@@ -179,7 +176,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* CLASS, PROPS */
   , _hoisted_1), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("style"), null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" .carousel__item { min-height: 200px; width: 100%; background-color: var(--vc-clr-primary); color: var(--vc-clr-white); font-size: 20px; border-radius: 8px; display: flex; justify-content: center; align-items: center; } .carousel__slide { padding: 10px; } ")];
     }),
     _: 1
     /* STABLE */
@@ -203,39 +200,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" .hand_cursor{ cursor:pointer; } ");
-
-var _hoisted_2 = {
+var _hoisted_1 = {
   "class": "product"
 };
-var _hoisted_3 = {
+var _hoisted_2 = {
   "class": "product_img"
 };
-var _hoisted_4 = {
+var _hoisted_3 = {
   href: "shop-product-detail.html"
 };
-var _hoisted_5 = {
+var _hoisted_4 = {
   "class": "product_action_box"
 };
-var _hoisted_6 = {
+var _hoisted_5 = {
   "class": "list_none pr_action_btn"
 };
-var _hoisted_7 = {
+var _hoisted_6 = {
   "class": "add-to-cart hand_cursor"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "icon-basket-loaded"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add To Cart");
-
-var _hoisted_10 = [_hoisted_8, _hoisted_9];
-
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "shop-compare.html",
   "class": "popup-ajax"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
@@ -244,7 +234,7 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "shop-quick-view.html",
   "class": "popup-ajax"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
@@ -253,13 +243,13 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "icon-heart"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_14 = [_hoisted_13];
+var _hoisted_11 = [_hoisted_10];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_lazy_image = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-lazy-image");
 
@@ -267,26 +257,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("style"), null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_1];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" .hand_cursor{ cursor:pointer; } ")];
     }),
     _: 1
     /* STABLE */
 
-  })), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_lazy_image, {
+  })), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_lazy_image, {
     src: _ctx.showImage($props.item.image),
     alt: $props.item.name
   }, null, 8
   /* PROPS */
-  , ["src", "alt"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  , ["src", "alt"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.addToCart();
     })
-  }, _hoisted_10)]), _hoisted_11, _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add To Cart")])]), _hoisted_8, _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.addToWishlist($props.item.id);
     }),
     href: "#"
-  }, _hoisted_14)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ItemInfo, {
+  }, _hoisted_11)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ItemInfo, {
     item: $props.item,
     onGetData: $options.getColorKey
   }, null, 8
@@ -478,7 +468,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".carousel {\n  position: relative;\n  text-align: center;\n  box-sizing: border-box;\n}\n\n.carousel * {\n  box-sizing: border-box;\n}\n\n.carousel__track {\n  display: flex;\n  margin: 0;\n  padding: 0;\n  position: relative;\n}\n\n.carousel__viewport {\n  overflow: hidden;\n}\n\n.carousel__sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.carousel__prev,\n.carousel__next {\n  box-sizing: content-box;\n  background: var(--vc-nav-background);\n  border-radius: var(--vc-nav-border-radius);\n  width: var(--vc-nav-width);\n  height: var(--vc-nav-height);\n  text-align: center;\n  font-size: var(--vc-nav-height);\n  padding: 0;\n  color: var(--vc-nav-color);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: absolute;\n  border: 0;\n  cursor: pointer;\n  margin: 0 10px;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.carousel__prev:hover,\n.carousel__next:hover {\n  color: var(--vc-nav-color-hover);\n}\n\n.carousel__next--disabled,\n.carousel__prev--disabled {\n  cursor: not-allowed;\n  opacity: 0.5;\n}\n\n.carousel__prev {\n  left: 0;\n}\n\n.carousel__next {\n  right: 0;\n}\n\n.carousel--rtl .carousel__prev {\n  left: auto;\n  right: 0;\n}\n\n.carousel--rtl .carousel__next {\n  right: auto;\n  left: 0;\n}\n.carousel__pagination {\n  display: flex;\n  justify-content: center;\n  list-style: none;\n  line-height: 0;\n  margin: 10px 0 0;\n}\n\n.carousel__pagination-button {\n  display: block;\n  border: 0;\n  margin: 0;\n  cursor: pointer;\n  padding: var(--vc-pgn-margin);\n  background: transparent;\n}\n\n.carousel__pagination-button::after {\n  display: block;\n  content: '';\n  width: var(--vc-pgn-width);\n  height: var(--vc-pgn-height);\n  border-radius: var(--vc-pgn-border-radius);\n  background-color: var(--vc-pgn-background-color);\n}\n\n.carousel__pagination-button:hover::after,\n.carousel__pagination-button--active::after {\n  background-color: var(--vc-pgn-active-color);\n}\n:root {\n  /* Color */\n  --vc-clr-primary: #000;\n  --vc-clr-secondary: #090f207f;\n  --vc-clr-white: #ffffff;\n\n  /* Icon */\n  --vc-icn-width: 1.2em;\n\n  /* Navigation */\n  --vc-nav-width: 30px;\n  --vc-nav-height: 30px;\n  --vc-nav-border-radius: 0;\n  --vc-nav-color: var(--vc-clr-primary);\n  --vc-nav-color-hover: var(--vc-clr-secondary);\n  --vc-nav-background: transparent;\n\n  /* Pagination */\n  --vc-pgn-width: 12px;\n  --vc-pgn-height: 4px;\n  --vc-pgn-margin: 4px;\n  --vc-pgn-border-radius: 0;\n  --vc-pgn-background-color: var(--vc-clr-secondary);\n  --vc-pgn-active-color: var(--vc-clr-primary);\n}\n.carousel__icon {\n  width: var(--vc-icn-width);\n  height: var(--vc-icn-width);\n  fill: currentColor;\n}\n.carousel__slide {\n  scroll-snap-stop: auto;\n  flex-shrink: 0;\n  margin: 0;\n  position: relative;\n\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".carousel__icon {\n  width: var(--vc-icn-width);\n  height: var(--vc-icn-width);\n  fill: currentColor;\n}\n:root {\n  /* Color */\n  --vc-clr-primary: #000;\n  --vc-clr-secondary: #090f207f;\n  --vc-clr-white: #ffffff;\n\n  /* Icon */\n  --vc-icn-width: 1.2em;\n\n  /* Navigation */\n  --vc-nav-width: 30px;\n  --vc-nav-height: 30px;\n  --vc-nav-border-radius: 0;\n  --vc-nav-color: var(--vc-clr-primary);\n  --vc-nav-color-hover: var(--vc-clr-secondary);\n  --vc-nav-background: transparent;\n\n  /* Pagination */\n  --vc-pgn-width: 12px;\n  --vc-pgn-height: 4px;\n  --vc-pgn-margin: 4px;\n  --vc-pgn-border-radius: 0;\n  --vc-pgn-background-color: var(--vc-clr-secondary);\n  --vc-pgn-active-color: var(--vc-clr-primary);\n}\n.carousel {\n  position: relative;\n  text-align: center;\n  box-sizing: border-box;\n}\n\n.carousel * {\n  box-sizing: border-box;\n}\n\n.carousel__track {\n  display: flex;\n  margin: 0;\n  padding: 0;\n  position: relative;\n}\n\n.carousel__viewport {\n  overflow: hidden;\n}\n\n.carousel__sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.carousel__slide {\n  scroll-snap-stop: auto;\n  flex-shrink: 0;\n  margin: 0;\n  position: relative;\n\n  display: flex;\n  justify-content: center;\n  align-items: center;\n\n  /* Fix iOS scrolling #22 */\n  transform: translateZ(0);\n}\n.carousel__pagination {\n  display: flex;\n  justify-content: center;\n  list-style: none;\n  line-height: 0;\n  margin: 10px 0 0;\n}\n\n.carousel__pagination-button {\n  display: block;\n  border: 0;\n  margin: 0;\n  cursor: pointer;\n  padding: var(--vc-pgn-margin);\n  background: transparent;\n}\n\n.carousel__pagination-button::after {\n  display: block;\n  content: '';\n  width: var(--vc-pgn-width);\n  height: var(--vc-pgn-height);\n  border-radius: var(--vc-pgn-border-radius);\n  background-color: var(--vc-pgn-background-color);\n}\n\n.carousel__pagination-button:hover::after,\n.carousel__pagination-button--active::after {\n  background-color: var(--vc-pgn-active-color);\n}\n.carousel__prev,\n.carousel__next {\n  box-sizing: content-box;\n  background: var(--vc-nav-background);\n  border-radius: var(--vc-nav-border-radius);\n  width: var(--vc-nav-width);\n  height: var(--vc-nav-height);\n  text-align: center;\n  font-size: var(--vc-nav-height);\n  padding: 0;\n  color: var(--vc-nav-color);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: absolute;\n  border: 0;\n  cursor: pointer;\n  margin: 0 10px;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.carousel__prev:hover,\n.carousel__next:hover {\n  color: var(--vc-nav-color-hover);\n}\n\n.carousel__next--disabled,\n.carousel__prev--disabled {\n  cursor: not-allowed;\n  opacity: 0.5;\n}\n\n.carousel__prev {\n  left: 0;\n}\n\n.carousel__next {\n  right: 0;\n}\n\n.carousel--rtl .carousel__prev {\n  left: auto;\n  right: 0;\n}\n\n.carousel--rtl .carousel__next {\n  right: auto;\n  left: 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

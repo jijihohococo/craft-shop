@@ -4,12 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Repositories\SeoRepositoryInterface;
+use DB;
 class CategoryController extends CommonController
 {
 
     public $model = 'Category';
 
     public $content = 'categories';
+
+    private $seo;
+
+    public function __construct(SeoRepositoryInterface $seo){
+        parent::__construct($seo);
+        $this->seo=$seo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,13 +28,14 @@ class CategoryController extends CommonController
     {
         //
         return $this->indexPage(
-            Category::latest('id')->paginate(10)
+            Category::selectSeo()->latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             Category::onlyTrashed()
+            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -45,7 +55,16 @@ class CategoryController extends CommonController
     {
         //
         $request->validate($this->validateData());
-        Category::create($request->all());
+        DB::beginTransaction();
+        $category=Category::create($request->all());
+        $this->seo->create([
+            'title' => $request->name ,
+            'description' => $request->name ,
+            'type' => $request->name,
+            'model' => $this->model,
+            'model_id' => $category->id
+        ]);
+        DB::commit();
         return response()->json([
             'message' => $request->name .' Category is created successfully'
         ]);
@@ -102,7 +121,8 @@ class CategoryController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Category::searchWithName($searchData)
+            Category::selectSeo()
+            ->searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -113,6 +133,7 @@ class CategoryController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Category::onlyTrashed()
+            ->selectSeo()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
             ->searchDelete($searchData)

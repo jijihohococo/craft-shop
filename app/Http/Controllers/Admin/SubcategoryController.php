@@ -4,12 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\{Subcategory,Category};
+use App\Repositories\SeoRepositoryInterface;
+use DB;
 class SubcategoryController extends CommonController
 {
 
     public $model = 'Subcategory';
 
     public $content ='subcategories';
+
+    private $seo;
+
+    public function __construct(SeoRepositoryInterface $seo){
+        parent::__construct($seo);
+        $this->seo=$seo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +29,7 @@ class SubcategoryController extends CommonController
         //
         return $this->indexPage(
             Subcategory::latest('id')
+            ->selectSeo()
             ->selectCategory()
             ->paginate(10)
         );
@@ -28,6 +38,7 @@ class SubcategoryController extends CommonController
     public function trash(){
         return $this->indexPage(
             Subcategory::onlyTrashed()
+            ->selectSeo()
             ->selectCategory()
             ->latest('id')
             ->paginate(10)
@@ -60,7 +71,16 @@ class SubcategoryController extends CommonController
     {
         //
         $request->validate($this->validateData());
-        Subcategory::create($request->all());
+        DB::beginTransaction();
+        $subcategory=Subcategory::create($request->all());
+        $this->seo->create([
+            'title' => $request->name ,
+            'description' => $request->name ,
+            'type' => $request->name,
+            'model' => $this->model,
+            'model_id' => $subcategory->id
+        ]);
+        DB::commit();
         return response()->json([
             'message' => $request->name .' Subcategory is created successfully'
         ]);
@@ -111,7 +131,8 @@ class SubcategoryController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Subcategory::selectCategory()
+            Subcategory::selectSeo()
+            ->selectCategory()
             ->searchWithName($searchData)
             ->searchWithCategory($searchData)
             ->searchCreateAndUpdate($searchData)
@@ -124,6 +145,7 @@ class SubcategoryController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Subcategory::onlyTrashed()
+            ->selectSeo()
             ->selectCategory()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)

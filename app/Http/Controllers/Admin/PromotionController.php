@@ -5,12 +5,21 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Promotion;
 use Carbon\Carbon;
+use App\Repositories\SeoRepositoryInterface;
+use DB;
 class PromotionController extends CommonController
 {
 
     public $model = 'Promotion';
 
     public $content = 'promotions';
+
+    private $seo;
+
+    public function __construct(SeoRepositoryInterface $seo){
+        parent::__construct($seo);
+        $this->seo=$seo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,13 +29,14 @@ class PromotionController extends CommonController
     {
         //
         return $this->indexPage(
-            Promotion::latest('id')->paginate(10)
+            Promotion::selectSeo()->latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             Promotion::onlyTrashed()
+            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -46,7 +56,16 @@ class PromotionController extends CommonController
     {
         //
         $request->validate($this->validateData());
-        Promotion::create($request->all());
+        DB::beginTransaction();
+        $promotion=Promotion::create($request->all());
+        $this->seo->create([
+            'title' => $request->name ,
+            'description' => $request->name ,
+            'type' => $request->name,
+            'model' => $this->model,
+            'model_id' => $promotion->id
+        ]);
+        DB::commit();
         return response()->json([
             'message' => $request->name . ' Promotion is created successfully'
         ]);

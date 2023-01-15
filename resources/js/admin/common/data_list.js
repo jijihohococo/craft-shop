@@ -24,6 +24,8 @@ import DeleteMultiple from '../components/DeleteMultiple';
 
 import Search from '../components/Search';
 
+import EditSeoButton from '../components/EditSeoButton';
+
 export var mixin = {
 	mixins: [mainMixinData],
     components : {
@@ -36,7 +38,8 @@ export var mixin = {
         DeleteCheck,
         Trash,
         DeleteMultiple,
-        DeleteAllCheck
+        DeleteAllCheck,
+        EditSeoButton
     },
     data(){
       return {

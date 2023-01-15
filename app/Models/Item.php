@@ -28,6 +28,8 @@ class Item extends TransactionModel
 
     private $stock='available_stock';
 
+    protected static $tableName='items';
+
     public function taxes(){
         return $this->hasMany('App\Models\ItemTax');
     }

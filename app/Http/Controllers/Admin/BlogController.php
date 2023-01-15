@@ -4,12 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Repositories\SeoRepositoryInterface;
+use DB;
 class BlogController extends CommonController
 {
 
     public $model = 'Blog';
 
     public $content = 'blogs';
+
+    private $seo;
+
+    public function __construct(SeoRepositoryInterface $seo){
+        parent::__construct($seo);
+        $this->seo=$seo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,13 +28,14 @@ class BlogController extends CommonController
     {
         //
         return $this->indexPage(
-            Blog::latest('id')->paginate(10)
+            Blog::selectSeo()->latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             Blog::onlyTrashed()
+            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -34,7 +44,8 @@ class BlogController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Blog::searchWithName($searchData)
+            Blog::selectSeo()
+            ->searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -45,6 +56,7 @@ class BlogController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Blog::onlyTrashed()
+            ->selectSeo()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
             ->searchDelete($searchData)

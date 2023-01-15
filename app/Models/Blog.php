@@ -12,4 +12,6 @@ class Blog extends TransactionModel
         'name',
         'content'
     ];
+
+    protected static $tableName='blogs';
 }

@@ -4,12 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use App\Repositories\SeoRepositoryInterface;
+use DB;
 class BrandController extends CommonController
 {
 
     public $model = 'Brand';
 
     public $content = 'brands';
+
+    private $seo;
+
+    public function __construct(SeoRepositoryInterface $seo){
+        parent::__construct($seo);
+        $this->seo=$seo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,13 +28,14 @@ class BrandController extends CommonController
     {
         //
         return $this->indexPage(
-            Brand::latest('id')->paginate(10)
+            Brand::selectSeo()->latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             Brand::onlyTrashed()
+            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -60,9 +70,18 @@ class BrandController extends CommonController
     {
         //
         $request->validate($this->validateData());
+        DB::beginTransaction();
         $brand=new Brand($request->all() );
         $this->uploadPic($request,$brand);
         $brand->save( $brand->getAttributes() );
+        $this->seo->create([
+            'title' => $request->name ,
+            'description' => $request->name ,
+            'type' => $request->name,
+            'model' => $this->model,
+            'model_id' => $brand->id
+        ]);
+        DB::commit();
         return response()->json([
             'message' => $brand->name . ' Brand is created successfully'
         ]);
@@ -122,7 +141,8 @@ class BrandController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Brand::searchWithName($searchData)
+            Brand::selectSeo()
+            ->searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -133,6 +153,7 @@ class BrandController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Brand::onlyTrashed()
+            ->selectSeo()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
             ->searchDelete($searchData)

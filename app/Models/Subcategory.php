@@ -18,6 +18,8 @@ class Subcategory extends TransactionModel
 
         public static $cacheKey='subcategories_cache';
 
+        protected static $tableName='subcategories';
+
         public function getAll(){
             return Cache::tags( self::$cacheKey )->remember('all-subcategories',60*60*24,function(){
                 return self::orderBy('name')->get();

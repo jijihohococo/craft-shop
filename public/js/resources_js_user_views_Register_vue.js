@@ -106,10 +106,7 @@ var _hoisted_7 = {
 var _hoisted_8 = {
   "class": "breadcrumb-item"
 };
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Home ");
-
-var _hoisted_10 = {
+var _hoisted_9 = {
   "class": "breadcrumb-item active"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -123,12 +120,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_9];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Home ")];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.title), 1
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.title), 1
   /* TEXT */
   )])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" END CONTAINER")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" END SECTION BREADCRUMB ")], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */

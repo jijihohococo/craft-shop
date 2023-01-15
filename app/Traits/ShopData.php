@@ -8,7 +8,7 @@ trait ShopData{
 
 	public function getShop(){
 		View::share([
-            'shop' => Shop::findOrFail(1)
+            'shop' => Shop::selectSeo()->findOrFail(1)
         ]);
 	}
 

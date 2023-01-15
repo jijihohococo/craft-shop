@@ -50,4 +50,7 @@ class User extends Authenticated
     public const REFRESH_TOKEN='refresh_token';
     public const API='user_api';
     //----- Token Information  -----//
+
+
+    protected static $tableName='users';
 }

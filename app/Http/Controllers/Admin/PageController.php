@@ -4,12 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Repositories\SeoRepositoryInterface;
+use DB;
 class PageController extends CommonController
 {
 
     public $model = 'Page';
 
     public $content='pages';
+
+    private $seo;
+
+    public function __construct(SeoRepositoryInterface $seo){
+        parent::__construct($seo);
+        $this->seo=$seo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,13 +28,14 @@ class PageController extends CommonController
     {
         //
         return $this->indexPage(
-            Page::latest('id')->paginate(10)
+            Page::selectSeo()->latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             Page::onlyTrashed()
+            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -34,7 +44,8 @@ class PageController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Page::searchWithName($searchData)
+            Page::selectSeo()
+            ->searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -45,6 +56,7 @@ class PageController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Page::onlyTrashed()
+            ->selectSeo()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
             ->searchDelete($searchData)
@@ -73,7 +85,16 @@ class PageController extends CommonController
     {
         //
         $request->validate($this->validateData());
-        Page::create($request->all());
+        DB::beginTransaction();
+        $page=Page::create($request->all());
+        $this->seo->create([
+            'title' => $request->name ,
+            'description' => $request->name ,
+            'type' => $request->name,
+            'model' => $this->model,
+            'model_id' => $page->id
+        ]);
+        DB::commit();
         return response()->json([
             'message' => $request->name . ' Page is created successfully'
         ]);

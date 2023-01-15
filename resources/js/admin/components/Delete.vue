@@ -1,5 +1,5 @@
 <template>
-	<a v-if="deleteAt==null" class="btn btn-danger btn-sm" data-toggle="modal" :data-target="['#deleteModal'+id]">
+	<a v-if="deleteAt==null" class="btn btn-danger btn-sm mr-3" data-toggle="modal" :data-target="['#deleteModal'+id]">
 		<i class="fas fa-trash">
 		</i>
 		Delete

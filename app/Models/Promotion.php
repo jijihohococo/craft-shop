@@ -19,6 +19,8 @@ class Promotion extends TransactionModel
 
     public static $cacheKey='promotions_cache';
 
+    protected static $tableName='promotions';
+
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-promotions',60*60*24,function(){
             return self::latest('name')->get();
