@@ -106,7 +106,8 @@ class PromotionController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Promotion::searchWithName($searchData)
+            Promotion::selectSeo()
+            ->searchWithName($searchData)
             ->orWhere('promo_code','like',$searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
@@ -118,6 +119,7 @@ class PromotionController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Promotion::onlyTrashed()
+            ->selectSeo()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
             ->orWhere('promo_code','like',$searchData)
