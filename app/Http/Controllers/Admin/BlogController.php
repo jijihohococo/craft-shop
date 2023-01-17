@@ -28,14 +28,13 @@ class BlogController extends CommonController
     {
         //
         return $this->indexPage(
-            Blog::selectSeo()->latest('id')->paginate(10)
+            Blog::latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             Blog::onlyTrashed()
-            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -44,8 +43,7 @@ class BlogController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Blog::selectSeo()
-            ->searchWithName($searchData)
+            Blog::searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -56,7 +54,6 @@ class BlogController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Blog::onlyTrashed()
-            ->selectSeo()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
             ->searchDelete($searchData)

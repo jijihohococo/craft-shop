@@ -1,5 +1,6 @@
 <template>
-	<router-link class="btn btn-success btn-sm mr-3" :to="{name: 'seo.edit' ,params:{id:dataId }}">
+	<router-link class="btn btn-success btn-sm mr-3" :to="{name: 'seo.edit' ,params:{ model: content ,
+	model_id: content_id }}">
 		<i class="fas fa-pencil-alt">
 		</i>
 		Edit Seo
@@ -8,9 +9,11 @@
 <script >
 	export default {
 		props : {
-			dataId : {
-				type : Number,
-				required : false
+			content : {
+				type : String,
+			},
+			content_id : {
+				type : Number
 			}
 		}
 

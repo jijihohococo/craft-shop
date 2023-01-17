@@ -30,14 +30,13 @@ class CollectionController extends CommonController
     {
         //
         return $this->indexPage(
-            Collection::selectSeo()->latest('id')->paginate(10)
+            Collection::latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             Collection::onlyTrashed()
-            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -155,8 +154,7 @@ class CollectionController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Collection::selectSeo()
-            ->searchWithName($searchData)
+            Collection::searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -167,7 +165,6 @@ class CollectionController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Collection::onlyTrashed()
-            ->selectSeo()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
             ->searchDelete($searchData)

@@ -30,14 +30,12 @@ class BannerController extends CommonController
     public function index()
     {
         //
-        return $this->indexPage(Banner::selectSeo()
-            ->latest('id')
+        return $this->indexPage(Banner::latest('id')
             ->paginate(10));
     }
 
     public function trash(){
         return $this->indexPage(Banner::onlyTrashed()
-            selectSeo()
             ->latest('id')
             ->paginate(10));
     }
@@ -140,8 +138,7 @@ class BannerController extends CommonController
 
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
-        return $this->indexPage(Banner::selectSeo()
-            ->where('title','like',$searchData)
+        return $this->indexPage(Banner::where('title','like',$searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10));
@@ -151,7 +148,6 @@ class BannerController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
                 Banner::onlyTrashed()
-                ->selectSeo()
                 ->searchWithCreate($searchData)
                 ->orWhere('title','like',$searchData)
                 ->searchDelete($searchData)

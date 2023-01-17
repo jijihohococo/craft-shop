@@ -29,14 +29,13 @@ class PromotionController extends CommonController
     {
         //
         return $this->indexPage(
-            Promotion::selectSeo()->latest('id')->paginate(10)
+            Promotion::latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             Promotion::onlyTrashed()
-            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -106,8 +105,7 @@ class PromotionController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Promotion::selectSeo()
-            ->searchWithName($searchData)
+            Promotion::searchWithName($searchData)
             ->orWhere('promo_code','like',$searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
@@ -119,7 +117,6 @@ class PromotionController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Promotion::onlyTrashed()
-            ->selectSeo()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
             ->orWhere('promo_code','like',$searchData)

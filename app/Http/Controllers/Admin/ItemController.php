@@ -32,7 +32,6 @@ class ItemController extends CommonController
         //
         return $this->indexPage(
             Item::selectItemData()
-            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -42,7 +41,6 @@ class ItemController extends CommonController
         return $this->indexPage(
             Item::onlyTrashed()
             ->selectItemData()
-            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -319,8 +317,7 @@ private function validateData($id=NULL){
 public function search(Request $request){
     $searchData='%'.$request->search.'%';
     return $this->indexPage(
-        Item::selectSeo()
-        ->selectItemData()
+        Item::selectItemData()
         ->searchData($searchData)
         ->searchCreateAndUpdate($searchData)
         ->latest('id')
@@ -332,7 +329,6 @@ public function trashSearch(Request $request){
     $searchData='%'.$request->search.'%';
     return $this->indexPage(
         Item::onlyTrashed()
-        ->selectSeo()
         ->selectItemData()
         ->trashSearchData($searchData)
         ->searchDelete($searchData)

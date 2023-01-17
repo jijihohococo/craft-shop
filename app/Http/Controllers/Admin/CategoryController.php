@@ -28,14 +28,13 @@ class CategoryController extends CommonController
     {
         //
         return $this->indexPage(
-            Category::selectSeo()->latest('id')->paginate(10)
+            Category::latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             Category::onlyTrashed()
-            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -121,8 +120,7 @@ class CategoryController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Category::selectSeo()
-            ->searchWithName($searchData)
+            Category::searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -133,7 +131,6 @@ class CategoryController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Category::onlyTrashed()
-            ->selectSeo()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
             ->searchDelete($searchData)

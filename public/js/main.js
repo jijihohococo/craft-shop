@@ -20825,7 +20825,7 @@ var EditSeo = function EditSeo() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
-  path: 'seo/edit/:id',
+  path: 'seo/edit/:model/:model_id',
   component: EditSeo,
   name: 'seo.edit'
 }]);

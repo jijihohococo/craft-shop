@@ -94,7 +94,8 @@
                                         <Delete v-if="actions.delete" :content="content" :deleteAt="item.deleted_at" :deleteLink="'items/'+item.id" :restoreLink="'item_restore/'+item.id"
                                         :id="item.id" :objectData="item" @update="updateData" />
                                         <EditSeoButton 
-                                        v-if="item.seo_id!==null" :dataId="item.seo_id" />
+                                        :content="content"
+                                        :content_id="item.id"/>
                                     </td>
                                 </tr>
                             </tbody>

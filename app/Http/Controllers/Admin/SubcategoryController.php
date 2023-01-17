@@ -29,7 +29,6 @@ class SubcategoryController extends CommonController
         //
         return $this->indexPage(
             Subcategory::latest('id')
-            ->selectSeo()
             ->selectCategory()
             ->paginate(10)
         );
@@ -38,7 +37,6 @@ class SubcategoryController extends CommonController
     public function trash(){
         return $this->indexPage(
             Subcategory::onlyTrashed()
-            ->selectSeo()
             ->selectCategory()
             ->latest('id')
             ->paginate(10)
@@ -131,8 +129,7 @@ class SubcategoryController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Subcategory::selectSeo()
-            ->selectCategory()
+            Subcategory::selectCategory()
             ->searchWithName($searchData)
             ->searchWithCategory($searchData)
             ->searchCreateAndUpdate($searchData)
@@ -145,7 +142,6 @@ class SubcategoryController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Subcategory::onlyTrashed()
-            ->selectSeo()
             ->selectCategory()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)

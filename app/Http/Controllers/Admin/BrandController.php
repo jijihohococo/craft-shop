@@ -28,14 +28,13 @@ class BrandController extends CommonController
     {
         //
         return $this->indexPage(
-            Brand::selectSeo()->latest('id')->paginate(10)
+            Brand::latest('id')->paginate(10)
         );
     }
 
     public function trash(){
         return $this->indexPage(
             Brand::onlyTrashed()
-            ->selectSeo()
             ->latest('id')
             ->paginate(10)
         );
@@ -141,8 +140,7 @@ class BrandController extends CommonController
     public function search(Request $request){
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
-            Brand::selectSeo()
-            ->searchWithName($searchData)
+            Brand::searchWithName($searchData)
             ->searchCreateAndUpdate($searchData)
             ->latest('id')
             ->paginate(10)
@@ -153,7 +151,6 @@ class BrandController extends CommonController
         $searchData='%'.$request->search.'%';
         return $this->indexPage(
             Brand::onlyTrashed()
-            ->selectSeo()
             ->searchWithCreate($searchData)
             ->trashSearchWithName($searchData)
             ->searchDelete($searchData)
