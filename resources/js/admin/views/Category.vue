@@ -74,6 +74,9 @@
                                         <EditButton v-if="actions.update && category.deleted_at==null" :content="content" link="category.edit" :dataId="category.id" />
                                         <Delete v-if="actions.delete" :content="content" :deleteAt="category.deleted_at" :deleteLink="'categories/'+category.id" :restoreLink="'category_restore/'+category.id"
                                         :id="category.id" :objectData="category" @update="updateData" />
+                                        <EditSeoButton 
+                                        :content="content"
+                                        :content_id="category.id"/>
                                     </td>
                             </tr>
                         </tbody>

@@ -86,6 +86,9 @@
 													<Delete v-if="actions.delete" :content="content" :deleteAt="promotion.deleted_at" :deleteLink="'promotions/'+promotion.id" :restoreLink="'promotion_restore/'+promotion.id"
 													:id="promotion.id"
 													:objectData="promotion" @update="updateData" />
+													<EditSeoButton 
+                                        :content="content"
+                                        :content_id="promotion.id"/>
 												</td>
 											</tr>
 										</tbody>

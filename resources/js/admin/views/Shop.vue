@@ -33,6 +33,9 @@
                                         :content="content" 
                                         link="shop.edit" 
                                         :dataId="shop.data.id" />
+                                        <EditSeoButton 
+                                        :content="content"
+                                        :content_id="shop.data.id"/>
                                     </td>
                                 </tr>
                             </tbody>
@@ -59,6 +62,8 @@
 
     import ViewButton from '../components/ViewButton';
 
+    import EditSeoButton from '../components/EditSeoButton';
+
     import Error from '../components/Error';
 
     import VLazyImage from "v-lazy-image";
@@ -74,6 +79,7 @@
             ContentHeader,
             EditButton,
             ViewButton,
+            EditSeoButton,
             Error,
             VLazyImage
         },

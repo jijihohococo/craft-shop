@@ -77,6 +77,9 @@
                                         <EditButton v-if="actions.update && subcategory.deleted_at==null" :content="content" link="subcategory.edit" :dataId="subcategory.id" />
                                         <Delete v-if="actions.delete" :content="content" :deleteAt="subcategory.deleted_at" :deleteLink="'subcategories/'+subcategory.id" :restoreLink="'subcategory_restore/'+subcategory.id"
                                         :id="subcategory.id" :objectData="subcategory" @update="updateData" />
+                                        <EditSeoButton 
+                                        :content="content"
+                                        :content_id="subcategory.id"/>
                                     </td>
                             </tr>
                         </tbody>

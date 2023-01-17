@@ -71,6 +71,9 @@
                                             <ViewButton :data_name="brand.name" :data_model="content" :data_id="brand.id" />
                                             <EditButton v-if="actions.update && brand.deleted_at==null" :content="content" link="brand.edit" :dataId="brand.id" />
                                             <Delete v-if="actions.delete" :content="content" :deleteAt="brand.deleted_at" :deleteLink="'brands/'+brand.id" :restoreLink="'brand_restore/'+brand.id" :id="brand.id" :objectData="brand" @update="updateData" />
+                                            <EditSeoButton 
+                                        :content="content"
+                                        :content_id="brand.id"/>
                                         </td>
                                     </tr>
                                 </tbody>

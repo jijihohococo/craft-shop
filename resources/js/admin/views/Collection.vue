@@ -75,6 +75,9 @@
                                             <ViewButton :data_name="collection.name" :data_model="content" :data_id="collection.id" />
                                             <EditButton v-if="actions.update && collection.deleted_at==null" :content="content" link="collection.edit" :dataId="collection.id" />
                                             <Delete v-if="actions.delete" :content="content" :deleteAt="collection.deleted_at" :deleteLink="'collections/'+collection.id" :restoreLink="'collection_restore/'+collection.id" :id="collection.id" :objectData="collection" @update="updateData" />
+                                            <EditSeoButton 
+                                        :content="content"
+                                        :content_id="collection.id"/>
                                         </td>
                                     </tr>
                                 </tbody>

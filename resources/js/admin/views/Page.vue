@@ -74,6 +74,9 @@
                                         <EditButton v-if="actions.update && page.deleted_at==null" :content="content" link="page.edit" :dataId="page.id" />
                                         <Delete v-if="actions.delete" :content="content" :deleteAt="page.deleted_at" :deleteLink="'pages/'+page.id" :restoreLink="'page_restore/'+page.id"
                                         :id="page.id" :objectData="page" @update="updateData" />
+                                        <EditSeoButton 
+                                        :content="content"
+                                        :content_id="page.id"/>
                                     </td>
                             </tr>
                         </tbody>
