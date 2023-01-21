@@ -32,9 +32,7 @@ class SeoController extends Controller
     }
 
     public function edit($model,$modelId){
-        $seo=Seo::where('model',$model)
-        ->where('model_id',$modelId)
-        ->first();
+        $seo=Seo::getSeo($model,$modelId);
         if($seo==NULL){
             return response()->json([
                 'message' => 'Data not found'

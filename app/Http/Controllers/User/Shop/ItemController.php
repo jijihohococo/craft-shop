@@ -70,15 +70,18 @@ class ItemController extends Controller
 
 
         if(!empty($items) && $request->brands!==NULL){
-            $items=$items->whereInBrandIds($request->brands);
+            $brands=explode(',', $request->brands);
+            $items=$items->whereInBrandIds($brands);
         }
 
         if(!empty($items) &&  $request->colors!==NULL){
-            $items=$items->whereInColorIds($request->colors);
+            $colors=explode(',',$request->colors);
+            $items=$items->whereInColorIds($colors);
         }
 
         if(!empty($items) && $request->sets!==NULL){
-            $items=$items->whereInAttributeSets($request->sets);
+            $sets=explode(',', $request->sets);
+            $items=$items->whereInAttributeSets($sets);
         }
 
         if(!empty($items) && $request->min_price!==NULL && $request->max_price!==NULL ){

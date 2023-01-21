@@ -224,10 +224,19 @@
 			searchItems(){
 
 			},
+			getParamData(data){
+				return data.length===0 ? '' : data.toString()
+			},
 			getItems(){
 				window.axios.get('shop/'+
 					this.currentRoute +'/'+
-					this.contentId).then( (response) => {
+					this.contentId,{
+						params : {
+							brands : this.getParamData(this.currentBrands),
+							colors : this.getParamData(this.currentColors),
+							sets : this.getParamData(this.currentSets)
+						}
+					}).then( (response) => {
 						this.items=response.data.items
 						this.max_price=parseInt(response.data.max_price)
 						this.min_price=parseInt(response.data.min_price)
@@ -244,9 +253,9 @@
 					},
 					updatePageData(data,selectedList){
 						
-						let brands=this.currentBrands.length===0 ? '' : this.currentBrands.toString();
-						let colors= this.currentColors.length===0 ? '' : this.currentColors.toString() ;
-						let sets=this.currentSets.length===0 ? '' : this.currentSets.toString() ;
+						let brands=this.getParamData(this.currentBrands);
+						let colors= this.getParamData(this.currentColors);
+						let sets=this.getParamData(this.currentSets) ;
 						let pathData='/shop/'+
 						this.currentRoute
 						+ '/' + this.contentId;

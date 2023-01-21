@@ -28,4 +28,10 @@ class Seo extends TransactionModel
     public function names(){
         return $this->hasMany('App\Models\SeoName');
     }
+
+    public static function getSeo($model,$modelId){
+        return self::where('model',$model)
+        ->where('model_id',$modelId)
+        ->first();
+    }
 }

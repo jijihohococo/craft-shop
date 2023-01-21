@@ -386,10 +386,19 @@ __webpack_require__.r(__webpack_exports__);
       return name.replace('shop_', '');
     },
     searchItems: function searchItems() {},
+    getParamData: function getParamData(data) {
+      return data.length === 0 ? '' : data.toString();
+    },
     getItems: function getItems() {
       var _this = this;
 
-      window.axios.get('shop/' + this.currentRoute + '/' + this.contentId).then(function (response) {
+      window.axios.get('shop/' + this.currentRoute + '/' + this.contentId, {
+        params: {
+          brands: this.getParamData(this.currentBrands),
+          colors: this.getParamData(this.currentColors),
+          sets: this.getParamData(this.currentSets)
+        }
+      }).then(function (response) {
         _this.items = response.data.items;
         _this.max_price = parseInt(response.data.max_price);
         _this.min_price = parseInt(response.data.min_price);
@@ -403,9 +412,9 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updatePageData: function updatePageData(data, selectedList) {
-      var brands = this.currentBrands.length === 0 ? '' : this.currentBrands.toString();
-      var colors = this.currentColors.length === 0 ? '' : this.currentColors.toString();
-      var sets = this.currentSets.length === 0 ? '' : this.currentSets.toString();
+      var brands = this.getParamData(this.currentBrands);
+      var colors = this.getParamData(this.currentColors);
+      var sets = this.getParamData(this.currentSets);
       var pathData = '/shop/' + this.currentRoute + '/' + this.contentId;
 
       switch (data) {

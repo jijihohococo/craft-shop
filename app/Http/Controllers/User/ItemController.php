@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Item;
+use App\Models\{Item,Seo};
 use App\Traits\Review;
 use App\Http\Resources\ItemResource;
 class ItemController extends Controller
@@ -19,7 +19,8 @@ class ItemController extends Controller
                 ->selectPrice()
                 ->selectStock()
                 ->findOrFail($id)) ,
-            'reviews' => $this->getReviews('item_reviews','item_id',$id)
+            'reviews' => $this->getReviews('item_reviews','item_id',$id) ,
+            'seo' => Seo::getSeo('Item',$id)
         ]);
     }
 
