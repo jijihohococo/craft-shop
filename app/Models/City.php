@@ -21,7 +21,7 @@ class City extends TransactionModel
 
     public function getByStateAndCountry($stateId,$countryId){
         return Cache::tags( self::$cacheKey )->remember(
-            'cities-by-state-country',60*60*24,function() use ($stateId,
+            'cities-by-state-country',DateModel::ONE_DAY,function() use ($stateId,
                 $countryId) {
                 return self::where('country_id',$countryId)
                 ->where('state_id',$stateId)

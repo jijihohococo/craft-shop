@@ -22,7 +22,7 @@ class Promotion extends TransactionModel
     protected static $tableName='promotions';
 
     public function getAll(){
-        return Cache::tags( self::$cacheKey )->remember('all-promotions',60*60*24,function(){
+        return Cache::tags( self::$cacheKey )->remember('all-promotions',DateModel::ONE_DAY,function(){
             return self::latest('name')->get();
         });
     }

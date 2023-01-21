@@ -21,7 +21,7 @@ class SocialMedia extends TransactionModel
     public static $cacheKey='social_media_cache';
 
     public function getAll(){
-        return Cache::tags( self::$cacheKey )->remember('all-social-media',60*60*24,function(){
+        return Cache::tags( self::$cacheKey )->remember('all-social-media',DateModel::ONE_DAY,function(){
             return self::latest('name')->get();
         });
     }

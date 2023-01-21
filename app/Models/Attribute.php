@@ -21,7 +21,7 @@ class Attribute extends TransactionModel
     }
 
     public function getAll(){
-        return Cache::tags( self::$cacheKey )->remember('all-attributes',60*60*24,function(){
+        return Cache::tags( self::$cacheKey )->remember('all-attributes',DateModel::ONE_DAY,function(){
             return self::latest('name')->get();
         });
     }

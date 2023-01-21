@@ -12,7 +12,7 @@ class Faq extends Model
     public static $cacheKey='faqs_cache';
 
     public function getAll(){
-        return Cache::tags(self::$cacheKey)->remember('faqs',60*60*24,function(){
+        return Cache::tags(self::$cacheKey)->remember('faqs',DateModel::ONE_DAY,function(){
             return self::get();
         });
     }

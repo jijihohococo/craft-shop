@@ -18,7 +18,7 @@ class Tax extends TransactionModel
     public static $cacheKey='taxes_cache';
 
     public function getAll(){
-        return Cache::tags( self::$cacheKey )->remember('all-taxes',60*60*24,function(){
+        return Cache::tags( self::$cacheKey )->remember('all-taxes',DateModel::ONE_DAY,function(){
             return self::latest('name')->get();
         });
     }

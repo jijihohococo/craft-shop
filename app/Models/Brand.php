@@ -20,7 +20,7 @@ class Brand extends TransactionModel
     protected static $tableName='brands';
 
     public function getAll(){
-        return Cache::tags( self::$cacheKey )->remember('all-brands',60*60*24,function(){
+        return Cache::tags( self::$cacheKey )->remember('all-brands',DateModel::ONE_DAY,function(){
             return self::orderBy('name')->get();
         });
     }

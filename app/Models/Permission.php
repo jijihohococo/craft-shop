@@ -71,7 +71,7 @@ class Permission extends TransactionModel
         public static $cacheKey='permissions_cache';
 
         public function getAll(){
-            return Cache::tags( self::$cacheKey )->remember('all-permissions',60*60*24,function(){
+            return Cache::tags( self::$cacheKey )->remember('all-permissions',DateModel::ONE_DAY,function(){
                 return self::latest('name')->get();
             });
         }

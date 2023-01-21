@@ -18,7 +18,7 @@ class State extends TransactionModel
     public static $cacheKey='states_cache';
 
     public function getByCountryId($countryId){
-        return Cache::tags( self::$cacheKey )->remember('states-by-country',60*60*24,function() use ($countryId) {
+        return Cache::tags( self::$cacheKey )->remember('states-by-country',DateModel::ONE_DAY,function() use ($countryId) {
             return self::where('country_id',$countryId)
             ->latest('name')
             ->get();

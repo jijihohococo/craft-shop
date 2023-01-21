@@ -21,7 +21,7 @@ class Role extends TransactionModel
     }
 
     public function getAll(){
-        return Cache::tags( self::$cacheKey )->remember('all-roles',60*60*24,function(){
+        return Cache::tags( self::$cacheKey )->remember('all-roles',DateModel::ONE_DAY,function(){
             return self::latest('name')->get();
         });
     }

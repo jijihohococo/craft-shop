@@ -19,23 +19,22 @@ class Category extends TransactionModel
 
     protected static $tableName='categories';
 
-    public function getWithSubcategories(){
-        return Cache::tags(self::$cacheKey)->remember('all-categories',60*60*24,function(){
-            return self::addSelect(['subcategories' => function($query){
-                $query->select(\DB::raw('GROUP_CONCAT(subcategories.name)'))
+    protected static function getSubcategories($query,$column){
+        return $query->select(\DB::raw('GROUP_CONCAT(subcategories.'.$column.')'))
                 ->from('subcategories')
                 ->whereColumn('categories.id','subcategories.category_id')
                 ->where('deleted_at',NULL)
                 ->groupBy('subcategories.category_id');
+    }
+
+    public function getWithSubcategories(){
+        return Cache::tags(self::$cacheKey)->remember('all-categories',DateModel::ONE_DAY,function(){
+            return self::addSelect(['subcategories' => function($query){
+                self::getSubcategories($query,'name');
             } ,
             'subcategory_ids' => function($query){
-                $query->select(\DB::raw('GROUP_CONCAT(subcategories.id)'))
-                ->from('subcategories')
-                ->whereColumn('categories.id','subcategories.category_id')
-                ->where('deleted_at',NULL)
-                ->groupBy('subcategories.category_id');
-            }
-              ])
+                self::getSubcategories($query,'id');
+            } ])
             ->orderBy('id')
             ->get();
         });

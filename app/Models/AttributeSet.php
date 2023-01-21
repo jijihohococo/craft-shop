@@ -15,7 +15,7 @@ class AttributeSet extends TransactionModel
     ];
 
     public function getByAttributeId($attributeId){
-        return Cache::tags( self::$cacheKey )->remember('all-attribute-sets',60*60*24,function() use($attributeId){
+        return Cache::tags( self::$cacheKey )->remember('all-attribute-sets',DateModel::ONE_DAY,function() use($attributeId){
             return self::where('attribute_id',$attributeId)->get();
         });
     }
