@@ -1586,6 +1586,7 @@ function showPromotionPercentage(normalPrice, salePrice) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "categories": () => (/* binding */ categories),
 /* harmony export */   "shopping_cart_items": () => (/* binding */ shopping_cart_items),
 /* harmony export */   "shopping_total_price": () => (/* binding */ shopping_total_price),
 /* harmony export */   "shopping_total_qty": () => (/* binding */ shopping_total_qty),
@@ -1593,6 +1594,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var categories = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  data: [],
+  changeData: function changeData(data) {
+    this.data = data;
+  }
+});
 var wishlist_items = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   data: [],
   changeData: function changeData(data) {

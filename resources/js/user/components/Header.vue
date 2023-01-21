@@ -25,11 +25,11 @@
 				</div>
 			</div>
 		</div>
-		<Search :categories="categories" />
+		<Search :categories="categories.data" />
 		<div class="bottom_header light_skin main_menu_uppercase bg_dark mb-4">
 			<div class="container">
 				<div class="row"> 
-					<Menu :categories="categories" />
+					<Menu :categories="categories.data" />
 					<div class="col-lg-9 col-md-8 col-sm-6 col-9">
 						<nav class="navbar navbar-expand-lg">
 							<button class="navbar-toggler side_navbar_toggler" type="button" data-toggle="collapse" data-target="#navbarSidetoggle" aria-expanded="false"> 
@@ -72,7 +72,7 @@
 
 	import { common_mixin } from '../../common/'
 
-	import {wishlist_items} from '../store/';
+	import {wishlist_items,categories} from '../store/';
 
 	export default {
 		components: {
@@ -84,26 +84,26 @@
 		data(){
 			return {
 				userLogin,
-				categories : {},
+				categories ,
 				wishlist_items ,
 			}
 		},
 		mixins: [common_mixin],
 		methods : {
-			async getCategories(){
+			 getCategories(){
 				window.axios.get( 'categories' ).then( (response) => {
-					this.categories=response.data.categories
+					this.categories.changeData(response.data.categories)
 				} )
 			},
-			async getWishlist(){
+			 getWishlist(){
 				window.axios.get('wishlist').then( (response) => {
 					this.wishlist_items.changeData(response.data.wishlist_items)
 				} )
 			}
 		},
-		async created(){
-			await this.getCategories()
-			await this.getWishlist()
+		 created(){
+			 this.getCategories()
+			 this.getWishlist()
 		},
 	}
 </script>
