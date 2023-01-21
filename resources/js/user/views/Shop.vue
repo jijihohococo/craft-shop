@@ -133,6 +133,8 @@
 				currentRoute: null ,
 				currentBrands : [] ,
 				currentColors : [] ,
+				currentCategories : [] ,
+				currentSubcategories : [] ,
 				currentSets : [] ,
 				brands : {} ,
 				colors : {} ,
@@ -200,7 +202,9 @@
 				this.$route.params.content_id;
 				
 				this.currentRoute=this.getRouteName(this.$route.name);
-				this.currentBrands=this.getCurrentBrands();
+				this.currentBrands=this.getCurrentContent('brand','brands');
+				this.currentCategories=this.getCurrentContent('category','categories')
+				this.currentSubcategories=this.getCurrentContent('subcategory','subcategories')
 				this.currentColors=this.getCurrentFilters('colors');
 				this.currentSets=this.getCurrentFilters('sets');
 				this.getContent('brands')
@@ -208,10 +212,10 @@
 				this.getContent('attributes')
 				this.getItems()
 			},
-			getCurrentBrands(){
-				return this.currentRoute=='brand' &&
+			getCurrentContent(content,plural){
+				return this.currentRoute==content &&
 				this.contentId!==null ?
-				[this.contentId] : this.getCurrentFilters('brands') 
+				[this.contentId] : this.getCurrentFilters(plural) 
 			},
 			getCurrentFilters(data){
 				return this.$route.query.hasOwnProperty(data) ?
@@ -228,13 +232,13 @@
 				return data.length===0 ? '' : data.toString()
 			},
 			getItems(){
-				window.axios.get('shop/'+
-					this.currentRoute +'/'+
-					this.contentId,{
+				window.axios.get('shop',{
 						params : {
 							brands : this.getParamData(this.currentBrands),
 							colors : this.getParamData(this.currentColors),
-							sets : this.getParamData(this.currentSets)
+							sets : this.getParamData(this.currentSets),
+							categories : this.getParamData(this.currentCategories) ,
+							subcategories : this.getParamData(this.currentSubcategories) ,
 						}
 					}).then( (response) => {
 						this.items=response.data.items

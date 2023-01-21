@@ -3,6 +3,11 @@
 namespace App\Repositories;
 
 
-interface ItemRepositoryInterface extends ContentInterface{
+interface ItemRepositoryInterface{
 	
+	public function getAll();
+
+	public function getMaxPrice($itemIds);
+
+	public function getMinPrice($itemIds);
 }

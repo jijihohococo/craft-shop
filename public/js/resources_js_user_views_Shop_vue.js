@@ -317,6 +317,8 @@ __webpack_require__.r(__webpack_exports__);
       currentRoute: null,
       currentBrands: [],
       currentColors: [],
+      currentCategories: [],
+      currentSubcategories: [],
       currentSets: [],
       brands: {},
       colors: {},
@@ -368,7 +370,9 @@ __webpack_require__.r(__webpack_exports__);
     main: function main() {
       this.contentId = this.$route.params.content_id == undefined ? this.contentId : this.$route.params.content_id;
       this.currentRoute = this.getRouteName(this.$route.name);
-      this.currentBrands = this.getCurrentBrands();
+      this.currentBrands = this.getCurrentContent('brand', 'brands');
+      this.currentCategories = this.getCurrentContent('category', 'categories');
+      this.currentSubcategories = this.getCurrentContent('subcategory', 'subcategories');
       this.currentColors = this.getCurrentFilters('colors');
       this.currentSets = this.getCurrentFilters('sets');
       this.getContent('brands');
@@ -376,8 +380,8 @@ __webpack_require__.r(__webpack_exports__);
       this.getContent('attributes');
       this.getItems();
     },
-    getCurrentBrands: function getCurrentBrands() {
-      return this.currentRoute == 'brand' && this.contentId !== null ? [this.contentId] : this.getCurrentFilters('brands');
+    getCurrentContent: function getCurrentContent(content, plural) {
+      return this.currentRoute == content && this.contentId !== null ? [this.contentId] : this.getCurrentFilters(plural);
     },
     getCurrentFilters: function getCurrentFilters(data) {
       return this.$route.query.hasOwnProperty(data) ? this.$route.query[data].split(',') : [];
@@ -392,11 +396,13 @@ __webpack_require__.r(__webpack_exports__);
     getItems: function getItems() {
       var _this = this;
 
-      window.axios.get('shop/' + this.currentRoute + '/' + this.contentId, {
+      window.axios.get('shop', {
         params: {
           brands: this.getParamData(this.currentBrands),
           colors: this.getParamData(this.currentColors),
-          sets: this.getParamData(this.currentSets)
+          sets: this.getParamData(this.currentSets),
+          categories: this.getParamData(this.currentCategories),
+          subcategories: this.getParamData(this.currentSubcategories)
         }
       }).then(function (response) {
         _this.items = response.data.items;

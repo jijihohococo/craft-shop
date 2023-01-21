@@ -46,7 +46,8 @@ Route::get('faqs','User\FaqController@index');
 
 //------------------------------SHOP-----------------------------//
 //----items----//
-Route::get('shop/{content}/{contentId?}','User\Shop\ItemController@shop');
+Route::get('shop','User\Shop\ItemController@shop');
+// Route::get('shop/{content}/{contentId?}','User\Shop\ItemController@shop');
 //----items----//
 
 //----attributes----//

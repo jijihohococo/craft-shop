@@ -5,21 +5,11 @@ namespace App\Http\Controllers\User\Shop;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\ItemRepositoryInterface;
-use App\Traits\APIValidator;
 class ItemController extends Controller
 {
     //
 
-    use APIValidator;
-
     public $item;
-
-    public $acceptArray=[
-        'all',
-        'category',
-        'subcategory',
-        'brand'
-    ];
 
     public function __construct(ItemRepositoryInterface $item){
         $this->item=$item;
@@ -49,25 +39,32 @@ class ItemController extends Controller
         }
     }
 
-    public function shop(Request $request,$content,$contentId=null){
-        $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),$this->acceptArray );
-        if($validator->fails()){
-            return makeErrorMessage($validator->errors());
-        }
+    public function shop(Request $request){
+        // $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),$this->acceptArray );
+        // if($validator->fails()){
+        //     return makeErrorMessage($validator->errors());
+        // }
         $items=$itemIds=[];
 
-        if($content!=='all'){
-            $items=$request->search==NULL ? $this->item->getByContent($content,$contentId) : $this->item->searchByContent($content,$contentId,'%'.$request->search.'%');
+        // if($content!=='all'){
+        //     $items=$request->search==NULL ? $this->item->getByContent($content,$contentId) : $this->item->searchByContent($content,$contentId,'%'.$request->search.'%');
+        // }
+
+
+        $items=$this->item->getAll();
+        if($request->search!==NULL){
+            $items=$items->searchData( '%' . $request->search . '%' );
         }
 
-        if($content=='all'){
-            $items=$this->item->getAll();
-            if($request->search!==NULL){
-                $items=$items->searchData( '%' . $request->search . '%' );
-            }
+        if(!empty($items) && $request->categories!==NULL){
+            $categories=explode(',', $request->categories);
+            $items=$items->whereInCategoryIds($categories);
         }
 
-
+        if(!empty($items) && $request->subcategories!==NULL){
+            $subcategories=explode(',', $request->subcategories);
+            $items=$items->whereInSubcategoryIds($subcategories);
+        }
 
         if(!empty($items) && $request->brands!==NULL){
             $brands=explode(',', $request->brands);

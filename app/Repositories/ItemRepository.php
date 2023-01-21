@@ -7,17 +7,6 @@ class ItemRepository implements ItemRepositoryInterface{
 
     private $maxPrice;
 
-	public function searchByContent($content,$id,$searchData){
-        return $this->getByContent($content,$id)
-        ->searchData($searchData);
-	}
-
-
-    public function getByContent($content,$id){
-        return $this->getAll()
-            ->where($content.'_id',$id);
-    }
-
     public function getAll(){
         return Item::selectShopItem()
         ->selectAverageReviews()

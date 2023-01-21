@@ -22,5 +22,13 @@ trait BrandDataTrait{
         return $query->whereIn('brand_id',$brandIds);
     }
 
+    public function scopeWhereInCategoryIds($query,$categoryIds){
+        return $query->whereIn('category_id',$categoryIds);
+    }
+
+    public function scopeWhereInSubcategoryIds($query,$subcategoryIds){
+        return $query->whereIn('subcategory_id',$subcategoryIds);
+    }
+
 
 }
