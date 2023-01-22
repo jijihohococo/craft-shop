@@ -27,7 +27,7 @@ abstract class ContentController extends Controller
 
     public function getContentData($content,$id,$searchData=null){
         if($content=='all'){
-            return $this->{$this->content}->getAll();
+            return $searchData==NULL ? $this->{$this->content}->getAll() : $this->{$this->content}->getAllBySearch($searchData);
         }else{
             return $searchData==NULL ? $this->{$this->content}->getByContent($content,$id) :
             $this->{$this->content}->searchByContent($content,$id,$searchData);

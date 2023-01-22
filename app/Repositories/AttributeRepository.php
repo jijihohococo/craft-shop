@@ -18,4 +18,12 @@ class AttributeRepository implements AttributeRepositoryInterface{
 		return AttributeResource::collection((new Attribute)->getAll());
 	}
 
+	public function getAllBySearch($searchData){
+		return AttributeResource::collection(
+			Attribute::getAllByItemSearch($searchData)
+			->orderBy('name')
+			->get()
+		);
+	}
+
 }

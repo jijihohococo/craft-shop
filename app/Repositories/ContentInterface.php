@@ -12,4 +12,6 @@ interface ContentInterface{
 
 	public function getAll();
 
+	public function getAllBySearch($searchData);
+
 }

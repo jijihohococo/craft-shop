@@ -13,4 +13,11 @@ class BlogController extends Controller
             'blogs' => Blog::latest('id')->paginate(10)
         ]);
     }
+
+    public function show(Blog $blog){
+        return response()->json([
+            'blog' => $blog,
+            'seo' => Seo::getSeo('Blog',$blog->id)
+        ]);
+    }
 }

@@ -19,4 +19,10 @@ class ColorRepository implements ColorRepositoryInterface{
 		return (new Color)->getAll();
 	}
 
+	public function getAllBySearch($searchData){
+		return Color::getAllByItemSearch($searchData)
+		->orderBy('name')
+		->get();
+	}
+
 }

@@ -22,4 +22,10 @@ class BrandRepository implements BrandRepositoryInterface{
 		return (new Brand)->getAll();
 	}
 
+	public function getAllBySearch($searchData){
+		return Brand::getAllByItemSearch($searchData)
+		->latest('name')
+		->get();
+	}
+
 }
