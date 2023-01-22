@@ -21,6 +21,10 @@ class OrderController extends Controller
         $userId= (string) getUserId( authId() );
     }
 
+    public function buy(Request $request){
+        
+    }
+
     public function get(){
         $user=auth(User::API)->user();
         return $user!==NULL ? response()->json([

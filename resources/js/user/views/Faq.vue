@@ -85,6 +85,20 @@
 </template>
 <script >
 	export default {
-		
+        data(){
+            return {
+                faqs : {}
+            }
+        },
+        methods : {
+            async getFaqs(){
+                window.axios.get( 'faqs' ).then( (response) => {
+                    this.faqs=response.data.faqs
+                } )
+            }
+        },
+		async created(){
+            await this.getFaqs()
+        }
 	}
 </script>
