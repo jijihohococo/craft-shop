@@ -1,7 +1,7 @@
 const PrivacyPolicy = () => import('User/Views/PrivacyPolicy')
 const ContactUs = () => import('User/Views/ContactUs')
 const AboutUs = () => import('User/Views/AboutUs')
-const FAQ = () => import('User/Views/FAQ')
+const Faq = () => import('User/Views/Faq')
 const ReturnPolicy = () => import('User/Views/ReturnPolicy')
 const TermsAndConditions = () => import('User/Views/TermsAndConditions')
 const Home = () => import('User/Views/Home')
@@ -67,8 +67,8 @@ export default [
 },
 {
 	path : 'faq',
-	component : FAQ ,
-	name : 'faq'
+	component : Faq ,
+	name : 'faq_page'
 },
 {
 	path : 'return_policy',

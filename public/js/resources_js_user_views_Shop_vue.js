@@ -298,6 +298,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SliderItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/SliderItem */ "./resources/js/user/components/SliderItem.vue");
 /* harmony import */ var _common___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/ */ "./resources/js/common/index.js");
 /* harmony import */ var _components_Pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Pagination */ "./resources/js/components/Pagination.vue");
+/* harmony import */ var _store___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/ */ "./resources/js/user/store/index.js");
+
 
 
 
@@ -312,6 +314,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      categories: _store___WEBPACK_IMPORTED_MODULE_5__.categories,
       search: null,
       contentId: '',
       currentRoute: null,
@@ -1149,17 +1152,33 @@ var _hoisted_19 = {
 var _hoisted_20 = {
   "class": "sidebar"
 };
-
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"widget\"><h5 class=\"widget_title\">Categories</h5><ul class=\"widget_categories\"><li><a href=\"#\"><span class=\"categories_name\">Women</span><span class=\"categories_num\">(9)</span></a></li><li><a href=\"#\"><span class=\"categories_name\">Top</span><span class=\"categories_num\">(6)</span></a></li><li><a href=\"#\"><span class=\"categories_name\">T-Shirts</span><span class=\"categories_num\">(4)</span></a></li><li><a href=\"#\"><span class=\"categories_name\">Men</span><span class=\"categories_num\">(7)</span></a></li><li><a href=\"#\"><span class=\"categories_name\">Shoes</span><span class=\"categories_num\">(12)</span></a></li></ul></div>", 1);
-
-var _hoisted_22 = {
+var _hoisted_21 = {
   "class": "widget"
 };
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
+  "class": "widget_title"
+}, "Categories", -1
+/* HOISTED */
+);
+
 var _hoisted_23 = {
+  "class": "widget_categories"
+};
+var _hoisted_24 = {
+  href: "#"
+};
+var _hoisted_25 = {
+  "class": "categories_name"
+};
+var _hoisted_26 = {
+  "class": "widget"
+};
+var _hoisted_27 = {
   "class": "widget_title"
 };
 
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"widget\"><div class=\"shop_banner\"><div class=\"banner_img overlay_bg_20\"><img src=\"assets/images/sidebar_banner_img.jpg\" alt=\"sidebar_banner_img\"></div><div class=\"shop_bn_content2 text_white\"><h5 class=\"text-uppercase shop_subtitle\">New Collection</h5><h3 class=\"text-uppercase shop_title\">Sale 30% Off</h3><a href=\"#\" class=\"btn btn-white rounded-0 btn-sm text-uppercase\">Shop Now</a></div></div></div>", 1);
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"widget\"><div class=\"shop_banner\"><div class=\"banner_img overlay_bg_20\"><img src=\"assets/images/sidebar_banner_img.jpg\" alt=\"sidebar_banner_img\"></div><div class=\"shop_bn_content2 text_white\"><h5 class=\"text-uppercase shop_subtitle\">New Collection</h5><h3 class=\"text-uppercase shop_title\">Sale 30% Off</h3><a href=\"#\" class=\"btn btn-white rounded-0 btn-sm text-uppercase\">Shop Now</a></div></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_SliderItem = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SliderItem");
@@ -1218,7 +1237,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ulClass: "pagination mt-3 justify-content-center pagination_style1"
   }, null, 8
   /* PROPS */
-  , ["page", "lastPage", "onGetData", "onSearchData", "search", "from", "to", "total"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.translateLang("Filter")), 1
+  , ["page", "lastPage", "onGetData", "onSearchData", "search", "from", "to", "total"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_23, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.categories.data, function (category) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.name), 1
+    /* TEXT */
+    )])]);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li><a href=\"#\"><span class=\"categories_name\">Women</span><span class=\"categories_num\">(9)</span></a></li>\n\t\t\t\t\t\t\t\t<li><a href=\"#\"><span class=\"categories_name\">Top</span><span class=\"categories_num\">(6)</span></a></li>\n\t\t\t\t\t\t\t\t<li><a href=\"#\"><span class=\"categories_name\">T-Shirts</span><span class=\"categories_num\">(4)</span></a></li>\n\t\t\t\t\t\t\t\t<li><a href=\"#\"><span class=\"categories_name\">Men</span><span class=\"categories_num\">(7)</span></a></li>\n\t\t\t\t\t\t\t\t<li><a href=\"#\"><span class=\"categories_name\">Shoes</span><span class=\"categories_num\">(12)</span></a></li>\n\t\t\t\t\t\t\t</ul> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.translateLang("Filter")), 1
   /* TEXT */
   ), $data.max_price > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_PriceFilter, {
     key: 0,
@@ -1255,7 +1280,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["title", "list", "select_list", "onUpdatePage"]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  )), _hoisted_24])])])])])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("script"), {
+  )), _hoisted_28])])])])])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("script"), {
     src: "/user/js/scripts.js"
   }))], 64
   /* STABLE_FRAGMENT */

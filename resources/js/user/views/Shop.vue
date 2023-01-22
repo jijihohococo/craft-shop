@@ -59,12 +59,20 @@
 						<div class="widget">
 							<h5 class="widget_title">Categories</h5>
 							<ul class="widget_categories">
-								<li><a href="#"><span class="categories_name">Women</span><span class="categories_num">(9)</span></a></li>
+								<li v-for="category in categories.data">
+									<a href="#">
+										<span class="categories_name">
+										{{ category.name }}
+									</span>
+									</a>
+								</li>
+							</ul>
+								<!-- <li><a href="#"><span class="categories_name">Women</span><span class="categories_num">(9)</span></a></li>
 								<li><a href="#"><span class="categories_name">Top</span><span class="categories_num">(6)</span></a></li>
 								<li><a href="#"><span class="categories_name">T-Shirts</span><span class="categories_num">(4)</span></a></li>
 								<li><a href="#"><span class="categories_name">Men</span><span class="categories_num">(7)</span></a></li>
 								<li><a href="#"><span class="categories_name">Shoes</span><span class="categories_num">(12)</span></a></li>
-							</ul>
+							</ul> -->
 						</div>
 						<div class="widget">
 							<h5 class="widget_title">{{ translateLang("Filter") }}</h5>
@@ -119,6 +127,7 @@
 	import SliderItem from '../components/SliderItem'
 	import { common_mixin } from '../../common/'
 	import Pagination from '../../components/Pagination';
+	import {categories} from '../store/';
 	export default {
 		components : {
 			List,
@@ -128,6 +137,7 @@
 		},
 		data(){
 			return {
+				categories,
 				search : null ,
 				contentId : '' ,
 				currentRoute: null ,
