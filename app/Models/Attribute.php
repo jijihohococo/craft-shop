@@ -53,4 +53,19 @@ class Attribute extends TransactionModel
             ->where('set','like',$searchData);
         });
     }
+
+    public function scopeGetAllByItemSearch($query,$searchData){
+        return $query->searchWithName($searchData)
+        ->orWhereIn('id',function($query) use($searchData) {
+            $query->select('attribute_id')
+            ->from('item_attributes')
+            ->whereIn('item_id',Item::select('id')
+                ->searchData($searchData)
+                ->getQuery());
+        })->orWhereIn('id',function($query) use($searchData) {
+            $query->select('attribute_id')
+            ->from('attribute_sets')
+            ->where('set','like',$searchData);
+        });
+    }
 }

@@ -42,8 +42,25 @@ class Color extends TransactionModel
             ->from('item_variants')
             ->whereIn('item_id',Item::select('id')
                 ->where($column,$id)
-                ->searchData($searchData)
+                ->searchWithName( $searchData )
+                ->searchWithCategory($searchData)
+                ->searchWithSubcategory($searchData)
+                ->searchWithBrand($searchData)
                 ->getQuery());
         });
+    }
+
+    public function scopeGetAllByItemSearch($query,$searchData){
+        return $query->searchWithName($searchData)
+        ->orWhereIn('id',function($query) use($searchData){
+            $query->select('color_id')
+            ->from('item_variants')
+            ->whereIn('item_id',Item::select('id')
+                ->searchWithName( $searchData )
+                ->searchWithCategory($searchData)
+                ->searchWithSubcategory($searchData)
+                ->searchWithBrand($searchData)
+                ->getQuery() );
+        } )
     }
 }

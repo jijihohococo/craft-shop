@@ -43,4 +43,14 @@ class Brand extends TransactionModel
             ->searchWithColor($searchData)
             ->getQuery() );
     }
+
+    public function scopeGetAllByItemSearch($query,$searchData){
+        return $query->whereIn('id',
+            Item::select('brand_id')
+            ->searchWithName( $searchData )
+            ->searchWithCategory($searchData)
+            ->searchWithSubcategory($searchData)
+            ->searchWithColor($searchData)
+            ->getQuery() );
+    }
 }
