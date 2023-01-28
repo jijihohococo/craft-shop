@@ -82,7 +82,16 @@ class BlogController extends CommonController
     {
         //
         $request->validate($this->validateData());
-        Blog::create($request->all());
+        DB::beginTransaction();
+        $blog=Blog::create($request->all());
+        $this->seo->create([
+            'title' => $request->name ,
+            'description' => $request->name ,
+            'type' => $request->name,
+            'model' => $this->model,
+            'model_id' => $brand->id
+        ]);
+        DB::commit();
         return response()->json([
             'message' => $request->name . ' Blog is created successfully'
         ]);
