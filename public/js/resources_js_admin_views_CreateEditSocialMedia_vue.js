@@ -92,63 +92,28 @@ __webpack_require__.r(__webpack_exports__);
     delete_all_path: {
       type: String,
       "default": ''
-    },
-    changeData: {
-      type: Number,
-      "default": 0
     }
   },
   watch: {
-    changeData: {
-      handler: function handler() {
-        $(this.$el).fileinput('destroy');
-        this.picArray = [];
-        this.array = [];
-      }
-    },
+    // changeData : {
+    // 	handler(){
+    // 		this.addPics(this.$props.pics,this)
+    // 		this.changeFileInput(this)
+    // 	}
+    // },
     pics: {
       deep: true,
       handler: function handler() {
-        var changeFileInput = function changeFileInput(vm) {
-          $(vm.$el).fileinput({
-            initialPreview: vm.picArray,
-            initialPreviewAsData: true,
-            initialPreviewConfig: vm.array,
-            theme: 'fa',
-            overwriteInitial: vm.$props.multiple == true ? false : true,
-            maxFileSize: 22048,
-            maxFilesNum: 10,
-            allowedFileExtensions: ["jpg", "gif", "png", "jpeg", "webp"]
-          });
-        };
-
         var vm = this;
         var pics = this.$props.pics;
-        var currentPath = window.location.pathname.substring(1);
+        this.picArray.length = 0;
+        this.array.length = 0;
 
-        switch (pics.length) {
-          case 0:
-            vm.picArray = [];
-            vm.array = [];
-            break;
-
-          default:
-            pics.map(function (pic) {
-              var picName = window.location.href.replace(currentPath, vm.$props.storage_path + pic.filename);
-              vm.picArray.push(picName);
-              vm.array.push({
-                'caption': pic.filename,
-                'width': '35px',
-                'url': window.location.href.replace(currentPath, vm.$props.delete_path + pic.id),
-                'key': pic.id,
-                'downloadURL': picName,
-                'type': vm.checkExtension(pic.filename)
-              });
-            });
-            break;
+        if (pics.length > 0) {
+          this.addPics(pics, vm);
         }
 
-        changeFileInput(vm);
+        this.changeFileInput(vm);
         $(vm.$el).on('fileclear', function () {
           var _this = this;
 
@@ -178,6 +143,34 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    changeFileInput: function changeFileInput(vm) {
+      $(vm.$el).fileinput('destroy');
+      $(vm.$el).fileinput({
+        initialPreview: vm.picArray,
+        initialPreviewAsData: true,
+        initialPreviewConfig: vm.array,
+        theme: 'fa',
+        overwriteInitial: vm.$props.multiple == true ? false : true,
+        maxFileSize: 22048,
+        maxFilesNum: 10,
+        allowedFileExtensions: ["jpg", "gif", "png", "jpeg", "webp"]
+      });
+    },
+    addPics: function addPics(pics, vm) {
+      var currentPath = window.location.pathname.substring(1);
+      pics.map(function (pic) {
+        var picName = window.location.href.replace(currentPath, vm.$props.storage_path + pic.filename);
+        vm.picArray.push(picName);
+        vm.array.push({
+          'caption': pic.filename,
+          'width': '35px',
+          'url': window.location.href.replace(currentPath, vm.$props.delete_path + pic.id),
+          'key': pic.id,
+          'downloadURL': picName //'type' : vm.checkExtension(pic.filename)
+
+        });
+      });
+    },
     checkExtension: function checkExtension(data) {
       switch (data.substring(data.lastIndexOf(".") + 1)) {
         case "pdf":

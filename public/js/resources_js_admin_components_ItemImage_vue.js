@@ -42,63 +42,28 @@ __webpack_require__.r(__webpack_exports__);
     delete_all_path: {
       type: String,
       "default": ''
-    },
-    changeData: {
-      type: Number,
-      "default": 0
     }
   },
   watch: {
-    changeData: {
-      handler: function handler() {
-        $(this.$el).fileinput('destroy');
-        this.picArray = [];
-        this.array = [];
-      }
-    },
+    // changeData : {
+    // 	handler(){
+    // 		this.addPics(this.$props.pics,this)
+    // 		this.changeFileInput(this)
+    // 	}
+    // },
     pics: {
       deep: true,
       handler: function handler() {
-        var changeFileInput = function changeFileInput(vm) {
-          $(vm.$el).fileinput({
-            initialPreview: vm.picArray,
-            initialPreviewAsData: true,
-            initialPreviewConfig: vm.array,
-            theme: 'fa',
-            overwriteInitial: vm.$props.multiple == true ? false : true,
-            maxFileSize: 22048,
-            maxFilesNum: 10,
-            allowedFileExtensions: ["jpg", "gif", "png", "jpeg", "webp"]
-          });
-        };
-
         var vm = this;
         var pics = this.$props.pics;
-        var currentPath = window.location.pathname.substring(1);
+        this.picArray.length = 0;
+        this.array.length = 0;
 
-        switch (pics.length) {
-          case 0:
-            vm.picArray = [];
-            vm.array = [];
-            break;
-
-          default:
-            pics.map(function (pic) {
-              var picName = window.location.href.replace(currentPath, vm.$props.storage_path + pic.filename);
-              vm.picArray.push(picName);
-              vm.array.push({
-                'caption': pic.filename,
-                'width': '35px',
-                'url': window.location.href.replace(currentPath, vm.$props.delete_path + pic.id),
-                'key': pic.id,
-                'downloadURL': picName,
-                'type': vm.checkExtension(pic.filename)
-              });
-            });
-            break;
+        if (pics.length > 0) {
+          this.addPics(pics, vm);
         }
 
-        changeFileInput(vm);
+        this.changeFileInput(vm);
         $(vm.$el).on('fileclear', function () {
           var _this = this;
 
@@ -128,6 +93,34 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    changeFileInput: function changeFileInput(vm) {
+      $(vm.$el).fileinput('destroy');
+      $(vm.$el).fileinput({
+        initialPreview: vm.picArray,
+        initialPreviewAsData: true,
+        initialPreviewConfig: vm.array,
+        theme: 'fa',
+        overwriteInitial: vm.$props.multiple == true ? false : true,
+        maxFileSize: 22048,
+        maxFilesNum: 10,
+        allowedFileExtensions: ["jpg", "gif", "png", "jpeg", "webp"]
+      });
+    },
+    addPics: function addPics(pics, vm) {
+      var currentPath = window.location.pathname.substring(1);
+      pics.map(function (pic) {
+        var picName = window.location.href.replace(currentPath, vm.$props.storage_path + pic.filename);
+        vm.picArray.push(picName);
+        vm.array.push({
+          'caption': pic.filename,
+          'width': '35px',
+          'url': window.location.href.replace(currentPath, vm.$props.delete_path + pic.id),
+          'key': pic.id,
+          'downloadURL': picName //'type' : vm.checkExtension(pic.filename)
+
+        });
+      });
+    },
     checkExtension: function checkExtension(data) {
       switch (data.substring(data.lastIndexOf(".") + 1)) {
         case "pdf":
@@ -211,8 +204,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       pics: [],
-      formData: new FormData(),
-      fileChange: 0
+      formData: new FormData()
     };
   },
   mounted: function mounted() {
@@ -250,7 +242,6 @@ __webpack_require__.r(__webpack_exports__);
           _this3.$swal('Success', response.data.message, 'success');
 
           _this3.pics = response.data.images;
-          _this3.fileChange++;
         }
       })["catch"](function (error) {
         (0,_helpers_check_js__WEBPACK_IMPORTED_MODULE_0__.errorResponse)(error, _this3, 'read');
@@ -331,7 +322,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   })), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_File, {
-    changeData: $data.fileChange,
     onChange: $options.setPic,
     pics: $data.pics,
     onRemoved: $options.removePics,
@@ -341,7 +331,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     delete_all_path: "delete_item_images/"
   }, null, 8
   /* PROPS */
-  , ["changeData", "onChange", "pics", "onRemoved"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  , ["onChange", "pics", "onRemoved"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn btn-primary",
     style: {

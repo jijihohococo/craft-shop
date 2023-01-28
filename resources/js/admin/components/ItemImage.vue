@@ -17,7 +17,6 @@
 				<!-- -->
 				<div class="modal-body">
 					<File
-					:changeData="fileChange"
 					@change="setPic"
 					:pics="pics" 
 					@removed="removePics" 
@@ -49,7 +48,6 @@
 			return {
 				pics : [] ,
 				formData : new FormData ,
-				fileChange : 0
 			}
 		},
 		mounted : function(){
@@ -82,7 +80,6 @@
 							response.data.message ,
 							'success'  );
 						this.pics=response.data.images
-						this.fileChange++;
 					}
 				} ).catch((error)=> {
 					errorResponse(error,this,'read')

@@ -21,75 +21,42 @@
 			},
 			multiple : {
 				type : Boolean ,
-				default : false
+			default : false
 			},
 			storage_path : {
 				type : String ,
-				default : ''
+			default : ''
 			},
 			delete_path : {
 				type : String ,
-				default : ''
+			default : ''
 			},
 			delete_all_path  : {
 				type : String ,
-				default : ''
+			default : ''
 			},
-			changeData : {
-				type : Number ,
-				default : 0
-			}
 		},
 		watch : {
-			changeData : {
-				handler(){
-					$(this.$el).fileinput('destroy')
-					this.picArray=[];
-					this.array=[];
-				}
-			},
+			// changeData : {
+			// 	handler(){
+			// 		this.addPics(this.$props.pics,this)
+			// 		this.changeFileInput(this)
+			// 	}
+			// },
 			pics : {
 				deep : true ,
 				handler(){
-					let changeFileInput = (vm) => {
-						$(vm.$el).fileinput({
-							initialPreview: vm.picArray,
-							initialPreviewAsData: true,
-							initialPreviewConfig : vm.array ,
-							theme: 'fa',
-							overwriteInitial: vm.$props.multiple==true ? false : true ,
-							maxFileSize:22048,
-							maxFilesNum: 10,
-							allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"] ,
-						})
-					}
+
+					
 
 					let vm=this;
 					let pics=this.$props.pics;
-					let currentPath=window.location.pathname.substring(1)
-					switch(pics.length){
-						case 0:
-						vm.picArray=[]
-						vm.array=[];
-						break;
-
-						default:
-						pics.map( function(pic) {
-							let picName=window.location.href.replace(currentPath,vm.$props.storage_path+pic.filename );
-							vm.picArray.push(picName);
-							vm.array.push({
-								'caption' : pic.filename ,
-								'width' : '35px',
-								'url' : window.location.href.replace(currentPath,vm.$props.delete_path+pic.id  )
-								,
-								'key' : pic.id ,
-								'downloadURL' : picName,
-								'type' : vm.checkExtension(pic.filename)
-							})
-						} )
-						break;
+					this.picArray.length=0
+					this.array.length=0
+					if(pics.length>0){
+						this.addPics(pics,vm)
 					}
-					changeFileInput(vm);
+					this.changeFileInput(vm);
 
 					$(vm.$el).on('fileclear',function(){
 						if(vm.array.length>0){
@@ -117,40 +84,69 @@
 			}
 		},
 		methods : {
+			changeFileInput(vm){
+				$(vm.$el).fileinput('destroy')
+				$(vm.$el).fileinput({
+					initialPreview: vm.picArray,
+					initialPreviewAsData: true,
+					initialPreviewConfig : vm.array ,
+					theme: 'fa',
+					overwriteInitial: vm.$props.multiple==true ? false : true ,
+					maxFileSize:22048,
+					maxFilesNum: 10,
+					allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"] ,
+				})
+			},
+			addPics(pics,vm){
+				let currentPath=window.location.pathname.substring(1)
+				pics.map( function(pic) {
+					let picName=window.location.href.replace(currentPath,vm.$props.storage_path+pic.filename );
+					vm.picArray.push(picName);
+					vm.array.push({
+						'caption' : pic.filename ,
+						'width' : '35px',
+						'url' : window.location.href.replace(currentPath,vm.$props.delete_path+pic.id  )
+						,
+						'key' : pic.id ,
+						'downloadURL' : picName,
+						//'type' : vm.checkExtension(pic.filename)
+					})
+				} )
+			},
 			checkExtension(data){
 				switch (data.substring(data.lastIndexOf(".")+1)) {
-					case "pdf":
+				case "pdf":
 					return "pdf";
 					break;
 
-					case "jpg":
-					case "jpeg":
-					case "png":
-					case "webp":
-					case "gif":
+				case "jpg":
+				case "jpeg":
+				case "png":
+				case "webp":
+				case "gif":
 					return "image";
 					break;
 
-					case "webm":
-					case "mkv":
-					case "flv":
-					case "vob":
-					case "ogv":
-					case "ogg":
-					case "drc":
-					case "gif":
-					case "gifv":
-					case "mng":
-					case "avi":
-					case "MTS":
-					case "M2TS":
-					case "mov":
-					case "qt":
-					case "wmv":
+				case "webm":
+				case "mkv":
+				case "flv":
+				case "vob":
+				case "ogv":
+				case "ogg":
+				case "drc":
+				case "gif":
+				case "gifv":
+				case "mng":
+				case "avi":
+				case "MTS":
+				case "M2TS":
+				case "mov":
+				case "qt":
+				case "wmv":
 					return "movie";
 					break;
 
-					default:
+				default:
 					return "object";
 					break;
 				}
@@ -162,17 +158,17 @@
 				$(vm.$el).attr('multiple', true);
 			}
 			// if(this.$props.pics.length==0 ){
-				if(isNaN(vm.$route.params.id)){
-					$(vm.$el)
-					.fileinput({
-						initialPreviewAsData: true,
-						theme: 'fa',
-						overwriteInitial: true,
-						maxFileSize:22048,
-						maxFilesNum: 10,
-						allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"]
-					})
-				}
-			},
-		}
-	</script>
+			if(isNaN(vm.$route.params.id)){
+				$(vm.$el)
+				.fileinput({
+					initialPreviewAsData: true,
+					theme: 'fa',
+					overwriteInitial: true,
+					maxFileSize:22048,
+					maxFilesNum: 10,
+					allowedFileExtensions: ["jpg", "gif", "png", "jpeg","webp"]
+				})
+			}
+		},
+	}
+</script>

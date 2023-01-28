@@ -61,6 +61,6 @@ class Color extends TransactionModel
                 ->searchWithSubcategory($searchData)
                 ->searchWithBrand($searchData)
                 ->getQuery() );
-        } )
+        } );
     }
 }
