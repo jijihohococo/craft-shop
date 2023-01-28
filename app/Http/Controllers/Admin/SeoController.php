@@ -11,6 +11,10 @@ class SeoController extends Controller
     //
     private $keywords=[];
 
+    public function __construct(){
+        $this->middleware('rolePermission:Seo,update')->only(['edit','update']);
+    }
+
     private function insertSeoKeywords($keywords,$seoId,$update=NULL){
         add_high_light([
             'col'=>$keywords,
@@ -31,11 +35,13 @@ class SeoController extends Controller
 
     }
 
-    public function edit($model,$modelId){
+    public function edit(string $model,int $modelId){
         $seo=Seo::getSeo($model,$modelId);
-        if($seo==NULL){
+        $model='App\Models\\'.$model;
+        $modelData=$model::findOrFail($modelId);
+        if($seo==NULL && $modelData!==NULL ){
             return response()->json([
-                'message' => 'Data not found'
+                'message' => 'Data is not found'
             ],404);
         }
         $seoNames=$seo->names;
@@ -51,7 +57,10 @@ class SeoController extends Controller
     }
 
     public function update(Request $request,string $model,int $modelId){
+        $newModel='App\Models\\'.$model;
+        $newModelData=$newModel::findOrFail($modelId);
         $request->validate($this->validateData());
+        DB::beginTransaction();
         $seo=Seo::updateOrCreate([
             'model' => $model,
             'model_id' => $modelId
@@ -60,6 +69,13 @@ class SeoController extends Controller
             'description' => $request->description,
             'type' => $request->type
         ]);
+        $this->keywords=$seo->keywords->pluck('keyword')->toArray();
+        $this->insertSeoKeywords($request->keywords,$seo->id,'yes');
+        DB::commit();
+        return response()->json([
+             'message' => 'SEO is updated successfully'
+         ]);
+
     }
 
     // public function update(Request $request,Seo $seo){

@@ -132,8 +132,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    ContentHeader: _components_ContentHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Error: _components_Error__WEBPACK_IMPORTED_MODULE_3__["default"],
     AttributeSet: _components_AttributeSet__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   mixins: [_common___WEBPACK_IMPORTED_MODULE_5__.mixin],
