@@ -9,6 +9,8 @@ Route::group(['middleware' => [ 'admin_auth'] ], function () {
 
 	//--------------SEO----------------//
 	Route::put('seos','Admin\SeoController@update');
+	Route::get('seos/{model}/{modelId}','Admin\SeoController@edit');
+	Route::patch('seos/{model}/{modelId}','Admin\SeoController@update');
 	//--------------SEO----------------//	
 
 	//--------------FAQ----------------//

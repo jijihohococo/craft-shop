@@ -50,21 +50,33 @@ class SeoController extends Controller
         ]);
     }
 
-    public function update(Request $request,Seo $seo){
+    public function update(Request $request,string $model,int $modelId){
         $request->validate($this->validateData());
-        $this->keywords=$seo->keywords->pluck('keyword')->toArray();
-        DB::beginTransaction();
-        $seo->update([
+        $seo=Seo::updateOrCreate([
+            'model' => $model,
+            'model_id' => $modelId
+        ],[
             'title' => $request->title,
             'description' => $request->description,
             'type' => $request->type
         ]);
-        $this->insertSeoKeywords($request->keywords,$seo->id,'yes');
-        DB::commit();
-        return response()->json([
-            'message' => 'SEO is updated successfully'
-        ]);
     }
+
+    // public function update(Request $request,Seo $seo){
+    //     $request->validate($this->validateData());
+    //     $this->keywords=$seo->keywords->pluck('keyword')->toArray();
+    //     DB::beginTransaction();
+    //     $seo->update([
+    //         'title' => $request->title,
+    //         'description' => $request->description,
+    //         'type' => $request->type
+    //     ]);
+    //     $this->insertSeoKeywords($request->keywords,$seo->id,'yes');
+    //     DB::commit();
+    //     return response()->json([
+    //         'message' => 'SEO is updated successfully'
+    //     ]);
+    // }
 
     private function validateData(){
         return [

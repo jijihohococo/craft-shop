@@ -444,10 +444,11 @@ __webpack_require__.r(__webpack_exports__);
         return 'Transactions of ' + this.$route.params.name + ' ' + this.$route.params.model;
       }
     },
-    getLink: function getLink(model) {
-      var newModel = (0,_helpers_check__WEBPACK_IMPORTED_MODULE_0__.getModel)(model);
-      return '/admin/' + newModel.replace(/([A-Z])/g, '_$1').trim().toLowerCase();
-    },
+    // getLink(model){
+    // 	let newModel=getModel(model)
+    // 	return '/admin/' +newModel.
+    // 	replace(/([A-Z])/g,'_$1').trim().toLowerCase();
+    // },
     getTransactions: function getTransactions() {
       var _this = this;
 
@@ -1202,7 +1203,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 2,
     header: $data.content,
     back_links: [{
-      'route': $options.getLink(this.$route.params.model),
+      'route': _ctx.getLink(this.$route.params.model),
       'title': this.$route.params.model
     }]
   }, null, 8

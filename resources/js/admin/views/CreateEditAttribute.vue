@@ -53,8 +53,6 @@
 	
 	export default {
 		components: {
-			ContentHeader,
-			Error,
 			AttributeSet
 		},
 		mixins: [mixin],

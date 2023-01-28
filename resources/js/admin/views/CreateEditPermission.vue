@@ -97,7 +97,9 @@
 				'SocialMedia',
 				'Blog',
 				'Faq',
-				'Page'
+				'Page',
+				'CustomerService',
+                'Seo'
 				],
 				permissions: [
 				'create',

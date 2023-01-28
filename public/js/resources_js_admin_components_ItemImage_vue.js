@@ -45,12 +45,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    // changeData : {
-    // 	handler(){
-    // 		this.addPics(this.$props.pics,this)
-    // 		this.changeFileInput(this)
-    // 	}
-    // },
     pics: {
       deep: true,
       handler: function handler() {

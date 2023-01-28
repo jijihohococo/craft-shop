@@ -144,7 +144,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         update: false,
         "delete": false
       },
-      contents: ['Permission', 'Shop', 'Admin', 'Banner', 'Category', 'Subcategory', 'Brand', 'Item', 'ItemStock', 'ItemPrice', 'Role', 'Target', 'User', 'Currency', 'CurrencyRate', 'Tax', 'Attribute', 'Color', 'Country', 'State', 'City', 'Order', 'Promotion', 'Collection', 'SocialMedia', 'Blog', 'Faq', 'Page'],
+      contents: ['Permission', 'Shop', 'Admin', 'Banner', 'Category', 'Subcategory', 'Brand', 'Item', 'ItemStock', 'ItemPrice', 'Role', 'Target', 'User', 'Currency', 'CurrencyRate', 'Tax', 'Attribute', 'Color', 'Country', 'State', 'City', 'Order', 'Promotion', 'Collection', 'SocialMedia', 'Blog', 'Faq', 'Page', 'CustomerService', 'Seo'],
       permissions: ['create', 'read', 'update', 'delete']
     };
   },
@@ -579,6 +579,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main */ "./resources/js/admin/common/main.js");
 /* harmony import */ var _helpers_general__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/general */ "./resources/js/helpers/general.js");
+/* harmony import */ var _helpers_check__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../helpers/check */ "./resources/js/admin/helpers/check.js");
+
 
 
 var mixin = {
@@ -608,6 +610,10 @@ var mixin = {
           path: '/admin/' + this.return_link
         });
       }
+    },
+    getLink: function getLink(model) {
+      var newModel = (0,_helpers_check__WEBPACK_IMPORTED_MODULE_2__.getModel)(model);
+      return '/admin/' + newModel.replace(/([A-Z])/g, '_$1').trim().toLowerCase();
     }
   }
 };

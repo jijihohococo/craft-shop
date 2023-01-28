@@ -2,6 +2,8 @@ import { mainMixinData } from './main';
 
 import { showSwalLoading } from  '../../helpers/general'
 
+import { getModel } from '../helpers/check';
+
 export var mixin = {
   mixins: [mainMixinData],
   data() {
@@ -30,6 +32,11 @@ export var mixin = {
           'success'  );
         this.$router.push({path: '/admin/'+this.return_link })
       }
-    }
+    },
+    getLink(model){
+        let newModel=getModel(model)
+        return '/admin/' +newModel.
+        replace(/([A-Z])/g,'_$1').trim().toLowerCase();
+      },
   }
 }

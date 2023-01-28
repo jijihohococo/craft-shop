@@ -37,12 +37,6 @@
 			},
 		},
 		watch : {
-			// changeData : {
-			// 	handler(){
-			// 		this.addPics(this.$props.pics,this)
-			// 		this.changeFileInput(this)
-			// 	}
-			// },
 			pics : {
 				deep : true ,
 				handler(){

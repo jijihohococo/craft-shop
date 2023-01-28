@@ -78,7 +78,7 @@
 </template>
 <script >
 
-	import { errorResponse , checkContentPermission , getModel } from '../helpers/check';
+	import { errorResponse , checkContentPermission } from '../helpers/check';
 
 	import { mixin } from '../common/data_list';
 
@@ -131,11 +131,11 @@
 					this.$route.params.model;
 				}
 			},
-			getLink(model){
-				let newModel=getModel(model)
-				return '/admin/' +newModel.
-				replace(/([A-Z])/g,'_$1').trim().toLowerCase();
-			},
+			// getLink(model){
+			// 	let newModel=getModel(model)
+			// 	return '/admin/' +newModel.
+			// 	replace(/([A-Z])/g,'_$1').trim().toLowerCase();
+			// },
 			getTransactions(page=1){
 				this.currentPage=page;
 				window.axios.get("transactions/"+this.$route.params.model+"/"+this.$route.params.model_id+"?page=" + page ).then(( response ) =>  {
