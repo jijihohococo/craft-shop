@@ -149,7 +149,10 @@ __webpack_require__.r(__webpack_exports__);
         _this.fields.title = response.data.seo.title;
         _this.fields.description = response.data.seo.description;
         _this.fields.type = response.data.seo.type;
-        _this.fields.keywords = response.data.keywords;
+
+        if (response.data.keywords.length > 0) {
+          _this.fields.keywords = response.data.keywords;
+        }
       })["catch"](function (error) {
         var errorStatus = error.response.status;
 

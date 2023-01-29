@@ -3,10 +3,10 @@
 use App\Models\{PassportDate,TokenRefresh,User};
 use Illuminate\Support\Facades\Route;
 function makePassword($request){
-        $request->merge([
-            'password' => \Hash::make($request->password)
-        ]);
-    }
+	$request->merge([
+		'password' => \Hash::make($request->password)
+	]);
+}
 function uniqueColumn($table,$id,$column='name'){
 	return ['required', 'string', 'max:100', $id==null ? 'unique:'.$table : 'unique:'.$table.','.$column.','.$id ];
 }
@@ -101,6 +101,35 @@ function getUserId($userId=NULL){
 
 	return $userId==null ? $customerId : $userId;
 
+}
+
+function addMultipleContents(array $array){
+	if(isset($array['col_one']) && isset($array['col_two']) ){
+		$saved=function() use($array){
+			$objArray=[];
+			foreach(array_filter($array['col_one']) as $key => $colOne){
+				if(isset($array['col_two'][$key])){
+					array_push($objArray,[
+						$array['parent_id'] => $array['parent_data'],
+						$array['child_col_one'] => $colOne,
+						$array['child_col_two'] => $array['col_two'][$key]
+					]);
+				}
+			}
+			if(!empty($objArray)){
+				$array['obj']::insert($objArray);
+			}
+		};
+		if($array['update']=='yes' && 
+			(($array['old_child_col_one']+$array['child_col_one']!==$array['old_child_col_one']) ||
+				($array['old_child_col_two']+$array['child_col_two']!==$array['old_child_col_two']))
+		){
+			$array['obj']::where($array['parent_id'],$array['parent_data'])->delete();
+		$saved();
+	}elseif($array['update']==NULL){
+		$saved();
+	}
+}
 }
 
 function add_high_light(array $array){

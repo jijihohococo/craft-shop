@@ -44,7 +44,7 @@
   <!-- Style CSS -->
   <link rel="stylesheet" href="{{ asset('user/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('user/css/responsive.css') }}">
-
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
 </head>
 
 <body>

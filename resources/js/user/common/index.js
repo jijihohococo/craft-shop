@@ -10,14 +10,6 @@ export var mixin={
 		}
 	},
 	methods : {
-		addToWishlist(itemId){
-			window.axios.post('add_item_to_wishlist?item_id='+itemId).then( (response) => {
-				this.$swal( 'Success' ,
-					response.data.message ,
-					'success'  );
-				this.wishlist_items.changeData(response.data.wishlist_items)
-			} )
-		},
 		removeFromWishlist(id){
 			window.axios.post('remove_item_from_wishlist?id='+id).then( (response) => {
 				this.wishlist_items.changeData(response.data.wishlist_items)

@@ -89,7 +89,9 @@
 					this.fields.title=response.data.seo.title
 					this.fields.description=response.data.seo.description
 					this.fields.type=response.data.seo.type
-					this.fields.keywords=response.data.keywords
+					if(response.data.keywords.length>0){
+						this.fields.keywords=response.data.keywords
+					}
 				}).catch( (error) => {
 					let errorStatus=error.response.status
 					if(errorStatus==404 && error.response.data.message=='Data is not found' ){

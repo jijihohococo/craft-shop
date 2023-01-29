@@ -72,13 +72,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ItemInfo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ItemInfo */ "./resources/js/user/components/ItemInfo.vue");
 /* harmony import */ var v_lazy_image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! v-lazy-image */ "./node_modules/v-lazy-image/dist/v-lazy-image.mjs");
 /* harmony import */ var _common___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/ */ "./resources/js/user/common/index.js");
+/* harmony import */ var _WishButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WishButton */ "./resources/js/user/components/WishButton.vue");
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     ItemInfo: _ItemInfo__WEBPACK_IMPORTED_MODULE_0__["default"],
-    VLazyImage: v_lazy_image__WEBPACK_IMPORTED_MODULE_1__["default"]
+    VLazyImage: v_lazy_image__WEBPACK_IMPORTED_MODULE_1__["default"],
+    WishButton: _WishButton__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   mixins: [_common___WEBPACK_IMPORTED_MODULE_2__.mixin],
   data: function data() {
@@ -103,6 +106,45 @@ __webpack_require__.r(__webpack_exports__);
         _this.$swal('Success', response.data.message, 'success');
 
         _this.changeShoppingCart(response);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/WishButton.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/WishButton.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _store___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/ */ "./resources/js/user/store/index.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "WishButton",
+  data: function data() {
+    return {
+      wishlist_items: _store___WEBPACK_IMPORTED_MODULE_0__.wishlist_items
+    };
+  },
+  props: {
+    item_id: {
+      type: Number
+    }
+  },
+  methods: {
+    addToWishlist: function addToWishlist(itemId) {
+      var _this = this;
+
+      window.axios.post('add_item_to_wishlist?item_id=' + itemId).then(function (response) {
+        _this.$swal('Success', response.data.message, 'success');
+
+        _this.wishlist_items.changeData(response.data.wishlist_items);
       });
     }
   }
@@ -216,7 +258,7 @@ var _hoisted_5 = {
   "class": "list_none pr_action_btn"
 };
 var _hoisted_6 = {
-  "class": "add-to-cart hand_cursor"
+  "class": "popup-ajax"
 };
 
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
@@ -243,26 +285,14 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "icon-heart"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_11 = [_hoisted_10];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_lazy_image = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-lazy-image");
 
+  var _component_WishButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("WishButton");
+
   var _component_ItemInfo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ItemInfo");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("style"), null, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" .hand_cursor{ cursor:pointer; } ")];
-    }),
-    _: 1
-    /* STABLE */
-
-  })), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_lazy_image, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_lazy_image, {
     src: _ctx.showImage($props.item.image),
     alt: $props.item.name
   }, null, 8
@@ -271,19 +301,49 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.addToCart();
     })
-  }, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add To Cart")])]), _hoisted_8, _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    onClick: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.addToWishlist($props.item.id);
-    }),
-    href: "#"
-  }, _hoisted_11)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ItemInfo, {
+  }, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add To Cart")])]), _hoisted_8, _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_WishButton, {
+    item_id: $props.item.id
+  }, null, 8
+  /* PROPS */
+  , ["item_id"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ItemInfo, {
     item: $props.item,
     onGetData: $options.getColorKey
   }, null, 8
   /* PROPS */
-  , ["item", "onGetData"])])], 64
-  /* STABLE_FRAGMENT */
-  );
+  , ["item", "onGetData"])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/WishButton.vue?vue&type=template&id=2fc0662c":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/WishButton.vue?vue&type=template&id=2fc0662c ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "hand_cursor"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "icon-heart"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_3 = [_hoisted_2];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.addToWishlist($props.item_id);
+    })
+  }, _hoisted_3)]);
 }
 
 /***/ }),
@@ -318,20 +378,11 @@ var mixin = {
     };
   },
   methods: {
-    addToWishlist: function addToWishlist(itemId) {
+    removeFromWishlist: function removeFromWishlist(id) {
       var _this = this;
 
-      window.axios.post('add_item_to_wishlist?item_id=' + itemId).then(function (response) {
-        _this.$swal('Success', response.data.message, 'success');
-
-        _this.wishlist_items.changeData(response.data.wishlist_items);
-      });
-    },
-    removeFromWishlist: function removeFromWishlist(id) {
-      var _this2 = this;
-
       window.axios.post('remove_item_from_wishlist?id=' + id).then(function (response) {
-        _this2.wishlist_items.changeData(response.data.wishlist_items);
+        _this.wishlist_items.changeData(response.data.wishlist_items);
       });
     },
     showImage: function showImage(image) {
@@ -359,14 +410,14 @@ var mixin = {
       }
     },
     removeFromCart: function removeFromCart(id) {
-      var _this3 = this;
+      var _this2 = this;
 
       window.axios.post('remove_item_from_shopping_cart?id=' + id).then(function (response) {
-        _this3.changeShoppingCart(response);
+        _this2.changeShoppingCart(response);
       });
     },
     getShoppingCartItems: function getShoppingCartItems() {
-      var _this4 = this;
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -374,7 +425,7 @@ var mixin = {
             switch (_context.prev = _context.next) {
               case 0:
                 window.axios.get('shopping_cart').then(function (response) {
-                  _this4.changeShoppingCart(response);
+                  _this3.changeShoppingCart(response);
                 });
 
               case 1:
@@ -386,7 +437,7 @@ var mixin = {
       }))();
     },
     getWishListItems: function getWishListItems() {
-      var _this5 = this;
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
@@ -394,7 +445,7 @@ var mixin = {
             switch (_context2.prev = _context2.next) {
               case 0:
                 window.axios.get('wish_list').then(function (response) {
-                  _this5.wishlist_items.changeData(response.data.wishlist_items);
+                  _this4.wishlist_items.changeData(response.data.wishlist_items);
                 });
 
               case 1:
@@ -565,6 +616,33 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/user/components/WishButton.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/user/components/WishButton.vue ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _WishButton_vue_vue_type_template_id_2fc0662c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WishButton.vue?vue&type=template&id=2fc0662c */ "./resources/js/user/components/WishButton.vue?vue&type=template&id=2fc0662c");
+/* harmony import */ var _WishButton_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WishButton.vue?vue&type=script&lang=js */ "./resources/js/user/components/WishButton.vue?vue&type=script&lang=js");
+/* harmony import */ var _var_www_html_craft_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_var_www_html_craft_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_WishButton_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_WishButton_vue_vue_type_template_id_2fc0662c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/user/components/WishButton.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/user/components/SliderDetail.vue?vue&type=script&lang=js":
 /*!*******************************************************************************!*\
   !*** ./resources/js/user/components/SliderDetail.vue?vue&type=script&lang=js ***!
@@ -595,6 +673,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/user/components/WishButton.vue?vue&type=script&lang=js":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/user/components/WishButton.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_WishButton_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_WishButton_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./WishButton.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/WishButton.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/user/components/SliderDetail.vue?vue&type=template&id=6f43e676":
 /*!*************************************************************************************!*\
   !*** ./resources/js/user/components/SliderDetail.vue?vue&type=template&id=6f43e676 ***!
@@ -621,6 +714,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SliderItem_vue_vue_type_template_id_0ec9b4f2__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SliderItem_vue_vue_type_template_id_0ec9b4f2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./SliderItem.vue?vue&type=template&id=0ec9b4f2 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/SliderItem.vue?vue&type=template&id=0ec9b4f2");
+
+
+/***/ }),
+
+/***/ "./resources/js/user/components/WishButton.vue?vue&type=template&id=2fc0662c":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/user/components/WishButton.vue?vue&type=template&id=2fc0662c ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_WishButton_vue_vue_type_template_id_2fc0662c__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_WishButton_vue_vue_type_template_id_2fc0662c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./WishButton.vue?vue&type=template&id=2fc0662c */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/user/components/WishButton.vue?vue&type=template&id=2fc0662c");
 
 
 /***/ })

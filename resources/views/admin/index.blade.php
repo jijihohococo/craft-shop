@@ -38,6 +38,7 @@
       <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
 
       <link href="/css/bootstrap-fileinput/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+      <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
       @endif
     </head>
     <body class="hold-transition {{ $currentURL==$loginURL ? 'login-page' : 'sidebar-mini layout-fixed' }}">

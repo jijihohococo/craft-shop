@@ -1426,20 +1426,11 @@ var mixin = {
     };
   },
   methods: {
-    addToWishlist: function addToWishlist(itemId) {
+    removeFromWishlist: function removeFromWishlist(id) {
       var _this = this;
 
-      window.axios.post('add_item_to_wishlist?item_id=' + itemId).then(function (response) {
-        _this.$swal('Success', response.data.message, 'success');
-
-        _this.wishlist_items.changeData(response.data.wishlist_items);
-      });
-    },
-    removeFromWishlist: function removeFromWishlist(id) {
-      var _this2 = this;
-
       window.axios.post('remove_item_from_wishlist?id=' + id).then(function (response) {
-        _this2.wishlist_items.changeData(response.data.wishlist_items);
+        _this.wishlist_items.changeData(response.data.wishlist_items);
       });
     },
     showImage: function showImage(image) {
@@ -1467,14 +1458,14 @@ var mixin = {
       }
     },
     removeFromCart: function removeFromCart(id) {
-      var _this3 = this;
+      var _this2 = this;
 
       window.axios.post('remove_item_from_shopping_cart?id=' + id).then(function (response) {
-        _this3.changeShoppingCart(response);
+        _this2.changeShoppingCart(response);
       });
     },
     getShoppingCartItems: function getShoppingCartItems() {
-      var _this4 = this;
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -1482,7 +1473,7 @@ var mixin = {
             switch (_context.prev = _context.next) {
               case 0:
                 window.axios.get('shopping_cart').then(function (response) {
-                  _this4.changeShoppingCart(response);
+                  _this3.changeShoppingCart(response);
                 });
 
               case 1:
@@ -1494,7 +1485,7 @@ var mixin = {
       }))();
     },
     getWishListItems: function getWishListItems() {
-      var _this5 = this;
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
@@ -1502,7 +1493,7 @@ var mixin = {
             switch (_context2.prev = _context2.next) {
               case 0:
                 window.axios.get('wish_list').then(function (response) {
-                  _this5.wishlist_items.changeData(response.data.wishlist_items);
+                  _this4.wishlist_items.changeData(response.data.wishlist_items);
                 });
 
               case 1:

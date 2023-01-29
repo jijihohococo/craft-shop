@@ -1,9 +1,4 @@
 <template>
-	<component is="style">
-		.hand_cursor{
-			cursor:pointer;
-		}
-	</component>
 	<div class="product">
 		<div class="product_img">
 			<a href="shop-product-detail.html">
@@ -13,14 +8,14 @@
 			</a>
 			<div class="product_action_box">
 				<ul class="list_none pr_action_btn">
-					<li class="add-to-cart hand_cursor">
+					<li class="popup-ajax">
 						<a @click="addToCart()">
 							<i class="icon-basket-loaded"></i>
 						Add To Cart</a>
 					</li>
 					<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
 					<li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-					<li><a @click="addToWishlist(item.id)" href="#"><i class="icon-heart"></i></a></li>
+					<WishButton :item_id="item.id" />
 				</ul>
 			</div>
 		</div>
@@ -33,11 +28,13 @@
 	import ItemInfo from './ItemInfo'
 	import VLazyImage from "v-lazy-image"
 	import { mixin } from '../common/';
+	import WishButton from './WishButton'
 
 	export default  {
 		components : {
 			ItemInfo,
-			VLazyImage
+			VLazyImage,
+			WishButton
 		},
 		mixins: [mixin],
 		data(){
