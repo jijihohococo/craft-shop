@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\{Attribute,AttributeSet,ItemAttributeSet};
+use DB;
 class AttributeController extends CommonController
 {
 

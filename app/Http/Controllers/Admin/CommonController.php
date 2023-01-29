@@ -15,7 +15,7 @@ abstract class CommonController extends Controller
 
     public $mainData = 'name';
 
-    private $seo;
+    protected $seo;
 
     public function __construct(SeoRepositoryInterface $seo){
         $this->authorized($this->model);

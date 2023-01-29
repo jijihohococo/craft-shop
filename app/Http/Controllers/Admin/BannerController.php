@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Banner;
-use App\Repositories\SeoRepositoryInterface;
 use DB;
 class BannerController extends CommonController
 {
@@ -15,13 +14,6 @@ class BannerController extends CommonController
     public $content='banners';
 
     public $mainData='title';
-
-    private $seo;
-
-    public function __construct(SeoRepositoryInterface $seo){
-        parent::__construct($seo);
-        $this->seo=$seo;
-    }
     /**
      * Display a listing of the resource.
      *

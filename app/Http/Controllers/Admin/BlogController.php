@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
-use App\Repositories\SeoRepositoryInterface;
 use DB;
 class BlogController extends CommonController
 {
@@ -12,13 +11,6 @@ class BlogController extends CommonController
     public $model = 'Blog';
 
     public $content = 'blogs';
-
-    private $seo;
-
-    public function __construct(SeoRepositoryInterface $seo){
-        parent::__construct($seo);
-        $this->seo=$seo;
-    }
     /**
      * Display a listing of the resource.
      *

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Promotion;
 use Carbon\Carbon;
-use App\Repositories\SeoRepositoryInterface;
 use DB;
 class PromotionController extends CommonController
 {
@@ -13,13 +12,6 @@ class PromotionController extends CommonController
     public $model = 'Promotion';
 
     public $content = 'promotions';
-
-    private $seo;
-
-    public function __construct(SeoRepositoryInterface $seo){
-        parent::__construct($seo);
-        $this->seo=$seo;
-    }
     /**
      * Display a listing of the resource.
      *

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\{Subcategory,Category};
-use App\Repositories\SeoRepositoryInterface;
 use DB;
 class SubcategoryController extends CommonController
 {
@@ -12,13 +11,6 @@ class SubcategoryController extends CommonController
     public $model = 'Subcategory';
 
     public $content ='subcategories';
-
-    private $seo;
-
-    public function __construct(SeoRepositoryInterface $seo){
-        parent::__construct($seo);
-        $this->seo=$seo;
-    }
     /**
      * Display a listing of the resource.
      *

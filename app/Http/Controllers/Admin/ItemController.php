@@ -15,12 +15,9 @@ class ItemController extends CommonController
 
     private $taxes=[];
 
-    private $seo;
-
     public function __construct(SeoRepositoryInterface $seo){
         parent::__construct($seo);
         $this->middleware('rolePermission:'.$this->model.',delete')->only(['deleteItemImages','imageDelete']);
-        $this->seo=$seo;
     }
     /**
      * Display a listing of the resource.

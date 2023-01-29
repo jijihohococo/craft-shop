@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;
-use App\Repositories\SeoRepositoryInterface;
 use DB;
 class BrandController extends CommonController
 {
@@ -12,13 +11,6 @@ class BrandController extends CommonController
     public $model = 'Brand';
 
     public $content = 'brands';
-
-    private $seo;
-
-    public function __construct(SeoRepositoryInterface $seo){
-        parent::__construct($seo);
-        $this->seo=$seo;
-    }
     /**
      * Display a listing of the resource.
      *
