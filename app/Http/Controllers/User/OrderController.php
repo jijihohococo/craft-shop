@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Order,OrderDetail,User};
 use App\Repositories\{OrderRepositoryInterface,ShoppingCartRepositoryInterface};
+use DB;
 class OrderController extends Controller
 {
     //

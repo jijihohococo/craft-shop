@@ -44,16 +44,21 @@ class SeoController extends Controller
                 'message' => 'Data is not found'
             ],404);
         }
-        $seoNames=$seo->names;
-        $seoProperties=$seo->properties;
-        return response()->json([
-            'seo' => $seo ,
-            'seo_names' => $seoNames->pluck('name'),
-            'seo_name_contents' => $seoNames->pluck('content'),
-            'seo_properties' => $seoProperties->pluck('name'),
-            'seo_property_contents' => $seoProperties->pluck('content'),
-            'keywords' => $seo->keywords->pluck('keyword')
-        ]);
+        $seoNames=[];
+        $seoProperties=[];
+        if($seo!==NULL){
+            $seoNames=$seo->names;
+            $seoProperties=$seo->properties;
+            $seoKeywords=$seo->keywords;
+            return response()->json([
+                'seo' => $seo ,
+                'seo_names' => $seoNames->pluck('name'),
+                'seo_name_contents' => $seoNames->pluck('content'),
+                'seo_properties' => $seoProperties->pluck('name'),
+                'seo_property_contents' => $seoProperties->pluck('content'),
+                'keywords' => $seo->keywords->pluck('keyword')
+            ]);
+        }
     }
 
     public function update(Request $request,string $model,int $modelId){
@@ -69,12 +74,12 @@ class SeoController extends Controller
             'description' => $request->description,
             'type' => $request->type
         ]);
-        $this->keywords=$seo->keywords->pluck('keyword')->toArray();
+        $this->keywords=$seo==NULL ? [] : $seo->keywords->pluck('keyword')->toArray();
         $this->insertSeoKeywords($request->keywords,$seo->id,'yes');
         DB::commit();
         return response()->json([
-             'message' => 'SEO is updated successfully'
-         ]);
+           'message' => 'SEO is updated successfully'
+       ]);
 
     }
 

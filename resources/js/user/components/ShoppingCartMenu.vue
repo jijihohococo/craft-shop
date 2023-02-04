@@ -31,9 +31,6 @@
 			mixins: [mixin,common_mixin],
 			components : {
 				VLazyImage
-			},
-			async created(){
-				await this.getShoppingCartItems()
 			}
 		}
 	</script>

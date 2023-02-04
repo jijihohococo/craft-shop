@@ -424,6 +424,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "currentYear": () => (/* binding */ currentYear),
 /* harmony export */   "shop": () => (/* binding */ shop),
 /* harmony export */   "user": () => (/* binding */ user),
+/* harmony export */   "userId": () => (/* binding */ userId),
 /* harmony export */   "userLang": () => (/* binding */ userLang),
 /* harmony export */   "userLogin": () => (/* binding */ userLogin)
 /* harmony export */ });
@@ -461,6 +462,12 @@ var admin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   }
 });
 var user = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+  data: {},
+  changeData: function changeData(data) {
+    this.data = data;
+  }
+});
+var userId = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
   data: {},
   changeData: function changeData(data) {
     this.data = data;

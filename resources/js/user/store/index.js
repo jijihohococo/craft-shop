@@ -14,6 +14,13 @@ export const wishlist_items=reactive({
   }
 })
 
+export const wishlist_item_ids=reactive({
+  data : [],
+  changeData(data){
+      this.data=data;
+  }
+})
+
 export const shopping_cart_items=reactive ({
   data : [] ,
   changeData(data){

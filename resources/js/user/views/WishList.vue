@@ -52,7 +52,7 @@
 <script >
 	import PageTitle from '../components/PageTitle'
 	import ItemPrice from '../components/ItemPrice'
-	import {wishlist_items} from '../store/';
+	import {wishlist_items,wishlist_item_ids} from '../store/';
 	import { mixin } from '../common/';
 	import VLazyImage from "v-lazy-image"
 
@@ -65,13 +65,15 @@
 		mixins: [mixin],
 		data(){
 			return {
-				wishlist_items
+				wishlist_items,
+				wishlist_item_ids
 			}
 		},
 		methods : {
 			removeFromWishlist(id){
 				window.axios.post('remove_item_from_wishlist?id='+id).then( (response) => {
 					this.wishlist_items.changeData(response.data.wishlist_items)
+					this.wishlist_item_ids.changeData(response.data.wishlist_items)
 				} )
 			}
 		}

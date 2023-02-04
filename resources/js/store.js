@@ -43,4 +43,11 @@ export const user = reactive ({
   }
 })
 
+export const userId = reactive({
+  data : {},
+  changeData(data){
+    this.data=data
+  }
+})
+
 export const currentYear = new Date().getFullYear()

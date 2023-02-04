@@ -1,4 +1,8 @@
-import {shopping_cart_items,shopping_total_qty,shopping_total_price,wishlist_items} from '../store/';
+import {shopping_cart_items,
+shopping_total_qty,
+shopping_total_price,
+wishlist_items,
+wishlist_item_ids} from '../store/';
 
 export var mixin={
 	data(){
@@ -6,7 +10,8 @@ export var mixin={
 			shopping_cart_items,
 			shopping_total_qty,
 			shopping_total_price,
-			wishlist_items
+			wishlist_items,
+			wishlist_item_ids
 		}
 	},
 	methods : {
@@ -50,8 +55,10 @@ export var mixin={
 			} )
 		},
 		async getWishListItems(){
-			window.axios.get('wish_list').then( (response) => {
-				this.wishlist_items.changeData(response.data.wishlist_items)
+			window.axios.get('wishlist').then( (response) => {
+				let responseData=response.data
+				this.wishlist_items.changeData(responseData.wishlist_items)
+				this.wishlist_item_ids.changeData(responseData.wishlist_item_ids)
 			} )
 		}
 	}

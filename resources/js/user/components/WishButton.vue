@@ -1,18 +1,20 @@
 <template>
 	<li class="hand_cursor">
+		{{ wishlist_item_ids.data }}
 		<a @click="addToWishlist(item_id)">
-			<i class="icon-heart"></i>
+			<i :class="[ wishlist_item_ids.data.includes(item_id) ? 'icon-heart selected_color' : 'icon-heart']"></i>
 		</a>
 	</li>
 </template>
 <script >
-	import {wishlist_items} from '../store/';
+	import {wishlist_items,wishlist_item_ids} from '../store/';
 
 	export default {
 		name : "WishButton",
 		data(){
 			return {
-				wishlist_items
+				wishlist_items,
+				wishlist_item_ids
 			}
 		},
 		props : {
@@ -27,6 +29,7 @@
 						response.data.message ,
 						'success'  );
 					this.wishlist_items.changeData(response.data.wishlist_items)
+					this.wishlist_item_ids.changeData(itemId)
 				} )
 			}
 		}

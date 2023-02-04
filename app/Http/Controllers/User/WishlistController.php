@@ -18,10 +18,15 @@ class WishlistController extends Controller
         $this->wishList=$wishList;
     }
 
+    public function getData(){
+        $wishListItems=$this->wishList->get( $this->userId );
+        return [
+            'wishlist_items' => $wishListItems,
+            'wishlist_item_ids' => $wishListItems->pluck('item_id')
+        ];
+    }
     public function get(Request $request){
-        return response()->json([
-            'wishlist_items' => $this->wishList->get( $this->userId )
-        ]);
+        return response()->json($this->getData());
     }
 
     public function addItem(Request $request){
@@ -35,17 +40,15 @@ class WishlistController extends Controller
             'item_id' => $item->id ,
             'created_at' => NOW()
         ]);
-        return response()->json([
-            'message' => 'Add to wish list successfully',
-            'wishlist_items' => $this->wishList->get( $this->userId )
-        ]);
+        $success=['message' => 'Add to wish list successfully' ];
+        $arrayMerge=array_merge($success,$this->getData());
+        return response()->json($arrayMerge);
     }
 
     public function removeItem(Request $request){
         DeleteData::get()->delete();
-        return response()->json([
-            'message' => 'Remove from wish list successfully',
-            'wishlist_items' => $this->wishList->get( $this->userId )
-        ]);
+        $success=['message' => 'Remove from wish list successfully'];
+        $arrayMerge=array_merge($success,$this->getData());
+        return response()->json($arrayMerge);
     }
 }
