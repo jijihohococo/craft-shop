@@ -506,11 +506,13 @@ var mixin = {
     };
   },
   methods: {
-    removeFromWishlist: function removeFromWishlist(id) {
+    removeFromWishlist: function removeFromWishlist(itemId) {
       var _this = this;
 
-      window.axios.post('remove_item_from_wishlist?id=' + id).then(function (response) {
+      window.axios.post('remove_item_from_wishlist?item_id=' + itemId).then(function (response) {
         _this.wishlist_items.changeData(response.data.wishlist_items);
+
+        _this.wishlist_item_ids.changeData(response.data.wishlist_item_ids);
       });
     },
     showImage: function showImage(image) {
@@ -587,6 +589,17 @@ var mixin = {
           }
         }, _callee2);
       }))();
+    },
+    addToWishlist: function addToWishlist(itemId) {
+      var _this5 = this;
+
+      window.axios.post('add_item_to_wishlist?item_id=' + itemId).then(function (response) {
+        _this5.$swal('Success', response.data.message, 'success');
+
+        _this5.wishlist_items.changeData(response.data.wishlist_items);
+
+        _this5.wishlist_item_ids.changeData(itemId);
+      });
     }
   }
 };

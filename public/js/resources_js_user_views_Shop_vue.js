@@ -296,32 +296,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _store___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/ */ "./resources/js/user/store/index.js");
+/* harmony import */ var _common___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/ */ "./resources/js/user/common/index.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "WishButton",
-  data: function data() {
-    return {
-      wishlist_items: _store___WEBPACK_IMPORTED_MODULE_0__.wishlist_items,
-      wishlist_item_ids: _store___WEBPACK_IMPORTED_MODULE_0__.wishlist_item_ids
-    };
-  },
+  mixins: [_common___WEBPACK_IMPORTED_MODULE_0__.mixin],
   props: {
     item_id: {
       type: Number
-    }
-  },
-  methods: {
-    addToWishlist: function addToWishlist(itemId) {
-      var _this = this;
-
-      window.axios.post('add_item_to_wishlist?item_id=' + itemId).then(function (response) {
-        _this.$swal('Success', response.data.message, 'success');
-
-        _this.wishlist_items.changeData(response.data.wishlist_items);
-
-        _this.wishlist_item_ids.changeData(itemId);
-      });
     }
   }
 });
@@ -1128,18 +1110,34 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "hand_cursor"
 };
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "icon-heart selected_color"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_3 = [_hoisted_2];
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "icon-heart"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_5 = [_hoisted_4];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.wishlist_item_ids.data) + " ", 1
-  /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_1, [_ctx.wishlist_item_ids.data.includes($props.item_id) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+    key: 0,
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return $options.addToWishlist($props.item_id);
+      return _ctx.removeFromWishlist($props.item_id);
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.wishlist_item_ids.data.includes($props.item_id) ? 'icon-heart selected_color' : 'icon-heart'])
-  }, null, 2
-  /* CLASS */
-  )])]);
+  }, _hoisted_3)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+    key: 1,
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.addToWishlist($props.item_id);
+    })
+  }, _hoisted_5))]);
 }
 
 /***/ }),
@@ -1526,11 +1524,13 @@ var mixin = {
     };
   },
   methods: {
-    removeFromWishlist: function removeFromWishlist(id) {
+    removeFromWishlist: function removeFromWishlist(itemId) {
       var _this = this;
 
-      window.axios.post('remove_item_from_wishlist?id=' + id).then(function (response) {
+      window.axios.post('remove_item_from_wishlist?item_id=' + itemId).then(function (response) {
         _this.wishlist_items.changeData(response.data.wishlist_items);
+
+        _this.wishlist_item_ids.changeData(response.data.wishlist_item_ids);
       });
     },
     showImage: function showImage(image) {
@@ -1607,6 +1607,17 @@ var mixin = {
           }
         }, _callee2);
       }))();
+    },
+    addToWishlist: function addToWishlist(itemId) {
+      var _this5 = this;
+
+      window.axios.post('add_item_to_wishlist?item_id=' + itemId).then(function (response) {
+        _this5.$swal('Success', response.data.message, 'success');
+
+        _this5.wishlist_items.changeData(response.data.wishlist_items);
+
+        _this5.wishlist_item_ids.changeData(itemId);
+      });
     }
   }
 };

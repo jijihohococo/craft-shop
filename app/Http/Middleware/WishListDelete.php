@@ -4,10 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Traits\DeleteTrait;
+use App\Models\{WishList,UserData,DeleteData};
 class WishListDelete
 {
-    use DeleteTrait;
     /**
      * Handle an incoming request.
      *
@@ -17,9 +16,13 @@ class WishListDelete
      */
     public function handle(Request $request, Closure $next)
     {
-        if( $this->checkDelete($request,'App\Models\WishList') ){
-            return unauthorized();
+        $wishList=WishList::where('item_id',$request->item_id)->first();
+        $userId=(string) getUserId( authId() );
+        UserData::setId($userId);
+        DeleteData::set($wishList);
+        if($wishList!==NULL && $wishList->user_id==$userId){
+            return $next($request);
         }
-        return $next($request);
+        return unauthorized();
     }
 }

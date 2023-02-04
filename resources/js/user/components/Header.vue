@@ -94,16 +94,10 @@
 				window.axios.get( 'categories' ).then( (response) => {
 					this.categories.changeData(response.data.categories)
 				} )
-			},
-			 getWishlist(){
-				window.axios.get('wishlist').then( (response) => {
-					this.wishlist_items.changeData(response.data.wishlist_items)
-				} )
 			}
 		},
 		 created(){
 			 this.getCategories()
-			 this.getWishlist()
 		},
 	}
 </script>

@@ -15,9 +15,10 @@ export var mixin={
 		}
 	},
 	methods : {
-		removeFromWishlist(id){
-			window.axios.post('remove_item_from_wishlist?id='+id).then( (response) => {
+		removeFromWishlist(itemId){
+			window.axios.post('remove_item_from_wishlist?item_id='+itemId).then( (response) => {
 				this.wishlist_items.changeData(response.data.wishlist_items)
+				this.wishlist_item_ids.changeData(response.data.wishlist_item_ids)
 			} )
 		},
 		showImage(image){
@@ -60,6 +61,15 @@ export var mixin={
 				this.wishlist_items.changeData(responseData.wishlist_items)
 				this.wishlist_item_ids.changeData(responseData.wishlist_item_ids)
 			} )
-		}
+		},
+		addToWishlist(itemId){
+				window.axios.post('add_item_to_wishlist?item_id='+itemId).then( (response) => {
+					this.$swal( 'Success' ,
+						response.data.message ,
+						'success'  );
+					this.wishlist_items.changeData(response.data.wishlist_items)
+					this.wishlist_item_ids.changeData(itemId)
+				} )
+			}
 	}
 }
