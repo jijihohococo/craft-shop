@@ -14,5 +14,13 @@ class Page extends TransactionModel
         'description'
     ];
 
+    public static $cacheKey='pages_cache';
+
     protected static $tableName='pages';
+
+    public function getAll(){
+        return Cache::tags( self::$cacheKey )->remember('all-pages',DateModel::ONE_DAY,function(){
+            return self::orderBy('name')->get();
+        });
+    }
 }
