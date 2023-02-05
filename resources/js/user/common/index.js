@@ -68,7 +68,7 @@ export var mixin={
 						response.data.message ,
 						'success'  );
 					this.wishlist_items.changeData(response.data.wishlist_items)
-					this.wishlist_item_ids.changeData(itemId)
+					this.wishlist_item_ids.changeData(response.data.wishlist_item_ids)
 				} )
 			}
 	}

@@ -75,24 +75,7 @@ __webpack_require__.r(__webpack_exports__);
     ItemPrice: _components_ItemPrice__WEBPACK_IMPORTED_MODULE_1__["default"],
     VLazyImage: v_lazy_image__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
-  mixins: [_common___WEBPACK_IMPORTED_MODULE_3__.mixin],
-  data: function data() {
-    return {
-      wishlist_items: _store___WEBPACK_IMPORTED_MODULE_2__.wishlist_items,
-      wishlist_item_ids: _store___WEBPACK_IMPORTED_MODULE_2__.wishlist_item_ids
-    };
-  },
-  methods: {
-    removeFromWishlist: function removeFromWishlist(id) {
-      var _this = this;
-
-      window.axios.post('remove_item_from_wishlist?id=' + id).then(function (response) {
-        _this.wishlist_items.changeData(response.data.wishlist_items);
-
-        _this.wishlist_item_ids.changeData(response.data.wishlist_items);
-      });
-    }
-  }
+  mixins: [_common___WEBPACK_IMPORTED_MODULE_3__.mixin]
 });
 
 /***/ }),
@@ -303,7 +286,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" START SECTION SHOP "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PageTitle, {
     title: "Wishlist"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.wishlist_items.data, function (item) {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.wishlist_items.data, function (item) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_lazy_image, {
       src: _ctx.showImage(item.item_image),
       alt: item.item_name
@@ -318,7 +301,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS */
     , ["normal_price", "sale_price"])]), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       onClick: function onClick($event) {
-        return $options.removeFromWishlist(item.id);
+        return _ctx.removeFromWishlist(item.id);
       }
     }, _hoisted_17, 8
     /* PROPS */
@@ -598,7 +581,7 @@ var mixin = {
 
         _this5.wishlist_items.changeData(response.data.wishlist_items);
 
-        _this5.wishlist_item_ids.changeData(itemId);
+        _this5.wishlist_item_ids.changeData(response.data.wishlist_item_ids);
       });
     }
   }

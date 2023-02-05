@@ -32,7 +32,7 @@ $userRoutes=[
 	'return_policy',
 	'terms_and_conditions',
 	'shopping_cart',
-	'wish_list',
+	'wishlist',
 	'items/{id}',
 	'orders',
 	'orders/{id}',

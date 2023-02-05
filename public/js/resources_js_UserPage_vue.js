@@ -1567,7 +1567,7 @@ var mixin = {
 
         _this5.wishlist_items.changeData(response.data.wishlist_items);
 
-        _this5.wishlist_item_ids.changeData(itemId);
+        _this5.wishlist_item_ids.changeData(response.data.wishlist_item_ids);
       });
     }
   }

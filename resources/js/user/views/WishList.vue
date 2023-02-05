@@ -62,20 +62,6 @@
 			ItemPrice,
 			VLazyImage
 		},
-		mixins: [mixin],
-		data(){
-			return {
-				wishlist_items,
-				wishlist_item_ids
-			}
-		},
-		methods : {
-			removeFromWishlist(id){
-				window.axios.post('remove_item_from_wishlist?id='+id).then( (response) => {
-					this.wishlist_items.changeData(response.data.wishlist_items)
-					this.wishlist_item_ids.changeData(response.data.wishlist_items)
-				} )
-			}
-		}
+		mixins: [mixin]
 	}
 </script>

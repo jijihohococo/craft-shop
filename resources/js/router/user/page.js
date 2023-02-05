@@ -86,9 +86,9 @@ export default [
 	name : 'shopping_cart'	
 },
 {
-	path : 'wish_list',
+	path : 'wishlist',
 	component : WishList ,
-	name : 'wish_list'
+	name : 'wishlist'
 },
 {
 	path  : 'items/:id',
