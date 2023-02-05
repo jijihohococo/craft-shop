@@ -10,16 +10,22 @@ class ShoppingCartController extends Controller
 {
     //
     private $userId , $shoppingCart;
+    private $successMessage=['message' => 'Add to shopping cart successfully'];
+    private $removeMessage=['message' => 'Remove from shopping cart successfully'];
 
     public function __construct(ShoppingCartRepositoryInterface $shoppingCart){
         $this->userId= UserData::getId() ?? (string) getUserId( authId() ) ;
         $this->shoppingCart=$shoppingCart;
     }
 
-    public function get(Request $request){
-        return response()->json([
+    public function getData(){
+        return [
             'shopping_cart_items' => $this->shoppingCart->get($this->userId)
-        ]);
+        ];
+    }
+
+    public function get(Request $request){
+        return response()->json($this->getData());
     }
 
     public function addSimpleItem(Request $request,ItemVariant $itemVariant){
@@ -27,10 +33,8 @@ class ShoppingCartController extends Controller
                 'userID' => $this->userId ,
                 'qty' => 1 ,
                 'qtyCheck' => "simple" ]);
-        return response()->json([
-            'message' => 'Add to shopping cart successfully',
-            'shopping_cart_items' => $this->shoppingCart->get($this->userId)
-        ]);
+        $arrayMerge=array_merge($this->successMessage,$this->getData());
+        return response()->json($arrayMerge);
     }
 
     public function addDetailItem(Request $request,ItemVariant $itemVariant){
@@ -38,17 +42,13 @@ class ShoppingCartController extends Controller
                 'userID' => $this->userId ,
                 'qty' => $request->qty ,
                 'qtyCheck' => "multiple" ]);
-        return response()->json([
-            'message' => 'Add to shopping cart successfully',
-            'shopping_cart_items' => $this->shoppingCart->get($this->userId)
-        ]);
+        $arrayMerge=array_merge($this->successMessage,$this->getData());
+        return response()->json($arrayMerge);
     }
 
     public function removeItem(Request $request){
         DeleteData::get()->delete();
-        return response()->json([
-            'message' => 'Remove from shopping cart successfully',
-            'shopping_cart_items' => $this->shoppingCart->get($this->userId)
-        ]);
+        $arrayMerge=array_merge($this->removeMessage,$this->getData());
+        return response()->json($arrayMerge);
     }
 }
