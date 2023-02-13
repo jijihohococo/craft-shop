@@ -30,10 +30,38 @@
 									</div>
 									<div class="form-group">
 										<label>Keywords</label>
-										<AttributeSet :inputData="fields.keywords" ref="keywords" />
+										<AttributeSet :inputData="fields.keyword" ref="keywords" />
 										<strong v-if="errors && errors.keyword" 
 										style="width: 100%;margin-top: .25rem;font-size: 80%;color: #dc3545;" >
 										{{ errors.keyword[0] }}
+									</strong>
+								</div>
+								<div class="form-group">
+									<label>Meta Name</label>
+									<MultipleText 
+									:inputData="fields.name_names"
+									:inputOneData="fields.name_contents" ref="names" />
+									<strong v-if="errors && errors.name_names" 
+										style="width: 100%;margin-top: .25rem;font-size: 80%;color: #dc3545;" >
+										{{ errors.name_names[0] }}
+									</strong>
+									<strong v-else-if="errors && errors.name_contents" 
+										style="width: 100%;margin-top: .25rem;font-size: 80%;color: #dc3545;" >
+										{{ errors.name_contents[0] }}
+									</strong>
+								</div>
+								<div class="form-group">
+									<label>Meta Property</label>
+									<MultipleText 
+									:inputData="fields.property_names"
+									:inputOneData="fields.property_contents" ref="properties" />
+									<strong v-if="errors && errors.property_names" 
+										style="width: 100%;margin-top: .25rem;font-size: 80%;color: #dc3545;" >
+										{{ errors.property_names[0] }}
+									</strong>
+									<strong v-else-if="errors && errors.property_contents" 
+										style="width: 100%;margin-top: .25rem;font-size: 80%;color: #dc3545;" >
+										{{ errors.property_contents[0] }}
 									</strong>
 								</div>
 							</div>
@@ -55,9 +83,12 @@
 	
 	import AttributeSet from '../components/AttributeSet'
 
+	import MultipleText from '../components/MultipleText'
+
 	export default {
 		components: {
-			AttributeSet
+			AttributeSet,
+			MultipleText
 		},
 		mixins: [mixin],
 		data(){
@@ -68,7 +99,11 @@
 					title : '',
 					description : '',
 					type : '',
-					keywords : []
+					keyword : [],
+					name_names : [],
+					name_contents : [],
+					property_names : [],
+					property_contents : []
 				}
 			}
 		},
@@ -77,20 +112,50 @@
 				this.$route.params.model_id);
 		},
 		created(){
+			this.return_link=this.$route.params.model
 			checkContentPermission('Seo','update',this);
 		},
 		methods : {
+			getMeta(){
+				this.fields.keyword=this.$refs.keywords.input;
+				this.fields.name_names=this.$refs.names.input;
+				this.fields.name_contents=this.$refs.names.inputOne;
+				this.fields.property_names=this.$refs.properties.input;
+				this.fields.property_contents=this.$refs.properties.inputOne;
+			},
 			updateSeo(){
-
+				this.getMeta()
+				window.axios.put(`seos/`+this.$route.params.model+`/`+this.$route.params.model_id,this.fields).then((response)=>{
+					this.returnBack(response)
+				}).catch((error)=>{
+					if(error.response.status==422){
+						this.errors= error.response.data.errors
+					}else{
+						errorResponse(error,this,'update')
+					}
+				})
 			},
 			getSeoData(model,model_id){
 				window.axios.get('seos/'+model + '/' + model_id ).then((response) => {
+					let responseData=response.data;
 					this.actions.update=true
-					this.fields.title=response.data.seo.title
-					this.fields.description=response.data.seo.description
-					this.fields.type=response.data.seo.type
-					if(response.data.keywords.length>0){
-						this.fields.keywords=response.data.keywords
+					this.fields.title=responseData.seo.title
+					this.fields.description=responseData.seo.description
+					this.fields.type=responseData.seo.type
+					if(responseData.keywords.length>0){
+						this.fields.keyword=responseData.keywords
+					}
+					if(responseData.seo_names.length>0){
+						this.fields.name_names=responseData.seo_names
+					}
+					if(responseData.seo_name_contents.length>0){
+						this.fields.name_contents=responseData.seo_name_contents
+					}
+					if(responseData.seo_properties.length>0){
+						this.fields.property_names=responseData.seo_properties
+					}
+					if(responseData.seo_property_contents.length>0){
+						this.fields.property_contents=responseData.seo_property_contents
 					}
 				}).catch( (error) => {
 					let errorStatus=error.response.status
