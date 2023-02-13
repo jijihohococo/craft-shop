@@ -16,11 +16,11 @@ class WishListDelete
      */
     public function handle(Request $request, Closure $next)
     {
-        $wishList=WishList::where('item_id',$request->item_id)->first();
         $userId=(string) getUserId( authId() );
+        $wishList=WishList::where('item_id',$request->item_id)->where('user_id',$userId)->first();
         UserData::setId($userId);
         DeleteData::set($wishList);
-        if($wishList!==NULL && $wishList->user_id==$userId){
+        if($wishList!==NULL){
             return $next($request);
         }
         return unauthorized();
