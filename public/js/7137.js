@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[7137],{7137:(n,e,t)=>{t.r(e),t.d(e,{default:()=>s});var c=t(821);const r={created:function(){window.scrollTo(0,0)}};const s=(0,t(3744).Z)(r,[["render",function(n,e,t,r,s,u){return(0,c.wg)(),(0,c.iD)("p",null,"Contact Us")}]])}}]);

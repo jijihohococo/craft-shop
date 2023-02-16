@@ -3,6 +3,11 @@ const CreateEditAdmin = () => import('Admin/Views/CreateEditAdmin');
 
 export default [
 	{
+		path : '/',
+		component : Admin ,
+		name : 'admin'
+	},
+	{
 		path : 'admin',
 		component : Admin ,
 		name : 'admin'

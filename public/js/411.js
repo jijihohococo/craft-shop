@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[411],{411:(n,e,c)=>{c.r(e),c.d(e,{default:()=>u});const t={created:function(){window.scrollTo(0,0)}};const u=(0,c(3744).Z)(t,[["render",function(n,e,c,t,u,r){return null}]])}}]);

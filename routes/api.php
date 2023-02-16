@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::get('page/{pageLink}','User\PageController@get');
+
 Route::post('subscribe','User\SubscribeController@make');
 
 Route::get('user_id','User\UserController@getId');

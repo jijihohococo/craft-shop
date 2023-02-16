@@ -8,13 +8,15 @@
 			</a>
 			<div class="product_action_box">
 				<ul class="list_none pr_action_btn">
-					<li class="popup-ajax">
+					<li class="hand_cursor">
 						<a @click="addToCart()">
 							<i class="icon-basket-loaded"></i>
 						Add To Cart</a>
 					</li>
 					<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-					<li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+					<li><router-link :to="{name:'items.detail',params:{id:item.id}}">
+						<i class="icon-magnifier-add"></i>
+					</router-link></li>
 					<WishButton :item_id="item.id" />
 				</ul>
 			</div>

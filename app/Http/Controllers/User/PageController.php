@@ -13,4 +13,12 @@ class PageController extends Controller
             'pages' => (new Page)->getAll()
         ]);
     }
+
+    public function get($pageLink){
+        return response()->json([
+            'page' => Page::select(['name','link','description'])
+            ->where('link',$pageLink)
+            ->first()
+        ]);
+    }
 }

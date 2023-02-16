@@ -21,7 +21,7 @@ class Brand extends TransactionModel
 
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-brands',DateModel::ONE_DAY,function(){
-            return self::orderBy('name')->get();
+            return self::select(['id','name','pic'])->orderBy('name')->get();
         });
     }
 

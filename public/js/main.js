@@ -19955,6 +19955,10 @@ var CreateEditAdmin = function CreateEditAdmin() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
+  path: '/',
+  component: Admin,
+  name: 'admin'
+}, {
   path: 'admin',
   component: Admin,
   name: 'admin'

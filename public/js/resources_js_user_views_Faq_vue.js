@@ -55,10 +55,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              _context2.next = 2;
+              window.scrollTo(0, 0);
+              _context2.next = 3;
               return _this2.getFaqs();
 
-            case 2:
+            case 3:
             case "end":
               return _context2.stop();
           }

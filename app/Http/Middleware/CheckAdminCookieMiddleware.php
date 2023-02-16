@@ -27,7 +27,9 @@ class CheckAdminCookieMiddleware
             'client_id' => Admin::$clientId
         ],$next,$request);
         
-        if($currentURL==$adminLogin && isset($_COOKIE[Admin::ACCESS_TOKEN] ))
+        if(($currentURL==$adminLogin || 
+            $currentURL=='/admin' ||
+            $currentURL=='/admin/' ) && isset($_COOKIE[Admin::ACCESS_TOKEN] ))
         {
             $tokenRefresh->setRedirectURL('admin/dashboard');
             $tokenRefresh->makeLoginRequest();

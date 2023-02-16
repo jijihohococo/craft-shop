@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //----------------ADMIN FRONTEND ROUTES----------------//
-Route::view('/admin/{any}','admin.index')->where('any','.*')->middleware('checkAdminCookie');
+Route::view('/admin/{any?}','admin.index')->where('any','.*')->middleware('checkAdminCookie');
 //----------------ADMIN FRONTEND ROUTES----------------//
 
 //----------------CUSTOMER SERVICE FRONTEND ROUTES----------------//
