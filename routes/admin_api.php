@@ -3,6 +3,8 @@
 Route::post('login','Admin\Auth\LoginController@login');
 
 Route::group(['middleware' => [ 'admin_auth'] ], function () {
+	Route::get('subscribes','Admin\SubscribeController@index');
+
 	//--------------SHOP----------------//
 	Route::resource('shops','Admin\ShopController');
 	//--------------SHOP----------------//
