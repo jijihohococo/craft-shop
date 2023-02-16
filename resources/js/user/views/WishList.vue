@@ -54,6 +54,7 @@
 	import ItemPrice from '../components/ItemPrice'
 	import {wishlist_items,wishlist_item_ids} from '../store/';
 	import { mixin } from '../common/';
+	import { mix } from '../common/ui'
 	import VLazyImage from "v-lazy-image"
 
 	export default {
@@ -62,6 +63,6 @@
 			ItemPrice,
 			VLazyImage
 		},
-		mixins: [mixin]
+		mixins: [mixin,mix]
 	}
 </script>

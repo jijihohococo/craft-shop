@@ -84,12 +84,14 @@
 	</div>
 </template>
 <script >
+    import { mix } from '../common/ui'
 	export default {
         data(){
             return {
                 faqs : {}
             }
         },
+        mixins : [mix],
         methods : {
             async getFaqs(){
                 window.axios.get( 'faqs' ).then( (response) => {
@@ -98,7 +100,6 @@
             }
         },
 		async created(){
-            window.scrollTo(0, 0);
             await this.getFaqs()
         }
 	}

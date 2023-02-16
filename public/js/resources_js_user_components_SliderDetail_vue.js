@@ -493,62 +493,6 @@ var mixin = {
 
 /***/ }),
 
-/***/ "./resources/js/user/store/index.js":
-/*!******************************************!*\
-  !*** ./resources/js/user/store/index.js ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "categories": () => (/* binding */ categories),
-/* harmony export */   "shopping_cart_items": () => (/* binding */ shopping_cart_items),
-/* harmony export */   "shopping_total_price": () => (/* binding */ shopping_total_price),
-/* harmony export */   "shopping_total_qty": () => (/* binding */ shopping_total_qty),
-/* harmony export */   "wishlist_item_ids": () => (/* binding */ wishlist_item_ids),
-/* harmony export */   "wishlist_items": () => (/* binding */ wishlist_items)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-
-var categories = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
-  data: [],
-  changeData: function changeData(data) {
-    this.data = data;
-  }
-});
-var wishlist_items = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
-  data: [],
-  changeData: function changeData(data) {
-    this.data = data;
-  }
-});
-var wishlist_item_ids = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
-  data: [],
-  changeData: function changeData(data) {
-    this.data = data;
-  }
-});
-var shopping_cart_items = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
-  data: [],
-  changeData: function changeData(data) {
-    this.data = data;
-  }
-});
-var shopping_total_qty = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
-  data: 0,
-  changeData: function changeData(data) {
-    this.data = data;
-  }
-});
-var shopping_total_price = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
-  data: 0,
-  changeData: function changeData(data) {
-    this.data = data;
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-8.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-8.use[2]!./node_modules/vue3-carousel/dist/carousel.css":
 /*!**************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-8.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-8.use[2]!./node_modules/vue3-carousel/dist/carousel.css ***!

@@ -66,6 +66,7 @@
     import Subscribe from '../components/Subscribe';
     import Collections from '../components/Collections';
     import { common_mixin } from '../../common/'
+    import { mix } from '../common/ui'
     export default {
       components : {
          Banner,
@@ -75,9 +76,6 @@
          Subscribe,
          Collections
      },
-     mixins: [common_mixin],
-     created(){
-        window.scrollTo(0, 0);
-    }
+     mixins: [common_mixin,mix],
 }
 </script>

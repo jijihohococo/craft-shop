@@ -2,14 +2,15 @@
 	
 </template>
 <script >
+	import { mix } from '../common/ui'
 	export default {
 		data(){
 			return {
 				page : {}
 			}
 		},
+		mixins : [mix],
 		async created(){
-			window.scrollTo(0, 0);
 			await this.getPageData()
 		},
 		methods : {

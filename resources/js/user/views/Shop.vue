@@ -126,6 +126,7 @@
 	import PriceFilter from '../components/PriceFilter'
 	import SliderItem from '../components/SliderItem'
 	import { common_mixin } from '../../common/'
+	import { mix } from '../common/ui'
 	import Pagination from '../../components/Pagination';
 	import {categories} from '../store/';
 	export default {
@@ -176,10 +177,9 @@
 			}
 		},
 		created(){
-			window.scrollTo(0, 0);
 			this.main()
 		},
-		mixins: [common_mixin],
+		mixins: [common_mixin,mix],
 		watch : {
 			$route : {
 				deep : true ,

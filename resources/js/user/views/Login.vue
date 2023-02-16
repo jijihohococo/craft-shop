@@ -60,6 +60,8 @@
 
 	import { common_mixin } from '../../common/'
 
+	import { mix } from '../common/ui'
+
 	export default {
 		components : {
 			PageTitle
@@ -73,7 +75,7 @@
 				errors : {}
 			}
 		},
-		mixins: [common_mixin],
+		mixins: [common_mixin,mix],
 		methods : {
 			login(){
 				window.axios.post('login',this.fields).then( (response) => {

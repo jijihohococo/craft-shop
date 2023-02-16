@@ -2,9 +2,8 @@
 	<p>Contact Us</p>
 </template>
 <script >
+	import { mix } from '../common/ui'
 	export default {
-		created(){
-			window.scrollTo(0, 0);
-		}
+		mixins : [mix]
 	}
 </script>

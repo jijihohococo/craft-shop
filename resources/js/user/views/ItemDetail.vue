@@ -482,6 +482,8 @@
 
 	import ItemPrice from '../components/ItemPrice';
 
+    import { mix } from '../common/ui'
+
 	export default {
 		components : {
 			ItemPrice,
@@ -491,8 +493,8 @@
 				item : {}
 			}
 		},
+        mixins : [mix],
 		async created(){
-            window.scrollTo(0, 0);
             await this.getItemData()
         },
         methods : {

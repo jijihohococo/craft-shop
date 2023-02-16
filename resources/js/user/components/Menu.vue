@@ -1,13 +1,13 @@
 <template>
     <div class="col-lg-3 col-md-4 col-sm-6 col-3">
       <div class="categories_wrap">
-        <button v-if="mobile==false" type="button" data-toggle="collapse" data-target="#navCatContent" aria-expanded="false" class="categories_btn" v-on:click="changeShow()">
+        <button v-if="mobile.data==false" type="button" data-toggle="collapse" data-target="#navCatContent" aria-expanded="false" class="categories_btn" v-on:click="menu_show.changeShow()">
             <i class="linearicons-menu"></i><span>{{ translateLang('Categories') }}</span>
         </button>
         <button v-else type="button" data-toggle="collapse" data-target="#navCatContent" aria-expanded="false" class="categories_btn" >
             <i class="linearicons-menu"></i><span>{{ translateLang('Categories') }}</span>
         </button>
-        <div id="navCatContent" class="nav_cat navbar collapse" v-if="show" >
+        <div id="navCatContent" class="nav_cat navbar collapse" v-if="menu_show.data" >
             <ul> 
                 <li class="dropdown dropdown-mega-menu" v-for="category in categories">
                     <a class="dropdown-item nav-link dropdown-toggler" data-toggle="dropdown">
@@ -43,6 +43,7 @@
 </template>
 <script >
     import { common_mixin } from '../../common/'
+    import { menu_show , mobile } from '../store';
     export default {
         props : {
             categories : {
@@ -52,31 +53,16 @@
         },
         data(){
             return {
-                show : true ,
-                mobile : false
+                menu_show,
+                mobile
             }
         },
         mixins: [common_mixin],
-        created(){
-            // we will use hide and show category menu UI feature if it is not mobile screen
-            this.mobile=this.checkMobile() ? false : true
-            this.show=(this.$route.name=='home') ||
-                (this.$route.name!=='home' && this.mobile==true) ? 
-                true : false
-        },
         methods : {
-            checkMobile(){
-                return (window.innerWidth
-            || document.documentElement.clientWidth
-            || document.body.clientWidth)>991;
-            },
-            changeShow(){
-              this.show = ! this.show 
-          },
           goToContent(content,contentId){
             //this.changeShow()
-            if(this.checkMobile() ){
-                this.show=false
+            if(this.mobile.data==false ){
+                this.menu_show.data=false
             }
             this.$router.push({path: '/shop/'+content + '/' + contentId })
 
