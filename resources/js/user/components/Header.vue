@@ -72,7 +72,7 @@
 
 	import { common_mixin } from '../../common/'
 
-	import {wishlist_items,categories} from '../store/';
+	import {wishlist_items,categories,menu_show,mobile} from '../store/';
 
 	export default {
 		components: {
@@ -86,18 +86,41 @@
 				userLogin,
 				categories ,
 				wishlist_items ,
+				menu_show,
+				mobile
 			}
 		},
 		mixins: [common_mixin],
 		methods : {
-			 getCategories(){
+			getCategories(){
 				window.axios.get( 'categories' ).then( (response) => {
 					this.categories.changeData(response.data.categories)
 				} )
+			},
+			handleScroll(event){
+				var scroll = $(window).scrollTop();
+				if (scroll >= 150) {
+					if(this.$route.name=='home' && this.mobile.data==false){
+						this.menu_show.data=false;
+					}
+					$('header.fixed-top').addClass('nav-fixed');
+					$('.header_sticky_bar').removeClass('d-none');
+					$('header.no-sticky').removeClass('nav-fixed');
+				} else {
+					if(this.$route.name=='home' && this.mobile.data==false ){
+						this.menu_show.data=true;
+					}
+					$('header.fixed-top').removeClass('nav-fixed');
+					$('.header_sticky_bar').addClass('d-none');
+				}
 			}
 		},
-		 created(){
-			 this.getCategories()
+		created(){
+			this.getCategories()
+			if ($('.header_wrap').hasClass("fixed-top") && !$('.header_wrap').hasClass("transparent_header") && !$('.header_wrap').hasClass("no-sticky")) {
+				$(".header_wrap").before('<div class="header_sticky_bar d-none"></div>');
+			}
+			window.addEventListener('scroll',this.handleScroll)
 		},
 	}
 </script>

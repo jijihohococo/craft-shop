@@ -166,7 +166,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       userLogin: _store__WEBPACK_IMPORTED_MODULE_4__.userLogin,
       categories: _store___WEBPACK_IMPORTED_MODULE_6__.categories,
-      wishlist_items: _store___WEBPACK_IMPORTED_MODULE_6__.wishlist_items
+      wishlist_items: _store___WEBPACK_IMPORTED_MODULE_6__.wishlist_items,
+      menu_show: _store___WEBPACK_IMPORTED_MODULE_6__.menu_show,
+      mobile: _store___WEBPACK_IMPORTED_MODULE_6__.mobile
     };
   },
   mixins: [_common___WEBPACK_IMPORTED_MODULE_5__.common_mixin],
@@ -177,10 +179,36 @@ __webpack_require__.r(__webpack_exports__);
       window.axios.get('categories').then(function (response) {
         _this.categories.changeData(response.data.categories);
       });
+    },
+    handleScroll: function handleScroll(event) {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 150) {
+        if (this.$route.name == 'home' && this.mobile.data == false) {
+          this.menu_show.data = false;
+        }
+
+        $('header.fixed-top').addClass('nav-fixed');
+        $('.header_sticky_bar').removeClass('d-none');
+        $('header.no-sticky').removeClass('nav-fixed');
+      } else {
+        if (this.$route.name == 'home' && this.mobile.data == false) {
+          this.menu_show.data = true;
+        }
+
+        $('header.fixed-top').removeClass('nav-fixed');
+        $('.header_sticky_bar').addClass('d-none');
+      }
     }
   },
   created: function created() {
     this.getCategories();
+
+    if ($('.header_wrap').hasClass("fixed-top") && !$('.header_wrap').hasClass("transparent_header") && !$('.header_wrap').hasClass("no-sticky")) {
+      $(".header_wrap").before('<div class="header_sticky_bar d-none"></div>');
+    }
+
+    window.addEventListener('scroll', this.handleScroll);
   }
 });
 
