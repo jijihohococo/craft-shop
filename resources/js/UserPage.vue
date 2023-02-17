@@ -3,6 +3,7 @@
 	<Header />
 	<router-view />
 	<Footer />
+	<!-- <component is="script" src="/user/js/scripts.js" /> -->
 </template>
 <script >
 	import PromotionBox from './user/components/PromotionBox';

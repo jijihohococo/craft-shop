@@ -1358,10 +1358,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["title", "list", "select_list", "onUpdatePage"]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  )), _hoisted_28])])])])])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)("script"), {
-    src: "/user/js/scripts.js"
-  }))], 64
-  /* STABLE_FRAGMENT */
+  )), _hoisted_28])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <component is=\"script\" src=\"/user/js/scripts.js\" /> ")], 2112
+  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   );
 }
 
