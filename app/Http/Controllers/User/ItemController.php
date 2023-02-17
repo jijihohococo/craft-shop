@@ -50,4 +50,14 @@ class ItemController extends Controller
             'feature_products' => $item->getFeatureProducts()
         ]);
     }
+
+    public function getItemByColorCode($colorCode){
+        return response()->json([
+            'item' => Item::selectItemData()
+            ->selectPrice()
+            ->selectStock()
+            ->searchWithColorCode('#'.$colorCode)
+            ->first()
+        ]);
+    }
 }

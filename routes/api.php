@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::get('item_by_color_code/{colorCode}','User\ItemController@getItemByColorCode');
+
 Route::get('page/{pageLink}','User\PageController@get');
 
 Route::post('subscribe','User\SubscribeController@make');

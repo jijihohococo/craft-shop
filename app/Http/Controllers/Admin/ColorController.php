@@ -102,6 +102,7 @@ class ColorController extends CommonController
     private function validateData($id=NULL){
         return [
             'name' => uniqueColumn($this->content,$id) ,
+            'color_code' => uniqueColumn($this->content,$id,'color_code')
         ];
     }
 
