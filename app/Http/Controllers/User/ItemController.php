@@ -53,10 +53,8 @@ class ItemController extends Controller
 
     public function getItemByColorCode($colorCode){
         return response()->json([
-            'item' => Item::selectItemData()
-            ->selectPrice()
-            ->selectStock()
-            ->searchWithColorCode('#'.$colorCode)
+            'item' => Item::select(['id'])
+            ->selectPriceByColorCode('#'.$colorCode)
             ->first()
         ]);
     }

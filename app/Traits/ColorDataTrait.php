@@ -4,15 +4,6 @@ namespace App\Traits;
 
 use App\Models\Color;
 trait ColorDataTrait{
-	
-    public function scopeSearchWithColorCode($query,$colorCode){
-        return $query->whereIn('id',function($query) use($colorCode){
-            $query->select('item_id')
-            ->from('item_variants')
-            ->whereIn('item_variants.color_id',
-                Color::select('id')->where('color_code',$colorCode)->getQuery());
-        } );
-    }
 
 	public function scopeSearchWithColor($query,$searchData){
         return $query->orWherein('id',function($query) use($searchData){

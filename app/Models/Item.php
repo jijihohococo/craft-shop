@@ -173,27 +173,49 @@ public function scopeSelectAverageReviews($query){
     ]);
 }
 
-public function scopeSelectPrice($query){
-    return $query->addSelect([$this->salePrice => function($query){
+public static function getPriceByColorCode($query,$colorCode,$priceSQL){
+    return function($query) use ($colorCode,$priceSQL){
+            $query->select(
+                \DB::raw(
+                    $priceSQL
+                )
+            )
+            ->from('item_prices')
+            ->whereIn('item_prices.item_variant_id',function($query) use ($colorCode){
+                $query->select('id')
+                ->from('item_variants')
+                ->whereIn('item_variants.color_id', Color::select('id')->where('color_code',$colorCode)->getQuery());
+            })->orderBy('item_prices.id','DESC')
+            ->limit(1);
+        };
+}
+
+public function scopeSelectPriceByColorCode($query,$colorCode){
+    return $query->addSelect([
+        $this->salePrice => self::getPriceByColorCode($query,$colorCode,ItemPrice::SALE_PRICE_SQL),
+        $this->normalPrice => self::getPriceByColorCode($query,$colorCode,ItemPrice::PRICE_SQL)
+    ]);
+}
+
+public static function getPrice($query,$priceSQL){
+    return function($query) use($priceSQL){ 
         $query->select(
             \DB::raw(
-                ItemPrice::SALE_PRICE_SQL
+                $priceSQL
             )
         )
         ->from('item_prices')
         ->where('item_prices.item_variant_id',
             self::selectWithItemVariant($query))->orderBy('item_prices.id','DESC')
         ->limit(1);
-    } , 
-    $this->normalPrice => function($query){
-        $query->select(
-            \DB::raw(
-                ItemPrice::PRICE_SQL
-            )
-        )->from('item_prices')
-        ->where('item_prices.item_variant_id',self::selectWithItemVariant($query))->orderBy('item_prices.id','DESC')
-        ->limit(1);
-    },
+    };
+}
+
+public function scopeSelectPrice($query){
+    return $query->addSelect([$this->salePrice =>
+        self::getPrice($query,ItemPrice::SALE_PRICE_SQL) , 
+    $this->normalPrice =>
+    self::getPrice($query,ItemPrice::PRICE_SQL) ,
  //    'tax' => function($query){
  //     $query->selectSub(function($query){
  //        Tax::getTaxFromItemPrice($query);

@@ -103,10 +103,20 @@ __webpack_require__.r(__webpack_exports__);
     ItemPrice: _ItemPrice__WEBPACK_IMPORTED_MODULE_0__["default"],
     ItemColor: _ItemColor__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  data: function data() {
+    return {
+      normalPrice: 0,
+      salePrice: 0
+    };
+  },
   props: {
     item: {
       type: Object
     }
+  },
+  created: function created() {
+    this.normalPrice = this.$props.item.normal_price;
+    this.salePrice = this.$props.item.sale_price;
   },
   methods: {
     getAveragePercent: function getAveragePercent(data) {
@@ -114,6 +124,15 @@ __webpack_require__.r(__webpack_exports__);
       return result + '%';
     },
     getColor: function getColor(key) {
+      var _this = this;
+
+      var colorCode = this.item.colorCodes.split(',')[key];
+      colorCode = colorCode.replace('#', '');
+      window.axios.get('item_by_color_code/' + colorCode).then(function (response) {
+        var item = response.data.item;
+        _this.normalPrice = item.normal_price;
+        _this.salePrice = item.sale_price;
+      });
       this.$emit('getData', key);
     }
   }
@@ -836,8 +855,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.name), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ItemPrice, {
-    normal_price: $props.item.normal_price,
-    sale_price: $props.item.sale_price
+    normal_price: $data.normalPrice,
+    sale_price: $data.salePrice
   }, null, 8
   /* PROPS */
   , ["normal_price", "sale_price"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {

@@ -2,8 +2,8 @@
 	<div class="product_info">
 		<h6 class="product_title"><a href="shop-product-detail.html">{{ item.name }}</a></h6>
 		<ItemPrice
-		:normal_price="item.normal_price"
-		:sale_price="item.sale_price"
+		:normal_price="normalPrice"
+		:sale_price="salePrice"
 		/>
 		<div class="rating_wrap">
 			<div class="rating">
@@ -30,10 +30,20 @@
 			ItemPrice,
 			ItemColor
 		},
+		data(){
+			return {
+				normalPrice : 0,
+				salePrice : 0
+			}
+		},
 		props : {
 			item  : {
 				type : Object
 			}
+		},
+		created(){
+			this.normalPrice=this.$props.item.normal_price
+			this.salePrice=this.$props.item.sale_price
 		},
 		methods : {
 			getAveragePercent(data){
@@ -42,6 +52,13 @@
 				return result + '%';
 			},
 			getColor(key){
+				let colorCode=this.item.colorCodes.split(',')[key]
+				colorCode=colorCode.replace('#','')
+				window.axios.get('item_by_color_code/'+colorCode).then((response)=>{
+					let item=response.data.item
+					this.normalPrice=item.normal_price
+					this.salePrice=item.sale_price
+				})
 				this.$emit('getData',key)
 			}
 		}
