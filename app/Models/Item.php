@@ -185,7 +185,7 @@ public static function getPriceByColorCode($query,$colorCode,$priceSQL){
                 $query->select('id')
                 ->from('item_variants')
                 ->whereIn('item_variants.color_id', Color::select('id')->where('color_code',$colorCode)->getQuery());
-            })->orderBy('item_prices.id','DESC')
+            })
             ->limit(1);
         };
 }
@@ -200,13 +200,15 @@ public function scopeSelectPriceByColorCode($query,$colorCode){
 public static function getPrice($query,$priceSQL){
     return function($query) use($priceSQL){ 
         $query->select(
-            \DB::raw(
-                $priceSQL
-            )
+            'price'
         )
         ->from('item_prices')
-        ->where('item_prices.item_variant_id',
-            self::selectWithItemVariant($query))->orderBy('item_prices.id','DESC')
+        ->where('item_prices.item_variant_id',function($query){
+            $query->select('item_variants.id')
+        ->from('item_variants')
+        ->whereColumn('items.id','item_variants.item_id')
+        ->limit(1);
+        })->orderBy('item_prices.item_variant_id')
         ->limit(1);
     };
 }
