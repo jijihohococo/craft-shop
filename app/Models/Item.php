@@ -119,7 +119,13 @@ class Item extends TransactionModel
             'item_images.filename'
             //\DB::raw(getLastData('item_images.filename'))
         )->from('item_images')
-        ->where('item_variant_id',self::selectWithItemVariant($query) )->orderBy('item_images.id','DESC')
+        ->where('item_variant_id',function($query){
+            $query->select('item_variants.id')
+            ->from('item_variants')
+            ->whereColumn('items.id','item_variants.item_id')
+            ->limit(1); 
+        } )
+        ->orderBy('item_images.item_variant_id')
         ->limit(1);
     }
 
@@ -131,50 +137,50 @@ class Item extends TransactionModel
 
     public static function selectWithItemVariant($newQuery){
         return  function($newQuery){
-        $newQuery->select('item_variants.id')
-        ->from('item_variants')
-        ->whereColumn('items.id','item_variants.item_id')
-        ->orderBy('item_variants.id','DESC')
-        ->limit(1);
-    };
-}
-
-public function scopeSelectStock($query){
-    return  $query->addSelect([
-        $this->stock => function($query){
-            $query->select('item_stocks.available_stock')
-            ->from('item_stocks')
-            ->where('item_stocks.item_variant_id',
-                self::selectWithItemVariant($query) )->orderBy('item_stocks.id','DESC')
+            $newQuery->select('item_variants.id')
+            ->from('item_variants')
+            ->whereColumn('items.id','item_variants.item_id')
+            ->orderBy('item_variants.id','DESC')
             ->limit(1);
-        }
-    ]);
-}
+        };
+    }
 
-public function scopeSelectReviews($query){
-    return $query->addSelect([
-        'reviews' => function($query){
-            $query->select(
-                \DB::raw('GROUP_CONCAT(item_reviews.rate)')
-            )->from('item_reviews')
-            ->whereColumn('items.id','item_reviews.item_id');
-        }
-    ]);
-}
+    public function scopeSelectStock($query){
+        return  $query->addSelect([
+            $this->stock => function($query){
+                $query->select('item_stocks.available_stock')
+                ->from('item_stocks')
+                ->where('item_stocks.item_variant_id',
+                    self::selectWithItemVariant($query) )->orderBy('item_stocks.id','DESC')
+                ->limit(1);
+            }
+        ]);
+    }
 
-public function scopeSelectAverageReviews($query){
-    return $query->addSelect([
-        'average_reviews' => function($query){
-            $query->select(
-                \DB::raw('AVG(item_reviews.rate)')
-            )->from('item_reviews')
-            ->whereColumn('items.id','item_reviews.item_id');
-        }
-    ]);
-}
+    public function scopeSelectReviews($query){
+        return $query->addSelect([
+            'reviews' => function($query){
+                $query->select(
+                    \DB::raw('GROUP_CONCAT(item_reviews.rate)')
+                )->from('item_reviews')
+                ->whereColumn('items.id','item_reviews.item_id');
+            }
+        ]);
+    }
 
-public static function getPriceByColorCode($query,$colorCode,$priceSQL){
-    return function($query) use ($colorCode,$priceSQL){
+    public function scopeSelectAverageReviews($query){
+        return $query->addSelect([
+            'average_reviews' => function($query){
+                $query->select(
+                    \DB::raw('AVG(item_reviews.rate)')
+                )->from('item_reviews')
+                ->whereColumn('items.id','item_reviews.item_id');
+            }
+        ]);
+    }
+
+    public static function getPriceByColorCode($query,$colorCode,$priceSQL){
+        return function($query) use ($colorCode,$priceSQL){
             $query->select(
                 \DB::raw(
                     $priceSQL
@@ -188,36 +194,36 @@ public static function getPriceByColorCode($query,$colorCode,$priceSQL){
             })
             ->limit(1);
         };
-}
+    }
 
-public function scopeSelectPriceByColorCode($query,$colorCode){
-    return $query->addSelect([
-        $this->salePrice => self::getPriceByColorCode($query,$colorCode,ItemPrice::SALE_PRICE_SQL),
-        $this->normalPrice => self::getPriceByColorCode($query,$colorCode,ItemPrice::PRICE_SQL)
-    ]);
-}
+    public function scopeSelectPriceByColorCode($query,$colorCode){
+        return $query->addSelect([
+            $this->salePrice => self::getPriceByColorCode($query,$colorCode,ItemPrice::SALE_PRICE_SQL),
+            $this->normalPrice => self::getPriceByColorCode($query,$colorCode,ItemPrice::PRICE_SQL)
+        ]);
+    }
 
-public static function getPrice($query,$priceSQL){
-    return function($query) use($priceSQL){ 
-        $query->select(
-            'price'
-        )
-        ->from('item_prices')
-        ->where('item_prices.item_variant_id',function($query){
-            $query->select('item_variants.id')
-        ->from('item_variants')
-        ->whereColumn('items.id','item_variants.item_id')
-        ->limit(1);
-        })->orderBy('item_prices.item_variant_id')
-        ->limit(1);
-    };
-}
+    public static function getPrice($query,$priceSQL){
+        return function($query) use($priceSQL){ 
+            $query->select(
+                'price'
+            )
+            ->from('item_prices')
+            ->where('item_prices.item_variant_id',function($query){
+                $query->select('item_variants.id')
+                ->from('item_variants')
+                ->whereColumn('items.id','item_variants.item_id')
+                ->limit(1);
+            })->orderBy('item_prices.item_variant_id')
+            ->limit(1);
+        };
+    }
 
-public function scopeSelectPrice($query){
-    return $query->addSelect([$this->salePrice =>
-        self::getPrice($query,ItemPrice::SALE_PRICE_SQL) , 
-    $this->normalPrice =>
-    self::getPrice($query,ItemPrice::PRICE_SQL) ,
+    public function scopeSelectPrice($query){
+        return $query->addSelect([$this->salePrice =>
+            self::getPrice($query,ItemPrice::SALE_PRICE_SQL) , 
+            $this->normalPrice =>
+            self::getPrice($query,ItemPrice::PRICE_SQL) ,
  //    'tax' => function($query){
  //     $query->selectSub(function($query){
  //        Tax::getTaxFromItemPrice($query);
@@ -228,121 +234,121 @@ public function scopeSelectPrice($query){
  //     })->orderBy('item_prices.id','DESC')
  //     ->limit(1);
  // }
-]);
-}
+        ]);
+    }
 
-public function scopeHavePrice($query){
-    return $query->having($this->salePrice,'>',0)
-    ->having($this->normalPrice,'>',0);
-}
+    public function scopeHavePrice($query){
+        return $query->having($this->salePrice,'>',0)
+        ->having($this->normalPrice,'>',0);
+    }
 
-public function scopeHaveStock($query){
-    return $query->having($this->stock,'>',0);
-}
+    public function scopeHaveStock($query){
+        return $query->having($this->stock,'>',0);
+    }
 
-public function scopeBetweenPrice($query,$minPrice,$maxPrice){
-    return $query->having($this->normalPrice,'>=',$minPrice)
-    ->having($this->normalPrice,'<=',$maxPrice);
-}
+    public function scopeBetweenPrice($query,$minPrice,$maxPrice){
+        return $query->having($this->normalPrice,'>=',$minPrice)
+        ->having($this->normalPrice,'<=',$maxPrice);
+    }
 
-public function scopeInWish($query){
-    return $query->addSelect(['in_wish' => function($query){
-        return $query->select('id')
-        ->from('wish_lists')
-        ->whereColumn('items.id','wish_lists.item_id')
-        ->where('wish_lists.user_id', (string) getUserId( authId() ) )
-        ->limit(1);
-    } ]);
-}
+    public function scopeInWish($query){
+        return $query->addSelect(['in_wish' => function($query){
+            return $query->select('id')
+            ->from('wish_lists')
+            ->whereColumn('items.id','wish_lists.item_id')
+            ->where('wish_lists.user_id', (string) getUserId( authId() ) )
+            ->limit(1);
+        } ]);
+    }
 
-public function scopeSelectShopItem($query){
-    return $query->selectItemDataWithImages()
-    ->selectItemVariants()
-    ->selectReviews()
-    ->selectPrice()
-    ->selectStock()
-    ->inWish();
-}
-
-public function scopeAvailable($query){
-    return $query->havePrice()
-    ->haveStock();
-}
-
-public static function availableItems(string $column,int $id){
-    return self::selectShopItem()
-    ->where($column,$id)
-    ->available()
-    ->latest('id')
-    ->limit(7)
-    ->get();
-}
-
-public function getLaptops(){
-    return Cache::tags( self::$cacheKey )->remember('laptops',DateModel::ONE_DAY,function(){
-        return self::availableItems('category_id',1);
-    });
-}
-
-public function getDesktops(){
-    return Cache::tags( self::$cacheKey )->remember('desktops',DateModel::ONE_DAY,function(){
-     return self::availableItems('category_id',2);
- });
-}
-
-public function getAccessories(){
-    return Cache::tags( self::$cacheKey )->remember('accessories',DateModel::ONE_DAY,function(){
-     return self::availableItems('category_id',3);
- });
-}
-
-public function getDesktopComponents(){
-    return Cache::tags( self::$cacheKey )->remember('desktop_components',DateModel::ONE_DAY,function(){
-        return self::availableItems('category_id',7);
-    });
-}
-
-public function getGamingLaptops(){
-    return Cache::tags( self::$cacheKey )->remember('desktop_components',DateModel::ONE_DAY,function(){
-        return self::availableItems('subcategory_id',46);
-    });
-}
-
-public function getGamingMouses(){
-    return Cache::tags( self::$cacheKey )->remember('gaming_mouses',DateModel::ONE_DAY,function(){
-        return self::availableItems('subcategory_id',48);
-    });
-}
-
-public function getGamingKeyboards(){
-    return Cache::tags( self::$cacheKey )->remember('gaming_keyboards',DateModel::ONE_DAY,function(){
-        return self::availableItems('subcategory_id',49);
-    });
-}
-
-public function getGamingHeadphones(){
-    return Cache::tags( self::$cacheKey )->remember('gaming_headphones',DateModel::ONE_DAY,function(){
-        return self::availableItems('subcategory_id',50);
-    });
-}
-
-public function getFeatureProducts(){
-    return Cache::tags( self::$cacheKey )->remember('feature_products',DateModel::ONE_DAY,function(){
-        return self::selectShopItem()
-        ->available()
-        ->latest('id')
-        ->limit(15)
-        ->get();
-    });
-}
-public function getAll(){
-    return Cache::tags( self::$cacheKey )->remember('all-items',DateModel::ONE_DAY,function(){
-        return self::select(['id','name'])
+    public function scopeSelectShopItem($query){
+        return $query->selectItemDataWithImages()
+        ->selectItemVariants()
+        ->selectReviews()
         ->selectPrice()
         ->selectStock()
+        ->inWish();
+    }
+
+    public function scopeAvailable($query){
+        return $query->havePrice()
+        ->haveStock();
+    }
+
+    public static function availableItems(string $column,int $id){
+        return self::selectShopItem()
+        ->where($column,$id)
         ->available()
         ->latest('id')
+        ->limit(7)
         ->get();
-    });
-}
+    }
+
+    public function getLaptops(){
+        return Cache::tags( self::$cacheKey )->remember('laptops',DateModel::ONE_DAY,function(){
+            return self::availableItems('category_id',1);
+        });
+    }
+
+    public function getDesktops(){
+        return Cache::tags( self::$cacheKey )->remember('desktops',DateModel::ONE_DAY,function(){
+           return self::availableItems('category_id',2);
+       });
+    }
+
+    public function getAccessories(){
+        return Cache::tags( self::$cacheKey )->remember('accessories',DateModel::ONE_DAY,function(){
+           return self::availableItems('category_id',3);
+       });
+    }
+
+    public function getDesktopComponents(){
+        return Cache::tags( self::$cacheKey )->remember('desktop_components',DateModel::ONE_DAY,function(){
+            return self::availableItems('category_id',7);
+        });
+    }
+
+    public function getGamingLaptops(){
+        return Cache::tags( self::$cacheKey )->remember('desktop_components',DateModel::ONE_DAY,function(){
+            return self::availableItems('subcategory_id',46);
+        });
+    }
+
+    public function getGamingMouses(){
+        return Cache::tags( self::$cacheKey )->remember('gaming_mouses',DateModel::ONE_DAY,function(){
+            return self::availableItems('subcategory_id',48);
+        });
+    }
+
+    public function getGamingKeyboards(){
+        return Cache::tags( self::$cacheKey )->remember('gaming_keyboards',DateModel::ONE_DAY,function(){
+            return self::availableItems('subcategory_id',49);
+        });
+    }
+
+    public function getGamingHeadphones(){
+        return Cache::tags( self::$cacheKey )->remember('gaming_headphones',DateModel::ONE_DAY,function(){
+            return self::availableItems('subcategory_id',50);
+        });
+    }
+
+    public function getFeatureProducts(){
+        return Cache::tags( self::$cacheKey )->remember('feature_products',DateModel::ONE_DAY,function(){
+            return self::selectShopItem()
+            ->available()
+            ->latest('id')
+            ->limit(15)
+            ->get();
+        });
+    }
+    public function getAll(){
+        return Cache::tags( self::$cacheKey )->remember('all-items',DateModel::ONE_DAY,function(){
+            return self::select(['id','name'])
+            ->selectPrice()
+            ->selectStock()
+            ->available()
+            ->latest('id')
+            ->get();
+        });
+    }
 }
