@@ -29,7 +29,8 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             StateSeeder::class,
             CitySeeder::class,
-            PageSeeder::class
+            PageSeeder::class,
+            FaqSeeder::class
         ]);
         DB::commit();
         // \App\Models\User::factory(10)->create();
