@@ -37,7 +37,8 @@ $userRoutes=[
 	'orders',
 	'orders/{id}',
 	'promotions/{id}',
-	'shop/all'];
+	'shop/all',
+	'page/{link}'];
 	foreach($userRoutes as $userRoute){
 		Route::view('/'.$userRoute,$userPage);
 	}

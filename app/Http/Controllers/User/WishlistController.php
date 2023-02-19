@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\{WishList,UserData,Item,DeleteData};
 use App\Rules\WishListValidation;
 use App\Repositories\WishListRepositoryInterface;
-use Validator;
+
 class WishlistController extends Controller
 {
     //

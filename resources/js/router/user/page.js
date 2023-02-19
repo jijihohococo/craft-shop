@@ -11,6 +11,7 @@ const Shop = () => import('User/Views/Shop')
 const Register = () => import('User/Views/Register')
 const Login = () => import('User/Views/Login')
 const ItemDetail = () => import('User/Views/ItemDetail')
+const Page = () => import('User/Views/Page')
 export default [
 {
 	path : '',
@@ -94,5 +95,10 @@ export default [
 	path  : 'items/:id',
 	component : ItemDetail ,
 	name : 'items.detail'
+},
+{
+	path : 'page/:link',
+	component : Page ,
+	name : 'page.name'
 }
 ]
