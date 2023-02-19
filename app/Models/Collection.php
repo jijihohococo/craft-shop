@@ -19,7 +19,7 @@ class Collection extends TransactionModel
 
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-collections',DateModel::ONE_DAY,function(){
-            return self::orderBy('id')->get();
+            return self::selectSeoData('Collection')->orderBy('id')->get();
         });
     }
 

@@ -5,10 +5,10 @@ namespace App\Traits;
 use Validator;
 trait APIValidator{
 
-	public function makeInputData($content,$contentId,$search){
+	public function makeInputData($content,$link,$search){
 		return [
 			'content' => $content ,
-			'contentId' => $contentId ,
+			'link' => $link ,
 			'search' => $search
 		];
 	}
@@ -16,7 +16,7 @@ trait APIValidator{
 	public function makeValidator($inputData,$arrayData){
         return Validator::make( $inputData ,  [
             'content' => 'in:'.implode(',', $arrayData ) ,
-            'contentId' => ['nullable','integer']
+            'link' => ['nullable','string']
         ]);
     }
 

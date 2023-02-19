@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Color;
+use DB;
 class ColorController extends CommonController
 {
     
@@ -51,7 +52,14 @@ class ColorController extends CommonController
     {
         //
         $request->validate($this->validateData());
-        Color::create($request->all());
+        DB::beginTransaction();
+        $color=Color::create($request->all());
+        $this->seo->create([
+            'title' => $request->name ,
+            'model' => $this->model,
+            'model_id' => $color->id
+        ]);
+        DB::commit();
         return response()->json([
             'message' => $request->name . ' Color is created successfully'
         ]);

@@ -13,5 +13,37 @@ trait SeoTrait{
             ->limit(1);
         } ]);
     }
+
+    public function scopeWhereLink($query,$column,$link){
+        $table=NULL;
+        $model=NULL;
+        switch ($column) {
+            case 'category_id':
+            $table='categories';
+            $model='Category';
+            break;
+            
+            case 'subcategory_id':
+            $table='subcategories';
+            $model='Subcategory';
+            break;
+
+            case 'brand_id':
+            $table='brands';
+            $model='Brand';
+            break;
+        }
+        return $query->where($column,function($query) use($table,$link,$model) {
+            $query->select($table.'.id')
+            ->from($table)
+            ->where($table.'.id',function($query) use($link,$model) {
+                $query->select('seos.model_id')
+                ->from('seos')
+                ->where('seos.page_link',$link)
+                ->where('seos.model',$model)
+                ->limit(1);
+            });
+        });
+    }
     
 }

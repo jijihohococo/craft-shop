@@ -17,7 +17,8 @@ class AttributeResource extends JsonResource
         return [
             'id' => $this->id ,
             'name' => $this->name ,
-            'sets' => $this->sets
+            'sets' => $this->sets ,
+            'link' => $this->link
         ];
     }
 }

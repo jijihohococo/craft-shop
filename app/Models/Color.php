@@ -5,43 +5,44 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
-use App\Traits\{SearchNameTrait,DeleteSearch};
+use App\Traits\{SearchNameTrait,DeleteSearch,SeoTrait};
 class Color extends TransactionModel
 {
-    use SoftDeletes,SearchNameTrait,DeleteSearch;
+    use SoftDeletes,SearchNameTrait,DeleteSearch,SeoTrait;
 
     protected $fillable=[
         'name',
         'color_code'
     ];
 
+    public static $tableName='colors';
+
     public static $cacheKey='colors_cache';
 
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-colors',DateModel::ONE_DAY,function(){
-            return self::orderBy('name','ASC')->get();
+            return self::selectSeoData('Color')->orderBy('name','ASC')->get();
         });
     }
 
-    public function scopeGetByItemData($query,$column,$id){
-        return $query->whereIn('id',function($query) use($column,$id){
+    public function scopeGetByItemData($query,$column,$link){
+        return $query->whereIn('id',function($query) use($column,$link){
             $query->select('color_id')
             ->from('item_variants')
-            ->whereIn('item_id',function($query) use($column,$id) {
-                $query->select('id')
-                ->from('items')
-                ->where($column,$id);
-            });
+            ->whereIn('item_id',
+                Item::select('id')
+                ->whereLink($column,$link)
+                ->getQuery());
         });
     }
 
-    public function scopeGetByItemSearch($query,$column,$id,$searchData){
+    public function scopeGetByItemSearch($query,$column,$link,$searchData){
         return $query->searchWithName($searchData)
-        ->orWhereIn('id',function($query) use($column,$id,$searchData) {
+        ->orWhereIn('id',function($query) use($column,$link,$searchData) {
             $query->select('color_id')
             ->from('item_variants')
             ->whereIn('item_id',Item::select('id')
-                ->where($column,$id)
+                ->whereLink($column,$link)
                 ->searchWithName( $searchData )
                 ->searchWithCategory($searchData)
                 ->searchWithSubcategory($searchData)

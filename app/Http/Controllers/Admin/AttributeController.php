@@ -50,8 +50,15 @@ class AttributeController extends CommonController
     {
         //
         $request->validate($this->validateData());
+        DB::beginTransaction();
         $attribute=Attribute::create($request->all());
         $this->addAttributeSets($request->sets , $attribute->id);
+        $this->seo->create([
+            'title' => $request->name ,
+            'model' => $this->model,
+            'model_id' => $attribute->id
+        ]);
+        DB::commit();
         return response()->json([
             'message' => $request->name . ' Attribute is created successfully'
         ]);
@@ -94,9 +101,11 @@ class AttributeController extends CommonController
     {
         //
         $request->validate($this->validateData($attribute->id));
+        DB::beginTransaction();
         $attribute->update($request->all());
         $this->sets=$attribute->sets->pluck('set')->toArray();
         $this->addAttributeSets($request->sets , $attribute->id,'yes');
+        DB::commit();
         return response()->json([
             'message' => $request->name . ' Attribute is updated successfully'
         ]);

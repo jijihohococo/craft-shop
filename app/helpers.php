@@ -2,6 +2,9 @@
 
 use App\Models\{PassportDate,TokenRefresh,User};
 use Illuminate\Support\Facades\Route;
+function getModel($column){
+	return ucfirst(str_replace( ['_id'] , '',$column));
+}
 function makeLink($string){
 	return strtolower(preg_replace('/\s+/', '_', $string ));
 }

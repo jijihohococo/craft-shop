@@ -29,7 +29,8 @@ class Category extends TransactionModel
 
     public function getWithSubcategories(){
         return Cache::tags(self::$cacheKey)->remember('all-categories',DateModel::ONE_DAY,function(){
-            return self::addSelect(['subcategories' => function($query){
+            return self::selectSeoData('Category')
+            ->addSelect(['subcategories' => function($query){
                 self::getSubcategories($query,'name');
             } ,
             'subcategory_ids' => function($query){

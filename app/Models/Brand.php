@@ -21,22 +21,23 @@ class Brand extends TransactionModel
 
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-brands',DateModel::ONE_DAY,function(){
-            return self::select(['id','name','pic'])->orderBy('name')->get();
+            return self::select(['id','name','pic'])
+            ->selectSeoData('Brand')
+            ->orderBy('name')->get();
         });
     }
 
-    public function scopeGetByItemData($query,$column,$categoryId){
-        return $query->whereIn('id',function($query) use($column,$categoryId) {
-            $query->select('brand_id')
-            ->from('items')
-            ->where($column,$categoryId);
-        });
+    public function scopeGetByItemData($query,$column,$link){
+        return $query->whereIn('id',Item::select('brand_id')
+            ->whereLink($column,$link)
+            ->getQuery()
+        );
     }
 
-    public function scopeGetByItemSearch($query,$column,$categoryId,$searchData){
+    public function scopeGetByItemSearch($query,$column,$link,$searchData){
         return $query->whereIn('id',
             Item::select('brand_id')
-            ->where($column,$categoryId)
+            ->whereLink($column,$link)
             ->searchWithName( $searchData )
             ->searchWithCategory($searchData)
             ->searchWithSubcategory($searchData)

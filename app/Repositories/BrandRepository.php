@@ -7,15 +7,17 @@ class BrandRepository implements BrandRepositoryInterface{
 
 
 	public function getByContent($content,$id){
-		return Brand::getByItemData($content.'_id',$id)
-            ->latest('name')
-            ->get();
+		return Brand::selectSeoData('Brand')
+		->getByItemData($content.'_id',$id)
+		->latest('name')
+		->get();
 	}
 
 	public function searchByContent($content,$id,$searchData){
-		return Brand::getByItemSearch($content.'_id',$id,$searchData)
-            ->latest('name')
-            ->get();
+		return Brand::selectSeoData('Brand')
+		->getByItemSearch($content.'_id',$id,$searchData)
+		->latest('name')
+		->get();
 	}
 
 	public function getAll(){
@@ -23,7 +25,8 @@ class BrandRepository implements BrandRepositoryInterface{
 	}
 
 	public function getAllBySearch($searchData){
-		return Brand::getAllByItemSearch($searchData)
+		return Brand::selectSeoData('Brand')
+		->getAllByItemSearch($searchData)
 		->latest('name')
 		->get();
 	}

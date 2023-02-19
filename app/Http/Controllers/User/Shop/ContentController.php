@@ -19,18 +19,18 @@ abstract class ContentController extends Controller
         'brand'
     ];
 
-    public function getContent($content,$id,$searchData=null){
+    public function getContent($content,$link,$searchData=null){
         return response()->json([
-            $this->content .'s' => $this->getContentData($content,$id,$searchData)
+            $this->content .'s' => $this->getContentData($content,$link,$searchData)
         ]);
     }
 
-    public function getContentData($content,$id,$searchData=null){
+    public function getContentData($content,$link,$searchData=null){
         if($content=='all'){
             return $searchData==NULL ? $this->{$this->content}->getAll() : $this->{$this->content}->getAllBySearch($searchData);
         }else{
-            return $searchData==NULL ? $this->{$this->content}->getByContent($content,$id) :
-            $this->{$this->content}->searchByContent($content,$id,$searchData);
+            return $searchData==NULL ? $this->{$this->content}->getByContent($content,$link) :
+            $this->{$this->content}->searchByContent($content,$link,$searchData);
         }
     }
 
@@ -38,11 +38,11 @@ abstract class ContentController extends Controller
         return $searchData!==NULL?'%'.$searchData.'%':NULL;
     }
 
-    public function getDataByContent(Request $request,$content,$contentId=NULL){
-        $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),$this->acceptArray);
+    public function getDataByContent(Request $request,$content,$link=NULL){
+        $validator=$this->makeValidator($this->makeInputData($content,$link,$request->search),$this->acceptArray);
         if($validator->fails()){
             return makeErrorMessage($validator->errors());
         }
-        return $this->getContent($content,$contentId,$this->makeSearch($request->search));
+        return $this->getContent($content,$link,$this->makeSearch($request->search));
     }
 }
