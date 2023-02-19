@@ -19,7 +19,11 @@
 </div>
 </template>
 <script >
+
+	import { mix } from '../common/ui'
+	
 	export default {
+		mixins : [mix],
 		data(){
 			return {
 				error : window.error_code ?? 404

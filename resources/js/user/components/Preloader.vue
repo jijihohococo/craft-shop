@@ -17,7 +17,7 @@
     mounted() {
      setTimeout(() => {
       $(this.$el).delay(700).fadeOut(700).addClass('loaded');
-    }, 2500)
+    }, 500)
    },
  }
 </script>

@@ -1,4 +1,7 @@
 <template>
+    <Preloader />
+    <NotFound v-if="error" />
+    <template v-else >
 	<div class="section">
        <div class="container">
           <div class="row">
@@ -478,19 +481,27 @@
 </div>
 </div>
 </template>
+</template>
 <script >
 
 	import ItemPrice from '../components/ItemPrice';
+
+    import Preloader from '../components/Preloader'
+
+    import NotFound from  './NotFound'
 
     import { mix } from '../common/ui'
 
 	export default {
 		components : {
 			ItemPrice,
+            Preloader,
+            NotFound
 		},
 		data(){
 			return {
-				item : {}
+				item : {},
+                error : false
 			}
 		},
         mixins : [mix],
@@ -501,7 +512,9 @@
          async getItemData(){
             window.axios.get('items/'+this.$route.params.id).then( (response) => {
                this.item=response.data.item
-           } )
+           } ).catch((error)=>{
+                this.error=true
+           })
         }
     }
 }
