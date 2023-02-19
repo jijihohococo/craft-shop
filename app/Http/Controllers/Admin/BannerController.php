@@ -61,8 +61,6 @@ class BannerController extends CommonController
         $banner->save( $banner->getAttributes() );
         $this->seo->create([
             'title' => $request->title ,
-            'description' => $request->title ,
-            'type' => $request->title,
             'model' => $this->model,
             'model_id' => $banner->id
         ]);

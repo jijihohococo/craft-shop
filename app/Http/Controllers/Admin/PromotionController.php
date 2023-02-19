@@ -51,8 +51,6 @@ class PromotionController extends CommonController
         $promotion=Promotion::create($request->all());
         $this->seo->create([
             'title' => $request->name ,
-            'description' => $request->name ,
-            'type' => $request->name,
             'model' => $this->model,
             'model_id' => $promotion->id
         ]);

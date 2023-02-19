@@ -9,7 +9,7 @@ class SeoRepository implements SeoRepositoryInterface{
 		Seo::create([
 			'title' => $data['title'],
 			'page_link' => makeLink($data['title']),
-			'description' => $data['description'],
+			'description' => $data['title'],
 			'type' => $data['title'],
 			'model' => $data['model'],
 			'model_id' => $data['model_id']

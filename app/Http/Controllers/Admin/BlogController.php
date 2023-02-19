@@ -78,8 +78,6 @@ class BlogController extends CommonController
         $blog=Blog::create($request->all());
         $this->seo->create([
             'title' => $request->name ,
-            'description' => $request->name ,
-            'type' => $request->name,
             'model' => $this->model,
             'model_id' => $brand->id
         ]);

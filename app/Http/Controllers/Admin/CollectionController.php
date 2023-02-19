@@ -82,8 +82,6 @@ class CollectionController extends CommonController
         $this->insertItemCollections($request->items,$collection->id);
         $this->seo->create([
             'title' => $request->name ,
-            'description' => $request->name ,
-            'type' => $request->name,
             'model' => $this->model,
             'model_id' => $collection->id
         ]);

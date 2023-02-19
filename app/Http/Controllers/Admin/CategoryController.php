@@ -50,8 +50,6 @@ class CategoryController extends CommonController
         $category=Category::create($request->all());
         $this->seo->create([
             'title' => $request->name ,
-            'description' => $request->name ,
-            'type' => $request->name,
             'model' => $this->model,
             'model_id' => $category->id
         ]);

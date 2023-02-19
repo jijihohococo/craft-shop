@@ -67,8 +67,6 @@ class BrandController extends CommonController
         $brand->save( $brand->getAttributes() );
         $this->seo->create([
             'title' => $request->name ,
-            'description' => $request->name ,
-            'type' => $request->name,
             'model' => $this->model,
             'model_id' => $brand->id
         ]);
