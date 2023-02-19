@@ -14,11 +14,16 @@ trait ColorDataTrait{
         });
     }
 
-    public function scopeWhereInColorIds($query,$colorIds){
-        return $query->whereIn('id',function($query) use($colorIds){
+    public function scopeWhereInColorLinks($query,$links){
+        return $query->whereIn('id',function($query) use($links){
             $query->select('item_id')
             ->from('item_variants')
-            ->whereIn('item_variants.color_id',$colorIds);
+            ->whereIn('item_variants.color_id',function($query) use($links) {
+                $query->select('seos.model_id')
+                ->from('seos')
+                ->where('seos.model','Color')
+                ->whereIn('seos.page_link',$links);
+            } );
         } );
     }
 

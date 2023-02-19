@@ -11,33 +11,33 @@
             <ul> 
                 <li class="dropdown dropdown-mega-menu" v-for="category in categories">
                     <a class="dropdown-item nav-link dropdown-toggler" data-toggle="dropdown">
-                      <span v-on:click="goToContent('category',category.id)">  {{ category.name }}</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <ul class="mega-menu d-lg-flex">
-                            <li class="mega-menu-col col-lg-7">
-                                <ul class="d-lg-flex">
-                                    <li class="mega-menu-col col-lg-6">
-                                        <ul v-if="category.subcategories!==null">
-                                                <li v-for="(subcategory,key) in category.subcategories.split(',')">
-                                                    <a v-on:click="goToContent('subcategory',category.subcategory_ids.split(',')[key])" class="dropdown-item nav-link nav_item">
-                                                        {{ subcategory }}
-                                                    </a>
-                                                </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="mega-menu-col col-lg-5">
-                                <div class="header-banner2">
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul> 
-        </div>
+                      <span v-on:click="goToContent('category',category.link)">  {{ category.name }}</span>
+                  </a>
+                  <div class="dropdown-menu">
+                    <ul class="mega-menu d-lg-flex">
+                        <li class="mega-menu-col col-lg-7">
+                            <ul class="d-lg-flex">
+                                <li class="mega-menu-col col-lg-6">
+                                    <ul v-if="category.subcategories!==null">
+                                        <li v-for="(subcategory,key) in category.subcategories.split(',')">
+                                            <a v-on:click="goToContent('subcategory',category.subcategory_links.split(',')[key])" class="dropdown-item nav-link nav_item">
+                                                {{ subcategory }}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="mega-menu-col col-lg-5">
+                            <div class="header-banner2">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul> 
     </div>
+</div>
 </div>
 <!-- <component is="script" src="user/js/scripts.js" /> -->
 </template>
@@ -48,7 +48,7 @@
         props : {
             categories : {
                 type : Object ,
-                default : {}
+            default : {}
             }
         },
         data(){
@@ -58,6 +58,16 @@
             }
         },
         mixins: [common_mixin],
+        mounted : function(){
+            $("html").on('click', function (e) {
+                if($(e.target).is('a.dropdown-item.nav-link.dropdown-toggler')==false
+                    ){
+                    $('.categories_btn').addClass('collapsed');
+                $('.categories_btn,.side_navbar_toggler').attr('aria-expanded', 'false');
+                $('#navCatContent,#navbarSidetoggle').removeClass('show');
+            }
+        });
+        },
         methods : {
           goToContent(content,contentId){
             //this.changeShow()
@@ -66,7 +76,7 @@
             }
             this.$router.push({path: '/shop/'+content + '/' + contentId })
 
-          }
-      }
-  }
+        }
+    }
+}
 </script>

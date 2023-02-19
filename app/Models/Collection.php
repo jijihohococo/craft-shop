@@ -17,6 +17,8 @@ class Collection extends TransactionModel
 
     public static $cacheKey='collections_cache';
 
+    public static $tableName='collections';
+
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-collections',DateModel::ONE_DAY,function(){
             return self::selectSeoData('Collection')->orderBy('id')->get();

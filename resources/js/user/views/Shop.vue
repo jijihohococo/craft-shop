@@ -99,6 +99,7 @@
 						:select_list="currentSets"
 						route_query="sets"
 						column="set"
+						value="id"
 						@updatePage="updatePageData"
 						/>
 						<div class="widget">

@@ -286,6 +286,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mixins: [_common___WEBPACK_IMPORTED_MODULE_0__.common_mixin],
+  mounted: function mounted() {
+    $("html").on('click', function (e) {
+      if ($(e.target).is('a.dropdown-item.nav-link.dropdown-toggler') == false) {
+        $('.categories_btn').addClass('collapsed');
+        $('.categories_btn,.side_navbar_toggler').attr('aria-expanded', 'false');
+        $('#navCatContent,#navbarSidetoggle').removeClass('show');
+      }
+    });
+  },
   methods: {
     goToContent: function goToContent(content, contentId) {
       //this.changeShow()
@@ -943,14 +952,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   )])), $data.menu_show.data ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.categories, function (category) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
       onClick: function onClick($event) {
-        return $options.goToContent('category', category.id);
+        return $options.goToContent('category', category.link);
       }
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.name), 9
     /* TEXT, PROPS */
     , _hoisted_9)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_14, [category.subcategories !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_15, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(category.subcategories.split(','), function (subcategory, key) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
         onClick: function onClick($event) {
-          return $options.goToContent('subcategory', category.subcategory_ids.split(',')[key]);
+          return $options.goToContent('subcategory', category.subcategory_links.split(',')[key]);
         },
         "class": "dropdown-item nav-link nav_item"
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(subcategory), 9

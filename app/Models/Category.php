@@ -23,7 +23,7 @@ class Category extends TransactionModel
         return $query->select(\DB::raw('GROUP_CONCAT(subcategories.'.$column.')'))
                 ->from('subcategories')
                 ->whereColumn('categories.id','subcategories.category_id')
-                ->where('deleted_at',NULL)
+                ->where('subcategories.deleted_at',NULL)
                 ->groupBy('subcategories.category_id');
     }
 
@@ -35,7 +35,18 @@ class Category extends TransactionModel
             } ,
             'subcategory_ids' => function($query){
                 self::getSubcategories($query,'id');
-            } ])
+            },
+            'subcategory_links' => function($query){
+                $query->select(
+                    \DB::raw('GROUP_CONCAT(seos.page_link)')
+                )
+                ->from('subcategories')
+                ->join('seos', 'seos.model_id', '=', 'subcategories.id')
+                ->where('seos.model','=','Subcategory')
+                ->whereColumn('categories.id','subcategories.category_id')
+                ->where('subcategories.deleted_at',NULL)
+                ->groupBy('subcategories.category_id');
+            }  ])
             ->orderBy('id')
             ->get();
         });

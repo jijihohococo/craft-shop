@@ -58,22 +58,22 @@ class ItemController extends Controller
 
         if(!empty($items) && $request->categories!==NULL){
             $categories=explode(',', $request->categories);
-            $items=$items->whereInCategoryIds($categories);
+            $items=$items->whereInSeos('category_id','Category',$categories);
         }
 
         if(!empty($items) && $request->subcategories!==NULL){
             $subcategories=explode(',', $request->subcategories);
-            $items=$items->whereInSubcategoryIds($subcategories);
+            $items=$items->whereInSeos('subcategory_id','Subcategory',$subcategories);
         }
 
         if(!empty($items) && $request->brands!==NULL){
             $brands=explode(',', $request->brands);
-            $items=$items->whereInBrandIds($brands);
+            $items=$items->whereInSeos('brand_id','Brand',$brands);
         }
 
         if(!empty($items) &&  $request->colors!==NULL){
             $colors=explode(',',$request->colors);
-            $items=$items->whereInColorIds($colors);
+            $items=$items->whereInColorLinks($colors);
         }
 
         if(!empty($items) && $request->sets!==NULL){

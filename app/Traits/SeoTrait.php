@@ -45,5 +45,14 @@ trait SeoTrait{
             });
         });
     }
+
+    public function scopeWhereInSeos($query,$column,$model,$links){
+        return $query->whereIn($column,function($query) use($links,$model){
+            $query->select('seos.model_id')
+            ->from('seos')
+            ->where('seos.model',$model)
+            ->whereIn('seos.page_link',$links);
+        });
+    }
     
 }

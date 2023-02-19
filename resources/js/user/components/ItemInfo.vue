@@ -7,7 +7,7 @@
 					<li class="hand_cursor">
 						<a @click="addToCart()">
 							<i class="icon-basket-loaded"></i>
-						Add To Cart</a>
+						</a>
 					</li>
 					<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
 					<WishButton :item_id="item.id" />
