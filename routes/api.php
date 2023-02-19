@@ -25,7 +25,7 @@ Route::post('subscribe','User\SubscribeController@make');
 
 Route::get('user_id','User\UserController@getId');
 
-Route::get('items/{id}','User\ItemController@show');
+Route::get('items/{link}','User\ItemController@show');
 
 
 Route::get('wishlist','User\WishlistController@get');

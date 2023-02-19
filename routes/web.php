@@ -33,7 +33,7 @@ $userRoutes=[
 	'terms_and_conditions',
 	'shopping_cart',
 	'wishlist',
-	'items/{id}',
+	'items/{link}',
 	'orders',
 	'orders/{id}',
 	'promotions/{id}',
