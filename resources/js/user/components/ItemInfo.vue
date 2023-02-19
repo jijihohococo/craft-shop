@@ -1,6 +1,7 @@
 <template>
 	<div class="product_info">
-		<h6 class="product_title"><a href="shop-product-detail.html">{{ item.name }}</a></h6>
+		<h6 class="product_title"><router-link :to="{name:'items.detail',params:{id:item.link}}">{{ item.name }}
+		</router-link></h6>
 		<ItemPrice
 		:normal_price="normalPrice"
 		:sale_price="salePrice"

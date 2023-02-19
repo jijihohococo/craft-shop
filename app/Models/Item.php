@@ -267,6 +267,7 @@ class Item extends TransactionModel
         ->selectReviews()
         ->selectPrice()
         ->selectStock()
+        ->selectSeoData('Item')
         ->inWish();
     }
 

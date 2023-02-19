@@ -1,12 +1,12 @@
 <template>
 	<div class="product">
-		<div class="product_img">
-			<a href="shop-product-detail.html">
+		<div class="hand_cursor">
+			<router-link :to="{name:'items.detail',params:{id:item.link}}">
 				<v-lazy-image 
 				:src="showImage(item.image)"
 				:alt="item.name" />
-			</a>
-			<div class="product_action_box">
+			</router-link>
+			<div >
 				<ul class="list_none pr_action_btn">
 					<li class="hand_cursor">
 						<a @click="addToCart()">
@@ -14,9 +14,6 @@
 						Add To Cart</a>
 					</li>
 					<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-					<li><router-link :to="{name:'items.detail',params:{id:item.id}}">
-						<i class="icon-magnifier-add"></i>
-					</router-link></li>
 					<WishButton :item_id="item.id" />
 				</ul>
 			</div>
