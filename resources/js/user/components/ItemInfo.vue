@@ -2,6 +2,17 @@
 	<div class="product_info">
 		<h6 class="product_title"><router-link :to="{name:'items.detail',params:{id:item.link}}">{{ item.name }}
 		</router-link></h6>
+		<div class="">
+				<ul class="list_none pr_action_btn">
+					<li class="hand_cursor">
+						<a @click="addToCart()">
+							<i class="icon-basket-loaded"></i>
+						Add To Cart</a>
+					</li>
+					<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+					<WishButton :item_id="item.id" />
+				</ul>
+			</div>
 		<ItemPrice
 		:normal_price="normalPrice"
 		:sale_price="salePrice"
@@ -25,16 +36,21 @@
 <script >
 	import ItemPrice from './ItemPrice'
 	import ItemColor from './ItemColor'
+	import WishButton from './WishButton'
 	import { showAveragePercent } from '../helpers/general.js';
+	import { mixin } from '../common/';
 	export default {
 		components : {
 			ItemPrice,
-			ItemColor
+			ItemColor,
+			WishButton
 		},
+		mixins : [mixin],
 		data(){
 			return {
 				normalPrice : 0,
-				salePrice : 0
+				salePrice : 0 ,
+				currentItemVariant : 0
 			}
 		},
 		props : {
@@ -55,12 +71,21 @@
 			getColor(key){
 				let colorCode=this.item.colorCodes.split(',')[key]
 				colorCode=colorCode.replace('#','')
+				this.currentItemVariant=key;
 				window.axios.get('item_by_color_code/'+colorCode).then((response)=>{
 					let item=response.data.item
 					this.normalPrice=item.normal_price
 					this.salePrice=item.sale_price
 				})
-				this.$emit('getData',key)
+			},
+			addToCart(){
+				let variantId=this.$props.item.variants.split(',')[this.currentItemVariant]
+				window.axios.post( 'add_item_to_shopping_cart/'+variantId ).then( (response) => {
+					this.$swal( 'Success' ,
+						response.data.message ,
+						'success'  );
+					this.changeShoppingCart(response);
+				} )
 			}
 		}
 	}
