@@ -8,6 +8,8 @@ use App\Traits\DataInsertSeeder;
 class CategorySeeder extends Seeder
 {
     use DataInsertSeeder;
+
+    protected $mainColumn='name';
     /**
      * Run the database seeds.
      *

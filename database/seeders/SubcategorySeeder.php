@@ -8,6 +8,8 @@ use App\Traits\DataInsertSeeder;
 class SubcategorySeeder extends Seeder
 {
     use DataInsertSeeder;
+
+    protected $mainColumn='name';
     /**
      * Run the database seeds.
      *

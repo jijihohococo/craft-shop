@@ -17,6 +17,11 @@
 										<strong v-if="errors && errors.title" class="invalid-feedback">{{ errors.title[0] }}</strong>
 									</div>
 									<div class="form-group">
+										<label>Link</label>
+										<input type="text" :class="[errors && errors.page_link ? 'form-control is-invalid' : 'form-control']" placeholder="Link" v-model="fields.page_link">
+										<strong v-if="errors && errors.page_link" class="invalid-feedback">{{ errors.page_link[0] }}</strong>
+									</div>
+									<div class="form-group">
 										<label>Description</label>
 										<textarea :class="[errors && errors.description ? 'form-control is-invalid' : 'form-control']" placeholder="Description" v-model="fields.description">
 
@@ -97,6 +102,7 @@
 				return_link : null ,
 				fields : {
 					title : '',
+					page_link : '',
 					description : '',
 					type : '',
 					keyword : [],
@@ -140,6 +146,7 @@
 					let responseData=response.data;
 					this.actions.update=true
 					this.fields.title=responseData.seo.title
+					this.fields.page_link=responseData.seo.page_link
 					this.fields.description=responseData.seo.description
 					this.fields.type=responseData.seo.type
 					if(responseData.keywords.length>0){

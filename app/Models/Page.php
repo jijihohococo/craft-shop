@@ -10,7 +10,6 @@ class Page extends TransactionModel
 
     protected $fillable=[
         'name',
-        'link',
         'description'
     ];
 
@@ -20,7 +19,7 @@ class Page extends TransactionModel
 
     public function getAll(){
         return Cache::tags( self::$cacheKey )->remember('all-pages',DateModel::ONE_DAY,function(){
-            return self::select(['id','name','link'])->orderBy('name')->get();
+            return self::select(['id','name'])->orderBy('name')->get();
         });
     }
 }

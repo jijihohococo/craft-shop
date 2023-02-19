@@ -7,6 +7,8 @@ use App\Traits\DataInsertSeeder;
 class PageSeeder extends Seeder
 {
     use DataInsertSeeder;
+
+    protected $mainColumn='name';
     /**
      * Run the database seeds.
      *
@@ -54,7 +56,6 @@ class PageSeeder extends Seeder
         //
         $this->insertSeed([
             ['name' =>'Terms And Conditions',
-            'link' =>'terms_and_conditions',
             'description' => $this->getTermsAndConditions()
         ]
     ],'Page','pages');

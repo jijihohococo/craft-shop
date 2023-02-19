@@ -8,8 +8,9 @@ class SeoRepository implements SeoRepositoryInterface{
 	public function create(array $data){
 		Seo::create([
 			'title' => $data['title'],
+			'page_link' => makeLink($data['title']),
 			'description' => $data['description'],
-			'type' => $data['type'],
+			'type' => $data['title'],
 			'model' => $data['model'],
 			'model_id' => $data['model_id']
 		]);
@@ -20,6 +21,7 @@ class SeoRepository implements SeoRepositoryInterface{
 		if($seo!==NULL){
 			$seo->update([
 				'title' => $data['title'],
+				'page_link' => makeLink($data['page_link']),
 				'description' => $data['description'],
 				'type' => $data['type']
 			]);

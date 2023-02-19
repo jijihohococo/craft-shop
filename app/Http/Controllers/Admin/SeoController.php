@@ -71,6 +71,7 @@ class SeoController extends Controller
             'model_id' => $modelId
         ],[
             'title' => $request->title,
+            'page_link' => $request->page_link,
             'description' => $request->description,
             'type' => $request->type
         ]);
@@ -100,8 +101,11 @@ class SeoController extends Controller
     // }
 
     private function validateData(){
+        $linkValidation=uniqueColumn($this->content,$id,'page_link');
+        $linkValidation[]='alpha_dash';
         return [
             'title' => ['required','string','max:100'],
+            'page_link' => $linkValidation,
             'description' => ['required','string','max:100'],
             'type' => ['required','string','max:100'],
             'keyword' => ['array','min:1'],

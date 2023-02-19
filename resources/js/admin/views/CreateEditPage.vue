@@ -19,11 +19,6 @@
 									<strong v-if="errors && errors.name" class="invalid-feedback">{{ errors.name[0] }}</strong>
 								</div>
 								<div class="form-group">
-									<label>Link</label>
-									<input type="text" :class="[errors && errors.link ? 'form-control is-invalid' : 'form-control']" placeholder="Link" v-model="fields.link">
-									<strong v-if="errors && errors.link" class="invalid-feedback">{{ errors.link[0] }}</strong>
-								</div>
-								<div class="form-group">
 									<label>Description</label>
 									<Editor
 									:api-key="api_key"
@@ -71,7 +66,6 @@
 				],
 				fields : {
 					name : '',
-					link : '',
 					description : ''
 				}
 			}

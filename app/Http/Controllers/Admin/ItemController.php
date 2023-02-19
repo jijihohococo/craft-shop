@@ -210,7 +210,6 @@ private function insertItemTaxes($taxes,$itemId,$update=NULL){
         $this->seo->create([
             'title' => $request->name ,
             'description' => $request->name ,
-            'type' => '-',
             'model' => $this->model,
             'model_id' => $item->id
         ]);

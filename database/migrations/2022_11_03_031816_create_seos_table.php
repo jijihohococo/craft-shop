@@ -16,6 +16,7 @@ class CreateSeosTable extends Migration
         Schema::create('seos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('page_link');
             $table->string('description');
             $table->string('type');
             $table->string('model');

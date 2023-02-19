@@ -2,6 +2,9 @@
 
 use App\Models\{PassportDate,TokenRefresh,User};
 use Illuminate\Support\Facades\Route;
+function makeLink($string){
+	return strtolower(preg_replace('/\s+/', '_', $string ));
+}
 function makePassword($request){
 	$request->merge([
 		'password' => \Hash::make($request->password)

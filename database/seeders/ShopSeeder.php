@@ -26,6 +26,7 @@ class ShopSeeder extends Seeder
         ]);
         DB::table('seos')->insert([
             'title' => 'Craft Shop - Electronic Store',
+            'page_link' => '-',
             'description' => '-',
             'type' => 'Online Store',
             'model' => 'Shop',

@@ -7,6 +7,7 @@ class Seo extends TransactionModel
 
     protected $fillable=[
         'title',
+        'page_link',
         'description',
         'type',
         'model',

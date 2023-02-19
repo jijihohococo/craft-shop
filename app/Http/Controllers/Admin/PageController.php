@@ -132,11 +132,8 @@ class PageController extends CommonController
     }
 
     private function validateData($id=NULL){
-        $linkValidation=uniqueColumn($this->content,$id,'link');
-        $linkValidation[]='alpha_dash';
         return [
             'name' => uniqueColumn($this->content,$id) ,
-            'link' => $linkValidation,
             'description' => ['required','string','max:4294967295']
         ];
     }
