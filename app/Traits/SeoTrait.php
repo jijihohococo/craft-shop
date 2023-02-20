@@ -14,6 +14,16 @@ trait SeoTrait{
         } ]);
     }
 
+    public function scopeWhereSeo($query,$link,$model){
+        return $query->where('id',function($query) use($link,$model) {
+            $query->select('model_id')
+            ->from('seos')
+            ->where('model',$model)
+            ->where('page_link',$link)
+            ->limit(1);
+        });
+    }
+
     public function scopeWhereLink($query,$column,$link){
         $table=NULL;
         $model=NULL;

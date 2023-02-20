@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Resources\SeoResource;
 class Seo extends TransactionModel
 {
 
@@ -31,8 +32,9 @@ class Seo extends TransactionModel
     }
 
     public static function getSeo($model,$modelId){
-        return self::where('model',$model)
+        return new SeoResource(self::select(['id','title','page_link','description'])
+        ->where('model',$model)
         ->where('model_id',$modelId)
-        ->first();
+        ->first());
     }
 }

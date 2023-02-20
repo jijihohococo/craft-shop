@@ -2,6 +2,10 @@
 
 use App\Models\{PassportDate,TokenRefresh,User};
 use Illuminate\Support\Facades\Route;
+function dataNotFound(){
+	return response()->json(['message' => 'Data not found'],404);
+}
+
 function getModel($column){
 	return ucfirst(str_replace( ['_id'] , '',$column));
 }

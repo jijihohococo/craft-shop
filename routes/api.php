@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('item_by_color_code/{colorCode}','User\ItemController@getItemByColorCode');
 
-Route::get('page/{pageLink}','User\PageController@get');
+Route::get('pages/{link}','User\PageController@show');
 
 Route::post('subscribe','User\SubscribeController@make');
 
@@ -49,7 +49,10 @@ Route::get('collections','CollectionController@get');
 Route::get('best_sellers','User\ItemController@showBestSeller');
 Route::get('gamings','User\ItemController@showGaming');
 Route::get('feature_products','User\ItemController@showFeatureProducts');
+
 Route::get('blogs','User\BlogController@index');
+Route::get('blogs/{link}','User\BlogController@show');
+
 Route::get('faqs','User\FaqController@index');
 
 //------------------------------SHOP-----------------------------//

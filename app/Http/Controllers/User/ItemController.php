@@ -13,27 +13,20 @@ class ItemController extends Controller
     //
     private $item;
 
+    public $content = 'Item';
+
     public function show(Request $request,$link){
         $item=Item::selectItemData()
         ->selectPrice()
         ->selectStock()
-        ->where('id',function($query) use($link) {
-            $query->select('model_id')
-            ->from('seos')
-            ->where('model','Item')
-            ->where('page_link',$link)
-            ->limit(1);
-        })->first();
-        if($item==NULL){
-            return response()->json([
-                'message' => 'Data not found'
-            ],404);
-        }
-        return response()->json([
+        ->whereSeo($link,$this->content)
+        ->first();
+
+        return $item!==NULL ? response()->json([
             'item' => new ItemResource($item) ,
             'reviews' => $this->getReviews('item_reviews','item_id',$item->id) ,
-            'seo' => Seo::getSeo('Item',$item->id)
-        ]);
+            'seo' => Seo::getSeo($this->content,$item->id)
+        ]) : dataNotFound();
     }
 
     public function showBestSeller(){
