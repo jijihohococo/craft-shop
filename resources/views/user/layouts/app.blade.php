@@ -78,7 +78,7 @@
 <!-- imagesloaded js --> 
 <script src="{{ asset('user/js/imagesloaded.pkgd.min.js') }}"></script>
 <!-- isotope min js --> 
-<script src="{{ asset('user/js/isotope.min.js') }}"></script>
+<!-- <script src="{{ asset('user/js/isotope.min.js') }}"></script> -->
 <!-- jquery.dd.min js -->
 <script src="{{ asset('user/js/jquery.dd.min.js') }}"></script>
 <!-- slick js -->

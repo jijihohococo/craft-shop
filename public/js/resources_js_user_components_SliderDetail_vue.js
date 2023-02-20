@@ -184,22 +184,37 @@ var _hoisted_1 = {
   "class": "product"
 };
 var _hoisted_2 = {
-  "class": "product_img"
-};
-var _hoisted_3 = {
-  href: "shop-product-detail.html"
+  "class": "product_img hand_cursor"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_lazy_image = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-lazy-image");
 
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
   var _component_ItemInfo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ItemInfo");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_lazy_image, {
-    src: _ctx.showImage($props.item.image),
-    alt: $props.item.name
-  }, null, 8
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'items.detail',
+      params: {
+        id: $props.item.link
+      }
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_lazy_image, {
+        src: _ctx.showImage($props.item.image),
+        alt: $props.item.name
+      }, null, 8
+      /* PROPS */
+      , ["src", "alt"])])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
   /* PROPS */
-  , ["src", "alt"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ItemInfo, {
+  , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ItemInfo, {
     item: $props.item
   }, null, 8
   /* PROPS */

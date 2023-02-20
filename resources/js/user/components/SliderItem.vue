@@ -1,12 +1,12 @@
 <template>
 	<div class="product">
-		<div class="product_img">
-			<a href="shop-product-detail.html">
+		<router-link :to="{name:'items.detail',params:{id:item.link}}">
+			<div class="product_img hand_cursor">
 				<v-lazy-image 
 				:src="showImage(item.image)"
 				:alt="item.name" />
-			</a>
-		</div>
+			</div>
+		</router-link>
 		<ItemInfo :item="item" />
 	</div>
 </template>

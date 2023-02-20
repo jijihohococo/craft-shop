@@ -20,9 +20,9 @@
 								</div>
 								<div class="product_header_right">
 									<div class="products_view">
-										<a href="javascript:Void(0);" class="shorting_icon grid"><i class="ti-view-grid"></i></a>
-										<a href="javascript:Void(0);" class="shorting_icon list active"><i class="ti-layout-list-thumb"></i></a>
-									</div>
+                                    <a class="shorting_icon grid hand_cursor active"><i class="ti-view-grid"></i></a>
+                                    <a class="shorting_icon list hand_cursor"><i class="ti-layout-list-thumb"></i></a>
+                                </div>
 									<div class="custom_select">
 										<select class="form-control form-control-sm" v-model="current_showing">
 											<option v-for="showing in showings"
@@ -35,7 +35,7 @@
 							</div>
 						</div>
 					</div> 
-					<div class="row shop_container list">
+					<div class="row shop_container grid">
 						<div class="col-md-4 col-6" v-for="item in items.data">
 							<SliderItem :item="item" />
 						</div>
@@ -119,8 +119,8 @@
 			</div>
 		</div>
 	</div>
-</div>
-<!-- <component is="script" src="/user/js/scripts.js" /> -->
+</div><!-- 
+<component is="script" src="/user/js/scripts.js" /> -->
 </template>
 <script >
 	import List from '../components/List'
@@ -179,6 +179,24 @@
 		},
 		created(){
 			this.main()
+		},
+		mounted : () => {
+			$('.shorting_icon').on('click',function() {
+		if ($(this).hasClass('grid')) {
+			$('.shop_container').removeClass('list').addClass('grid');
+			$(this).addClass('active').siblings().removeClass('active');
+		}
+		else if($(this).hasClass('list')) {
+			$('.shop_container').removeClass('grid').addClass('list');
+			$(this).addClass('active').siblings().removeClass('active');
+		}
+		$(".shop_container").append('<div class="loading_pr"><div class="mfp-preloader"></div></div>');
+		setTimeout(function(){
+			$('.loading_pr').remove();
+			//console.log($container)
+			//$container.isotope('layout');
+		}, 800);
+	});
 		},
 		mixins: [common_mixin,mix],
 		watch : {

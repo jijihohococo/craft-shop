@@ -703,7 +703,8 @@ PAGE JS
 		$(".shop_container").append('<div class="loading_pr"><div class="mfp-preloader"></div></div>');
 		setTimeout(function(){
 			$('.loading_pr').remove();
-			$container.isotope('layout');
+			//console.log($container)
+			//$container.isotope('layout');
 		}, 800);
 	});
 	
