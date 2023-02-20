@@ -50,6 +50,17 @@ class Item extends TransactionModel
         return $this->hasMany('App\Models\ItemAttribute');
     }
 
+    public static function getDataByCollection($column,$link){
+        return self::select($column)->whereIn('id',
+            ItemCollection::select('item_id')
+            ->whereIn('collection_id', 
+                Collection::select('id')
+                ->whereSeo($link,'Collection')
+                ->getQuery()
+            )->getQuery()
+        )->getQuery();
+    }
+
     public function scopeSearchData($query,$searchData){
         return $query->searchWithName( $searchData )
         ->searchWithCategory($searchData)

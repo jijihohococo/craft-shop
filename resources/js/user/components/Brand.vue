@@ -21,9 +21,11 @@
 						snap-align="center">
 						<Slide class="item" v-for="brand in brands" :key="brand.id">
 							<div class="cl_logo">
-								<v-lazy-image 
-								:src="showImage(brand.pic)"
-								:alt="brand.name" />
+								<router-link :to="{name:'shop_brand',params:{content_id:brand.link}}">
+									<v-lazy-image 
+									:src="showImage(brand.pic)"
+									:alt="brand.name" />
+								</router-link>
 							</div>
 						</Slide>
 					</Carousel>

@@ -25,6 +25,15 @@ class Color extends TransactionModel
         });
     }
 
+    public function scopeGetByCollectionData($query,$link){
+        return $query->whereIn('id',function($query) use($link){
+            $query->select('color_id')
+            ->from('item_variants')
+            ->whereIn('item_id',
+                Item::getDataByCollection('id',$link) );
+        });
+    }
+
     public function scopeGetByItemData($query,$column,$link){
         return $query->whereIn('id',function($query) use($column,$link){
             $query->select('color_id')

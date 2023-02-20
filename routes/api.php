@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\{Brand,Item,Collection,Color,Attribute};
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::get('test',function(){
+	return Attribute::getByCollectionData('new_item_collection')->get();
+});
 Route::get('item_by_color_code/{colorCode}','User\ItemController@getItemByColorCode');
 
 Route::get('pages/{link}','User\PageController@show');

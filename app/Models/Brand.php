@@ -27,6 +27,10 @@ class Brand extends TransactionModel
         });
     }
 
+    public function scopeGetByCollectionData($query,$link){
+        return $query->whereIn('id',Item::getDataByCollection('brand_id',$link) );
+    }
+
     public function scopeGetByItemData($query,$column,$link){
         return $query->whereIn('id',Item::select('brand_id')
             ->whereLink($column,$link)

@@ -30,6 +30,14 @@ class Attribute extends TransactionModel
         });
     }
 
+    public function scopeGetByCollectionData($query,$link){
+        return $query->whereIn('id',function($query) use($link) {
+            $query->select('attribute_id')
+            ->from('item_attributes')
+            ->whereIn('item_id', Item::getDataByCollection('id',$link) );
+        });
+    }
+
     public function scopeGetByItemData($query,$column,$link){
         return $query->whereIn('id',function($query) use($column,$link) {
             $query->select('attribute_id')
