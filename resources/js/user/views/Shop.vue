@@ -57,24 +57,6 @@
 				<div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0">
 					<div class="sidebar">
 						<div class="widget">
-							<h5 class="widget_title">Categories</h5>
-							<ul class="widget_categories">
-								<li v-for="category in categories.data">
-									<a href="#">
-										<span class="categories_name">
-										{{ category.name }}
-									</span>
-									</a>
-								</li>
-							</ul>
-								<!-- <li><a href="#"><span class="categories_name">Women</span><span class="categories_num">(9)</span></a></li>
-								<li><a href="#"><span class="categories_name">Top</span><span class="categories_num">(6)</span></a></li>
-								<li><a href="#"><span class="categories_name">T-Shirts</span><span class="categories_num">(4)</span></a></li>
-								<li><a href="#"><span class="categories_name">Men</span><span class="categories_num">(7)</span></a></li>
-								<li><a href="#"><span class="categories_name">Shoes</span><span class="categories_num">(12)</span></a></li>
-							</ul> -->
-						</div>
-						<div class="widget">
 							<h5 class="widget_title">{{ translateLang("Filter") }}</h5>
 							<PriceFilter 
 							v-if="max_price>0"
