@@ -43,7 +43,7 @@
 								</ul>
 							</div>
 							<ul class="navbar-nav attr-nav align-items-center">
-								<li><a href="#" class="nav-link"><i class="linearicons-heart"></i><span class="wishlist_count">{{ wishlist_items.data.length }}</span></a></li>
+								<li><router-link to="/wishlist" class="nav-link"><i class="linearicons-heart"></i><span class="wishlist_count">{{ wishlist_items.data.length }}</span></router-link></li>
 								<ShoppingCartMenu />
 							</ul>
 							<div class="pr_search_icon">

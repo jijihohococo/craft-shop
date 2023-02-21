@@ -228,6 +228,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     changeData: function changeData() {
+      window.scrollTo(0, 0);
       this.$emit('updatePage', this.$props.route_query, this.selected_list);
     }
   }
