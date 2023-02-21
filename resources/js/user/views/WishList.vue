@@ -22,11 +22,11 @@
 								<tbody>
 									<tr v-for="item in wishlist_items.data">
 										<td class="product-thumbnail">
-											<a href="#">
+											<router-link :to="{name:'items.detail',params:{id:item.item_link}}">
 												<v-lazy-image 
 												:src="showImage(item.item_image)"
 												:alt="item.item_name" />
-											</a>
+											</router-link>
 										</td>
 										<td class="product-name" data-title="Product">{{ item.item_name }}</td>
 										<td class="product-price" data-title="Price">
@@ -36,7 +36,7 @@
 										</td>
 										<td class="product-add-to-cart"><a href="#" class="btn btn-fill-out"><i class="icon-basket-loaded"></i> Add to Cart</a></td>
 										<td class="product-remove" data-title="Remove"><a 
-											@click="removeFromWishlist(item.id)"><i class="ti-close"></i></a></td>
+											@click="removeFromWishlist(item.id)"><i class="hand_cursor ti-close"></i></a></td>
 									</tr>
 								</tbody>
 							</table>
