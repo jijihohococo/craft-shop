@@ -6,9 +6,9 @@ use App\Models\Brand;
 class BrandRepository implements BrandRepositoryInterface{
 
 
-	public function getByContent($content,$id){
+	public function getByContent($content,$link){
 		return Brand::selectSeoData('Brand')
-		->getByItemData($content.'_id',$id)
+		->getByItemData($content.'_id',$link)
 		->latest('name')
 		->get();
 	}
@@ -20,9 +20,9 @@ class BrandRepository implements BrandRepositoryInterface{
 		->get();
 	}
 
-	public function searchByContent($content,$id,$searchData){
+	public function searchByContent($content,$link,$searchData){
 		return Brand::selectSeoData('Brand')
-		->getByItemSearch($content.'_id',$id,$searchData)
+		->getByItemSearch($content.'_id',$link,$searchData)
 		->latest('name')
 		->get();
 	}

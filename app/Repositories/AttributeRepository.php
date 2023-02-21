@@ -6,10 +6,10 @@ use App\Models\Attribute;
 use App\Http\Resources\AttributeResource;
 class AttributeRepository implements AttributeRepositoryInterface{
 
-	public function getByContent($content,$id){
+	public function getByContent($content,$link){
 		return AttributeResource::collection(Attribute::
 			selectSeoData('Attribute')
-			->getByItemData($content.'_id',$id)->orderBy('name')->get());
+			->getByItemData($content.'_id',$link)->orderBy('name')->get());
 	}
 
 	public function getByCollection($link){
@@ -19,10 +19,10 @@ class AttributeRepository implements AttributeRepositoryInterface{
 			->get());
 	}
 
-	public function searchByContent($content,$id,$searchData){
+	public function searchByContent($content,$link,$searchData){
 		return AttributeResource::collection(Attribute::
 			selectSeoData('Attribute')
-			->getByItemSearch($content.'_id',$id,$searchData)->orderBy('name')->get());
+			->getByItemSearch($content.'_id',$link,$searchData)->orderBy('name')->get());
 	}
 
 	public function getAll(){
