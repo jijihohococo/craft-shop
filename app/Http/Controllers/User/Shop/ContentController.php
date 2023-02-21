@@ -14,7 +14,7 @@ abstract class ContentController extends Controller
 
     public $acceptArray=[
         'all',
-        'collection'
+        'collection',
         'category',
         'subcategory',
         'brand'
