@@ -12,6 +12,13 @@ class ColorRepository implements ColorRepositoryInterface{
 		->get();
 	}
 
+	public function getByCollection($link){
+		return Color::selectSeoData('Color')
+		->getByCollectionData($link)
+		->orderBy('name')
+		->get();
+	}
+
 	public function searchByContent($content,$id,$searchData){
 		return Color::selectSeoData('Color')
 		->getByItemSearch($content.'_id',$id,$searchData)

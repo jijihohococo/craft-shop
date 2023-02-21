@@ -14,6 +14,7 @@ abstract class ContentController extends Controller
 
     public $acceptArray=[
         'all',
+        'collection'
         'category',
         'subcategory',
         'brand'
@@ -26,11 +27,19 @@ abstract class ContentController extends Controller
     }
 
     public function getContentData($content,$link,$searchData=null){
-        if($content=='all'){
+        switch($content){
+            case 'all':
             return $searchData==NULL ? $this->{$this->content}->getAll() : $this->{$this->content}->getAllBySearch($searchData);
-        }else{
+            break;
+
+            case 'collection':
+            return $this->{$this->content}->getByCollection($link);
+            break;
+
+            default:
             return $searchData==NULL ? $this->{$this->content}->getByContent($content,$link) :
             $this->{$this->content}->searchByContent($content,$link,$searchData);
+            break;
         }
     }
 

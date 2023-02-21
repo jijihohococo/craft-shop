@@ -8,6 +8,8 @@ interface ContentInterface{
 
 	public function getByContent($content,$id);
 
+	public function getByCollection($link);
+
 	public function searchByContent($content,$id,$searchData);
 
 	public function getAll();

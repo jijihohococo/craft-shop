@@ -12,6 +12,13 @@ class AttributeRepository implements AttributeRepositoryInterface{
 			->getByItemData($content.'_id',$id)->orderBy('name')->get());
 	}
 
+	public function getByCollection($link){
+		return AttributeResource::collection(Attribute::selectSeoData('Attribute')
+			->getByCollectionData($link)
+			->orderBy('name')
+			->get());
+	}
+
 	public function searchByContent($content,$id,$searchData){
 		return AttributeResource::collection(Attribute::
 			selectSeoData('Attribute')

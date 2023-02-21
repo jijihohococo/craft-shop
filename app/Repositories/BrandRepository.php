@@ -13,6 +13,13 @@ class BrandRepository implements BrandRepositoryInterface{
 		->get();
 	}
 
+	public function getByCollection($link){
+		return Brand::selectSeoData('Brand')
+		->getByCollectionData($link)
+		->latest('name')
+		->get();
+	}
+
 	public function searchByContent($content,$id,$searchData){
 		return Brand::selectSeoData('Brand')
 		->getByItemSearch($content.'_id',$id,$searchData)
