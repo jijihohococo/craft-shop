@@ -50,21 +50,6 @@
         </ul>
     </div>
 </div>
-<div class="col-lg-4 col-md-4 col-sm-12">
-  <div class="widget">
-    <h6 class="widget_title">Instagram</h6>
-    <ul class="widget_instafeed instafeed_col4">
-        <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/insta_img1.jpg" alt="insta_img"><span class="insta_icon"><i class="ti-instagram"></i></span></a></li>
-        <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/insta_img2.jpg" alt="insta_img"><span class="insta_icon"><i class="ti-instagram"></i></span></a></li>
-        <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/insta_img3.jpg" alt="insta_img"><span class="insta_icon"><i class="ti-instagram"></i></span></a></li>
-        <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/insta_img4.jpg" alt="insta_img"><span class="insta_icon"><i class="ti-instagram"></i></span></a></li>
-        <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/insta_img5.jpg" alt="insta_img"><span class="insta_icon"><i class="ti-instagram"></i></span></a></li>
-        <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/insta_img6.jpg" alt="insta_img"><span class="insta_icon"><i class="ti-instagram"></i></span></a></li>
-        <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/insta_img7.jpg" alt="insta_img"><span class="insta_icon"><i class="ti-instagram"></i></span></a></li>
-        <li><a href="#"><img src="https://bestwebcreator.com/shopwise/demo/assets/images/insta_img8.jpg" alt="insta_img"><span class="insta_icon"><i class="ti-instagram"></i></span></a></li>
-    </ul>
-</div>
-</div>
 </div>
 </div>
 </div>
