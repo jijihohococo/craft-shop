@@ -364,13 +364,14 @@ __webpack_require__.r(__webpack_exports__);
     return {
       categories: _store___WEBPACK_IMPORTED_MODULE_6__.categories,
       search: null,
-      contentId: '',
+      link: '',
       currentRoute: null,
       currentBrands: [],
       currentColors: [],
       currentCategories: [],
       currentSubcategories: [],
       currentSets: [],
+      currentCollections: [],
       brands: {},
       colors: {},
       attributes: {},
@@ -428,19 +429,24 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     current_sorting: {
-      handler: function handler(newValue, oldValue) {}
+      handler: function handler(newValue, oldValue) {
+        this.getItems();
+      }
     },
     current_showing: {
-      handler: function handler(newValue, oldValue) {}
+      handler: function handler(newValue, oldValue) {
+        this.getItems();
+      }
     }
   },
   methods: {
     main: function main() {
-      this.contentId = this.$route.params.content_id == undefined ? this.contentId : this.$route.params.content_id;
+      this.link = this.$route.params.link == undefined ? this.link : this.$route.params.link;
       this.currentRoute = this.getRouteName(this.$route.name);
       this.currentBrands = this.getCurrentContent('brand', 'brands');
       this.currentCategories = this.getCurrentContent('category', 'categories');
       this.currentSubcategories = this.getCurrentContent('subcategory', 'subcategories');
+      this.currentCollections = this.getCurrentContent('collection', 'collections');
       this.currentColors = this.getCurrentFilters('colors');
       this.currentSets = this.getCurrentFilters('sets');
       this.getContent('brands');
@@ -449,7 +455,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getItems();
     },
     getCurrentContent: function getCurrentContent(content, plural) {
-      return this.currentRoute == content && this.contentId !== null ? [this.contentId] : this.getCurrentFilters(plural);
+      return this.currentRoute == content && this.link !== null ? [this.link] : this.getCurrentFilters(plural);
     },
     getCurrentFilters: function getCurrentFilters(data) {
       return this.$route.query.hasOwnProperty(data) ? this.$route.query[data].split(',') : [];
@@ -470,7 +476,10 @@ __webpack_require__.r(__webpack_exports__);
           colors: this.getParamData(this.currentColors),
           sets: this.getParamData(this.currentSets),
           categories: this.getParamData(this.currentCategories),
-          subcategories: this.getParamData(this.currentSubcategories)
+          subcategories: this.getParamData(this.currentSubcategories),
+          collections: this.getParamData(this.currentCollections),
+          sorting: this.current_sorting,
+          showing: this.current_showing
         }
       }).then(function (response) {
         _this.items = response.data.items;
@@ -481,7 +490,7 @@ __webpack_require__.r(__webpack_exports__);
     getContent: function getContent(content) {
       var _this2 = this;
 
-      window.axios.get('get_' + content + '_by_content' + '/' + this.currentRoute + '/' + this.contentId).then(function (response) {
+      window.axios.get('get_' + content + '_by_content' + '/' + this.currentRoute + '/' + this.link).then(function (response) {
         _this2[content] = response.data[content];
       });
     },
@@ -489,7 +498,7 @@ __webpack_require__.r(__webpack_exports__);
       var brands = this.getParamData(this.currentBrands);
       var colors = this.getParamData(this.currentColors);
       var sets = this.getParamData(this.currentSets);
-      var pathData = '/shop/' + this.currentRoute + '/' + this.contentId;
+      var pathData = '/shop/' + this.currentRoute + '/' + this.link;
 
       switch (data) {
         case 'brands':
@@ -513,6 +522,7 @@ __webpack_require__.r(__webpack_exports__);
           'sets': sets
         }
       });
+      this.getItems();
     }
   }
 });

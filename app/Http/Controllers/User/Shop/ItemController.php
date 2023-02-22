@@ -18,28 +18,37 @@ class ItemController extends Controller
     public function getItems($items,$sorting){
         switch ($sorting) {
             case 'id':
-            return $items->latest('id')->paginate(10);
+            return $items->latest('id');
             break;
 
             case 'price_high':
-            return $items->orderBy('normal_price','DESC')->paginate(10);
+            return $items->orderBy('normal_price','DESC');
             break;
 
             case 'price_low':
-            return $items->orderBy('normal_price','AESC')->paginate(10);
+            return $items->orderBy('normal_price','ASC');
             break;
 
             case 'user_review':
-            return  $items->orderBy('average_reviews','DESC')->paginate(10);
+            return  $items->orderBy('average_reviews','DESC');
             break;
             
             default:
-            return $items->latest('id')->paginate(10);
+            return $items->latest('id');
             break;
         }
     }
 
+    private function validateData(){
+        return [
+            'sorting' => 'required|in:id,price_high,price_low,user_review',
+            'showing' => 'required|in:9,12,18'
+        ];
+    }
+
     public function shop(Request $request){
+
+        $request->validate($this->validateData());
         // $validator=$this->makeValidator($this->makeInputData($content,$contentId,$request->search),$this->acceptArray );
         // if($validator->fails()){
         //     return makeErrorMessage($validator->errors());
@@ -81,8 +90,12 @@ class ItemController extends Controller
             $items=$items->whereInAttributeSets($sets);
         }
 
-        if(!empty($items) && $request->collection!==NULL){
-            $items=$items->whereInCollection($request->collection);
+        if(!empty($items) && $request->collections!==NULL){
+            $collections=explode(',', $request->collections);
+            if(isset($collections[0])){
+                $collection=$collections[0];
+                $items=$items->whereInCollection($collection);
+            }
         }
 
         if(!empty($items) && $request->min_price!==NULL && $request->max_price!==NULL ){
@@ -91,7 +104,7 @@ class ItemController extends Controller
 
         if(!empty($items)){
             $itemIds=$items->get()->pluck('id')->toArray();
-            $items=$this->getItems($items,$request->sorting);
+            $items=$this->getItems($items,$request->sorting)->paginate($request->showing);
         }
         return response()->json([
             'items' => $items ,

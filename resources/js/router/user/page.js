@@ -29,19 +29,24 @@ export default [
 	name : 'login_page'
 },
 {
-	path : 'shop/category/:content_id',
+	path : 'shop/category/:link',
 	component : Shop ,
 	name : 'shop_category'
 },
 {
-	path : 'shop/subcategory/:content_id',
+	path : 'shop/subcategory/:link',
 	component : Shop ,
 	name : 'shop_subcategory'
 },
 {
-	path : 'shop/brand/:content_id',
+	path : 'shop/brand/:link',
 	component : Shop ,
 	name : 'shop_brand'
+},
+{
+	path : 'shop/collection/:link',
+	component : Shop ,
+	name : 'shop_collection'
 },
 {
 	path : 'shop/all',

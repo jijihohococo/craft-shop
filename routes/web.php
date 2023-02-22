@@ -45,7 +45,8 @@ $userRoutes=[
 	foreach([
 		'category',
 		'subcategory',
-		'brand'] as $content){
+		'brand',
+		'collection'] as $content){
 		Route::view('/shop/'.$content.'/{contentId}',$userPage);
 	}
 //----------------USER FRONTEND ROUTES----------------//

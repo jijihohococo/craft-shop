@@ -21,7 +21,7 @@
 						snap-align="center">
 						<Slide class="item" v-for="brand in brands" :key="brand.id">
 							<div class="cl_logo">
-								<router-link :to="{name:'shop_brand',params:{content_id:brand.link}}">
+								<router-link :to="{name:'shop_brand',params:{link:brand.link}}">
 									<v-lazy-image 
 									:src="showImage(brand.pic)"
 									:alt="brand.name" />

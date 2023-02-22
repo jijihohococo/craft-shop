@@ -11,7 +11,8 @@
 							:alt_name="collection.name" />
 						<div class="single_banner_info">
 							<h3 class="single_bn_title">{{ collection.name }}</h3>
-							<a href="shop-left-sidebar.html" class="single_bn_link">Shop Now</a>
+							<router-link :to="'/shop/collection/'+collection.link" 
+							class="single_bn_link">Shop Now</router-link>
 						</div>
 					</div>
 				</div>

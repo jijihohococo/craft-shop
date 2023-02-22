@@ -123,13 +123,14 @@
 			return {
 				categories,
 				search : null ,
-				contentId : '' ,
+				link : '' ,
 				currentRoute: null ,
 				currentBrands : [] ,
 				currentColors : [] ,
 				currentCategories : [] ,
 				currentSubcategories : [] ,
 				currentSets : [] ,
+				currentCollections : [],
 				brands : {} ,
 				colors : {} ,
 				attributes : {} ,
@@ -198,25 +199,26 @@
 			},
 			current_sorting : {
 				handler(newValue,oldValue){
-					
+					this.getItems()
 				}
 			},
 			current_showing : {
 				handler(newValue,oldValue){
-
+					this.getItems()
 				}
 			}
 		},
 		methods : {
 			main(){
-				this.contentId=this.$route.params.content_id==undefined ?
-				this.contentId :
-				this.$route.params.content_id;
+				this.link=this.$route.params.link==undefined ?
+				this.link :
+				this.$route.params.link;
 				
 				this.currentRoute=this.getRouteName(this.$route.name);
 				this.currentBrands=this.getCurrentContent('brand','brands');
 				this.currentCategories=this.getCurrentContent('category','categories')
 				this.currentSubcategories=this.getCurrentContent('subcategory','subcategories')
+				this.currentCollections=this.getCurrentContent('collection','collections')
 				this.currentColors=this.getCurrentFilters('colors');
 				this.currentSets=this.getCurrentFilters('sets');
 				this.getContent('brands')
@@ -226,8 +228,8 @@
 			},
 			getCurrentContent(content,plural){
 				return this.currentRoute==content &&
-				this.contentId!==null ?
-				[this.contentId] : this.getCurrentFilters(plural) 
+				this.link!==null ?
+				[this.link] : this.getCurrentFilters(plural) 
 			},
 			getCurrentFilters(data){
 				return this.$route.query.hasOwnProperty(data) ?
@@ -251,6 +253,9 @@
 							sets : this.getParamData(this.currentSets),
 							categories : this.getParamData(this.currentCategories) ,
 							subcategories : this.getParamData(this.currentSubcategories) ,
+							collections : this.getParamData(this.currentCollections) ,
+							sorting : this.current_sorting,
+							showing : this.current_showing
 						}
 					}).then( (response) => {
 						this.items=response.data.items
@@ -263,7 +268,7 @@
 						content + 
 						'_by_content' +'/'+
 						this.currentRoute +'/'+
-						this.contentId).then( (response) => {
+						this.link).then( (response) => {
 							this[content]=response.data[content]
 						} )
 					},
@@ -274,7 +279,7 @@
 						let sets=this.getParamData(this.currentSets) ;
 						let pathData='/shop/'+
 						this.currentRoute
-						+ '/' + this.contentId;
+						+ '/' + this.link;
 						switch(data){
 							case 'brands':
 							brands=selectedList.toString();
@@ -296,6 +301,7 @@
 								'sets' : sets
 							}
 						})
+						this.getItems()
 					}
 				}
 			}
