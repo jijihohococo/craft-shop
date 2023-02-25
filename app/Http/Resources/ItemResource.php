@@ -3,7 +3,6 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-
 class ItemResource extends JsonResource
 {
     /**
@@ -25,7 +24,8 @@ class ItemResource extends JsonResource
             'subcategory_name' => $this->subcategory_name ,
             'brand_name' => $this->brand_name ,
             'variants' => ItemVariantResource::collection(
-                $this->itemVariants)
+                $this->itemVariants),
+            'attributes' => ItemAttributeResource::collection($this->attributes)
         ];
     }
 }

@@ -51,20 +51,14 @@
             <div class="pr_detail">
                 <div class="product_description">
                     <h4 class="product_title"><a href="#">{{ item.name }}</a></h4>
+                    <ItemPrice
+                    v-if="currentItemVariant.length!==0"
+                    :normal_price="currentItemVariant.normal_price"
+                    :sale_price="currentItemVariant.sale_price" />
+                    <ItemReview 
+                    :review_percent="reviews.averageStarPercent"
+                    :reviews="reviews.countItemRate" />
                     
-                    <div class="product_price">
-                        <span class="price">$45.00</span>
-                        <del>$55.25</del>
-                        <div class="on_sale">
-                            <span>35% Off</span>
-                        </div>
-                    </div>
-                    <div class="rating_wrap">
-                        <div class="rating">
-                            <div class="product_rate" style="width:80%"></div>
-                        </div>
-                        <span class="rating_num">(21)</span>
-                    </div>
                     <div class="pr_desc">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
                     </div>
@@ -75,24 +69,10 @@
                             <li><i class="linearicons-bag-dollar"></i> Cash on Delivery available</li>
                         </ul>
                     </div>
-                    <div class="pr_switch_wrap">
-                        <span class="switch_lable">Color</span>
-                        <div class="product_color_switch">
-                            <span class="active" data-color="#87554B"></span>
-                            <span data-color="#333333"></span>
-                            <span data-color="#DA323F"></span>
-                        </div>
-                    </div>
-                    <div class="pr_switch_wrap">
-                        <span class="switch_lable">Size</span>
-                        <div class="product_size_switch">
-                            <span>xs</span>
-                            <span>s</span>
-                            <span>m</span>
-                            <span>l</span>
-                            <span>xl</span>
-                        </div>
-                    </div>
+                    <ItemColorTwo 
+                    v-if="currentItemVariant.length!==null"
+                    :variants="item.variants"
+                    @getData="getColor" />
                 </div>
                 <hr />
                 <div class="cart_extra">
@@ -487,6 +467,10 @@
 
 	import ItemPrice from '../components/ItemPrice';
 
+    import ItemReview from '../components/ItemReview';
+
+    import ItemColorTwo from '../components/ItemColorTwo';
+
     import Preloader from '../components/Preloader'
 
     import NotFound from  './NotFound'
@@ -496,12 +480,17 @@
 	export default {
 		components : {
 			ItemPrice,
+            ItemReview,
+            ItemColorTwo,
             Preloader,
             NotFound
 		},
 		data(){
 			return {
 				item : {},
+                reviews : {},
+                seo : {},
+                currentItemVariant : {},
                 error : false
 			}
 		},
@@ -513,9 +502,17 @@
          async getItemData(){
             window.axios.get('items/'+this.$route.params.id).then( (response) => {
                this.item=response.data.item
+               this.reviews=response.data.reviews
+               this.seo=response.data.seo
+               if(this.item.length!==0 && this.item.variants.length!==0 ){
+                this.currentItemVariant=this.item.variants[0]
+               }
            } ).catch((error)=>{
                 this.error=true
            })
+        },
+        getColor(key){
+
         }
     }
 }

@@ -13,4 +13,8 @@ class ItemAttributeSet extends Model
         'item_attribute_id',
         'set_id'
     ];
+
+    public function set(){
+        return $this->belongsTo('App\Models\AttributeSet','set_id');
+    }
 }

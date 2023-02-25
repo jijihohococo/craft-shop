@@ -17,14 +17,10 @@
 		:normal_price="normalPrice"
 		:sale_price="salePrice"
 		/>
-		<div class="rating_wrap">
-			<div class="rating">
-				<div class="product_rate"
-				:style="{ 'width': getAveragePercent(item.reviews) }"
-				></div>
-			</div>
-			<span class="rating_num">{{ item.review==null ? '0' : item.reviews.split(',').length }}</span>
-		</div>
+		<ItemReview 
+		:review_percent="getAveragePercent(item.reviews)"
+		:reviews="item.reviews==null ? '0' : item.reviews.split(',').length"
+		/>
 		<div class="pr_desc">
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
 		</div>
@@ -37,13 +33,15 @@
 	import ItemPrice from './ItemPrice'
 	import ItemColor from './ItemColor'
 	import WishButton from './WishButton'
+	import ItemReview from './ItemReview'
 	import { showAveragePercent } from '../helpers/general.js';
 	import { mixin } from '../common/';
 	export default {
 		components : {
 			ItemPrice,
 			ItemColor,
-			WishButton
+			WishButton,
+			ItemReview
 		},
 		mixins : [mixin],
 		data(){

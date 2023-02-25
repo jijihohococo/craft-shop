@@ -14,5 +14,13 @@ class ItemAttribute extends Model
         'attribute_id'
     ];
 
+    public function attribute(){
+        return $this->belongsTo('App\Models\Attribute')->withDefault()->withTrashed();
+    }
+
+    public function sets(){
+        return $this->hasMany('App\Models\ItemAttributeSet');
+    }
+
 
 }
