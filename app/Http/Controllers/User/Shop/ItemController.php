@@ -42,7 +42,9 @@ class ItemController extends Controller
     private function validateData(){
         return [
             'sorting' => 'required|in:id,price_high,price_low,user_review',
-            'showing' => 'required|in:9,12,18'
+            'showing' => 'required|in:9,12,18',
+            'min_price' => 'nullable|integer',
+            'max_price' => 'nullable|integer'
         ];
     }
 
@@ -98,18 +100,33 @@ class ItemController extends Controller
             }
         }
 
+        if(!empty($items) && $request->min_price!==NULL && $request->max_price==NULL ){
+            $items=$items->minPrice($request->min_price);
+        }
+
+        if(!empty($items) && $request->min_price==NULL && $request->max_price!==NULL  ){
+            $items=$items->maxPrice($request->max_price);
+        }
+
         if(!empty($items) && $request->min_price!==NULL && $request->max_price!==NULL ){
             $items=$items->betweenPrice($request->min_price,$request->max_price);
         }
 
         if(!empty($items)){
-            $itemIds=$items->get()->pluck('id')->toArray();
-            $items=$this->getItems($items,$request->sorting)->paginate($request->showing);
+            return response()->json([
+                'items' => $this->getItems($items,$request->sorting)->paginate($request->showing)
+            ]);
         }
-        return response()->json([
-            'items' => $items ,
-            'max_price' => $this->item->getMaxPrice($itemIds) ,
-            'min_price' => $this->item->getMinPrice($itemIds)
-        ]);
+        return dataNotFound();
+
+        // if(!empty($items)){
+        //     $itemIds=$items->get()->pluck('id')->toArray();
+        //     $items=$this->getItems($items,$request->sorting)->paginate($request->showing);
+        // }
+        // return response()->json([
+        //     'items' => $items ,
+        //     'max_price' => $this->item->getMaxPrice($itemIds) ,
+        //     'min_price' => $this->item->getMinPrice($itemIds)
+        // ]);
     }
 }

@@ -20,48 +20,63 @@
 								</div>
 								<div class="product_header_right">
 									<div class="products_view">
-                                    <a class="shorting_icon grid hand_cursor active"><i class="ti-view-grid"></i></a>
-                                    <a class="shorting_icon list hand_cursor"><i class="ti-layout-list-thumb"></i></a>
-                                </div>
+										<a class="shorting_icon grid hand_cursor active"><i class="ti-view-grid"></i></a>
+										<a class="shorting_icon list hand_cursor"><i class="ti-layout-list-thumb"></i></a>
+									</div>
 									<div class="custom_select">
 										<select class="form-control form-control-sm" v-model="current_showing">
 											<option v-for="showing in showings"
 											>
 											{{ showing }}	
-											</option>
-										</select>
-									</div>
+										</option>
+									</select>
 								</div>
 							</div>
 						</div>
-					</div> 
-					<div class="row shop_container grid">
-						<div class="col-md-4 col-6" v-for="item in items.data">
-							<SliderItem :item="item" />
-						</div>
 					</div>
-					<div class="row">
-						<div class="col-12">
-							<Pagination :page="items.current_page" 
-							:lastPage="items.last_page" 
-							@getData="getItems" 
-							@searchData="searchItems"
-							:search="search" 
-							:from="items.from" 
-							:to="items.to" 
-							:total="items.total"
-							ulClass="pagination mt-3 justify-content-center pagination_style1" />
-						</div>
+				</div> 
+				<div class="row shop_container grid">
+					<div class="col-md-4 col-6" v-for="item in items.data">
+						<SliderItem :item="item" />
 					</div>
 				</div>
-				<div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0">
-					<div class="sidebar">
-						<div class="widget">
-							<h5 class="widget_title">{{ translateLang("Filter") }}</h5>
-							<PriceFilter 
+				<div class="row">
+					<div class="col-12">
+						<Pagination :page="items.current_page" 
+						:lastPage="items.last_page" 
+						@getData="getItems" 
+						@searchData="searchItems"
+						:search="search" 
+						:from="items.from" 
+						:to="items.to" 
+						:total="items.total"
+						ulClass="pagination mt-3 justify-content-center pagination_style1" />
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0">
+				<div class="sidebar">
+					<div class="widget">
+						<h5 class="widget_title">{{ translateLang("Filter") }}</h5>
+						<div class="row">
+							<div class="col-5">
+								<input type="text" class="form-control" v-model="min_price" placeholder="Min">
+							</div>
+							<div class="mt-2">
+								-
+							</div>
+							<div class="col-5">
+								<input type="text" class="form-control" v-model="max_price" placeholder="Max">
+							</div>
+						</div>
+						<div class="row mt-2">
+							<a class="btn btn-fill-out btn-block" 
+							v-on:click="filterItems()">Filter</a>
+						</div>
+							<!-- <PriceFilter 
 							v-if="max_price>0"
 							:min_val="min_price"
-							:max_val="max_price" />
+							:max_val="max_price" /> -->
 						</div>
 						<List :title="translateLang('Brands')" 
 						:list="brands"
@@ -102,7 +117,7 @@
 		</div>
 	</div>
 </div><!-- 
-<component is="script" src="/user/js/scripts.js" /> -->
+	<component is="script" src="/user/js/scripts.js" /> -->
 </template>
 <script >
 	import List from '../components/List'
@@ -135,8 +150,8 @@
 				colors : {} ,
 				attributes : {} ,
 				items : {} ,
-				max_price : 0 ,
-				min_price : 0 ,
+				max_price : null ,
+				min_price : null ,
 				current_sorting : 'id' ,
 				sortings : [
 				{
@@ -165,21 +180,21 @@
 		},
 		mounted : () => {
 			$('.shorting_icon').on('click',function() {
-		if ($(this).hasClass('grid')) {
-			$('.shop_container').removeClass('list').addClass('grid');
-			$(this).addClass('active').siblings().removeClass('active');
-		}
-		else if($(this).hasClass('list')) {
-			$('.shop_container').removeClass('grid').addClass('list');
-			$(this).addClass('active').siblings().removeClass('active');
-		}
-		$(".shop_container").append('<div class="loading_pr"><div class="mfp-preloader"></div></div>');
-		setTimeout(function(){
-			$('.loading_pr').remove();
+				if ($(this).hasClass('grid')) {
+					$('.shop_container').removeClass('list').addClass('grid');
+					$(this).addClass('active').siblings().removeClass('active');
+				}
+				else if($(this).hasClass('list')) {
+					$('.shop_container').removeClass('grid').addClass('list');
+					$(this).addClass('active').siblings().removeClass('active');
+				}
+				$(".shop_container").append('<div class="loading_pr"><div class="mfp-preloader"></div></div>');
+				setTimeout(function(){
+					$('.loading_pr').remove();
 			//console.log($container)
 			//$container.isotope('layout');
-		}, 800);
-	});
+				}, 800);
+			});
 		},
 		mixins: [common_mixin,mix],
 		watch : {
@@ -221,6 +236,8 @@
 				this.currentCollections=this.getCurrentContent('collection','collections')
 				this.currentColors=this.getCurrentFilters('colors');
 				this.currentSets=this.getCurrentFilters('sets');
+				this.min_price=this.getRouteData('min_price');
+				this.max_price=this.getRouteData('max_price');
 				this.getContent('brands')
 				this.getContent('colors')
 				this.getContent('attributes')
@@ -230,6 +247,10 @@
 				return this.currentRoute==content &&
 				this.link!==null ?
 				[this.link] : this.getCurrentFilters(plural) 
+			},
+			getRouteData(data){
+				return this.$route.query.hasOwnProperty(data) ?
+				this.$route.query[data] : null;
 			},
 			getCurrentFilters(data){
 				return this.$route.query.hasOwnProperty(data) ?
@@ -245,64 +266,85 @@
 			getParamData(data){
 				return data.length===0 ? '' : data.toString()
 			},
+			filterItems(){
+				this.refreshPage(
+					this.getParamData(this.currentBrands),
+					this.getParamData(this.currentColors),
+					this.getParamData(this.currentSets),
+					this.min_price,
+					this.max_price
+					)
+			},
 			getItems(){
 				window.axios.get('shop',{
-						params : {
-							brands : this.getParamData(this.currentBrands),
-							colors : this.getParamData(this.currentColors),
-							sets : this.getParamData(this.currentSets),
-							categories : this.getParamData(this.currentCategories) ,
-							subcategories : this.getParamData(this.currentSubcategories) ,
-							collections : this.getParamData(this.currentCollections) ,
-							sorting : this.current_sorting,
-							showing : this.current_showing
-						}
-					}).then( (response) => {
-						this.items=response.data.items
-						this.max_price=parseInt(response.data.max_price)
-						this.min_price=parseInt(response.data.min_price)
+					params : {
+						brands : this.getParamData(this.currentBrands),
+						colors : this.getParamData(this.currentColors),
+						sets : this.getParamData(this.currentSets),
+						categories : this.getParamData(this.currentCategories) ,
+						subcategories : this.getParamData(this.currentSubcategories) ,
+						collections : this.getParamData(this.currentCollections) ,
+						min_price : this.min_price,
+						max_price : this.max_price,
+						sorting : this.current_sorting,
+						showing : this.current_showing
+					}
+				}).then( (response) => {
+					this.items=response.data.items
+						// this.max_price=parseInt(response.data.max_price)
+						// this.min_price=parseInt(response.data.min_price)
+				} )
+			},
+			getContent(content){
+				window.axios.get('get_' +
+					content + 
+					'_by_content' +'/'+
+					this.currentRoute +'/'+
+					this.link).then( (response) => {
+						this[content]=response.data[content]
 					} )
 				},
-				getContent(content){
-					window.axios.get('get_' +
-						content + 
-						'_by_content' +'/'+
-						this.currentRoute +'/'+
-						this.link).then( (response) => {
-							this[content]=response.data[content]
-						} )
-					},
-					updatePageData(data,selectedList){
-						
-						let brands=this.getParamData(this.currentBrands);
-						let colors= this.getParamData(this.currentColors);
-						let sets=this.getParamData(this.currentSets) ;
-						let pathData='/shop/'+
-						this.currentRoute
-						+ '/' + this.link;
-						switch(data){
-							case 'brands':
-							brands=selectedList.toString();
-							break;
+				refreshPage(brands,colors,sets,minPrice,maxPrice){
+					let pathData='/shop/'+
+					this.currentRoute
+					+ '/' + this.link;
 
-							case 'colors':
-							colors=selectedList.toString();
-							break;
-
-							case 'sets':
-							sets=selectedList.toString();
-							break;
+					this.$router.push({
+						path : pathData ,
+						query : {
+							'brands' : brands ,
+							'colors' : colors ,
+							'sets' : sets ,
+							'min_price' : minPrice ,
+							'max_price' : maxPrice
 						}
-						this.$router.push({
-							path : pathData ,
-							query : {
-								'brands' : brands ,
-								'colors' : colors ,
-								'sets' : sets
-							}
-						})
-						this.getItems()
+					})
+					this.getItems()
+				},
+				updatePageData(data,selectedList){
+
+					let brands=this.getParamData(this.currentBrands);
+					let colors= this.getParamData(this.currentColors);
+					let sets=this.getParamData(this.currentSets) ;
+					let minPrice=this.getRouteData('min_price');
+					let maxPrice=this.getRouteData('max_price');
+					switch(data){
+					case 'brands':
+						brands=selectedList.toString();
+						break;
+
+					case 'colors':
+						colors=selectedList.toString();
+						break;
+
+					case 'sets':
+						sets=selectedList.toString();
+						break;
 					}
+
+					this.refreshPage(brands,colors,sets,minPrice,maxPrice)
+
 				}
 			}
-		</script>
+		}
+	</script>

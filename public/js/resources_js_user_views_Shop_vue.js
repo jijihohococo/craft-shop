@@ -376,8 +376,8 @@ __webpack_require__.r(__webpack_exports__);
       colors: {},
       attributes: {},
       items: {},
-      max_price: 0,
-      min_price: 0,
+      max_price: null,
+      min_price: null,
       current_sorting: 'id',
       sortings: [{
         'value': "id",
@@ -449,6 +449,8 @@ __webpack_require__.r(__webpack_exports__);
       this.currentCollections = this.getCurrentContent('collection', 'collections');
       this.currentColors = this.getCurrentFilters('colors');
       this.currentSets = this.getCurrentFilters('sets');
+      this.min_price = this.getRouteData('min_price');
+      this.max_price = this.getRouteData('max_price');
       this.getContent('brands');
       this.getContent('colors');
       this.getContent('attributes');
@@ -456,6 +458,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     getCurrentContent: function getCurrentContent(content, plural) {
       return this.currentRoute == content && this.link !== null ? [this.link] : this.getCurrentFilters(plural);
+    },
+    getRouteData: function getRouteData(data) {
+      return this.$route.query.hasOwnProperty(data) ? this.$route.query[data] : null;
     },
     getCurrentFilters: function getCurrentFilters(data) {
       return this.$route.query.hasOwnProperty(data) ? this.$route.query[data].split(',') : [];
@@ -466,6 +471,9 @@ __webpack_require__.r(__webpack_exports__);
     searchItems: function searchItems() {},
     getParamData: function getParamData(data) {
       return data.length === 0 ? '' : data.toString();
+    },
+    filterItems: function filterItems() {
+      this.refreshPage(this.getParamData(this.currentBrands), this.getParamData(this.currentColors), this.getParamData(this.currentSets), this.min_price, this.max_price);
     },
     getItems: function getItems() {
       var _this = this;
@@ -478,13 +486,14 @@ __webpack_require__.r(__webpack_exports__);
           categories: this.getParamData(this.currentCategories),
           subcategories: this.getParamData(this.currentSubcategories),
           collections: this.getParamData(this.currentCollections),
+          min_price: this.min_price,
+          max_price: this.max_price,
           sorting: this.current_sorting,
           showing: this.current_showing
         }
       }).then(function (response) {
-        _this.items = response.data.items;
-        _this.max_price = parseInt(response.data.max_price);
-        _this.min_price = parseInt(response.data.min_price);
+        _this.items = response.data.items; // this.max_price=parseInt(response.data.max_price)
+        // this.min_price=parseInt(response.data.min_price)
       });
     },
     getContent: function getContent(content) {
@@ -494,11 +503,26 @@ __webpack_require__.r(__webpack_exports__);
         _this2[content] = response.data[content];
       });
     },
+    refreshPage: function refreshPage(brands, colors, sets, minPrice, maxPrice) {
+      var pathData = '/shop/' + this.currentRoute + '/' + this.link;
+      this.$router.push({
+        path: pathData,
+        query: {
+          'brands': brands,
+          'colors': colors,
+          'sets': sets,
+          'min_price': minPrice,
+          'max_price': maxPrice
+        }
+      });
+      this.getItems();
+    },
     updatePageData: function updatePageData(data, selectedList) {
       var brands = this.getParamData(this.currentBrands);
       var colors = this.getParamData(this.currentColors);
       var sets = this.getParamData(this.currentSets);
-      var pathData = '/shop/' + this.currentRoute + '/' + this.link;
+      var minPrice = this.getRouteData('min_price');
+      var maxPrice = this.getRouteData('max_price');
 
       switch (data) {
         case 'brands':
@@ -514,15 +538,7 @@ __webpack_require__.r(__webpack_exports__);
           break;
       }
 
-      this.$router.push({
-        path: pathData,
-        query: {
-          'brands': brands,
-          'colors': colors,
-          'sets': sets
-        }
-      });
-      this.getItems();
+      this.refreshPage(brands, colors, sets, minPrice, maxPrice);
     }
   }
 });
@@ -1288,15 +1304,32 @@ var _hoisted_21 = {
 var _hoisted_22 = {
   "class": "widget_title"
 };
+var _hoisted_23 = {
+  "class": "row"
+};
+var _hoisted_24 = {
+  "class": "col-5"
+};
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"widget\"><div class=\"shop_banner\"><div class=\"banner_img overlay_bg_20\"><img src=\"assets/images/sidebar_banner_img.jpg\" alt=\"sidebar_banner_img\"></div><div class=\"shop_bn_content2 text_white\"><h5 class=\"text-uppercase shop_subtitle\">New Collection</h5><h3 class=\"text-uppercase shop_title\">Sale 30% Off</h3><a href=\"#\" class=\"btn btn-white rounded-0 btn-sm text-uppercase\">Shop Now</a></div></div></div>", 1);
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "mt-2"
+}, " - ", -1
+/* HOISTED */
+);
+
+var _hoisted_26 = {
+  "class": "col-5"
+};
+var _hoisted_27 = {
+  "class": "row mt-2"
+};
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"widget\"><div class=\"shop_banner\"><div class=\"banner_img overlay_bg_20\"><img src=\"assets/images/sidebar_banner_img.jpg\" alt=\"sidebar_banner_img\"></div><div class=\"shop_bn_content2 text_white\"><h5 class=\"text-uppercase shop_subtitle\">New Collection</h5><h3 class=\"text-uppercase shop_title\">Sale 30% Off</h3><a href=\"#\" class=\"btn btn-white rounded-0 btn-sm text-uppercase\">Shop Now</a></div></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_SliderItem = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SliderItem");
 
   var _component_Pagination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Pagination");
-
-  var _component_PriceFilter = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PriceFilter");
 
   var _component_List = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("List");
 
@@ -1350,13 +1383,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["page", "lastPage", "onGetData", "onSearchData", "search", "from", "to", "total"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.translateLang("Filter")), 1
   /* TEXT */
-  ), $data.max_price > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_PriceFilter, {
-    key: 0,
-    min_val: $data.min_price,
-    max_val: $data.max_price
-  }, null, 8
-  /* PROPS */
-  , ["min_val", "max_val"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_List, {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.min_price = $event;
+    }),
+    placeholder: "Min"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.min_price]])]), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.max_price = $event;
+    }),
+    placeholder: "Max"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.max_price]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    "class": "btn btn-fill-out btn-block",
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return $options.filterItems();
+    })
+  }, "Filter")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <PriceFilter \n\t\t\t\t\t\t\tv-if=\"max_price>0\"\n\t\t\t\t\t\t\t:min_val=\"min_price\"\n\t\t\t\t\t\t\t:max_val=\"max_price\" /> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_List, {
     title: _ctx.translateLang('Brands'),
     list: $data.brands,
     select_list: $data.currentBrands,
@@ -1386,7 +1436,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["title", "list", "select_list", "onUpdatePage"]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  )), _hoisted_23])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" \n<component is=\"script\" src=\"/user/js/scripts.js\" /> ")], 2112
+  )), _hoisted_28])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" \n\t<component is=\"script\" src=\"/user/js/scripts.js\" /> ")], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   );
 }

@@ -261,9 +261,17 @@ class Item extends TransactionModel
         return $query->having($this->stock,'>',0);
     }
 
+    public function scopeMinPrice($query,$minPrice){
+        return $query->having($this->normalPrice,'>=',$minPrice);
+    }
+
+    public function scopeMaxPrice($query,$maxPrice){
+        return $query->having($this->normalPrice,'<=',$maxPrice);
+    }
+
     public function scopeBetweenPrice($query,$minPrice,$maxPrice){
-        return $query->having($this->normalPrice,'>=',$minPrice)
-        ->having($this->normalPrice,'<=',$maxPrice);
+        return $query->minPrice($minPrice)
+        ->maxPrice($maxPrice);
     }
 
     public function scopeInWish($query){
