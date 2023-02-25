@@ -51,6 +51,7 @@
             <div class="pr_detail">
                 <div class="product_description">
                     <h4 class="product_title"><a href="#">{{ item.name }}</a></h4>
+                    
                     <div class="product_price">
                         <span class="price">$45.00</span>
                         <del>$55.25</del>

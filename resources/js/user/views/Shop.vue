@@ -99,18 +99,7 @@
 						value="id"
 						@updatePage="updatePageData"
 						/>
-						<div class="widget">
-							<div class="shop_banner">
-								<div class="banner_img overlay_bg_20">
-									<img src="assets/images/sidebar_banner_img.jpg" alt="sidebar_banner_img">
-								</div> 
-								<div class="shop_bn_content2 text_white">
-									<h5 class="text-uppercase shop_subtitle">New Collection</h5>
-									<h3 class="text-uppercase shop_title">Sale 30% Off</h3>
-									<a href="#" class="btn btn-white rounded-0 btn-sm text-uppercase">Shop Now</a>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>

@@ -1323,9 +1323,6 @@ var _hoisted_26 = {
 var _hoisted_27 = {
   "class": "row mt-2"
 };
-
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"widget\"><div class=\"shop_banner\"><div class=\"banner_img overlay_bg_20\"><img src=\"assets/images/sidebar_banner_img.jpg\" alt=\"sidebar_banner_img\"></div><div class=\"shop_bn_content2 text_white\"><h5 class=\"text-uppercase shop_subtitle\">New Collection</h5><h3 class=\"text-uppercase shop_title\">Sale 30% Off</h3><a href=\"#\" class=\"btn btn-white rounded-0 btn-sm text-uppercase\">Shop Now</a></div></div></div>", 1);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_SliderItem = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SliderItem");
 
@@ -1436,7 +1433,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["title", "list", "select_list", "onUpdatePage"]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  )), _hoisted_28])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" \n\t<component is=\"script\" src=\"/user/js/scripts.js\" /> ")], 2112
+  ))])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" \n\t<component is=\"script\" src=\"/user/js/scripts.js\" /> ")], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   );
 }

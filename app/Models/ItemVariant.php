@@ -45,9 +45,12 @@ class ItemVariant extends Model
         ->orderBy('id','DESC')->limit(1)->first();
     }
 
+    private function getPriceData($price){
+        return $price!==NULL ? $this->getExchangePrice($price) : NULL;
+    }
+
     public function getNormalPriceAttribute(){
-        $itemPrice=$this->getItemPrice();
-        return $itemPrice!==NULL ? $this->getExchangePrice($itemPrice) : NULL;
+        return $this->getPriceData($this->getItemPrice());
     }
 
     public function getSalePriceAttribute(){
@@ -64,6 +67,6 @@ class ItemVariant extends Model
             $price=$this->getExchangePrice($itemPrice);
             return $price -$price*($itemPrice->promotion_price/100);
         }
-        return NULL;
+        return $this->getPriceData($itemPrice);
     }
 }
