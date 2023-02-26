@@ -8,40 +8,40 @@
             <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
               <div class="product-image">
                 <div class="product_img_box">
-                    <img id="product_img" src='assets/images/product_img1.jpg' data-zoom-image="assets/images/product_zoom_img1.jpg" alt="product_img1" />
+                    <img id="product_img" src='/images/product_img1.jpg' data-zoom-image="/images/product_zoom_img1.jpg" alt="product_img1" />
                     <a href="#" class="product_img_zoom" title="Zoom">
                         <span class="linearicons-zoom-in"></span>
                     </a>
                 </div>
                 <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-slides-to-show="4" data-slides-to-scroll="1" data-infinite="false">
                     <div class="item">
-                        <a href="#" class="product_gallery_item active" data-image="assets/images/product_img1.jpg" data-zoom-image="assets/images/product_zoom_img1.jpg">
-                            <img src="assets/images/product_small_img1.jpg" alt="product_small_img1" />
+                        <a href="#" class="product_gallery_item active" data-image="/images/product_img1.jpg" data-zoom-image="/images/product_zoom_img1.jpg">
+                            <img src="/images/product_small_img1.jpg" alt="product_small_img1" />
                         </a>
                     </div>
                     <div class="item">
-                        <a href="#" class="product_gallery_item" data-image="assets/images/product_img1-2.jpg" data-zoom-image="assets/images/product_zoom_img2.jpg">
-                            <img src="assets/images/product_small_img2.jpg" alt="product_small_img2" />
+                        <a href="#" class="product_gallery_item" data-image="/images/product_img1-2.jpg" data-zoom-image="/images/product_zoom_img2.jpg">
+                            <img src="/images/product_small_img2.jpg" alt="product_small_img2" />
                         </a>
                     </div>
                     <div class="item">
-                        <a href="#" class="product_gallery_item" data-image="assets/images/product_img1-3.jpg" data-zoom-image="assets/images/product_zoom_img3.jpg">
-                            <img src="assets/images/product_small_img3.jpg" alt="product_small_img3" />
+                        <a href="#" class="product_gallery_item" data-image="/images/product_img1-3.jpg" data-zoom-image="/images/product_zoom_img3.jpg">
+                            <img src="/images/product_small_img3.jpg" alt="product_small_img3" />
                         </a>
                     </div>
                     <div class="item">
-                        <a href="#" class="product_gallery_item" data-image="assets/images/product_img1-4.jpg" data-zoom-image="assets/images/product_zoom_img4.jpg">
-                            <img src="assets/images/product_small_img4.jpg" alt="product_small_img4" />
+                        <a href="#" class="product_gallery_item" data-image="/images/product_img1-4.jpg" data-zoom-image="/images/product_zoom_img4.jpg">
+                            <img src="/images/product_small_img4.jpg" alt="product_small_img4" />
                         </a>
                     </div>
                     <div class="item">
-                        <a href="#" class="product_gallery_item" data-image="assets/images/product_img1-2.jpg" data-zoom-image="assets/images/product_zoom_img2.jpg">
-                            <img src="assets/images/product_small_img2.jpg" alt="product_small_img2" />
+                        <a href="#" class="product_gallery_item" data-image="/images/product_img1-2.jpg" data-zoom-image="/images/product_zoom_img2.jpg">
+                            <img src="/images/product_small_img2.jpg" alt="product_small_img2" />
                         </a>
                     </div>
                     <div class="item">
-                        <a href="#" class="product_gallery_item" data-image="assets/images/product_img1-3.jpg" data-zoom-image="assets/images/product_zoom_img3.jpg">
-                            <img src="assets/images/product_small_img3.jpg" alt="product_small_img3" />
+                        <a href="#" class="product_gallery_item" data-image="/images/product_img1-3.jpg" data-zoom-image="/images/product_zoom_img3.jpg">
+                            <img src="/images/product_small_img3.jpg" alt="product_small_img3" />
                         </a>
                     </div>
                 </div>
@@ -60,7 +60,8 @@
                     :reviews="reviews.countItemRate" />
                     
                     <div class="pr_desc">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+                        <br>
+                        <br>
                     </div>
                     <div class="product_sort_info">
                         <ul>
@@ -139,15 +140,15 @@
                 <td>
                     <template v-for="(d,key) in data.sets">
                        {{ key+1!==data.sets.length ? d.set.set + ',' : d.set.set }}
-                    </template>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
+                   </template>
+               </td>
+           </tr>
+       </table>
+   </div>
+   <div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
      <div class="comments">
         <h5 class="product_tab_title">{{ reviews.countItemRate }} Review For <span>{{ item.name }}</span></h5>
-         <ul class="list_none comment_list mt-4">
+        <ul class="list_none comment_list mt-4">
             <li>
                 <div class="comment_img">
                     <img src="assets/images/user1.jpg" alt="user1"/>
@@ -489,21 +490,117 @@
     async created(){
         await this.getItemData()
     },
-    methods : {
-       async getItemData(){
-        window.axios.get('items/'+this.$route.params.id).then( (response) => {
-         this.item=response.data.item
-         this.reviews=response.data.reviews
-         this.seo=response.data.seo
-         if(this.item.length!==0 && this.item.variants.length!==0 ){
-            this.currentItemVariant=this.item.variants[0]
+    mounted : () => {
+
+        function slick_slider() {
+            $('.slick_slider').map( function(key,s) {
+                var $slick_carousel = $(s);
+                $slick_carousel.slick({
+                    arrows: $slick_carousel.data("arrows"),
+                    dots: $slick_carousel.data("dots"),
+                    infinite: $slick_carousel.data("infinite"),
+                    centerMode: $slick_carousel.data("center-mode"),
+                    vertical: $slick_carousel.data("vertical"),
+                    fade: $slick_carousel.data("fade"),
+                    cssEase: $slick_carousel.data("css-ease"),
+                    autoplay: $slick_carousel.data("autoplay"),
+                    verticalSwiping: $slick_carousel.data("vertical-swiping"),
+                    autoplaySpeed: $slick_carousel.data("autoplay-speed"),
+                    speed: $slick_carousel.data("speed"),
+                    pauseOnHover: $slick_carousel.data("pause-on-hover"),
+                    draggable: $slick_carousel.data("draggable"),
+                    slidesToShow: $slick_carousel.data("slides-to-show"),
+                    slidesToScroll: $slick_carousel.data("slides-to-scroll"),
+                    asNavFor: $slick_carousel.data("as-nav-for"),
+                    focusOnSelect: $slick_carousel.data("focus-on-select"),
+                    responsive: $slick_carousel.data("responsive")
+                }); 
+            });
         }
-    } ).catch((error)=>{
-        this.error=true
-    })
+
+        slick_slider()
+
+        /*===================================*
+    21. QUICKVIEW POPUP + ZOOM IMAGE + PRODUCT SLIDER JS
+    *===================================*/
+        var image = $('#product_img');
+    //var zoomConfig = {};
+        var zoomActive = false;
+        
+        zoomActive = !zoomActive;
+        if(zoomActive) {
+            if ($(image).length > 0){
+                $(image).elevateZoom({
+                    cursor: "crosshair",
+                    easing : true, 
+                    gallery:'pr_item_gallery',
+                    zoomType: "inner",
+                    galleryActiveClass: "active"
+                }); 
+            }
+        }
+        else {
+        $.removeData(image, 'elevateZoom');//remove zoom instance from image
+        $('.zoomContainer:last-child').remove();// remove zoom container from DOM
+    }
+    
+    $.magnificPopup.defaults.callbacks = {
+        open: function() {
+            $('body').addClass('zoom_image');
+        },
+        close: function() {
+      // Wait until overflow:hidden has been removed from the html tag
+          setTimeout(function() {
+            $('body').removeClass('zoom_image');
+            $('body').removeClass('zoom_gallery_image');
+        //$('.zoomContainer:last-child').remove();// remove zoom container from DOM
+            $('.zoomContainer').slice(1).remove();
+        }, 100);
+      }
+  };
+
+    // Set up gallery on click
+  var galleryZoom = $('#pr_item_gallery');
+  galleryZoom.magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    gallery:{
+        enabled: true
+    },
+    callbacks: {
+        elementParse: function(item) {
+            item.src = item.el.attr('data-zoom-image');
+        }
+    }
+});
+
+    // Zoom image when click on icon
+  $('.product_img_zoom').on('click', function(){
+    var atual = $('#pr_item_gallery a').attr('data-zoom-image');
+    $('body').addClass('zoom_gallery_image');
+    $('#pr_item_gallery .item').each(function(){
+        if( atual == $(this).find('.product_gallery_item').attr('data-zoom-image') ) {
+            return galleryZoom.magnificPopup('open', $(this).index());
+        }
+    });
+});
+
+},
+methods : {
+   async getItemData(){
+    window.axios.get('items/'+this.$route.params.id).then( (response) => {
+     this.item=response.data.item
+     this.reviews=response.data.reviews
+     this.seo=response.data.seo
+     if(this.item.length!==0 && this.item.variants.length!==0 ){
+        this.currentItemVariant=this.item.variants[0]
+    }
+} ).catch((error)=>{
+    this.error=true
+})
 },
 getColor(key){
-this.currentItemVariant=this.item.variants[key]
+    this.currentItemVariant=this.item.variants[key]
 }
 }
 }

@@ -172,6 +172,98 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee);
     }))();
   },
+  mounted: function mounted() {
+    function slick_slider() {
+      $('.slick_slider').map(function (key, s) {
+        var $slick_carousel = $(s);
+        $slick_carousel.slick({
+          arrows: $slick_carousel.data("arrows"),
+          dots: $slick_carousel.data("dots"),
+          infinite: $slick_carousel.data("infinite"),
+          centerMode: $slick_carousel.data("center-mode"),
+          vertical: $slick_carousel.data("vertical"),
+          fade: $slick_carousel.data("fade"),
+          cssEase: $slick_carousel.data("css-ease"),
+          autoplay: $slick_carousel.data("autoplay"),
+          verticalSwiping: $slick_carousel.data("vertical-swiping"),
+          autoplaySpeed: $slick_carousel.data("autoplay-speed"),
+          speed: $slick_carousel.data("speed"),
+          pauseOnHover: $slick_carousel.data("pause-on-hover"),
+          draggable: $slick_carousel.data("draggable"),
+          slidesToShow: $slick_carousel.data("slides-to-show"),
+          slidesToScroll: $slick_carousel.data("slides-to-scroll"),
+          asNavFor: $slick_carousel.data("as-nav-for"),
+          focusOnSelect: $slick_carousel.data("focus-on-select"),
+          responsive: $slick_carousel.data("responsive")
+        });
+      });
+    }
+
+    slick_slider();
+    /*===================================*
+    21. QUICKVIEW POPUP + ZOOM IMAGE + PRODUCT SLIDER JS
+    *===================================*/
+
+    var image = $('#product_img'); //var zoomConfig = {};
+
+    var zoomActive = false;
+    zoomActive = !zoomActive;
+
+    if (zoomActive) {
+      if ($(image).length > 0) {
+        $(image).elevateZoom({
+          cursor: "crosshair",
+          easing: true,
+          gallery: 'pr_item_gallery',
+          zoomType: "inner",
+          galleryActiveClass: "active"
+        });
+      }
+    } else {
+      $.removeData(image, 'elevateZoom'); //remove zoom instance from image
+
+      $('.zoomContainer:last-child').remove(); // remove zoom container from DOM
+    }
+
+    $.magnificPopup.defaults.callbacks = {
+      open: function open() {
+        $('body').addClass('zoom_image');
+      },
+      close: function close() {
+        // Wait until overflow:hidden has been removed from the html tag
+        setTimeout(function () {
+          $('body').removeClass('zoom_image');
+          $('body').removeClass('zoom_gallery_image'); //$('.zoomContainer:last-child').remove();// remove zoom container from DOM
+
+          $('.zoomContainer').slice(1).remove();
+        }, 100);
+      }
+    }; // Set up gallery on click
+
+    var galleryZoom = $('#pr_item_gallery');
+    galleryZoom.magnificPopup({
+      delegate: 'a',
+      type: 'image',
+      gallery: {
+        enabled: true
+      },
+      callbacks: {
+        elementParse: function elementParse(item) {
+          item.src = item.el.attr('data-zoom-image');
+        }
+      }
+    }); // Zoom image when click on icon
+
+    $('.product_img_zoom').on('click', function () {
+      var atual = $('#pr_item_gallery a').attr('data-zoom-image');
+      $('body').addClass('zoom_gallery_image');
+      $('#pr_item_gallery .item').each(function () {
+        if (atual == $(this).find('.product_gallery_item').attr('data-zoom-image')) {
+          return galleryZoom.magnificPopup('open', $(this).index());
+        }
+      });
+    });
+  },
   methods: {
     getItemData: function getItemData() {
       var _this2 = this;
@@ -415,7 +507,7 @@ var _hoisted_3 = {
   "class": "row"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-lg-6 col-md-6 mb-4 mb-md-0\"><div class=\"product-image\"><div class=\"product_img_box\"><img id=\"product_img\" src=\"assets/images/product_img1.jpg\" data-zoom-image=\"assets/images/product_zoom_img1.jpg\" alt=\"product_img1\"><a href=\"#\" class=\"product_img_zoom\" title=\"Zoom\"><span class=\"linearicons-zoom-in\"></span></a></div><div id=\"pr_item_gallery\" class=\"product_gallery_item slick_slider\" data-slides-to-show=\"4\" data-slides-to-scroll=\"1\" data-infinite=\"false\"><div class=\"item\"><a href=\"#\" class=\"product_gallery_item active\" data-image=\"assets/images/product_img1.jpg\" data-zoom-image=\"assets/images/product_zoom_img1.jpg\"><img src=\"assets/images/product_small_img1.jpg\" alt=\"product_small_img1\"></a></div><div class=\"item\"><a href=\"#\" class=\"product_gallery_item\" data-image=\"assets/images/product_img1-2.jpg\" data-zoom-image=\"assets/images/product_zoom_img2.jpg\"><img src=\"assets/images/product_small_img2.jpg\" alt=\"product_small_img2\"></a></div><div class=\"item\"><a href=\"#\" class=\"product_gallery_item\" data-image=\"assets/images/product_img1-3.jpg\" data-zoom-image=\"assets/images/product_zoom_img3.jpg\"><img src=\"assets/images/product_small_img3.jpg\" alt=\"product_small_img3\"></a></div><div class=\"item\"><a href=\"#\" class=\"product_gallery_item\" data-image=\"assets/images/product_img1-4.jpg\" data-zoom-image=\"assets/images/product_zoom_img4.jpg\"><img src=\"assets/images/product_small_img4.jpg\" alt=\"product_small_img4\"></a></div><div class=\"item\"><a href=\"#\" class=\"product_gallery_item\" data-image=\"assets/images/product_img1-2.jpg\" data-zoom-image=\"assets/images/product_zoom_img2.jpg\"><img src=\"assets/images/product_small_img2.jpg\" alt=\"product_small_img2\"></a></div><div class=\"item\"><a href=\"#\" class=\"product_gallery_item\" data-image=\"assets/images/product_img1-3.jpg\" data-zoom-image=\"assets/images/product_zoom_img3.jpg\"><img src=\"assets/images/product_small_img3.jpg\" alt=\"product_small_img3\"></a></div></div></div></div>", 1);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-lg-6 col-md-6 mb-4 mb-md-0\"><div class=\"product-image\"><div class=\"product_img_box\"><img id=\"product_img\" src=\"/images/product_img1.jpg\" data-zoom-image=\"/images/product_zoom_img1.jpg\" alt=\"product_img1\"><a href=\"#\" class=\"product_img_zoom\" title=\"Zoom\"><span class=\"linearicons-zoom-in\"></span></a></div><div id=\"pr_item_gallery\" class=\"product_gallery_item slick_slider\" data-slides-to-show=\"4\" data-slides-to-scroll=\"1\" data-infinite=\"false\"><div class=\"item\"><a href=\"#\" class=\"product_gallery_item active\" data-image=\"/images/product_img1.jpg\" data-zoom-image=\"/images/product_zoom_img1.jpg\"><img src=\"/images/product_small_img1.jpg\" alt=\"product_small_img1\"></a></div><div class=\"item\"><a href=\"#\" class=\"product_gallery_item\" data-image=\"/images/product_img1-2.jpg\" data-zoom-image=\"/images/product_zoom_img2.jpg\"><img src=\"/images/product_small_img2.jpg\" alt=\"product_small_img2\"></a></div><div class=\"item\"><a href=\"#\" class=\"product_gallery_item\" data-image=\"/images/product_img1-3.jpg\" data-zoom-image=\"/images/product_zoom_img3.jpg\"><img src=\"/images/product_small_img3.jpg\" alt=\"product_small_img3\"></a></div><div class=\"item\"><a href=\"#\" class=\"product_gallery_item\" data-image=\"/images/product_img1-4.jpg\" data-zoom-image=\"/images/product_zoom_img4.jpg\"><img src=\"/images/product_small_img4.jpg\" alt=\"product_small_img4\"></a></div><div class=\"item\"><a href=\"#\" class=\"product_gallery_item\" data-image=\"/images/product_img1-2.jpg\" data-zoom-image=\"/images/product_zoom_img2.jpg\"><img src=\"/images/product_small_img2.jpg\" alt=\"product_small_img2\"></a></div><div class=\"item\"><a href=\"#\" class=\"product_gallery_item\" data-image=\"/images/product_img1-3.jpg\" data-zoom-image=\"/images/product_zoom_img3.jpg\"><img src=\"/images/product_small_img3.jpg\" alt=\"product_small_img3\"></a></div></div></div></div>", 1);
 
 var _hoisted_5 = {
   "class": "col-lg-6 col-md-6"
@@ -433,7 +525,7 @@ var _hoisted_9 = {
   href: "#"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"pr_desc\"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p></div><div class=\"product_sort_info\"><ul><li><i class=\"linearicons-shield-check\"></i> 1 Year AL Jazeera Brand Warranty</li><li><i class=\"linearicons-sync\"></i> 30 Day Return Policy</li><li><i class=\"linearicons-bag-dollar\"></i> Cash on Delivery available</li></ul></div>", 2);
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"pr_desc\"><br><br></div><div class=\"product_sort_info\"><ul><li><i class=\"linearicons-shield-check\"></i> 1 Year AL Jazeera Brand Warranty</li><li><i class=\"linearicons-sync\"></i> 30 Day Return Policy</li><li><i class=\"linearicons-bag-dollar\"></i> Cash on Delivery available</li></ul></div>", 2);
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<hr><div class=\"cart_extra\"><div class=\"cart-product-quantity\"><div class=\"quantity\"><input type=\"button\" value=\"-\" class=\"minus\"><input type=\"text\" name=\"quantity\" value=\"1\" title=\"Qty\" class=\"qty\" size=\"4\"><input type=\"button\" value=\"+\" class=\"plus\"></div></div><div class=\"cart_btn\"><button class=\"btn btn-fill-out btn-addtocart\" type=\"button\"><i class=\"icon-basket-loaded\"></i> Add to cart</button><a class=\"add_compare\" href=\"#\"><i class=\"icon-shuffle\"></i></a><a class=\"add_wishlist\" href=\"#\"><i class=\"icon-heart\"></i></a></div></div><hr><ul class=\"product-meta\"><li>SKU: <a href=\"#\">BE45VGRT</a></li><li>Category: <a href=\"#\">Clothing</a></li><li>Tags: <a href=\"#\" rel=\"tag\">Cloth</a>, <a href=\"#\" rel=\"tag\">printed</a></li></ul><div class=\"product_share\"><span>Share:</span><ul class=\"social_icons\"><li><a href=\"#\"><i class=\"ion-social-facebook\"></i></a></li><li><a href=\"#\"><i class=\"ion-social-twitter\"></i></a></li><li><a href=\"#\"><i class=\"ion-social-googleplus\"></i></a></li><li><a href=\"#\"><i class=\"ion-social-youtube-outline\"></i></a></li><li><a href=\"#\"><i class=\"ion-social-instagram-outline\"></i></a></li></ul></div>", 5);
 
