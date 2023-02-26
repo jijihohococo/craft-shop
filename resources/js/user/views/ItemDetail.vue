@@ -34,7 +34,7 @@
                             <img src="/images/product_small_img4.jpg" alt="product_small_img4" />
                         </a>
                     </div>
-                    <div class="item">
+                    <!-- <div class="item">
                         <a href="#" class="product_gallery_item" data-image="/images/product_img1-2.jpg" data-zoom-image="/images/product_zoom_img2.jpg">
                             <img src="/images/product_small_img2.jpg" alt="product_small_img2" />
                         </a>
@@ -43,7 +43,7 @@
                         <a href="#" class="product_gallery_item" data-image="/images/product_img1-3.jpg" data-zoom-image="/images/product_zoom_img3.jpg">
                             <img src="/images/product_small_img3.jpg" alt="product_small_img3" />
                         </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

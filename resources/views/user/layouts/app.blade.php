@@ -66,7 +66,7 @@
 <!-- Latest compiled and minified Bootstrap --> 
 <script src="{{ asset('user/bootstrap/js/bootstrap.min.js') }}"></script> 
 <!-- owl-carousel min js  --> 
-<script src="{{ asset('user/owlcarousel/js/owl.carousel.min.js') }}"></script>
+<!-- <script src="{{ asset('user/owlcarousel/js/owl.carousel.min.js') }}"></script>  -->
 <!-- magnific-popup min js  --> 
 <script src="{{ asset('user/js/magnific-popup.min.js') }}"></script>
 <!-- waypoints min js  --> 
@@ -78,7 +78,7 @@
 <!-- imagesloaded js --> 
 <script src="{{ asset('user/js/imagesloaded.pkgd.min.js') }}"></script>
 <!-- isotope min js --> 
-<script src="{{ asset('user/js/isotope.min.js') }}"></script>
+<!-- <script src="{{ asset('user/js/isotope.min.js') }}"></script> -->
 <!-- jquery.dd.min js -->
 <script src="{{ asset('user/js/jquery.dd.min.js') }}"></script>
 <!-- slick js -->
