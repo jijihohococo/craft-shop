@@ -25,7 +25,8 @@ class ItemResource extends JsonResource
             'brand_name' => $this->brand_name ,
             'variants' => ItemVariantResource::collection(
                 $this->itemVariants),
-            'attributes' => ItemAttributeResource::collection($this->attributes)
+            'attributes' => ItemAttributeResource::collection($this->attributes),
+            'reviews' => $this->reviews
         ];
     }
 }

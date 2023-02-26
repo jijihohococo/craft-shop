@@ -50,6 +50,10 @@ class Item extends TransactionModel
         return $this->hasMany('App\Models\ItemAttribute');
     }
 
+    public function reviews(){
+        return $this->hasMany('App\Models\ItemReview');
+    }
+
     public static function getDataByCollection($column,$link){
         return self::select($column)->whereInCollection($link)->getQuery();
     }
