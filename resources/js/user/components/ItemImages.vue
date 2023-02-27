@@ -41,6 +41,7 @@
 	</div>
 </template>
 <script >
+	
 	export default {
 		unmounted : () => {
 			var image = $('#product_img');
